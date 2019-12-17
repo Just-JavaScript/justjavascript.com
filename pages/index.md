@@ -1,4 +1,4 @@
-Hey there! 
+Hey there! 👋
 
 I'm Dan Abramov.
 
@@ -39,11 +39,13 @@ All I ask is that you reply to the emails and share your opinions and experience
 For now, this email list is the only way to access Just JavaScript. They won't be published here or elsewhere on the web and I ask that you don't share them.
 These ideas are raw and fragile, and for now I'm not ready to share them widely.
 
-## Learn the JavaScript Mental Models
+## Learn my JavaScript Mental Models
 
 [Join Today]
 
-I want to hear from you. When you receive my drafts by email, please hit the Reply button and tell me if you love them, hate them, or if they leave you indifferent.
+I want to hear from you.
+
+When you receive my drafts by email, please hit the Reply button and tell me if you love them, hate them, or if they leave you indifferent.
 
 You might just motivate me to finish this project!!
 
