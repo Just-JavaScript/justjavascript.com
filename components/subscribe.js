@@ -3,7 +3,7 @@ import React from 'react'
 import {jsx} from 'theme-ui'
 import {Label, Input, Button} from '@theme-ui/components'
 
-const Subscribe = () => (
+const Subscribe = props => (
   <React.Fragment>
     <h2
       sx={{
@@ -12,10 +12,11 @@ const Subscribe = () => (
         ml: -2,
         pb: 1,
         bg: 'background',
-        mb: 2,
+        mb: [4, 2],
+        textAlign: ['center', 'inherit'],
       }}
     >
-      Learn my JavaScript Mental Models
+      {props.children}
     </h2>
     <form
       sx={{p: 4, border: '2px solid', borderColor: 'text', mt: [0, 50]}}
@@ -34,11 +35,11 @@ const Subscribe = () => (
         Your email address
       </Label>
       <Input
+        required
         aria-label="Your email address"
         name="email_address"
         id="email_address"
         placeholder="Email address"
-        required
         type="email"
       />
       <Button sx={{mt: 3}}>Join Now</Button>
