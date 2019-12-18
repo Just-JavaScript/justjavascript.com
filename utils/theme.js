@@ -32,14 +32,17 @@ export default {
       ':before': {
         content: '""',
         position: 'absolute',
-        width: 10,
-        height: 7,
+        width: '10px',
+        pt: '36px',
         bg: 'primary',
-        ml: '-20px',
+        ml: '-21px',
         mt: '-2px',
       },
-      outlineOffset: '1px',
-      outlineColor: 'primary',
+      ':focus': {
+        outline: '2px solid',
+        outlineOffset: '1px',
+        outlineColor: 'primary',
+      },
     },
   },
   forms: {
@@ -47,8 +50,11 @@ export default {
       borderRadius: 0,
       border: '2px solid',
       borderColor: 'text',
-      outlineOffset: '1px',
-      outlineColor: 'primary',
+      ':focus': {
+        outline: '2px solid',
+        outlineOffset: '1px',
+        outlineColor: 'primary',
+      },
     },
   },
   styles: {
