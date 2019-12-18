@@ -15,11 +15,11 @@ const Subscribe = () => (
         mb: 2,
       }}
     >
-      Learn the JavaScript Mental Models
+      Learn my JavaScript Mental Models
     </h2>
     <form
       sx={{p: 4, border: '2px solid', borderColor: 'text', mt: [0, 50]}}
-      action="https://app.convertkit.com/forms/812047/subscriptions"
+      action={`https://app.convertkit.com/forms/${process.env.CONVERTKIT_SIGNUP_FORM}/subscriptions`}
       method="post"
     >
       <Label htmlFor="first_name">Your first name</Label>
