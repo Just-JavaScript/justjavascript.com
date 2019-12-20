@@ -20,7 +20,7 @@ const Subscribe = props => (
     </h2>
     <form
       sx={{p: 4, border: '2px solid', borderColor: 'text', mt: [0, 50]}}
-      action={`https://app.convertkit.com/forms/${process.env.CONVERTKIT_SIGNUP_FORM}/subscriptions`}
+      action={`https://app.convertkit.com/forms/1152408/subscriptions`}
       method="post"
     >
       <Label htmlFor="first_name">Your first name</Label>
