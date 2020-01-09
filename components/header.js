@@ -1,10 +1,13 @@
 /** @jsx jsx */
 import {jsx} from 'theme-ui'
 import Link from 'next/link'
-import {useColorMode} from 'theme-ui'
+import {useColorMode, useThemeUI} from 'theme-ui'
 
 const Header = () => {
   const [colorMode, setColorMode] = useColorMode()
+  const context = useThemeUI()
+  const {theme} = context
+
   return (
     <div
       sx={{
@@ -40,82 +43,114 @@ const Header = () => {
           </svg>
         </a>
       </Link>
-      <button
-        aria-label={`Toggle ${colorMode === 'default' ? 'dark' : 'light'} mode`}
-        sx={{
-          px: 2,
-          outlineColor: 'primary',
-          border: 'none',
-          bg: 'transparent',
-          color: 'text',
-        }}
-        onClick={e => {
-          setColorMode(colorMode === 'default' ? 'dark' : 'default')
-        }}
-      >
-        {colorMode === 'default' ? (
-          <svg
-            height="16"
-            width="16"
-            viewBox="0 0 16 16"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <g fill="currentColor">
-              <path
-                d="M6,0C2.5,0.9,0,4.1,0,7.9C0,12.4,3.6,16,8.1,16c3.8,0,6.9-2.5,7.9-6C9.9,11.7,4.3,6.1,6,0z"
-                fill="currentColor"
-              />
-            </g>
-          </svg>
-        ) : (
-          <svg
-            height="16"
-            width="16"
-            viewBox="0 0 16 16"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <g fill="currentColor">
-              <rect height="2" width="2" x="7" />
-              <rect
-                height="2"
-                width="2"
-                transform="matrix(0.7069 0.7074 -0.7074 0.7069 5.9537 -8.2658)"
-                x="11.9"
-                y="2.1"
-              />
-              <rect height="2" width="2" x="14" y="7" />
-              <rect
-                height="2"
-                width="2"
-                transform="matrix(-0.7074 -0.7069 0.7069 -0.7074 12.956 31.2634)"
-                x="11.9"
-                y="11.9"
-              />
-              <rect height="2" width="2" x="7" y="14" />
-              <rect
-                height="2"
-                width="2"
-                transform="matrix(-0.7069 -0.7074 0.7074 -0.7069 -3.9536 24.261)"
-                x="2.1"
-                y="11.9"
-              />
-              <rect height="2" width="2" y="7" />
-              <rect
-                height="2"
-                width="2"
-                transform="matrix(0.7074 0.7069 -0.7069 0.7074 3.0488 -1.2635)"
-                x="2.1"
-                y="2.1"
-              />
-              <path
-                d="M8,4C5.8,4,4,5.8,4,8s1.8,4,4,4s4-1.8,4-4S10.2,4,8,4z"
-                fill="currentColor"
-              />
-            </g>
-          </svg>
-        )}
-      </button>
+      <ColorModeToggle
+        colorMode={colorMode}
+        setColorMode={setColorMode}
+        theme={theme}
+      />
     </div>
+  )
+}
+
+const ColorModeToggle = ({colorMode, setColorMode, theme}) => {
+  return (
+    <button
+      onClick={() => {
+        setColorMode(colorMode === 'default' ? 'dark' : 'default')
+      }}
+      aria-label={`Activate ${colorMode === 'default' ? 'dark' : 'light'} mode`}
+      title={`Activate ${colorMode === 'default' ? 'dark' : 'light'} mode`}
+      sx={{
+        position: 'relative',
+        alignItems: 'center',
+        bg: 'transparent',
+        border: 0,
+        borderRadius: '5px',
+        display: ['inline-flex', 'flex'],
+        cursor: 'pointer',
+        justifyContent: 'center',
+        opacity: 0.6,
+        transition: 'opacity 0.3s ease',
+        width: '40px',
+        height: '40px',
+        transform: 'scale(0.8)',
+        ':focus': {
+          outline: '2px solid',
+          outlineColor: 'primary',
+          outlineOffset: '1px',
+        },
+        ':hover, :focus': {
+          opacity: '1',
+        },
+      }}
+    >
+      <div
+        sx={{
+          bg: 'text',
+          borderRadius: '50%',
+          overflow: colorMode === 'default' ? 'hidden' : 'visible',
+          position: 'relative',
+          transform: `scale(${colorMode === 'default' ? 1 : 0.55})`,
+          transition: 'all 0.45s ease',
+          width: '24px',
+          height: '24px',
+          '&::before': {
+            bg: 'background',
+            border: '2px solid ',
+            borderColor: 'background',
+            borderRadius: '50%',
+            content: '""',
+            width: '24px',
+            height: '24px',
+            opacity: colorMode === 'default' ? 1 : 0,
+            position: 'absolute',
+            right: '-9px',
+            top: '-9px',
+            transform: `translate(${
+              colorMode === 'default' ? '0, 0' : '14px, -14px'
+            })`,
+            transition: 'transform 0.45s ease',
+          },
+          '&::after': {
+            borderRadius: '50%',
+            boxShadow: `0 -23px 0 ${theme.colors.text},
+          0 23px 0 ${theme.colors.text},
+          23px 0 0 ${theme.colors.text},
+          -23px 0 0 ${theme.colors.text},
+          15px 15px 0 ${theme.colors.text},
+          -15px 15px 0 ${theme.colors.text},
+          15px -15px 0 ${theme.colors.text},
+          -15px -15px 0 ${theme.colors.text}`,
+            content: '""',
+            width: '8px',
+            height: '8px',
+            left: '50%',
+            margin: '-4px 0 0 -4px',
+            position: 'absolute',
+            top: '50%',
+            transform: `scale(${colorMode === 'default' ? 0 : 1})`,
+            transition: 'all 0.35s ease',
+          },
+        }}
+      />
+      <div
+        sx={{
+          position: 'absolute',
+          right: '-1px',
+          top: '-8px',
+          height: '24px',
+          width: '24px',
+          borderRadius: '50%',
+          border: '0',
+          backgroundColor: 'background',
+          transform: `translate(${
+            colorMode === 'default' ? '0, 0' : '14px, -14px'
+          })`,
+          opacity: colorMode === 'default' ? 1 : 0,
+          transition: 'transform 0.45s ease',
+        }}
+      />
+    </button>
   )
 }
 

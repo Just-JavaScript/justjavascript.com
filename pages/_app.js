@@ -4,6 +4,7 @@ import {ThemeProvider, Styled, ColorMode} from 'theme-ui'
 import theme from '../utils/theme'
 import Header from '../components/header'
 import {NextSeo} from 'next-seo'
+import 'focus-visible'
 
 const mdComponents = {
   //h1: props => <h1 style={{color: 'tomato'}} {...props} />,

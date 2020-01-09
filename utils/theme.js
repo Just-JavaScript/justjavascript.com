@@ -22,6 +22,7 @@ export default {
   buttons: {
     primary: {
       color: 'background',
+      cursor: 'pointer',
       bg: 'text',
       borderRadius: 0,
       fontWeight: 'bold',
