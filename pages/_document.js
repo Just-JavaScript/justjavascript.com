@@ -4,6 +4,8 @@ import {InitializeColorMode} from 'theme-ui'
 import {TypographyStyle, GoogleFont} from 'react-typography'
 import typography from '../utils/typography'
 
+const FATHOM_SITE_ID = process.env.FATHOM_SITE_ID || 'YXFBENCN'
+
 class MyDocument extends Document {
   static async getInitialProps(ctx) {
     const initialProps = await Document.getInitialProps(ctx)
@@ -29,7 +31,7 @@ m=f.getElementsByTagName('script')[0];
 o.async=1; o.src=t; o.id='fathom-script';
 m.parentNode.insertBefore(o,m)
 })(document, window, 'https://cdn.usefathom.com/tracker.js', 'fathom');
-fathom('set', 'siteId', 'YXFBENCN');
+fathom('set', 'siteId', '${FATHOM_SITE_ID}');
 fathom('trackPageview')`,
             }}
           />
