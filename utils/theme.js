@@ -11,7 +11,7 @@ export default {
         text: 'hsl(0, 0%, 100%)',
         background: 'hsl(0, 0%, 5%)',
         primary: '#F8E71C',
-        secondary: '#FF1E88',
+        secondary: '#FF76A2',
       },
     },
   },
@@ -68,6 +68,7 @@ export default {
       bg: 'background',
     },
     a: {
+      color: 'secondary',
       outlineColor: 'primary',
       textDecoration: 'underline',
     },
