@@ -13,7 +13,7 @@ const mdComponents = {
 export default ({Component, pageProps}) => (
   <ThemeProvider theme={theme}>
     <NextSeo
-      title="Just JavaScript by Dan Abramov"
+      title="Just JavaScript — a course by Dan Abramov and Maggie Appleton"
       description="Learn the JavaScript Mental Models" // TODO
     />
     <ColorMode />
