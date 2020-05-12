@@ -60,7 +60,7 @@ export default {
   },
   styles: {
     root: {
-      py: [4, 5],
+      py: 4,
       px: 3,
       mx: 'auto',
       maxWidth: 832,
