@@ -128,7 +128,6 @@ function Variable({ name, left, top }) {
         top: top * 16,
         width: 100,
         height: 50,
-        border: '1px solid #777',
         background: 'white',
         color: 'black',
         textAlign: 'center',
@@ -153,7 +152,6 @@ function Value({ name, left, top }) {
         top: top * 16,
         width: 64,
         height: 64,
-        border: '1px solid #777',
         borderRadius: '50%',
         background: 'white',
         color: 'black',
@@ -207,27 +205,46 @@ function Wire({ from, to }) {
 
 function Next({ onClick, children }) {
   const isBusy = useContext(BusyContext);
-  const activeColor = isBusy ? 'white' : 'orange';
+  const activeColor = 'orange';
   return (
-    <motion.div
-      animate={{
-        scale: (isBusy && onClick) ? 1.2 : 1
-      }}
-      whileTap={{ scale: onClick ? 0.95 : 1 }}
-      onClick={isBusy ? null : onClick}
-      style={{
-        display: 'inline-block',
-        border: 'none',
-        backgroundColor: onClick ? activeColor : 'rgb(255 166 56 / 13%)',
-        color: onClick ? 'black' : 'white',
-        borderRadius: 4,
-        margin: '0 -4px',
-        padding: '0 4px',
-        cursor: onClick ? 'pointer' : '',
-      }}
-    >
-      {children}
-    </motion.div>
+    <div style={{
+      position: 'relative',
+      display: 'inline-block',
+    }}>
+      <motion.div
+        layout
+        layoutId={onClick && 'active'}
+        animate={{
+          scale: (isBusy && onClick) ? 1.2 : 1
+        }}
+        whileTap={{ scale: onClick ? 0.95 : 1 }}
+        style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          zIndex: 0,
+          border: 'none',
+          backgroundColor: onClick ? activeColor : 'rgb(255 166 56 / 13%)',
+          borderRadius: 4,
+          margin: '0 -4px',
+          padding: '0 4px',
+        }}
+       />
+      <motion.span
+        onClick={isBusy ? null : onClick}
+        style={{
+          zIndex: 1,
+          position: 'relative',
+          cursor: onClick ? 'pointer' : '',
+          mixBlendMode: onClick ? 'difference' : '',
+          color: 'orange'
+        }}
+      >
+        {children}
+      </motion.span>
+    </div>
   )
 }
 
