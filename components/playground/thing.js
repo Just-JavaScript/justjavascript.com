@@ -1,26 +1,119 @@
-import {useState, Children} from 'react';
-import { motion } from "framer-motion"
+import { cloneElement, useContext, useState, Children } from 'react';
+import { BusyContext } from './ctx';
+import { motion, AnimateSharedLayout } from "framer-motion"
+
+function reducer(state, action) {
+  const {type, ...rest} = action;
+  switch (action.type) {
+    case 'delete': {
+      let temp = {...state};
+      delete temp[action.name];
+      return temp;
+    }
+    case 'variable':
+    case 'value': {
+      return {
+        ...state,
+        [action.name]: action
+      };
+    }
+    case 'wire': {
+      const {source, target, offset, ...rest} = action;
+      const pos = {
+        from: [
+          state[source].left + offset[0],
+          state[source].top + offset[1],
+        ],
+        to: [
+          state[target].left + offset[2],
+          state[target].top + offset[3],
+        ],
+      };
+      return {
+        ...state,
+        [action.name]: {
+          ...rest,
+          ...pos
+        }
+      };
+    }
+  }
+  return state;
+}
 
 function Frames({ children }) {
   const [index, setIndex] = useState(0);
-  const step = children[index];
-  function handleNext() {
-    setIndex(i => i < children.length - 1 ? i + 1 : 0);
+  const [delayedIndex, setDelayedIndex] = useState(0);
+  const code = children[delayedIndex].props.children(handleNext);
+
+  let stage = {};
+  function dispatch(action) {
+    stage = reducer(stage, action);
   }
-  return step(handleNext);
+  for (let i = 0; i < index; i++) {
+    const actions = children[i].props.actions;
+    if (actions) {
+      actions(stage).forEach(dispatch);
+    }
+  }
+
+  function handleNext() {
+    const nextIndex = index < children.length - 1 ? index + 1 : index;
+    setIndex(nextIndex);
+    if (children[index].props.actions) {
+      setTimeout(() => {
+        setDelayedIndex(nextIndex);
+      }, 500);
+    } else {
+      setDelayedIndex(nextIndex);
+    }
+  }
+
+  let stageChildren = [];
+  for (let key in stage) {
+    if (stage.hasOwnProperty(key)) {
+      let {type, ...props} = stage[key];
+      let Type;
+      switch (type) {
+        case 'variable':
+          Type = Variable;
+          break;
+        case 'value':
+          Type = Value;
+          break;
+        case 'wire':
+          Type = Wire;
+          break;
+      }
+      stageChildren.push(<Type {...props} key={key} />);
+    }
+  }
+
+  return (
+    <BusyContext.Provider value={index !== delayedIndex}>
+      <Layout
+        code={
+          <AnimateSharedLayout>
+            {code}
+          </AnimateSharedLayout>
+        }
+        stage={
+          <div style={{
+            padding: 50,
+            position: 'relative',
+            fontFamily: 'sans-serif',
+            fontSize: 32,
+          }}>
+            {stageChildren}
+          </div>
+        }
+      />
+    </BusyContext.Provider>
+  );
 }
 
-function Stage({ children }) {
-  return (
-    <div style={{
-      padding: 50,
-      position: 'relative',
-      fontFamily: 'sans-serif',
-      fontSize: 32,
-    }}>
-      {children}
-    </div>
-  )
+function Frame({ children, action }) {
+  return null;
 }
 
 function Variable({ name, left, top }) {
@@ -74,7 +167,7 @@ function Value({ name, left, top }) {
   );
 }
 
-function Arrow({ from, to }) {
+function Wire({ from, to }) {
   function curvedHorizontal(x1, y1, x2, y2) {
     var line = []
     var mx = x1 + (x2 - x1) / 2
@@ -88,6 +181,7 @@ function Arrow({ from, to }) {
   const color = '#0bb1ff';
   return (
     <svg style={{
+      overflow: 'visible',
       position: 'absolute',
       height: '100%'
     }}>
@@ -112,12 +206,19 @@ function Arrow({ from, to }) {
 }
 
 function Next({ onClick, children }) {
+  const isBusy = useContext(BusyContext);
+  const activeColor = isBusy ? 'white' : 'orange';
   return (
-    <button
-      onClick={onClick}
+    <motion.div
+      animate={{
+        scale: (isBusy && onClick) ? 1.2 : 1
+      }}
+      whileTap={{ scale: onClick ? 0.95 : 1 }}
+      onClick={isBusy ? null : onClick}
       style={{
+        display: 'inline-block',
         border: 'none',
-        backgroundColor: onClick ? 'orange' : 'rgb(255 166 56 / 13%)',
+        backgroundColor: onClick ? activeColor : 'rgb(255 166 56 / 13%)',
         color: onClick ? 'black' : 'white',
         borderRadius: 4,
         margin: '0 -4px',
@@ -126,7 +227,7 @@ function Next({ onClick, children }) {
       }}
     >
       {children}
-    </button>
+    </motion.div>
   )
 }
 
@@ -147,7 +248,6 @@ function Layout({ stage, code }) {
         height: '100%',
       }}>
         <div style={{
-          position: 'relative',
           width: '100%',
           height: '100%'
         }}>
@@ -161,481 +261,214 @@ function Layout({ stage, code }) {
 export default function Thing() {
   return (
     <Frames>
-      {next => (
-        <Layout
-          code={
-            <pre>
-              <Next onClick={next}>
-              let a = 10;
-              </Next>
-              <br />
-              let b = a;
-              <br />
-              a = 0;
-            </pre>
-          }
-          stage={null}
-        />
-      )}
-      {next => (
-        <Layout
-          code={
-            <pre>
-              <Next>
-              let <Next onClick={next}>a</Next> = 10;
-              </Next>
-              <br />
-              let b = a;
-              <br />
-              a = 0;
-            </pre>
-          }
-          stage={null}
-        />
-      )}
-      {next => (
-        <Layout
-          code={
-            <pre>
-              <Next>
-              let a = <Next onClick={next}>10</Next>;
-              </Next>
-              <br />
-              let b = a;
-              <br />
-              a = 0;
-            </pre>
-          }
-          stage={
-            <>
-              <Variable
-                key="a"
-                name="a"
-                left={1}
-                top={1}
-              />
-            </>
-          }
-        />
-      )}
-      {next => (
-        <Layout
-          code={
-            <pre>
-              <Next>
-              let a <Next onClick={next}>=</Next> 10;
-              </Next>
-              <br />
-              let b = a;
-              <br />
-              a = 0;
-            </pre>
-          }
-          stage={
-            <>
-              <Variable
-                key="a"
-                name="a"
-                left={1}
-                top={1}
-              />
-              <Value
-                key="10"
-                name="10"
-                left={15}
-                top={3}
-              />
-            </>
-          }
-        />
-      )}
-      {next => (
-        <Layout
-          code={
-            <pre>
-              let a = 10;
-              <br />
-              <Next onClick={next}>
-              let b = a;
-              </Next>
-              <br />
-              a = 0;
-            </pre>
-          }
-          stage={
-            <>
-              <Variable
-                key="a"
-                name="a"
-                left={1}
-                top={1}
-              />
-              <Value
-                key="10"
-                name="10"
-                left={15}
-                top={3}
-              />
-              <Arrow
-                key="a-to-10"
-                from={[7.2, 2.3]}
-                to={[15.4, 5.1]} />
-            </>
-          }
-        />
-      )}
-      {next => (
-        <Layout
-          code={
-            <pre>
-              let a = 10;
-              <br />
-              <Next>
-              let <Next onClick={next}>b</Next> = a;
-              </Next>
-              <br />
-              a = 0;
-            </pre>
-          }
-          stage={
-            <>
-              <Variable
-                key="a"
-                name="a"
-                left={1}
-                top={1}
-              />
-              <Value
-                key="10"
-                name="10"
-                left={15}
-                top={3}
-              />
-              <Arrow
-                key="a-to-10"
-                from={[7.2, 2.3]}
-                to={[15.4, 5.1]} />
-            </>
-          }
-        />
-      )}
-      {next => (
-        <Layout
-          code={
-            <pre>
-              let a = 10;
-              <br />
-              <Next>
-              let b = <Next onClick={next}>a</Next>;
-              </Next>
-              <br />
-              a = 0;
-            </pre>
-          }
-          stage={
-            <>
-              <Variable
-                key="a"
-                name="a"
-                left={1}
-                top={1}
-              />
-              <Variable
-                key="b"
-                name="b"
-                left={1}
-                top={5.5}
-              />
-              <Value
-                key="10"
-                name="10"
-                left={15}
-                top={3}
-              />
-              <Arrow
-                key="a-to-10"
-                from={[7.2, 2.3]}
-                to={[15.4, 5.1]} />
-            </>
-          }
-        />
-      )}
-      {next => (
-        <Layout
-          code={
-            <pre>
-              let a = 10;
-              <br />
-              <Next>
-              let b <Next onClick={next}>=</Next> a;
-              </Next>
-              <br />
-              a = 0;
-            </pre>
-          }
-          stage={
-            <>
-              <Variable
-                key="a"
-                name="a"
-                left={1}
-                top={1}
-              />
-              <Variable
-                key="b"
-                name="b"
-                left={1}
-                top={5.5}
-              />
-              <Value
-                key="10"
-                name="10"
-                left={15}
-                top={3}
-              />
-              <Arrow
-                key="a-to-10"
-                from={[7.2, 2.3]}
-                to={[15.4, 5.1]} />
-            </>
-          }
-        />
-      )}
-      {next => (
-        <Layout
-          code={
-            <pre>
-              let a = 10;
-              <br />
-              let b = a;
-              <br />
-              <Next onClick={next}>
-              a = 0;
-              </Next>
-            </pre>
-          }
-          stage={
-            <>
-              <Variable
-                key="a"
-                name="a"
-                left={1}
-                top={1}
-              />
-              <Variable
-                key="b"
-                name="b"
-                left={1}
-                top={5.5}
-              />
-              <Value
-                key="10"
-                name="10"
-                left={15}
-                top={3}
-              />
-              <Arrow
-                key="a-to-10"
-                from={[7.2, 2.3]}
-                to={[15.4, 5.1]} />
-              <Arrow
-                key="b-to-10"
-                from={[7.2, 7]}
-                to={[15.4, 5.1]} />
-            </>
-          }
-        />
-      )}
-      {next => (
-        <Layout
-          code={
-            <pre>
-              let a = 10;
-              <br />
-              let b = a;
-              <br />
-              <Next>
-              <Next onClick={next}>a</Next> = 0;
-              </Next>
-            </pre>
-          }
-          stage={
-            <>
-              <Variable
-                key="a"
-                name="a"
-                left={1}
-                top={1}
-              />
-              <Variable
-                key="b"
-                name="b"
-                left={1}
-                top={5.5}
-              />
-              <Value
-                key="10"
-                name="10"
-                left={15}
-                top={3}
-              />
-              <Arrow
-                key="a-to-10"
-                from={[7.2, 2.3]}
-                to={[15.4, 5.1]} />
-              <Arrow
-                key="b-to-10"
-                from={[7.2, 7]}
-                to={[15.4, 5.1]} />
-            </>
-          }
-        />
-      )}
-      {next => (
-        <Layout
-          code={
-            <pre>
-              let a = 10;
-              <br />
-              let b = a;
-              <br />
-              <Next>
-              a = <Next onClick={next}>0</Next>;
-              </Next>
-            </pre>
-          }
-          stage={
-            <>
-              <Variable
-                key="a"
-                name="a"
-                left={1}
-                top={1}
-              />
-              <Variable
-                key="b"
-                name="b"
-                left={1}
-                top={5.5}
-              />
-              <Value
-                key="10"
-                name="10"
-                left={15}
-                top={3}
-              />
-              <Arrow
-                key="a-to-10"
-                from={[7.2, 2.3]}
-                to={[15.4, 5.1]} />
-              <Arrow
-                key="b-to-10"
-                from={[7.2, 7]}
-                to={[15.4, 5.1]} />
-            </>
-          }
-        />
-      )}
-      {next => (
-        <Layout
-          code={
-            <pre>
-              let a = 10;
-              <br />
-              let b = a;
-              <br />
-              <Next>
-              a <Next onClick={next}>=</Next> 0;
-              </Next>
-            </pre>
-          }
-          stage={
-            <>
-              <Variable
-                key="a"
-                name="a"
-                left={1}
-                top={1}
-              />
-              <Variable
-                key="b"
-                name="b"
-                left={1}
-                top={5.5}
-              />
-              <Value
-                key="10"
-                name="10"
-                left={15}
-                top={3}
-              />
-              <Value
-                key="0"
-                name="0"
-                left={15}
-                top={8}
-              />
-              <Arrow
-                key="a-to-10"
-                from={[7.2, 2.3]}
-                to={[15.4, 5.1]} />
-              <Arrow
-                key="b-to-10"
-                from={[7.2, 7]}
-                to={[15.4, 5.1]} />
-            </>
-          }
-        />
-      )}
-      {next => (
-        <Layout
-          code={
-            <pre>
-              let a = 10;
-              <br />
-              let b = a;
-              <br />
-              a = 0;
-            </pre>
-          }
-          stage={
-            <>
-              <Variable
-                key="a"
-                name="a"
-                left={1}
-                top={1}
-              />
-              <Variable
-                key="b"
-                name="b"
-                left={1}
-                top={5.5}
-              />
-              <Value
-                key="10"
-                name="10"
-                left={15}
-                top={3}
-              />
-              <Value
-                key="0"
-                name="0"
-                left={15}
-                top={8}
-              />
-              <Arrow
-                key="a-to-0"
-                from={[7.2, 2.3]}
-                to={[15.4, 9.4]} />
-              <Arrow
-                key="b-to-10"
-                from={[7.2, 7]}
-                to={[15.4, 5.1]} />
-            </>
-          }
-        />
-      )}
+      <Frame>
+        {next => (
+          <pre>
+            <Next onClick={() => next()}>
+            let a = 10;
+            </Next>
+            <br />
+            let b = a;
+            <br />
+            a = 0;
+          </pre>
+        )}
+      </Frame>
+      <Frame actions={stage => [{
+        type: 'variable',
+        name: 'a',
+        left: 1,
+        top: 1,
+      }]}>
+        {next => (
+          <pre>
+            <Next>
+            let <Next onClick={next}>a</Next> = 10;
+            </Next>
+            <br />
+            let b = a;
+            <br />
+            a = 0;
+          </pre>
+        )}
+      </Frame>
+      <Frame actions={stage => [{
+        type: 'value',
+        name: '10',
+        left: 15,
+        top: 3
+      }]}>
+        {next => (
+          <pre>
+            <Next>
+            let a = <Next onClick={next}>10</Next>;
+            </Next>
+            <br />
+            let b = a;
+            <br />
+            a = 0;
+          </pre>
+        )}
+      </Frame>
+      <Frame actions={stage => [{
+        type: 'wire',
+        name: 'aWireTo10',
+        source: 'a',
+        target: '10',
+        offset: [3.1, -1.5, -3.1, -1.4],
+      }]}>
+        {next => (
+          <pre>
+            <Next>
+            let a <Next onClick={next}>=</Next> 10;
+            </Next>
+            <br />
+            let b = a;
+            <br />
+            a = 0;
+          </pre>
+        )}
+      </Frame>
+      <Frame>
+        {next => (
+          <pre>
+            let a = 10;
+            <br />
+            <Next onClick={next}>
+            let b = a;
+            </Next>
+            <br />
+            a = 0;
+          </pre>
+        )}
+      </Frame>
+      <Frame actions={stage => [{
+        type: 'variable',
+        name: 'b',
+        left: 1,
+        top: 5,
+      }]}>
+        {next => (
+          <pre>
+            let a = 10;
+            <br />
+            <Next>
+            let <Next onClick={next}>b</Next> = a;
+            </Next>
+            <br />
+            a = 0;
+          </pre>
+        )}
+      </Frame>
+      <Frame>
+        {next => (
+          <pre>
+            let a = 10;
+            <br />
+            <Next>
+            let b = <Next onClick={next}>a</Next>;
+            </Next>
+            <br />
+            a = 0;
+          </pre>
+        )}
+      </Frame>
+      <Frame actions={stage => [{
+        type: 'wire',
+        name: 'bWireTo10',
+        source: 'b',
+        target: '10',
+        offset: [3.1, -1.5, -3.1, -0.6],
+      }]}>
+        {next => (
+          <pre>
+            let a = 10;
+            <br />
+            <Next>
+            let b <Next onClick={next}>=</Next> a;
+            </Next>
+            <br />
+            a = 0;
+          </pre>
+        )}
+      </Frame>
+      <Frame>
+        {next => (
+          <pre>
+            let a = 10;
+            <br />
+            let b = a;
+            <br />
+            <Next onClick={next}>
+            a = 0;
+            </Next>
+          </pre>
+        )}
+      </Frame>
+      <Frame>
+        {next => (
+          <pre>
+            let a = 10;
+            <br />
+            let b = a;
+            <br />
+            <Next>
+            <Next onClick={next}>a</Next> = 0;
+            </Next>
+          </pre>
+        )}
+      </Frame>
+      <Frame actions={stage => [{
+        type: 'value',
+        name: '0',
+        left: 15,
+        top: 8
+      }]}>
+        {next => (
+          <pre>
+            let a = 10;
+            <br />
+            let b = a;
+            <br />
+            <Next>
+            a = <Next onClick={next}>0</Next>;
+            </Next>
+          </pre>
+        )}
+      </Frame>
+      <Frame actions={stage => [{
+        type: 'delete',
+        name: 'aWireTo10',
+      }, {
+        type: 'wire',
+        name: 'aWireTo0',
+        source: 'a',
+        target: '0',
+        offset: [3.1, -1.5, -3.1, -0.6],
+      }]}>
+        {next => (
+          <pre>
+            let a = 10;
+            <br />
+            let b = a;
+            <br />
+            <Next>
+            a <Next onClick={next}>=</Next> 0;
+            </Next>
+          </pre>
+        )}
+      </Frame>
+      <Frame>
+        {next => (
+          <pre>
+            let a = 10;
+            <br />
+            let b = a;
+            <br />
+            a = 0;
+          </pre>
+        )}
+      </Frame>
     </Frames>
   );
 }
