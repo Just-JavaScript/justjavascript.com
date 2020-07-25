@@ -1,4 +1,5 @@
 import {useState, Children} from 'react';
+import { motion } from "framer-motion"
 
 function Frames({ children }) {
   const [index, setIndex] = useState(0);
@@ -24,44 +25,52 @@ function Stage({ children }) {
 
 function Variable({ name, left, top }) {
   return (
-    <div style={{
-      position: 'absolute',
-      left: left * 16,
-      top: top * 16,
-      width: 100,
-      height: 50,
-      border: '1px solid #777',
-      background: 'white',
-      color: 'black',
-      textAlign: 'center',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-    }}>
+    <motion.div
+      initial={{ opacity: 0.5, scale: 1.2 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 0.5 }}
+      style={{
+        position: 'absolute',
+        left: left * 16,
+        top: top * 16,
+        width: 100,
+        height: 50,
+        border: '1px solid #777',
+        background: 'white',
+        color: 'black',
+        textAlign: 'center',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+      }}>
       {name}
-    </div>
+    </motion.div>
   );
 }
 
 function Value({ name, left, top }) {
   return (
-    <div style={{
-      position: 'absolute',
-      left: left * 16,
-      top: top * 16,
-      width: 64,
-      height: 64,
-      border: '1px solid #777',
-      borderRadius: '50%',
-      background: 'white',
-      color: 'black',
-      textAlign: 'center',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-    }}>
+    <motion.div
+      initial={{ opacity: 0.5, scale: 1.2 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 0.5 }}
+      style={{
+        position: 'absolute',
+        left: left * 16,
+        top: top * 16,
+        width: 64,
+        height: 64,
+        border: '1px solid #777',
+        borderRadius: '50%',
+        background: 'white',
+        color: 'black',
+        textAlign: 'center',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+      }}>
       {name}
-    </div>
+    </motion.div>
   );
 }
 
@@ -82,26 +91,14 @@ function Arrow({ from, to }) {
       position: 'absolute',
       height: '100%'
     }}>
-      <defs>
-        <marker
-          id="triangle"
-          viewBox="0 0 10 10"
-          refX="1"
-          refY="5"
-          fill={color}
-          markerUnits="strokeWidth"
-          markerWidth="5"
-          markerHeight="5"
-          orient="auto">
-          <path d="M 0 0 L 10 5 L 0 10 z" />
-        </marker>
-      </defs>
       <g
         fill="none"
         stroke={color}
-        strokeWidth="2"
-        markerEnd="url(#triangle)">
-        <path
+        strokeWidth="2">
+        <motion.path
+          initial={{ opacity: 0.5, pathLength: 0 }}
+          animate={{ opacity: 1, pathLength: 1 }}
+          transition={{ duration: 0.5 }}
           d={curvedHorizontal(
             from[0] * 16,
             from[1] * 16,
@@ -137,7 +134,7 @@ function Layout({ stage, code }) {
   return (
     <div style={{
       display: 'flex',
-      height: 200,
+      height: 300,
     }}>
       <div style={{
         width: 200,
@@ -212,6 +209,7 @@ export default function Thing() {
           stage={
             <>
               <Variable
+                key="a"
                 name="a"
                 left={1}
                 top={1}
@@ -236,11 +234,13 @@ export default function Thing() {
           stage={
             <>
               <Variable
+                key="a"
                 name="a"
                 left={1}
                 top={1}
               />
               <Value
+                key="10"
                 name="10"
                 left={15}
                 top={3}
@@ -265,18 +265,21 @@ export default function Thing() {
           stage={
             <>
               <Variable
+                key="a"
                 name="a"
                 left={1}
                 top={1}
               />
               <Value
+                key="10"
                 name="10"
                 left={15}
                 top={3}
               />
               <Arrow
+                key="a-to-10"
                 from={[7.2, 2.3]}
-                to={[14.4, 5.1]} />
+                to={[15.4, 5.1]} />
             </>
           }
         />
@@ -297,18 +300,21 @@ export default function Thing() {
           stage={
             <>
               <Variable
+                key="a"
                 name="a"
                 left={1}
                 top={1}
               />
               <Value
+                key="10"
                 name="10"
                 left={15}
                 top={3}
               />
               <Arrow
+                key="a-to-10"
                 from={[7.2, 2.3]}
-                to={[14.4, 5.1]} />
+                to={[15.4, 5.1]} />
             </>
           }
         />
@@ -329,23 +335,27 @@ export default function Thing() {
           stage={
             <>
               <Variable
+                key="a"
                 name="a"
                 left={1}
                 top={1}
               />
               <Variable
+                key="b"
                 name="b"
                 left={1}
                 top={5.5}
               />
               <Value
+                key="10"
                 name="10"
                 left={15}
                 top={3}
               />
               <Arrow
+                key="a-to-10"
                 from={[7.2, 2.3]}
-                to={[14.4, 5.1]} />
+                to={[15.4, 5.1]} />
             </>
           }
         />
@@ -366,23 +376,27 @@ export default function Thing() {
           stage={
             <>
               <Variable
+                key="a"
                 name="a"
                 left={1}
                 top={1}
               />
               <Variable
+                key="b"
                 name="b"
                 left={1}
                 top={5.5}
               />
               <Value
+                key="10"
                 name="10"
                 left={15}
                 top={3}
               />
               <Arrow
+                key="a-to-10"
                 from={[7.2, 2.3]}
-                to={[14.4, 5.1]} />
+                to={[15.4, 5.1]} />
             </>
           }
         />
@@ -403,26 +417,31 @@ export default function Thing() {
           stage={
             <>
               <Variable
+                key="a"
                 name="a"
                 left={1}
                 top={1}
               />
               <Variable
+                key="b"
                 name="b"
                 left={1}
                 top={5.5}
               />
               <Value
+                key="10"
                 name="10"
                 left={15}
                 top={3}
               />
               <Arrow
+                key="a-to-10"
                 from={[7.2, 2.3]}
-                to={[14.4, 5.1]} />
+                to={[15.4, 5.1]} />
               <Arrow
+                key="b-to-10"
                 from={[7.2, 7]}
-                to={[14.4, 5.1]} />
+                to={[15.4, 5.1]} />
             </>
           }
         />
@@ -443,26 +462,31 @@ export default function Thing() {
           stage={
             <>
               <Variable
+                key="a"
                 name="a"
                 left={1}
                 top={1}
               />
               <Variable
+                key="b"
                 name="b"
                 left={1}
                 top={5.5}
               />
               <Value
+                key="10"
                 name="10"
                 left={15}
                 top={3}
               />
               <Arrow
+                key="a-to-10"
                 from={[7.2, 2.3]}
-                to={[14.4, 5.1]} />
+                to={[15.4, 5.1]} />
               <Arrow
+                key="b-to-10"
                 from={[7.2, 7]}
-                to={[14.4, 5.1]} />
+                to={[15.4, 5.1]} />
             </>
           }
         />
@@ -483,26 +507,31 @@ export default function Thing() {
           stage={
             <>
               <Variable
+                key="a"
                 name="a"
                 left={1}
                 top={1}
               />
               <Variable
+                key="b"
                 name="b"
                 left={1}
                 top={5.5}
               />
               <Value
+                key="10"
                 name="10"
                 left={15}
                 top={3}
               />
               <Arrow
+                key="a-to-10"
                 from={[7.2, 2.3]}
-                to={[14.4, 5.1]} />
+                to={[15.4, 5.1]} />
               <Arrow
+                key="b-to-10"
                 from={[7.2, 7]}
-                to={[14.4, 5.1]} />
+                to={[15.4, 5.1]} />
             </>
           }
         />
@@ -523,31 +552,37 @@ export default function Thing() {
           stage={
             <>
               <Variable
+                key="a"
                 name="a"
                 left={1}
                 top={1}
               />
               <Variable
+                key="b"
                 name="b"
                 left={1}
                 top={5.5}
               />
               <Value
+                key="10"
                 name="10"
                 left={15}
                 top={3}
               />
               <Value
+                key="0"
                 name="0"
                 left={15}
                 top={8}
               />
               <Arrow
+                key="a-to-10"
                 from={[7.2, 2.3]}
-                to={[14.4, 5.1]} />
+                to={[15.4, 5.1]} />
               <Arrow
+                key="b-to-10"
                 from={[7.2, 7]}
-                to={[14.4, 5.1]} />
+                to={[15.4, 5.1]} />
             </>
           }
         />
@@ -566,31 +601,37 @@ export default function Thing() {
           stage={
             <>
               <Variable
+                key="a"
                 name="a"
                 left={1}
                 top={1}
               />
               <Variable
+                key="b"
                 name="b"
                 left={1}
                 top={5.5}
               />
               <Value
+                key="10"
                 name="10"
                 left={15}
                 top={3}
               />
               <Value
+                key="0"
                 name="0"
                 left={15}
                 top={8}
               />
               <Arrow
+                key="a-to-0"
                 from={[7.2, 2.3]}
-                to={[14.4, 9.4]} />
+                to={[15.4, 9.4]} />
               <Arrow
+                key="b-to-10"
                 from={[7.2, 7]}
-                to={[14.4, 5.1]} />
+                to={[15.4, 5.1]} />
             </>
           }
         />
