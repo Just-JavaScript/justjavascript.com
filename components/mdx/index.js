@@ -3,6 +3,7 @@ import Code from './code'
 import Answer from './answer'
 import Pagination from './pagination'
 import GifPlayer from './gif-player'
+import Universe from './Universe'
 import Article from '../layouts/article'
 
 export default {
@@ -13,4 +14,5 @@ export default {
   Pagination,
   GifPlayer,
   Article,
+  Universe,
 }
