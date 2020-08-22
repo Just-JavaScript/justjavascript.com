@@ -6,7 +6,7 @@ This is like asking what a number is in math, or what a point is in geometry. **
 
 Numbers are values — but so are a few other things, like objects and functions. However, many things, such as an `if` statement or a variable declaration, are *not* values.
 
-## Code and Values
+## Values
 
 To distinguish values from everything else in my JavaScript program, I like to imagine this drawing of the Little Prince by Antoine de Saint-Exupéry:
 
@@ -60,35 +60,9 @@ Objects and functions are special because **I can manipulate them from my code**
 
 *And that’s the second kind of values.*
 
-You might have questions. Good. If you ask a question, the JavaScript universe might answer it! Provided, of course, that you know how to ask.
-
-## Expressions
-
-There are many questions JavaScript can’t answer. If you want to know whether it’s better to confess your true feelings to your best friend or to keep waiting until you both turn into skeletons, JavaScript won’t be of much help.
-
-But there are some questions that JavaScript would be *delighted* to answer. These questions have a special name — they are called *expressions*.
-
-If we “ask” the expression `2 + 2`, JavaScript will “answer” with the value `4`.
-
-```js
-console.log(2 + 2); // 4
-```
-
-**Expressions are questions that JavaScript can answer. JavaScript answers expressions in the only way it knows how — with values.**
-
-![Expression](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1578681449/just-javascript-email-images/jj02/expression.gif)
-
-If the word “expression” confuses you, think of it as a piece of code that *expresses* a value. You might hear people say that `2 + 2` “results in” or “evaluates to” `4`. These are all different ways to say the same thing.
-
-We ask JavaScript `2 + 2`, and it answers with `4`. **Expressions always result in a single value.** Now we know enough about expressions to be dangerous!
-
-I previously said that there are many types of JavaScript values: numbers, strings, objects, and so on. How do we know any particular value’s type?
-
-*This sounds like a question. Do we dare to ask it?*
-
 ### Checking a Type
 
-At first, all values in the JavaScript cosmos might look the same — bright dots in the sky. But if you look closely, you’ll realize there are fewer than ten different types of values. Values of the same type behave in similar ways.
+I previously said that there are many types of JavaScript values. At first, all values in the JavaScript cosmos might look the same — bright dots in the sky. But if you look closely, you’ll realize there are fewer than ten different types of values: numbers, strings, objects, and so on. Values of the same type behave in similar ways, but how do we know any particular value’s type?.
 
 If we want to check a value’s type, we can ask it with the `typeof` operator. JavaScript will answer our question with one of the predetermined string values, such as `"number"`, `"string"`, or `"object"`.
 
@@ -153,6 +127,27 @@ console.log(typeof(/(hello|goodbye)/)); // "object"
 
 It’s fine if this mechanism doesn’t quite click yet. **For now, you only need to remember that primitive values, such as numbers and strings, are *not* objects.**
 
+You might have questions. Good. If you ask a question, the JavaScript universe might answer it! Provided, of course, that you know how to ask.
+
+## Expressions
+There are many questions JavaScript can’t answer. If you want to know whether it’s better to confess your true feelings to your best friend or to keep waiting until you both turn into skeletons, JavaScript won’t be of much help.
+
+But there are some questions that JavaScript would be *delighted* to answer. These questions have a special name — they are called *expressions*.
+
+If we “ask” the expression `2 + 2`, JavaScript will “answer” with the value `4`.
+
+```js
+console.log(2 + 2); // 4
+```
+
+**Expressions are questions that JavaScript can answer. JavaScript answers expressions in the only way it knows how — with values.**
+
+![Expression](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1578681449/just-javascript-email-images/jj02/expression.gif)
+
+If the word “expression” confuses you, think of it as a piece of code that *expresses* a value. You might hear people say that `2 + 2` “results in” or “evaluates to” `4`. These are all different ways to say the same thing.
+
+We ask JavaScript `2 + 2`, and it answers with `4`. **Expressions always result in a single value.** Now we know enough about expressions to be dangerous!
+
 ## Recap
 
 Let’s recap what we know so far:
@@ -165,7 +160,7 @@ Let’s recap what we know so far:
 
 ## Exercises
 
-Now it’s time to put what we learned to action. 
+Now it’s time to put what we learned to action.
 
 Even if you already have a decent amount of experience with JavaScript don't skip the exercise questions! I personally learned some of these things only a few years ago.
 
