@@ -2,7 +2,6 @@
 
 You might wonder: what’s the point of *counting* values? We’re not in an arithmetics class, are we? The essence of counting is to distinguish things from one another. You can only say there are “two apples” when you clearly see that they’re two *distinct* apples. Distinguishing values from one another is key to understanding *equality* in JavaScript — which will be our next topic.
 
-// Might be worth removing one or two of these metaphors - Dante's rings, the celestial spheres and the Count are a lot of different illustrations to hold together.
 Like Virgil guided Dante through the nine circles of Hell, Count von Count will accompany us through the “celestial spheres” of JavaScript to meet different values. We'll meet the primitive values: booleans, Numbers, Strings, and so on. We'll also meet objects and functions. Consider it a sightseeing tour.
 
 ![celestial spheres of javascript values](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1581381920/just-javascript-email-images/jj04/celestialspheres-v2.png)
@@ -55,7 +54,7 @@ Handle it with care.
 
 ![illustration of a grey null circle, and a large barren null planet](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1580435620/just-javascript-email-images/jj04/null-revised.png)
 
-You can think of `null` as `undefined`’s sister. It behaves very similarly. For example, it will also throw a fuss when you try to access its properties:
+The next stop on our counting tour is Null, and Count von Count won't have much work to do here - **there is also only one value of this type — `null`.** You can think of `null` as `undefined`’s sister; it behaves very similarly to undefined. For example, it will also throw a fuss when you try to access its properties:
 
 ```js
 let mimsy = null;
@@ -64,7 +63,7 @@ console.log(mimsy.mood); // TypeError!
 
 ![diagram showing the variable mimsy attached to the visual icon for null](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1580435620/just-javascript-email-images/jj04/null-example.png)
 
-Similarly to `undefined`, **`null` is the only value of its own type**. However, `null` is also a liar. Due to a [bug](https://2ality.com/2013/10/typeof-null.html) in JavaScript, it pretends to be an object:
+**`Null` is the only value of its own type** however, `null` is also a liar. Due to a [bug](https://2ality.com/2013/10/typeof-null.html) in JavaScript, it pretends to be an object:
 
 ```js
 console.log(typeof(null)); // "object" (a lie!)
@@ -80,7 +79,7 @@ I don’t blame them.
 
 ![Booleans](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1580435620/just-javascript-email-images/jj04/boolean-revised.png)
 
-Like day and night, **there are only two boolean values: `true` and `false`.**
+Next on our counting tour, booleans! Like day and night or on and off, **Count von Count will only find two boolean values: `true` and `false`.**
 
 ```js
 console.log(typeof(true)); // "boolean"
@@ -223,7 +222,11 @@ It’s uncommon to write code using these special numbers. However, they might c
 
 ![big ints](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1580773481/just-javascript-email-images/jj05/bigints-v2.png)
 
-BigInts were only recently added to JavaScript, so you won’t see them used widely yet. If you use an older browser, they won’t work. Regular numbers can’t represent large integers with precision, so BigInts [fill that gap](https://v8.dev/features/bigint) (literally):
+If numbers kept Count von Count busy, the next stop on our tour, BigInts, will really impress him.
+
+Regular numbers can’t represent large integers with precision, so BigInts [fill that gap](https://v8.dev/features/bigint) (literally). How many BigInts are there in our universe? The specification says they have an *arbitrary precision*. This means that **in our JavaScript universe, there is an infinite number of BigInts — one for each integer in math**.
+
+You can see this illustrated here:
 
 ```js
 let alot = 9007199254740991n; // Notice n at the end
@@ -236,8 +239,6 @@ console.log(alot + 5n); // 9007199254740996n
 
 No funny business with the rounding! This is great for financial calculations where precision is especially important. Keep in mind that nothing is free. Operations with *truly* huge numbers may take time and resources.
 
-How many BigInts are there in our universe? The specification says they have an *arbitrary precision*. This means that **in our JavaScript universe, there is an infinite number of BigInts — one for each integer in math**.
-
 Yeah...
 
 If this sounds strange, consider that you’re already comfortable with the idea of there being infinite integers in math. (If you’re not, give it a few moments!) It’s not much of a leap then from a “math universe” to a “JavaScript universe”.
@@ -246,11 +247,13 @@ If this sounds strange, consider that you’re already comfortable with the idea
 
 Of course, in practice, we can’t fit all the possible BigInts inside the computer memory. If we tried, at some point it would crash or freeze. But conceptually, Count von Count could be busy counting BigInts for eternity and never stop.
 
+BigInts were only recently added to JavaScript, so you won’t see them used widely yet and if you use an older browser, they won’t work.
+
 ### Strings
 
 ![Illustration of strings](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1580773483/just-javascript-email-images/jj05/strings-v2.png)
 
-Strings represent text in JavaScript. There are three ways to write strings (single quotes, double quotes, and backticks), but the result is the same:
+Count von Count could be busy with numbers and BigInts for eternity, but let's keep moving. Our next tour stop is Strings, which represent text in JavaScript. There are three ways to write strings (single quotes, double quotes, and backticks), but the result is the same:
 
 ```js
 console.log(typeof("こんにちは")); // "string"
@@ -303,14 +306,14 @@ To keep our mental model simple, we will say that **all conceivable string value
 
 ### Symbols
 
-Symbols are a relatively recent addition to the language.
+We've already given Count von Count plenty to keep busy, but there is just one more (quick) stop on the first part of our tour counting primitive values: Symbols. Symbols are a relatively recent addition to the language.
 
 ```js
 let alohomora = Symbol();
 console.log(typeof(alohomora)); // "symbol"
 ```
 
-It’s hard to explain their purpose and behavior without diving deeper into objects and properties, and they are relatively rare, so in our universe, we're going to skip them. Sorry, symbols!
+It’s important to know that Symbols exist, but it's hard to explain their purpose and behavior without diving deeper into objects and properties. They are also relatively rare, so in our universe, we're going to skip them. Sorry, symbols!
 
 
 ## To Be Continued
