@@ -6,9 +6,9 @@ This is like asking what a number is in math, or what a point is in geometry. **
 
 Numbers are values — but so are a few other things, like objects and functions. However, many things, such as an `if` statement or a variable declaration, are *not* values.
 
-## Values
+## Code vs. Values
 
-To distinguish values from everything else in my JavaScript program, I like to imagine this drawing of the Little Prince by Antoine de Saint-Exupéry:
+As we start building our mental model, one of the first common misconceptions we need to clear up is that values _are_ our code. Instead, we need to think of them separately - our code interacts with values, but values exist in a completely separate space. To distinguish between values and code in my JavaScript program, I like to imagine this drawing of the Little Prince by Antoine de Saint-Exupéry:
 
 ![Little Prince by Antoine de Saint-Exupéry](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1578681449/just-javascript-email-images/jj02/little_prince.jpg)
 
@@ -40,7 +40,7 @@ console.log("hello");
 console.log(undefined);
 ```
 
-All primitive values have something in common. **There’s nothing I can do in my code that would affect them.** This sounds a bit vague, so we’ll explore what this means concretely in the next module. For now, I’ll say that primitive values are like stars — cold and distant, but always there when I need them.
+All primitive values have something in common. **There’s nothing I can do in my code that would affect them.** Primitive values are like stars — cold and distant, but always there when I need them.
 
 *That’s the first kind of values.*
 
@@ -60,9 +60,9 @@ Objects and functions are special because **I can manipulate them from my code**
 
 *And that’s the second kind of values.*
 
-### Checking a Type
+## Types of Values
 
-I previously said that there are many types of JavaScript values. At first, all values in the JavaScript cosmos might look the same — bright dots in the sky. But if you look closely, you’ll realize there are fewer than ten different types of values: numbers, strings, objects, and so on. Values of the same type behave in similar ways, but how do we know any particular value’s type?.
+At first, all values in the JavaScript cosmos might look the same — bright dots in the sky. But if you look closely, you’ll realize there are fewer than ten different types of values: numbers, strings, objects, and so on. Values of the same type behave in similar ways, but how do we know any particular value’s type?.
 
 If we want to check a value’s type, we can ask it with the `typeof` operator. JavaScript will answer our question with one of the predetermined string values, such as `"number"`, `"string"`, or `"object"`.
 
@@ -92,11 +92,9 @@ You can verify your guess in the browser console.
 
 Now take another look at the last three examples — this time with close attention to their results. Did you find any of these results surprising? Why?
 
-## Types of Values
-
 As an aspiring astronomer, you might want to know about *every* type of value that can be observed in the JavaScript sky. After almost twenty five years of studying JavaScript, the scientists have only discovered nine such types:
 
-### Primitive Values
+### Primitive Types
 
 - **Undefined** (`undefined`), used for unintentionally missing values.
 - **Null** (`null`), used for intentionally missing values.
@@ -164,7 +162,7 @@ Now it’s time to put what we learned to action.
 
 Even if you already have a decent amount of experience with JavaScript don't skip the exercise questions! I personally learned some of these things only a few years ago.
 
-[Click here to answer these questions](https://eggheadio.typeform.com/to/PLyTKB?email={{subscriber.email_address}}) and provide feedback about this module. _When you complete the exercises I will send the next module right away._
+[Click here to answer these questions](https://eggheadio.typeform.com/to/PLyTKB?email={{subscriber.email_address}}) and provide feedback about this module.
 
 Next up we will explore the Primitive Values in more detail. We look at what these different primitive types like numbers and Null have in common, and learn a thing or two about what equality means in JavaScript.
 
