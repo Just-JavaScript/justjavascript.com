@@ -74,7 +74,7 @@ If two values are represented by a single shape on our diagram, it means that th
 
 In the previous module, we “counted” the values. But really, we were learning about what makes values distinct from one another. And as a result, we also learned the opposite — what it means for values to be the same.
 
-If you struggle with this idea, you might want to revisit *Counting the Values* and [work through the exercises for it again](https://eggheadio.typeform.com/to/STEeMy?email={{subscriber.email_address}}). It *will* make sense, I promise!
+If you struggle with this idea, you might want to revisit *Counting the Values* and work through the exercises for it again. It *will* make sense, I promise!
 
 #### But What About Objects?
 
@@ -285,9 +285,13 @@ console.log(false == [0]); // true
 
 [Wait, what?!](https://dorey.github.io/JavaScript-Equality-Table/)
 
-The rules of **Loose Equality** (also called “abstract equality”) are arcane and confusing. They are widely acknowledged as an early bad design decision. Many coding standards prohibit the use of `==` and `!=` in code altogether.
+The rules of **Loose Equality** (also called “abstract equality”) are arcane and confusing. Many coding standards prohibit the use of `==` and `!=` in code altogether.
 
-Although Just JavaScript doesn’t take strong opinions on what features you should or shouldn’t use, we’re not going to cover **Loose Equality** for now. It’s uncommon in modern codebases, and its rules don’t play a larger role in the language — or in our mental model. If you are curious, check out [how it works](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Equality_comparisons_and_sameness#Loose_equality_using), but don’t feel pressured to memorize it. You’ll need memory for other topics!
+Although Just JavaScript doesn’t take strong opinions on what features you should or shouldn’t use, we’re not going to cover **Loose Equality** for now. It’s uncommon in modern codebases, and its rules don’t play a larger role in the language — or in our mental model.
+
+// POTENTIAL "FUN FACT" POP-OUT
+The rules of loose equality are widely acknowledged as an early bad design decision of JavaScript, but if you are still curious, you can check out [how it works here](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Equality_comparisons_and_sameness#Loose_equality_using). Don’t feel pressured to memorize it - you’ll need memory for other topics!
+// POTENTIAL "FUN FACT" POP-OUT
 
 There is one usage of it that is relatively common and is worth knowing:
 
@@ -327,8 +331,6 @@ In fact, ensuring you can detect `NaN` this way was [one of the original reasons
 ## Exercises
 
 This module also has exercises for you to practice!
-
-[**Click here** to solidify this mental model with a few short exercises.](https://eggheadio.typeform.com/to/wpQKI4?email={{subscriber.email_address}})
 
 **Don’t skip them!**
 
