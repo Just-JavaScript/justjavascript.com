@@ -121,7 +121,9 @@ console.log(typeof(new Date())); // "object"
 console.log(typeof(/(hello|goodbye)/)); // "object"
 ```
 
+// POTENTIAL "FUN FACT" POP-OUT
 “I see,” you might reply, “this is because *everything* is an object!” Alas, this is a popular urban legend, but it’s not true. Although code like `"hi".toUpperCase()` makes `"hi"` seem like an object, this is nothing but an illusion. JavaScript creates a wrapper object when you do this, and then immediately discards it.
+// POTENTIAL "FUN FACT" POP-OUT
 
 It’s fine if this mechanism doesn’t quite click yet. **For now, you only need to remember that primitive values, such as numbers and strings, are *not* objects.**
 
@@ -161,8 +163,6 @@ Let’s recap what we know so far:
 Now it’s time to put what we learned to action.
 
 Even if you already have a decent amount of experience with JavaScript don't skip the exercise questions! I personally learned some of these things only a few years ago.
-
-[Click here to answer these questions](https://eggheadio.typeform.com/to/PLyTKB?email={{subscriber.email_address}}) and provide feedback about this module.
 
 Next up we will explore the Primitive Values in more detail. We look at what these different primitive types like numbers and Null have in common, and learn a thing or two about what equality means in JavaScript.
 

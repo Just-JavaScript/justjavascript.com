@@ -63,6 +63,7 @@ console.log(mimsy.mood); // TypeError!
 
 ![diagram showing the variable mimsy attached to the visual icon for null](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1580435620/just-javascript-email-images/jj04/null-example.png)
 
+// POTENTIAL "FUN FACT" POP-OUT
 **`Null` is the only value of its own type** however, `null` is also a liar. Due to a [bug](https://2ality.com/2013/10/typeof-null.html) in JavaScript, it pretends to be an object:
 
 ```js
@@ -70,6 +71,7 @@ console.log(typeof(null)); // "object" (a lie!)
 ```
 
 You might think this means `null` is an object. Don’t fall into this trap! It is a primitive value, and it doesn’t behave in any way like an object. Unfortunately, `typeof(null)` is a historical accident that we’ll have to live with forever.
+// POTENTIAL "FUN FACT" POP-OUT
 
 In practice, `null` is used for *intentionally* missing values. Why have both `null` and `undefined`? This could help you distinguish a coding mistake (which might result in `undefined`) from valid missing data (which you might express as `null`). However, this is only a convention, and JavaScript doesn’t enforce this usage. Some people avoid both of them as much as possible!
 
@@ -340,8 +342,6 @@ In the second part, we will continue our sightseeing tour. Specifically, we will
 ## Exercises
 
 This module also has exercises for you to practice!
-
-[**Click here** to solidify this mental model with a few short exercises.](https://eggheadio.typeform.com/to/C3Ajk4?email={{subscriber.email_address}}) When you complete the exercises I will send Part 2.
 
 **Don’t skip them!**
 
