@@ -31,25 +31,27 @@ Maybe your monologue is a bit different. Maybe you say “assign” instead of �
 
 You might find that for every familiar fundamental programming concept (like a variable) and operations on it (like setting its value), there is a set of deep-rooted analogies that you associated with it. Some of them may come from the real world. Others may be repurposed from other fields you learned first, like numbers from math. These analogies might overlap and even contradict each other, but they still help you make sense of what’s happening in the code.
 
-For example, many people first learned about variables as “boxes” into which you can put stuff. Even if you don’t vividly imagine boxes anymore when you see a variable, they might still behave “boxy” in your imagination. These approximations of how something works in your head are known as “mental models”. It may be hard if you’ve been programming for a long time, but try to notice and introspect your mental models. They’re probably a combination of visual, spatial, and mechanical mental shortcuts.
+For example, many people first learned about variables as “boxes”. You can put information in the boxes and you can move the boxes around - they're containers that hold your stuff. Even if you don’t vividly imagine boxes anymore when you see a variable, they might still behave "boxily" in your imagination.
 
-These intuitions (like “boxiness” of variables) influence how we read code our whole lives. But sometimes, our mental models are wrong. Maybe a tutorial we read early on has sacrificed correctness for the ease of explaining. Maybe we incorrectly transferred an intuition about a particular language feature, like `this`, from another language we learned earlier. Maybe we inferred a mental model from some piece of code and never really verified if it was accurate.
+These approximations of how something works in your head are known as “mental models”. It may be hard if you’ve been programming for a long time, but try to notice and introspect your mental models. They’re probably a combination of visual, spatial, and mechanical mental shortcuts. These intuitions (like “boxiness” of variables) influence how we read code our whole lives.
 
-Identifying and fixing these problems is what *Just JavaScript* is all about. We will gradually build (or, possibly, rebuild) your mental model of JavaScript to be accurate and useful. A good mental model will help you find and fix bugs faster, understand other people’s code better, and feel confident in the code you write.
+Unfortunately, sometimes our mental models are wrong. Maybe a tutorial we read early on sacrificed accuracy in order to make a concept easier to explain. Maybe, when we started learning JavaScript, we incorrectly "brought over" an expected behavior from a language we learned earlier. Maybe we inferred a mental model from some piece of code but never really verified it was accurate.
+
+Identifying and fixing these problems is what *Just JavaScript* is all about. We will gradually build (or possibly rebuild) your mental model of JavaScript to be accurate and useful. A good mental model will give you confidence in your own code, and it will let you quickly understand (and fix) code that someone else wrote.
 
 (By the way, `a` being `0` and `b` being `10` *is* the correct answer.)
 
 ## Coding, Fast and Slow
 
-“Thinking, Fast and Slow” by Daniel Kahneman is a widely popular non-fiction book. Its central thesis is that humans use two different “systems” when thinking.
+“Thinking, Fast and Slow” is a book by Daniel Kahneman that explores the two different “systems” humans use when thinking.
 
-Whenever we can, we rely on the “fast” system. We share this system with many animals, and that gives us amazing powers like walking without falling all the time. This “fast” system is good at pattern matching (necessary for survival!) and “gut reactions”. But it’s not good at planning.
+Whenever we can, we rely on the “fast” system, which is good at pattern matching and “gut reactions”. We share this system (which is necessary for survival!) with many animals, and it gives us amazing powers like the abiltiy to walk without falling over. But it’s not good at planning.
 
-Uniquely, thanks to the development of frontal lobe, humans also possess a “slow” thinking system. This “slow” system is responsible for complex step-by-step reasoning. It lets us plan future events, engage in arguments, or follow mathematical proofs.
+Uniquely, thanks to the development of the frontal lobe, humans also possess a “slow” thinking system. This “slow” system is responsible for complex step-by-step reasoning. It lets us plan future events, engage in arguments, or follow mathematical proofs.
 
 Because using the “slow” system is so mentally draining, we tend to default to the “fast” one — even when dealing with intellectual tasks like coding.
 
-Imagine that you’re in the middle of a lot of work, and you want to quickly identify what this function does. Take a quick look at it:
+Imagine that you’re in the middle of a lot of work, and you want to quickly identify what this function does. Take a glance at it:
 
 ```javascript
 function duplicateSpreadsheet(original) {
@@ -73,14 +75,16 @@ You’ve probably noticed that:
 - It throws an error if the original spreadsheet isn’t saved.
 - It prepends “Copy of” to the new spreadsheet’s title.
 
-What you might *not* have noticed (great job if you did though!) is that this function *also* accidentally changes the title of the original spreadsheet.
+What you might *not* have noticed (great job if you did!) is that this function *also* accidentally changes the title of the original spreadsheet. Missing bugs like this is something that happens to every programmer, every day.
 
-Missing bugs like this is something that happens to every programmer, every day. But now that you know a bug exists, will you read the code differently? If you’ve been reading code in the “fast” mode, it’s likely you’ll switch to the more laborious “slow” mode to find it.
+Now that you know a bug exists, will you read the code differently? If you used the "fast" thinking system at first, you might switch to the more laborious “slow” system when you realize there's a bug in the code.
 
-In the “fast” mode, we guess what the code does based on naming, comments, and its overall structure. In the “slow” mode, we retrace what the code does step by step.
+When we use the “fast” system, we guess what the code does based on its overall structure, naming conventions and comments. Using the “slow” system, we retrace what the code does step by step - a tiring and time-consuming process.
 
-That’s why having a correct mental model is so important. Simulating a computer in our heads is hard enough — and this effort is wasted with wrong mental models.
+This is why having an accurate mental model is so important; it allows you to rely on the "fast" thinking system as much as possible. Simulating a computer in your head is hard enough - the wrong mental models make it even harder.
 
-Don’t worry if you can’t find the bug at all. This means you’ll get the most out of this course! Over the next modules, we’ll rebuild our mental model of JavaScript together so that you see this bug plain as day.
+Don’t worry if you can’t find the bug at all - this means you’ll get the most out of this course! Over the next modules, we’ll rebuild our mental model of JavaScript together, so that you can catch bugs like this immediately.
 
 In the next module, we'll start building mental models for some of the most fundamental JavaScript concepts — values and variables.
+
+/* Keeping the tense, pronouns and terminology consistent (i.e. "system" vs. "mode"), and tightening up the writing. Breaking up paragraphs to lead with the most important idea. Removed an unnecessary idiom */
