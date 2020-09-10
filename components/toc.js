@@ -6,7 +6,7 @@ export default function ToC() {
   const router = useRouter()
 
   function isActive(url) {
-    return url !== '/01' ? router.pathname.match(url) : false
+    return url !== '/' ? router.pathname.match(url) : false
   }
 
   const Item = (props) => {
@@ -45,34 +45,34 @@ export default function ToC() {
         <svg width="20" height="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g fill="none"><path d="M4 8h16M4 16h16" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></g></svg>
       </MenuButton>
       <MenuList>
-        <Item url="/01/01-mental-models">
+        <Item url="/01-mental-models">
           <a>Mental Models</a>
         </Item>
-        <Item url="/01/02-the-javascript-universe">
+        <Item url="/02-the-javascript-universe">
           <a>The JavaScript Universe</a>
         </Item>
-        <Item url="/01/03-values-and-variables">
+        <Item url="/03-values-and-variables">
           <a>Values And Variables</a>
         </Item>
-        <Item url="/01/04-counting-the-values-pt1">
+        <Item url="/04-counting-the-values-pt1">
           <a>Counting The Values — Part 1</a>
         </Item>
-        <Item url="/01/05-counting-the-values-pt2">
+        <Item url="/05-counting-the-values-pt2">
           <a>Counting The Values — Part 2</a>
         </Item>
-        <Item url="/01/06-equality-of-values">
+        <Item url="/06-equality-of-values">
           <a>Equality Of Values</a>
         </Item>
-        <Item url="/01/07-properties">
+        <Item url="/07-properties">
           <a>Properties</a>
         </Item>
-        <Item url="/01/08-mutation">
+        <Item url="/08-mutation">
           <a>Mutation</a>
         </Item>
-        <Item url="/01/09-prototypes">
+        <Item url="/09-prototypes">
           <a>Mental Models</a>
         </Item>
-        <Item url="/01">
+        <Item url="/content">
           <a className="flex items-center">
             {/* prettier-ignore */}
             <svg className="mr-2" width="18" height="18" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><g fill="none"><path d="M10.707 2.293a1 1 0 0 0-1.414 0l-7 7a1 1 0 0 0 1.414 1.414L4 10.414V17a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1v-2a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1v-6.586l.293.293a1 1 0 0 0 1.414-1.414l-7-7z" fill="currentColor"/></g></svg>

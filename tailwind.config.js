@@ -1,5 +1,10 @@
 module.exports = {
-  purge: ['./components/**/*.js', './pages/**/*.js', './pages/**/*.mdx'],
+  purge: [
+    './components/**/*.js',
+    './templates/**/*.js',
+    './pages/**/*.js',
+    './pages/**/*.mdx',
+  ],
   theme: {
     fontFamily: {
       serif: ['"ff-meta-serif-web-pro"', 'system-ui', 'serif'],
@@ -35,5 +40,6 @@ module.exports = {
     extend: {},
   },
   variants: {},
+  future: {removeDeprecatedGapUtilities: true, purgeLayersByDefault: true},
   plugins: [require('@tailwindcss/ui'), require('@tailwindcss/typography')],
 }
