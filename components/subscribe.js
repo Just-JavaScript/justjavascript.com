@@ -20,8 +20,9 @@ const Subscribe = (props) => (
           <div className="mt-1 relative rounded-md shadow-sm">
             <input
               id="first_name"
+              name="fields[first_name]"
               className="form-input focus:shadow-outline-indigo focus:border-indigo-300 block w-full sm:text-base sm:leading-5"
-              placeholder="Sydney"
+              placeholder="Preferred name"
               type="text"
             />
           </div>
@@ -36,7 +37,8 @@ const Subscribe = (props) => (
           <div className="mt-1 relative rounded-md shadow-sm">
             <input
               required
-              id="email"
+              id="email_address"
+              name="email_address"
               className="form-input focus:shadow-outline-indigo focus:border-indigo-300 block w-full sm:text-base sm:leading-5"
               placeholder="you@example.com"
               type="email"
@@ -50,7 +52,7 @@ const Subscribe = (props) => (
             type="submit"
             className="inline-flex items-center px-4 py-2 border border-transparent text-base leading-6 font-semibold rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition ease-in-out duration-150"
           >
-            Sign Up
+            Join Now
           </button>
         </span>
       </div>
