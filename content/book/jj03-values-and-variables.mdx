@@ -141,47 +141,43 @@ console.log(pet); // "The Kraken"
 
 We know that string values can’t change because they are primitive. But the `pet` variable *does* change to `"The Kraken"`. What’s up with that?
 
-This might seem like it’s a contradiction, but it’s not. We only said it’s the primitive _values_ that can’t change. We didn’t say anything about *variables*!
-
-As we refine our mental model, we might need to untangle related concepts.
+This might seem like it’s a contradiction, but it’s not. We said primitive _values_ can’t change, but we didn’t say anything about *variables*! As we refine our mental model, we need to untangle a couple of related concepts:
 
 **Variables are not values.**
 
 ***Variables point to values.***
 
-In my universe, a variable is a wire. It has two ends and a direction: it starts from a name in my code and it ends pointing at some value in my universe.
+### Assigning a Value to a Variable
 
-For example, I can point the `pet` variable at the `"Narwhal"` value:
+In our JavaScript universe, a variable is a wire connecting two things. It starts with a name in our code and it ends pointing at a value in our universe.
+
+For example, I can point the `pet` variable at the `"Narwhal"` value. (We can also say that we're *assigning* the value `"Narwhal"` to the name `pet`):
 
 ```js
 let pet = 'Narwhal';
 ```
 
-![Assigning the "Narwhal" value to the pet variable](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1579283157/just-javascript-email-images/jj03/narwhal-assignment.gif)
+![Assigning the value "Narwhal" value to the name pet](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1579283157/just-javascript-email-images/jj03/narwhal-assignment.gif)
 
-There are two things I can do to a variable after that.
-
-### Assigning a Value to a Variable
-
-One thing I can do is to *assign* some other value to my variable:
+But what if I want a different pet? No problem - I can *assign* some other value to my name:
 
 ```js
 pet = 'The Kraken';
 ```
 
-![Assigning "The Kraken" value to the pet variable](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1579283157/just-javascript-email-images/jj03/kraken-reassignment.gif)
+![Assigning the value "The Kraken" to the name pet](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1579283157/just-javascript-email-images/jj03/kraken-reassignment.gif)
 
-All I am doing here is instructing JavaScript to point the “wire” on the left side (my `pet` variable) at the value on the right side (`'The Kraken'`). It will keep pointing at that value unless I re-assign it again later.
+All I am doing here is instructing JavaScript to point the “wire” from our name on the left side (`pet`) to the value on the right side (`'The Kraken'`). It will keep pointing at that value unless I re-assign it again later.
 
 #### Rules of Assignment
 
-There are two rules when we want to use our wire to create a connection (assignment):
+There are two rules when we want to use our wire to assign a value:
 
 1. The left side of an assignment must be a name. Note that our name can’t be a value. (Try these examples in the console):
-Note that I can’t just put *anything* on the left side:
 
 ```js
-'war' = 'peace'; // Nope. (Try it in the console.)
+20000 = 'leagues under the sea'; // Nope.
+'war' = 'peace'; // Nope.
 ```
 
 2. The right side of an assignment must be an expression. Our expression can be something simple, like 2 or 'hello'. It can also be a more complicated expression — for example:
@@ -190,7 +186,7 @@ Note that I can’t just put *anything* on the left side:
 pet = count + ' Dalmatians';
 ```
 
-Here, `count + ' Dalmatians'` is an expression — a question to JavaScript. JavaScript will answer it with a value (for example, `"101 Dalmatians"`). From now on, the `pet` “wire” will start pointing to that value.
+Here, `count + ' Dalmatians'` is an expression — a question to JavaScript. JavaScript will answer it with a value (for example, `"101 Dalmatians"`). From now on, the `pet` “wire” will point to that value.
 
 |If the right side must be an expression, does this mean that simple things - numbers like `2` or strings like `'The Kraken'` - written in code are also expressions? Yes! Such expressions are called *literals* — because we *literally* write down their values.|
 
@@ -206,7 +202,7 @@ That’s hardly surprising.
 
 But note that it is not the `pet` *variable* that we pass to `console.log`. We might say that colloquially, but we can’t really pass *variables* to functions. We pass the current *value* of the `pet` variable. How does this work?
 
-It turns out that a variable name like `pet` can serve as an expression too! When we write `pet`, we’re asking JavaScript a question: “What is the current value of `pet`?” To answer our question, JavaScript follows the `pet`’s “wire”, and gives us back the value at the end of this “wire”.
+It turns out that a variable name like `pet` can serve as an expression too! When we write `pet`, we’re asking JavaScript a question: “What is the current value of `pet`?” To answer our question, JavaScript follows `pet`’s “wire”, and gives us back the value at the end of this “wire”.
 
 So the same expression can give us different values at different times!
 
