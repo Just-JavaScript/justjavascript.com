@@ -44,7 +44,11 @@ console.log(undefined);
 
 ### Objects and Functions
 
-**Objects and functions** are are also values but, unlike primitve values, **I can manipulate them from my code**. If primitive values are like distant stars, then objects and functions are more like satellites floating around my planet. They're not part of my code, but I can manipulate them.
+**Objects and functions** are are also values but, unlike primitve values, **I can manipulate them from my code**. If primitive values are like distant stars, then objects and functions are more like asteroids floating around my planet. They're not part of my code, but they're close enough to manipulate.
+
+// "FUN FACT" POP-OUT
+Functions are objects, but because they include a few additional features, we’re going to refer to them separately to avoid confusion.
+// "FUN FACT" POP-OUT
 
 Go ahead and log a few of them to the browser console:
 
@@ -89,9 +93,9 @@ console.log(typeof(new Date())); // "object"
 console.log(typeof(/(hello|goodbye)/)); // "object"
 ```
 
-// POTENTIAL "FUN FACT" POP-OUT
+// "FUN FACT" POP-OUT
 “I see,” you might reply, “this is because *everything* is an object!” Alas, this is a popular urban legend, but it’s not true. Although code like `"hi".toUpperCase()` makes `"hi"` seem like an object, this is nothing but an illusion. JavaScript creates a wrapper object when you do this, and then immediately discards it.
-// POTENTIAL "FUN FACT" POP-OUT
+// "FUN FACT" POP-OUT
 
 ### Checking a Type
 There are only nine types of values, but how do we know any particular value’s type?
