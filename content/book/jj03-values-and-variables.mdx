@@ -131,7 +131,7 @@ When you’re new to a language, sometimes it's necessary to put aside contradic
 
 ### Variables Are Wires
 
-Let’s explore our apparent "contradiction" and look at this example again.
+Let’s look at this example again.
 
 ```js
 let pet = 'Narwhal';
@@ -141,38 +141,17 @@ console.log(pet); // "The Kraken"
 
 We know that string values can’t change because they are primitive. But the `pet` variable *does* change to `"The Kraken"`. What’s up with that?
 
-We only said it’s the primitive _values_ that can’t change. We didn’t say anything about *variables*! As we refine our mental model, we'll need to untangle a couple of related concepts:
+This might seem like it’s a contradiction, but it’s not. We only said it’s the primitive _values_ that can’t change. We didn’t say anything about *variables*!
+
+As we refine our mental model, we might need to untangle related concepts.
 
 **Variables are not values.**
 
 ***Variables point to values.***
 
-In our JavaScript universe, a variable is a wire connecting two things. It starts with a name in our code and it ends pointing at some value in our universe.
+In my universe, a variable is a wire. It has two ends and a direction: it starts from a name in my code and it ends pointing at some value in my universe.
 
-#### Names & Expressions
-
-There are two rules when we want to use our wire to create a connection (assignment):
-
-1. **The left side of an assignment must be a name.** Note that our name can’t be a value. (Try these examples in the console):
-
-```js
-20000 = 'leagues under the sea'; // Nope.
-'war' = 'peace'; // Nope.
-```
-
-2. **The right side of an assignment must be an expression.** Our expression can be something simple, like `2` or `'hello'`. It can also be a more complicated expression — for example:
-
-```js
-pet = count + ' Dalmatians';
-```
-
-Here, `count + ' Dalmatians'` is a question to JavaScript. JavaScript will answer it with a value (for example, `"101 Dalmatians"`). From now on, the `pet` “wire” will point to that value.
-
-|Are simple things - numbers like 2 or strings like 'The Kraken' - written in code also expressions? Yes! Such expressions are called literals — because we literally write down their values.|
-
-#### Assigning a Value
-
-We know what variables are, and we know the rules for using them, so let's take another look at our original example. I can point the `pet` variable at the `"Narwhal"` value:
+For example, I can point the `pet` variable at the `"Narwhal"` value:
 
 ```js
 let pet = 'Narwhal';
@@ -180,7 +159,11 @@ let pet = 'Narwhal';
 
 ![Assigning the "Narwhal" value to the pet variable](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1579283157/just-javascript-email-images/jj03/narwhal-assignment.gif)
 
-But what if I want a different pet? No problem - I can *assign* some other value to my variable:
+There are two things I can do to a variable after that.
+
+### Assigning a Value to a Variable
+
+One thing I can do is to *assign* some other value to my variable:
 
 ```js
 pet = 'The Kraken';
@@ -188,9 +171,30 @@ pet = 'The Kraken';
 
 ![Assigning "The Kraken" value to the pet variable](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1579283157/just-javascript-email-images/jj03/kraken-reassignment.gif)
 
-All we are doing here is instructing JavaScript to point the “wire” on the left side (my `pet` variable) at the value on the right side (`'The Kraken'`). It will keep pointing at that value unless I re-assign it again later.
+All I am doing here is instructing JavaScript to point the “wire” on the left side (my `pet` variable) at the value on the right side (`'The Kraken'`). It will keep pointing at that value unless I re-assign it again later.
 
-#### Reading a Value of a Variable
+#### Rules of Assignment
+
+There are two rules when we want to use our wire to create a connection (assignment):
+
+1. The left side of an assignment must be a name. Note that our name can’t be a value. (Try these examples in the console):
+Note that I can’t just put *anything* on the left side:
+
+```js
+'war' = 'peace'; // Nope. (Try it in the console.)
+```
+
+2. The right side of an assignment must be an expression. Our expression can be something simple, like 2 or 'hello'. It can also be a more complicated expression — for example:
+
+```js
+pet = count + ' Dalmatians';
+```
+
+Here, `count + ' Dalmatians'` is an expression — a question to JavaScript. JavaScript will answer it with a value (for example, `"101 Dalmatians"`). From now on, the `pet` “wire” will start pointing to that value.
+
+|If the right side must be an expression, does this mean that simple things - numbers like `2` or strings like `'The Kraken'` - written in code are also expressions? Yes! Such expressions are called *literals* — because we *literally* write down their values.|
+
+### Reading a Value of a Variable
 
 I can also *read* the value of variable — for example, to log it:
 
