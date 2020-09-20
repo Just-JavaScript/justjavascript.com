@@ -94,7 +94,7 @@ console.log(typeof(/(hello|goodbye)/)); // "object"
 ```
 
 // "FUN FACT" POP-OUT
-“I see,” you might reply, “this is because *everything* is an object!” Alas, this is a popular urban legend, but it’s not true. Although code like `"hi".toUpperCase()` makes `"hi"` seem like an object, this is nothing but an illusion. JavaScript creates a wrapper object when you do this, and then immediately discards it.
+“I see,” you might reply, “this is because *everything* is an object!” Alas, this is a popular urban legend, but it’s not true. Although code like `"hi".toUpperCase()` makes `"hi"` seem like an object, this is nothing but an illusion. JavaScript creates a wrapper object when you do this, and then immediately discards it. Don't let that behavior confuse you: numbers, strings, null, and other primitive types are *not* objects.
 // "FUN FACT" POP-OUT
 
 ### Checking a Type
@@ -109,8 +109,6 @@ console.log(typeof(2)); // "number"
 console.log(typeof("hello")); // "string"
 console.log(typeof(undefined)); // "undefined"
 ```
-
-Here, `typeof(2)` is an expression — and it results in the `"number"` value.
 
 Strictly speaking, using parens isn’t required with `typeof`. For example, `typeof 2` would work just as fine as `typeof(2)`. However, sometimes parens are required to avoid an ambiguity. One of the cases below would break if we omitted the parens after `typeof`. Try to guess which one it is:
 
@@ -139,6 +137,12 @@ If we “ask” the expression `2 + 2`, JavaScript will “answer” with the va
 
 ```js
 console.log(2 + 2); // 4
+```
+
+For another example, remember how we determined the type of a value with `typeof`. In fact, that was also an expression! Our “question” was typeof(2) and the JavaScript universe answered it with the string value "number".
+
+```js
+console.log(typeof(2)); // "number"
 ```
 
 **Expressions are questions that JavaScript can answer. JavaScript answers expressions in the only way it knows how — with values.**
