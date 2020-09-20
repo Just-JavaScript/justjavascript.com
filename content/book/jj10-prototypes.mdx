@@ -11,7 +11,7 @@ Ask yourself: is this possible?
 
 We have just created an empty object with `{}`. We definitely didn’t set any properties on it before logging. So it seems like `pizza.taste` can’t point to `"pineapple"`. We would expect `pizza.taste` to give us `undefined` instead. (We usually get `undefined` when a property doesn’t exist, right?)
 
-And yet, it *is* possible to add some code before these two lines that would cause `pizza.taste` to be `"pineapple"`! This may be a contrived example, but it shows that our mental model of the JavaScript universe is incomplete.
+And yet, it *is* possible to add some code before these two lines that would cause `pizza.taste` to be `"pineapple"`! This may be a contrived example, but it shows that our mental model of our JavaScript universe is incomplete.
 
 In this module, we’ll introduce the concept of *prototypes*. Prototypes explain what happens in this puzzle. More importantly, prototypes are at the heart of several other JavaScript features. Occasionally people neglect learning them because they seem too unusual. However, the core idea is remarkably simple.
 
@@ -153,7 +153,7 @@ console.log(gwen.tail); // undefined
 
 Note how although the value of `gwen.teeth` is `32`, it doesn’t mean `gwen` has a `teeth` property! Indeed, in this example, `gwen` *does not* have a `teeth` property. But its prototype object — the same one `human` points at — does.
 
-This serves to remind us that `gwen.teeth` is an *expression* — a question to the JavaScript universe — and JavaScript will follow a sequence of steps to answer it. Now we know that these steps involve looking at the prototype.
+This serves to remind us that `gwen.teeth` is an *expression* — a question to our JavaScript universe — and JavaScript will follow a sequence of steps to answer it. Now we know that these steps involve looking at the prototype.
 
 ### The Prototype Chain
 
@@ -358,7 +358,7 @@ In the past, prototype pollution was a popular way to extend JavaScript with cus
 
 Now you can solve the Pineapple Pizza Puzzle from the beginning of this module! Check your solution in DevTools.
 
-// POTENTIAL "FUN FACT" POP-OUT
+// "FUN FACT" POP-OUT
 ## `__proto__` vs `prototype`
 
 You might be wondering: what in the world is the `prototype` property? You might have seen it [in the MDN page titles](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter).
@@ -366,7 +366,7 @@ You might be wondering: what in the world is the `prototype` property? You might
 Bad news: the `prototype` property is almost unrelated to the core idea of prototypes! It’s more related to the `new` operator, which we haven’t used yet.
 
 Remember that **`__proto__` means an object’s prototype**. The `prototype` property and the `new` operator are a whole different topic.
-// POTENTIAL "FUN FACT" POP-OUT
+// "FUN FACT" POP-OUT
 
 ### Why Does This Matter?
 

@@ -2,37 +2,39 @@
 
 What *is* a value? It’s hard to say.
 
-This is like asking what a number is in math, or what a point is in geometry. **A value is a *thing* in the JavaScript universe.**
+What is a point in geometry? What is a word in human language? A value is a fundamental concept in JavaScript — so we can’t define it through other terms. Instead, we’ll define it through examples. Numbers and strings are values. Objects and functions are values, too.
 
-Numbers are values — but so are a few other things, like objects and functions. However, many things, such as an `if` statement or a variable declaration, are *not* values.
+There are also a lot of things that are *not* values, like the pieces of our code - our `if` statements, loops, and variable declarations, for example.
 
 ## Code vs. Values
 
-As we start building our mental model, one of the first common misconceptions we need to clear up is that values _are_ our code. Instead, we need to think of them separately - our code interacts with values, but values exist in a completely separate space. To distinguish between values and code in my JavaScript program, I like to imagine this drawing of the Little Prince by Antoine de Saint-Exupéry:
+As we start building our mental model, one of the first common misconceptions we need to clear up is that values _are_ our code. Instead, we need to think of them separately - our code interacts with values,
+but values exist in a completely separate space. To distinguish between values and code in my JavaScript program, I like to imagine this drawing of the Little Prince by Antoine de Saint-Exupéry:
 
 ![Little Prince by Antoine de Saint-Exupéry](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1578681449/just-javascript-email-images/jj02/little_prince.jpg)
 
-I’m standing on a small asteroid — it is the code of my program.
+I’m standing on a small planet, holding a list of instructions. This list is my program - my code. As I read through my list of instructions, I can see a lot going on - there are `if` statements, variable declarations, commas and curly braces.
 
-On its surface, I see the `if` statements and variable declarations, commas, curly braces, and all the other things one might find in the JavaScript code.
-
-My code contains instructions like “make a function call” or “do this thing many times”, or even “throw an error”. I walk through these instructions step by step — running errands from my small asteroid.
+My code contains instructions like “make a function call”, “do this thing many times”, or even “throw an error”. I read through these instructions step by step from the surface of my little world.
 
 *But every once in a while, I look up.*
 
 On a clear night, I see the different values in the JavaScript sky: booleans, numbers, strings, symbols, functions and objects, `null` and `undefined` — oh my! I might refer to them in my code, but they don’t exist *inside* my code.
 
-*In my JavaScript universe, values float in space.*
+*In our JavaScript universe, values float in space.*
 
 ![JavaScript Values](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1578948516/just-javascript-email-images/jj02/universe.png)
 
-“Hold on,“ you might say, “I always thought of values as being *inside* of my code!” Here, I’m asking you to take a leap of faith. It will take a few more modules for this mental model to pay off. [Give it five minutes.](https://signalvnoise.com/posts/3124-give-it-five-minutes)
+## Values
 
-Back to values. Broadly, there are two kinds of them.
+Broadly, there are two kinds of values.
 
 ### Primitive Values
 
-**Primitive Values** are numbers and strings, among other things. Open your browser's console and print these primitive values using `console.log()`:
+**Primitive values** are like stars — cold and distant, but always there when I need them. Even from the surface of my small planet, I can find them and point them out. They can be numbers and strings, among other things.
+All primitive values have something in common: **They are a permanent part of our JavaScript universe. I can point at them, but I can't create, destroy, or change them.**
+
+To see some primitive values in practice, open your browser's console and log them:
 
 ```js
 console.log(2);
@@ -40,13 +42,15 @@ console.log("hello");
 console.log(undefined);
 ```
 
-All primitive values have something in common. **There’s nothing I can do in my code that would affect them.** Primitive values are like stars — cold and distant, but always there when I need them.
-
-*That’s the first kind of values.*
-
 ### Objects and Functions
 
-**Objects and Functions** are also values, but they are not primitive. This makes them very special. Go ahead and log a few of them to the browser console:
+**Objects and functions** are are also values but, unlike primitve values, **I can manipulate them from my code**. If primitive values are like distant stars, then objects and functions are more like asteroids floating around my planet. They're not part of my code, but they're close enough to manipulate.
+
+// "FUN FACT" POP-OUT
+Functions are objects, but because they include a few additional features, we’re going to refer to them separately to avoid confusion.
+// "FUN FACT" POP-OUT
+
+Go ahead and log a few of them to the browser console:
 
 ```js
 console.log({});
@@ -54,45 +58,13 @@ console.log([]);
 console.log(x => x * 2);
 ```
 
-Notice how the browser console displays them differently from the primitive values. Some browsers might display an arrow before them, or do something special when you click them. If you have a few different browsers installed (e.g. Chrome and Firefox), compare how they visualize objects and functions.
-
-Objects and functions are special because **I can manipulate them from my code**. For example, I can connect them to other values. This is rather vague — so we’ll refine this idea in a later module. For now, I can say that if primitive values are like distant stars, then objects and functions are more like rocks floating nearby my code. They’re close enough that I can manipulate them.
-
-*And that’s the second kind of values.*
+Notice how the browser console displays them differently from primitive values. Some browsers might display an arrow before them, or do something special when you click them. If you have a few different browsers installed, compare how they visualize objects and functions.
 
 ## Types of Values
 
-At first, all values in the JavaScript cosmos might look the same — bright dots in the sky. But if you look closely, you’ll realize there are fewer than ten different types of values: numbers, strings, objects, and so on. Values of the same type behave in similar ways, but how do we know any particular value’s type?.
-
-If we want to check a value’s type, we can ask it with the `typeof` operator. JavaScript will answer our question with one of the predetermined string values, such as `"number"`, `"string"`, or `"object"`.
-
-![typeof](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1578948458/just-javascript-email-images/jj02/telescope.png)
-
-Below are a few examples you can try in the browser console:
-
-```js
-console.log(typeof(2)); // "number"
-console.log(typeof("hello")); // "string"
-console.log(typeof(undefined)); // "undefined"
-```
-
-Here, `typeof(2)` is an expression — and it results in the `"number"` value.
-
-Strictly saying, using parens isn’t required with `typeof`. For example, `typeof 2` would work just as fine as `typeof(2)`. However, sometimes parens are required to avoid an ambiguity. One of the cases below would break if we omitted the parens after `typeof`. Try to guess which one it is:
-
-```js
-console.log(typeof({})); // "object"
-console.log(typeof([])); // "object"
-console.log(typeof(x => x * 2)); // "function"
-```
-
-You can verify your guess in the browser console.
-
-![Using typeof](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1578948458/just-javascript-email-images/jj02/typeof.gif)
-
-Now take another look at the last three examples — this time with close attention to their results. Did you find any of these results surprising? Why?
-
-As an aspiring astronomer, you might want to know about *every* type of value that can be observed in the JavaScript sky. After almost twenty five years of studying JavaScript, the scientists have only discovered nine such types:
+At first, all values in the JavaScript cosmos might look the same — just bright dots in the sky. But we are here to study all of the different things floating above us in our JavaScript universe, so we'll need a way to categorize them.
+We can break values down into types - values of the same type behave in similar ways. As an aspiring astronomer, you might want to know about *every* type of value that can be observed in the JavaScript sky.
+After almost twenty five years of studying JavaScript, the scientists have only discovered nine such types:
 
 ### Primitive Types
 
@@ -121,13 +93,40 @@ console.log(typeof(new Date())); // "object"
 console.log(typeof(/(hello|goodbye)/)); // "object"
 ```
 
-// POTENTIAL "FUN FACT" POP-OUT
-“I see,” you might reply, “this is because *everything* is an object!” Alas, this is a popular urban legend, but it’s not true. Although code like `"hi".toUpperCase()` makes `"hi"` seem like an object, this is nothing but an illusion. JavaScript creates a wrapper object when you do this, and then immediately discards it.
-// POTENTIAL "FUN FACT" POP-OUT
+// "FUN FACT" POP-OUT
+“I see,” you might reply, “this is because *everything* is an object!” Alas, this is a popular urban legend, but it’s not true. Although code like `"hi".toUpperCase()` makes `"hi"` seem like an object, this is nothing but an illusion. JavaScript creates a wrapper object when you do this, and then immediately discards it. Don't let that behavior confuse you: numbers, strings, null, and other primitive types are *not* objects.
+// "FUN FACT" POP-OUT
+
+### Checking a Type
+There are only nine types of values, but how do we know any particular value’s type?
+
+![typeof](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1578948458/just-javascript-email-images/jj02/telescope.png)
+
+If we want to check a value’s type, we can ask with the `typeof` operator. Below are a few examples you can try in the browser console:
+
+```js
+console.log(typeof(2)); // "number"
+console.log(typeof("hello")); // "string"
+console.log(typeof(undefined)); // "undefined"
+```
+
+Strictly speaking, using parens isn’t required with `typeof`. For example, `typeof 2` would work just as fine as `typeof(2)`. However, sometimes parens are required to avoid an ambiguity. One of the cases below would break if we omitted the parens after `typeof`. Try to guess which one it is:
+
+```js
+console.log(typeof({})); // "object"
+console.log(typeof([])); // "object"
+console.log(typeof(x => x * 2)); // "function"
+```
+
+You can verify your guess in the browser console.
+
+![Using typeof](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1578948458/just-javascript-email-images/jj02/typeof.gif)
+
+Now take another look at the last three examples — this time with close attention to their results. Did you find any of these results surprising? Why?
 
 It’s fine if this mechanism doesn’t quite click yet. **For now, you only need to remember that primitive values, such as numbers and strings, are *not* objects.**
 
-You might have questions. Good. If you ask a question, the JavaScript universe might answer it! Provided, of course, that you know how to ask.
+You might have questions. Good. If you ask a question, our JavaScript universe might answer it! Provided, of course, that you know how to ask.
 
 ## Expressions
 There are many questions JavaScript can’t answer. If you want to know whether it’s better to confess your true feelings to your best friend or to keep waiting until you both turn into skeletons, JavaScript won’t be of much help.
@@ -138,6 +137,12 @@ If we “ask” the expression `2 + 2`, JavaScript will “answer” with the va
 
 ```js
 console.log(2 + 2); // 4
+```
+
+For another example, remember how we determined the type of a value with `typeof`. In fact, that was also an expression! Our “question” was typeof(2) and the JavaScript universe answered it with the string value "number".
+
+```js
+console.log(typeof(2)); // "number"
 ```
 
 **Expressions are questions that JavaScript can answer. JavaScript answers expressions in the only way it knows how — with values.**
@@ -168,4 +173,4 @@ Next up we will explore the Primitive Values in more detail. We look at what the
 
 We will also continue to refine our mental model. This module presents a crude sketch — an approximation. We will focus on different parts of the picture and fill them in with more details, like a [progressive JPEG](https://www.liquidweb.com/kb/what-is-a-progressive-jpeg/) image.
 
-These might seem like small steps, but we’re laying the foundation for everything else to come. We’re building the JavaScript universe, together.
+These might seem like small steps, but we’re laying the foundation for everything else to come. We’re building our JavaScript universe, together.
