@@ -6,9 +6,9 @@ reaction[0] = 'l';
 console.log(reaction);
 ```
 
-What do you expect it to do? We haven’t covered this yet so it’s okay if you’re not sure. **Try to answer it using your current knowledge of JavaScript.**
+What do you expect this code to do? It’s okay if you’re not sure. **Try to find the answer using your current knowledge of JavaScript.**
 
-Now I want you to take a few moments and write down your exact thinking process for each line of this code, step by step. Pay attention to any gaps or uncertainties in your existing mental model, and write them down too. If you have any doubts about it, try to articulate them as clearly as you can.
+I want you to take a few moments and write down your exact thought process for each line of this code, step by step. Pay attention to any gaps or uncertainties in your existing mental model and write them down, too. If you have any doubts, try to articulate them as clearly as you can.
 
 <SpoilerAlert alertTitle="Spoilers Below" alertBody="Don’t scroll further until you have finished writing." />
 
@@ -33,71 +33,63 @@ Now I want you to take a few moments and write down your exact thinking process 
 ...
 
 
-Here’s the answer. This code will either print `"yikes"` or throw an error depending on whether you are in [strict mode](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode). **It will never print `"likes"`.**
+Answer: This code will either print `"yikes"` or throw an error depending on whether you are in [strict mode](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode). **It will never print `"likes"`.**
 
 Yikes.
 
 ## Primitive Values Are Immutable
 
-Did you get the answer right? This might seem like a trivia question, the kind that people ask in JavaScript interviews but that doesn’t come up much in practice. Even so, it illustrates an important point about primitive values.
+Did you get the answer right? This might seem like the kind of trivia question that only comes up in JavaScript interviews. Even so, it illustrates an important point about primitive values.
 
-**I can’t change primitive values.**
+**We can’t change primitive values.**
 
-I will explain this with a small example. Strings (which are primitive) and arrays (which are not — they’re objects!) have some superficial similarities. An array is a sequence of items, and a string is a sequence of characters:
+I will explain this with a small example. Strings (which are primitive) and arrays (which are not) have some superficial similarities. An array is a sequence of items, and a string is a sequence of characters:
 
 ```js
 let arr = [212, 8, 506];
 let str = 'hello';
 ```
 
-You can access the first array item similarly to how you would access a string’s first character. It almost feels like strings are arrays (but they’re not!):
+We can access the array's first item and the string’s first character similarly. It almost feels like strings are arrays:
 
 ```js
 console.log(arr[0]); // 212
 console.log(str[0]); // "h"
 ```
 
-You can change an array’s first item:
+But they're not. Let's take a closer look. We can change an array’s first item:
 
 ```js
 arr[0] = 420;
 console.log(arr); // [420, 8, 506]
 ```
 
-So intuitively, it’s easy to assume that you can do the same to a string:
+Intuitively, it’s easy to assume that we can do the same to a string:
 
 ```js
 str[0] = 'j'; // ???
 ```
 
-**But you can’t.**
+**But we can’t.**
 
-Here’s an important bit that we need to add to our mental model. A string is a primitive value. And that means a great deal!
+This is an important detail we need to add to our mental model. A string is a primitive value, and **all primitive values are immutable.** “Immutable” is a fancy Latin way to say “unchangeable”. Read-only. We can’t mess with primitive values. At all.
 
-**All primitive values are immutable.** “Immutable” is a fancy Latin way to say “unchangeable”. Read-only. You can’t mess with primitive values. At all.
-
-If you attempt to set a property on a primitive value, be it a number or a string or something else, JavaScript won’t let you do that. Whether it will silently refuse your request or error depends on [which mode](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode) your code is running in.
-
-But stay assured that this will never work:
+JavaScript won’t let us set a property on any primitive value, be it a number, string or something else. Whether it will silently refuse our request or throw an error depends on [which mode](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode) our code is running in. But rest assured that this will never work:
 
 ```js
 let fifty = 50;
 fifty.shades = 'gray'; // No!
 ```
 
-Like any number, `50` is a primitive value, and you can’t set properties on it.
-
-*[Can’t touch this.](https://www.youtube.com/watch?v=otCpCn0l4Wo)*
-
-In my JavaScript universe, all primitive values exist in the outer circle further from my code — like distant stars. This reminds me that even though I can refer to them from my code, I can’t change them. They stay what they *are*.
+Like any number, `50` is a primitive value. We can't set properties on it. Remember that in our JavaScript universe, all primitive values are distant stars, floating farthest from our code. We can point at them, but they will always stay where they are, unchanged.
 
 *I find it strangely comforting.*
 
 ![Mutable and Immutable Values](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1579283157/just-javascript-email-images/jj03/immutablemap3.png)
 
-## A Contradiction?
+## Variables & Values - A Contradiction?
 
-I have just demonstrated that primitive values are read-only — or, in the parlance of our times, immutable. Here’s a snippet to test your mental model.
+You've seen that primitive values are read-only — or, in the parlance of our times, immutable. Now, use the following code snippet to test your mental model.
 
 ```js
 let pet = 'Narwhal';
@@ -105,7 +97,7 @@ pet = 'The Kraken';
 console.log(pet); // ?
 ```
 
-Like before, write down your thinking process in a few sentences. Don’t rush ahead. Pay close attention to how you’re thinking about each line, step by step. Does immutability of strings play a role here, and what role does it play?
+Like before, write down your thought process in a few sentences. Don’t rush ahead. Pay close attention to how you’re thinking about each line, step by step. Does the immutability of strings play a role here? If it does, what role does it play?
 
 <SpoilerAlert alertTitle="Spoiler Alert" />
 
@@ -129,13 +121,13 @@ Like before, write down your thinking process in a few sentences. Don’t rush a
 
 ...
 
-If you thought I was trying to mess with your head, you were completely right! The answer is `"The Kraken"` — immutability of strings doesn’t play a role.
+If you thought I was trying to mess with your head, you were completely right! The answer is `"The Kraken."` Immutability of strings doesn’t play a role here.
 
-Don’t despair if you got it wrong and haven’t seen it coming! These two last examples may definitely seem like they’re contradicting each other.
+Don’t despair if you got it wrong! This example may seem like it's contradicting string immutability, **but it's not.**
 
-*This is an important realization.*
+When you’re new to a language, sometimes it's necessary to put aside contradictions so that you can avoid rabbit holes and continue learning. But now that you are committed to building a mental model, you need to question contradictions.
 
-When you’re new to a language, it might be tempting to ignore contradictions. After all, if you chase every contradiction, you’ll get into a rabbit hole too deep to learn anything. But now that you are committed to building a mental model, you need to question contradictions. They reveal gaps in mental models.
+*Contradictions reveal gaps in mental models.*
 
 ## Variables Are Wires
 
@@ -149,59 +141,56 @@ console.log(pet); // "The Kraken"
 
 We know that string values can’t change because they are primitive. But the `pet` variable *does* change to `"The Kraken"`. What’s up with that?
 
-This might seem like it’s a contradiction, but it’s not. We only said it’s the primitive _values_ that can’t change. We didn’t say anything about *variables*!
-
-As we refine our mental model, we might need to untangle related concepts.
+This might seem like it’s a contradiction, but it’s not. We said primitive _values_ can’t change, but we didn’t say anything about *variables*! As we refine our mental model, we need to untangle a couple of related concepts:
 
 **Variables are not values.**
 
 ***Variables point to values.***
 
-In my universe, a variable is a wire. It has two ends and a direction: it starts from a name in my code and it ends pointing at some value in my universe.
+### Assigning a Value to a Variable
 
-For example, I can point the `pet` variable at the `"Narwhal"` value:
+In our JavaScript universe, a variable is a wire connecting two things. It starts with a name in our code and it ends pointing at a value in our universe.
+
+For example, I can point the `pet` variable at the `"Narwhal"` value. (We can also say that we're *assigning* the value `"Narwhal"` to the name `pet`):
 
 ```js
 let pet = 'Narwhal';
 ```
 
-![Assigning the "Narwhal" value to the pet variable](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1579283157/just-javascript-email-images/jj03/narwhal-assignment.gif)
+![Assigning the value "Narwhal" value to the name pet](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1579283157/just-javascript-email-images/jj03/narwhal-assignment.gif)
 
-There are two things I can do to a variable after that.
-
-### Assigning a Value to a Variable
-
-One thing I can do is to *assign* some other value to my variable:
+But what if I want a different pet? No problem - I can *assign* some other value to my name:
 
 ```js
 pet = 'The Kraken';
 ```
 
-![Assigning "The Kraken" value to the pet variable](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1579283157/just-javascript-email-images/jj03/kraken-reassignment.gif)
+![Assigning the value "The Kraken" to the name pet](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1579283157/just-javascript-email-images/jj03/kraken-reassignment.gif)
 
-All I am doing here is instructing JavaScript to point the “wire” on the left side (my `pet` variable) at the value on the right side (`'The Kraken'`). It will keep pointing at that value unless I re-assign it again later.
+All I am doing here is instructing JavaScript to point the “wire” from our name on the left side (`pet`) to the value on the right side (`'The Kraken'`). It will keep pointing at that value unless I re-assign it again later.
 
-Note that I can’t just put *anything* on the left side:
+#### Rules of Assignment
+
+There are two rules when we want to use our wire to assign a value:
+
+1. The left side of an assignment must be a name. Note that our name can’t be a value. (Try these examples in the console):
 
 ```js
-'war' = 'peace'; // Nope. (Try it in the console.)
+20000 = 'leagues under the sea'; // Nope.
+'war' = 'peace'; // Nope.
 ```
 
-**The left side of an assignment must be a “wire”.** For now, we only know that variables are “wires”. But there is another kind of “wire” we’ll talk about in a later module. Perhaps, you can guess what it is? (Hint: it involves square brackets or a dot, and we’ve already seen it a couple of times.)
-
-There’s also another rule.
-
-**The right side of an assignment must be an expression.** For example:
+2. The right side of an assignment must be an expression. Our expression can be something simple, like 2 or 'hello'. It can also be a more complicated expression — for example:
 
 ```js
 pet = count + ' Dalmatians';
 ```
 
-Here, `count + ' Dalmatians'` is an expression — a question to JavaScript. JavaScript will answer it with a value (for example, `"101 Dalmatians"`). From now on, the `pet` “wire” will start pointing to that value.
+Here, `count + ' Dalmatians'` is an expression — a question to JavaScript. JavaScript will answer it with a value (for example, `"101 Dalmatians"`). From now on, the `pet` “wire” will point to that value.
 
-// POTENTIAL "FUN FACT" POP-OUT
+// "FUN FACT" POP-OUT
 If the right side must be an expression, does this mean that simple things - numbers like `2` or strings like `'The Kraken'` - written in code are also expressions? Yes! Such expressions are called *literals* — because we *literally* write down their values.
-// POTENTIAL "FUN FACT" POP-OUT
+// "FUN FACT" POP-OUT
 
 ### Reading a Value of a Variable
 
@@ -215,15 +204,15 @@ That’s hardly surprising.
 
 But note that it is not the `pet` *variable* that we pass to `console.log`. We might say that colloquially, but we can’t really pass *variables* to functions. We pass the current *value* of the `pet` variable. How does this work?
 
-It turns out that a variable name like `pet` can serve as an expression too! When we write `pet`, we’re asking JavaScript a question: “What is the current value of `pet`?” To answer our question, JavaScript follows the `pet`’s “wire”, and gives us back the value at the end of this “wire”.
+It turns out that a variable name like `pet` can serve as an expression too! When we write `pet`, we’re asking JavaScript a question: “What is the current value of `pet`?” To answer our question, JavaScript follows `pet`’s “wire”, and gives us back the value at the end of this “wire”.
 
 So the same expression can give us different values at different times!
 
-### Nouns and Verbs
+### Nitpicking
 
-Who cares if you say “pass a variable” or “pass a value”? Isn’t the difference hopelessly pedantic? I certainly don’t encourage interrupting your colleagues to correct them — or even yourself. That would be a waste of everyone’s time.
+Who cares if you say “pass a variable” or “pass a value”? Isn’t the difference hopelessly pedantic? I certainly don’t encourage interrupting your colleagues to correct them. That would be a waste of everyone’s time.
 
-But in your mind you need to have clarity on *what you can do* with each concept. You can’t skate a bike. You can’t fly an avocado. You can’t sing a mosquito. And you can’t pass a variable — at least, not in JavaScript.
+But you need to have clarity on *what you can do* with each JavaScript concept in your head. You can’t skate a bike. You can’t fly an avocado. You can’t sing a mosquito. And you can’t pass a variable — at least not in JavaScript.
 
 Here’s a small example of why these details matter.
 
@@ -237,11 +226,13 @@ double(money);
 console.log(money); // ?
 ```
 
-If we thought `double(money)` was passing a *variable*, we could expect that `x = x * 2` would double that variable. But that’s not how it works. We know that `double(money)` means “figure out the *value* of `money`, and then *pass that value* to `double`”. So the answer is `10`. What a scam!
+If we thought `double(money)` was *passing a variable*, we could expect that `x = x * 2` would double that variable.
 
-What are the different JavaScript nouns and verbs in your head? How do they relate to each other? Write down a short list of the ones you use most often.
+But that’s not how it works. We know that `double(money)` means “figure out the *value* of `money`, and then *pass that value* to `double`”. So the answer is `10`. What a scam!
 
-### Putting It Together
+What are the different JavaScript concepts in your head? How do they relate to each other and how can we interact with them? Write down a short list of the ones you use most often.
+
+## Putting It Together
 
 Now let’s revisit the first example from *Mental Models*:
 
@@ -251,13 +242,13 @@ let y = x;
 x = 0;
 ```
 
-I suggest that you take a piece of paper or a [drawing app](https://www.excalidraw.com/) and sketch out a diagram of what happens to the “wires” of the `x` and `y` variables step by step.
+I suggest that you take a piece of paper or a [drawing app](https://www.excalidraw.com/) and sketch out a diagram of what happens to the “wires” of the `x` and `y` variables, step by step.
 
 **The first line doesn’t do much:**
 
 ![let x = 10](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1579283157/just-javascript-email-images/jj03/assign-step1.gif)
 
-- Declare a variable called `x`.
+- Declare a variable called `x`.
     - *Make a wire for the `x` variable.*
 - Assign to `x` the value of `10`.
     - ***Point `x`’s wire to the value `10`.***
@@ -266,7 +257,7 @@ I suggest that you take a piece of paper or a [drawing app](https://www.excalidr
 
 ![let y = x](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1579283157/just-javascript-email-images/jj03/assign-step2.gif)
 
-- Declare a variable called `y`.
+- Declare a variable called `y`.
     - *Make a wire for the `y` variable.*
 - Assign to `y` the value of `x`.
     - Evaluate the expression: `x`.
@@ -286,23 +277,23 @@ I suggest that you take a piece of paper or a [drawing app](https://www.excalidr
 
 At the end, the `x` variable points to the value `0`, and the `y` variable points to the value `10`. Note that `y = x` did not mean point `y` to `x`”. We can’t point variables to each other! **Variables always point at *values*.** When we see an assignment, we “ask” the right side’s value, and point the left side’s “wire” at it.
 
-I mentioned in *Mental Models* that it is fairly common to think of variables as boxes. The universe we’re building is not going to have any boxes at all. **It only has wires!** This might seem a bit annoying. Why can’t we just “put `0` and `10` values *into* the variables rather than *pointing* variables to them?
+I mentioned in *Mental Models* that it is fairly common to think of variables as boxes. The universe we’re building is not going to have any boxes at all. **It only has wires!**
 
-Using wires is going to be very important for explaining numerous other concepts, like strict equality, object identity, and mutation. We’re going to stick with wires, so you might as well start getting used to them now!
+This might seem a bit annoying, but using wires is going to be very important for explaining numerous other concepts, like strict equality, object identity, and mutation. We’re going to stick with wires, so you might as well start getting used to them now!
 
-*My universe is full of wires.*
+*Our universe is full of wires.*
 
 ## Recap
 
-* **Primitive values are immutable.** There’s nothing we can do in our code to affect them or change them in any way. They stay what they are. For example, we can’t set a property on a string value because it is a primitive value. Arrays are *not* primitive, so we *can* set their properties.
+* **Primitive values are immutable.** They're a permanent part of our JavaScript universe - we can't create, destroy, or change them. For example, we can’t set a property on a string value because it is a primitive value. Arrays are *not* primitive, so we *can* set their properties.
 
 * **Variables are not values.** Each variable *points to* a particular value. We can change *which* value it points to by using the `=` assignment operator.
 
-* **Variables are like wires.** A “wire” is not a JavaScript concept — but it helps us imagine how variables point to values. There’s also a different kind of “wire” that’s not a variable, but we haven’t discussed it yet.
+* **Variables are like wires.** A “wire” is not a JavaScript concept — but it helps us imagine how variables point to values.
 
 * **Look out for contradictions.** If two things that you learned seem to contradict each other, don’t get discouraged. Usually it’s a sign that there’s a deeper truth lurking underneath.
 
-* **Nouns and verbs matter.** We’re building a mental model so that we can be confident in what *can* or *cannot* happen in our universe. It’s fine to be sloppy in casual speech, but our thinking needs to be precise.
+* **Nouns and verbs matter.** We’re building a mental model so that we can be confident in what *can* or *cannot* happen in our universe. We might speak about these ideas in a casual way, but our thinking needs to be precise.
 
 ## Exercises
 
@@ -311,3 +302,5 @@ This module also has exercises for you to practice!
 **Don’t skip them!**
 
 Even though you’re likely familiar with the concept of variables, these exercises will help you cement the mental model we’re building. We need this foundation before we can get to more complex topics.
+
+// Re-arrange variable assignment explanation to tighten things up. Consistently call the "left half" the name and the "right half" the value, leaving the wire connecting them in the middle. Mention expressions earlier - it's confusing that we add that rule in at the very last minute when it's pretty fundamental to the structure of a variable assignment.
