@@ -1,16 +1,16 @@
-[Count von Count](https://www.youtube.com/watch?v=eSukMy8DyfY) was my childhood role model. If you’re not familiar with him from Sesame Street, his favorite pastime is counting things. Today, Count von Count will join us in counting every value in our JavaScript universe.
+Until now, we have been observing our JavaScript universe from the surface of our planet. We have familiarized ourselves with the values that populate our universe from a distance, but in this module, we're changing that. We're going to hop in a spaceship and go exploring, introducing ourselves to every value in our JavaScript universe.
 
-You might wonder: what’s the point of *counting* values? We’re not in an arithmetics class, are we? The essence of counting is to distinguish things from one another. You can only say there are “two apples” when you clearly see that they’re two *distinct* apples. Distinguishing values from one another is key to understanding *equality* in JavaScript — which will be our next topic.
+You might wonder: what’s the point of chasing after values? Can't we just point to them in our list of instructions, from the comfort of our planet's surface, and get on with our lives? But getting to know the finer points of each value will give us a stronger fundamental understanding of how our JavaScript universe works. You can only say there are “two apples” when you clearly see that they’re two *distinct* apples. Distinguishing values from one another is key to understanding *equality* in JavaScript — which will be our next topic.
 
-Count von Count will act as our guide as we travel through the “celestial spheres” of JavaScript to meet different values. We'll meet the primitive values: booleans, Numbers, Strings, and so on. We'll also meet objects and functions. Consider it a sightseeing tour.
+Our spaceship will guide us through the “celestial spheres” of JavaScript to meet different values. We'll meet the primitive values: booleans, Numbers, Strings, and so on. We'll also meet objects and functions. Consider it a sightseeing tour.
+
+// Maybe a line or two here to really make the difference between types and values obvious?
 
 ![celestial spheres of javascript values](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1581381920/just-javascript-email-images/jj04/celestialspheres-v2.png)
 
-## Counting the Values
-
 ### Undefined
 
-We’ll start our tour with the Undefined type. Count von Count will be pleased to know that **there is only one value of that type — `undefined`**.
+We’ll start our tour with the Undefined type. This is a very straightforward place to start, because **there is only one value of this type — `undefined`**.
 
 ```js
 console.log(typeof(undefined)); // "undefined"
@@ -54,7 +54,7 @@ Handle it with care.
 
 ![illustration of a grey null circle, and a large barren null planet](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1580435620/just-javascript-email-images/jj04/null-revised.png)
 
-The next stop on our counting tour is Null, and Count von Count won't have much work to do here - **there is also only one value of this type — `null`.** You can think of `null` as `undefined`’s sister; it behaves very similarly to undefined. For example, it will also throw a fuss when you try to access its properties:
+The next stop on our tour is Null. You can think of `null` as `undefined`’s sister; **there is only one value of this type — `null`**. It also behaves very similarly to undefined. For example, it will also throw a fuss when you try to access its properties:
 
 ```js
 let mimsy = null;
@@ -81,7 +81,7 @@ I don’t blame them.
 
 ![Booleans](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1580435620/just-javascript-email-images/jj04/boolean-revised.png)
 
-Next on our counting tour, booleans! Like day and night or on and off, **Count von Count will only find two boolean values: `true` and `false`.**
+Next on our tour, we'll meet booleans! Like day and night or on and off, there are only two boolean values: `true` and `false`.**
 
 ```js
 console.log(typeof(true)); // "boolean"
@@ -97,7 +97,7 @@ let isFeeling = isSad || isHappy; // Is at least one of them true?
 let isConfusing = isSad && isHappy; // Are both true?
 ```
 
-Count von Count would like to check your mental model now. Open a [sketching app](https://www.excalidraw.com/) or take a piece of paper, and sketch out the variables, the values, and the wires between them for the above snippet of code.
+Before moving continuing our tour of the JavaScript universe, let's check our mental model. Open a [sketching app](https://www.excalidraw.com/) or take a piece of paper, and sketch out the variables, the values, and the wires between them for the above snippet of code.
 
 <SpoilerAlert alertTitle="Spoilers Below" alertBody="Don’t scroll further until you have finished sketching." />
 
@@ -128,15 +128,15 @@ Check your answer against this picture:
 
 First, verify that `isHappy` points to `false`, `isFeeling` points to `true`, and `isConfusing` points to `false`. (If you got different answers, there is a mistake somewhere along the way — walk through each line step by step.)
 
-Next, verify that **there is only one `true` and one `false` value on your sketch**. Count von Count insists that this is important! Regardless of how booleans are stored in the memory, *in our mental model* there are only two of them.
+Next, verify that **there is only one `true` and one `false` value on your sketch**. This is important! Regardless of how booleans are stored in the memory, *in our mental model* there are only two of them.
 
 ### Numbers
 
 ![Numbers](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1580773430/just-javascript-email-images/jj04/numbers-v2.png)
 
-So far, we counted exactly four values: `null`, `undefined`, `true`, and `false`.
+So far, we have introduced ourselves to four values: `null`, `undefined`, `true`, and `false`.
 
-Hold on, as we will add eighteen quintillion, four hundred and thirty-seven quadrillion, seven hundred and thirty-six trillion, eight hundred and seventy-four billion, four hundred and fifty-four million, eight hundred and twelve thousand, six hundred and twenty-four more values to our mental model!
+Hold on tight, as we add eighteen quintillion, four hundred and thirty-seven quadrillion, seven hundred and thirty-six trillion, eight hundred and seventy-four billion, four hundred and fifty-four million, eight hundred and twelve thousand, six hundred and twenty-four more values to our mental model!
 
 I am, of course, talking about numbers:
 
@@ -146,7 +146,7 @@ console.log(typeof(3.14)); // "number"
 console.log(typeof(-140)); // "number"
 ```
 
-At first, numbers might seem unremarkable. Let’s look closer!
+At first, numbers might seem unremarkable, but let's get to know them a little better!
 
 #### A Math for Computers
 
@@ -224,7 +224,7 @@ It’s uncommon to write code using these special numbers. However, they might c
 
 ![big ints](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1580773481/just-javascript-email-images/jj05/bigints-v2.png)
 
-If numbers kept Count von Count busy, the next stop on our tour, BigInts, will really impress him.
+If numbers expanded our JavaScript universe, the next stop on our tour, BigInts, will really keep us busy exploring.
 
 Regular numbers can’t represent large integers with precision, so BigInts [fill that gap](https://v8.dev/features/bigint) (literally). How many BigInts are there in our universe? The specification says they have an *arbitrary precision*. This means that **in our JavaScript universe, there is an infinite number of BigInts — one for each integer in math**.
 
@@ -247,7 +247,7 @@ If this sounds strange, consider that you’re already comfortable with the idea
 
 *(And from there, we can go straight to the [Pepsi Universe](https://www.goldennumber.net/wp-content/uploads/pepsi-arnell-021109.pdf).)*
 
-Of course, in practice, we can’t fit all the possible BigInts inside the computer memory. If we tried, at some point it would crash or freeze. But conceptually, Count von Count could be busy counting BigInts for eternity and never stop.
+Of course, in practice, we can’t fit all the possible BigInts inside the computer memory. If we tried, at some point it would crash or freeze. But conceptually, we could tour our JavaScript universe for eternity and never reach every single BigInt.
 
 BigInts were only recently added to JavaScript, so you won’t see them used widely yet and if you use an older browser, they won’t work.
 
@@ -255,7 +255,7 @@ BigInts were only recently added to JavaScript, so you won’t see them used wid
 
 ![Illustration of strings](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1580773483/just-javascript-email-images/jj05/strings-v2.png)
 
-Count von Count could be busy with numbers and BigInts for eternity, but let's keep moving. Our next tour stop is Strings, which represent text in JavaScript. There are three ways to write strings (single quotes, double quotes, and backticks), but the result is the same:
+Our next tour stop is Strings, which represent text in JavaScript. There are three ways to write strings (single quotes, double quotes, and backticks), but the result is the same:
 
 ```js
 console.log(typeof("こんにちは")); // "string"
@@ -308,7 +308,7 @@ To keep our mental model simple, we will say that **all conceivable string value
 
 ### Symbols
 
-We've already given Count von Count plenty to keep busy, but there is just one more (quick) stop on the first part of our tour counting primitive values: Symbols. Symbols are a relatively recent addition to the language.
+We've already explored quite a bit of our JavaScript universe, but there is just one more (quick) stop on the first part of our tour: Symbols. Symbols are a relatively recent addition to the language.
 
 ```js
 let alohomora = Symbol();
@@ -320,16 +320,16 @@ It’s important to know that Symbols exist, but it's hard to explain their purp
 
 ## To Be Continued
 
-This module is split in two parts. We’ve reached the end of the Part 1. We’ll take a small break now. Let’s recap the primitive values we’ve counted so far!
+This module is split in two parts. We’ve reached the end of the Part 1. We’ll take a small break from our tour now. Let’s recap the primitive values we’ve encountered so far!
 
 ![Primitive values: null, undefined, booleans, numbers, BigInts, Strings & Symbols](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1581382060/just-javascript-email-images/jj04/primitives-pt1-v3.png)
 
-* **Undefined**: Only one value, `undefined`.
-* **Null**: Only one value, `null`.
-* **Booleans**: Two values: `true` and `false`.
-* **Numbers**: One value for each floating point math number.
-* **BigInts**: One value for every conceivable integer.
-* **Strings**: One value for every conceivable string.
+* **Undefined**
+* **Null**
+* **Booleans**
+* **Numbers**
+* **BigInts**
+* **Strings**
 
 We’ve also learned a few interesting facts about JavaScript numbers:
 
@@ -337,7 +337,7 @@ We’ve also learned a few interesting facts about JavaScript numbers:
 * **Numbers from invalid math operations like `1 / 0` or `0 / 0` are special.** `NaN` is one of such numbers. They may appear due to coding mistakes.
 * **`typeof(NaN)` is a number because `NaN` is a numeric value.** It’s called “Not a Number” because it represents the *idea* of an "invalid" number.
 
-In the second part, we will continue our sightseeing tour. Specifically, we will look at Objects and Functions and try to count them all.
+In the second part, we will continue our sightseeing tour. Specifically, we will look at Objects and Functions.
 
 ## Exercises
 
