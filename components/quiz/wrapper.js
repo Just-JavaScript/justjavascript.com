@@ -1,12 +1,13 @@
 import Tooltip, {useTooltip, TooltipPopup} from '@reach/tooltip'
+import Finish from 'components/quiz/finish'
 
-export default function Wrapper({children, handleSkip}) {
+export default function Wrapper({children, handleSkip, handleContinue}) {
   return (
     <div className="flex flex-col items-start justify-center">
       <div className="grid grid-cols-5 w-full h-full min-h-screen">
         {children}
       </div>
-      {handleSkip && (
+      {handleSkip ? (
         <div className="grid grid-cols-5 w-full">
           <Tooltip
             label="Next question"
@@ -20,6 +21,12 @@ export default function Wrapper({children, handleSkip}) {
               ↓
             </button>
           </Tooltip>
+        </div>
+      ) : (
+        <div className="grid grid-cols-5 w-full">
+          <div className="col-span-3 -mt-8 flex mx-auto pb-24 w-40 -mr-20">
+            <Finish isLastQuestion onClick={handleContinue} />
+          </div>
         </div>
       )}
     </div>

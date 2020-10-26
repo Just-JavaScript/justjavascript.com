@@ -26,7 +26,10 @@ const Theater = ({
   )
 
   return (
-    <QuizWrapper handleSkip={isLastQuestion ? false : handleSkip}>
+    <QuizWrapper
+      handleSkip={isLastQuestion ? false : handleSkip}
+      handleContinue={handleContinue}
+    >
       <QuestionWrapper>
         {isAnswered && state.matches('answered') && '✅'}
         <div className="mb-1">

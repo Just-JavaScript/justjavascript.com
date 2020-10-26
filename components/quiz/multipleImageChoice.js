@@ -28,7 +28,10 @@ const MultipleImageChoice = ({
     question.explanation && (state.matches('answered') || question.value)
 
   return (
-    <QuizWrapper handleSkip={isLastQuestion ? false : handleSkip}>
+    <QuizWrapper
+      handleSkip={isLastQuestion ? false : handleSkip}
+      handleContinue={handleContinue}
+    >
       <QuestionWrapper>
         <motion.div layout>
           <div className="mb-1">
@@ -47,7 +50,6 @@ const MultipleImageChoice = ({
             {question.choices &&
               question.choices.map((choice) => {
                 const correctAnswer = question.correctAnswer === choice.value
-
                 return (
                   <div key={choice.value}>
                     <label>

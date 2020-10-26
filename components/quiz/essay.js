@@ -25,7 +25,10 @@ const Essay = ({
   const {formik} = useEggheadQuestion(question, handleSubmit)
 
   return (
-    <QuizWrapper handleSkip={isLastQuestion ? false : handleSkip}>
+    <QuizWrapper
+      handleSkip={isLastQuestion ? false : handleSkip}
+      handleContinue={handleContinue}
+    >
       <QuestionWrapper>
         <motion.div layout>
           <div className="mb-1">
@@ -88,11 +91,11 @@ const Essay = ({
             />
           )}
         </AnimatePresence>
-        <AnimatePresence>
+        {/* <AnimatePresence>
           {question.required === false && !state.matches('answered') && (
             <Finish isLastQuestion={isLastQuestion} onClick={handleContinue} />
           )}
-        </AnimatePresence>
+        </AnimatePresence> */}
       </AnswerWrapper>
     </QuizWrapper>
   )

@@ -1,5 +1,6 @@
 {
   "id": "values-and-variables",
+  "title": "Values and Variables",
   "version": "1.0.0",
   "questions": [
     {
@@ -84,7 +85,7 @@
       "id": "90",
       "version": "1.0.0",
       "type": "essay",
-      "required": false,
+      "required": true,
       "text": "# Tell me what you think of this module and **Just JavaScript** so far.\n\nWas anything particularly insightful? Or confusing? I want to know!\n\nThere's no character limit for this question. I personally read every response, whether it's a few words or many paragraphs.\n\nIf you don't like typing in a form, please feel free to reply to my email directly. Your feedback keeps this course going.\n\nCheers,\nDan"
     }
   ]

@@ -44,7 +44,10 @@ const Sketch = ({
   }, [output])
 
   return (
-    <QuizWrapper handleSkip={isLastQuestion ? false : handleSkip}>
+    <QuizWrapper
+      handleSkip={isLastQuestion ? false : handleSkip}
+      handleContinue={handleContinue}
+    >
       <QuestionWrapper>
         <motion.div layout>
           <div className="mb-1">

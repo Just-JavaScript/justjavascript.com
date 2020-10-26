@@ -11,7 +11,7 @@ function Quiz({id, quiz}) {
   const router = useRouter()
 
   const [current, setCurrent] = React.useState({
-    index: 0,
+    index: 99,
     id: get(first(get(quiz, 'questions')), 'id'),
   })
 
