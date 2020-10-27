@@ -1,17 +1,18 @@
 import Head from 'next/head'
 import {Element as ScrollElement} from 'react-scroll'
 import {useRouter} from 'next/router'
-import {map, first, get} from 'lodash'
+import {map, first, get, find} from 'lodash'
 import {AUTH_DOMAIN} from 'utils/auth'
 import Editor from 'components/quiz/editor'
 import useEggheadQuiz from 'hooks/useEggheadQuiz'
 import QuestionToShow from 'components/quiz/questionToShow'
+import quizzes from 'data/quizzes'
 
-function Quiz({id, quiz}) {
+function Quiz({quiz}) {
   const router = useRouter()
 
   const [currentQuestion, setCurrentQuestion] = React.useState({
-    index: 0,
+    index: 99,
     id: get(first(get(quiz, 'questions')), 'id'),
   })
 
@@ -73,8 +74,9 @@ function Quiz({id, quiz}) {
 }
 
 export async function getStaticPaths() {
-  const res = await fetch(`${AUTH_DOMAIN}/api/quizzes`)
-  const quizzes = await res.json()
+  // const res = await fetch(`${AUTH_DOMAIN}/api/quizzes`)
+  // const quizzes = await res.json()
+
   const paths = quizzes.map((quiz) => ({
     params: {
       id: quiz.id,
@@ -89,8 +91,9 @@ export async function getStaticPaths() {
 
 export async function getStaticProps(context) {
   const id = context.params.id
-  const res = await fetch(`${AUTH_DOMAIN}/api/quizzes/${id}`)
-  const quiz = await res.json()
+  // const res = await fetch(`${AUTH_DOMAIN}/api/quizzes/${id}`)
+  // const quiz = await res.json()
+  const quiz = find(quizzes, {id: id})
 
   return {
     props: {
