@@ -5,6 +5,7 @@ import {
   Theater,
   Sketch,
   MultipleImageChoice,
+  TrueFalse,
 } from 'components/quiz'
 
 export default function QuestionToShow({question, ...props}) {
@@ -25,9 +26,9 @@ export default function QuestionToShow({question, ...props}) {
     case 'sketch':
       QuestionToShow = Sketch
       break
-    // case 'trueFalse':
-    //   QuestionToShow = TrueFalse
-    //   break
+    case 'trueFalse':
+      QuestionToShow = TrueFalse
+      break
     default:
       return null
   }

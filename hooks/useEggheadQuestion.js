@@ -46,13 +46,19 @@ export default function useEggheadQuestionMachine(question, handleSubmit) {
           value: yup.array().required('Sketch something.'),
         })
 
+      case 'trueFalse':
+        return yup.object().shape({
+          value: isRequired
+            ? yup.mixed().oneOf(['true', 'false']).required('Pick one.')
+            : yup.mixed().oneOf(['true', 'false']),
+        })
+
       default:
         return null
     }
   }
 
   const formik = useFormik({
-    // enableReinitialize: true,
     initialValues: {
       value: question?.value || '',
     },

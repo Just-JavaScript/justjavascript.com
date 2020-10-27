@@ -39,12 +39,7 @@ console.log(typeof(numberOfTentacles));
       id: '30',
       version: '1.0.0',
       type: 'multiple-image-choice',
-      text: `# Which one of these diagrams best matches your sketch and our mental model after following code runs?
-~~~js
-let fingernails = 'mustache';
-let toes = fingernails;
-let nose = 'must' + 'ache';
-~~~`,
+      text: `# Which one of these diagrams best matches your sketch and our mental model after following code runs?\n~~~js\nlet fingernails = 'mustache';\nlet toes = fingernails;\nlet nose = 'must' + 'ache';\n~~~`,
       choices: [
         {
           value: 'a',

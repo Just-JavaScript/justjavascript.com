@@ -6,10 +6,10 @@ import QuizWrapper from 'components/quiz/wrapper'
 import useEggheadQuestion from 'hooks/useEggheadQuestion'
 import Markdown from 'components/quiz/markdown'
 import SubmitAndContinue from 'components/quiz/submitAndContinue'
-import {motion, AnimatePresence} from 'framer-motion'
+import {AnimatePresence} from 'framer-motion'
 import Answer from 'components/mdx/answer'
 
-const Theater = ({
+const TrueFalse = ({
   question,
   state,
   handleContinue,
@@ -18,12 +18,11 @@ const Theater = ({
   handleSkip,
   currentQuestionIdx,
   isLastQuestion,
+  showExplanation,
+  currentAnswer,
 }) => {
   const {formik} = useEggheadQuestion(question, handleSubmit)
-  const [showExplanation, setShowExplanation] = React.useState(
-    question?.value ? true : false,
-  )
-
+  const correctAnswer = question.correctAnswer
   return (
     <QuizWrapper
       handleSkip={isLastQuestion ? false : handleSkip}
@@ -36,20 +35,15 @@ const Theater = ({
           </span>
         </div>
         <Markdown>{question.text}</Markdown>
-        <Answer
-          title="Correct Answer"
-          byline=""
-          action="Reveal"
-          className="mt-4"
-        >
-          <div className="py-10">{question.explanation}</div>
-        </Answer>
       </QuestionWrapper>
       <AnswerWrapper>
         <form className="flex flex-col" onSubmit={formik.handleSubmit}>
           <>
             {/* {answerOpened && question.explanation && question.explanation} */}
-            <div className="text-lg font-semibold">Did you remember?</div>
+            <div className="text-lg font-semibold">
+              Is this statement true or false?
+            </div>
+
             <div
               className="mt-4 grid grid-flow-col-dense gap-2"
               role="group"
@@ -60,42 +54,40 @@ const Theater = ({
                   disabled={isDisabled}
                   type="radio"
                   name="value"
-                  value={'0'}
+                  value="true"
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
-                  checked={formik.values.value === '0'}
+                  checked={formik.values.value === 'true'}
                   className="mr-1"
                 />
-                No
+                True{' '}
+                {correctAnswer &&
+                  (state.matches('answered') || question.value) &&
+                  (correctAnswer === 'true' ? '✅' : '❌')}
               </label>
               <label>
                 <input
                   disabled={isDisabled}
                   type="radio"
                   name="value"
-                  value={'1'}
+                  value="false"
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
-                  checked={formik.values.value === '1'}
+                  checked={formik.values.value === 'false'}
                   className="mr-1"
                 />
-                Almost
-              </label>
-              <label>
-                <input
-                  disabled={isDisabled}
-                  type="radio"
-                  name="value"
-                  value={'2'}
-                  onChange={formik.handleChange}
-                  onBlur={formik.handleBlur}
-                  checked={formik.values.value === '2'}
-                  className="mr-1"
-                />
-                Yes
+                False{' '}
+                {correctAnswer &&
+                  (state.matches('answered') || question.value) &&
+                  (correctAnswer === 'false' ? '✅' : '❌')}
               </label>
             </div>
             {formik.errors.value}
+            {correctAnswer &&
+              (state.matches('answered') || question.value) &&
+              (correctAnswer === formik.values.value
+                ? '🎉 Correct!'
+                : 'Incorrect')}
             <SubmitAndContinue
               isLastQuestion={isLastQuestion}
               state={state}
@@ -105,9 +97,17 @@ const Theater = ({
             />
           </>
         </form>
+
+        <AnimatePresence>
+          {showExplanation && (
+            <Explanation className="max-h-full">
+              {question.explanation}
+            </Explanation>
+          )}
+        </AnimatePresence>
       </AnswerWrapper>
     </QuizWrapper>
   )
 }
 
-export default Theater
+export default TrueFalse

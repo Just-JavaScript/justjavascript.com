@@ -6,7 +6,6 @@ import QuizWrapper from 'components/quiz/wrapper'
 import Markdown from 'components/quiz/markdown'
 import Submit from 'components/quiz/submit'
 import Continue from 'components/quiz/continue'
-import Finish from 'components/quiz/finish'
 import useEggheadQuestion from 'hooks/useEggheadQuestion'
 import {motion, AnimatePresence} from 'framer-motion'
 
@@ -23,6 +22,8 @@ const Essay = ({
   showExplanation,
 }) => {
   const {formik} = useEggheadQuestion(question, handleSubmit)
+
+  console.log(formik)
 
   return (
     <QuizWrapper
@@ -72,11 +73,6 @@ const Essay = ({
             </>
           )}
           {formik.submitCount > 0 && formik.errors.value}
-          {/* <AnimatePresence>
-            {showExplanation && (
-              <Explanation>{question.explanation}</Explanation>
-            )}
-          </AnimatePresence> */}
           <Submit
             isDisabled={isDisabled}
             isSubmitting={state.matches('answering')}
@@ -91,11 +87,6 @@ const Essay = ({
             />
           )}
         </AnimatePresence>
-        {/* <AnimatePresence>
-          {question.required === false && !state.matches('answered') && (
-            <Finish isLastQuestion={isLastQuestion} onClick={handleContinue} />
-          )}
-        </AnimatePresence> */}
       </AnswerWrapper>
     </QuizWrapper>
   )

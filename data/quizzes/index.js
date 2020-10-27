@@ -1,5 +1,4 @@
-import TheJavaScriptUniverse from './02-the-javascript-universe'
-import ValuesAndVariables from './03-values-and-variables.json'
 import Demo from './demo'
+import ValuesAndVariables from './values-and-variables.json'
 
-export default [Demo, TheJavaScriptUniverse, ValuesAndVariables]
+export default [Demo, ValuesAndVariables]
