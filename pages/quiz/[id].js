@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import {Element} from 'react-scroll'
+import {Element as ScrollElement} from 'react-scroll'
 import {useRouter} from 'next/router'
 import {map, first, get} from 'lodash'
 import {AUTH_DOMAIN} from 'utils/auth'
@@ -10,7 +10,7 @@ import QuestionToShow from 'components/quiz/questionToShow'
 function Quiz({id, quiz}) {
   const router = useRouter()
 
-  const [current, setCurrent] = React.useState({
+  const [currentQuestion, setCurrentQuestion] = React.useState({
     index: 99,
     id: get(first(get(quiz, 'questions')), 'id'),
   })
@@ -22,23 +22,21 @@ function Quiz({id, quiz}) {
       </Head>
       <main className="flex flex-col items-center justify-center min-h-screen w-full">
         <code className="fixed text-right right-5 top-5 font-mono text-sm">
-          {JSON.stringify(current)}
+          {JSON.stringify(currentQuestion)}
         </code>
         {map(quiz.questions, (question, index) => {
           const {
             state,
-            handleContinue,
-            handleSubmit,
             handleSkip,
-            isDisabled,
-            currentAnswer,
-            currentQuestionIdx,
             isAnswered,
+            isDisabled,
+            handleSubmit,
+            currentAnswer,
+            handleContinue,
             isLastQuestion,
             showExplanation,
-          } = useEggheadQuiz(id, quiz, question, setCurrent)
-
-          console.log(state)
+            currentQuestionIdx,
+          } = useEggheadQuiz(quiz, question, setCurrentQuestion)
 
           return state.matches('initializing') ? (
             'loading...'
@@ -48,8 +46,8 @@ function Quiz({id, quiz}) {
                 <Editor idx={index} question={question} />
               ) : (
                 <div className="w-full mx-auto max-w-screen-lg">
-                  <Element name={question.id} />
-                  {index <= current.index && (
+                  <ScrollElement name={question.id} />
+                  {index <= currentQuestion.index && (
                     <QuestionToShow
                       question={question}
                       currentQuestionIdx={currentQuestionIdx}

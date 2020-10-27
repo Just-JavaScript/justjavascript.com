@@ -5,27 +5,22 @@ import {useRouter} from 'next/router'
 import {scroller} from 'react-scroll'
 
 export default function useEggheadQuizMachine(
-  quizId,
   quiz,
-  question,
+  currentQuestion,
   setCurrent,
 ) {
-  const initialQuestions = get(quiz, 'questions') || null
+  const quizQuestions = get(quiz, 'questions') || null
 
   const [state, send] = useMachine(quizMachine, {
     context: {
-      quizId: quizId,
-      questions: initialQuestions,
-      currentQuestionId: get(question, 'id') || null,
+      questions: quizQuestions,
+      currentQuestionId: get(currentQuestion, 'id') || null,
+      quizId: get(quiz, 'id'),
     },
   })
 
-  const {questions, currentQuestionId} = state.context
-
-  const currentQuestion = questions && find(questions, {id: currentQuestionId})
-  // const currentQuestionIdx = questions && indexOf(questions, currentQuestion)
-  const currentQuestionIdx = questions && indexOf(questions, question)
-
+  const {questions} = state.context
+  const currentQuestionIdx = questions && indexOf(questions, currentQuestion)
   const nextQuestionId =
     questions &&
     (currentQuestionIdx + 1 === questions.length
@@ -33,14 +28,8 @@ export default function useEggheadQuizMachine(
       : get(questions[currentQuestionIdx + 1], 'id'))
   const nextQuestion = questions && find(questions, {id: nextQuestionId})
   const nextQuestionIdx = nextQuestion && indexOf(questions, nextQuestion)
-  // const isCurrentQuestionAnswered = find(state.context.answers, {
-  //   id: currentQuestionId,
-  // })
   const isAnswered = !isEmpty(get(currentQuestion, 'answer'))
-
-  // const currentAnswer = find(answers, {id: currentQuestionId})
   const currentAnswer = get(currentQuestion, 'answer') || null
-
   const isDisabled = state.matches('answering') || state.matches('answered')
   const isLastQuestion = currentQuestionIdx + 1 === questions.length
   const showExplanation =
@@ -60,9 +49,8 @@ export default function useEggheadQuizMachine(
 
   function handleContinue() {
     if (isLastQuestion) {
-      router.push(`/completed?quiz=${quizId}`)
+      router.push(`/completed?quiz=${get(quiz, 'id')}`)
     } else {
-      // send('NEXT_QUESTION', {nextQuestionId: nextQuestionId})
       setCurrent({index: nextQuestionIdx, id: nextQuestionId})
       scrollTo(nextQuestionId)
     }
@@ -73,31 +61,29 @@ export default function useEggheadQuizMachine(
     scrollTo(nextQuestionId)
   }
 
-  function handleFinish() {}
-
   function handleSubmit(values, _actions) {
+    // TODO: submit all required variables
     // const now = Date.now()
     // const date = new Date(now).toUTCString()
     // const context = {quizId: quiz.id, questionId: question.id, date}
     // const response = {...values, question, context}
 
-    send('SUBMIT', {answer: {...values, ...question}})
+    send('SUBMIT', {answer: {...values, ...currentQuestion}})
   }
 
   return {
-    currentQuestion,
-    nextQuestionId,
-    state,
     send,
-    handleContinue,
-    handleSubmit,
+    state,
     handleSkip,
     isDisabled,
     isAnswered,
+    handleSubmit,
     currentAnswer,
-    currentQuestionIdx,
+    handleContinue,
+    nextQuestionId,
     isLastQuestion,
-    handleFinish,
+    currentQuestion,
     showExplanation,
+    currentQuestionIdx,
   }
 }

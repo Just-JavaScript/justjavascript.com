@@ -1,17 +1,13 @@
 import {createMachine, assign} from 'xstate'
 import {get, find, first, isEmpty} from 'lodash'
 import {fetchQuizData} from 'utils/fetchQuizData'
-import axios from 'axios'
+import {postQuizAnswer} from 'utils/postQuizAnswer'
 
-// questionMachine or quizQuestionMachine
-// might be more appropriate name?
-// it's handling question
-// quizMachine could be one that handles navigation?
 export const quizMachine = createMachine(
   {
-    id: 'quiz',
+    id: 'quizMachine',
     initial: 'initializing',
-    title: 'Demo Quiz',
+    title: 'Quiz Machine',
     context: {
       currentQuestionId: null,
       quizId: null,
@@ -28,7 +24,6 @@ export const quizMachine = createMachine(
             actions: assign({
               questions: (_context, event) => {
                 const {data} = event
-                // console.log(data)
                 const questions = get(data, 'questions')
                 return questions
               },
@@ -59,45 +54,18 @@ export const quizMachine = createMachine(
       },
       answering: {
         invoke: {
-          id: 'postingAnswer',
-          src: (context, _event) => {
-            const {answers, currentQuestionId} = context
-            const answer = find(answers, {id: currentQuestionId})
-            // axios.post(`http://localhost:8080/quizzes`, {
-            //   ...answer,
-            // })
-
-            // faking a promise
-            // use axios.post() etc
-            return new Promise((resolve, reject) => {
-              if (true) {
-                setTimeout(() => resolve(), 800)
-              } else {
-                reject()
-              }
-            })
-          },
+          id: 'post-answer',
+          src: 'postQuizAnswer',
 
           onDone: {
             target: 'answered',
           },
-          onError: {target: 'failure'}, // todo
+          onError: {target: 'failure'},
         },
       },
-      answered: {
-        // on: {
-        // NEXT_QUESTION: {
-        // target: 'idle',
-        // actions: assign({
-        //   currentQuestionId: (_context, event) => {
-        //     return event.nextQuestionId
-        //   },
-        // }),
-        // },
-        // },
-      },
+      answered: {},
       failure: {
-        always: [{target: 'idle'}], // todo
+        always: [{target: 'idle'}], // TODO
       },
     },
   },
@@ -117,6 +85,7 @@ export const quizMachine = createMachine(
     },
     services: {
       fetchQuizData: (context) => fetchQuizData(context.quizId),
+      postQuizAnswer: (context) => postQuizAnswer(context),
     },
   },
 )
