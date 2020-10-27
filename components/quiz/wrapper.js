@@ -24,7 +24,7 @@ export default function Wrapper({children, handleSkip, handleContinue}) {
         </div>
       ) : (
         <div className="grid grid-cols-5 w-full">
-          <div className="col-span-3 -mt-8 flex mx-auto pb-24 w-40 -mr-20">
+          <div className="col-span-3 -mt-32 relative z-10  mx-auto  w-40 -mr-20">
             <Finish isLastQuestion onClick={handleContinue} />
           </div>
         </div>
