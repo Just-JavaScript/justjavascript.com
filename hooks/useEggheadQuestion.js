@@ -43,7 +43,9 @@ export default function useEggheadQuestionMachine(question, handleSubmit) {
 
       case 'sketch':
         return yup.object().shape({
-          value: yup.array().required('Sketch something.'),
+          value: isRequired
+            ? yup.array().required('Sketch something.')
+            : yup.array(),
         })
 
       case 'trueFalse':

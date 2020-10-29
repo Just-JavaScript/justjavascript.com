@@ -35,7 +35,8 @@
       "id": "50",
       "version": "1.0.0",
       "type": "sketch",
-      "text": "# Sketch a diagram of variables and values after this snippet of code runs. Use our mental model.\n\n~~~js\nlet it = 'be';\nlet them = 'eat cake';\nit = them;\n~~~"
+      "text": "# Sketch a diagram of variables and values after this snippet of code runs. Use our mental model.\n\n~~~js\nlet it = 'be';\nlet them = 'eat cake';\nit = them;\n~~~",
+      "required": false
     },
     {
       "id": "60",
