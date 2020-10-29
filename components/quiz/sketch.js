@@ -61,9 +61,11 @@ const Sketch = ({
               className="absolute z-10 left-0 top-0"
               onSubmit={formik.handleSubmit}
             >
+              {/* TODO: Figure out a fix for excalidraw embed on scrolling page, 
+              as mouse position in canvas gets wonky due to it's fixed positioning */}
               <ExcalidrawWithoutSSR
                 width={960} // Todo: mobile
-                height={620}
+                height={540}
                 onChange={(sketch) => onChange(sketch)}
                 options={options}
                 user={{name: 'Excalidraw User'}}
