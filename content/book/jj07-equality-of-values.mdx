@@ -1,6 +1,6 @@
 It’s time to talk about equality in JavaScript! Here’s why it matters.
 
-Imagine negotiating business deals at a masked carnival. You might talk to two people, and not realize that you really talked to the same person twice. Or you might *think* you talked to one person but those were two different people!
+Imagine attending a masked carnival with only 5 or 6 types of mask to choose from. Groups of people with the exact same outfit would be joking, dancing, and moving around the room. It would be confusing! You might talk to two people, and not realize that you really talked to the same person twice. Or you might *think* you talked to one person when, in reality, you talked to two different people!
 
 ![A pair of carnival masks](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1582119857/just-javascript-email-images/jj06/masks.png)
 
@@ -16,7 +16,7 @@ In JavaScript, there are several kinds of equality. If you’ve been writing Jav
 * **Loose Equality:** `a == b` (double equals).
 * **Same Value Equality:** `Object.is(a, b)`.
 
-Most tutorials don’t mention the *Same Value Equality* at all. We’ll take a road less traveled, and explain it first. We can then use it to explain the other kinds.
+Most tutorials don’t mention *same value equality* at all. We’ll take a road less traveled, and explain it first. We can then use it to explain the other kinds of equality.
 
 ### Same Value Equality: `Object.is(a, b)`
 
@@ -27,13 +27,13 @@ console.log(Object.is(2, 2)); // true
 console.log(Object.is({}, {})); // false
 ```
 
-This is called **Same Value Equality**.
+This is called **same value equality**.
 
-What does “same value” means, exactly, in our mental model? You might already know this intuitively, but let’s verify your understanding.
+What does “same value” mean, exactly, in our mental model? You might already know this intuitively, but let’s verify your understanding.
 
 #### Check Your Intuition
 
-Consider this example from the *Counting the Values* exercises:
+Consider this example from our earlier exercises:
 
 ```js
 let dwarves = 7;
@@ -70,11 +70,11 @@ This was not a trick question! Here are the answers:
 
 3. `Object.is(worldWonders, dwarves)` is **`true`** because `worldWonders` and `dwarves` **point at the same value**.
 
-If two values are represented by a single shape on our diagram, it means that they aren’t really *two* different values. They are the same one value! And that is the case for which `Object.is(a, b)` returns `true`.
+If two values are represented by a single shape on our diagram, it means that they aren’t really *two* different values. They are the same value! In those instances, `Object.is(a, b)` returns `true`.
 
-In the previous module, we “counted” the values. But really, we were learning about what makes values distinct from one another. And as a result, we also learned the opposite — what it means for values to be the same.
+In the previous module, we explored the types of values in our JavaScript universe. As we got to know these values, we were learning what makes them distinct from one another. As a result, we also learned the opposite — what it means for values to be the same.
 
-If you struggle with this idea, you might want to revisit *Counting the Values* and work through the exercises for it again. It *will* make sense, I promise!
+If you struggle with this idea, you might want to revisit our celestial tour of values and work through the exercises again. It *will* make sense, I promise!
 
 #### But What About Objects?
 
@@ -139,13 +139,13 @@ Now let’s check your answers:
 
 3. `Object.is(chocolate, banana)` is **`true`** because `chocolate` and `banana` **point at the same value**.
 
-As you can see, we didn’t need any additional concepts to explain how **Same Value Equality** works for objects. It naturally falls out of our mental model.
+As you can see, we didn’t need any additional concepts to explain how **same value equality** works for objects. It comes naturally using our mental model.
 
 And that’s all there is to know about it!
 
 ### Strict Equality: `a === b`
 
-You have probably used the **Strict Equality** operator before:
+You have probably used the **strict equality** operator before:
 
 ```js
 console.log(2 === 2); // true
@@ -158,9 +158,9 @@ There is also a corresponding opposite `!==` operator.
 
 So what’s the difference between `Object.is` and `===`?
 
-**Same Value Equality** — `Object.is(a, b)` — has a direct meaning in our mental model. It corresponds to the idea of “the same value” in our universe.
+**Same value equality** — `Object.is(a, b)` — has a direct meaning in our mental model. It corresponds to the idea of “the same value” in our universe.
 
-In almost all cases, the same intuition works for **Strict Value Equaliy** too. For example, `2 === 2` is `true` because `2` always “summons” the same value:
+In almost all cases, the same intuition works for **strict value equaliy**. For example, `2 === 2` is `true` because `2` always “summons” the same value:
 
 ![Illustration of 2 === 2](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1582304092/just-javascript-email-images/jj06/equality_small.gif)
 
@@ -170,16 +170,18 @@ Conversely, `{} === {}` is `false` because each `{}` *creates* a different value
 
 In the above examples, `a === b` behaves the same way as `Object.is(a, b)`. However, there are **two rare cases** where the behavior of `===` is different.
 
-**Consider the cases below as exceptions to the rule** — just like you had to memorize the irregular verbs when you were learning English. Both of these unusual cases involve “special numbers” that we discussed in the past:
+Remember memorizing irregular verbs when you were learning English? The cases below are similar - ** consider them as exceptions to the rule.**
+
+Both of these unusual cases involve “special numbers” that we discussed in the past:
 
 1. **`NaN === NaN` is `false`**, although they are the same value.
 2. **`-0 === 0` and `0 === -0` are `true`**, although they are different values.
 
-Although these cases are uncommon, we’ll take a closer look at both of them.
+These cases are uncommon, but we’ll still take a closer look at them.
 
 #### First Special Case: `NaN`
 
-As we’ve seen in *Counting the Values*, `NaN` is a special number that shows up when we do invalid math like `0 / 0`:
+As we saw in our celestial tour of values, `NaN` is a special number that shows up when we do invalid math like `0 / 0`:
 
 ```js
 let width = 0 / 0; // NaN
@@ -191,7 +193,7 @@ Further calculations with `NaN` will give you `NaN` again:
 let height = width * 2; // NaN
 ```
 
-You probably won’t do this intentionally, but it can happen when you work with incorrect data in the first place, or if your calculation contains a mistake.
+You probably won’t do this intentionally, but it can happen if there is a flaw in your data or calculations.
 
 **Remember that `NaN === NaN` is always `false`:**
 
@@ -209,7 +211,7 @@ console.log(Object.is(width, height)); // true
 
 *That’s confusing.*
 
-The reason for `NaN === NaN` being `false` is largely historical so I suggest to acccept it as a fact of life. You might run into this if you try to write some code that checks a value for being `NaN` (for example, to print a warning).
+The reason for `NaN === NaN` being `false` is largely historical, so I suggest accepting it as a fact of life. You might run into this if you try to write some code that checks a value for being `NaN` (for example, to print a warning).
 
 ```js
 function resizeImage(size) {
@@ -221,15 +223,41 @@ function resizeImage(size) {
 }
 ```
 
-Instead, here’s a few ways (they all work!) to check if `size` is `NaN`:
+Instead, here are a few ways (they all work!) to check if `size` is `NaN`:
 
 * **`Number.isNaN(size)`**
 * **`Object.is(size, NaN)`**
 * **`size !== size`**
 
-The last one might be particularly surprising. Give it a few moments. If you don’t see how it detects `NaN`, try re-reading this section and thinking again.
+The last one might be particularly surprising. Give it a few moments. If you don’t see how it detects `NaN`, try re-reading this section and thinking about it again.
 
-(There’ll be an answer at the end of this module.)
+<SpoilerAlert alertTitle="Spoilers Below" alertBody="Don’t scroll further until you have an answer in mind." />
+
+...
+
+...
+
+...
+
+...
+
+...
+
+...
+
+...
+
+...
+
+...
+
+...
+
+**`Size !== size`** works because `NaN === NaN` is `false`, as we already learned. So the reverse (`NaN !== NaN`) must be `true`. Since `NaN` is the only value that’s not equal to itself, `size !== size` can only mean that `size` is `NaN`.
+
+// "FUN FACT" POP-OUT
+A quick historical anecdote: Ensuring developers could detect `NaN` this way was [one of the original reasons](https://stackoverflow.com/a/1573715/458193) for making `NaN === NaN` return `false`! This was decided before JavaScript even existed.
+// "FUN FACT" POP-OUT
 
 #### Second Special Case: `-0`
 
@@ -267,15 +295,13 @@ Here is [my answer](https://gist.github.com/gaearon/08a85a33e3d08f3f2ca25fb17bd9
 
 Hearing about these special numbers and how they behave can be overwhelming. Don’t stress too much about these special cases!
 
-They’re not very common. Now that you know that they exist, you will recognize them in practice. And in most cases, our intuition about what “same value” means is useful for both `Object.is(a, b)` and `a === b`.
+They’re not very common. Now that you know they exist, you will recognize them in practice. In most cases, we can trust our "equality intuition" for both `Object.is(a, b)` and `a === b`.
 
 ### Loose Equality
 
 Finally, we get to the last kind of equality.
 
-**Loose Equality** (double equals) is the bogeyman of JavaScript.
-
-Here’s just a couple of examples to make your skin crawl:
+**Loose equality** (double equals) is the bogeyman of JavaScript. Here are a couple of examples to make your skin crawl:
 
 ```js
 console.log([[]] == ''); // true
@@ -285,15 +311,15 @@ console.log(false == [0]); // true
 
 [Wait, what?!](https://dorey.github.io/JavaScript-Equality-Table/)
 
-The rules of **Loose Equality** (also called “abstract equality”) are arcane and confusing. Many coding standards prohibit the use of `==` and `!=` in code altogether.
+The rules of **loose equality** (also called “abstract equality”) are arcane and confusing. Many coding standards prohibit the use of `==` and `!=` in code altogether.
 
-Although Just JavaScript doesn’t take strong opinions on what features you should or shouldn’t use, we’re not going to cover **Loose Equality** for now. It’s uncommon in modern codebases, and its rules don’t play a larger role in the language — or in our mental model.
+Although Just JavaScript doesn’t take strong opinions on what features you should or shouldn’t use, we’re not going to cover **loose equality** in much detail. It’s uncommon in modern codebases, and its rules don’t play a larger role in the language — or in our mental model.
 
 // "FUN FACT" POP-OUT
-The rules of loose equality are widely acknowledged as an early bad design decision of JavaScript, but if you are still curious, you can check out [how it works here](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Equality_comparisons_and_sameness#Loose_equality_using). Don’t feel pressured to memorize it - you’ll need memory for other topics!
+The rules of loose equality are widely acknowledged as an early bad design decision of JavaScript, but if you are still curious, you can check out [how it works here](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Equality_comparisons_and_sameness#Loose_equality_using). Don’t feel pressured to memorize it - you’ll need that memory for other topics!
 // "FUN FACT" POP-OUT
 
-There is one usage of it that is relatively common and is worth knowing:
+The one relatively-common use case worth knowing is:
 
 ```js
 if (x == null) {
@@ -309,24 +335,20 @@ if (x === null || x === undefined) {
 }
 ```
 
-However, even that usage of `==` might be controversial on some teams. It’s best to discuss as a team how much `==` is tolerated in your codebase first.
+However even that usage of `==` might be controversial on some teams. It’s best to discuss how much `==` is tolerated in your codebase as a team before using it.
 
 ## Recap
 
-* JavaScript has several kinds of equality. They include **Same Value Equality**, **Strict Equality**, and **Loose Equality**.
-* **Same Value Equality**, or `Object.is(a, b)`, matches the concept of the *sameness of values* that we introduced in the previous module.
+* JavaScript has several kinds of equality. They include **same value equality**, **strict equality**, and **loose equality**.
+* **Same value equality**, or `Object.is(a, b)`, matches the concept of the *sameness of values* that we introduced in the previous module.
   - Understanding this kind of equality helps prevent bugs! You will often need to know when you’re dealing with the same value, and when you’re dealing with two different values.
-  - When we draw a diagram of values and variables, the *same value* cannot appear twice on it. `Object.is(a, b)` is `true` when variables `a` and `b` point to the same value on our diagram.
-  - **Same Value Equality** is the easiest to explain, which is why we started with it. However, it’s verbose and a bit annoying to write.
-* In practice, you will use **Strict Equality**, or `a === b`, most often. It is equivalent to the **Same Value Equality** except for two rare special cases:
+  - When we draw a diagram of values and variables, the *same value* cannot appear twice. `Object.is(a, b)` is `true` when variables `a` and `b` point to the same value on our diagram.
+  - **Same value equality** is verbose and a bit annoying to write, but it's also the easiest to explain, which is why we started with it.
+* In practice, you will use **strict equality**, or `a === b`, most often. It is equivalent to the **same value equality** except for two rare special cases:
   - `NaN === NaN` is `false`, even though they are the same value.
   - `0 === -0` and `-0 === 0` is `true`, but they are different values.
 * You can check whether `x` is `NaN` using `Number.isNaN(x)`.
-* **Loose Equality** (`==`) is a set of arcane rules and is often avoided.
-
-Finally, you might still be wondering why `size !== size` works as a way to detect when `size` is `NaN`. We said we’d revisit this question at the end of this module. This works because `NaN === NaN` is `false`, as we already learned. So the reverse (`NaN !== NaN`) must be `true`. Since `NaN` is the only value that’s not equal to itself, `size !== size` can only mean that `size` is `NaN`.
-
-In fact, ensuring you can detect `NaN` this way was [one of the original reasons](https://stackoverflow.com/a/1573715/458193) for making `NaN === NaN` return `false`! This was decided before JavaScript even existed. This is a purely historical anecdote, but interesting nonetheless.
+* **Loose equality** (`==`) uses a set of arcane rules and is often avoided.
 
 ## Exercises
 

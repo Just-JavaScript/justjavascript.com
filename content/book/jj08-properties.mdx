@@ -7,7 +7,7 @@ let sherlock = {
 };
 ```
 
-His friend John Watson has recently moved in to live with Sherlock:
+His friend, John Watson, recently moved in:
 
 ```js
 let john = {
@@ -16,7 +16,7 @@ let john = {
 };
 ```
 
-Sherlock is a brilliant detective but a difficult flatmate. One day, John decides he’s had enough. John changes his surname and moves to live in Malibu:
+Sherlock is a brilliant detective, but a difficult flatmate. One day, John decides he’s had enough - he changes his surname and moves to Malibu:
 
 ```js
 john.surname = 'Lennon';
@@ -32,7 +32,7 @@ console.log(john.surname); // ?
 console.log(john.address.city); // ?
 ```
 
-Before you scroll back up to re-read the code, I want you to approach it in a particular way. Open a [sketch app](https://excalidraw.com/) or get paper and pen, and **sketch out your mental model of what happens on every line**. It’s okay if you’re not sure *how* to represent it. We haven’t yet discussed these topics so use your best guess.
+Before re-reading the code, I want you to approach these questions in a particular way. Open a [sketch app](https://excalidraw.com/) or get paper and a pen, and **sketch out your mental model of what happens on every line**. It’s okay if you’re not sure *how* to represent it. We haven’t yet discussed these topics, so use your best guess.
 
 Then, with the help of your final sketch, answer the four questions above.
 
@@ -57,7 +57,7 @@ console.log(john.surname); // "Lennon"
 console.log(john.address.city); // "Malibu"
 ```
 
-This is not a typo — they are indeed **both in Malibu**. It’s not so easy to get away from Sherlock! With a wrong mental model, one might conclude that `sherlock.address.city` is `"London"` — but it’s not.
+This is not a typo — they are indeed **both in Malibu**. It’s not so easy to get away from Sherlock! With an inaccurate mental model, one might conclude that `sherlock.address.city` is `"London"` — but it’s not.
 
 To see why, we need to learn how properties work in our JavaScript universe.
 
@@ -73,7 +73,7 @@ In our universe, it might look like this:
 
 ![Variable pointing at an object](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1584416479/just-javascript-email-images/jj07/sherlock_empty.png)
 
-However, objects are primarily useful to *group* related data together. For example, we might want to group different things we know about Sherlock:
+However, objects are primarily useful to *group* related data together. For example, we might want to group different facts about Sherlock:
 
 ```js
 let sherlock = {
@@ -102,7 +102,7 @@ We can read a property’s current value by using the “dot notation”:
 console.log(sherlock.age); // 64
 ```
 
-Here, `sherlock.age` is our old friend — an *expression*, a question to our JavaScript universe. To answer it, JavaScript first follows the `sherlock` wire:
+Here, `sherlock.age` is our old friend, an *expression* - a question to our JavaScript universe. To answer it, JavaScript first follows the `sherlock` wire:
 
 ![Following the sherlock variable wire](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1584416479/just-javascript-email-images/jj07/sherlock_readage.gif)
 
@@ -169,9 +169,9 @@ let sherlock = { surname: 'Holmes', age: 64 };
 console.log(sherlock.boat); // ?
 ```
 
-We know that `sherlock.boat` is a property expression. Our JavaScript universe follows certain rules to decide which value to “answer” us with.
+We know that `sherlock.boat` is a property expression, but how does our JavaScript universe decide which value to “answer” us with?
 
-**These rules look roughly like this:**
+**JavaScript uses a set of rules that looks something like this:**
 
 1. Figure out the value of the part before the dot (`.`).
 2. If that value is `null` or `undefined`, throw an error immediately.
@@ -179,9 +179,7 @@ We know that `sherlock.boat` is a property expression. Our JavaScript universe f
     a. If **it exists**, answer with the value this property points to.
     b. If **it doesn’t exist**, answer with the `undefined` value.
 
-Note these rules are a bit simplified, and we will need to amend them in the future modules. Still, they already tell us a lot about how JavaScript works!
-
-For example, `sherlock` points to an object that **doesn’t** have a `boat` property. So `sherlock.boat` gives us `undefined` as an answer:
+These rules are a bit simplified, but they already tell us a lot about how JavaScript works! For example, `sherlock` points to an object that **doesn’t** have a `boat` property. So `sherlock.boat` gives us `undefined` as an answer:
 
 ```js
 let sherlock = { surname: 'Holmes', age: 64 };
@@ -192,7 +190,7 @@ Note **this does not mean** that our object has a `boat` property pointing to `u
 
 ![Variable pointing at an object which points at other values via its properties](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1584416479/just-javascript-email-images/jj07/sherlock_props.png)
 
-It is tempting to think `sherlock.boat` directly corresponds to the concept of a property in our mental model, but **that’s not quite correct**. It is a *question* to the JavaScript engine — and so the engine *follows the rules* to answer it.
+It is tempting to think `sherlock.boat` directly corresponds to the concept of a property in our mental model, but **that’s not quite correct**. It is a *question* — and so JavaScript *follows the rules* to answer it.
 
 It looks at the object that `sherlock` points to, sees that it **doesn’t** have a `boat` property, and gives us back the `undefined` value because **that’s what the rules say**. There is no deeper reason to this: computers follow the rules.
 
@@ -247,13 +245,11 @@ If this still seems confusing, scroll up and mechanically follow the rules.
 * An expression like `obj.property` is calculated in three steps:
   1. Figure out which value is on the left.
   2. If it’s `null` or `undefined`, throw an error.
-  3. If that property exists, the result is the value its wire points to.
-  4. If that property doesn’t exist, the result is `undefined`.
+  3. If that property exists, the result is the value its wire points to. If that property doesn’t exist, the result is `undefined`.
 
-Note that this mental model of properties is still a bit simplified. It is good enough for the next few modules, but we will need to expand it in the future.
+Note that this mental model of properties is still a bit simplified. It is good enough for now, but it will need to expand as you learn more about the JavaScript universe.
 
-If you got confused by the Sherlock Holmes example in the beginning, you can optionally get back to it and try to follow it with our new mental model. The next module will include a detailed walkthrough of it in case you’re still not quite sure why it works this way. Try to get used to seeing properties as wires.
-
+If you got confused by the Sherlock Holmes example in the beginning, try walking through it again using our new mental model and focusing on properties as wires. The next module will include a detailed walkthrough in case you’re still not quite sure why it works this way.
 
 ## Exercises
 
