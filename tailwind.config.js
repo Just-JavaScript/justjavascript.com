@@ -9,6 +9,7 @@ module.exports = {
     fontFamily: {
       serif: ['"ff-meta-serif-web-pro"', 'system-ui', 'serif'],
       display: ['"ff-meta-headline-web-pro"', 'system-ui', 'sans'],
+      sans: ['"ff-meta-web-pro"', 'system-ui', 'sans'],
       mono: ['"ibm-plex-mono"', 'monospace'],
     },
     typography: (theme) => ({

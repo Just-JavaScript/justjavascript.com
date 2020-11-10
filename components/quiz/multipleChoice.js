@@ -9,7 +9,7 @@ import SubmitAndContinue from 'components/quiz/submitAndContinue'
 import Markdown from 'components/quiz/markdown'
 import useEggheadQuestion from 'hooks/useEggheadQuestion'
 import {isEmpty} from 'lodash'
-import {motion, AnimatePresence} from 'framer-motion'
+import {motion, AnimatePresence, AnimateSharedLayout} from 'framer-motion'
 
 const MultipleChoice = ({
   question,
@@ -19,7 +19,7 @@ const MultipleChoice = ({
   isDisabled,
   currentAnswer,
   handleSkip,
-  currentQuestionIdx,
+  number,
   isLastQuestion,
 }) => {
   const {formik} = useEggheadQuestion(question, handleSubmit)
@@ -31,39 +31,40 @@ const MultipleChoice = ({
     <QuizWrapper
       handleSkip={isLastQuestion ? false : handleSkip}
       handleContinue={handleContinue}
+      answered={state.matches('answered')}
     >
-      <QuestionWrapper>
-        <motion.div layout>
-          <div className="mb-1">
-            <span className="mr-2 p-2 rounded-full w-6 h-6 text-xs font-bold inline-flex justify-center items-center bg-indigo-100 text-indigo-800">
-              {currentQuestionIdx + 1}
-            </span>
-          </div>
-          <Markdown>{question.text}</Markdown>
-        </motion.div>
+      <QuestionWrapper number={number}>
+        <Markdown>{question.text}</Markdown>
       </QuestionWrapper>
       <AnswerWrapper>
         <form className="flex flex-col" onSubmit={formik.handleSubmit}>
           <div role="group" aria-labelledby="choices">
-            <div className="text-lg font-semibold">Your answer</div>
-            <AnimatePresence>
-              {state.matches('answered') && question.correctAnswer && (
-                <motion.div
-                  layout
-                  initial={{opacity: 0}}
-                  animate={{opacity: 1}}
-                  className="pt-4 font-xl font-semibold"
-                >
-                  {hasAnsweredCorrectly ? '🎉 Correct!' : 'Incorrect'}
-                </motion.div>
-              )}
-            </AnimatePresence>
+            {/* <div className="text-sm uppercase tracking-wide font-semibold">
+              Your answer
+              {showExplanation && hasAnsweredCorrectly
+                ? '🎉 Correct!'
+                : 'Incorrect'}
+            </div> */}
+
             {question.choices &&
-              question.choices.map((choice) => {
+              question.choices.map((choice, i) => {
                 const correctAnswer = question.correctAnswer === choice.value
                 return (
-                  <div key={choice.value}>
-                    <label>
+                  <div
+                    className={`border-b bg-white ${
+                      isDisabled ? '' : 'hover:bg-cool-gray-50'
+                    } ${
+                      question.choices.length === i + 1
+                        ? 'border-transparent'
+                        : 'border-cool-gray-200'
+                    }`}
+                    key={choice.value}
+                  >
+                    <label
+                      className={`block py-2 px-3 ${
+                        isDisabled ? '' : 'cursor-pointer'
+                      }`}
+                    >
                       <input
                         disabled={isDisabled}
                         type="radio"
@@ -77,27 +78,50 @@ const MultipleChoice = ({
                             ? choice.value === currentAnswer.value
                             : false)
                         }
-                        className="mr-1"
+                        className="mr-2 -mt-1 form-radio"
                       />
-                      {choice.text}{' '}
-                      {currentAnswer &&
+                      {state.matches('answered') &&
+                        question.correctAnswer &&
                         (state.matches('answered') || question.value) &&
                         question.correctAnswer &&
                         (correctAnswer
-                          ? '✅'
-                          : formik.values.value === choice.value && '❌')}
+                          ? '✅ '
+                          : formik.values.value === choice.value && '❌ ')}
+                      <Markdown className="inline-block prose md:prose-lg text-gray-900">
+                        {choice.text}
+                      </Markdown>{' '}
                     </label>
                   </div>
                 )
               })}
           </div>
-          {formik.errors.value}
-
-          <AnimatePresence>
-            {showExplanation && (
-              <Explanation>{question.explanation}</Explanation>
+          {/* <AnimatePresence>
+            {state.matches('answered') && question.correctAnswer && (
+              <motion.div
+                initial={{opacity: 0}}
+                animate={{opacity: 1}}
+                className="pt-4 font-xl font-semibold"
+              >
+                {hasAnsweredCorrectly ? '🎉 Correct!' : 'Incorrect'}
+              </motion.div>
             )}
-          </AnimatePresence>
+          </AnimatePresence> */}
+          {formik.errors.value}
+          {state.matches('answered') && (
+            <motion.div
+              layout
+              initial={{opacity: 0}}
+              animate={{opacity: 1}}
+              className={`w-full text-center mt-4 px-3 py-3 rounded-md font-semibold ${
+                hasAnsweredCorrectly
+                  ? 'bg-green-100 text-green-700'
+                  : 'bg-cool-gray-100 text-gray-700 '
+              } transition-colors ease-in-out duration-300`}
+            >
+              {hasAnsweredCorrectly ? 'Correct! 🎉' : 'Incorrect'}
+            </motion.div>
+          )}
+
           {question.explanation || question.correctAnswer ? (
             <Submit
               isDisabled={isDisabled}
@@ -116,14 +140,21 @@ const MultipleChoice = ({
             )
           )}
         </form>
-        {state.matches('answered') &&
-          (question.explanation || question.correctAnswer) && (
+      </AnswerWrapper>
+      <AnimateSharedLayout>
+        <AnimatePresence>
+          {showExplanation && <Explanation>{question.explanation}</Explanation>}
+        </AnimatePresence>
+      </AnimateSharedLayout>
+      {state.matches('answered') &&
+        (question.explanation || question.correctAnswer) && (
+          <div className="py-8 mx-auto w-full flex items-center justify-center">
             <Continue
               isLastQuestion={isLastQuestion}
               onClick={handleContinue}
             />
-          )}
-      </AnswerWrapper>
+          </div>
+        )}
     </QuizWrapper>
   )
 }

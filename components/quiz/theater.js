@@ -16,7 +16,7 @@ const Theater = ({
   handleSubmit,
   isDisabled,
   handleSkip,
-  currentQuestionIdx,
+  number,
   isLastQuestion,
 }) => {
   const {formik} = useEggheadQuestion(question, handleSubmit)
@@ -29,12 +29,7 @@ const Theater = ({
       handleSkip={isLastQuestion ? false : handleSkip}
       handleContinue={handleContinue}
     >
-      <QuestionWrapper>
-        <div className="mb-1">
-          <span className="mr-2 p-2 rounded-full w-6 h-6 text-xs font-bold inline-flex justify-center items-center bg-indigo-100 text-indigo-800">
-            {currentQuestionIdx + 1}
-          </span>
-        </div>
+      <QuestionWrapper number={number}>
         <Markdown>{question.text}</Markdown>
         <Answer
           title="Correct Answer"
@@ -46,7 +41,10 @@ const Theater = ({
         </Answer>
       </QuestionWrapper>
       <AnswerWrapper>
-        <form className="flex flex-col" onSubmit={formik.handleSubmit}>
+        <form
+          className="flex flex-col items-start"
+          onSubmit={formik.handleSubmit}
+        >
           <>
             {/* {answerOpened && question.explanation && question.explanation} */}
             <div className="text-lg font-semibold">Did you remember?</div>

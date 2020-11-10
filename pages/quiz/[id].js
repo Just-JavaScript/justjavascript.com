@@ -2,7 +2,6 @@ import Head from 'next/head'
 import {Element as ScrollElement} from 'react-scroll'
 import {useRouter} from 'next/router'
 import {map, first, get, find} from 'lodash'
-import {AUTH_DOMAIN} from 'utils/auth'
 import Editor from 'components/quiz/editor'
 import useEggheadQuiz from 'hooks/useEggheadQuiz'
 import QuestionToShow from 'components/quiz/questionToShow'
@@ -21,7 +20,7 @@ function Quiz({quiz}) {
       <Head>
         <title>{quiz.title}</title>
       </Head>
-      <main className="flex flex-col items-center justify-center min-h-screen w-full">
+      <main className="flex flex-col items-center justify-start min-h-screen w-full bg-cool-gray-50">
         <code className="z-10 opacity-25 fixed text-right right-5 top-5 font-mono text-sm">
           {JSON.stringify(currentQuestion)}
         </code>
@@ -36,7 +35,7 @@ function Quiz({quiz}) {
             handleContinue,
             isLastQuestion,
             showExplanation,
-            currentQuestionIdx,
+            number,
           } = useEggheadQuiz(quiz, question, setCurrentQuestion)
 
           return state.matches('initializing') ? (
@@ -46,12 +45,12 @@ function Quiz({quiz}) {
               {router.query.edit ? (
                 <Editor idx={index} question={question} />
               ) : (
-                <div className="w-full mx-auto max-w-screen-lg">
+                <div className="w-full mx-auto max-w-screen-sm">
                   <ScrollElement name={question.id} />
                   {index <= currentQuestion.index && (
                     <QuestionToShow
                       question={question}
-                      currentQuestionIdx={currentQuestionIdx}
+                      number={number}
                       currentAnswer={currentAnswer}
                       isLastQuestion={isLastQuestion}
                       state={state}

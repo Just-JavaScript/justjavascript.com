@@ -6,37 +6,98 @@
     {
       "id": "10",
       "version": "1.0.0",
-      "type": "essay",
+      "type": "multiple-choice",
       "text": "# What happens if we run this code?\n~~~js\nlet numberOfTentacles = 10;\nnumberOfTentacles = 'eight';\nconsole.log(typeof(numberOfTentacles));\n~~~\n **Is this code valid? Why or why not?**\n",
-      "explanation": "### Yes, it’s valid. It prints \"string\" to the console.\n\nVariables don’t have types in JavaScript — only values do. The answer to `typeof(numberOfTentacles)` depends on **which value** the variable was pointing to at that time.\n\nThe `numberOfTentacles` variable was pointing to `eight` string value at the time we asked about its type. So we got `string` as a result.\n\n"
+      "explanation": "### Ipsum iaculis auctor sodales a dapibus tempor duis venenatis, vestibulum cubilia accumsan feugiat volutpat\n\nMattis erat lorem facilisis magnis condimentum sapien, blandit lacinia suscipit platea massa ullamcorper, **cursus tempus nascetur** mi inceptos. Rhoncus vehicula himenaeos vestibulum semper hac malesuada non nulla, mi netus sollicitudin tortor erat est etiam, maecenas in `react` et curabitur aliquet posuere. \n\nTristique sagittis nunc dapibus metus sapien primis ultricies litora felis dictumst phasellus consequat mus, rhoncus in nec sem taciti nascetur feugiat aptent congue magnis donec proin.",
+      "correctAnswer": "b",
+      "choices": [
+        {
+          "value": "a",
+          "text": "Lacinia hac velit lectus dolor mollis sodales"
+        },
+        {
+          "value": "b",
+          "text": "Neque vestibulum pretium duis felis mollis tortor"
+        },
+        {
+          "value": "c",
+          "text": "Semper nibh penatibus elementum et a platea"
+        },
+        {
+          "value": "d",
+          "text": "Lacinia ad nullam fusce sagittis magnis nulla"
+        }
+      ]
     },
     {
       "id": "20",
       "version": "1.0.0",
-      "type": "essay",
+      "type": "multiple-choice",
       "text": "# Here's a slightly different example. What happens if we run it?\n\n~~~js\nlet numberOfTentacles = 10;\nconsole.log(typeof(numberOfTentacles));\nnumberOfTentacles = 'eight';\n~~~\n\n**Is there a difference in behavior compared to the last snippet? Explain why or why not using our mental model.**",
-      "explanation": "### Yes, there is a difference. It prints \"number\" to the console.\n\nVariables don’t have types in JavaScript — only values do. The answer to `typeof(numberOfTentacles)` depends on **which value** the variable was pointing to at that time.\n\nThe `numberOfTentacles` variable was pointing to 10 number value at the time we asked about its type. So we got `number` as a result."
+      "explanation": "### Yes, there is a difference. It prints \"number\" to the console.\n\nVariables don’t have types in JavaScript — only values do. The answer to `typeof(numberOfTentacles)` depends on **which value** the variable was pointing to at that time.\n\nThe `numberOfTentacles` variable was pointing to 10 number value at the time we asked about its type. So we got `number` as a result.",
+      "correctAnswer": "a",
+      "choices": [
+        {
+          "value": "a",
+          "text": "Yes"
+        },
+        {
+          "value": "b",
+          "text": "No"
+        }
+      ]
     },
     {
       "id": "30",
       "version": "1.0.0",
-      "type": "essay",
+      "type": "multiple-choice",
       "text": "# What happens if we run this code?\n\n~~~js\nlet answer = true;\nanswer.opposite = false;\nconsole.log(answer.opposite);\n~~~\n\n**Explain why using our mental model.**",
-      "explanation": "### This code won’t be able to set a property.\n\nBooleans are primitive. And primitive values are immutable. We can’t change them — and setting a property on a value is a change.\n\nIf our code runs in the [strict mode](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode), assigning a property on a primitive value would lead to an error. Otherwise, it will silently do nothing. In either case, we can’t set a property on a boolean value like `true`."
+      "explanation": "### This code won’t be able to set a property.\n\nBooleans are primitive. And primitive values are immutable. We can’t change them — and setting a property on a value is a change.\n\nIf our code runs in the [strict mode](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode), assigning a property on a primitive value would lead to an error. Otherwise, it will silently do nothing. In either case, we can’t set a property on a boolean value like `true`.",
+      "correctAnswer": "c",
+      "choices": [
+        {
+          "value": "a",
+          "text": "Lacinia hac velit lectus dolor mollis sodales"
+        },
+        {
+          "value": "b",
+          "text": "Neque vestibulum pretium duis felis mollis tortor"
+        },
+        {
+          "value": "c",
+          "text": "Semper nibh penatibus elementum et a platea"
+        },
+        {
+          "value": "d",
+          "text": "Lacinia ad nullam fusce sagittis magnis nulla"
+        }
+      ]
     },
     {
       "id": "40",
       "version": "1.0.0",
-      "type": "essay",
+      "type": "multiple-choice",
       "text": "# What happens if we run this code?\n\n~~~js\nnull = 10;\nconsole.log(null);\n~~~\n\nExplain why using our mental model.",
-      "explanation": "### This code produces an error.\n\nIt is an error because the left side of assignment must always be a “wire”. Variables are “wires”, so they can appear on the left side. A literal like `null` is not a “wire”, so trying to assign something to it is meaningless."
-    },
-    {
-      "id": "50",
-      "version": "1.0.0",
-      "type": "sketch",
-      "text": "# Sketch a diagram of variables and values after this snippet of code runs. Use our mental model.\n\n~~~js\nlet it = 'be';\nlet them = 'eat cake';\nit = them;\n~~~",
-      "required": false
+      "explanation": "### This code produces an error.\n\nIt is an error because the left side of assignment must always be a “wire”. Variables are “wires”, so they can appear on the left side. A literal like `null` is not a “wire”, so trying to assign something to it is meaningless.",
+      "correctAnswer": "d",
+      "choices": [
+        {
+          "value": "a",
+          "text": "Lacinia hac velit lectus dolor mollis sodales"
+        },
+        {
+          "value": "b",
+          "text": "Neque vestibulum pretium duis felis mollis tortor"
+        },
+        {
+          "value": "c",
+          "text": "Semper nibh penatibus elementum et a platea"
+        },
+        {
+          "value": "d",
+          "text": "Lacinia ad nullam fusce sagittis magnis nulla"
+        }
+      ]
     },
     {
       "id": "60",

@@ -9,6 +9,8 @@ import Submit from 'components/quiz/submit'
 import Continue from 'components/quiz/continue'
 import useEggheadQuestion from 'hooks/useEggheadQuestion'
 import {motion, AnimatePresence} from 'framer-motion'
+import {useToggle, useWindowSize} from 'react-use'
+import {Dialog} from '@reach/dialog'
 
 const ExcalidrawWithoutSSR = dynamic(() => import('excalidraw'), {
   ssr: false,
@@ -28,11 +30,12 @@ const Sketch = ({
 }) => {
   const {formik} = useEggheadQuestion(question, handleSubmit)
   const options = {
-    // zenModeEnabled: true,
+    zenModeEnabled: true,
     viewBackgroundColor: '#f4f5f7',
   }
   const [output, setOutput] = React.useState([])
-  const [isOpen, setOpen] = React.useState(false)
+  const [showExcalidraw, setShowExcalidraw] = useToggle(false)
+  const {width, height} = useWindowSize()
 
   function onChange(sketch) {
     setOutput(sketch)
@@ -63,14 +66,42 @@ const Sketch = ({
             >
               {/* TODO: Figure out a fix for excalidraw embed on scrolling page, 
               as mouse position in canvas gets wonky due to it's fixed positioning */}
-              <ExcalidrawWithoutSSR
-                width={960} // Todo: mobile
-                height={540}
-                onChange={(sketch) => onChange(sketch)}
-                options={options}
-                user={{name: 'Excalidraw User'}}
-                initialData={currentAnswer ? currentAnswer.value : output}
-              />
+              <Dialog
+                style={{width: width, marginTop: '25%'}}
+                isOpen={showExcalidraw}
+                onDismiss={setShowExcalidraw}
+              >
+                <ExcalidrawWithoutSSR
+                  width={width} // 900 // Todo: mobile
+                  height={height - height * 0.25} // 600
+                  onChange={(sketch) => onChange(sketch)}
+                  options={options}
+                  user={{name: 'Excalidraw User'}}
+                  initialData={currentAnswer ? currentAnswer.value : output}
+                />
+
+                <div
+                  style={{height: '25%'}}
+                  className="fixed w-full top-0 left-0 flex items-center justify-center bg-white p-8"
+                >
+                  <Markdown>{question.text}</Markdown>
+                  <button
+                    className="absolute top-5 right-5 p-2"
+                    type="button"
+                    onClick={setShowExcalidraw}
+                  >
+                    {/* prettier-ignore */}
+                    <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g fill="none"><path d="M6 18L18 6M6 6l12 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></g></svg>
+                  </button>
+                </div>
+              </Dialog>
+              <button
+                type="button"
+                onClick={setShowExcalidraw}
+                className="bg-indigo-500 text-white px-5 py-3 rounded-md hover:bg-indigo-600 transition-colors ease-in-out duration-150"
+              >
+                Start Sketching
+              </button>
             </form>
           </div>
         </motion.div>
@@ -79,7 +110,10 @@ const Sketch = ({
         </AnimatePresence>
       </QuestionWrapper>
       <AnswerWrapper>
-        <form className="flex flex-col" onSubmit={formik.handleSubmit}>
+        <form
+          className="flex flex-col items-start"
+          onSubmit={formik.handleSubmit}
+        >
           <Submit
             isDisabled={isDisabled}
             isSubmitting={state.matches('answering')}

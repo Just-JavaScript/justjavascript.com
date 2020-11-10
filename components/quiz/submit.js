@@ -33,7 +33,8 @@ export default function Submit({
           </motion.g>
         </svg>
       ) : (
-        `Submit ${explanation ? 'and view explanation' : ''}`
+        `Send Answer`
+        // `Send Answer ${explanation ? 'and view explanation' : ''}`
       )}
     </motion.button>
   )

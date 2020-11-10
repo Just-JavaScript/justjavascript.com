@@ -17,52 +17,37 @@ const Essay = ({
   isDisabled,
   handleSubmit,
   currentAnswer,
-  currentQuestionIdx,
+  number,
   isLastQuestion,
-  showExplanation,
+  // showExplanation,
 }) => {
   const {formik} = useEggheadQuestion(question, handleSubmit)
-
-  console.log(formik)
-
+  const showExplanation =
+    question.explanation && (state.matches('answered') || question.value)
   return (
     <QuizWrapper
       handleSkip={isLastQuestion ? false : handleSkip}
       handleContinue={handleContinue}
+      answered={state.matches('answered')}
     >
-      <QuestionWrapper>
-        <motion.div layout>
-          <div className="mb-1">
-            <span className="mr-2 p-2 rounded-full w-6 h-6 text-xs font-bold inline-flex justify-center items-center bg-indigo-100 text-indigo-800">
-              {currentQuestionIdx + 1}
-            </span>
-          </div>
-          <Markdown>{question.text}</Markdown>
-        </motion.div>
-        <AnimatePresence>
-          {showExplanation && (
-            <Explanation className="max-h-full">
-              {question.explanation}
-            </Explanation>
-          )}
-        </AnimatePresence>
+      <QuestionWrapper number={number}>
+        <Markdown>{question.text}</Markdown>
       </QuestionWrapper>
       <AnswerWrapper>
         <form className="flex flex-col" onSubmit={formik.handleSubmit}>
-          {currentAnswer ? (
+          {showExplanation ? (
             <motion.div>
-              <div className="text-lg font-semibold">Your answer</div>
-              <Markdown className="p-3 h-auto font-semibold">
-                {currentAnswer.value}
+              <Markdown className="rounded-md prose h-auto">
+                {formik.values.value}
               </Markdown>
             </motion.div>
           ) : (
             <>
-              <label className="text-lg font-semibold" htmlFor="value">
+              {/* <label className="text-lg font-semibold" htmlFor="value">
                 Your answer
-              </label>
+              </label> */}
               <textarea
-                className="w-full p-3 bg-gray-100 prose rounded-md h-40"
+                className="w-full p-3 bg-cool-gray-100 border border-gray-200 prose rounded-md h-40"
                 disabled={isDisabled}
                 name="value"
                 placeholder="Type your answer here..."
@@ -72,22 +57,42 @@ const Essay = ({
               />
             </>
           )}
-          {formik.submitCount > 0 && formik.errors.value}
+
+          <AnimatePresence>
+            {formik.submitCount > 0 && formik.errors.value && (
+              <motion.span
+                className="mt-3"
+                initial={{opacity: 0}}
+                animate={{opacity: 1}}
+                exit={{opacity: 0}}
+              >
+                {formik.errors.value}
+              </motion.span>
+            )}
+          </AnimatePresence>
           <Submit
             isDisabled={isDisabled}
             isSubmitting={state.matches('answering')}
             explanation={question.explanation}
           />
         </form>
-        <AnimatePresence>
-          {state.matches('answered') && (
+      </AnswerWrapper>
+      <AnimatePresence>
+        {showExplanation && (
+          <Explanation className="max-h-full">
+            {question.explanation}
+          </Explanation>
+        )}
+      </AnimatePresence>
+      {state.matches('answered') &&
+        (question.explanation || question.correctAnswer) && (
+          <div className="py-8 mx-auto w-full flex items-center justify-center">
             <Continue
               isLastQuestion={isLastQuestion}
               onClick={handleContinue}
             />
-          )}
-        </AnimatePresence>
-      </AnswerWrapper>
+          </div>
+        )}
     </QuizWrapper>
   )
 }

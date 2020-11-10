@@ -37,7 +37,10 @@ const TrueFalse = ({
         <Markdown>{question.text}</Markdown>
       </QuestionWrapper>
       <AnswerWrapper>
-        <form className="flex flex-col" onSubmit={formik.handleSubmit}>
+        <form
+          className="flex flex-col items-start"
+          onSubmit={formik.handleSubmit}
+        >
           <>
             {/* {answerOpened && question.explanation && question.explanation} */}
             <div className="text-lg font-semibold">

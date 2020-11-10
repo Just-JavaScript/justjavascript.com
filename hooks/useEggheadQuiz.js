@@ -42,6 +42,7 @@ export default function useEggheadQuizMachine(
       smooth: 'easeInOutQuart',
       delay: 100,
       duration: 900,
+      ignoreCancelEvents: true,
     })
   }
 
@@ -51,7 +52,10 @@ export default function useEggheadQuizMachine(
     if (isLastQuestion) {
       router.push(`/completed?quiz=${get(quiz, 'id')}`)
     } else {
-      setCurrent({index: nextQuestionIdx, id: nextQuestionId})
+      setCurrent({
+        index: nextQuestionIdx,
+        id: nextQuestionId,
+      })
       scrollTo(nextQuestionId)
     }
   }
@@ -84,6 +88,6 @@ export default function useEggheadQuizMachine(
     isLastQuestion,
     currentQuestion,
     showExplanation,
-    currentQuestionIdx,
+    number: currentQuestionIdx + 1,
   }
 }

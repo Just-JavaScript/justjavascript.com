@@ -92,17 +92,14 @@ body {
 
 /* END — @reach/menu-button */
 
-@import '../node_modules/excalidraw/dist/excalidraw.min.css';
+/* EXCALIDRAW */
 
-.excalidraw {
-  position: absolute;
-  top: 0 !important;
-  left: 0 !important;
-}
+@import '../node_modules/excalidraw/dist/excalidraw.min.css';
 
 .Modal {
   z-index: 999;
 }
 
-/* Tooltip */
+/* ReachUI */
 @import '@reach/tooltip/styles.css';
+@import '@reach/dialog/styles.css';
