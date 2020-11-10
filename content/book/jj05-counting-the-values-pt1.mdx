@@ -27,7 +27,7 @@ console.log(person.mood); // TypeError!
 
 Oh, well. Luckily, there is only one `undefined` in our entire JavaScript universe. You might wonder: why does it exist at all? In JavaScript, it represents the concept of an *unintentionally* missing value.
 
-You could use it in your own code by writing `undefined` — like you write `2` or `"hello"`. However, `undefined` *also* commonly “occurs naturally”. It shows up in some situations where JavaScript doesn’t know what value you wanted. For example, if you forget to assign a variable, it will point to `undefined`:
+You could use it in your own code by writing `undefined` — like you write `2` or `"hello"`. However, `undefined` *also* commonly “occurs naturally.” It shows up in some situations where JavaScript doesn’t know what value you wanted. For example, if you forget to assign a variable, it will point to `undefined`:
 
 ```js
 let bandersnatch;
@@ -37,7 +37,7 @@ console.log(bandersnatch); // undefined
 
 Then you can point it to another value, or to `undefined` again if you want.
 
-Don’t get too hung up on its name. It’s tempting to think of `undefined` as some kind of variable status, e.g. “this variable is not yet defined”. But that’s a completely misleading way to think about it! In fact, if you read a variable that was *actually* not defined (or before the `let` declaration), you will get an error:
+Don’t get too hung up on its name. It’s tempting to think of `undefined` as some kind of variable status, e.g. “this variable is not yet defined.” But that’s a completely misleading way to think about it! In fact, if you read a variable that was *actually* not defined (or before the `let` declaration), you will get an error:
 
 ```js
 console.log(jabberwocky); // ReferenceError!
@@ -159,7 +159,7 @@ console.log(0.1 + 0.2 === 0.30000000000000004); // true
 
 This might look very surprising! Contrary to a popular belief, this doesn’t mean that JavaScript numbers are broken. This behavior is common in different programming languages. It even has a name: *floating point math*.
 
-You see, JavaScript doesn’t implement the kind of math we use in real life. Floating point math is “math for computers”. Don’t worry too much about this name or how it works exactly. Very few people know about all its subtleties, and that’s the point! It works well enough in practice that most of the time you won’t think about it. Still, let’s take a quick look at what makes it different.
+You see, JavaScript doesn’t implement the kind of math we use in real life. Floating point math is “math for computers.” Don’t worry too much about this name or how it works exactly. Very few people know about all its subtleties, and that’s the point! It works well enough in practice that most of the time you won’t think about it. Still, let’s take a quick look at what makes it different.
 
 #### Colors and Numbers
 
@@ -208,7 +208,7 @@ let c = -a; // -Infinity
 let d = 1 / c; // -0
 ```
 
-Out of these special numbers, `NaN` is particularly interesting. `NaN`, which is the result of `0 / 0` and some other invalid math, stands for “not a number”.
+Out of these special numbers, `NaN` is particularly interesting. `NaN`, which is the result of `0 / 0` and some other invalid math, stands for “not a number.”
 
 You might be confused by why it claims to be a number:
 
@@ -243,7 +243,7 @@ No funny business with the rounding! This is great for financial calculations wh
 
 Yeah...
 
-If this sounds strange, consider that you’re already comfortable with the idea of there being infinite integers in math. (If you’re not, give it a few moments!) It’s not much of a leap then from a “math universe” to a “JavaScript universe”.
+If this sounds strange, consider that you’re already comfortable with the idea of there being infinite integers in math. (If you’re not, give it a few moments!) It’s not much of a leap then from a “math universe” to a “JavaScript universe.”
 
 *(And from there, we can go straight to the [Pepsi Universe](https://www.goldennumber.net/wp-content/uploads/pepsi-arnell-021109.pdf).)*
 
@@ -298,7 +298,7 @@ console.log(answer); // ?
 
 Or does it merely *summon* a string that already exists in our universe?
 
-The answer to this question depends on whether we’re studying JavaScript “from the outside” or “from the inside”.
+The answer to this question depends on whether we’re studying JavaScript “from the outside” or “from the inside.”
 
 *Outside* our mental model, the answer depends on a specific implementation. Whether a string is represented as a single block of memory, multiple blocks, or [a rope](https://en.wikipedia.org/wiki/Rope_(data_structure)), is up to the JavaScript engine.
 
@@ -333,7 +333,7 @@ This module is split in two parts. We’ve reached the end of the Part 1. We’l
 
 We’ve also learned a few interesting facts about JavaScript numbers:
 
-* **Not all numbers can be perfectly represented in JavaScript.** Their decimal part offers more precision closer to `0`, and less precision further away from it. We can say that their decimal point is “floating”.
+* **Not all numbers can be perfectly represented in JavaScript.** Their decimal part offers more precision closer to `0`, and less precision further away from it. We can say that their decimal point is “floating.”
 * **Numbers from invalid math operations like `1 / 0` or `0 / 0` are special.** `NaN` is one of such numbers. They may appear due to coding mistakes.
 * **`typeof(NaN)` is a number because `NaN` is a numeric value.** It’s called “Not a Number” because it represents the *idea* of an "invalid" number.
 

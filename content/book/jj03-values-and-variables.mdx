@@ -72,7 +72,7 @@ str[0] = 'j'; // ???
 
 **But we can’t.**
 
-This is an important detail we need to add to our mental model. A string is a primitive value, and **all primitive values are immutable.** “Immutable” is a fancy Latin way to say “unchangeable”. Read-only. We can’t mess with primitive values. At all.
+This is an important detail we need to add to our mental model. A string is a primitive value, and **all primitive values are immutable.** “Immutable” is a fancy Latin way to say “unchangeable.” Read-only. We can’t mess with primitive values. At all.
 
 JavaScript won’t let us set a property on any primitive value, be it a number, string or something else. Whether it will silently refuse our request or throw an error depends on [which mode](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode) our code is running in. But rest assured that this will never work:
 
@@ -204,7 +204,7 @@ That’s hardly surprising.
 
 But note that it is not the `pet` *variable* that we pass to `console.log`. We might say that colloquially, but we can’t really pass *variables* to functions. We pass the current *value* of the `pet` variable. How does this work?
 
-It turns out that a variable name like `pet` can serve as an expression too! When we write `pet`, we’re asking JavaScript a question: “What is the current value of `pet`?” To answer our question, JavaScript follows `pet`’s “wire”, and gives us back the value at the end of this “wire”.
+It turns out that a variable name like `pet` can serve as an expression too! When we write `pet`, we’re asking JavaScript a question: “What is the current value of `pet`?” To answer our question, JavaScript follows `pet`’s “wire,” and gives us back the value at the end of this “wire.”
 
 So the same expression can give us different values at different times!
 
@@ -228,7 +228,7 @@ console.log(money); // ?
 
 If we thought `double(money)` was *passing a variable*, we could expect that `x = x * 2` would double that variable.
 
-But that’s not how it works. We know that `double(money)` means “figure out the *value* of `money`, and then *pass that value* to `double`”. So the answer is `10`. What a scam!
+But that’s not how it works. We know that `double(money)` means “figure out the *value* of `money`, and then *pass that value* to `double`.” So the answer is `10`. What a scam!
 
 What are the different JavaScript concepts in your head? How do they relate to each other and how can we interact with them? Write down a short list of the ones you use most often.
 
@@ -275,7 +275,7 @@ I suggest that you take a piece of paper or a [drawing app](https://www.excalidr
     - ***Point `x`’s wire to the value `0`.***
 
 
-At the end, the `x` variable points to the value `0`, and the `y` variable points to the value `10`. Note that `y = x` did not mean point `y` to `x`”. We can’t point variables to each other! **Variables always point at *values*.** When we see an assignment, we “ask” the right side’s value, and point the left side’s “wire” at it.
+At the end, the `x` variable points to the value `0`, and the `y` variable points to the value `10`. Note that `y = x` did not mean point `y` to `x`. We can’t point variables to each other! **Variables always point at *values*.** When we see an assignment, we “ask” the right side’s value, and point the left side’s “wire” at it.
 
 I mentioned in *Mental Models* that it is fairly common to think of variables as boxes. The universe we’re building is not going to have any boxes at all. **It only has wires!**
 
