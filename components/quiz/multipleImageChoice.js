@@ -43,10 +43,21 @@ const MultipleImageChoice = (props) => {
             >
               {question.choices &&
                 question.choices.map((choice) => {
-                  const correctAnswer = question.correctAnswer === choice.value
+                  const hasAnswered =
+                    question.correctAnswer &&
+                    (state.matches('answered') || question.value)
+                  const correctAnswer =
+                    hasAnswered && question.correctAnswer === choice.value
+                  const incorrectAnswer =
+                    hasAnswered && formik.values.value === choice.value
                   return (
-                    <div key={choice.value}>
-                      <label>
+                    <div
+                      key={choice.value}
+                      className={`p-2 rounded-md ${
+                        correctAnswer ? 'bg-green-100' : ''
+                      } ${incorrectAnswer ? 'bg-red-100' : ''}`}
+                    >
+                      <label className="flex flex-wrap items-center">
                         <input
                           disabled={isDisabled}
                           type="radio"
@@ -60,13 +71,10 @@ const MultipleImageChoice = (props) => {
                               ? choice.value === currentAnswer.value
                               : false)
                           }
-                          className="mr-1"
+                          className="mr-1 form-radio"
                         />
-                        {choice.text}{' '}
-                        {(state.matches('answered') || question.value) &&
-                          (correctAnswer
-                            ? '✅'
-                            : formik.values.value === choice.value && '❌')}
+                        {choice.text} {correctAnswer && '✅'}
+                        {incorrectAnswer && '❌'}
                         <img
                           src={choice.image}
                           alt={choice.text}

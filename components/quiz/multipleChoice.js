@@ -35,16 +35,15 @@ const MultipleChoice = (props) => {
       <AnswerWrapper>
         <form className="flex flex-col" onSubmit={formik.handleSubmit}>
           <div role="group" aria-labelledby="choices">
-            {/* <div className="text-sm uppercase tracking-wide font-semibold">
-              Your answer
-              {showExplanation && hasAnsweredCorrectly
-                ? '🎉 Correct!'
-                : 'Incorrect'}
-            </div> */}
-
             {question.choices &&
               question.choices.map((choice, i) => {
-                const correctAnswer = question.correctAnswer === choice.value
+                const hasAnswered =
+                  question.correctAnswer &&
+                  (state.matches('answered') || question.value)
+                const correctAnswer =
+                  hasAnswered && question.correctAnswer === choice.value
+                const incorrectAnswer =
+                  hasAnswered && formik.values.value === choice.value
                 return (
                   <div
                     className={`border-b bg-white ${
@@ -53,7 +52,8 @@ const MultipleChoice = (props) => {
                       question.choices.length === i + 1
                         ? 'border-transparent'
                         : 'border-cool-gray-100'
-                    }`}
+                    } ${correctAnswer ? 'bg-green-100' : ''}
+                         ${incorrectAnswer ? 'bg-red-100' : ''}`}
                     key={choice.value}
                   >
                     <label
@@ -76,13 +76,8 @@ const MultipleChoice = (props) => {
                         }
                         className="mr-2 -mt-1 form-radio"
                       />
-                      {state.matches('answered') &&
-                        question.correctAnswer &&
-                        (state.matches('answered') || question.value) &&
-                        question.correctAnswer &&
-                        (correctAnswer
-                          ? '✅ '
-                          : formik.values.value === choice.value && '❌ ')}
+                      {/* {correctAnswer && '✅ '}
+                      {incorrectAnswer && '❌ '} */}
                       <Markdown className="inline-block prose md:prose-lg text-gray-900">
                         {choice.text}
                       </Markdown>{' '}
@@ -110,17 +105,6 @@ const MultipleChoice = (props) => {
               </>
             )}
           </div>
-          {/* <AnimatePresence>
-            {state.matches('answered') && question.correctAnswer && (
-              <motion.div
-                initial={{opacity: 0}}
-                animate={{opacity: 1}}
-                className="pt-4 font-xl font-semibold"
-              >
-                {hasAnsweredCorrectly ? '🎉 Correct!' : 'Incorrect'}
-              </motion.div>
-            )}
-          </AnimatePresence> */}
 
           {state.matches('answered') && (
             <motion.div
