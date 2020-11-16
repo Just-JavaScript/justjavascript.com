@@ -5,31 +5,27 @@ import Explanation from 'components/quiz/explanation'
 import QuizWrapper from 'components/quiz/wrapper'
 import Markdown from 'components/quiz/markdown'
 import Submit from 'components/quiz/submit'
-import Continue from 'components/quiz/continue'
 import useEggheadQuestion from 'hooks/useEggheadQuestion'
 import {motion, AnimatePresence} from 'framer-motion'
 
-const Essay = ({
-  question,
-  state,
-  handleContinue,
-  handleSkip,
-  isDisabled,
-  handleSubmit,
-  currentAnswer,
-  number,
-  isLastQuestion,
-  // showExplanation,
-}) => {
+const Essay = (props) => {
+  const {
+    question,
+    state,
+    handleContinue,
+    handleSubmit,
+    isDisabled,
+    currentAnswer,
+    handleSkip,
+    number,
+    isLastQuestion,
+    currentQuestion,
+  } = props
   const {formik} = useEggheadQuestion(question, handleSubmit)
   const showExplanation =
     question.explanation && (state.matches('answered') || question.value)
   return (
-    <QuizWrapper
-      handleSkip={isLastQuestion ? false : handleSkip}
-      handleContinue={handleContinue}
-      answered={state.matches('answered')}
-    >
+    <QuizWrapper {...props}>
       <QuestionWrapper number={number}>
         <Markdown>{question.text}</Markdown>
       </QuestionWrapper>
@@ -84,15 +80,6 @@ const Essay = ({
           </Explanation>
         )}
       </AnimatePresence>
-      {state.matches('answered') &&
-        (question.explanation || question.correctAnswer) && (
-          <div className="py-8 mx-auto w-full flex items-center justify-center">
-            <Continue
-              isLastQuestion={isLastQuestion}
-              onClick={handleContinue}
-            />
-          </div>
-        )}
     </QuizWrapper>
   )
 }

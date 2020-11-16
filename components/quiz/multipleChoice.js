@@ -4,35 +4,31 @@ import AnswerWrapper from 'components/quiz/answerWrapper'
 import Explanation from 'components/quiz/explanation'
 import QuizWrapper from 'components/quiz/wrapper'
 import Submit from 'components/quiz/submit'
-import Continue from 'components/quiz/continue'
 import SubmitAndContinue from 'components/quiz/submitAndContinue'
 import Markdown from 'components/quiz/markdown'
 import useEggheadQuestion from 'hooks/useEggheadQuestion'
 import {isEmpty} from 'lodash'
 import {motion, AnimatePresence, AnimateSharedLayout} from 'framer-motion'
 
-const MultipleChoice = ({
-  question,
-  state,
-  handleContinue,
-  handleSubmit,
-  isDisabled,
-  currentAnswer,
-  handleSkip,
-  number,
-  isLastQuestion,
-}) => {
+const MultipleChoice = (props) => {
+  const {
+    question,
+    state,
+    handleContinue,
+    handleSubmit,
+    isDisabled,
+    currentAnswer,
+    handleSkip,
+    number,
+    isLastQuestion,
+    currentQuestion,
+  } = props
   const {formik} = useEggheadQuestion(question, handleSubmit)
   const hasAnsweredCorrectly = question.correctAnswer === formik.values.value
   const showExplanation =
     question.explanation && (state.matches('answered') || question.value)
-
   return (
-    <QuizWrapper
-      handleSkip={isLastQuestion ? false : handleSkip}
-      handleContinue={handleContinue}
-      answered={state.matches('answered')}
-    >
+    <QuizWrapper {...props}>
       <QuestionWrapper number={number}>
         <Markdown>{question.text}</Markdown>
       </QuestionWrapper>
@@ -56,7 +52,7 @@ const MultipleChoice = ({
                     } ${
                       question.choices.length === i + 1
                         ? 'border-transparent'
-                        : 'border-cool-gray-200'
+                        : 'border-cool-gray-100'
                     }`}
                     key={choice.value}
                   >
@@ -94,6 +90,25 @@ const MultipleChoice = ({
                   </div>
                 )
               })}
+            {formik.submitCount > 0 && formik.errors.value}
+            {question.canComment === true && (
+              <>
+                {/* <label htmlFor="comment" className="block mt-2">
+              Explain why
+            </label> */}
+                <textarea
+                  className="w-full p-3 bg-cool-gray-100 border border-gray-200 prose rounded-md h-24 mt-4"
+                  disabled={isDisabled}
+                  id="comment"
+                  name="comment"
+                  placeholder="Can you explain why?"
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                  value={formik.values.comment}
+                />
+                {formik.submitCount > 0 && formik.errors.comment}
+              </>
+            )}
           </div>
           {/* <AnimatePresence>
             {state.matches('answered') && question.correctAnswer && (
@@ -106,7 +121,7 @@ const MultipleChoice = ({
               </motion.div>
             )}
           </AnimatePresence> */}
-          {formik.errors.value}
+
           {state.matches('answered') && (
             <motion.div
               layout
@@ -114,8 +129,8 @@ const MultipleChoice = ({
               animate={{opacity: 1}}
               className={`w-full text-center mt-4 px-3 py-3 rounded-md font-semibold ${
                 hasAnsweredCorrectly
-                  ? 'bg-green-100 text-green-700'
-                  : 'bg-cool-gray-100 text-gray-700 '
+                  ? 'bg-teal-100 text-teal-700'
+                  : 'bg-cool-gray-100 text-cool-gray-700 '
               } transition-colors ease-in-out duration-300`}
             >
               {hasAnsweredCorrectly ? 'Correct! 🎉' : 'Incorrect'}
@@ -146,7 +161,7 @@ const MultipleChoice = ({
           {showExplanation && <Explanation>{question.explanation}</Explanation>}
         </AnimatePresence>
       </AnimateSharedLayout>
-      {state.matches('answered') &&
+      {/* {state.matches('answered') &&
         (question.explanation || question.correctAnswer) && (
           <div className="py-8 mx-auto w-full flex items-center justify-center">
             <Continue
@@ -154,7 +169,7 @@ const MultipleChoice = ({
               onClick={handleContinue}
             />
           </div>
-        )}
+        )} */}
     </QuizWrapper>
   )
 }

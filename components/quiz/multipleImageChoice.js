@@ -4,35 +4,32 @@ import AnswerWrapper from 'components/quiz/answerWrapper'
 import Explanation from 'components/quiz/explanation'
 import QuizWrapper from 'components/quiz/wrapper'
 import Submit from 'components/quiz/submit'
-import Continue from 'components/quiz/continue'
 import SubmitAndContinue from 'components/quiz/submitAndContinue'
 import Markdown from 'components/quiz/markdown'
 import useEggheadQuestion from 'hooks/useEggheadQuestion'
 import {motion, AnimatePresence} from 'framer-motion'
 import {isEmpty} from 'lodash'
 
-const MultipleImageChoice = ({
-  question,
-  state,
-  handleContinue,
-  handleSubmit,
-  isDisabled,
-  currentAnswer,
-  handleSkip,
-  number,
-  isLastQuestion,
-}) => {
+const MultipleImageChoice = (props) => {
+  const {
+    question,
+    state,
+    handleContinue,
+    handleSubmit,
+    isDisabled,
+    currentAnswer,
+    handleSkip,
+    number,
+    isLastQuestion,
+    currentQuestion,
+  } = props
   const {formik} = useEggheadQuestion(question, handleSubmit)
   const hasAnsweredCorrectly = question.correctAnswer === formik.values.value
   const showExplanation =
     question.explanation && (state.matches('answered') || question.value)
 
   return (
-    <QuizWrapper
-      handleSkip={isLastQuestion ? false : handleSkip}
-      handleContinue={handleContinue}
-      answered={state.matches('answered')}
-    >
+    <QuizWrapper {...props}>
       <QuestionWrapper number={number}>
         <Markdown>{question.text}</Markdown>
       </QuestionWrapper>
@@ -81,7 +78,25 @@ const MultipleImageChoice = ({
                 })}
             </div>
           </div>
-          {formik.errors.value}
+          {formik.submitCount > 0 && formik.errors.value}
+          {question.canComment === true && (
+            <>
+              {/* <label htmlFor="comment" className="block mt-2">
+              Explain why
+            </label> */}
+              <textarea
+                className="w-full p-3 bg-cool-gray-100 border border-gray-200 prose rounded-md h-24 mt-4"
+                disabled={isDisabled}
+                id="comment"
+                name="comment"
+                placeholder="Can you explain why?"
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                value={formik.values.comment}
+              />
+              {formik.submitCount > 0 && formik.errors.comment}
+            </>
+          )}
           {state.matches('answered') && (
             <motion.div
               layout
@@ -118,15 +133,6 @@ const MultipleImageChoice = ({
       <AnimatePresence>
         {showExplanation && <Explanation>{question.explanation}</Explanation>}
       </AnimatePresence>
-      {state.matches('answered') &&
-        (question.explanation || question.correctAnswer) && (
-          <div className="py-8 mx-auto w-full flex items-center justify-center">
-            <Continue
-              isLastQuestion={isLastQuestion}
-              onClick={handleContinue}
-            />
-          </div>
-        )}
     </QuizWrapper>
   )
 }

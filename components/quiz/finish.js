@@ -1,7 +1,7 @@
 import {motion} from 'framer-motion'
 
-export default function Finish({onClick, isLastQuestion}) {
-  return isLastQuestion ? (
+export default function Finish({onClick}) {
+  return (
     <div className="w-full h-full flex flex-col items-center justify-center md:p-8 p-5 rounded-lg bg-white border border-cool-gray-100">
       <motion.button
         layout
@@ -16,5 +16,5 @@ export default function Finish({onClick, isLastQuestion}) {
         Complete Quiz
       </motion.button>
     </div>
-  ) : null
+  )
 }

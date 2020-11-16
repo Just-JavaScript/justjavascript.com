@@ -60,6 +60,7 @@ function Quiz({quiz}) {
                       handleSkip={handleSkip}
                       showExplanation={showExplanation}
                       isAnswered={isAnswered}
+                      currentQuestion={currentQuestion}
                     />
                   )}
                 </div>

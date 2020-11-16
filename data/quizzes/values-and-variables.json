@@ -10,6 +10,7 @@
       "text": "# What happens if we run this code?\n~~~js\nlet numberOfTentacles = 10;\nnumberOfTentacles = 'eight';\nconsole.log(typeof(numberOfTentacles));\n~~~\n **Is this code valid? Why or why not?**\n",
       "explanation": "### Ipsum iaculis auctor sodales a dapibus tempor duis venenatis, vestibulum cubilia accumsan feugiat volutpat\n\nMattis erat lorem facilisis magnis condimentum sapien, blandit lacinia suscipit platea massa ullamcorper, **cursus tempus nascetur** mi inceptos. Rhoncus vehicula himenaeos vestibulum semper hac malesuada non nulla, mi netus sollicitudin tortor erat est etiam, maecenas in `react` et curabitur aliquet posuere. \n\nTristique sagittis nunc dapibus metus sapien primis ultricies litora felis dictumst phasellus consequat mus, rhoncus in nec sem taciti nascetur feugiat aptent congue magnis donec proin.",
       "correctAnswer": "b",
+      "canComment": true,
       "choices": [
         {
           "value": "a",
@@ -54,6 +55,7 @@
       "text": "# What happens if we run this code?\n\n~~~js\nlet answer = true;\nanswer.opposite = false;\nconsole.log(answer.opposite);\n~~~\n\n**Explain why using our mental model.**",
       "explanation": "### This code won’t be able to set a property.\n\nBooleans are primitive. And primitive values are immutable. We can’t change them — and setting a property on a value is a change.\n\nIf our code runs in the [strict mode](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode), assigning a property on a primitive value would lead to an error. Otherwise, it will silently do nothing. In either case, we can’t set a property on a boolean value like `true`.",
       "correctAnswer": "c",
+      "canComment": true,
       "choices": [
         {
           "value": "a",
@@ -106,6 +108,7 @@
       "text": "# Which one of these diagrams best matches your sketch and our mental model after that code runs?",
       "correctAnswer": "b",
       "explanation": "### Diagram B is correct. It shows both variables pointing at the same \"eat cake\" string value.\n\n*Diagram A* doesn’t match the mental model we’re building. It shows values inside variables, but in our mental model variables point to values.\n\n*Diagram C* is wrong because it shows a variable pointing to another variable. Variables can only point to values, not to other variables.\n\n*Diagram D* is wrong for both of the same reasons.",
+      "canComment": true,
       "choices": [
         {
           "value": "a",

@@ -12,6 +12,7 @@ export default function useEggheadQuestionMachine(question, handleSubmit) {
           value: isRequired
             ? yup.string().required('Pick one.').nullable()
             : yup.string().nullable(),
+          comment: yup.string().min(3, 'Must be at least 3 characters'),
         })
 
       case 'multiple-image-choice':
@@ -19,6 +20,7 @@ export default function useEggheadQuestionMachine(question, handleSubmit) {
           value: isRequired
             ? yup.string().required('Pick one.').nullable()
             : yup.string().nullable(),
+          comment: yup.string().min(3, 'Must be at least 3 characters'),
         })
 
       case 'essay':
