@@ -3,7 +3,7 @@ import {useFormik} from 'formik'
 
 export default function useEggheadQuestionMachine(question, handleSubmit) {
   const {type} = question ? question : ''
-  const isRequired = question.required !== false
+  const isRequired = question?.required !== false
 
   function schemaFor(type) {
     switch (type) {
@@ -50,7 +50,7 @@ export default function useEggheadQuestionMachine(question, handleSubmit) {
             : yup.array(),
         })
 
-      case 'trueFalse':
+      case 'true-false':
         return yup.object().shape({
           value: isRequired
             ? yup.mixed().oneOf(['true', 'false']).required('Pick one.')

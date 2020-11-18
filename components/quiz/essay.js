@@ -20,13 +20,14 @@ const Essay = (props) => {
     number,
     isLastQuestion,
     currentQuestion,
+    showExplanation,
+    nested,
   } = props
   const {formik} = useEggheadQuestion(question, handleSubmit)
-  const showExplanation =
-    question.explanation && (state.matches('answered') || question.value)
+  
   return (
     <QuizWrapper {...props}>
-      <QuestionWrapper number={number}>
+      <QuestionWrapper number={number} nested={nested}>
         <Markdown>{question.text}</Markdown>
       </QuestionWrapper>
       <AnswerWrapper>

@@ -22,14 +22,15 @@ const MultipleChoice = (props) => {
     number,
     isLastQuestion,
     currentQuestion,
+    showExplanation,
+    nested,
   } = props
   const {formik} = useEggheadQuestion(question, handleSubmit)
   const hasAnsweredCorrectly = question.correctAnswer === formik.values.value
-  const showExplanation =
-    question.explanation && (state.matches('answered') || question.value)
+
   return (
     <QuizWrapper {...props}>
-      <QuestionWrapper number={number}>
+      <QuestionWrapper number={number} nested={nested}>
         <Markdown>{question.text}</Markdown>
       </QuestionWrapper>
       <AnswerWrapper>
@@ -113,7 +114,7 @@ const MultipleChoice = (props) => {
               animate={{opacity: 1}}
               className={`w-full text-center mt-4 px-3 py-3 rounded-md font-semibold ${
                 hasAnsweredCorrectly
-                  ? 'bg-teal-100 text-teal-700'
+                  ? 'bg-green-100 text-green-700'
                   : 'bg-cool-gray-100 text-cool-gray-700 '
               } transition-colors ease-in-out duration-300`}
             >
@@ -121,14 +122,14 @@ const MultipleChoice = (props) => {
             </motion.div>
           )}
 
-          {question.explanation || question.correctAnswer ? (
+          {question.explanation  ? (
             <Submit
               isDisabled={isDisabled}
               isSubmitting={state.matches('answering')}
               explanation={question.explanation}
             />
           ) : (
-            isEmpty(question.value) && (
+            isEmpty(question.value) && !state.matches('answered') && (
               <SubmitAndContinue
                 isLastQuestion={isLastQuestion}
                 state={state}

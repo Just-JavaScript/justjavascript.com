@@ -1,8 +1,58 @@
 {
   "id": "values-and-variables",
+  "slug": "demo",
   "title": "Values and Variables",
   "version": "1.0.0",
   "questions": [
+    {
+      "id": "5",
+      "version": "1.0.0",
+      "type": "multiple-questions",
+      "text": "# Draw —> Pick —> Use",
+      "questions": [
+        {
+          "id": "0-10",
+          "version": "1.0.0",
+          "text": "## Sketch a diagram of variables and values after this snippet of code runs. Use our mental model.\n~~~js\nlet fingernails = 'mustache';\nlet toes = fingernails;\nlet nose = 'must' + 'ache';\n~~~\nTip: if you don't have paper and pen around, use an app like [Excalidraw](https://www.excalidraw.com)."
+        },
+        {
+          "id": "0-20",
+          "version": "1.0.0",
+          "type": "multiple-image-choice",
+          "text": "## Which one of these diagrams best matches your sketch and our mental model after that code runs?",
+          "correctAnswer": "a",
+          "canComment": true,
+          "choices": [
+            {
+              "value": "a",
+              "text": "A",
+              "image": "https://images.typeform.com/images/MyEfFAET2Bc5/image/default"
+            },
+            {
+              "value": "b",
+              "text": "B",
+              "image": "https://images.typeform.com/images/RhyMWGtGYKfc/image/default"
+            },
+            {
+              "value": "c",
+              "text": "C",
+              "image": "https://images.typeform.com/images/Tz2tC94NSSEp/image/default"
+            },
+            {
+              "value": "d",
+              "text": "D",
+              "image": "https://images.typeform.com/images/gDeJqjnHP9aP/image/default"
+            }
+          ]
+        },
+        {
+          "id": "0-30",
+          "version": "1.0.0",
+          "type": "true-false",
+          "text": "## Lorem ipsum dolor sit amet?\nMi mus suscipit nibh et libero iaculis"
+        }
+      ]
+    },
     {
       "id": "10",
       "version": "1.0.0",
@@ -37,6 +87,7 @@
       "text": "# Here's a slightly different example. What happens if we run it?\n\n~~~js\nlet numberOfTentacles = 10;\nconsole.log(typeof(numberOfTentacles));\nnumberOfTentacles = 'eight';\n~~~\n\n**Is there a difference in behavior compared to the last snippet? Explain why or why not using our mental model.**",
       "explanation": "### Yes, there is a difference. It prints \"number\" to the console.\n\nVariables don’t have types in JavaScript — only values do. The answer to `typeof(numberOfTentacles)` depends on **which value** the variable was pointing to at that time.\n\nThe `numberOfTentacles` variable was pointing to 10 number value at the time we asked about its type. So we got `number` as a result.",
       "correctAnswer": "a",
+      "canComment": true,
       "choices": [
         {
           "value": "a",

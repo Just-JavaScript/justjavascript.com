@@ -35,13 +35,15 @@ function Quiz({quiz}) {
             handleContinue,
             isLastQuestion,
             showExplanation,
+            nextQuestionIdx,
+            nextQuestionId,
             number,
           } = useEggheadQuiz(quiz, question, setCurrentQuestion)
 
           return state.matches('initializing') ? (
             'loading...'
           ) : (
-            <div key={`${quiz.id}-${question.id}`}>
+            <div className="w-full" key={`${quiz.id}-${question.id}`}>
               {router.query.edit ? (
                 <Editor idx={index} question={question} />
               ) : (
@@ -61,6 +63,9 @@ function Quiz({quiz}) {
                       showExplanation={showExplanation}
                       isAnswered={isAnswered}
                       currentQuestion={currentQuestion}
+                      nextQuestionIdx={nextQuestionIdx}
+                      nextQuestionId={nextQuestionId}
+                      setCurrentQuestion={setCurrentQuestion}
                     />
                   )}
                 </div>
@@ -79,7 +84,7 @@ export async function getStaticPaths() {
 
   const paths = quizzes.map((quiz) => ({
     params: {
-      id: quiz.id,
+      slug: quiz.slug,
     },
   }))
 
@@ -90,14 +95,14 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps(context) {
-  const id = context.params.id
+  const slug = context.params.slug
   // const res = await fetch(`${AUTH_DOMAIN}/api/quizzes/${id}`)
   // const quiz = await res.json()
-  const quiz = find(quizzes, {id: id})
+  const quiz = find(quizzes, {slug: slug})
 
   return {
     props: {
-      id,
+      slug,
       quiz,
     },
   }

@@ -11,6 +11,7 @@ export default function Wrapper({
   handleContinue,
   isLastQuestion,
   currentQuestion,
+  nested,
 }) {
   const displayContinue =
     currentQuestion.id === question.id &&
@@ -19,18 +20,27 @@ export default function Wrapper({
     !isLastQuestion
 
   const displaySkip =
-    !displayContinue && currentQuestion.id === question.id && !isLastQuestion
+    !nested &&
+    !displayContinue &&
+    currentQuestion.id === question.id &&
+    !isLastQuestion
 
   const displayFinish =
-    question.required === true
+    !nested &&
+    (question.required === true
       ? isLastQuestion && state.matches('answered')
-      : isLastQuestion
+      : isLastQuestion)
 
   return (
-    <div className="min-h-screen flex flex-col justify-between">
-      <AnimateSharedLayout>
-        <div>{children}</div>
-
+    // min-h-screen
+    <AnimateSharedLayout>
+      <div
+        className={`${
+          !nested ? 'min-h-screen' : ''
+        } flex flex-col justify-between`}
+      >
+        {/* <div className="">{children}</div> */}
+        {children}
         <AnimatePresence>
           {displayContinue && (
             <motion.div
@@ -47,10 +57,12 @@ export default function Wrapper({
           )}
         </AnimatePresence>
 
-        {!displayContinue && !displaySkip && <div className="py-16" />}
+        {!displayContinue && !displaySkip && !nested && (
+          <div className="py-16" />
+        )}
         <motion.div
           className="flex-grow h-full flex flex-col justify-end"
-          layout
+          // layout
         >
           <AnimatePresence>
             {displaySkip && (
@@ -82,7 +94,7 @@ export default function Wrapper({
             <Finish onClick={handleContinue} />
           </div>
         )}
-      </AnimateSharedLayout>
-    </div>
+      </div>
+    </AnimateSharedLayout>
   )
 }

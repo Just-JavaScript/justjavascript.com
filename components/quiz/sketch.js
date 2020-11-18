@@ -16,18 +16,20 @@ const ExcalidrawWithoutSSR = dynamic(() => import('excalidraw'), {
   ssr: false,
 })
 
-const Sketch = ({
-  question,
-  state,
-  handleContinue,
-  handleSkip,
-  isDisabled,
-  handleSubmit,
-  currentAnswer,
-  currentQuestionIdx,
-  isLastQuestion,
-  showExplanation,
-}) => {
+const Sketch = (props) => {
+  const {
+    question,
+    state,
+    handleContinue,
+    handleSkip,
+    isDisabled,
+    handleSubmit,
+    currentAnswer,
+    currentQuestionIdx,
+    isLastQuestion,
+    showExplanation,
+    number,
+  } = props
   const {formik} = useEggheadQuestion(question, handleSubmit)
   const options = {
     zenModeEnabled: true,
@@ -47,11 +49,8 @@ const Sketch = ({
   }, [output])
 
   return (
-    <QuizWrapper
-      handleSkip={isLastQuestion ? false : handleSkip}
-      handleContinue={handleContinue}
-    >
-      <QuestionWrapper>
+    <QuizWrapper {...props}>
+      <QuestionWrapper number={number}>
         <motion.div layout>
           <div className="mb-1">
             <span className="mr-2 p-2 rounded-full w-6 h-6 text-xs font-bold inline-flex justify-center items-center bg-indigo-100 text-indigo-800">

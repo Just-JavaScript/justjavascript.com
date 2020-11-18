@@ -34,7 +34,7 @@ export default function useEggheadQuizMachine(
   const isLastQuestion = currentQuestionIdx + 1 === questions.length
   const showExplanation =
     currentQuestion.explanation &&
-    (!state.matches('idle') || currentQuestion.value)
+    (state.matches('answered') || currentQuestion.value)
 
   function scrollTo(question) {
     scroller.scrollTo(question, {
@@ -64,6 +64,9 @@ export default function useEggheadQuizMachine(
     setCurrent({index: nextQuestionIdx, id: nextQuestionId})
     scrollTo(nextQuestionId)
   }
+  function handleShowNextQuestion() {
+    !isLastQuestion && !state.matches('idle') && setCurrent({index: nextQuestionIdx, id: nextQuestionId})
+  }
 
   function handleSubmit(values, _actions) {
     // TODO: submit all required variables
@@ -88,6 +91,8 @@ export default function useEggheadQuizMachine(
     isLastQuestion,
     currentQuestion,
     showExplanation,
+    nextQuestionIdx,
     number: currentQuestionIdx + 1,
+    handleShowNextQuestion,
   }
 }

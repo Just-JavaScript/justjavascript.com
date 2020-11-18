@@ -21,16 +21,16 @@ const MultipleImageChoice = (props) => {
     handleSkip,
     number,
     isLastQuestion,
+    showExplanation,
     currentQuestion,
+    nested,
   } = props
   const {formik} = useEggheadQuestion(question, handleSubmit)
   const hasAnsweredCorrectly = question.correctAnswer === formik.values.value
-  const showExplanation =
-    question.explanation && (state.matches('answered') || question.value)
 
   return (
     <QuizWrapper {...props}>
-      <QuestionWrapper number={number}>
+      <QuestionWrapper number={number} nested={nested}>
         <Markdown>{question.text}</Markdown>
       </QuestionWrapper>
       <AnswerWrapper>
@@ -73,8 +73,9 @@ const MultipleImageChoice = (props) => {
                           }
                           className="mr-1 form-radio"
                         />
-                        {choice.text} {correctAnswer && '✅'}
-                        {incorrectAnswer && '❌'}
+                        {choice.text}
+                        {/* {correctAnswer && '✅'}
+                        {incorrectAnswer && '❌'} */}
                         <img
                           src={choice.image}
                           alt={choice.text}
@@ -126,7 +127,7 @@ const MultipleImageChoice = (props) => {
               explanation={question.explanation}
             />
           ) : (
-            isEmpty(question.value) && (
+            isEmpty(question.value) && !state.matches('answered') && (
               <SubmitAndContinue
                 isLastQuestion={isLastQuestion}
                 state={state}

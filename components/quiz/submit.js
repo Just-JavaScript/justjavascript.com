@@ -1,10 +1,6 @@
 import {motion} from 'framer-motion'
 
-export default function Submit({
-  isDisabled,
-  isSubmitting,
-  explanation = false,
-}) {
+export default function Submit({isDisabled, isSubmitting}) {
   if (isDisabled && !isSubmitting) {
     return null
   }
@@ -34,7 +30,6 @@ export default function Submit({
         </svg>
       ) : (
         `Send Answer`
-        // `Send Answer ${explanation ? 'and view explanation' : ''}`
       )}
     </motion.button>
   )
