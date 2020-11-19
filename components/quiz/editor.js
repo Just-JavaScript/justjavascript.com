@@ -2,9 +2,8 @@ import React from 'react'
 import Markdown from './markdown'
 import Explanation from './explanation'
 import {useCopyToClipboard} from 'react-use'
-import {map} from 'lodash'
 
-export default function Editor({question, idx}) {
+function Question({question, idx, children}) {
   const [data, setData] = React.useState({
     question: question.text || '',
     explanation: question.explanation || '',
@@ -12,7 +11,7 @@ export default function Editor({question, idx}) {
   const [, copyToClipboard] = useCopyToClipboard()
 
   return (
-    <div className="max-w-screen-xl mx-auto p-8">
+    <div className="max-w-screen-xl mx-auto p-8 bg-white rounded-lg mb-4 shadow-sm border border-cool-gray-100">
       <div className="mb-3 py-1 px-2 inline-block border border-gray-200 rounded-md text-sm font-bold">
         {idx} <small className="text-xs font-normal">(id: {question.id})</small>{' '}
         ・ {question.type}
@@ -25,7 +24,7 @@ export default function Editor({question, idx}) {
             onChange={(e) =>
               setData({...data, question: e.currentTarget.value})
             }
-            className="form-textarea h-64"
+            className="form-textarea bg-cool-gray-50 border border-cool-gray-100 h-64"
           />
           {data.question && (
             <>
@@ -47,9 +46,8 @@ export default function Editor({question, idx}) {
             onChange={(e) =>
               setData({...data, explanation: e.currentTarget.value})
             }
-            className="form-textarea h-64"
+            className="form-textarea bg-cool-gray-50 border border-cool-gray-100 h-64"
           />
-
           {data.explanation && (
             <>
               <Explanation>{data.explanation}</Explanation>
@@ -66,7 +64,25 @@ export default function Editor({question, idx}) {
           )}
         </div>
       </div>
-      <hr />
+      {children}
     </div>
+  )
+}
+
+export default function Editor(props) {
+  return (
+    <>
+      <Question {...props}>
+        {props.question.questions && (
+          <>
+            <div>
+              {props.question.questions.map((question, ...props) => (
+                <Question question={question} {...props} />
+              ))}
+            </div>
+          </>
+        )}
+      </Question>
+    </>
   )
 }

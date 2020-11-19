@@ -71,7 +71,7 @@ const MultipleImageChoice = (props) => {
                               ? choice.value === currentAnswer.value
                               : false)
                           }
-                          className="mr-1 form-radio"
+                          className="mr-1 form-radio bg-cool-gray-100 border border-cool-gray-200"
                         />
                         {choice.text}
                         {/* {correctAnswer && '✅'}
@@ -93,17 +93,25 @@ const MultipleImageChoice = (props) => {
               {/* <label htmlFor="comment" className="block mt-2">
               Explain why
             </label> */}
-              <textarea
-                className="w-full p-3 bg-cool-gray-100 border border-gray-200 prose rounded-md h-24 mt-4"
-                disabled={isDisabled}
-                id="comment"
-                name="comment"
-                placeholder="Can you explain why?"
-                onChange={formik.handleChange}
-                onBlur={formik.handleBlur}
-                value={formik.values.comment}
-              />
-              {formik.submitCount > 0 && formik.errors.comment}
+              {state.matches('answered') ? (
+                <Markdown className="p-3 mt-4">
+                  {formik.values.comment}
+                </Markdown>
+              ) : (
+                <>
+                  <textarea
+                    className="w-full p-3 bg-cool-gray-100 border border-gray-200 prose rounded-md h-24 mt-4"
+                    disabled={isDisabled}
+                    id="comment"
+                    name="comment"
+                    placeholder="Can you explain why?"
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    value={formik.values.comment}
+                  />
+                  {formik.submitCount > 0 && formik.errors.comment}
+                </>
+              )}
             </>
           )}
           {state.matches('answered') && (
@@ -127,7 +135,8 @@ const MultipleImageChoice = (props) => {
               explanation={question.explanation}
             />
           ) : (
-            isEmpty(question.value) && !state.matches('answered') && (
+            isEmpty(question.value) &&
+            !state.matches('answered') && (
               <SubmitAndContinue
                 isLastQuestion={isLastQuestion}
                 state={state}

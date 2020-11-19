@@ -1,3 +1,4 @@
+import * as React from 'react'
 import Head from 'next/head'
 import {Element as ScrollElement} from 'react-scroll'
 import {useRouter} from 'next/router'

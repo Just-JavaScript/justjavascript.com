@@ -16,4 +16,13 @@ module.exports = withMDX({
     CONVERTKIT_PUBLIC_KEY: process.env.CONVERTKIT_PUBLIC_KEY,
     PASSWORD: process.env.PASSWORD,
   },
+  // to support MDX Runtime
+  webpack: (config, {isServer}) => {
+    if (!isServer) {
+      config.node = {
+        fs: 'empty',
+      }
+    }
+    return config
+  },
 })

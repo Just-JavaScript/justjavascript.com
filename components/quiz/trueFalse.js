@@ -38,9 +38,7 @@ const TrueFalse = (props) => {
       <AnswerWrapper>
         <form className="flex flex-col" onSubmit={formik.handleSubmit}>
           <>
-            <div className="text-lg font-semibold">
-              Is this statement true or false?
-            </div>
+            <div className="text-lg font-semibold">Is that true or false?</div>
 
             <div
               className="mt-4 w-full overflow-hidden rounded-md"
@@ -73,7 +71,7 @@ const TrueFalse = (props) => {
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
                     checked={formik.values.value === 'true'}
-                    className="mr-2 form-radio"
+                    className="mr-2 form-radio bg-cool-gray-100 border border-cool-gray-200"
                   />
                   True
                 </label>
@@ -104,7 +102,7 @@ const TrueFalse = (props) => {
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
                     checked={formik.values.value === 'false'}
-                    className="mr-2 form-radio"
+                    className="mr-2 form-radio bg-cool-gray-100 border border-cool-gray-200"
                   />
                   False
                 </label>
@@ -126,7 +124,6 @@ const TrueFalse = (props) => {
                 {hasAnsweredCorrectly ? 'Correct! 🎉' : 'Incorrect'}
               </motion.div>
             )}
-
             {question.explanation || question.correctAnswer ? (
               <Submit
                 isDisabled={isDisabled}

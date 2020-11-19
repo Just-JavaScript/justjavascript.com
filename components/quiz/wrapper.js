@@ -37,17 +37,20 @@ export default function Wrapper({
       <div
         className={`${
           !nested ? 'min-h-screen' : ''
-        } flex flex-col justify-between`}
+        } flex flex-col justify-between relative`}
       >
         {/* <div className="">{children}</div> */}
         {children}
         <AnimatePresence>
           {displayContinue && (
             <motion.div
+              // layout
               initial={{opacity: 0}}
               animate={{opacity: 1}}
               exit={{opacity: 0}}
-              className="py-8 mx-auto w-full flex items-center justify-center"
+              className={`${
+                nested ? 'absolute bottom-0 transform translate-y-32 z-20' : ''
+              } py-8 mx-auto w-full flex items-center justify-center`}
             >
               <Continue
                 isLastQuestion={isLastQuestion}

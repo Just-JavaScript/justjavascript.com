@@ -1,10 +1,13 @@
 module.exports = {
-  purge: [
-    './components/**/*.js',
-    './templates/**/*.js',
-    './pages/**/*.js',
-    './pages/**/*.mdx',
-  ],
+  purge: {
+    content: [
+      './components/**/*.js',
+      './templates/**/*.js',
+      './pages/**/*.js',
+      './pages/**/*.mdx',
+      './data/**/*',
+    ],
+  },
   theme: {
     fontFamily: {
       serif: ['"ff-meta-serif-web-pro"', 'system-ui', 'serif'],
