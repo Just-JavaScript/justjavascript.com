@@ -1,14 +1,18 @@
 module.exports = {
-  purge: [
-    './components/**/*.js',
-    './templates/**/*.js',
-    './pages/**/*.js',
-    './pages/**/*.mdx',
-  ],
+  purge: {
+    content: [
+      './components/**/*.js',
+      './templates/**/*.js',
+      './pages/**/*.js',
+      './pages/**/*.mdx',
+      './data/**/*',
+    ],
+  },
   theme: {
     fontFamily: {
       serif: ['"ff-meta-serif-web-pro"', 'system-ui', 'serif'],
       display: ['"ff-meta-headline-web-pro"', 'system-ui', 'sans'],
+      sans: ['"ff-meta-web-pro"', 'system-ui', 'sans'],
       mono: ['"ibm-plex-mono"', 'monospace'],
     },
     typography: (theme) => ({

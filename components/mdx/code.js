@@ -4,13 +4,15 @@ import themeDark from 'prism-react-renderer/themes/nightOwl'
 import Highlight, {defaultProps} from 'prism-react-renderer'
 
 const Code = ({children, codeString, className = 'language-js', ...props}) => {
-  const language = className.replace(/language-/, '')
+  const language = className
+    ? className.replace(/language-/, '')
+    : props.language && props.language
 
-  return (
+  return children || props.value ? (
     <div>
       <Highlight
         {...defaultProps}
-        code={children.trim()}
+        code={children ? children.trim() : props.value && props.value}
         language={language}
         theme={themeDark}
       >
@@ -38,7 +40,7 @@ const Code = ({children, codeString, className = 'language-js', ...props}) => {
         )}
       </Highlight>
     </div>
-  )
+  ) : null
 }
 
 export default Code

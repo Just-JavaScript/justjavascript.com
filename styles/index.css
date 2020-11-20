@@ -4,6 +4,11 @@
 
 @tailwind utilities;
 
+body {
+  /* font-family: 'ff-meta-web-pro', system-ui, sans-serif; */
+  overflow-y: scroll;
+}
+
 /*
   This will hide the focus indicator if the element receives focus via the mouse,
   but it will still show up on keyboard focus.
@@ -86,3 +91,15 @@
 }
 
 /* END — @reach/menu-button */
+
+/* EXCALIDRAW */
+
+@import '../node_modules/excalidraw/dist/excalidraw.min.css';
+
+.Modal {
+  z-index: 999;
+}
+
+/* ReachUI */
+@import '@reach/tooltip/styles.css';
+@import '@reach/dialog/styles.css';

@@ -9,7 +9,9 @@ const SEO = ({title}) => {
 
   return (
     <NextSeo
-      title={title}
+      title={
+        title || 'Just JavaScript | A Course by Dan Abramov and Maggie Appleton'
+      }
       titleTemplate={
         isHomePage
           ? '%s | A Course by Dan Abramov and Maggie Appleton'
@@ -47,10 +49,6 @@ const SEO = ({title}) => {
 
 SEO.propTypes = {
   title: PropTypes.string,
-}
-
-SEO.defaultProps = {
-  // title: "Just JavaScript by Dan Abramov & Maggie Appleton"
 }
 
 export default SEO

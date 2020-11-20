@@ -1,5 +1,4 @@
-/** @jsx jsx */
-import {jsx} from '@emotion/core'
+import {jsx} from '@emotion/react'
 import React from 'react'
 import {motion, AnimatePresence} from 'framer-motion'
 
@@ -8,11 +7,12 @@ const Answer = ({
   title = 'Answer',
   byline = 'Don’t reveal until you have finished writing.',
   action = 'Reveal Answer',
+  className,
 }) => {
   const [isShown, setShown] = React.useState(false)
 
   return (
-    <div>
+    <div className={className}>
       <div className="relative flex items-center justify-center p-8 bg-gray-50 rounded-lg">
         <AnimatePresence>
           {!isShown && (
@@ -47,7 +47,7 @@ const Answer = ({
               display: isShown ? 'inherit' : 'none',
             },
           }}
-          className={!isShown && `max-h-96 overflow-hidden`}
+          className={!isShown ? `max-h-96 overflow-hidden w-full` : `w-full`}
         >
           <div className="text-3xl font-bold">Answer</div>
           {children}

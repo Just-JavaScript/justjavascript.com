@@ -1,0 +1,284 @@
+{
+  "id": "values-and-variables",
+  "slug": "demo",
+  "title": "Values and Variables",
+  "version": "1.0.0",
+  "questions": [
+    {
+      "id": "1",
+      "version": "1.0.0",
+      "type": "multiple-questions",
+      "text": "# Answer this multi-part question",
+      "questions": [
+        {
+          "id": "1-10",
+          "version": "1.0.0",
+          "text": "## Sketch a diagram of variables and values after this snippet of code runs. Use our mental model.\n~~~js\nlet dwarves = 7;\nlet continents = '7';\nlet worldWonders = 3 + 4;\n~~~\nTip: if you don't have paper and pen around, use an app like [Excalidraw](https://www.excalidraw.com)."
+        },
+        {
+          "id": "1-20",
+          "version": "1.0.0",
+          "type": "multiple-image-choice",
+          "text": "# Which one of these diagrams best matches your sketch and our mental model after that code runs?",
+          "choices": [
+            {
+              "value": "a",
+              "text": "A",
+              "image": "https://images.typeform.com/images/f45gMsKhcps6/image/default"
+            },
+            {
+              "value": "b",
+              "text": "B",
+              "image": "https://images.typeform.com/images/egPTnAH8diG3/image/default"
+            },
+            {
+              "value": "c",
+              "text": "C",
+              "image": "https://images.typeform.com/images/HKiHz8X9gg8T/image/default"
+            },
+            {
+              "value": "d",
+              "text": "D",
+              "image": "https://images.typeform.com/images/L235V2QNW69f/image/default"
+            }
+          ]
+        },
+        {
+          "id": "1-30",
+          "version": "1.0.0",
+          "type": "essay",
+          "text": "### You've chosen a particular diagram for our mental model. **What's wrong** with each other diagram?",
+          "explanation": "## Diagram <span className=\"p-1 bg-green-200 text-green\">A</span> is correct.\n\n<div className=\"border border-green-500 rounded-md\">\n<img\nsrc=\"https://images.typeform.com/images/f45gMsKhcps6/image/default\"\nalt=\"\"\n/>\n</div>\n\nIt shows `dwarves` and `worldWonders` pointing to the 7 number value, and `continents` variable pointing to the \"7\" string value.\n\n<div className=\"\">\n<div className=\"grid grid-cols-2 gap-2\">\n<img\nsrc=\"https://images.typeform.com/images/egPTnAH8diG3/image/default\"\nalt=\"\"\n/>\n<div className=\"\">\n\n**Diagram B** is wrong because 7 and \"7\" are two different values — one is a number, and another one is a string. They are not the same value.\n\n</div>\n</div>\n<div className=\"grid grid-cols-2 gap-2\">\n<img\nsrc=\"https://images.typeform.com/images/HKiHz8X9gg8T/image/default\"\nalt=\"\"\n/>\n<div className=\"\">\n\n**Diagram C** doesn’t match our mental model because it shows the value 7 more than once. In our mental model, there is only one value for each distinct number.\n\n</div>\n</div>\n<div className=\"grid grid-cols-2 gap-2\">\n<img\nsrc=\"https://images.typeform.com/images/L235V2QNW69f/image/default\"\nalt=\"\"\n/>\n<div className=\"\">\n\n**Diagram D** is wrong because a variable can’t point to another variable. It must point to a value.\n\n</div>\n</div>\n</div>"
+        }
+      ]
+    },
+    {
+      "id": "5",
+      "version": "1.0.0",
+      "type": "multiple-questions",
+      "text": "# Answer this multi-part question",
+      "questions": [
+        {
+          "id": "0-10",
+          "version": "1.0.0",
+          "text": "## Sketch a diagram of variables and values after this snippet of code runs. Use our mental model.\n~~~js\nlet fingernails = 'mustache';\nlet toes = fingernails;\nlet nose = 'must' + 'ache';\n~~~\nTip: if you don't have paper and pen around, use an app like [Excalidraw](https://www.excalidraw.com)."
+        },
+        {
+          "id": "0-15",
+          "version": "1.0.0",
+          "type": "multiple-choice",
+          "text": "# What happens if we run this code?\n~~~js\nlet numberOfTentacles = 10;\nnumberOfTentacles = 'eight';\nconsole.log(typeof(numberOfTentacles));\n~~~\n **Is this code valid? Why or why not?**\n",
+          "explanation": "### Ipsum iaculis auctor sodales a dapibus tempor duis venenatis, vestibulum cubilia accumsan feugiat volutpat\n\n<div className=\"grid grid-cols-2 gap-4\">\n<div className=\"border-2 border-indigo-200 p-4 animate-bounce rounded-md\">hey</div>\n<div className=\"border-2 border-indigo-600 p-4 rounded-md\">ho</div>\n</div>\n\n<button className=\"px-3 py-2 rounded-md bg-red-500 mt-2 text-white block\">Click Me</button>\n\nMattis erat lorem facilisis magnis condimentum sapien, blandit lacinia suscipit platea massa ullamcorper, **cursus tempus nascetur** mi inceptos. Rhoncus vehicula himenaeos vestibulum semper hac malesuada non nulla, mi netus sollicitudin tortor erat est etiam, maecenas in `react` et curabitur aliquet posuere. \n\nTristique sagittis nunc dapibus metus sapien primis ultricies litora felis dictumst phasellus consequat mus, rhoncus in nec sem taciti nascetur feugiat aptent congue magnis donec proin.",
+          "correctAnswer": "b",
+          "canComment": true,
+          "choices": [
+            {
+              "value": "a",
+              "text": "Lacinia hac velit lectus dolor mollis sodales"
+            },
+            {
+              "value": "b",
+              "text": "Neque vestibulum pretium duis felis mollis tortor"
+            },
+            {
+              "value": "c",
+              "text": "Semper nibh penatibus elementum et a platea"
+            },
+            {
+              "value": "d",
+              "text": "Lacinia ad nullam fusce sagittis magnis nulla"
+            }
+          ]
+        },
+        {
+          "id": "0-20",
+          "version": "1.0.0",
+          "type": "multiple-image-choice",
+          "text": "## Which one of these diagrams best matches your sketch and our mental model after that code runs?",
+          "correctAnswer": "a",
+          "canComment": true,
+          "choices": [
+            {
+              "value": "a",
+              "text": "A",
+              "image": "https://images.typeform.com/images/MyEfFAET2Bc5/image/default"
+            },
+            {
+              "value": "b",
+              "text": "B",
+              "image": "https://images.typeform.com/images/RhyMWGtGYKfc/image/default"
+            },
+            {
+              "value": "c",
+              "text": "C",
+              "image": "https://images.typeform.com/images/Tz2tC94NSSEp/image/default"
+            },
+            {
+              "value": "d",
+              "text": "D",
+              "image": "https://images.typeform.com/images/gDeJqjnHP9aP/image/default"
+            }
+          ]
+        },
+        {
+          "id": "0-30",
+          "version": "1.0.0",
+          "type": "true-false",
+          "text": "## Lorem ipsum dolor sit amet?\nMi mus suscipit nibh et libero iaculis",
+          "correctAnswer": "true"
+        }
+      ]
+    },
+    {
+      "id": "10",
+      "version": "1.0.0",
+      "type": "multiple-choice",
+      "text": "# What happens if we run this code?\n~~~js\nlet numberOfTentacles = 10;\nnumberOfTentacles = 'eight';\nconsole.log(typeof(numberOfTentacles));\n~~~\n **Is this code valid? Why or why not?**\n",
+      "explanation": "### Ipsum iaculis auctor sodales a dapibus tempor duis venenatis, vestibulum cubilia accumsan feugiat volutpat\n\nMattis erat lorem facilisis magnis condimentum sapien, blandit lacinia suscipit platea massa ullamcorper, **cursus tempus nascetur** mi inceptos. Rhoncus vehicula himenaeos vestibulum semper hac malesuada non nulla, mi netus sollicitudin tortor erat est etiam, maecenas in `react` et curabitur aliquet posuere. \n\nTristique sagittis nunc dapibus metus sapien primis ultricies litora felis dictumst phasellus consequat mus, rhoncus in nec sem taciti nascetur feugiat aptent congue magnis donec proin.",
+      "correctAnswer": "b",
+      "canComment": true,
+      "choices": [
+        {
+          "value": "a",
+          "text": "Lacinia hac velit lectus dolor mollis sodales"
+        },
+        {
+          "value": "b",
+          "text": "Neque vestibulum pretium duis felis mollis tortor"
+        },
+        {
+          "value": "c",
+          "text": "Semper nibh penatibus elementum et a platea"
+        },
+        {
+          "value": "d",
+          "text": "Lacinia ad nullam fusce sagittis magnis nulla"
+        }
+      ]
+    },
+    {
+      "id": "20",
+      "version": "1.0.0",
+      "type": "multiple-choice",
+      "text": "# Here's a slightly different example. What happens if we run it?\n\n~~~js\nlet numberOfTentacles = 10;\nconsole.log(typeof(numberOfTentacles));\nnumberOfTentacles = 'eight';\n~~~\n\n**Is there a difference in behavior compared to the last snippet? Explain why or why not using our mental model.**",
+      "explanation": "### Yes, there is a difference. It prints \"number\" to the console.\n\nVariables don’t have types in JavaScript — only values do. The answer to `typeof(numberOfTentacles)` depends on **which value** the variable was pointing to at that time.\n\nThe `numberOfTentacles` variable was pointing to 10 number value at the time we asked about its type. So we got `number` as a result.",
+      "correctAnswer": "a",
+      "canComment": true,
+      "choices": [
+        {
+          "value": "a",
+          "text": "Yes"
+        },
+        {
+          "value": "b",
+          "text": "No"
+        }
+      ]
+    },
+    {
+      "id": "30",
+      "version": "1.0.0",
+      "type": "multiple-choice",
+      "text": "# What happens if we run this code?\n\n~~~js\nlet answer = true;\nanswer.opposite = false;\nconsole.log(answer.opposite);\n~~~\n\n**Explain why using our mental model.**",
+      "explanation": "### This code won’t be able to set a property.\n\nBooleans are primitive. And primitive values are immutable. We can’t change them — and setting a property on a value is a change.\n\nIf our code runs in the [strict mode](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode), assigning a property on a primitive value would lead to an error. Otherwise, it will silently do nothing. In either case, we can’t set a property on a boolean value like `true`.",
+      "correctAnswer": "c",
+      "canComment": true,
+      "choices": [
+        {
+          "value": "a",
+          "text": "Lacinia hac velit lectus dolor mollis sodales"
+        },
+        {
+          "value": "b",
+          "text": "Neque vestibulum pretium duis felis mollis tortor"
+        },
+        {
+          "value": "c",
+          "text": "Semper nibh penatibus elementum et a platea"
+        },
+        {
+          "value": "d",
+          "text": "Lacinia ad nullam fusce sagittis magnis nulla"
+        }
+      ]
+    },
+    {
+      "id": "40",
+      "version": "1.0.0",
+      "type": "multiple-choice",
+      "text": "# What happens if we run this code?\n\n~~~js\nnull = 10;\nconsole.log(null);\n~~~\n\nExplain why using our mental model.",
+      "explanation": "### This code produces an error.\n\nIt is an error because the left side of assignment must always be a “wire”. Variables are “wires”, so they can appear on the left side. A literal like `null` is not a “wire”, so trying to assign something to it is meaningless.",
+      "correctAnswer": "d",
+      "choices": [
+        {
+          "value": "a",
+          "text": "Lacinia hac velit lectus dolor mollis sodales"
+        },
+        {
+          "value": "b",
+          "text": "Neque vestibulum pretium duis felis mollis tortor"
+        },
+        {
+          "value": "c",
+          "text": "Semper nibh penatibus elementum et a platea"
+        },
+        {
+          "value": "d",
+          "text": "Lacinia ad nullam fusce sagittis magnis nulla"
+        }
+      ]
+    },
+    {
+      "id": "60",
+      "version": "1.0.0",
+      "type": "multiple-image-choice",
+      "text": "# Which one of these diagrams best matches your sketch and our mental model after that code runs?",
+      "correctAnswer": "b",
+      "explanation": "### Diagram B is correct. It shows both variables pointing at the same \"eat cake\" string value.\n\n*Diagram A* doesn’t match the mental model we’re building. It shows values inside variables, but in our mental model variables point to values.\n\n*Diagram C* is wrong because it shows a variable pointing to another variable. Variables can only point to values, not to other variables.\n\n*Diagram D* is wrong for both of the same reasons.",
+      "canComment": true,
+      "choices": [
+        {
+          "value": "a",
+          "text": "A",
+          "image": "https://images.typeform.com/images/8NRhkJ9avndD/image/default"
+        },
+        {
+          "value": "b",
+          "text": "B",
+          "image": "https://images.typeform.com/images/Q4nSa7RVhPSa/image/default"
+        },
+        {
+          "value": "c",
+          "text": "C",
+          "image": "https://images.typeform.com/images/hPbRnHXKdcyn/image/default"
+        },
+        {
+          "value": "d",
+          "text": "D",
+          "image": "https://images.typeform.com/images/A8mWd6aqmV9Z/image/default"
+        }
+      ]
+    },
+    {
+      "id": "70",
+      "version": "1.0.0",
+      "type": "essay",
+      "text": "# This code prints `T` to the console. The `feed` function is written by our colleague **in another file**. We don't know what it does.\n\n~~~js\nlet pets = 'Tom and Jerry';\nfeed(pets);\nconsole.log(pets[0]);\n~~~\n\nCan our colleague change the console output only by editing the `feed` function? Why or why not?",
+      "explanation": "### No, our colleague cannot make this code log something other than `T`.\n\nThis is because when we call a function, we always pass a value, not a variable. We’re passing a string value — and **strings, like any primitives, are immutable**. Our colleague can’t mess with the `Tom and Jerry` string value, so its first character will always be `T`."
+    },
+    {
+      "id": "80",
+      "version": "1.0.0",
+      "type": "essay",
+      "text": "# This code prints `Tom` to the console. The feed function is written by our colleague in another file. We don't know what it does.\n\n~~~js\nlet pets = ['Tom', 'Jerry'];\nfeed(pets);\nconsole.log(pets[0]);\n~~~\n\n**Can our colleague change the console output only by editing the feed function? Why or why not?**",
+      "explanation": "### Yes, our colleague can make this code log something other than `Tom`.\n\nNote that our colleague can’t change **which** value our variable points to. We pass a value — not a variable! However, our colleague can affect *the array value itself*, and change its elements.\n\nThis is because **arrays, unlike strings, are mutable**. They are not primitive values — they are objects! In case you forget, here is a reminder of which values are primitive. Anything not on this list is an object, and our colleague can affect it.\n\n#### Primitive Values\n- Undefined (`undefined`), used for unintentionally missing values.\n- Null (`null`), used for intentionally missing values\n- Booleans (`true` and `false`), used for logical operations\n- Numbers (`-100`, `3.14`, and others), used for math calculations\n- Strings (`\"hello\"`, `\"abracadabra\"`, and others), used for text\n- Symbols (uncommon), used to hide implementation details\n- BigInts (uncommon and new), used for math on big numbers\n\n#### Objects and Functions\n- Objects (`{}` and others), used to group related data and code\n- Functions (`x => x * 2` and others), used to refer to code"
+    },
+    {
+      "id": "90",
+      "version": "1.0.0",
+      "type": "essay",
+      "required": true,
+      "text": "# Tell me what you think of this module and **Just JavaScript** so far.\n\nWas anything particularly insightful? Or confusing? I want to know!\n\nThere's no character limit for this question. I personally read every response, whether it's a few words or many paragraphs.\n\nIf you don't like typing in a form, please feel free to reply to my email directly. Your feedback keeps this course going.\n\nCheers,\nDan"
+    }
+  ]
+}
