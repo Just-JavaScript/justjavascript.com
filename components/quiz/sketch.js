@@ -63,8 +63,7 @@ const Sketch = (props) => {
               className="absolute z-10 left-0 top-0"
               onSubmit={formik.handleSubmit}
             >
-              {/* TODO: Figure out a fix for excalidraw embed on scrolling page, 
-              as mouse position in canvas gets wonky due to it's fixed positioning */}
+              {/* TODO: Excalidraw embed is broken, see https://github.com/excalidraw/excalidraw-embed/issues/32 */}
               <Dialog
                 style={{width: width, marginTop: '25%'}}
                 isOpen={showExcalidraw}

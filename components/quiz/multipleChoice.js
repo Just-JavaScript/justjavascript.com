@@ -18,10 +18,8 @@ const MultipleChoice = (props) => {
     handleSubmit,
     isDisabled,
     currentAnswer,
-    handleSkip,
     number,
     isLastQuestion,
-    currentQuestion,
     showExplanation,
     nested,
   } = props
@@ -77,8 +75,6 @@ const MultipleChoice = (props) => {
                         }
                         className="mr-2 -mt-1 form-radio bg-cool-gray-100 border border-cool-gray-200"
                       />
-                      {/* {correctAnswer && '✅ '}
-                      {incorrectAnswer && '❌ '} */}
                       <Markdown className="inline-block prose md:prose-lg text-gray-900">
                         {choice.text}
                       </Markdown>{' '}
@@ -155,15 +151,6 @@ const MultipleChoice = (props) => {
           {showExplanation && <Explanation>{question.explanation}</Explanation>}
         </AnimatePresence>
       </AnimateSharedLayout>
-      {/* {state.matches('answered') &&
-        (question.explanation || question.correctAnswer) && (
-          <div className="py-8 mx-auto w-full flex items-center justify-center">
-            <Continue
-              isLastQuestion={isLastQuestion}
-              onClick={handleContinue}
-            />
-          </div>
-        )} */}
     </QuizWrapper>
   )
 }

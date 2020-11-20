@@ -4,11 +4,11 @@ import AnswerWrapper from 'components/quiz/answerWrapper'
 import QuizWrapper from 'components/quiz/wrapper'
 import QuestionToShow from 'components/quiz/questionToShow'
 import {get, first} from 'lodash'
+import {scroller} from 'react-scroll'
+import {motion} from 'framer-motion'
 import useEggheadQuiz from 'hooks/useEggheadQuiz'
 import Continue from 'components/quiz/continue'
-import {scroller} from 'react-scroll'
 import Markdown from 'components/quiz/markdown'
-import {motion, AnimatePresence} from 'framer-motion'
 
 const MultipleQuestions = (props) => {
   const [currentQuestion, setCurrentQuestion] = React.useState({
@@ -38,10 +38,8 @@ const MultipleQuestions = (props) => {
               isDisabled,
               handleSubmit,
               currentAnswer,
-              handleContinue,
               isLastQuestion,
               showExplanation,
-              handleShowNextQuestion,
               number,
               nextQuestionId,
               nextQuestionIdx,
@@ -99,24 +97,18 @@ const MultipleQuestions = (props) => {
                         currentQuestion={currentQuestion}
                       />
                     </AnswerWrapper>
-                    {/* <AnimatePresence> */}
                     {displayContinue && (
                       <motion.div
                         layout
-                        // initial={{opacity: 0}}
-                        // animate={{opacity: 1}}
-                        // exit={{opacity: 0}}
                         className="py-3 flex items-center justify-center w-full"
                       >
                         <Continue onClick={props.handleContinue} />
                       </motion.div>
                     )}
-                    {/* </AnimatePresence> */}
                     {!displayContinue && !isLastQuestion && (
                       <div className="z-10 absolute left-0 bottom-0 w-full flex items-center justify-center transform translate-y-11">
                         <div className="flex flex-col items-center">
                           <div className="w-2 h-2 rounded-full bg-white" />
-                          {/* bg-gradient-to-b to-cool-gray-100 via-cool-gray-300 from-cool-gray-100 */}
                           <div className="w-px p-px h-16 bg-white" />
                           <div className="w-2 h-2 rounded-full bg-white" />
                         </div>

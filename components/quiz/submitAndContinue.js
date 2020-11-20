@@ -6,7 +6,6 @@ export default function SubmitAndContinue({
   handleContinue,
   isDisabled,
   isSubmitting,
-  isLastQuestion,
 }) {
   React.useEffect(() => {
     if (state.matches('answered')) {
@@ -24,7 +23,6 @@ export default function SubmitAndContinue({
       }`}
       type="submit"
       disabled={isDisabled}
-      // onClick={handleContinue}
     >
       {state.matches('answered') ? (
         'Next Question ↓'

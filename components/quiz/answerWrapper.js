@@ -1,10 +1,9 @@
 import React from 'react'
-import {motion, AnimateSharedLayout} from 'framer-motion'
+import {motion} from 'framer-motion'
 
 export default function AnswerWrapper({children, className}) {
   return (
     <motion.div
-      // layout
       className={
         className
           ? className

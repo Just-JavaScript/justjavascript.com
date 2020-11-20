@@ -18,11 +18,9 @@ const MultipleImageChoice = (props) => {
     handleSubmit,
     isDisabled,
     currentAnswer,
-    handleSkip,
     number,
     isLastQuestion,
     showExplanation,
-    currentQuestion,
     nested,
   } = props
   const {formik} = useEggheadQuestion(question, handleSubmit)
@@ -74,8 +72,6 @@ const MultipleImageChoice = (props) => {
                           className="mr-1 form-radio bg-cool-gray-100 border border-cool-gray-200"
                         />
                         {choice.text}
-                        {/* {correctAnswer && '✅'}
-                        {incorrectAnswer && '❌'} */}
                         <img
                           src={choice.image}
                           alt={choice.text}
@@ -136,7 +132,6 @@ const MultipleImageChoice = (props) => {
             />
           ) : (
             isEmpty(question.value) && (
-              // !state.matches('answered') &&
               <SubmitAndContinue
                 isLastQuestion={isLastQuestion}
                 state={state}

@@ -32,19 +32,16 @@ export default function Wrapper({
       : isLastQuestion)
 
   return (
-    // min-h-screen
     <AnimateSharedLayout>
       <div
         className={`${
           !nested ? 'min-h-screen' : ''
         } flex flex-col justify-between relative`}
       >
-        {/* <div className="">{children}</div> */}
         {children}
         <AnimatePresence>
           {displayContinue && (
             <motion.div
-              // layout
               initial={{opacity: 0}}
               animate={{opacity: 1}}
               exit={{opacity: 0}}
@@ -59,14 +56,10 @@ export default function Wrapper({
             </motion.div>
           )}
         </AnimatePresence>
-
         {!displayContinue && !displaySkip && !nested && (
           <div className="py-16" />
         )}
-        <motion.div
-          className="flex-grow h-full flex flex-col justify-end"
-          // layout
-        >
+        <motion.div className="flex-grow h-full flex flex-col justify-end">
           <AnimatePresence>
             {displaySkip && (
               <motion.div
