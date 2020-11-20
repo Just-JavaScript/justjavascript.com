@@ -21,12 +21,14 @@ const MultipleQuestions = (props) => {
   return (
     <QuizWrapper {...props}>
       <div className="md:py-8 py-8">
-        <div className="mb-4">
+        <div className="mb-4 sm:px-0 px-5">
           <span className="mr-2 p-2 rounded-full w-6 h-6 text-xs lining-nums font-bold inline-flex justify-center items-center bg-indigo-100 text-indigo-800">
             {props.number}
           </span>
         </div>
-        {quiz.text && <Markdown className="mb-4">{quiz.text}</Markdown>}
+        {quiz.text && (
+          <Markdown className="mb-4 sm:px-0 px-5">{quiz.text}</Markdown>
+        )}
         <div className="flex flex-col justify-start space-y-3">
           {props.question.questions.map((question, index) => {
             const {

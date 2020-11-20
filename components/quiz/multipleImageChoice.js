@@ -37,7 +37,7 @@ const MultipleImageChoice = (props) => {
         <form className="flex flex-col" onSubmit={formik.handleSubmit}>
           <div role="group" aria-labelledby="choices">
             <div
-              className="grid gap-4 grid-cols-2 py-4"
+              className="grid gap-2 sm:grid-cols-2 grid-cols-1 py-4"
               role="group"
               aria-labelledby="choices"
             >
@@ -114,7 +114,7 @@ const MultipleImageChoice = (props) => {
               )}
             </>
           )}
-          {state.matches('answered') && (
+          {state.matches('answered') && question.correctAnswer && (
             <motion.div
               layout
               initial={{opacity: 0}}
@@ -135,8 +135,8 @@ const MultipleImageChoice = (props) => {
               explanation={question.explanation}
             />
           ) : (
-            isEmpty(question.value) &&
-            !state.matches('answered') && (
+            isEmpty(question.value) && (
+              // !state.matches('answered') &&
               <SubmitAndContinue
                 isLastQuestion={isLastQuestion}
                 state={state}
