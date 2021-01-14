@@ -36,7 +36,7 @@ Our mental model will not attempt to explain how a value is represented in the c
 
 To us, each string is a value - not a “pointer” or a “memory address” — a *value*. **In our universe, a value is good enough.** Don’t allow “memory cells” and other low-level metaphors to distract you from building an accurate high-level mental model of JavaScript. It’s turtles all the way down, anyway!
 
-If you’re coming from a lower-level language, set aside your intuitions about “passing by reference”, “allocating on stack”, “copying on write”, and so on. These models of how a computer works often make it *harder* to be confident in what can or cannot happen in JavaScript. We’ll look at some of the lower-level details, but only [where it really matters](https://www.joelonsoftware.com/2002/11/11/the-law-of-leaky-abstractions/). They can serve as an *addition* to our mental model, rather than its foundation.
+If you’re coming from a lower-level language, set aside your intuitions about “passing by reference,” “allocating on stack,” “copying on write,” and so on. These models of how a computer works often make it *harder* to be confident in what can or cannot happen in JavaScript. We’ll look at some of the lower-level details, but only [where it really matters](https://www.joelonsoftware.com/2002/11/11/the-law-of-leaky-abstractions/). They can serve as an *addition* to our mental model, rather than its foundation.
 
 **The foundation of our mental model is values.** Each value belongs to a type. Primitive values are immutable. We can point to values from names in our code using "wires" we call variables. This foundation - this understanding of values - will help us continue building our mental model.
 
