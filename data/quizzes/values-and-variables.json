@@ -12,6 +12,7 @@
       "questions": [
         {
           "id": "1-10",
+          "type": "sketch",
           "version": "1.0.0",
           "text": "## Sketch a diagram of variables and values after this snippet of code runs. Use our mental model.\n~~~js\nlet dwarves = 7;\nlet continents = '7';\nlet worldWonders = 3 + 4;\n~~~\nTip: if you don't have paper and pen around, use an app like [Excalidraw](https://www.excalidraw.com)."
         },

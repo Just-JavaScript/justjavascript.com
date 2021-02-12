@@ -7,14 +7,11 @@ import QuizWrapper from 'components/quiz/wrapper'
 import Markdown from 'components/quiz/markdown'
 import Submit from 'components/quiz/submit'
 import Continue from 'components/quiz/continue'
+import Excalidraw from 'components/excalidraw/excalidraw-iframe'
 import useEggheadQuestion from 'hooks/useEggheadQuestion'
 import {motion, AnimatePresence} from 'framer-motion'
 import {useToggle, useWindowSize} from 'react-use'
 import {Dialog} from '@reach/dialog'
-
-const ExcalidrawWithoutSSR = dynamic(() => import('excalidraw'), {
-  ssr: false,
-})
 
 const Sketch = (props) => {
   const {
@@ -69,7 +66,7 @@ const Sketch = (props) => {
                 isOpen={showExcalidraw}
                 onDismiss={setShowExcalidraw}
               >
-                <ExcalidrawWithoutSSR
+                <Excalidraw
                   width={width} // 900 // Todo: mobile
                   height={height - height * 0.25} // 600
                   onChange={(sketch) => onChange(sketch)}
@@ -77,7 +74,6 @@ const Sketch = (props) => {
                   user={{name: 'Excalidraw User'}}
                   initialData={currentAnswer ? currentAnswer.value : output}
                 />
-
                 <div
                   style={{height: '25%'}}
                   className="fixed w-full top-0 left-0 flex items-center justify-center bg-white p-8"
