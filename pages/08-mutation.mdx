@@ -78,19 +78,19 @@ Did you do anything differently?
 
 </Answer>
 
-#### Properties Always Point at Values
+#### Properties Always point to Values
 
 When you see `address: sherlock.address`, it is tempting to think that John’s `address` property points at the Sherlock’s `address` property.
 
 This is misleading.
 
-**Remember: a property always _points at a value!_ It can’t point at another property or a variable. In general, all wires in our universe _point at values_.**
+**Remember: a property always _points at a value!_ It can’t point to another property or a variable. In general, all wires in our universe _point to values_.**
 
-![Properties always point at values](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1588160431/just-javascript-email-images/jj08/wires-values-v2.png)
+![Properties always point to values](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1588160431/just-javascript-email-images/jj08/wires-values-v2.png)
 
 When we see `address: sherlock.address`, we must figure out the value of `sherlock.address`, and point the `address` property wire _at that value_. It’s the value itself that matters, not how we found it (`sherlock.address`).
 
-As a result, there are now two different objects whose `address` properties point at the same object. Can you spot them both on the diagram?
+As a result, there are now two different objects whose `address` properties point to the same object. Can you spot them both on the diagram?
 
 ### Step 3: Changing the Properties
 
@@ -188,7 +188,7 @@ john = {
 }
 ```
 
-Here, we don’t mutate John’s object at all. Instead, we _reassign_ the `john` variable to point at a “new version” of John’s data. From now on, `john` points at a different object, whose `address` also points at a completely new object:
+Here, we don’t mutate John’s object at all. Instead, we _reassign_ the `john` variable to point to a “new version” of John’s data. From now on, `john` points at a different object, whose `address` also points at a completely new object:
 
 ![Solution without object mutation](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1587994848/just-javascript-email-images/jj08/solution2.png)
 

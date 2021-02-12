@@ -67,11 +67,11 @@ Write down your answers and think about _how_ you would explain them.
 
 This was not a trick question! Here are the answers:
 
-1. `Object.is(dwarves, continents)` is **`false`** because `dwarves` and `continents` **point at different values**.
+1. `Object.is(dwarves, continents)` is **`false`** because `dwarves` and `continents` **point to different values**.
 
-2. `Object.is(continents, worldWonders)` is **`false`** because `continents` and `worldWonders` **point at different values**.
+2. `Object.is(continents, worldWonders)` is **`false`** because `continents` and `worldWonders` **point to different values**.
 
-3. `Object.is(worldWonders, dwarves)` is **`true`** because `worldWonders` and `dwarves` **point at the same value**.
+3. `Object.is(worldWonders, dwarves)` is **`true`** because `worldWonders` and `dwarves` **point to the same value**.
 
 If two values are represented by a single shape on our diagram, it means that they aren’t really _two_ different values. They are the same one value! And that is the case for which `Object.is(a, b)` returns `true`.
 
@@ -134,11 +134,11 @@ After the last step, your diagram should look like this:
 
 Now let’s check your answers:
 
-1. `Object.is(banana, cherry)` is **`false`** because `banana` and `cherry` **point at different values**.
+1. `Object.is(banana, cherry)` is **`false`** because `banana` and `cherry` **point to different values**.
 
-2. `Object.is(cherry, chocolate)` is **`false`** because `cherry` and `chocolate` **point at different values**.
+2. `Object.is(cherry, chocolate)` is **`false`** because `cherry` and `chocolate` **point to different values**.
 
-3. `Object.is(chocolate, banana)` is **`true`** because `chocolate` and `banana` **point at the same value**.
+3. `Object.is(chocolate, banana)` is **`true`** because `chocolate` and `banana` **point to the same value**.
 
 As you can see, we didn’t need any additional concepts to explain how **Same Value Equality** works for objects. It naturally falls out of our mental model.
 
