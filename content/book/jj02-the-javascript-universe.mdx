@@ -94,7 +94,9 @@ console.log(typeof(/(hello|goodbye)/)); // "object"
 ```
 
 // "FUN FACT" POP-OUT
-“I see,” you might reply, “this is because *everything* is an object!” Alas, this is a popular urban legend, but it’s not true. Although code like `"hi".toUpperCase()` makes `"hi"` seem like an object, this is nothing but an illusion. JavaScript creates a wrapper object when you do this, and then immediately discards it. Don't let that behavior confuse you: numbers, strings, null, and other primitive types are *not* objects.
+“I see,” you might reply, “this is because *everything* is an object!” Alas, this is a popular urban legend, but it’s not true. Although code like `"hi".toUpperCase()` makes `"hi"` seem like an object, this is nothing but an illusion.
+JavaScript creates a wrapper object when you do this, and then immediately discards it. Don't let that behavior confuse you: numbers, strings, null, and other primitive types are *not* objects. It’s fine if this mechanism doesn’t quite click yet.
+**For now, you only need to remember that primitive values, such as numbers and strings, are *not* objects.**
 // "FUN FACT" POP-OUT
 
 ### Checking a Type
@@ -121,10 +123,6 @@ console.log(typeof(x => x * 2)); // "function"
 You can verify your guess in the browser console.
 
 ![Using typeof](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1578948458/just-javascript-email-images/jj02/typeof.gif)
-
-Now take another look at the last three examples — this time with close attention to their results. Did you find any of these results surprising? Why?
-
-It’s fine if this mechanism doesn’t quite click yet. **For now, you only need to remember that primitive values, such as numbers and strings, are *not* objects.**
 
 You might have questions. Good. If you ask a question, our JavaScript universe might answer it! Provided, of course, that you know how to ask.
 
