@@ -298,7 +298,9 @@ The answer to this question depends on whether we’re studying JavaScript “fr
 
 *Outside* our mental model, the answer depends on a specific implementation. Whether a string is represented as a single block of memory, multiple blocks, or [a rope](https://en.wikipedia.org/wiki/Rope_(data_structure)), is up to the JavaScript engine.
 
-But *inside* our mental model, this question doesn’t mean anything. We can’t set up an experiment to say whether strings “get created” or “get summoned” within our JavaScript universe.
+But as we discussed in our previous module, "Studying from the Inside," we have agreed to talk about the JavaScript universe as if we lived inside of it. We won't make statements about it that we can't verify from inside the universe — by running some code.
+
+The question of whether a string already "exists" or is "created" is not something we can test from the code. *Inside* our mental model, this question doesn’t mean anything. We can’t set up an experiment to say whether strings “get created” or “get summoned” within our JavaScript universe.
 
 To keep our mental model simple, we will say that **all conceivable string values already exist from the beginning — one value for every distinct string.**
 
