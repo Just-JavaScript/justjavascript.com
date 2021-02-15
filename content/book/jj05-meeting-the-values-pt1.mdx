@@ -226,7 +226,11 @@ If numbers expanded our JavaScript universe, the next stop on our tour, BigInts,
 
 Regular numbers can’t represent large integers with precision, so BigInts [fill that gap](https://v8.dev/features/bigint) (literally). How many BigInts are there in our universe? The specification says they have an *arbitrary precision*. This means that **in our JavaScript universe, there is an infinite number of BigInts — one for each integer in math**.
 
-You can see this illustrated here:
+If this sounds strange, consider that you’re already comfortable with the idea of there being infinite integers in math. (If you’re not, give it a few moments!) It’s not much of a leap then from a “math universe” to a “JavaScript universe.”
+
+*(And from there, we can go straight to the [Pepsi Universe](https://www.goldennumber.net/wp-content/uploads/pepsi-arnell-021109.pdf).)*
+
+You can see the idea of arbitrary precision illustrated here:
 
 ```js
 let alot = 9007199254740991n; // Notice n at the end
@@ -237,15 +241,9 @@ console.log(alot + 4n); // 9007199254740995n
 console.log(alot + 5n); // 9007199254740996n
 ```
 
-No funny business with the rounding! This is great for financial calculations where precision is especially important. Keep in mind that nothing is free. Operations with *truly* huge numbers may take time and resources.
+No funny business with the rounding! BigInts are great for financial calculations where precision is especially important.
 
-Yeah...
-
-If this sounds strange, consider that you’re already comfortable with the idea of there being infinite integers in math. (If you’re not, give it a few moments!) It’s not much of a leap then from a “math universe” to a “JavaScript universe.”
-
-*(And from there, we can go straight to the [Pepsi Universe](https://www.goldennumber.net/wp-content/uploads/pepsi-arnell-021109.pdf).)*
-
-Of course, in practice, we can’t fit all the possible BigInts inside the computer memory. If we tried, at some point it would crash or freeze. But conceptually, we could tour our JavaScript universe for eternity and never reach every single BigInt.
+But keep in mind that nothing is free. Operations with *truly* huge numbers may take time and resources - we can’t fit all the possible BigInts inside the computer memory. If we tried, at some point it would crash or freeze. But conceptually, we could tour our JavaScript universe for eternity and never reach every single BigInt.
 
 BigInts were only recently added to JavaScript, so you won’t see them used widely yet and if you use an older browser, they won’t work.
 
