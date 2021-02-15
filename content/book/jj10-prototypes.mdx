@@ -311,7 +311,7 @@ These “built-in” properties are nothing more than normal properties on the O
 
 ### An Object with no Prototype
 
-We’ve just learned that all objects created with the `{}` syntax have the special `__proto__` wire set to a default Object Prototype. But we also know that we can customize the `__proto__`. You might wonder: can we set it to `null`?
+We’ve just learned that all objects created with the `{}` syntax have the special `__proto__` wire pointing to a default Object Prototype. But we also know that we can customize the `__proto__`. You might wonder: can we set it to `null`?
 
 ```js
 let weirdo = {
@@ -343,7 +343,7 @@ let obj = {};
 obj.__proto__.smell = 'banana';
 ```
 
-We mutated the Object Prototype by adding a `smell` property to it. As a result, both detectives now  appear to be using a banana-flavored perfume:
+We mutated the Object Prototype by adding a `smell` property to it. As a result, both detectives now appear to be using a banana-flavored perfume:
 
 ```js
 console.log(sherlock.smell); // "banana"
@@ -375,6 +375,7 @@ In practice, you probably won’t use prototypes in your code directly. (In fact
 Prototypes are a bit unusual - most frameworks never fully embraced them as a paradigm. Still, you will notice prototypes hiding “beneath the surface” of other JavaScript features.
 
 For example, people often use prototypes to create a traditional “class inheritance” model that’s popular in other programming languages. This usage became so common that JavaScript added a class syntax as a convention that “hides” prototypes out of sight.
+
 To see this in action, take a look at this [snippet](https://gist.github.com/gaearon/a25fd42a1e6b4cc24851978df0a36571) of a JavaScript class rewritten with `__proto__` to demonstrate what’s happening under the hood.
 
 Personally, I don’t use a lot of classes in my daily coding, and I rarely deal with prototypes directly either. However, it helps to know how those features build on each other, and it's important to know what happens when I read or set a property on an object.
