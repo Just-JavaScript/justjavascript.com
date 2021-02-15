@@ -92,10 +92,6 @@ body {
 
 /* END — @reach/menu-button */
 
-/* EXCALIDRAW */
-
-@import '../node_modules/excalidraw/dist/excalidraw.min.css';
-
 .Modal {
   z-index: 999;
 }
