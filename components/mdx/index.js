@@ -4,6 +4,7 @@ import Answer from './answer'
 import Pagination from './pagination'
 import GifPlayer from './gif-player'
 import Article from '../../templates/article-template'
+import Excalidraw from '../excalidraw/excalidraw-iframe'
 import Layout from '../layout'
 import Subscribe from '../subscribe'
 
@@ -17,4 +18,5 @@ export default {
   Subscribe,
   Article,
   Layout,
+  Excalidraw,
 }
