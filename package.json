@@ -8,12 +8,14 @@
   "scripts": {
     "dev": "next",
     "build": "next build",
+    "postinstall": "cp -r ./node_modules/@excalidraw/excalidraw/dist/excalidraw-assets ./public/",
     "build:style": "tailwind build styles/index.css -o styles/output.css",
     "start": "next start",
     "export": "npm run build && next export"
   },
   "dependencies": {
     "@emotion/react": "^11.1.1",
+    "@excalidraw/excalidraw": "^0.3.0",
     "@mdx-js/loader": "^1.6.21",
     "@mdx-js/mdx": "^1.6.21",
     "@mdx-js/react": "^1.6.21",
@@ -28,7 +30,6 @@
     "autoprefixer": "^10.0.2",
     "axios": "^0.21.0",
     "dotenv": "^8.2.0",
-    "excalidraw": "^0.6.1",
     "focus-visible": "^5.2.0",
     "formik": "^2.2.5",
     "framer-motion": "^2.9.4",
