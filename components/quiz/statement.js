@@ -10,7 +10,7 @@ const Statement = (props) => {
   return (
     <QuizWrapper {...props}>
       <QuestionWrapper number={number} nested={props.nested}>
-        <Markdown>{question.text}</Markdown>
+        <Markdown>{question.prompt}</Markdown>
       </QuestionWrapper>
       {question.id === currentQuestion.id ? (
         <Continue onClick={handleContinue} />

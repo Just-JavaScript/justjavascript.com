@@ -75,17 +75,15 @@ export const quizMachine = createMachine(
         return !isEmpty(context.questions)
       },
       isAnswered: (context, _event) => {
-        return !isEmpty(
-          get(
-            find(context.questions, {id: context.currentQuestionId}),
-            'answer',
-          ),
-        )
+        get(
+          find(context.questions, {id: context.currentQuestionId}),
+          'answer'
+        ) !== ''
       },
     },
     services: {
       fetchQuizData: (context) => fetchQuizData(context.quizId),
       postQuizAnswer: (context) => postQuizAnswer(context),
     },
-  },
+  }
 )

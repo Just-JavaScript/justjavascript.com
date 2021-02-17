@@ -33,7 +33,7 @@ const TrueFalse = (props) => {
   return (
     <QuizWrapper {...props}>
       <QuestionWrapper number={number} nested={nested}>
-        <Markdown>{question.text}</Markdown>
+        <Markdown>{question.prompt}</Markdown>
       </QuestionWrapper>
       <AnswerWrapper>
         <form className="flex flex-col" onSubmit={formik.handleSubmit}>
@@ -124,11 +124,11 @@ const TrueFalse = (props) => {
                 {hasAnsweredCorrectly ? 'Correct! 🎉' : 'Incorrect'}
               </motion.div>
             )}
-            {question.explanation || question.correctAnswer ? (
+            {question.answer?.description || question.correctAnswer ? (
               <Submit
                 isDisabled={isDisabled}
                 isSubmitting={state.matches('answering')}
-                explanation={question.explanation}
+                explanation={question.answer?.description}
               />
             ) : (
               isEmpty(question.value) && (
@@ -146,7 +146,9 @@ const TrueFalse = (props) => {
       </AnswerWrapper>
       <AnimateSharedLayout>
         <AnimatePresence>
-          {showExplanation && <Explanation>{question.explanation}</Explanation>}
+          {showExplanation && (
+            <Explanation>{question.answer.description}</Explanation>
+          )}
         </AnimatePresence>
       </AnimateSharedLayout>
     </QuizWrapper>

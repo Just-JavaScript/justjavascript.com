@@ -29,7 +29,7 @@ const MultipleImageChoice = (props) => {
   return (
     <QuizWrapper {...props}>
       <QuestionWrapper number={number} nested={nested}>
-        <Markdown>{question.text}</Markdown>
+        <Markdown>{question.prompt}</Markdown>
       </QuestionWrapper>
       <AnswerWrapper>
         <form className="flex flex-col" onSubmit={formik.handleSubmit}>
@@ -71,10 +71,10 @@ const MultipleImageChoice = (props) => {
                           }
                           className="mr-1 form-radio bg-cool-gray-100 border border-cool-gray-200"
                         />
-                        {choice.text}
+                        {choice.label}
                         <img
                           src={choice.image}
-                          alt={choice.text}
+                          alt={choice.label}
                           className="border border-gray-200"
                         />
                       </label>
@@ -124,11 +124,11 @@ const MultipleImageChoice = (props) => {
               {hasAnsweredCorrectly ? 'Correct! 🎉' : 'Incorrect'}
             </motion.div>
           )}
-          {question.explanation || question.correctAnswer ? (
+          {question?.answer?.description || question.correctAnswer ? (
             <Submit
               isDisabled={isDisabled}
               isSubmitting={state.matches('answering')}
-              explanation={question.explanation}
+              explanation={question.answer.description}
             />
           ) : (
             isEmpty(question.value) && (
@@ -144,7 +144,9 @@ const MultipleImageChoice = (props) => {
         </form>
       </AnswerWrapper>
       <AnimatePresence>
-        {showExplanation && <Explanation>{question.explanation}</Explanation>}
+        {showExplanation && (
+          <Explanation>{question.answer.description}</Explanation>
+        )}
       </AnimatePresence>
     </QuizWrapper>
   )

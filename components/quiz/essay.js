@@ -24,11 +24,11 @@ const Essay = (props) => {
     nested,
   } = props
   const {formik} = useEggheadQuestion(question, handleSubmit)
-  
+  const explanation = question.answer?.description
   return (
     <QuizWrapper {...props}>
       <QuestionWrapper number={number} nested={nested}>
-        <Markdown>{question.text}</Markdown>
+        <Markdown>{question.prompt}</Markdown>
       </QuestionWrapper>
       <AnswerWrapper>
         <form className="flex flex-col" onSubmit={formik.handleSubmit}>
@@ -54,7 +54,6 @@ const Essay = (props) => {
               />
             </>
           )}
-
           <AnimatePresence>
             {formik.submitCount > 0 && formik.errors.value && (
               <motion.span
@@ -67,18 +66,17 @@ const Essay = (props) => {
               </motion.span>
             )}
           </AnimatePresence>
+
           <Submit
             isDisabled={isDisabled}
             isSubmitting={state.matches('answering')}
-            explanation={question.explanation}
+            explanation={explanation}
           />
         </form>
       </AnswerWrapper>
       <AnimatePresence>
         {showExplanation && (
-          <Explanation className="max-h-full">
-            {question.explanation}
-          </Explanation>
+          <Explanation className="max-h-full">{explanation}</Explanation>
         )}
       </AnimatePresence>
     </QuizWrapper>

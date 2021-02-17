@@ -12,27 +12,27 @@ import {
 
 export default function QuestionToShow({question, ...props}) {
   let QuestionToShow
-  switch (get(question, 'type')) {
-    case 'multiple-choice':
+  switch (get(question, '__typename')) {
+    case 'MultipleChoiceQuestion':
       QuestionToShow = MultipleChoice
       break
     case 'multiple-image-choice':
       QuestionToShow = MultipleImageChoice
       break
-    case 'essay':
+    case 'EssayQuestion':
       QuestionToShow = Essay
+      break
+    case 'SketchQuestion':
+      QuestionToShow = Sketch
+      break
+    case 'QuestionSet':
+      QuestionToShow = Questions
       break
     case 'theater':
       QuestionToShow = Theater
       break
-    case 'sketch':
-      QuestionToShow = Sketch
-      break
     case 'true-false':
       QuestionToShow = TrueFalse
-      break
-    case 'multiple-questions':
-      QuestionToShow = Questions
       break
     default:
       QuestionToShow = Statement

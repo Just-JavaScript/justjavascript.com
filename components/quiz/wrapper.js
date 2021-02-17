@@ -16,7 +16,7 @@ export default function Wrapper({
   const displayContinue =
     currentQuestion.id === question.id &&
     state.matches('answered') &&
-    (question.explanation || question.correctAnswer) &&
+    (question.answer?.description || question.correctChoices) &&
     !isLastQuestion
 
   const displaySkip =

@@ -2,12 +2,12 @@ import * as yup from 'yup'
 import {useFormik} from 'formik'
 
 export default function useEggheadQuestionMachine(question, handleSubmit) {
-  const {type} = question ? question : ''
+  const {__typename: type} = question || {}
   const isRequired = question?.required !== false
 
   function schemaFor(type) {
     switch (type) {
-      case 'multiple-choice':
+      case 'MultipleChoiceQuestion':
         return yup.object().shape({
           value: isRequired
             ? yup.string().required('Pick one.').nullable()
@@ -23,7 +23,7 @@ export default function useEggheadQuestionMachine(question, handleSubmit) {
           comment: yup.string().min(3, 'Must be at least 3 characters'),
         })
 
-      case 'essay':
+      case 'EssayQuestion':
         return yup
           .object()
           .shape({
@@ -43,7 +43,7 @@ export default function useEggheadQuestionMachine(question, handleSubmit) {
             : yup.mixed().oneOf(['0', '1', '2']),
         })
 
-      case 'sketch':
+      case 'SketchQuestion':
         return yup.object().shape({
           value: isRequired
             ? yup.array().required('Sketch something.')

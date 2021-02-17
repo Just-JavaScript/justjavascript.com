@@ -40,14 +40,16 @@ const Sketch = (props) => {
     return () => {}
   }, [output])
 
+  const explanation = question.answer?.description
+
   return (
     <QuizWrapper {...props}>
       <QuestionWrapper number={number}>
         <motion.div layout>
-          <Markdown>{question.text}</Markdown>
+          <Markdown>{question.prompt}</Markdown>
         </motion.div>
         <AnimatePresence>
-          {showExplanation && <Explanation>{question.explanation}</Explanation>}
+          {showExplanation && <Explanation>{explanation}</Explanation>}
         </AnimatePresence>
       </QuestionWrapper>
       <AnswerWrapper>
@@ -64,7 +66,7 @@ const Sketch = (props) => {
           <Submit
             isDisabled={isDisabled}
             isSubmitting={state.matches('answering')}
-            explanation={question.explanation}
+            explanation={explanation}
           />
           {formik.submitCount > 0 && formik.errors.value}
         </form>

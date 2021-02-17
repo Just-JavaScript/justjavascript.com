@@ -24,23 +24,33 @@ const MultipleChoice = (props) => {
     nested,
   } = props
   const {formik} = useEggheadQuestion(question, handleSubmit)
-  const hasAnsweredCorrectly = question.correctAnswer === formik.values.value
+  const hasAnsweredCorrectly =
+    question.correctChoices[0] === formik.values.value
+  const hasImages = question.choices[0]?.imageUrl
+  const explanation = question.answer?.description
 
   return (
     <QuizWrapper {...props}>
       <QuestionWrapper number={number} nested={nested}>
-        <Markdown>{question.text}</Markdown>
+        <Markdown>{question.prompt}</Markdown>
       </QuestionWrapper>
       <AnswerWrapper>
         <form className="flex flex-col" onSubmit={formik.handleSubmit}>
-          <div role="group" aria-labelledby="choices">
+          <div
+            role="group"
+            aria-labelledby="choices"
+            className={
+              hasImages && 'grid gap-2 sm:grid-cols-2 grid-cols-1 py-4'
+            }
+          >
             {question.choices &&
               question.choices.map((choice, i) => {
                 const hasAnswered =
-                  question.correctAnswer &&
+                  question?.correctChoices[0]?.value &&
                   (state.matches('answered') || question.value)
                 const correctAnswer =
-                  hasAnswered && question.correctAnswer === choice.value
+                  hasAnswered &&
+                  question?.correctChoices[0]?.value === choice.value
                 const incorrectAnswer =
                   hasAnswered && formik.values.value === choice.value
                 return (
@@ -76,8 +86,15 @@ const MultipleChoice = (props) => {
                         className="mr-2 -mt-1 form-radio bg-cool-gray-100 border border-cool-gray-200"
                       />
                       <Markdown className="inline-block prose md:prose-lg text-gray-900">
-                        {choice.text}
+                        {choice.label}
                       </Markdown>{' '}
+                      {choice.imageUrl && (
+                        <img
+                          src={choice.imageUrl}
+                          alt={choice.label}
+                          className="border border-gray-200"
+                        />
+                      )}
                     </label>
                   </div>
                 )
@@ -111,7 +128,7 @@ const MultipleChoice = (props) => {
             )}
           </div>
 
-          {state.matches('answered') && (
+          {state.matches('answered') && question?.correctChoices[0]?.value && (
             <motion.div
               layout
               initial={{opacity: 0}}
@@ -126,11 +143,11 @@ const MultipleChoice = (props) => {
             </motion.div>
           )}
 
-          {question.explanation ? (
+          {explanation ? (
             <Submit
               isDisabled={isDisabled}
               isSubmitting={state.matches('answering')}
-              explanation={question.explanation}
+              explanation={explanation}
             />
           ) : (
             isEmpty(question.value) &&
@@ -148,7 +165,9 @@ const MultipleChoice = (props) => {
       </AnswerWrapper>
       <AnimateSharedLayout>
         <AnimatePresence>
-          {showExplanation && <Explanation>{question.explanation}</Explanation>}
+          {showExplanation && (
+            <Explanation>{question.answer.description}</Explanation>
+          )}
         </AnimatePresence>
       </AnimateSharedLayout>
     </QuizWrapper>
