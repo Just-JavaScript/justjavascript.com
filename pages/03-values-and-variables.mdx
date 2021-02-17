@@ -124,9 +124,9 @@ As we refine our mental model, we might need to untangle related concepts.
 
 **_Variables point to values._**
 
-In my universe, a variable is a wire. It has two ends and a direction: it starts from a name in my code and it ends pointing at some value in my universe.
+In my universe, a variable is a wire. It has two ends and a direction: it starts as name in my code and it ends pointing to some value in my universe.
 
-For example, I can point the `pet` variable at the `"Narwhal"` value:
+For example, I can point the `pet` variable to the `"Narwhal"` value:
 
 ```js
 let pet = 'Narwhal'
@@ -180,7 +180,7 @@ That’s hardly surprising.
 
 But note that it is not the `pet` _variable_ that we pass to `console.log`. We might say that colloquially, but we can’t really pass _variables_ to functions. We pass the current _value_ of the `pet` variable. How does this work?
 
-It turns out that a variable name like `pet` can serve as an expression too! When we write `pet`, we’re asking JavaScript a question: “What is the current value of `pet`?” To answer our question, JavaScript follows the `pet`’s “wire”, and gives us back the value at the end of this “wire”.
+It turns out that a variable name like `pet` can serve as an expression too! When we write `pet`, we’re asking JavaScript a question: “What is the current value of `pet`?” To answer our question, JavaScript follows the `pet` “wire”, and gives us back the value at the end of this “wire”.
 
 So the same expression can give us different values at different times!
 
@@ -216,7 +216,7 @@ let y = x
 x = 0
 ```
 
-I suggest that you take a piece of paper or a [drawing app](https://www.excalidraw.com/) and sketch out a diagram of what happens to the “wires” of the `x` and `y` variables step by step.
+I suggest that you take a piece of paper or a [drawing app](https://www.excalidraw.com/) and sketch out a diagram of what happens to the `x` and `y` variables, or “wires”, step by step.
 
 <Excalidraw />
 
@@ -233,24 +233,23 @@ I suggest that you take a piece of paper or a [drawing app](https://www.excalidr
 
 ![let y = x](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1579283157/just-javascript-email-images/jj03/assign-step2.gif)
 
-- Declare a variable called `y`.
-  - _Make a wire for the `y` variable._
+- Declare a variable (a wire) called `y`.
 - Assign to `y` the value of `x`.
   - Evaluate the expression: `x`.
     - _The “question” we want to answer is `x`._
-    - **_Follow the `x`’s wire — the answer is the value `10`._**
+    - **_Follow the `x` wire — the answer is the value `10`._**
   - The `x` expression resulted in the value `10`.
   - Therefore, assign to `y` the value of `10`.
-  - **_Point `y`’s wire to the value `10`._**
+  - **_Point the `y` wire to the value `10`._**
 
 **Finally, we get to the third line:**
 
 ![x = 0](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1579283157/just-javascript-email-images/jj03/assign-step3.gif)
 
 - Assign to `x` the value of `0`.
-  - **_Point `x`’s wire to the value `0`._**
+  - **_Point the `x` wire to the value `0`._**
 
-At the end, the `x` variable points to the value `0`, and the `y` variable points to the value `10`. Note that `y = x` did not mean point `y` to `x`”. We can’t point variables to each other! **Variables always point to _values_.** When we see an assignment, we “ask” the right side’s value, and point the left side’s “wire” at it.
+At the end, the `x` variable points to the value `0`, and the `y` variable points to the value `10`. Note that `y = x` did not mean point `y` to `x`”. We can’t point variables to each other! **Variables always point to _values_.** When we see an assignment, we “ask” the right side’s value, and point the “wire” on the left side to it.
 
 I mentioned in _Mental Models_ that it is fairly common to think of variables as boxes. The universe we’re building is not going to have any boxes at all. **It only has wires!** This might seem a bit annoying. Why can’t we just “put `0` and `10` values _into_ the variables rather than _pointing_ variables to them?
 

@@ -90,7 +90,7 @@ Here, `sherlock` is still a variable, but `surname` and `age` are not. They are 
 
 Here, we can see that the `sherlock` **variable** points to an object we have created. That object has two **properties**. Its `surname` property points to the `"Holmes"` string value, and its `age` property points to the `64` number value.
 
-Importantly, properties don’t *contain* values — they *point* at them! It turns out that our universe is full of wires. Some of them start in our code (variables), and others start from objects (properties). All wires always point to values.
+Importantly, properties don’t *contain* values — they *point* at them! Remember that our universe is full of wires. Some of them start in our code (variables), and others start from objects (properties). All wires always point to values.
 
 Before reading this, you might have imagined that values live “inside” objects because they appear “inside” in code. This intuition often leads to mistakes, so we will be “thinking in wires” instead. Take one more look at the code and the diagram. Make sure you’re comfortable with them before you continue.
 
@@ -112,9 +112,9 @@ Our object’s `age` property points to `64`, so `sherlock.age` results in `64`.
 
 ### Property Names
 
-Properties have names. A single object can’t have two properties with the same name. For example, our object can’t have two properties called `age`.
+One important thing to keep in mind when naming a property is that a single object can’t have two properties with the same name. For example, our object can’t have two properties called `age`.
 
-The property names are always case-sensitive! For example, `age` and `Age` would be two completely different properties from JavaScript’s point of view.
+Another important note is that property names are also always case-sensitive! For example, `age` and `Age` would be two completely different properties from JavaScript’s point of view.
 
 If we don’t know a property name ahead of time but we have it in code as a string value, we can use the `[]` “bracket notation” to read it from an object:
 
@@ -218,7 +218,7 @@ The answer is that calculating `sherlock.boat.name` **throws an error**:
 
 - We need to first figure out the value of `sherlock.boat`.
   - To do that, we need to figure out the value of `sherlock`.
-    - The wire from `sherlock` variable leads to an object.
+    - The `sherlock` variable points to an object.
     - Therefore, the value of `sherlock` is that object.
   - An object is not `null` or `undefined`, so we keep going.
   - That object **does not** have a `boat` property.
@@ -237,7 +237,7 @@ If this still seems confusing, scroll up and mechanically follow the rules.
 ## Recap
 
 * Properties are wires — a bit like variables. They both point to values. Unlike variables, properties **start from objects** in our universe.
-* Properties have names. Properties belong to particular objects. You can’t have more than one property with the same name on an object.
+* Properties belong to particular objects. You can’t have more than one property with the same name on an object.
 * Generally, you can perform an assignment in three steps:
   1. Figure out which wire is on the left.
   2. Figure out which value is on the right.
@@ -245,7 +245,7 @@ If this still seems confusing, scroll up and mechanically follow the rules.
 * An expression like `obj.property` is calculated in three steps:
   1. Figure out which value is on the left.
   2. If it’s `null` or `undefined`, throw an error.
-  3. If that property exists, the result is the value its wire points to. If that property doesn’t exist, the result is `undefined`.
+  3. If that property exists, the result is the value it points to. If that property doesn’t exist, the result is `undefined`.
 
 Note that this mental model of properties is still a bit simplified. It is good enough for now, but it will need to expand as you learn more about the JavaScript universe.
 

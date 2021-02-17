@@ -272,7 +272,7 @@ It’s worth noting that mutating *new* objects is always okay because there are
 - Objects are never “nested” in our universe - pay close attention to the wires.
 - Changing an object’s property is also called *mutating* that object.
 - If you mutate an object, your code will “see” that change via any wires pointing at that object. Sometimes, this may be what you want. However, mutating accidentally shared data may cause bugs.
-- You can declare a variable with `const` instead of `let`. That allows you to enforce that this variable’s wire always points at the same value. But remember that `const` does *not* prevent object mutation!
+- You can declare a variable with `const` instead of `let`. That allows you to enforce that this variable always points at the same value. But remember that `const` does *not* prevent object mutation!
 - Mutating the objects you’ve just created in code is safe. Broadly, how much you’ll use mutation depends on your app’s architecture.
 
 ## Exercises
