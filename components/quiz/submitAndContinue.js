@@ -16,7 +16,7 @@ export default function SubmitAndContinue({
   return state.matches('answered') ? null : (
     <motion.button
       layout
-      className={`relative z-20 mt-4 px-3 py-3 flex items-center justify-center rounded-md font-semibold transition-colors ease-in-out duration-300 ${
+      className={`w-full relative z-20 mt-4 px-3 py-3 flex items-center justify-center rounded-md font-semibold transition-colors ease-in-out duration-300 ${
         state.matches('answered')
           ? 'bg-indigo-100 text-indigo-700 hover:bg-indigo-50'
           : 'bg-indigo-600 text-white hover:bg-indigo-700'

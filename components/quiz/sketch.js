@@ -85,7 +85,7 @@ const Sketch = (props) => {
           {formik.submitCount > 0 && formik.errors.value}
         </form>
         <AnimatePresence>
-          {state.matches('answered') && (
+          {explanation && state.matches('answered') && (
             <Continue
               isLastQuestion={isLastQuestion}
               onClick={handleContinue}
