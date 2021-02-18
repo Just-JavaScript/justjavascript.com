@@ -7,6 +7,7 @@ import Markdown from 'components/quiz/markdown'
 import Submit from 'components/quiz/submit'
 import useEggheadQuestion from 'hooks/useEggheadQuestion'
 import {motion, AnimatePresence} from 'framer-motion'
+import SubmitAndContinue from 'components/quiz/submitAndContinue'
 
 const Essay = (props) => {
   const {
@@ -67,11 +68,21 @@ const Essay = (props) => {
             )}
           </AnimatePresence>
 
-          <Submit
-            isDisabled={isDisabled}
-            isSubmitting={state.matches('answering')}
-            explanation={explanation}
-          />
+          {explanation ? (
+            <Submit
+              isDisabled={isDisabled}
+              isSubmitting={state.matches('answering')}
+              explanation={explanation}
+            />
+          ) : (
+            <SubmitAndContinue
+              isLastQuestion={isLastQuestion}
+              state={state}
+              handleContinue={handleContinue}
+              isDisabled={state.matches('answering')}
+              isSubmitting={state.matches('answering')}
+            />
+          )}
         </form>
       </AnswerWrapper>
       <AnimatePresence>
