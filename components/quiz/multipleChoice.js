@@ -25,7 +25,7 @@ const MultipleChoice = (props) => {
   } = props
   const {formik} = useEggheadQuestion(question, handleSubmit)
   const hasAnsweredCorrectly =
-    question.correctChoices[0] === formik.values.value
+    question.correctChoices[0].value === formik.values.value
   const hasImages = question.choices[0]?.imageUrl
   const explanation = question.answer?.description
 
@@ -100,11 +100,15 @@ const MultipleChoice = (props) => {
                 )
               })}
             {formik.submitCount > 0 && formik.errors.value}
+          </div>
+          <div>
             {question.canComment === true && (
               <>
-                {/* <label htmlFor="comment" className="block mt-2">
-              Explain why
-            </label> */}
+                <label htmlFor="comment" className="block mt-2">
+                  {question.commentPrompt && (
+                    <Markdown>{question.commentPrompt}</Markdown>
+                  )}
+                </label>
                 {state.matches('answered') ? (
                   <Markdown className="p-3 mt-4">
                     {formik.values.comment}
@@ -116,7 +120,7 @@ const MultipleChoice = (props) => {
                       disabled={isDisabled}
                       id="comment"
                       name="comment"
-                      placeholder="Can you explain why?"
+                      placeholder="Write your answer..."
                       onChange={formik.handleChange}
                       onBlur={formik.handleBlur}
                       value={formik.values.comment}

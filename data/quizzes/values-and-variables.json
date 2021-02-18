@@ -9,7 +9,6 @@
       "id": "ckksrck08114q0930w6pm9y7f",
       "title": "JJS 03 01 numberOfTentacles code",
       "prompt": "# What happens if we run this code?\n\nIs this code valid? Why or why not?\n\n```js\nlet numberOfTentacles = 10;\nnumberOfTentacles = 'eight';\nconsole.log(typeof(numberOfTentacles));\n```",
-      "required": true,
       "answer": {
         "description": "**Yes, it’s valid. It prints \"string\" to the console.**\n\nVariables don’t have types in JavaScript — only values do. The answer to typeof(numberOfTentacles) depends on **which value** the variable was pointing to at that time.\n\nThe numberOfTentacles variable was pointing to \"eight\" string value at the time we asked about its type. So we got \"string\" as a result.",
         "title": "JJS 03 01 Answer"
@@ -54,7 +53,7 @@
           "__typename": "SketchQuestion",
           "id": "ckl87xdmgj2yx0a26quag1f5c",
           "title": "JJS 03 05 01 sketch",
-          "prompt": "## Sketch a diagram of variables and values after this snippet of code runs. Use our mental model.\n\n```js\nlet dwarves = 7;\nlet continents = '7';\nlet worldWonders = 3 + 4;\n```",
+          "prompt": "## Sketch a diagram of variables and values after this snippet of code runs. Use our mental model.\n\n```js\nlet it = 'be';\nlet them = 'eat cake';\nit = them;\n```",
           "answer": null
         },
         {
@@ -62,14 +61,17 @@
           "id": "ckkokz3qwallf0c769c5jlhpi",
           "title": "JJS 03 05 02 Which Matches Your Sketch",
           "prompt": "# Which one of these diagrams best matches your sketch and our mental model after that code runs?",
-          "canComment": false,
-          "answer": null,
+          "canComment": true,
+          "commentPrompt": "You’ve chosen a particular diagram for our mental model. Did you notice **anything wrong** about the other diagrams?",
+          "answer": {
+            "description": "**Diagram B is correct.** It shows both variables pointing at the same \"eat cake\" string value.\n\nDiagram A doesn’t match the mental model we’re building. It shows values inside variables, but in our mental model variables point to values.\n\nDiagram C is wrong because it shows a variable pointing to another variable. Variables can only point to values, not to other variables.\n\nDiagram D is wrong for both of the same reasons."
+          },
           "choices": [
             {
               "id": "ckkol31q0and00a81ouq2i33x",
               "value": "jjs-03-05-a",
               "label": "A",
-              "imageUrl": "https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612305517/just-javascript-email-images/jj03/quiz%20images/default.png"
+              "imageUrl": "https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612305600/just-javascript-email-images/jj03/quiz%20images/01%20eat%20cake.png"
             },
             {
               "id": "ckkol6qfsaoj70a85rggdp959",
@@ -90,16 +92,14 @@
               "imageUrl": "https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612305661/just-javascript-email-images/jj03/quiz%20images/04%20eat%20cake.png"
             }
           ],
-          "correctChoices": []
-        },
-        {
-          "__typename": "EssayQuestion",
-          "id": "ckksspc6g12zw0a81lz1kv58z",
-          "title": "JJS 03 05 03 What's wrong with the diagrams?",
-          "prompt": "You’ve chosen a particular diagram for our mental model. Did you notice **anything wrong** about the other diagrams?",
-          "answer": {
-            "description": "**Diagram B is correct.** It shows both variables pointing at the same \"eat cake\" string value.\n\nDiagram A doesn’t match the mental model we’re building. It shows values inside variables, but in our mental model variables point to values.\n\nDiagram C is wrong because it shows a variable pointing to another variable. Variables can only point to values, not to other variables.\n\nDiagram D is wrong for both of the same reasons."
-          }
+          "correctChoices": [
+            {
+              "id": "ckkol6qfsaoj70a85rggdp959",
+              "value": "jjs-03-05-b",
+              "label": "B",
+              "imageUrl": "https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612305624/just-javascript-email-images/jj03/quiz%20images/B%20eat%20cake.png"
+            }
+          ]
         }
       ]
     },

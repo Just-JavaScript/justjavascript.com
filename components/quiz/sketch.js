@@ -6,9 +6,11 @@ import QuizWrapper from 'components/quiz/wrapper'
 import Markdown from 'components/quiz/markdown'
 import Submit from 'components/quiz/submit'
 import Continue from 'components/quiz/continue'
+import SubmitAndContinue from 'components/quiz/submitAndContinue'
 import Excalidraw from 'components/excalidraw/excalidraw-iframe'
 import useEggheadQuestion from 'hooks/useEggheadQuestion'
 import {motion, AnimatePresence} from 'framer-motion'
+import {isEmpty} from 'lodash'
 
 const Sketch = (props) => {
   const {
@@ -63,11 +65,23 @@ const Sketch = (props) => {
             user={{name: 'Excalidraw User'}}
             initialData={currentAnswer ? currentAnswer.value : output}
           />
-          <Submit
-            isDisabled={isDisabled}
-            isSubmitting={state.matches('answering')}
-            explanation={explanation}
-          />
+          {explanation ? (
+            <Submit
+              isDisabled={isDisabled}
+              isSubmitting={state.matches('answering')}
+              explanation={explanation}
+            />
+          ) : (
+            isEmpty(question.value) && (
+              <SubmitAndContinue
+                isLastQuestion={isLastQuestion}
+                state={state}
+                handleContinue={handleContinue}
+                isDisabled={state.matches('answering')}
+                isSubmitting={state.matches('answering')}
+              />
+            )
+          )}
           {formik.submitCount > 0 && formik.errors.value}
         </form>
         <AnimatePresence>
