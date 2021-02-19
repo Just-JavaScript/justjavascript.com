@@ -1,0 +1,444 @@
+{
+  "title": "JJS 07 Properties",
+  "slug": "properties",
+  "id": "properties",
+  "questions": [
+    {
+      "__typename": "QuestionSet",
+      "id": "cklc4tya01yvl09742q7mm6he",
+      "title": "JJS 07 01 Sketch a diagram",
+      "questions": [
+        {
+          "__typename": "SketchQuestion",
+          "id": "cklc4ribc1yt70974vgdvr6su",
+          "title": "JJS 07 01 01 Sketch a diagram",
+          "prompt": "# Sketch a diagram of variables and values after this snippet of code runs. Use our mental model.\n\n```js\nlet ship = { name: 'Rocinante' };\n```",
+          "answer": null
+        },
+        {
+          "__typename": "MultipleChoiceQuestion",
+          "id": "cklc4twqg1zsp0b775bisrnkb",
+          "title": "JJS 07 01 02 Which one",
+          "prompt": "# Which one of these diagrams best matches your sketch and our mental model after that code runs?",
+          "canComment": false,
+          "commentPrompt": null,
+          "answer": {
+            "description": "**Diagram B is correct.** It shows the ship variable pointing to an object, whose name property points to a string.\n\n*Diagram A *is wrong because it doesn't show the object value to which the ship variable is pointing.\n\n*Diagram C* is wrong because it shows the string inside our object. In our mental model, properties are wires.\n\n*Diagram D* is wrong because it shows ship.name as being a variable in code. However, it is a property and belongs to an object.\n\n![https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612903876/just-javascript-email-images/jj07/Quiz%20Images/jjs-07-01-b.png](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612903876/just-javascript-email-images/jj07/Quiz%20Images/jjs-07-01-b.png)"
+          },
+          "choices": [
+            {
+              "id": "ckkyha44g0s590a338xhzru8y",
+              "value": "jjs-07-01-a",
+              "label": "A",
+              "imageUrl": "https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612903778/just-javascript-email-images/jj07/Quiz%20Images/jjs-07-01-a.png"
+            },
+            {
+              "id": "ckkyhc0so0t9g0969uf7uxbmm",
+              "value": "jjs-07-01-b",
+              "label": "B",
+              "imageUrl": "https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612903876/just-javascript-email-images/jj07/Quiz%20Images/jjs-07-01-b.png"
+            },
+            {
+              "id": "ckkyhdy8o0shj0a26qyapwn21",
+              "value": "jjs-07-01-c",
+              "label": "C",
+              "imageUrl": "https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612903969/just-javascript-email-images/jj07/Quiz%20Images/jjs-07-01-c.png"
+            },
+            {
+              "id": "ckkyhfzjk0shi0a338whylhz5",
+              "value": "jjs-07-01-d",
+              "label": "D",
+              "imageUrl": "https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612904056/just-javascript-email-images/jj07/Quiz%20Images/jjs-07-01-d.png"
+            }
+          ],
+          "correctChoices": [
+            {
+              "id": "ckkyhc0so0t9g0969uf7uxbmm",
+              "value": "jjs-07-01-b",
+              "label": "B",
+              "imageUrl": "https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612903876/just-javascript-email-images/jj07/Quiz%20Images/jjs-07-01-b.png"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "__typename": "QuestionSet",
+      "id": "cklc4yr481zyo0b770uqznc7m",
+      "title": "JJS 07 02 Sketch a diagram",
+      "questions": [
+        {
+          "__typename": "SketchQuestion",
+          "id": "cklc4x58w1zwq0b77enj1qija",
+          "title": "JJS 07 02 01 Sketch a diagram",
+          "prompt": "# Sketch a diagram of variables and values after this snippet of code runs. Use our mental model.\n\n```js\nlet captain = 'Jim';\nlet ship = { captain: captain };\ncaptain = 'Naomi';\n```",
+          "answer": null
+        },
+        {
+          "__typename": "MultipleChoiceQuestion",
+          "id": "cklc4ypko1z190a716thlw0e7",
+          "title": "JJS 07 02 02 Which one",
+          "prompt": "# Which one of these diagrams best matches your sketch and our mental model after that code runs?",
+          "canComment": false,
+          "commentPrompt": null,
+          "answer": {
+            "description": "**Diagram D is correct.** It shows the captain variable pointing to \"Naomi\". It also shows the ship variable pointing to an object whose captain property points to \"Jim\".\n\n*Diagrams A and B* are wrong because they show the captain variable and the captain property of our object pointing to the same value. However, line 3 changed the variable alone.\n\n*Diagram C* is wrong because it shows a property pointing to a variable, which is not possible. Properties point at values.\n\n![https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612904721/just-javascript-email-images/jj07/Quiz%20Images/jjs-07-02-d.png](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612904721/just-javascript-email-images/jj07/Quiz%20Images/jjs-07-02-d.png)"
+          },
+          "choices": [
+            {
+              "id": "ckkyhnykw0uch0b75zfabdng4",
+              "value": "jjs-07-02-a",
+              "label": "A",
+              "imageUrl": "https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612904428/just-javascript-email-images/jj07/Quiz%20Images/jjs-07-02-a.png"
+            },
+            {
+              "id": "ckkyhpw0w0vty09699kua3cnn",
+              "value": "jjs-07-02-b",
+              "label": "B",
+              "imageUrl": "https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612904524/just-javascript-email-images/jj07/Quiz%20Images/jjs-07-02-b.png"
+            },
+            {
+              "id": "ckkyhs2q80xvh0b759wivgr33",
+              "value": "jjs-07-02-c",
+              "label": "C",
+              "imageUrl": "https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612904617/just-javascript-email-images/jj07/Quiz%20Images/jjs-07-02-c.png"
+            },
+            {
+              "id": "ckkyhuhx40ywu0a33skc0yrja",
+              "value": "jjs-07-02-d",
+              "label": "D",
+              "imageUrl": "https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612904721/just-javascript-email-images/jj07/Quiz%20Images/jjs-07-02-d.png"
+            }
+          ],
+          "correctChoices": [
+            {
+              "id": "ckkyhuhx40ywu0a33skc0yrja",
+              "value": "jjs-07-02-d",
+              "label": "D",
+              "imageUrl": "https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612904721/just-javascript-email-images/jj07/Quiz%20Images/jjs-07-02-d.png"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "__typename": "QuestionSet",
+      "id": "cklc534iw204v0b7769il54un",
+      "title": "JJS 07 03 Sketch a diagram",
+      "questions": [
+        {
+          "__typename": "SketchQuestion",
+          "id": "cklc5172w20vj0c859jty0e6q",
+          "title": "JJS 07 03 01 Sketch a diagram",
+          "prompt": "# Sketch a diagram of variables and values after this snippet of code runs. Use our mental model.\n\n```js\nlet turner = { name: 'Alex' };\nlet kamal = { name: 'Alex' };\n```",
+          "answer": null
+        },
+        {
+          "__typename": "MultipleChoiceQuestion",
+          "id": "cklc5327k1z870974t9qnsslx",
+          "title": "JJS 07 03 02 Which one",
+          "prompt": "# Which one of these diagrams best matches your sketch and our mental model after that code runs?",
+          "canComment": false,
+          "commentPrompt": null,
+          "answer": {
+            "description": "**Diagram B is correct.** It shows the turner and kamal variables pointing to two different objects. Each of these objects have a name property that points to the same value \"Alex\".\n\n![https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612905183/just-javascript-email-images/jj07/Quiz%20Images/jjs-07-03-b.png](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612905183/just-javascript-email-images/jj07/Quiz%20Images/jjs-07-03-b.png)\n\n*Diagrams A* doesn't match our mental model because it shows the string value \"Alex\" twice. In our universe, there is only one value for every distinct string.\n\n*Diagram C* is wrong because it shows only one object value. However, every { } object literal creates a different object value, so we should have two of them.\n\n*Diagram D* is wrong because it doesn't show objects at all."
+          },
+          "choices": [
+            {
+              "id": "ckkyi1rhs163s0969d3p5ucvr",
+              "value": "jjs-07-03-a",
+              "label": "A",
+              "imageUrl": "https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612905080/just-javascript-email-images/jj07/Quiz%20Images/jjs-07-03-a.png"
+            },
+            {
+              "id": "ckkyi42ts16oo0969bs770qhn",
+              "value": "jjs-07-03-b",
+              "label": "B",
+              "imageUrl": "https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612905183/just-javascript-email-images/jj07/Quiz%20Images/jjs-07-03-b.png"
+            },
+            {
+              "id": "ckkyi6lvk162n0a33f2t5y2dn",
+              "value": "jjs-07-03-c",
+              "label": "C",
+              "imageUrl": "https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612905305/just-javascript-email-images/jj07/Quiz%20Images/jjs-07-03-c.png"
+            },
+            {
+              "id": "ckkyia56w17hq0b75vejjkfdc",
+              "value": "jjs-07-03-d",
+              "label": "d",
+              "imageUrl": "https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612905438/just-javascript-email-images/jj07/Quiz%20Images/jjs-07-03-d.png"
+            }
+          ],
+          "correctChoices": [
+            {
+              "id": "ckkyi42ts16oo0969bs770qhn",
+              "value": "jjs-07-03-b",
+              "label": "B",
+              "imageUrl": "https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612905183/just-javascript-email-images/jj07/Quiz%20Images/jjs-07-03-b.png"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "__typename": "QuestionSet",
+      "id": "cklc565bk20as0b77mm8zvilc",
+      "title": "JJS 07 04 Sketch a diagram",
+      "questions": [
+        {
+          "__typename": "SketchQuestion",
+          "id": "cklc54e1s1zav0974edojejwz",
+          "title": "JJS 07 04 01 Sketch a diagram",
+          "prompt": "# Sketch a diagram of variables and values after this snippet of code runs. Use our mental model.\n\n```js\nlet ice = { taste: undefined };\nlet sand = {};\nlet answer = ice.taste === sand.taste;\n```",
+          "answer": null
+        },
+        {
+          "__typename": "MultipleChoiceQuestion",
+          "id": "cklc563s01zb10a71nm58pe1o",
+          "title": "JJS 07 04 02 Which one",
+          "prompt": "# Which one of these diagrams best matches your sketch and our mental model after that code runs?",
+          "canComment": false,
+          "commentPrompt": null,
+          "answer": {
+            "description": "**Diagram A is correct.** It shows the sand variable pointing to an empty object. It also shows the ice variable pointing to an object with a taste property that itself points to the undefined value. The answer points to true.\n\nHere, *ice.taste* is *undefined* because *ice.taste* points at the undefined value.\n\nHowever, *sand.taste* is also *undefined* — because **the rules say** that if a property doesn't exist, the value of the property expression is the *undefined value*. And indeed, the object sand points to doesn't have a taste property.\n\nWe have *undefined* on both sides of ===. There is only one *undefined* value in our universe — so they must be equal and the *answer* is *true*.\n\n![https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612910474/just-javascript-email-images/jj07/Quiz%20Images/jjs-07-04-a.png](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612910474/just-javascript-email-images/jj07/Quiz%20Images/jjs-07-04-a.png)"
+          },
+          "choices": [
+            {
+              "id": "ckkyl9eaw1s6j0a265u61l2h2",
+              "value": "jjs-07-04-a",
+              "label": "A",
+              "imageUrl": "https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612910474/just-javascript-email-images/jj07/Quiz%20Images/jjs-07-04-a.png"
+            },
+            {
+              "id": "ckkylcl9s1u1q0b75lxg3ihca",
+              "value": "jjs-07-04-b",
+              "label": "B",
+              "imageUrl": "https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612910580/just-javascript-email-images/jj07/Quiz%20Images/jjs-07-04-b.png"
+            },
+            {
+              "id": "ckkylfc1c1t9h096914s1yt2y",
+              "value": "jjs-07-04-c",
+              "label": "C",
+              "imageUrl": "https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612910728/just-javascript-email-images/jj07/Quiz%20Images/jjs-07-04-c.png"
+            },
+            {
+              "id": "ckkyljx5s1tqn0969n5xcohl1",
+              "value": "jjs-07-04-d",
+              "label": "D",
+              "imageUrl": "https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612910879/just-javascript-email-images/jj07/Quiz%20Images/jjs-07-04-d.png"
+            }
+          ],
+          "correctChoices": [
+            {
+              "id": "ckkyl9eaw1s6j0a265u61l2h2",
+              "value": "jjs-07-04-a",
+              "label": "A",
+              "imageUrl": "https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612910474/just-javascript-email-images/jj07/Quiz%20Images/jjs-07-04-a.png"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "__typename": "QuestionSet",
+      "id": "cklc5al1k20ge0b77dyr3m82o",
+      "title": "JJS 07 05 Sketch a diagram",
+      "questions": [
+        {
+          "__typename": "SketchQuestion",
+          "id": "cklc58t0020eb0b77kloj7id1",
+          "title": "JJS 07 05 01 Sketch a diagram",
+          "prompt": "# Sketch a diagram of variables and values after this snippet of code runs. Use our mental model.\n\n```js\nlet ship = {\n   pilot: { name: 'Jim' }\n};\n```",
+          "answer": null
+        },
+        {
+          "__typename": "MultipleChoiceQuestion",
+          "id": "cklc5ak9s1zif097473gcc8zu",
+          "title": "JJS 07 05 02 Which one",
+          "prompt": "# Which one of these diagrams best matches your sketch and our mental model after that code runs?",
+          "canComment": false,
+          "commentPrompt": null,
+          "answer": {
+            "description": "**Diagram B is correct.** It shows the *ship* variable pointing to an object, whose *pilot* property points to another object, whose *name* property points to *\"Jim\"*.\n\n![https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612911614/just-javascript-email-images/jj07/Quiz%20Images/jjs-07-05-b.png](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612911614/just-javascript-email-images/jj07/Quiz%20Images/jjs-07-05-b.png)\n\n*Diagram A* is wrong because it only shows one object. But we have two { } object literals, and therefore, two different objects.\n\n*Diagram C* is wrong because it shows an object inside another object. However, object nesting has no special meaning in our mental model — properties are always wires.\n\n*Diagram D* is wrong because it doesn’t show any objects."
+          },
+          "choices": [
+            {
+              "id": "ckkylvr341uu80969qym8yvww",
+              "value": "jjs-07-05-a",
+              "label": "A",
+              "imageUrl": "https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612911510/just-javascript-email-images/jj07/Quiz%20Images/jjs-07-05-a.png"
+            },
+            {
+              "id": "ckkylxupc1vu30b75owgiwqxx",
+              "value": "jjs-07-05-b",
+              "label": "B",
+              "imageUrl": "https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612911614/just-javascript-email-images/jj07/Quiz%20Images/jjs-07-05-b.png"
+            },
+            {
+              "id": "ckkylzxjs1ufv0a267gr2pmyw",
+              "value": "jjs-07-05-c",
+              "label": "C",
+              "imageUrl": "https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612911713/just-javascript-email-images/jj07/Quiz%20Images/jjs-07-05-c.png"
+            },
+            {
+              "id": "ckkym25so1vbm0a33c4l6kz7x",
+              "value": "jjs-07-05-d",
+              "label": "D",
+              "imageUrl": "https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612911812/just-javascript-email-images/jj07/Quiz%20Images/jjs-07-05-d.png"
+            }
+          ],
+          "correctChoices": [
+            {
+              "id": "ckkylxupc1vu30b75owgiwqxx",
+              "value": "jjs-07-05-b",
+              "label": "B",
+              "imageUrl": "https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612911614/just-javascript-email-images/jj07/Quiz%20Images/jjs-07-05-b.png"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "__typename": "QuestionSet",
+      "id": "cklc5e87s21dh0c85a67gnjyc",
+      "title": "JJS 07 06 Sketch a diagram",
+      "questions": [
+        {
+          "__typename": "SketchQuestion",
+          "id": "cklc5c5dc20ik0b77lb2gjuvd",
+          "title": "JJS 07 06 01 Sketch a diagram",
+          "prompt": "# Sketch a diagram of variables and values after this snippet of code runs. Use our mental model.\n\n```js\nlet singer = { surname: 'Turner' };\nlet pilot = { surname: 'Kamal' };\nsinger.surname = pilot.surname;\npilot.surname = singer.surname;\n```",
+          "answer": null
+        },
+        {
+          "__typename": "MultipleChoiceQuestion",
+          "id": "cklc5e5wg1zo10974dhk2g347",
+          "title": "JJS 07 06 02 Which one",
+          "prompt": "# Which one of these diagrams best matches your sketch and our mental model after that code runs?",
+          "canComment": false,
+          "commentPrompt": null,
+          "answer": {
+            "description": "**Diagram D is correct.** It shows the *singer* and the *pilot* variables pointing to two different objects. Each of these objects have a surname property that points to the same value *\"Kamal\"*.\n\nIf you got a different answer, you might have either forgotten to approach the problem step by step, or forgot what reading or writing a property does.\n\nTo execute *singer.surname = pilot.surname*, we needed to take the singer.surname wire, and point it to the same value that pilot.surname was currently pointing at (*\"Kamal\"* at the time). Now both of them point at *\"Kamal\"*.\n\nThen, when we execute *pilot.surname = singer.surname*, we take the *pilot.surname* wire, and point it to where singer.surname is pointing at (*\"Kamal\"* due to the previous step). So both of them still point to *\"Kamal\"*.\n\n![https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612913072/just-javascript-email-images/jj07/Quiz%20Images/jjs-07-06-d.png](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612913072/just-javascript-email-images/jj07/Quiz%20Images/jjs-07-06-d.png)"
+          },
+          "choices": [
+            {
+              "id": "ckkymlq9s1xhh0a33ltxbjx0a",
+              "value": "jjs-07-06-a",
+              "label": "A",
+              "imageUrl": "https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612912724/just-javascript-email-images/jj07/Quiz%20Images/jjs-07-06-a.png"
+            },
+            {
+              "id": "ckkymo35c1yk70b75ti6lj2f0",
+              "value": "jjs-07-06-b",
+              "label": "B",
+              "imageUrl": "https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612912838/just-javascript-email-images/jj07/Quiz%20Images/jjs-07-06-b.png"
+            },
+            {
+              "id": "ckkymqt541y380969tcchy3m0",
+              "value": "jjs-07-06-c",
+              "label": "C",
+              "imageUrl": "https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612912950/just-javascript-email-images/jj07/Quiz%20Images/jjs-07-06-c.png"
+            },
+            {
+              "id": "ckkymtei81yaj0a33o59xg4om",
+              "value": "jjs-07-06-d",
+              "label": "D",
+              "imageUrl": "https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612913072/just-javascript-email-images/jj07/Quiz%20Images/jjs-07-06-d.png"
+            }
+          ],
+          "correctChoices": [
+            {
+              "id": "ckkymtei81yaj0a33o59xg4om",
+              "value": "jjs-07-06-d",
+              "label": "D",
+              "imageUrl": "https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612913072/just-javascript-email-images/jj07/Quiz%20Images/jjs-07-06-d.png"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "__typename": "EssayQuestion",
+      "id": "ckkyn6xe020s80a338g7hdz52",
+      "title": "JJS 07 07 Swap Values",
+      "prompt": "**Can you figure out** the three lines of code necessary to swap the values of the surname properties of these two objects?\n\nIf you get stuck and your physical form allows that, take something large into each hand and then try to swap the items in your hands. You might find it difficult unless you put one of them somewhere temporarily. Hint: in code, that \"somewhere\" can be a variable.\n\n```js\nlet singer = { surname: 'Turer' };\nlet pilot = { surname: 'Kamal' };\n// ??? line 1 ???\n// ??? line 2 ???\n// ??? line 3 ???\nconsole.log(singer.surname); // \"Kamal\"\nconsole.log(pilot.surname); // \"Turner\"\n```",
+      "answer": {
+        "description": "Our problem is that we can't point two wires to different values in one line. We can only change where one of them points at a time.\n\nHowever, we can introduce a variable to \"hold onto\" the value of one of those wires. Then we can change where that wire points to without \"forgetting\" where the other wire needs to be pointed.\n\nThis is similar to how in order to swap two things in your hands, you can give the first thing to your friend to hold, put the second thing in the first hand, and then take the first thing back from your friend.\n\nIf you're still confused, you can sketch out this example step by step.\n\n```js\nlet singer = { surname: 'Turner' };\nlet pilot = { surname: 'Kamal' };\nlet savedSingerSurname = singer.surname;\nsinger.surname = pilot.surname;\npilot.surname = savedSingerSurname;\nconsole.log(singer.surname) // \"Kamal\"\nconsole.log(pilot.surname) // \"Turner\"\n```"
+      }
+    },
+    {
+      "__typename": "QuestionSet",
+      "id": "cklc5ljc01zw00974hvvv6hfs",
+      "title": "JJS 07 08 Sketch a diagram",
+      "questions": [
+        {
+          "__typename": "SketchQuestion",
+          "id": "cklc5jpqw21iz0c85ss4vkkvc",
+          "title": "JJS 07 08 01 Sketch a diagram",
+          "prompt": "# Sketch a diagram of variables and values after this snippet of code runs. Use our mental model.\n\n```js\nlet president = {\n   name: 'Pooh',\n   next: null\n};\n\npresident.next = {\n   name: 'Paddington',\n   next: president\n};\n```",
+          "answer": null
+        },
+        {
+          "__typename": "MultipleChoiceQuestion",
+          "id": "cklc5lh0o20wb0b77lm034rqv",
+          "title": "JJS 07 08 02 Which one",
+          "prompt": "# Which one of these diagrams best matches your sketch and our mental model after that code runs?",
+          "canComment": false,
+          "commentPrompt": null,
+          "answer": {
+            "description": "**Diagram A is correct.** It shows the president variable pointing to an object. That object's name property points to \"Pooh\". Its next property points to another object. The second object's name property points to \"Paddington\". The second object also has a next property, which points back to our first object!\n\nIf you got a different answer, you might have either forgotten to approach the problem step by step, or forgot what reading or writing a property does.\n\nTo execute president.next = { ... }, we attached the first object's next property wire to the second object we created.\n\nWhen inside of the second object literal, next: president meant that the newly created object's next property should point to the current value of the president variable — which was our first object.\n\nThis is why the first and the second object's next properties point at the other object in a cycle. If you'd like, run this example in the console and try expanding the next property a few times!\n\n![https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612914000/just-javascript-email-images/jj07/Quiz%20Images/jjs-07-08-a.png](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612914000/just-javascript-email-images/jj07/Quiz%20Images/jjs-07-08-a.png)"
+          },
+          "choices": [
+            {
+              "id": "ckkynd5xc228k0b75b174pcsk",
+              "value": "jjs-07-08-a",
+              "label": "A",
+              "imageUrl": "https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612914000/just-javascript-email-images/jj07/Quiz%20Images/jjs-07-08-a.png"
+            },
+            {
+              "id": "ckkynfisw21nx0a33rqxcsr1n",
+              "value": "jjs-07-08-b",
+              "label": "B",
+              "imageUrl": "https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612914114/just-javascript-email-images/jj07/Quiz%20Images/jjs-07-08-b.png"
+            }
+          ],
+          "correctChoices": [
+            {
+              "id": "ckkynd5xc228k0b75b174pcsk",
+              "value": "jjs-07-08-a",
+              "label": "A",
+              "imageUrl": "https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612914000/just-javascript-email-images/jj07/Quiz%20Images/jjs-07-08-a.png"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "__typename": "EssayQuestion",
+      "id": "ckkynm4gg22up0b759fxzxi1k",
+      "title": "JJS 07 09 Diagram Question",
+      "prompt": "# Now **use this diagram** to answer a question:\n## `console.log(president.next.next.next.name);`\n\n![https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612914000/just-javascript-email-images/jj07/Quiz%20Images/jjs-07-08-a.png](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612914000/just-javascript-email-images/jj07/Quiz%20Images/jjs-07-08-a.png)",
+      "answer": {
+        "description": "It would print \"Paddington\".\n\nRemember to follow the wires!\n\n![https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612914000/just-javascript-email-images/jj07/Quiz%20Images/jjs-07-08-a.png](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612914000/just-javascript-email-images/jj07/Quiz%20Images/jjs-07-08-a.png)"
+      }
+    },
+    {
+      "__typename": "EssayQuestion",
+      "id": "ckkynt9eg22js0a33k8ce98cf",
+      "title": "JJS 08 10 Write Code from Diagram",
+      "prompt": "# **Write the code** that produces this diagram.\n\n![https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612914578/just-javascript-email-images/jj07/Quiz%20Images/jjs-07-10-question.png](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612914578/just-javascript-email-images/jj07/Quiz%20Images/jjs-07-10-question.png)",
+      "answer": {
+        "description": "Here is one possible answer.\n\n```js\nlet president = { name: 'Pooh' };\npresident.next = president;\n```\n\nNote that let president = { next: president } would not work.\n\nAssignment happens in three steps: (1) find the wire on the left, (2) find the value on the right, (3) point the wire to that value.\n\nBy the time we create the { next: president } object (step 2), we haven't yet pointed president variable anywhere (step 3), so we can't use it yet!\n\nSo instead, we create our object and assign it to the president variable first. Then, we point the next property wire from that object to itself.\n\nGood news for us, bad news for democracy.\n\nTo check your solution, paste it into the console and expand the next property. You should be able to expand it forever."
+      }
+    },
+    {
+      "__typename": "EssayQuestion",
+      "id": "ckkyo207s23rx0b75uqgra12o",
+      "title": "JJS 07 11 Station Owner",
+      "prompt": "# What is the result of running this code?\n\n```js\nlet station = {\n   Owner: { name: 'Fred' }\n};\nlet name = station.owner.name;\nconsole.log(name === station.Owner.name);\n```",
+      "answer": {
+        "description": "**This code crashes.**\n\nWhen we execute let name = station.owner.name, we want to point the name wire to the result value of station.owner.name.\n\nTo calculate station.owner.name, we want to know station.owner first. The object that station points to doesn't have a property called owner. (It has a property called Owner, which is a different property because their names are case-sensitive.) So, according to our rules, station.owner is undefined.\n\nBut if station.owner is undefined, then it cannot appear on the left side of the dot. Calculating station.owner.name produces an error and the code stops executing.\n\nIf this is confusing, take another look at the Missing Properties section.\n\n![https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612915134/just-javascript-email-images/jj07/Quiz%20Images/jjs-07-11-answer.png](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612915134/just-javascript-email-images/jj07/Quiz%20Images/jjs-07-11-answer.png)"
+      }
+    }
+  ]
+}

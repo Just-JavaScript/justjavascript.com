@@ -3,6 +3,7 @@ import TheJavaScriptUniverse from './the-javascript-universe.json'
 import CountingTheValuesPart1 from './counting-the-values-pt-1.json'
 import CountingTheValuesPart2 from './counting-the-values-pt-2.json'
 import EqualityOfValues from './equality-of-values.json'
+import Properties from './properties.json'
 import Demo from './demo.json'
 
 export default [
@@ -12,4 +13,5 @@ export default [
   CountingTheValuesPart1,
   CountingTheValuesPart2,
   EqualityOfValues,
+  Properties,
 ]
