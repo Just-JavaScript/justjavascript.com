@@ -1,0 +1,247 @@
+{
+  "title": "JJS 06 Equality of Values",
+  "slug": "equality-of-values",
+  "id": "equality-of-values",
+  "questions": [
+    {
+      "__typename": "QuestionSet",
+      "id": "cklc3dva01xpw0b77e2lo76gs",
+      "title": "JJS 06 01 Sketch a diagram",
+      "questions": [
+        {
+          "__typename": "SketchQuestion",
+          "id": "cklc3c5js1wot0974cj91uwor",
+          "title": "JJS 06 01 01 Sketch a diagram",
+          "prompt": "# Sketch a diagram of variables and values after this snippet of code runs. Use our mental model.\n\n```js\nlet fingernails = 'mustache';\nlet toes = fingernails;\nlet nose = 'must' + 'ache';\n```",
+          "answer": null
+        },
+        {
+          "__typename": "MultipleChoiceQuestion",
+          "id": "cklc3dsyo1ww40a71ahdu6g3o",
+          "title": "JJS 06 01 02 Which one",
+          "prompt": "# Which one of these diagrams best matches your sketch and our mental model after that code runs?",
+          "canComment": false,
+          "commentPrompt": null,
+          "answer": {
+            "description": "**B is the correct diagram.** All variables point to the same \"mustache\" string value.\n\nNone of the other diagrams match our mental model because they show more than one \"mustache\" string value. In our universe, every distinct string only exists once.\n\n![https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612898922/just-javascript-email-images/jj06/Quiz%20Images/jjs-06-01-b.jpg](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612898922/just-javascript-email-images/jj06/Quiz%20Images/jjs-06-01-b.jpg)"
+          },
+          "choices": [
+            {
+              "id": "ckkyecbhc0drk0b7519dq301r",
+              "value": "jjs-06-01-a",
+              "label": "A",
+              "imageUrl": "https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612898476/just-javascript-email-images/jj06/Quiz%20Images/jjs-06-01-a.jpg"
+            },
+            {
+              "id": "ckkyedsq00dt20969azm4b4t9",
+              "value": "jjs-06-01-b",
+              "label": "B",
+              "imageUrl": "https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612898922/just-javascript-email-images/jj06/Quiz%20Images/jjs-06-01-b.jpg"
+            },
+            {
+              "id": "ckkyefelc0dty0a26fnof7e69",
+              "value": "jjs-06-01-c",
+              "label": "C",
+              "imageUrl": "https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612898993/just-javascript-email-images/jj06/Quiz%20Images/jjs-06-01-c.jpg"
+            },
+            {
+              "id": "ckkyehmu80ec009699h52p8yr",
+              "value": "jjs-06-01-d",
+              "label": "D",
+              "imageUrl": "https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612899100/just-javascript-email-images/jj06/Quiz%20Images/jjs-06-01-d.jpg"
+            }
+          ],
+          "correctChoices": [
+            {
+              "id": "ckkyedsq00dt20969azm4b4t9",
+              "value": "jjs-06-01-b",
+              "label": "B",
+              "imageUrl": "https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612898922/just-javascript-email-images/jj06/Quiz%20Images/jjs-06-01-b.jpg"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "__typename": "EssayQuestion",
+      "id": "ckkyemhzs0f4p0969c08f4z34",
+      "title": "JJS 06 02 Use Sketch to Determine Output",
+      "prompt": "Now **use this sketch** to determine the output of:\n\n1. **console.log(fingernails === toes);**\n2. **console.log(toes === nose);**\n3. **console.log(nose === fingernails);**\n\nHint: usually, a === b when a and b point to the same value.\n\n![https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612898922/just-javascript-email-images/jj06/Quiz%20Images/jjs-06-01-b.jpg](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612898922/just-javascript-email-images/jj06/Quiz%20Images/jjs-06-01-b.jpg)\n",
+      "answer": {
+        "description": "All of these examples print true.\n\n1. fingernails === toes: This is true because fingernails and toes point at the same string.\n2. toes === nose: This is true because toes and nose point at the same string.\n3. nose === fingernails: This is true because nose and fingernails point at the same string.\n\n![https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612898922/just-javascript-email-images/jj06/Quiz%20Images/jjs-06-01-b.jpg](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612898922/just-javascript-email-images/jj06/Quiz%20Images/jjs-06-01-b.jpg)"
+      }
+    },
+    {
+      "__typename": "QuestionSet",
+      "id": "cklc3i9gg1x340a71intzeuv0",
+      "title": "JJS 06 03 Sketch a diagram",
+      "questions": [
+        {
+          "__typename": "SketchQuestion",
+          "id": "cklc3giyg1x0b0a71u10dnkmd",
+          "title": "JJS 06 03 01 Sketch a diagram",
+          "prompt": "# Sketch a diagram of variables and values after this snippet of code runs. Use our mental model.\n\n```js\nlet tomato = {};\nlet oregano = tomato;\nlet potato = {};\ntomato = {};\n```",
+          "answer": null
+        },
+        {
+          "__typename": "MultipleChoiceQuestion",
+          "id": "cklc3i7ww1yvw0c856hpgvh6t",
+          "title": "JJS 06 03 02 Which one",
+          "prompt": "# Which one of these diagrams best matches your sketch and our mental model after that code runs?",
+          "canComment": false,
+          "commentPrompt": null,
+          "answer": {
+            "description": "**C is the correct diagram.** It shows each variable pointing at a different object value.\n\nRemember that {} means “create a new object value”, and let x = y means “point x’s wire to the current value of y”. If you follow each line of code in this example step by step, you will arrive at the same result.\n\n![https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612899693/just-javascript-email-images/jj06/Quiz%20Images/jjs-06-03-c.jpg](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612899693/just-javascript-email-images/jj06/Quiz%20Images/jjs-06-03-c.jpg)"
+          },
+          "choices": [
+            {
+              "id": "ckkyer6z40fp30a26tuuojvgh",
+              "value": "jjs-06-03-a",
+              "label": "A",
+              "imageUrl": "https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612899546/just-javascript-email-images/jj06/Quiz%20Images/jjs-06-03-a.jpg"
+            },
+            {
+              "id": "ckkyesqj40fu20a33d5n60viq",
+              "value": "jjs-06-03-b",
+              "label": "B",
+              "imageUrl": "https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612899618/just-javascript-email-images/jj06/Quiz%20Images/jjs-06-03-b.jpg"
+            },
+            {
+              "id": "ckkyeujcg0gj00969l70de2e2",
+              "value": "jjs-06-03-c",
+              "label": "C",
+              "imageUrl": "https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612899693/just-javascript-email-images/jj06/Quiz%20Images/jjs-06-03-c.jpg"
+            },
+            {
+              "id": "ckkyewf8w0g8b0a33e51rbxw9",
+              "value": "jjs-06-03-d",
+              "label": "D",
+              "imageUrl": "https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612899776/just-javascript-email-images/jj06/Quiz%20Images/jjs-06-03-d.jpg"
+            }
+          ],
+          "correctChoices": [
+            {
+              "id": "ckkyeujcg0gj00969l70de2e2",
+              "value": "jjs-06-03-c",
+              "label": "C",
+              "imageUrl": "https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612899693/just-javascript-email-images/jj06/Quiz%20Images/jjs-06-03-c.jpg"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "__typename": "EssayQuestion",
+      "id": "ckkyf0lpk0h6l0a26l6koe9cc",
+      "title": "JJS 06 04 Determine Output of Tomato Oregano Potato",
+      "prompt": "Now **use this sketch** to determine the output of:\n\n1. **console.log(tomato === oregano);**\n2. **console.log(oregano === potato);**\n3. **console.log(potato === tomato);**\n\n![https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612899693/just-javascript-email-images/jj06/Quiz%20Images/jjs-06-03-c.jpg](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612899693/just-javascript-email-images/jj06/Quiz%20Images/jjs-06-03-c.jpg)",
+      "answer": {
+        "description": "**All of these examples print `false`.**\n\n1. **tomato === oregano**: This is **false** because tomato and oregano point at different objects.\n2. **oregano === potato**: This is **false** because oregano and potato point at different objects.\n3. **potato === tomato**: This is **false** because potato and tomato point at different objects.\n\n![https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612899693/just-javascript-email-images/jj06/Quiz%20Images/jjs-06-03-c.jpg](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612899693/just-javascript-email-images/jj06/Quiz%20Images/jjs-06-03-c.jpg)"
+      }
+    },
+    {
+      "__typename": "EssayQuestion",
+      "id": "ckkyfwh340mpj0b754qr0sew2",
+      "title": "JJS 06 05 Tree Stone Water Diagram",
+      "prompt": "**Look at this diagram of variables and values.** Write three lines of code that, when executed, would lead to this diagram.\n\n![https://res.cloudinary.com/dg3gyk0gu/image/upload/v1613065661/just-javascript-email-images/jj06/Quiz%20Images/jjs06-05-question.png](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1613065661/just-javascript-email-images/jj06/Quiz%20Images/jjs06-05-question.png)",
+      "answer": {
+        "description": "The screenshot below shows one possible answer.\n\nCompare it to your answer.\n\nIf you’d like, verify your answer in the browser console. Hint: you might find `===` or `Object.is` helpful to check your answer against the diagram.\n\n```js\nlet tree = {};\nlet stone = {};\nlet water = tree;\n```"
+      }
+    },
+    {
+      "__typename": "EssayQuestion",
+      "id": "ckkyg05sw0n580969ytlb7fjs",
+      "title": "JJS 06 06 Ticket Message Appear",
+      "prompt": "# The author of this code expects it to print a message. **Will the message appear?**\n\nUse our mental model to answer this. Make a sketch if you’d like!\n\n```js\nlet ticket = { id: 0 };\nif (ticket === { id: 0 }) {\n   console.log('Bad ticket');\n}\n```",
+      "answer": {
+        "description": "**No, the message will not appear.**\n\nWhen we “ask” `ticket === { id: 0 }`, we need to figure out what value is on each side of ===. On the left side, we have ticket, whose value is the object we created on the first line by writing `{ id: 0 }`. On the right side, we have a `{ id: 0 }` object literal — which also creates a completely new value!\n\nWe have **different object values on each side of ===**. So the check will **not** pass, and the function will **not** print our message.\n\n```js\nlet ticket = { id: 0 };\nif (ticket === { id: 0 }) {\n   console.log('Bad ticket');\n}\n```"
+      }
+    },
+    {
+      "__typename": "EssayQuestion",
+      "id": "ckkyg5h5s0o2u0969z4g1jtfx",
+      "title": "JJS 06 07 Ticket Message Appear",
+      "prompt": "# The author of this code expects it to print a message. **Will the message appear?**\n\nUse our mental model to answer this. Make a sketch if you’d like!\n\n```js\nlet ticketId = 0;\nif (ticketId === 0) {\n   console.log('Bad ticket');\n}\n```\n```",
+      "answer": {
+        "description": "**Yes, the message will appear.**\n\nWhen we “ask” `ticketId === 0`, we need to figure out what value is on each side of ===. On the left side, we have `ticketId`, which points to the number value 0. On the right side, we have the 0 literal — which also results in the number value 0.\n\nThere is only one number value *0* in our universe, and **we have that same value on both sides of ===.** The check **will** pass, and the function **will** print our message.\n\n```js\nlet ticketId = 0;\nif (ticketId === 0) {\n   console.log('Bad ticket');\n}\n```"
+      }
+    },
+    {
+      "__typename": "EssayQuestion",
+      "id": "ckkyg8rzk0nmv0a339h8wpplz",
+      "title": "JJS 06 08 Ticket ID not 0",
+      "prompt": "# Can you think of a different value than **0** that would also cause a message to be printed?\n\n```js\nlet ticketId = ???;\nif (ticketId === 0) {\n   console.log('Bad ticket');\n}\n```",
+      "answer": {
+        "description": "**The other value that would cause the message to be printed is -0.**\n\nEven though 0 and -0 are two different values, === considers them equal."
+      }
+    },
+    {
+      "__typename": "QuestionSet",
+      "id": "cklc45bpc1y1f09748nu6ssbo",
+      "title": "JJS 06 09 Sketch a diagram",
+      "questions": [
+        {
+          "__typename": "SketchQuestion",
+          "id": "cklc43mqw1xyk0974wmvegb43",
+          "title": "JJS 06 09 01 Sketch a diagram",
+          "prompt": "# Sketch a diagram of variables and values after this snippet of code runs. Use our mental model.\n\n```js\nlet tea = function() { return 0 / 0; };\nlet coffee = function() { return 0 / 0; };\nlet matcha = tea();\nlet latte = coffee();\n```",
+          "answer": null
+        },
+        {
+          "__typename": "MultipleChoiceQuestion",
+          "id": "cklc459e01yxl0b77k1gupu89",
+          "title": "JJS 06 09 02 Which one",
+          "prompt": "# Which one of these diagrams best matches your sketch and our mental model after that code runs?",
+          "canComment": false,
+          "commentPrompt": null,
+          "answer": {
+            "description": "**D is the correct diagram.** It shows tea and coffee pointing to two different function values, while matcha and latte are pointing to the same NaN value.\n\nDiagram A is wrong because it shows matcha and latte pointing to two different NaN values. In our universe, there is only one NaN value.\n\nDiagrams B and C are wrong because they show tea and coffee pointing to the same value. Each function definition creates a new value, so tea and coffee should point to two different values.\n\nAs a reminder, NaN is a special numeric value that represents an invalid result — like when you try to calculate 0 / 0.\n\n![https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612902727/just-javascript-email-images/jj06/Quiz%20Images/jjs-06-09-d.jpg](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612902727/just-javascript-email-images/jj06/Quiz%20Images/jjs-06-09-d.jpg)"
+          },
+          "choices": [
+            {
+              "id": "ckkygh9jk0qby0b75b3d8uav6",
+              "value": "jjs-06-09-a",
+              "label": "A",
+              "imageUrl": "https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612902437/just-javascript-email-images/jj06/Quiz%20Images/jjs-06-09-a.jpg"
+            },
+            {
+              "id": "ckkygj6zk0pod0a26zng2frib",
+              "value": "jjs-06-09-b",
+              "label": "B",
+              "imageUrl": "https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612902525/just-javascript-email-images/jj06/Quiz%20Images/jjs-06-09-b.jpg"
+            },
+            {
+              "id": "ckkygl9u00qoc0b75dm22gwfk",
+              "value": "jjs-06-09-c",
+              "label": "C",
+              "imageUrl": "https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612902619/just-javascript-email-images/jj06/Quiz%20Images/jjs-06-09-c.jpg"
+            },
+            {
+              "id": "ckkygne800qw80b752dsri3gl",
+              "value": "jjs-06-09-d",
+              "label": "D",
+              "imageUrl": "https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612902727/just-javascript-email-images/jj06/Quiz%20Images/jjs-06-09-d.jpg"
+            }
+          ],
+          "correctChoices": [
+            {
+              "id": "ckkygne800qw80b752dsri3gl",
+              "value": "jjs-06-09-d",
+              "label": "D",
+              "imageUrl": "https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612902727/just-javascript-email-images/jj06/Quiz%20Images/jjs-06-09-d.jpg"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "__typename": "EssayQuestion",
+      "id": "ckkygxurk0r410a26151zxsm7",
+      "title": "JJS 06 10 Sketch Tea Coffee Matcha Latte",
+      "prompt": "Now **use this sketch** to determine the output of:\n\n1. **console.log(tea === coffee);**\n2. **console.log(Object.is(tea, coffee));**\n3. **console.log(matcha === latte);**\n4. **console.log(Object.is(matcha, latte));**\n\n![https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612902619/just-javascript-email-images/jj06/Quiz%20Images/jjs-06-09-c.jpg](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612902619/just-javascript-email-images/jj06/Quiz%20Images/jjs-06-09-c.jpg)",
+      "answer": {
+        "description": "**Only Object.is(matcha, latte) is true, all the other answers are false.**\n\n1. **tea === coffee** — This is **false** because tea and coffee point at two different function values.\n2. **Object.is(tea, coffee)** — This is **false** because tea and coffee point at two different function values.\n3. **matcha === latte** — This is **false** because both of them point at NaN, and NaN === NaN is always false. (If you forgot about this, you can re-read the section about special cases of Strict Equality.)\n4. **Object.is(matcha, latte)** — This is **true** because matcha and latte point at the same NaN number value.\n\n![https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612902727/just-javascript-email-images/jj06/Quiz%20Images/jjs-06-09-d.jpg](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612902727/just-javascript-email-images/jj06/Quiz%20Images/jjs-06-09-d.jpg)"
+      }
+    }
+  ]
+}
