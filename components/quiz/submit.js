@@ -7,7 +7,7 @@ export default function Submit({isDisabled, isSubmitting}) {
   return (
     <motion.button
       layout
-      className="mt-4 px-3 py-3 flex items-center justify-center rounded-md font-semibold bg-indigo-600 text-white hover:bg-indigo-700 transition-colors ease-in-out duration-300"
+      className="w-full mt-4 px-3 py-3 flex items-center justify-center rounded-md font-semibold bg-indigo-600 text-white hover:bg-indigo-700 transition-colors ease-in-out duration-300"
       type="submit"
       disabled={isDisabled}
     >

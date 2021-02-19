@@ -50,9 +50,6 @@ const Sketch = (props) => {
         <motion.div layout>
           <Markdown>{question.prompt}</Markdown>
         </motion.div>
-        <AnimatePresence>
-          {showExplanation && <Explanation>{explanation}</Explanation>}
-        </AnimatePresence>
       </QuestionWrapper>
       <AnswerWrapper>
         <form
@@ -65,6 +62,36 @@ const Sketch = (props) => {
             user={{name: 'Excalidraw User'}}
             initialData={currentAnswer ? currentAnswer.value : output}
           />
+          <div className="w-full">
+            {question.canComment === true && (
+              <>
+                <label htmlFor="comment" className="block mt-2">
+                  {question.commentPrompt && (
+                    <Markdown>{question.commentPrompt}</Markdown>
+                  )}
+                </label>
+                {state.matches('answered') ? (
+                  <Markdown className="p-3 mt-4">
+                    {formik.values.comment}
+                  </Markdown>
+                ) : (
+                  <>
+                    <textarea
+                      className="w-full p-3 bg-cool-gray-100 border border-gray-200 prose rounded-md h-24 mt-4"
+                      disabled={isDisabled}
+                      id="comment"
+                      name="comment"
+                      placeholder="Write your answer..."
+                      onChange={formik.handleChange}
+                      onBlur={formik.handleBlur}
+                      value={formik.values.comment}
+                    />
+                    {formik.submitCount > 0 && formik.errors.comment}
+                  </>
+                )}
+              </>
+            )}
+          </div>
           {explanation ? (
             <Submit
               isDisabled={isDisabled}
@@ -84,15 +111,18 @@ const Sketch = (props) => {
           )}
           {formik.submitCount > 0 && formik.errors.value}
         </form>
-        <AnimatePresence>
+        {/* <AnimatePresence>
           {explanation && state.matches('answered') && (
             <Continue
               isLastQuestion={isLastQuestion}
               onClick={handleContinue}
             />
           )}
-        </AnimatePresence>
+        </AnimatePresence> */}
       </AnswerWrapper>
+      <AnimatePresence>
+        {showExplanation && <Explanation>{explanation}</Explanation>}
+      </AnimatePresence>
     </QuizWrapper>
   )
 }
