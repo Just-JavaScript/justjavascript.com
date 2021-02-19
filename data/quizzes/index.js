@@ -7,6 +7,7 @@ import CountingTheValuesPart2 from './counting-the-values-pt-2.json'
 import EqualityOfValues from './equality-of-values.json'
 import Properties from './properties.json'
 import Mutation from './mutation.json'
+import Prototypes from './prototypes.json'
 
 export default [
   Demo,
@@ -17,4 +18,5 @@ export default [
   EqualityOfValues,
   Properties,
   Mutation,
+  Prototypes,
 ]
