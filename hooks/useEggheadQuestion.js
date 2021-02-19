@@ -30,7 +30,7 @@ export default function useEggheadQuestionMachine(question, handleSubmit) {
             value: isRequired
               ? yup
                   .string()
-                  .required('Answer cant stay empty')
+                  .required(`Answer can't stay empty`)
                   .min(3, 'Answer must be at least 3 characters')
               : yup.string(),
           })
