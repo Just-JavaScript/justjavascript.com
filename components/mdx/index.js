@@ -1,6 +1,7 @@
 import React from 'react'
 import Code from './code'
 import Answer from './answer'
+import FunFact from './fun-fact'
 import Pagination from './pagination'
 import GifPlayer from './gif-player'
 import Article from '../../templates/article-template'
@@ -17,6 +18,6 @@ export default {
   GifPlayer,
   Subscribe,
   Article,
-  Layout,
+  FunFact,
   Excalidraw,
 }
