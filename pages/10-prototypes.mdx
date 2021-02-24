@@ -1,88 +1,88 @@
 <Article title="Prototypes" series={1} episode={10}>
 
-In the previous modules, we’ve covered objects, properties, and mutation. It’s tempting to jump to other topics, but we’re not quite done with objects yet!
+In previous modules, we’ve covered object properties and mutation, but we’re not quite done—we still need to talk about prototypes!
 
 Here is a small riddle to check our mental model:
 
 ```js
-let pizza = {}
-console.log(pizza.taste) // "pineapple"
+let pizza = {};
+console.log(pizza.taste); // "pineapple"
 ```
 
 Ask yourself: is this possible?
 
-We have just created an empty object with `{}`. We definitely didn’t set any properties on it before logging. So it seems like `pizza.taste` can’t point to `"pineapple"`. We would expect `pizza.taste` to give us `undefined` instead. (We usually get `undefined` when a property doesn’t exist, right?)
+We have just created an empty object with `{}`. We definitely didn’t set any properties on it before logging, so it seems like `pizza.taste` can’t point to `"pineapple"`. We would expect `pizza.taste` to give us `undefined` instead—we usually get `undefined` when a property doesn’t exist, right?
 
-And yet, it _is_ possible to add some code before these two lines that would cause `pizza.taste` to be `"pineapple"`! This may be a contrived example, but it shows that our mental model of the JavaScript universe is incomplete.
+And yet, it *is* possible that `pizza.taste` is `"pineapple"`! This may be a contrived example, but it shows that our mental model is incomplete.
 
-In this module, we’ll introduce the concept of _prototypes_. Prototypes explain what happens in this puzzle. More importantly, prototypes are at the heart of several other JavaScript features. Occasionally people neglect learning them because they seem too unusual. However, the core idea is remarkably simple.
+In this module, we’ll introduce *prototypes*. Prototypes explain what happens in this puzzle and—more importantly—are at the heart of several other fundamental JavaScript features. Occasionally people neglect learning about prototypes because they seem too unusual, but the core idea is remarkably simple.
 
 ## Prototypes
 
-Here’s a couple of variables pointing at a couple of objects:
+Here’s a couple of variables pointing to a couple of objects:
 
 ```js
 let human = {
-  teeth: 32,
-}
+  teeth: 32
+};
 
 let gwen = {
-  age: 19,
-}
+  age: 19
+};
 ```
 
 We can represent them visually in a familiar way:
 
 ![Property](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1590534071/just-javascript-email-images/jj09/prop.png)
 
-In this example, `gwen` points at an object without a `teeth` property. According to the rules we’ve learned, if we read it, we get `undefined`:
+In this example, `gwen` points to an object without a `teeth` property. According to the rules we’ve learned, logging this property would give us `undefined`:
 
 ```js
-console.log(gwen.teeth) // undefined
+console.log(gwen.teeth); // undefined
 ```
 
-But the story doesn’t have to end here. Instead of the default behavior of returning `undefined`, we can instruct JavaScript to _continue searching for our missing property on another object_. We can do it with one line of code:
+But the story doesn’t have to end here. JavaScript's default behavior returns `undefined`, but we can instruct it to *continue searching for our missing property on another object*. We can do it with one line of code:
 
 ```js
 let human = {
-  teeth: 32,
-}
+  teeth: 32
+};
 
 let gwen = {
   // We added this line:
   __proto__: human,
-  age: 19,
-}
+  age: 19
+};
 ```
 
 What is that mysterious `__proto__` property?
 
-It represents the JavaScript concept of a _prototype_. Any JavaScript object may choose another object as a prototype. We will discuss what that means in practice very soon. For now, let’s think of it as a special `__proto__` wire:
+It represents the JavaScript concept of a *prototype*. Any JavaScript object may choose another object as a prototype. We will discuss what that means in practice but for now, let’s think of it as a special `__proto__` wire:
 
 ![Prototype](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1590534071/just-javascript-email-images/jj09/proto.png)
 
 Take a moment to verify the diagram matches the code. We drew it just like we did in the past. The only new thing is the mysterious `__proto__` wire.
 
-By specifying `__proto__` (also known as our object’s _prototype_), we instruct JavaScript to continue looking for missing properties on that object instead.
+By specifying `__proto__` (also known as our object’s *prototype*), we instruct JavaScript to continue looking for missing properties on that object instead.
 
 ### Prototypes in Action
 
-Earlier, when we went looking for `gwen.teeth`, we got `undefined` because the `teeth` property doesn’t exist on the object that `gwen` points at.
+When we went looking for `gwen.teeth`, we got `undefined` because the `teeth` property doesn’t exist on the object that `gwen` points to.
 
-But thanks to that `__proto__: human` line, the answer is different now:
+But thanks to `__proto__: human`, the answer is different:
 
 ```js
 let human = {
-  teeth: 32,
-}
+  teeth: 32
+};
 
 let gwen = {
   // "Look for other properties here"
   __proto__: human,
-  age: 19,
-}
+  age: 19
+};
 
-console.log(gwen.teeth) // 32
+console.log(gwen.teeth); // 32
 ```
 
 Now the sequence of steps looks like this:
@@ -91,100 +91,100 @@ Now the sequence of steps looks like this:
 
 1. Follow the `gwen` wire. It leads to an object.
 2. Does this object have a `teeth` property?
-   - No.
-   - **But it has a prototype.** Let’s check it out.
-3. Does _that_ object have a `teeth` property?
-   - Yes, it points at `32`.
-   - Therefore, the result of `gwen.teeth` is `32`.
+    - No.
+    - **But it has a prototype.** Let’s check it out.
+3. Does *that* object have a `teeth` property?
+    - Yes, it points to `32`.
+    - Therefore, the result of `gwen.teeth` is `32`.
 
-This is similar to how you might say at work: “I don’t know, but Alice might know”. With `__proto__`, you instruct JavaScript to “ask another object”.
+This is similar to saying, “I don’t know, but Alice might know.” With `__proto__`, you instruct JavaScript to “ask another object.”
 
 To check your understanding so far, write down your answers:
 
 ```js
 let human = {
-  teeth: 32,
-}
+  teeth: 32
+};
 
 let gwen = {
   __proto__: human,
-  age: 19,
-}
+  age: 19
+};
 
-console.log(human.age) // ?
-console.log(gwen.age) // ?
+console.log(human.age); // ?
+console.log(gwen.age); // ?
 
-console.log(human.teeth) // ?
-console.log(gwen.teeth) // ?
+console.log(human.teeth); // ?
+console.log(gwen.teeth); // ?
 
-console.log(human.tail) // ?
-console.log(gwen.tail) // ?
+console.log(human.tail); // ?
+console.log(gwen.tail); // ?
 ```
 
 <Answer byline="Don't reveal until you have written the answers to six questions">
 
 Now let’s check your answers.
 
-The `human` variable points at an object that doesn’t have an `age` property, so `human.age` is `undefined`. The `gwen` variable points at an object that _does_ have an `age` property. That wire points at `19`, so the value of `gwen.age` is `19`:
+The `human` variable points to an object that doesn’t have an `age` property, so `human.age` is `undefined`. The `gwen` variable points to an object that *does* have an `age` property. That wire points to `19`, so the value of `gwen.age` is `19`:
 
 ```js
-console.log(human.age) // undefined
-console.log(gwen.age) // 19
+console.log(human.age); // undefined
+console.log(gwen.age); // 19
 ```
 
-The `human` variable points at object that has a `teeth` property, so the value of `human.teeth` is `32`. The `gwen` variable points at an object that doesn’t have a `teeth` property. However, that object has a prototype, which _does_ have a `teeth` property. This is why the value of `gwen.teeth` is also `32`.
+The `human` variable points to object that has a `teeth` property, so the value of `human.teeth` is `32`. The `gwen` variable points to an object that doesn’t have a `teeth` property. However, that object has a prototype, which *does* have a `teeth` property. This is why the value of `gwen.teeth` is also `32`.
 
 ```js
-console.log(human.teeth) // 32
-console.log(gwen.teeth) // 32
+console.log(human.teeth); // 32
+console.log(gwen.teeth); // 32
 ```
 
 Neither of our objects have a `tail` property, so we get `undefined` for both:
 
 ```js
-console.log(human.tail) // undefined
-console.log(gwen.tail) // undefined
+console.log(human.tail); // undefined
+console.log(gwen.tail); // undefined
 ```
 
-Note how although the value of `gwen.teeth` is `32`, it doesn’t mean `gwen` has a `teeth` property! Indeed, in this example, `gwen` _does not_ have a `teeth` property. But its prototype object — the same one `human` points at — does.
+Note how although the value of `gwen.teeth` is `32`, it doesn’t mean `gwen` has a `teeth` property! Indeed, in this example, the object that `gwen` points to *does not* have a `teeth` property. But its prototype object—the same one `human` points to—does.
 
-This serves to remind us that `gwen.teeth` is an _expression_ — a question to the JavaScript universe — and JavaScript will follow a sequence of steps to answer it. Now we know that these steps involve looking at the prototype.
+This serves to remind us that `gwen.teeth` is an *expression*—a question to our JavaScript universe—and JavaScript will follow a sequence of steps to answer it. Now we know these steps involve looking at the prototype.
+
+</Answer>
 
 ### The Prototype Chain
 
-A prototype isn’t a special “thing” in JavaScript. A prototype is more like a _relationship_. An object may point at another object as its prototype.
+A prototype isn’t a special “thing” in JavaScript. A prototype is more like a *relationship*. An object may point to another object as its prototype.
 
-This naturally leads to a question: but what if my object’s prototype has its own prototype? And that prototype has its own prototype? Would that work?
+This naturally leads to a question: but what if my object’s prototype has its own prototype? And that prototype has *its* own prototype? Would that work?
 
-The answer is that this is _exactly_ how it works!
+The answer is yes—this is *exactly* how it works!
 
 ```js
 let mammal = {
   brainy: true,
-}
+};
 
 let human = {
   __proto__: mammal,
-  teeth: 32,
-}
+  teeth: 32
+};
 
 let gwen = {
   __proto__: human,
-  age: 19,
-}
+  age: 19
+};
 
-console.log(gwen.brainy) // true
+console.log(gwen.brainy); // true
 ```
 
-We can see that JavaScript will search for the property on our object, then on its prototype, then on _that_ object’s prototype, and so on. We would only get `undefined` if we ran out of prototypes and still haven’t found our property.
+We can see that JavaScript will search for the property on our object, then on its prototype, then on *that* object’s prototype, and so on. We would only get `undefined` if we ran out of prototypes and still hadn’t found our property.
 
 ![Prototype Chain](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1590534071/just-javascript-email-images/jj09/protochain.png)
 
-This is similar to how you might say at work: “I don’t know, but Alice might know”. But then Alice might say “Actually I don’t know either, ask Bob”. Eventually, you will either arrive at the answer or run out of people to ask!
+This is similar to saying, “I don’t know, but Alice might know.” Then Alice might say, “Actually I don’t know either—ask Bob.” Eventually, you will either arrive at the answer or run out of people to ask!
 
-This sequence of objects to “visit” is known as our object’s _prototype chain_. (However, unlike a chain you might wear, prototype chains can’t be circular!)
-
-</Answer>
+This sequence of objects to “visit” is known as our object’s *prototype chain*. (However, unlike a chain you might wear, prototype chains can’t be circular!)
 
 ### Shadowing
 
@@ -192,34 +192,34 @@ Consider this slightly modified example:
 
 ```js
 let human = {
-  teeth: 32,
-}
+  teeth: 32
+};
 
 let gwen = {
   __proto__: human,
   // This object has its own teeth property:
-  teeth: 31,
-}
+  teeth: 31
+};
 ```
 
 Both objects define a property called `teeth`, so the results are different:
 
 ```js
-console.log(human.teeth) // 32
-console.log(gwen.teeth) // 31
+console.log(human.teeth); // 32
+console.log(gwen.teeth); // 31
 ```
 
-Note that `gwen.teeth` is `31`. If `gwen` didn’t have its own `teeth` property, we would look at the prototype. But because the object that `gwen` points at has its _own_ `teeth` property, we don’t need to keep searching for the answer.
+Note that `gwen.teeth` is `31`. If `gwen` didn’t have its own `teeth` property, we would look at the prototype. But because the object that `gwen` points to has its *own* `teeth` property, we don’t need to keep searching for the answer.
 
 ![Shadowing](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1590534072/just-javascript-email-images/jj09/shadowing.png)
 
 In other words, once we find our property, **we stop the search**.
 
-If you ever want to check if an object has its _own_ property wire with a certain name, you can call a built-in function called `hasOwnProperty`. It returns `true` for “own” properties, and does not look at the prototypes. In our last example, both objects have their own `teeth` wires, so it is `true` for both:
+If you ever want to check if an object has its *own* property wire with a certain name, you can call a built-in function called `hasOwnProperty`. It returns `true` for “own” properties, and does not look at the prototypes. In our last example, both objects have their own `teeth` wires, so it is `true` for both:
 
 ```js
-console.log(human.hasOwnProperty('teeth')) // true
-console.log(gwen.hasOwnProperty('teeth')) // true
+console.log(human.hasOwnProperty('teeth')); // true
+console.log(gwen.hasOwnProperty('teeth')); // true
 ```
 
 ### Assignment
@@ -228,18 +228,18 @@ Consider this example:
 
 ```js
 let human = {
-  teeth: 32,
-}
+  teeth: 32
+};
 
 let gwen = {
   __proto__: human,
   // Note: no own teeth property
-}
+};
 
-gwen.teeth = 31
+gwen.teeth = 31;
 
-console.log(human.teeth) // ?
-console.log(gwen.teeth) // ?
+console.log(human.teeth); // ?
+console.log(gwen.teeth); // ?
 ```
 
 Before the assignment, both expressions result in `32`:
@@ -249,41 +249,41 @@ Before the assignment, both expressions result in `32`:
 Then we need to execute this assignment:
 
 ```js
-gwen.teeth = 31
+gwen.teeth = 31;
 ```
 
-Now the question is which wire does `gwen.teeth` correspond to? The answer is that, generally saying, assignments happen on the _object itself_.
+Now the question is which wire does `gwen.teeth` correspond to? The answer is that, generally saying, assignments happen on the *object itself*.
 
-So `gwen.teeth = 31` _creates a new own property_ called `teeth` on the object that `gwen` points at. It doesn’t have any effect on the prototype:
+So `gwen.teeth = 31` *creates a new own property* called `teeth` on the object that `gwen` points to. It doesn’t have any effect on the prototype:
 
 ![Assignment: Step 2](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1590534072/just-javascript-email-images/jj09/step2.png)
 
 As a result, `human.teeth` is still `32`, but `gwen.teeth` is now `31`:
 
 ```js
-console.log(human.teeth) // 32
-console.log(gwen.teeth) // 31
+console.log(human.teeth); // 32
+console.log(gwen.teeth); // 31
 ```
 
 We can summarize this behavior with a simple rule of thumb.
 
-When we _read_ a property that doesn’t exist on our object, then we’ll keep looking for it on the prototype chain. If we don’t find it, we get `undefined`.
+When we *read* a property that doesn’t exist on our object, we’ll keep looking for it on the prototype chain. If we don’t find it, we get `undefined`.
 
-But when we _write_ a property that doesn’t exist on our object, that will _create_ that property on our object. Generally saying, prototypes will _not_ play a role.
+But when we *write* a property that doesn’t exist on our object, that *creates* the property on our object. Generally speaking, prototypes will *not* play a role.
 
 ### The Object Prototype
 
 This object doesn’t have a prototype, right?
 
 ```js
-let obj = {}
+let obj = {};
 ```
 
 Try running this in your browser’s console:
 
 ```js
-let obj = {}
-console.log(obj.__proto__) // Play with it!
+let obj = {};
+console.log(obj.__proto__); // Play with it!
 ```
 
 Surprisingly, `obj.__proto__` is not `null` or `undefined`! Instead, you’ll see a curious object with a bunch of properties, including `hasOwnProperty`.
@@ -292,42 +292,42 @@ Surprisingly, `obj.__proto__` is not `null` or `undefined`! Instead, you’ll se
 
 ![Root Prototype](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1590534071/just-javascript-email-images/jj09/root1.png)
 
-At first, this might be a bit mindblowing. Let that sink in. All this time we were thinking that `{}` creates an “empty” object. But it’s not so empty, after all! It has a hidden `__proto__` wire that points at the Object Prototype by default.
+At first, this might be a bit mindblowing. Let that sink in. All this time, we were thinking `{}` created an “empty” object, but it’s not so empty after all! It has a hidden `__proto__` wire that points to the Object Prototype by default.
 
-This explains why the JavaScript objects seem to have “built-in” properties:
+This explains why JavaScript objects seem to have “built-in” properties:
 
 ```js
 let human = {
-  teeth: 32,
-}
-console.log(human.hasOwnProperty) // (function)
-console.log(human.toString) // // (function)
+  teeth: 32
+};
+console.log(human.hasOwnProperty); // (function)
+console.log(human.toString); // // (function)
 ```
 
-These “built-in” properties are nothing more than normal properties that exist on the Object Prototype. Our object’s prototype is the Object Prototype, which is why we can access them. (Their implementations are inside the JS engine.)
+These “built-in” properties are nothing more than normal properties on the Object Prototype. Because our object’s prototype is the Object Prototype, we can access them.
 
-### An Object with No Prototype
+### An Object With No Prototype
 
-We’ve just learned that all objects created with the `{}` syntax have the special `__proto__` wire set to a default Object Prototype. But we also know that we can customize the `__proto__`. You might wonder: can we set it to `null`?
+We’ve just learned that all objects created with the `{}` syntax have the special `__proto__` wire pointing to a default Object Prototype. But we also know that we can customize the `__proto__`. You might wonder: can we set it to `null`?
 
 ```js
 let weirdo = {
-  __proto__: null,
-}
+  __proto__: null
+};
 ```
 
-The answer is yes — this will produce an object that truly doesn’t have a prototype, at all. As a result, it doesn’t even have built-in object methods:
+The answer is yes—this will produce an object that truly doesn’t have a prototype at all. As a result, it doesn’t even have built-in object methods:
 
 ```js
-console.log(weirdo.hasOwnProperty) // undefined
-console.log(weirdo.toString) // undefined
+console.log(weirdo.hasOwnProperty); // undefined
+console.log(weirdo.toString); // undefined
 ```
 
-You won’t often want to create objects like this, if at all. However, the Object Prototype itself is exactly such an object. It is an object with no prototype.
+You probably won’t want to create objects like this, however the Object Prototype is exactly that—an object with no prototype.
 
 ### Polluting the Prototype
 
-Now we know that all JavaScript objects get the same prototype by default. Let’s briefly revisit our example from the module about Mutation:
+Now we know that all JavaScript objects get the same prototype by default. Let’s briefly revisit our example from the module about mutation:
 
 ![Root Prototype for several objects](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1590534072/just-javascript-email-images/jj09/root2.png)
 
@@ -336,65 +336,111 @@ This picture gives us an interesting insight. If JavaScript searches for missing
 Let’s add these two lines of code:
 
 ```js
-let obj = {}
-obj.__proto__.smell = 'banana'
+let obj = {};
+obj.__proto__.smell = 'banana';
 ```
 
 We mutated the Object Prototype by adding a `smell` property to it. As a result, both detectives now appear to be using a banana-flavored perfume:
 
 ```js
-console.log(sherlock.smell) // "banana"
-console.log(watson.smell) // "banana"
+console.log(sherlock.smell); // "banana"
+console.log(watson.smell); // "banana"
 ```
 
 ![Prototype pollution](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1590534071/just-javascript-email-images/jj09/pollution.png)
 
-Mutating a shared prototype like we just did is called _prototype pollution_.
+Mutating a shared prototype like we just did is called *prototype pollution*.
 
-In the past, prototype pollution was a popular way to extend JavaScript with custom features. However, over the years the web community realized that it is fragile and makes it hard to [add new language features](https://esdiscuss.org/topic/having-a-non-enumerable-array-prototype-contains-may-not-be-web-compatible). Prefer to avoid it.
+In the past, prototype pollution was a popular way to extend JavaScript with custom features. However, over the years the web community realized that it is fragile and makes it hard to [add new language features](https://esdiscuss.org/topic/having-a-non-enumerable-array-prototype-contains-may-not-be-web-compatible), so we prefer to avoid it.
 
-Now you can solve the Pineapple Pizza Puzzle from the beginning of this module! Check your solution in DevTools.
+Now you can solve the pineapple pizza puzzle from the beginning of this module! Check your solution in your console.
 
-## `__proto__` vs `prototype`
+<FunFact>
 
-You might be wondering: what in the world is the `prototype` property? You might have seen it [in the MDN page titles](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter).
+#### `__proto__` vs. `prototype`
 
-Bad news: the `prototype` property is almost unrelated to the core idea of prototypes! It’s more related to the `new` operator, which we haven’t used yet.
+You might be wondering: what in the world is the `prototype` property? You might have seen it [in MDN documentation](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter).
 
-Remember that **`__proto__` means an object’s prototype**. The `prototype` property and the `new` operator are a whole different topic we’ll skip for now.
+The story around this is confusing. Before JavaScript added [classes](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes), it was common to write them as functions that produce objects, for example:
+
+```js
+function Donut() {
+  return { shape: 'round' };
+}
+
+let donut = Donut();
+```
+
+You’d want all donuts to share a prototype with some shared methods. However, manually adding `__proto__` to every object looks gross:
+
+```js
+function Donut() {
+  return { shape: 'round' };
+}
+
+let donutProto = {
+  eat() {
+    console.log('Nom nom nom');
+  }
+};
+
+let donut1 = Donut();
+donut1.__proto__ = donutProto;
+let donut2 = Donut();
+donut2.__proto__ = donutProto;
+
+donut1.eat();
+donut2.eat();
+```
+
+As a shortcut, adding `.prototype` *on the function itself* and adding `new` before your function calls would automatically attach the `__proto__`:
+
+```js
+function Donut() {
+  return { shape: 'round' };
+}
+Donut.prototype = {
+  eat() {
+    console.log('Nom nom nom');
+  }
+};
+
+let donut1 = new Donut(); // __proto__: Donut.prototype
+let donut2 = new Donut(); // __proto__: Donut.prototype
+
+donut1.eat();
+donut2.eat();
+```
+
+Now this pattern has mostly fallen into obscurity, but you can still see `prototype` property on the built-in functions and even on classes. To conclude, a function’s `prototype` specifies the `__proto__` of the objects created by calling that function with a `new` keyword.
+
+</FunFact>
 
 ### Why Does This Matter?
 
-In practice, you probably won’t use prototypes in your code directly. (In fact, even using the `__proto__` syntax directly itself is [discouraged](https://2ality.com/2015/09/proto-es6.html).)
+In practice, you probably won’t use prototypes in your code directly. (In fact, even using the `__proto__` syntax is [discouraged](https://2ality.com/2015/09/proto-es6.html).)
 
-Prototypes are a bit unusual, and most people and frameworks never really fully embraced them as a paradigm. Instead, people often used prototypes as mere building blocks for a traditional “class inheritance” model that’s popular in other programming languages. In fact, it was so common that JavaScript added a class syntax as a convention that “hides” prototypes out of sight.
+Prototypes are unusual—most frameworks never embraced them as a paradigm. Still, you will notice prototypes hiding “beneath the surface” of other JavaScript features. For example, people often use prototypes to create a traditional “class inheritance” model that’s popular in other programming languages.
 
-Still, you will notice prototypes hiding “beneath the surface” of classes and other JavaScript features. For example, here is a [snippet](https://gist.github.com/gaearon/a25fd42a1e6b4cc24851978df0a36571) of a JavaScript class rewritten with `__proto__` to demonstrate what’s happening under the hood.
+This became so common that JavaScript added a class syntax as a convention that “hides” prototypes out of sight. To see it in action, look at this [snippet](https://gist.github.com/gaearon/a25fd42a1e6b4cc24851978df0a36571) of a JavaScript class rewritten with `__proto__` for a comparison.
 
-Personally, I don’t use a lot of classes in my daily coding, and I rarely deal with prototypes directly either. However, it helps to know how those features build on each other, and what happens when I read or set a property on an object.
+Personally, I don’t use a lot of classes in my daily coding, and I rarely deal with prototypes directly either. However, it helps to know how those features build on each other, and it’s important to know what happens when I read or set a property on an object.
 
 ## Recap
 
-- When reading `obj.prop`, if `obj` doesn’t have a `prop` property, JavaScript will look for `obj.__proto__.prop`, then it will look for `obj.__proto__.__proto__.prop`, and so on, until it either finds our property or reaches the end of the prototype chain.
-- When writing to `obj.prop`, JavaScript will usually write to the object directly instead of traversing the prototype chain.
-- We can use `obj.hasOwnProperty('prop')` to determine whether our object has an _own_ property called `prop`. In other words, it means there is a property wire called `prop` attached to that object directly.
-- We can “pollute” a prototype shared by many objects by mutating it. We can even do this to the Object Prototype — the default prototype for `{}` objects! But we shouldn’t do that unless we’re pranking our colleagues.
-- You probably won’t use prototypes much directly in practice. However, they are fundamental to how JavaScript objects work, so it is handy to understand their underlying mechanics. Some advanced JavaScript features, including classes, can be expressed in terms of prototypes.
+- When reading `obj.something`, if `obj` doesn’t have a `something` property, JavaScript will look for `obj.__proto__.something`. Then it will look for `obj.__proto__.__proto__.something`, and so on, until it either finds our property or reaches the end of the prototype chain.
+- When writing to `obj.something`, JavaScript will usually write to the object directly instead of traversing the prototype chain.
+- We can use `obj.hasOwnProperty('something')` to determine whether our object has its *own* property called `something`.
+- We can “pollute” a prototype shared by many objects by mutating it. We can even do this to the Object Prototype—the default prototype for `{}` objects! (But we shouldn’t, unless we’re pranking our colleagues.)
+- You probably won’t use prototypes much directly in practice. However, they are fundamental to JavaScript objects, so it is handy to understand their underlying mechanics. Some advanced JavaScript features, including classes, can be expressed in terms of prototypes.
 
 ## Exercises
 
 This module also has exercises for you to practice!
 
-[Click here to solidify this mental model with a few short exercises.](https://eggheadio.typeform.com/to/S7p8NB?email={{subscriber.email_address}})
-
 **Don’t skip them!**
 
-Even though you’re probably familiar with the concept of prototypes, these exercises will help you cement the mental model we’re building. We need this foundation before we can get to more complex topics.
-
-I'm still working on the next module. You can expect to see it in a few weeks or so.
-
-Cheers,
-Dan
+Even though you’re probably familiar with the concept of prototypes, these exercises will help you cement the mental model we’re building. This foundation will help as you explore increasingly complex topics.
 
 <Pagination prev="09-mutation" />
 
