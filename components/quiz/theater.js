@@ -21,7 +21,7 @@ const Theater = ({
 }) => {
   const {formik} = useEggheadQuestion(question, handleSubmit)
   const [showExplanation, setShowExplanation] = React.useState(
-    question?.value ? true : false,
+    question?.value ? true : false
   )
 
   return (
@@ -30,14 +30,14 @@ const Theater = ({
       handleContinue={handleContinue}
     >
       <QuestionWrapper number={number}>
-        <Markdown>{question.text}</Markdown>
+        <Markdown>{question.prompt}</Markdown>
         <Answer
           title="Correct Answer"
           byline=""
           action="Reveal"
           className="mt-4"
         >
-          <div className="py-10">{question.explanation}</div>
+          <div className="py-10">{question.answer.description}</div>
         </Answer>
       </QuestionWrapper>
       <AnswerWrapper>
@@ -46,7 +46,7 @@ const Theater = ({
           onSubmit={formik.handleSubmit}
         >
           <>
-            {/* {answerOpened && question.explanation && question.explanation} */}
+            {/* {answerOpened && question.answer.description && question.answer.description} */}
             <div className="text-lg font-semibold">Did you remember?</div>
             <div
               className="mt-4 grid grid-flow-col-dense gap-2"

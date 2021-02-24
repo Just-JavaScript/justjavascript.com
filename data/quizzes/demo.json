@@ -1,0 +1,129 @@
+{
+  "title": "Demo Quiz",
+  "slug": "demo",
+  "id": "demo",
+  "questions": [
+    {
+      "__typename": "EssayQuestion",
+      "id": "ckksrck08114q0930w6pm9y7f",
+      "title": "JJS 03 01 numberOfTentacles code",
+      "prompt": "# What happens if we run this code?\n\nIs this code valid? Why or why not?\n\n```js\nlet numberOfTentacles = 10;\nnumberOfTentacles = 'eight';\nconsole.log(typeof(numberOfTentacles));\n```",
+      "answer": {
+        "description": "**Yes, it’s valid. It prints \"string\" to the console.**\n\nVariables don’t have types in JavaScript — only values do. The answer to typeof(numberOfTentacles) depends on **which value** the variable was pointing to at that time.\n\nThe numberOfTentacles variable was pointing to \"eight\" string value at the time we asked about its type. So we got \"string\" as a result.",
+        "title": "JJS 03 01 Answer"
+      }
+    },
+    {
+      "__typename": "QuestionSet",
+      "id": "cklapczhk37td0a782euz0eo5",
+      "title": "JJS 04 01 Sketch a diagram",
+      "questions": [
+        {
+          "__typename": "SketchQuestion",
+          "id": "cklap9tag38o50a293f3macdg",
+          "title": "JJS 04 01 01 Sketch a diagram",
+          "prompt": "# Sketch a diagram of variables and values after this snippet of code runs. Use our mental model.\n\n```js\nlet meals = 4;\nlet wheels = meals;\nlet eels = 2 + 2;\n```",
+          "answer": null
+        },
+        {
+          "__typename": "MultipleChoiceQuestion",
+          "id": "cklapbj0o37s009778kqpn9am",
+          "title": "JJS 04 01 02 Which one",
+          "prompt": "# Which one of these diagrams best matches your sketch and our mental model after that code runs?",
+          "canComment": false,
+          "commentPrompt": null,
+          "answer": {
+            "description": "# Diagram B is correct. It shows all variables pointing to the value 4.\n\nAll other diagrams show more than a single value 4. But in our mental model, there is only one number value for each number!\n\n![https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612888030/just-javascript-email-images/jj04/quiz-images/jjs-04-01-b.jpg](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612888030/just-javascript-email-images/jj04/quiz-images/jjs-04-01-b.jpg)"
+          },
+          "choices": [
+            {
+              "id": "cklaplpj4391y0a2980ij153x",
+              "value": "jjs-04-01-02-a",
+              "label": "A",
+              "imageUrl": "https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612887982/just-javascript-email-images/jj04/quiz-images/JJS-04-01-a.jpg"
+            },
+            {
+              "id": "cklapm6i8384k0a78jypn187g",
+              "value": "jjs-04-01-02-b",
+              "label": "B",
+              "imageUrl": "https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612888030/just-javascript-email-images/jj04/quiz-images/jjs-04-01-b.jpg"
+            },
+            {
+              "id": "cklapmya8381j0d20jl2yncmr",
+              "value": "jjs-04-01-02-c",
+              "label": "C",
+              "imageUrl": "https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612888142/just-javascript-email-images/jj04/quiz-images/jss-04-01-c.jpg"
+            },
+            {
+              "id": "cklapngsw38ap0d20poq33i7v",
+              "value": "jjs-04-01-02-d",
+              "label": "D",
+              "imageUrl": "https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612888220/just-javascript-email-images/jj04/quiz-images/jjs-04-01-d.jpg"
+            }
+          ],
+          "correctChoices": [
+            {
+              "id": "cklapm6i8384k0a78jypn187g",
+              "value": "jjs-04-01-02-b",
+              "label": "B",
+              "imageUrl": "https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612888030/just-javascript-email-images/jj04/quiz-images/jjs-04-01-b.jpg"
+            }
+          ]
+        }
+      ]
+    },
+
+    {
+      "__typename": "SketchQuestion",
+      "id": "cklav9k9k3g2n0a78hqfgrxd3",
+      "title": "JJS 04 02 01 Sketch a diagram",
+      "prompt": "# Sketch a diagram of variables and values after this snippet of code runs. Use our mental model.\n\n```js\nlet price = 100;\nlet offer = price + 1;\nprice = 200;\n```",
+      "answer": null
+    },
+    {
+      "__typename": "MultipleChoiceQuestion",
+      "id": "cklavcv3c3gah0a78r4rvoi4t",
+      "title": "JJS 04 02 02 Which one",
+      "prompt": "# Which one of these diagrams best matches your sketch and our mental model after that code runs?",
+      "canComment": false,
+      "commentPrompt": null,
+      "answer": {
+        "description": "**Diagram B is correct.** It shows the price variable pointing to 200, and the offer variable pointing to 101.\n\nIf you arrived at a different result, you might want to try again. Remember that = means \"connect the wire of variable on the left to the current value on the right\", and nothing more than that.\n\n![https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612889573/just-javascript-email-images/jj04/quiz-images/jjs-04-02-b.jpg](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612889573/just-javascript-email-images/jj04/quiz-images/jjs-04-02-b.jpg)"
+      },
+      "choices": [
+        {
+          "id": "ckky8zws80uih0a79yat97mnl",
+          "value": "jjs-04-02-a",
+          "label": "A",
+          "imageUrl": "https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612889538/just-javascript-email-images/jj04/quiz-images/jjs-04-02-a.jpg"
+        },
+        {
+          "id": "ckky909wg0tob0b78lm3wycna",
+          "value": "jjs-04-02-b",
+          "label": "B",
+          "imageUrl": "https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612889573/just-javascript-email-images/jj04/quiz-images/jjs-04-02-b.jpg"
+        },
+        {
+          "id": "ckky90ok80tpr0a755lr8uh6z",
+          "value": "jjs-04-02-c",
+          "label": "C",
+          "imageUrl": "https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612889603/just-javascript-email-images/jj04/quiz-images/jjs-04-02-c.jpg"
+        },
+        {
+          "id": "ckky915jc0ukr0a79elb8213d",
+          "value": "jjs-04-02-d",
+          "label": "D",
+          "imageUrl": "https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612889644/just-javascript-email-images/jj04/quiz-images/jjs-04-02-d.jpg"
+        }
+      ],
+      "correctChoices": [
+        {
+          "id": "ckky909wg0tob0b78lm3wycna",
+          "value": "jjs-04-02-b",
+          "label": "B",
+          "imageUrl": "https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612889573/just-javascript-email-images/jj04/quiz-images/jjs-04-02-b.jpg"
+        }
+      ]
+    }
+  ]
+}

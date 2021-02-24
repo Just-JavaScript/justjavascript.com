@@ -7,6 +7,7 @@ import Markdown from 'components/quiz/markdown'
 import Submit from 'components/quiz/submit'
 import useEggheadQuestion from 'hooks/useEggheadQuestion'
 import {motion, AnimatePresence} from 'framer-motion'
+import SubmitAndContinue from 'components/quiz/submitAndContinue'
 
 const Essay = (props) => {
   const {
@@ -24,11 +25,11 @@ const Essay = (props) => {
     nested,
   } = props
   const {formik} = useEggheadQuestion(question, handleSubmit)
-  
+  const explanation = question.answer?.description
   return (
     <QuizWrapper {...props}>
       <QuestionWrapper number={number} nested={nested}>
-        <Markdown>{question.text}</Markdown>
+        <Markdown>{question.prompt}</Markdown>
       </QuestionWrapper>
       <AnswerWrapper>
         <form className="flex flex-col" onSubmit={formik.handleSubmit}>
@@ -54,7 +55,6 @@ const Essay = (props) => {
               />
             </>
           )}
-
           <AnimatePresence>
             {formik.submitCount > 0 && formik.errors.value && (
               <motion.span
@@ -67,18 +67,27 @@ const Essay = (props) => {
               </motion.span>
             )}
           </AnimatePresence>
-          <Submit
-            isDisabled={isDisabled}
-            isSubmitting={state.matches('answering')}
-            explanation={question.explanation}
-          />
+
+          {explanation ? (
+            <Submit
+              isDisabled={isDisabled}
+              isSubmitting={state.matches('answering')}
+              explanation={explanation}
+            />
+          ) : (
+            <SubmitAndContinue
+              isLastQuestion={isLastQuestion}
+              state={state}
+              handleContinue={handleContinue}
+              isDisabled={state.matches('answering')}
+              isSubmitting={state.matches('answering')}
+            />
+          )}
         </form>
       </AnswerWrapper>
       <AnimatePresence>
         {showExplanation && (
-          <Explanation className="max-h-full">
-            {question.explanation}
-          </Explanation>
+          <Explanation className="max-h-full">{explanation}</Explanation>
         )}
       </AnimatePresence>
     </QuizWrapper>

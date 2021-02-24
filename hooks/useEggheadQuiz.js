@@ -7,7 +7,7 @@ import {scroller} from 'react-scroll'
 export default function useEggheadQuizMachine(
   quiz,
   currentQuestion,
-  setCurrent,
+  setCurrent
 ) {
   const quizQuestions = get(quiz, 'questions') || null
 
@@ -33,7 +33,7 @@ export default function useEggheadQuizMachine(
   const isDisabled = state.matches('answering') || state.matches('answered')
   const isLastQuestion = currentQuestionIdx + 1 === questions.length
   const showExplanation =
-    currentQuestion.explanation &&
+    currentQuestion.answer?.description &&
     (state.matches('answered') || currentQuestion.value)
 
   function scrollTo(question) {
@@ -65,7 +65,9 @@ export default function useEggheadQuizMachine(
     scrollTo(nextQuestionId)
   }
   function handleShowNextQuestion() {
-    !isLastQuestion && !state.matches('idle') && setCurrent({index: nextQuestionIdx, id: nextQuestionId})
+    !isLastQuestion &&
+      !state.matches('idle') &&
+      setCurrent({index: nextQuestionIdx, id: nextQuestionId})
   }
 
   function handleSubmit(values, _actions) {

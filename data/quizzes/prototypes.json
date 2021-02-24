@@ -1,0 +1,233 @@
+{
+  "title": "JJS 09 Prototypes",
+  "slug": "prototypes",
+  "id": "prototypes",
+  "questions": [
+    {
+      "__typename": "QuestionSet",
+      "id": "cklc8xex424x20b77tu3ltjdf",
+      "title": "JJS 09 01 Sketch a diagram",
+      "questions": [
+        {
+          "__typename": "SketchQuestion",
+          "id": "cklc8v5wg24ru0b77o219monb",
+          "title": "JJS 09 01 01 Sketch a diagram",
+          "prompt": "# Sketch a diagram of variables and values after this snippet of code runs. Use our mental model.\n\nTo reduce the visual clutter, please don’t include the Object Prototype into your drawings. It won’t play a role in this quiz.\n\n```js\nlet lie = {\n   taste: 'bitter'\n};\n\nlet cake = {\n   __proto__: lie\n};\n```",
+          "answer": null
+        },
+        {
+          "__typename": "MultipleChoiceQuestion",
+          "id": "cklc8xcls23t80a713jgp9jw9",
+          "title": "JJS 09 01 02 Which one",
+          "prompt": "# Which diagram matches your drawing the best?",
+          "canComment": false,
+          "commentPrompt": null,
+          "answer": {
+            "description": "**Diagram C is the correct answer.**\n\n![https://res.cloudinary.com/dg3gyk0gu/image/upload/v1613078408/just-javascript-email-images/jj09/Quiz%20Images/jjs-09-01-c.png](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1613078408/just-javascript-email-images/jj09/Quiz%20Images/jjs-09-01-c.png)\n\nDiagram A is wrong because it shows lie and cake pointing at the same object. However, they should point at two separate objects because each time we write { }, we create a different object.\n\nDiagram B is wrong because the special __proto__ wire points at a variable. However, wires can never point at variables. They always point at values.\n\nDiagram D is wrong because it shows both objects having a taste property. However, the object that cake points at doesn’t have a taste property. We never defined or assigned it.\n"
+          },
+          "choices": [
+            {
+              "id": "ckl180nuw8a9f0a33ip6kynva",
+              "value": "jjs-09-01-a",
+              "label": "A",
+              "imageUrl": "https://res.cloudinary.com/dg3gyk0gu/image/upload/v1613069618/just-javascript-email-images/jj09/Quiz%20Images/jjs-09-01-a.png"
+            },
+            {
+              "id": "ckl1d7ipk8sik0a26kiscn5ba",
+              "value": "jjs-09-01-b",
+              "label": "B",
+              "imageUrl": "https://res.cloudinary.com/dg3gyk0gu/image/upload/v1613069700/just-javascript-email-images/jj09/Quiz%20Images/jjs-09-01-b.png"
+            },
+            {
+              "id": "ckl1d8rgo8ulw0a33bswmwlqi",
+              "value": "jjs-09-01-c",
+              "label": "C",
+              "imageUrl": "https://res.cloudinary.com/dg3gyk0gu/image/upload/v1613078408/just-javascript-email-images/jj09/Quiz%20Images/jjs-09-01-c.png"
+            },
+            {
+              "id": "ckl1dcemw8usx0a33588hz02k",
+              "value": "jjs-09-01-d",
+              "label": "D",
+              "imageUrl": "https://res.cloudinary.com/dg3gyk0gu/image/upload/v1613078466/just-javascript-email-images/jj09/Quiz%20Images/jjs-09-01-d.png"
+            }
+          ],
+          "correctChoices": [
+            {
+              "id": "ckl1d8rgo8ulw0a33bswmwlqi",
+              "value": "jjs-09-01-c",
+              "label": "C",
+              "imageUrl": "https://res.cloudinary.com/dg3gyk0gu/image/upload/v1613078408/just-javascript-email-images/jj09/Quiz%20Images/jjs-09-01-c.png"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "__typename": "EssayQuestion",
+      "id": "ckl1dglvc8vnh0b75fd2xii8n",
+      "title": "JJS 09 02 Answer Cake Taste Lie",
+      "prompt": "## Now use this diagram to answer these three questions:\n\n1. **console.log(cake === lie)**\n\n2. **console.log(cake.taste === lie.taste)**\n\n3. **cake.hasOwnProperty('taste') === lie.hasOwnProperty('taste')**\n\n![https://res.cloudinary.com/dg3gyk0gu/image/upload/v1613078408/just-javascript-email-images/jj09/Quiz%20Images/jjs-09-01-c.png](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1613078408/just-javascript-email-images/jj09/Quiz%20Images/jjs-09-01-c.png)",
+      "answer": {
+        "description": "**false, true, false.**\n\n1. **console.log(cake === lie)**\n\nThis is **false** because cake and lie point at two different objects.\n\n2. **console.log(cake.taste === lie.taste)**\n\nThis is **true** because the value of cake.taste is \"bitter\" (we found it via the prototype), and the value of lie.taste is also \"bitter\" (we found it on the object itself). Each distinct string value only exists once, so the left and the right sides are equal.\n\n3. **cake.hasOwnProperty('taste') === lie.hasOwnProperty('taste')**\n\nThis is **false**. Remember that hasOwnProperty is asking \"does this object have a property wire with that name\".\n\nOn the left side, cake.hasOwnProperty('taste') is false because the object that cake points at has no own taste property. On the right side, lie.hasOwnProperty('taste') is true because the object that lie points at **does** have a taste property.\n\nSo we have false === true, which is itself false.\n\n![https://res.cloudinary.com/dg3gyk0gu/image/upload/v1613078408/just-javascript-email-images/jj09/Quiz%20Images/jjs-09-01-c.png](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1613078408/just-javascript-email-images/jj09/Quiz%20Images/jjs-09-01-c.png)"
+      }
+    },
+    {
+      "__typename": "QuestionSet",
+      "id": "cklc95vpc258x0b77pjsni488",
+      "title": "JJS 09 03 Sketch a diagram",
+      "questions": [
+        {
+          "__typename": "SketchQuestion",
+          "id": "cklc93y9c25590b77k23bqvfr",
+          "title": "JJS 09 03 01 Sketch a diagram",
+          "prompt": "# Sketch a diagram of variables and values after this snippet of code runs. Use our mental model.\n\n```js\nlet lie = {\n   taste: 'bitter'\n};\n\nlet cake = {\n   __proto__: lie\n};\n\nlie.taste = 'butter';\n```",
+          "answer": null
+        },
+        {
+          "__typename": "MultipleChoiceQuestion",
+          "id": "cklc95te025800b77rovvfm26",
+          "title": "JJS 09 03 02 Which one",
+          "prompt": "# Which diagram matches your drawing the most?",
+          "canComment": false,
+          "commentPrompt": null,
+          "answer": {
+            "description": "**Diagram C is the correct answer.**\n\nDiagrams A and B are wrong because they show the object cake points at having its own taste property. However, we never declared or assigned this property on that object.\n\nDiagram D is wrong because it shows both variables pointing at the same object. However, each variable pointed at a different newly created object in the beginning, and neither variable has been reassigned since then.\n\n![https://res.cloudinary.com/dg3gyk0gu/image/upload/v1613079031/just-javascript-email-images/jj09/Quiz%20Images/jjs-09-03-c.png](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1613079031/just-javascript-email-images/jj09/Quiz%20Images/jjs-09-03-c.png)"
+          },
+          "choices": [
+            {
+              "id": "ckl1dkiaw8vcl0a336176i9rt",
+              "value": "jjs-09-03-a",
+              "label": "A",
+              "imageUrl": "https://res.cloudinary.com/dg3gyk0gu/image/upload/v1613078949/just-javascript-email-images/jj09/Quiz%20Images/jjs-09-03-a.png"
+            },
+            {
+              "id": "ckl1dlqa88tdx0a26z8zdq8uf",
+              "value": "jjs-09-03-b",
+              "label": "B",
+              "imageUrl": "https://res.cloudinary.com/dg3gyk0gu/image/upload/v1613079013/just-javascript-email-images/jj09/Quiz%20Images/jjs-09-03-b.png"
+            },
+            {
+              "id": "ckl1dm8sw8vg30a33qusp5x4j",
+              "value": "jjs-09-03-c",
+              "label": "C",
+              "imageUrl": "https://res.cloudinary.com/dg3gyk0gu/image/upload/v1613079031/just-javascript-email-images/jj09/Quiz%20Images/jjs-09-03-c.png"
+            },
+            {
+              "id": "ckl1dmueo8v7e0969b3wapwjz",
+              "value": "jjs-09-03-d",
+              "label": "D",
+              "imageUrl": "https://res.cloudinary.com/dg3gyk0gu/image/upload/v1613079057/just-javascript-email-images/jj09/Quiz%20Images/jjs-09-03-d.png"
+            }
+          ],
+          "correctChoices": [
+            {
+              "id": "ckl1dm8sw8vg30a33qusp5x4j",
+              "value": "jjs-09-03-c",
+              "label": "C",
+              "imageUrl": "https://res.cloudinary.com/dg3gyk0gu/image/upload/v1613079031/just-javascript-email-images/jj09/Quiz%20Images/jjs-09-03-c.png"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "__typename": "EssayQuestion",
+      "id": "ckl1dpz288ve90969poi9tu3g",
+      "title": "JJS 09 04 Answer Lie Cake Taste",
+      "prompt": "## Now **use this diagram** to answer these two questions:\n\n1. **console.log(lie.taste)**\n\n2. **console.log(cake.taste)**\n\n![https://res.cloudinary.com/dg3gyk0gu/image/upload/v1613079031/just-javascript-email-images/jj09/Quiz%20Images/jjs-09-03-c.png](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1613079031/just-javascript-email-images/jj09/Quiz%20Images/jjs-09-03-c.png)",
+      "answer": {
+        "description": "**\"butter\" and \"butter\".**\n\n1. **console.log(lie.taste)**\n\nThis is **\"butter\"** because the object lie points at has its own taste property pointing at \"butter\".\n\n2. **console.log(cake.taste)**\n\nThis is also **\"butter\".** The object that cake points at doesn’t have a taste property, so we continue searching for it on its prototype. Its prototype has a taste property, so its value is the result.\n\n![https://res.cloudinary.com/dg3gyk0gu/image/upload/v1613079031/just-javascript-email-images/jj09/Quiz%20Images/jjs-09-03-c.png](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1613079031/just-javascript-email-images/jj09/Quiz%20Images/jjs-09-03-c.png)"
+      }
+    },
+    {
+      "__typename": "QuestionSet",
+      "id": "cklc9ce9s26bq0c85afr4l3p6",
+      "title": "JJS 09 05 Sketch a diagram",
+      "questions": [
+        {
+          "__typename": "SketchQuestion",
+          "id": "cklc98cfs25dj0b7795an19lz",
+          "title": "JJS 09 05 01 Sketch a diagram",
+          "prompt": "# Sketch a diagram of variables and values after this snippet of code runs. Use our mental model.\n\n```js\nlet spider = {\n   legs: 8\n};\n\nlet miles = {\n   __proto__: spider\n};\n\nmiles.legs = 2;\n```",
+          "answer": null
+        },
+        {
+          "__typename": "MultipleChoiceQuestion",
+          "id": "cklc9cbyg24da0a71f1lj2oug",
+          "title": "JJS 09 05 02 Which one",
+          "prompt": "# Which diagram matches your drawing the most?",
+          "canComment": false,
+          "commentPrompt": null,
+          "answer": {
+            "description": "**Diagram B is the correct answer.**\n\n![https://res.cloudinary.com/dg3gyk0gu/image/upload/v1613079368/just-javascript-email-images/jj09/Quiz%20Images/jjs-09-05-b.png](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1613079368/just-javascript-email-images/jj09/Quiz%20Images/jjs-09-05-b.png)\n\n**Diagram A** is wrong because it shows miles pointing at an object with `legs` property still pointing at `8`. However, we’ve assigned `miles.legs` to `2`, which mutated the object that `miles` point at. So the `legs` property of that object should be pointing at `2` now.\n\n**Diagram C** is wrong because it shows `spider.legs` pointing at `2`. However, the object that `spider` points at has not been mutated, and originally `spider.legs` was `8`. So it should have stayed set to `8`.\n\nRecall that we only look at the prototype when we read properties that don't exist. But when we write a property that doesn't exist, we will write it on the object itself. So when we write `miles.legs`, it creates a `legs` property on the object that `miles` points at. The prototype is not involved.\n\n**Diagram D** is wrong for a similar reason as Diagram C. We did not mutate `spider.legs`, and assigning `2` to `miles.legs` did not affect the object that spider points at. So `spider.legs` should still be `8`."
+          },
+          "choices": [
+            {
+              "id": "ckl1dsybc8vtb0a33hzm94n0m",
+              "value": "jjs-09-05-a",
+              "label": "A",
+              "imageUrl": "https://res.cloudinary.com/dg3gyk0gu/image/upload/v1613079341/just-javascript-email-images/jj09/Quiz%20Images/jjs-09-05-a.png"
+            },
+            {
+              "id": "ckl1dthls8vvf0a33w48njk0t",
+              "value": "jjs-09-05-b",
+              "label": "B",
+              "imageUrl": "https://res.cloudinary.com/dg3gyk0gu/image/upload/v1613079368/just-javascript-email-images/jj09/Quiz%20Images/jjs-09-05-b.png"
+            },
+            {
+              "id": "ckl1dtzco8vx90a33i6hoygls",
+              "value": "jjs-09-05-c",
+              "label": "C",
+              "imageUrl": "https://res.cloudinary.com/dg3gyk0gu/image/upload/v1613079393/just-javascript-email-images/jj09/Quiz%20Images/jjs-09-05-c.png"
+            },
+            {
+              "id": "ckl1dv50o8w120a33xwk8fot1",
+              "value": "jjs-09-05-d",
+              "label": "D",
+              "imageUrl": "https://res.cloudinary.com/dg3gyk0gu/image/upload/v1613079418/just-javascript-email-images/jj09/Quiz%20Images/jjs-09-05-d.png"
+            }
+          ],
+          "correctChoices": [
+            {
+              "id": "ckl1dthls8vvf0a33w48njk0t",
+              "value": "jjs-09-05-b",
+              "label": "B",
+              "imageUrl": "https://res.cloudinary.com/dg3gyk0gu/image/upload/v1613079368/just-javascript-email-images/jj09/Quiz%20Images/jjs-09-05-b.png"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "__typename": "EssayQuestion",
+      "id": "ckl1dznts8w3x0969gd9uqyyf",
+      "title": "JJS 09 06 Answer Spider Legs Miles",
+      "prompt": "# Now **use this diagram** to answer these two questions:\n\n1. **console.log(spider.legs)**\n\n2. **console.log(miles.legs)**\n\n![https://res.cloudinary.com/dg3gyk0gu/image/upload/v1613079368/just-javascript-email-images/jj09/Quiz%20Images/jjs-09-05-b.png](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1613079368/just-javascript-email-images/jj09/Quiz%20Images/jjs-09-05-b.png)",
+      "answer": {
+        "description": "**8 and 2.**\n\n1. **console.log(spider.legs)**\n\nThis is **8** because the object spider points at has its own legs property pointing at 8.\n\n2. **console.log(miles.legs)**\n\nThis is **2** because the object miles points at has its own legs property pointing at 2. Although it has a prototype, we don’t look at it because we’ve already found our property.\n\n![https://res.cloudinary.com/dg3gyk0gu/image/upload/v1613079368/just-javascript-email-images/jj09/Quiz%20Images/jjs-09-05-b.png](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1613079368/just-javascript-email-images/jj09/Quiz%20Images/jjs-09-05-b.png)"
+      }
+    },
+    {
+      "__typename": "SketchQuestion",
+      "id": "cklc9iago26yj0c85h1fooh8b",
+      "title": "JJS 09 07 Sketch a diagram",
+      "prompt": "# Sketch a diagram of variables and values after this snippet of code runs. Use our mental model.\n\n## Then use your diagram to answer the question at the bottom of the code snippet.\n\n```js\nlet spider = {\n   legs: 8\n};\n\nlet miles = {\n   __proto__: spider\n};\n\nlet gwen = {\n   __proto__: spider\n};\n\nmiles.legs = 2;\nspider.legs = gwen.legs * 2;\n\nconsole.log(gwen.legs); // ???\n```",
+      "answer": {
+        "description": "**16 is the correct answer.**\n\nFirst, when we executed `miles.legs = 2`, that didn’t affect `spider` or `gwen`. So this step doesn’t influence our final result.\n\nWhen we execute `spider.legs = gwen.legs * 2,` we need to remember to do it in three steps:\n\n**Figure out the wire on the left: `spider.legs`.**\n\nThat’s the `legs` property of the object that the `spider` variable points at.\n\n**Figure out the value on the right: `gwen.legs * 2`.\n**\nTo figure out `gwen.legs`, we follow the `gwen` wire. That object has no `legs` property, so we continue the search on its prototype. We find the `legs` property pointing at `8` there. So at this moment, `gwen.legs` is `8`, and thus `gwen.legs * 2` is `16`.\n\n**Point the wire from the first step at the value from the second step.**\n\nWe point `spider.legs` at `16`.\n\n**Finally, we log `gwen.legs`.**\n\nThe object that `gwen` points at doesn't have a `legs` property, so we continue the search on its prototype. We find the `legs` property there, pointing at `16`. That’s our answer.\n\n![https://res.cloudinary.com/dg3gyk0gu/image/upload/v1613079902/just-javascript-email-images/jj09/Quiz%20Images/jjs-09-07-answer.png](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1613079902/just-javascript-email-images/jj09/Quiz%20Images/jjs-09-07-answer.png)\n\n"
+      },
+      "canComment": true,
+      "commentPrompt": null
+    },
+    {
+      "__typename": "SketchQuestion",
+      "id": "cklc9npog26di0b77li4t10ro",
+      "title": "JJS 09 08 Sketch a diagram",
+      "prompt": "## The second line of this code is a mystery. You have two tasks:\n\n1. Draw the universe right after the second line\n2. Figure out how the second line really ends\n\nThis might be a bit confusing at first, so don’t rush. Approach it like a detective and use console logs as clues in your case.\n\nAfter you're finished, **write the ??? part in the answer field**.\n\n```js\nlet goose = { location: 'heaven' };\nlet cheese = // ???\n\n// >>> Diagram this moment! <<<\n\nconsole.log(cheese === goose); // false\nconsole.log(cheese.location); // \"heaven\"\n\ngoose.location = 'hell';\nconsole.log(cheese.location); // \"hell\"\n```\n",
+      "answer": {
+        "description": "**The simplest answer is `{ __proto__: goose }`.**\n\nLet’s see how we can use the clues. Because `cheese === goose` was false, we know these variables point at different values. We also know that `cheese` pointed to an object because we were able to read `cheese.location`.\n\nLater, we mutated `goose.location`. However, we’ve seen `cheese.location` change as a result. One explanation could be that they point at the same value. However, we’ve already established earlier that they must point at different values.\n\nSo the simplest explanation we have left is that `goose` points at `cheese` object's prototype. This explains why when we mutated `goose.location` we could \"see\" it via `cheese.location`. The object that `cheese` points at doesn't have its own `location` property, so changes to its prototype's `location` property can be seen through it.\n\n![https://res.cloudinary.com/dg3gyk0gu/image/upload/v1613080096/just-javascript-email-images/jj09/Quiz%20Images/jjs-09-08-answer.png](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1613080096/just-javascript-email-images/jj09/Quiz%20Images/jjs-09-08-answer.png)"
+      },
+      "canComment": true,
+      "commentPrompt": null
+    }
+  ]
+}

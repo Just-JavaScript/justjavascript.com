@@ -5,8 +5,8 @@ import {useCopyToClipboard} from 'react-use'
 
 function Question({question, idx, children}) {
   const [data, setData] = React.useState({
-    question: question.text || '',
-    explanation: question.explanation || '',
+    question: question.prompt || '',
+    explanation: question?.answer?.description || '',
   })
   const [, copyToClipboard] = useCopyToClipboard()
 

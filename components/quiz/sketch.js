@@ -6,9 +6,11 @@ import QuizWrapper from 'components/quiz/wrapper'
 import Markdown from 'components/quiz/markdown'
 import Submit from 'components/quiz/submit'
 import Continue from 'components/quiz/continue'
+import SubmitAndContinue from 'components/quiz/submitAndContinue'
 import Excalidraw from 'components/excalidraw/excalidraw-iframe'
 import useEggheadQuestion from 'hooks/useEggheadQuestion'
 import {motion, AnimatePresence} from 'framer-motion'
+import {isEmpty} from 'lodash'
 
 const Sketch = (props) => {
   const {
@@ -40,15 +42,14 @@ const Sketch = (props) => {
     return () => {}
   }, [output])
 
+  const explanation = question.answer?.description
+
   return (
     <QuizWrapper {...props}>
       <QuestionWrapper number={number}>
         <motion.div layout>
-          <Markdown>{question.text}</Markdown>
+          <Markdown>{question.prompt}</Markdown>
         </motion.div>
-        <AnimatePresence>
-          {showExplanation && <Explanation>{question.explanation}</Explanation>}
-        </AnimatePresence>
       </QuestionWrapper>
       <AnswerWrapper>
         <form
@@ -61,22 +62,67 @@ const Sketch = (props) => {
             user={{name: 'Excalidraw User'}}
             initialData={currentAnswer ? currentAnswer.value : output}
           />
-          <Submit
-            isDisabled={isDisabled}
-            isSubmitting={state.matches('answering')}
-            explanation={question.explanation}
-          />
+          <div className="w-full">
+            {question.canComment === true && (
+              <>
+                <label htmlFor="comment" className="block mt-2">
+                  {question.commentPrompt && (
+                    <Markdown>{question.commentPrompt}</Markdown>
+                  )}
+                </label>
+                {state.matches('answered') ? (
+                  <Markdown className="p-3 mt-4">
+                    {formik.values.comment}
+                  </Markdown>
+                ) : (
+                  <>
+                    <textarea
+                      className="w-full p-3 bg-cool-gray-100 border border-gray-200 prose rounded-md h-24 mt-4"
+                      disabled={isDisabled}
+                      id="comment"
+                      name="comment"
+                      placeholder="Write your answer..."
+                      onChange={formik.handleChange}
+                      onBlur={formik.handleBlur}
+                      value={formik.values.comment}
+                    />
+                    {formik.submitCount > 0 && formik.errors.comment}
+                  </>
+                )}
+              </>
+            )}
+          </div>
+          {explanation ? (
+            <Submit
+              isDisabled={isDisabled}
+              isSubmitting={state.matches('answering')}
+              explanation={explanation}
+            />
+          ) : (
+            isEmpty(question.value) && (
+              <SubmitAndContinue
+                isLastQuestion={isLastQuestion}
+                state={state}
+                handleContinue={handleContinue}
+                isDisabled={state.matches('answering')}
+                isSubmitting={state.matches('answering')}
+              />
+            )
+          )}
           {formik.submitCount > 0 && formik.errors.value}
         </form>
-        <AnimatePresence>
-          {state.matches('answered') && (
+        {/* <AnimatePresence>
+          {explanation && state.matches('answered') && (
             <Continue
               isLastQuestion={isLastQuestion}
               onClick={handleContinue}
             />
           )}
-        </AnimatePresence>
+        </AnimatePresence> */}
       </AnswerWrapper>
+      <AnimatePresence>
+        {showExplanation && <Explanation>{explanation}</Explanation>}
+      </AnimatePresence>
     </QuizWrapper>
   )
 }
