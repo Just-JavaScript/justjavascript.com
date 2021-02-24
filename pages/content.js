@@ -50,7 +50,7 @@ export default function Content() {
           Properties
         </LinkItem>
         <LinkItem href={'08-mutation'} number={'08'}>
-          Mutattion
+          Mutation
         </LinkItem>
         <LinkItem href={'09-prototypes'} number={'09'}>
           Prototypes
