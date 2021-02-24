@@ -54,22 +54,25 @@ export default function ToC() {
         <Item url="/03-values-and-variables">
           <a>Values And Variables</a>
         </Item>
-        <Item url="/04-counting-the-values-pt1">
-          <a>Counting The Values — Part 1</a>
+        <Item url="/04-studying-from-the-inside">
+          <a>Studying from the Inside</a>
         </Item>
-        <Item url="/05-counting-the-values-pt2">
-          <a>Counting The Values — Part 2</a>
+        <Item url="/05-meeting-the-primitive-values">
+          <a>Meeting the Primitive Values</a>
         </Item>
-        <Item url="/06-equality-of-values">
+        <Item url="/06-meeting-objects-and-functions">
+          <a>Meeting Objects and Functions</a>
+        </Item>
+        <Item url="/07-equality-of-values">
           <a>Equality Of Values</a>
         </Item>
-        <Item url="/07-properties">
+        <Item url="/08-properties">
           <a>Properties</a>
         </Item>
-        <Item url="/08-mutation">
+        <Item url="/09-mutation">
           <a>Mutation</a>
         </Item>
-        <Item url="/09-prototypes">
+        <Item url="/10-prototypes">
           <a>Mental Models</a>
         </Item>
         <Item url="/content">
