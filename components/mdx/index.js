@@ -18,6 +18,7 @@ export default {
   GifPlayer,
   Subscribe,
   Article,
+  Layout,
   FunFact,
   Excalidraw,
 }
