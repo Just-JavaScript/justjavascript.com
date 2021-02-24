@@ -37,22 +37,25 @@ export default function Content() {
         <LinkItem href={'03-values-and-variables'} number={'03'}>
           Values and Variables
         </LinkItem>
-        <LinkItem href={'04-counting-the-values-pt1'} number={'04'}>
-          Counting The Values — Part 1
+        <LinkItem href={'04-studying-from-the-inside'} number={'04'}>
+          Studying from the Inside
         </LinkItem>
-        <LinkItem href={'05-counting-the-values-pt2'} number={'05'}>
-          Counting The Values — Part 2
+        <LinkItem href={'05-meeting-the-primitive-values'} number={'05'}>
+          Meeting the Primitive Values
         </LinkItem>
-        <LinkItem href={'06-equality-of-values'} number={'06'}>
+        <LinkItem href={'06-meeting-objects-and-functions'} number={'06'}>
+          Meeting Objects and Functions
+        </LinkItem>
+        <LinkItem href={'07-equality-of-values'} number={'07'}>
           Equality Of Values
         </LinkItem>
-        <LinkItem href={'07-properties'} number={'07'}>
+        <LinkItem href={'08-properties'} number={'08'}>
           Properties
         </LinkItem>
-        <LinkItem href={'08-mutation'} number={'08'}>
-          Mutattion
+        <LinkItem href={'09-mutation'} number={'09'}>
+          Mutation
         </LinkItem>
-        <LinkItem href={'09-prototypes'} number={'09'}>
+        <LinkItem href={'10-prototypes'} number={'10'}>
           Prototypes
         </LinkItem>
       </div>
