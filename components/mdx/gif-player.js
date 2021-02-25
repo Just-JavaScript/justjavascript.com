@@ -8,8 +8,11 @@ const ReactGifPlayer = dynamic(() => import('react-gif-player'), {
 
 export default function GifPlayer(props) {
   return props.src.includes('gif') ? (
-    <ReactGifPlayer gif={props.src} />
+    <ReactGifPlayer
+      gif={props.src}
+      className="border rounded-lg border-gray-100 shadow-lg hover:shadow-xl cursor-pointer transition-all duration-300 ease-in-out"
+    />
   ) : (
-    <img src={props.src} alt={props.alt} />
+    <img src={props.src} alt={props.alt} {...props} />
   )
 }

@@ -8,11 +8,13 @@ import Article from '../../templates/article-template'
 import Sketch from './sketch'
 import Layout from '../layout'
 import Subscribe from '../subscribe'
+import Video from './video'
 
 export default {
   pre: ({children}) => <>{children}</>,
   code: Code,
   img: ({src}) => <GifPlayer src={src} />,
+  Video,
   Answer,
   Pagination,
   GifPlayer,
