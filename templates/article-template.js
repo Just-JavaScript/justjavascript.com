@@ -22,7 +22,7 @@ const Article = ({children, title, series, episode, ...props}) => {
       return (
         <Layout
           headerContent={<ToC />}
-          className="prose lg:prose-xl max-w-none"
+          className="prose sm:prose-lg max-w-none"
           title={title}
           {...props}
         >

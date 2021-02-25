@@ -23,7 +23,7 @@ const Answer = ({
               exit={{opacity: 0}}
               transition={{duration: 1, type: 'spring'}}
             >
-              <div className="font-sans text-4xl font-semibold">{title}</div>
+              <div className="font-sans text-2xl font-semibold">{title}</div>
               <div className="mb-4">{byline}</div>
               <button
                 className="leading-8 px-5 py-3 rounded-md bg-indigo-500 hover:bg-indigo-600 transition-colors duration-200 ease-in-out text-white"
@@ -49,7 +49,7 @@ const Answer = ({
           }}
           className={!isShown ? `max-h-96 overflow-hidden w-full` : `w-full`}
         >
-          <div className="text-3xl font-bold">Answer</div>
+          <div className="text-xl font-bold">Answer</div>
           {children}
         </motion.div>
       </div>

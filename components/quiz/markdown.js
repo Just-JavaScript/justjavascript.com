@@ -1,6 +1,5 @@
 import ReactMarkdown from 'react-markdown'
 import Code from 'components/mdx/code'
-import Highlight, {defaultProps} from 'prism-react-renderer'
 
 export default function Markdown({children, className}) {
   return (
