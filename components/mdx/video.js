@@ -8,6 +8,7 @@ const Video = (props) => {
       muted
       playsInline
       src={props.src}
+      autoPlay
       className="border rounded-lg border-gray-100 shadow-lg hover:shadow-xl cursor-pointer transition-all duration-300 ease-in-out"
       {...props}
     />
