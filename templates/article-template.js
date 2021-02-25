@@ -21,7 +21,7 @@ const Article = ({children, title, series, episode, ...props}) => {
     if (isAuthenticated) {
       return (
         <Layout
-          headerContent={<ToC />}
+          navContent={<ToC />}
           className="prose sm:prose-lg max-w-none"
           title={title}
           {...props}

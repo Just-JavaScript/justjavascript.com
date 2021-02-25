@@ -1,8 +1,3 @@
-export const meta = {title: 'Just JavaScript'}
-
-<Layout className="prose lg:prose-xl max-w-none" {...meta}>
-
-
 Hey there!
 
 I'm Dan Abramov.
@@ -70,5 +65,26 @@ You will help motivate me to finish this project!!
 _Cheers,_  
 _Dan_
 
-</Layout>
+import Layout from 'components/layout'
+import Image from 'next/image'
 
+export default ({children}) => {
+  return (
+    <Layout
+      className="prose lg:prose-xl max-w-none"
+      title="Just JavaScript"
+      headerContent={
+        <div className="flex items-center justify-center">
+          <Image
+            src="/crystal-ball@2x.png"
+            width={800 / 2}
+            height={837 / 2}
+            alt="a crystal ball"
+          />
+        </div>
+      }
+    >
+      {children}
+    </Layout>
+  )
+}

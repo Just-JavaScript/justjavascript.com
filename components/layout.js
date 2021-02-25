@@ -6,8 +6,9 @@ import SEO from './seo'
 const Layout = ({
   children,
   title,
+  navContent,
+  navClassName,
   headerContent,
-  headerClassName,
   className,
 }) => {
   return (
@@ -18,15 +19,16 @@ const Layout = ({
         <div className="grid grid-cols-3 relative">
           <Header
             className={
-              headerClassName
-                ? headerClassName
+              navClassName
+                ? navClassName
                 : 'relative z-10 flex items-center justify-center py-16 col-start-2'
             }
           />
           <div className="col-start-3 relative flex items-center justify-end">
-            {headerContent}
+            {navContent}
           </div>
         </div>
+        {headerContent}
         {title && (
           <>
             <h1 className="overflow-hidden relative lg:text-5xl sm:text-4xl text-3xl text-center font-extrabold font-serif leading-tight mb-8">
