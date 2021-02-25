@@ -5,7 +5,7 @@ import FunFact from './fun-fact'
 import Pagination from './pagination'
 import GifPlayer from './gif-player'
 import Article from '../../templates/article-template'
-import Excalidraw from '../excalidraw/excalidraw-iframe'
+import Sketch from './sketch'
 import Layout from '../layout'
 import Subscribe from '../subscribe'
 
@@ -20,5 +20,5 @@ export default {
   Article,
   Layout,
   FunFact,
-  Excalidraw,
+  Sketch,
 }

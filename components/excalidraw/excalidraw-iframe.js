@@ -1,4 +1,4 @@
-import {useRef, useState, useLayoutEffect, memo} from 'react';
+import {useRef, useState, useLayoutEffect, memo, forwardRef} from 'react';
 
 let nextId = 0;
 
@@ -7,12 +7,21 @@ if (process.browser) {
   window.__EXCALIDRAW__ = {};
 }
 
-const ExcalidrawIframe = ({
+const ExcalidrawIframe = forwardRef(({
   width = '100%',
   height = 400,
   ...props
-}) => {
+}, ref) => {
   const [id, setId] = useState(() => '' + nextId++);
+  const [error, setError] = useState(null);
+  if (error) {
+    throw error;
+  }
+
+  props = {
+    ...props,
+    xcRef: ref
+  };
 
   useLayoutEffect(() => {
     if (!window.__EXCALIDRAW__[id]) {
@@ -29,7 +38,20 @@ const ExcalidrawIframe = ({
   }, [props, id]);
 
   return (
-    <iframe src={"/excalidraw?id=" + id}
+    <iframe
+      src={"/excalidraw?id=" + id}
+      ref={node => {
+        if (node) {
+          node.contentWindow.onerror = (e) => {
+            delete window.__EXCALIDRAW__[id];
+            setError(e.error || new Error());
+          };
+          node.contentWindow.onunhandledrejection = (e) => {
+            delete window.__EXCALIDRAW__[id];
+            setError(e.reason || new Error());
+          };
+        }
+      }}
       style={{
         border: '2px solid black',
         width,
@@ -37,6 +59,6 @@ const ExcalidrawIframe = ({
       }}
     />
   );
-}
+});
 
 export default memo(ExcalidrawIframe);

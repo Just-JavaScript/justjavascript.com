@@ -73,7 +73,7 @@ export default function ToC() {
           <a>Mutation</a>
         </Item>
         <Item url="/10-prototypes">
-          <a>Mental Models</a>
+          <a>Prototypes</a>
         </Item>
         <Item url="/content">
           <a className="flex items-center">
