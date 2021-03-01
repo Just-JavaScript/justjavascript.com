@@ -10,12 +10,13 @@ const Layout = ({
   navClassName,
   headerContent,
   className,
+  maxWidth = 'max-w-screen-md',
 }) => {
   return (
     <>
       <SEO title={title} />
 
-      <div className="max-w-screen-md mx-auto pb-24 sm:px-8 px-5">
+      <div className={`${maxWidth} mx-auto pb-24 sm:px-8 px-5`}>
         <div className="grid grid-cols-3 relative">
           <Header
             className={
@@ -31,7 +32,7 @@ const Layout = ({
         {headerContent}
         {title && (
           <>
-            <h1 className="overflow-hidden relative lg:text-5xl sm:text-4xl text-3xl text-center font-extrabold font-serif leading-tight mb-8">
+            <h1 className="overflow-hidden relative lg:text-7xl sm:text-5xl text-4xl text-center font-extrabold font-serif leading-tight mb-8">
               <motion.span
                 initial={{y: '105%'}}
                 animate={{y: '0%'}}

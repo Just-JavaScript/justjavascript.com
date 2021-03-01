@@ -7,27 +7,26 @@ export default function Content() {
     <Link href={href}>
       <a
         className={
-          'text-xl p-8 border border-gray-100 rounded-lg w-full bg-white shadow-sm font-serif font-semibold hover:bg-cool-gray-50 hover:border-gray-200 transition-colors ease-in-out duration-200'
+          'group relative flex items-center justify-center sm:text-5xl text-2xl font-extrabold py-12 w-full bg-white font-serif transition-all ease-in-out duration-200'
         }
       >
-        <span
-          className="mr-4 font-sans text-indigo-600 font-light"
-          style={{fontFamily: 'sans'}}
-        >
+        <span className="text-5xl absolute mr-4 font-serif text-gray-100 font-extrabold z-10 group-hover:text-gray-200 transition-colors ease-in-out duration-300">
           {number}
         </span>
-
-        {children}
+        <span className="relative z-10 transform group-hover:scale-105 transition-all ease-in-out duration-300 leading-none">
+          {children}
+        </span>
       </a>
     </Link>
   )
 
   return (
     <Layout
-      title="Content"
-      className="max-w-screen-md mx-auto pb-40 sm:px-8 px-5"
+      title="Chapters"
+      className=" mx-auto pb-40 sm:px-8 px-5"
+      maxWidth="max-w-screen-xl"
     >
-      <div className="grid grid-cols-1 gap-4 ">
+      <div className="text-center flex flex-col">
         <LinkItem href={'01-mental-models'} number={'01'}>
           Mental Models
         </LinkItem>

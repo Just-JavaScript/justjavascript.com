@@ -5,15 +5,16 @@
 @tailwind utilities;
 
 /*
-  This will hide the focus indicator if the element receives focus via the mouse,
-  but it will still show up on keyboard focus.
-*/
+  Hide the focus indicator if the element receives focus via the mouse,
+  but it will still show up on keyboard focus. 
+  */
+
 .js-focus-visible :focus:not(.focus-visible) {
   outline: none;
 }
 
 ::selection {
-  @apply bg-yellow-200;
+  @apply bg-yellow-200 text-black;
 }
 
 /* START — @reach/menu-button */
@@ -37,13 +38,6 @@
 [data-reach-menu-list],
 [data-reach-menu-items] {
   @apply block border bg-white border-gray-200 rounded-lg shadow-md py-1 outline-none;
-  /* display: block;
-  white-space: nowrap;
-  border: solid 1px hsla(0, 0%, 0%, 0.25);
-  background: hsla(0, 100%, 100%, 0.99);
-  outline: none;
-  padding: 1rem 0;
-  font-size: 85%; */
 }
 
 [data-reach-menu-item] {
@@ -90,3 +84,4 @@
 /* ReachUI */
 @import '@reach/tooltip/styles.css';
 @import '@reach/dialog/styles.css';
+@import './fonts/index.css';

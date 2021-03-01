@@ -1,0 +1,157 @@
+/* Recoleta - headings */
+
+@font-face {
+  font-family: 'Recoleta';
+  font-weight: 300;
+  src: url('./recoleta/9fa94dcd-7199-4950-96f9-64d4a2c8956d.woff2')
+      format('woff2'),
+    url('./recoleta/ae806a08-3dbf-488d-98be-9a095e667942.woff') format('woff');
+}
+@font-face {
+  font-family: 'Recoleta';
+  font-weight: 400;
+  src: url('./recoleta/15e8c7c9-adff-4b2a-a27e-5b8f7f3896d6.woff2')
+      format('woff2'),
+    url('./recoleta/92cd2256-c74e-421f-bd64-a207c4063918.woff') format('woff');
+}
+@font-face {
+  font-family: 'Recoleta';
+  font-weight: 500;
+  src: url('./recoleta/dc6d46b5-4860-426e-b694-829311406cb2.woff2')
+      format('woff2'),
+    url('./recoleta/e6710639-8b79-4a63-a860-ae77c0a544b8.woff') format('woff');
+}
+@font-face {
+  font-family: 'Recoleta';
+  font-weight: 600;
+  src: url('./recoleta/04fcbeb4-c15e-4fb4-86cd-74884e678645.woff2')
+      format('woff2'),
+    url('./recoleta/371e1726-ae12-4456-90a5-eb4d427383ad.woff') format('woff');
+}
+@font-face {
+  font-family: 'Recoleta';
+  font-weight: 700;
+  src: url('./recoleta/c4a44dcc-fce2-4dbb-9339-b82aa3e60d20.woff2')
+      format('woff2'),
+    url('./recoleta/e0e9d6be-89c5-4575-9fa7-e5fbb9f2806e.woff') format('woff');
+}
+@font-face {
+  font-family: 'Recoleta';
+  font-weight: 800;
+  src: url('./recoleta/ffaaea62-113a-4b9f-a428-346cecb4d58e.woff2')
+      format('woff2'),
+    url('./recoleta/5bd4d989-3af2-463a-9533-02dc7b4e6df3.woff') format('woff');
+}
+
+/* Adelle Sans - body */
+@font-face {
+  font-family: 'Adelle Sans';
+  font-weight: 400;
+  font-style: normal;
+  src: url('./adelle-sans/f6c7345d-79ae-4b1d-8607-2e20c2e6d432.woff2')
+      format('woff2'),
+    url('./adelle-sans/443ce2ab-2de1-4afb-b0a6-3881d8a773af.woff')
+      format('woff');
+}
+@font-face {
+  font-family: 'Adelle Sans';
+  font-weight: 400;
+  font-style: italic;
+  src: url('./adelle-sans/177d7828-4357-4428-b650-33f157c8521b.woff2')
+      format('woff2'),
+    url('./adelle-sans/1d06014b-4d92-4b59-9377-5216800a2012.woff')
+      format('woff');
+}
+@font-face {
+  font-family: 'Adelle Sans';
+  font-weight: 600;
+  font-style: normal;
+  src: url('./adelle-sans/f2c3667b-8af6-4b78-a549-16162561cc19.woff2')
+      format('woff2'),
+    url('./adelle-sans/0d47342d-a569-41fa-a7a3-43dfb7eb5959.woff')
+      format('woff');
+}
+@font-face {
+  font-family: 'Adelle Sans';
+  font-weight: 600;
+  font-style: italic;
+  src: url('./adelle-sans/d34566a0-6340-4040-8656-da743c3e3153.woff2')
+      format('woff2'),
+    url('./adelle-sans/43c0aae9-b264-4587-ae67-ae54bbbd3cf4.woff')
+      format('woff');
+}
+@font-face {
+  font-family: 'Adelle Sans';
+  font-weight: 700;
+  font-style: normal;
+  src: url('./adelle-sans/646f8764-52a1-49a3-8c5a-35964c2b1aa5.woff2')
+      format('woff2'),
+    url('./adelle-sans/cc3f36f4-16af-49ca-80f7-b30f3889512c.woff')
+      format('woff');
+}
+@font-face {
+  font-family: 'Adelle Sans';
+  font-weight: 700;
+  font-style: italic;
+  src: url('./adelle-sans/fefa6028-4af9-468b-9c11-fcff7423c503.woff2')
+      format('woff2'),
+    url('./adelle-sans/18d22ec5-f408-4112-9656-f318554d1a9d.woff')
+      format('woff');
+}
+@font-face {
+  font-family: 'Adelle Sans';
+  font-weight: 800;
+  font-style: normal;
+  src: url('./adelle-sans/ed55bd9d-40a5-448e-b9e7-61bbd970b492.woff2')
+      format('woff2'),
+    url('./adelle-sans/a259ff70-bdac-4f51-b83c-b84b66f3c879.woff')
+      format('woff');
+}
+@font-face {
+  font-family: 'Adelle Sans';
+  font-weight: 800;
+  font-style: italic;
+  src: url('./adelle-sans/cee2b753-de33-416e-aad6-b1b2e31a338c.woff2')
+      format('woff2'),
+    url('./adelle-sans/43d84028-9206-465e-bb35-88f2d7117f35.woff')
+      format('woff');
+}
+
+/* Adelle Mono */
+
+@font-face {
+  font-family: 'Adelle Mono';
+  font-weight: 400;
+  font-style: normal;
+  src: url('./adelle-mono/da277a57-f4b8-480d-aacb-4728d8b7de63.woff2')
+      format('woff2'),
+    url('./adelle-mono/2a91530f-e44c-4074-a06f-1419a5f53e09.woff')
+      format('woff');
+}
+@font-face {
+  font-family: 'Adelle Mono';
+  font-weight: 400;
+  font-style: italic;
+  src: url('./adelle-mono/c3a4dff4-86d8-4cbc-b797-c799639bb4ef.woff2')
+      format('woff2'),
+    url('./adelle-mono/df1a2926-9f18-4ca2-a140-5e827a269121.woff')
+      format('woff');
+}
+@font-face {
+  font-family: 'Adelle Mono';
+  font-weight: 600;
+  font-style: italic;
+  src: url('./adelle-mono/630c61af-1719-4ef5-8c4b-34d559b7f7b9.woff2')
+      format('woff2'),
+    url('./adelle-mono/90ae920c-0f74-4a32-a8cd-08f04ea00a88.woff')
+      format('woff');
+}
+@font-face {
+  font-family: 'Adelle Mono';
+  font-weight: 600;
+  font-style: normal;
+  src: url('./adelle-mono/00151ecd-1e8f-4039-9ddf-db8ec218b22c.woff2')
+      format('woff2'),
+    url('./adelle-mono/7bc3bb15-7cae-47b6-aa23-fedeb9828352.woff')
+      format('woff');
+}

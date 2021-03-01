@@ -13,7 +13,6 @@ class MyDocument extends Document {
     return (
       <Html lang="en">
         <Head>
-          <link rel="stylesheet" href="/fonts.css" />
           <script
             dangerouslySetInnerHTML={{
               __html: `(function(f, a, t, h, o, m){

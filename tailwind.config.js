@@ -1,4 +1,5 @@
 const defaultTheme = require('tailwindcss/defaultTheme')
+const colors = require('tailwindcss/colors')
 
 module.exports = {
   purge: {
@@ -12,21 +13,25 @@ module.exports = {
   },
   theme: {
     extend: {
+      colors: {
+        ...colors,
+      },
       fontFamily: {
-        serif: ['ff-meta-serif-web-pro', ...defaultTheme.fontFamily.serif],
-        display: ['ff-meta-headline-web-pro', ...defaultTheme.fontFamily.sans],
-        sans: ['ff-meta-web-pro', ...defaultTheme.fontFamily.sans],
-        mono: ['ibm-plex-mono', ...defaultTheme.fontFamily.mono],
+        sans: ['Adelle Sans', ...defaultTheme.fontFamily.sans],
+        serif: ['Recoleta', ...defaultTheme.fontFamily.serif],
+        mono: ['Adelle Mono', ...defaultTheme.fontFamily.mono],
       },
       fontSize: {
-        // Perfect fourth
+        // Minor third
+        '7xl': '4.3em',
+        '6xl': '3.583em',
+        '5xl': '2.986em',
+        '4xl': '2.488em',
+        '3xl': '2.074em',
+        '2xl': '1.728em',
+        xl: '1.44em',
+        lg: '1.2em',
         base: '1em',
-        lg: '1.25em',
-        xl: '1.563em',
-        '2xl': '2.441em',
-        '3xl': '3.052em',
-        '4xl': '3.815em',
-        '5xl': '4.768em',
       },
       typography: (theme) => ({
         lg: {
@@ -37,6 +42,9 @@ module.exports = {
             'h1, h2, h3, h4': {
               color: theme('colors.black'),
               fontFamily: theme('fontFamily.serif').join(', '),
+              code: {
+                fontSize: '80%',
+              },
             },
             h1: {
               fontSize: theme('fontSize.4xl'),
@@ -69,10 +77,15 @@ module.exports = {
             'code::after': {
               content: '""',
             },
-            strong: {fontWeight: theme('fontWeight.extrabold')},
+            strong: {fontWeight: theme('fontWeight.bold')},
             a: {
-              color: theme('colors.indigo.600'),
-              textDecoration: 'none',
+              color: theme('colors.blue.500'),
+              textDecoration: 'underline',
+              transition: 'all 150ms ease-in-out',
+              '&:hover': {
+                color: theme('colors.blue.600'),
+                transition: 'all 150ms ease-in-out',
+              },
             },
           },
         },
@@ -84,6 +97,9 @@ module.exports = {
             'h1, h2, h3, h4': {
               color: theme('colors.black'),
               fontFamily: theme('fontFamily.serif').join(', '),
+              code: {
+                fontSize: '90%',
+              },
             },
             h1: {
               fontSize: theme('fontSize.3xl'),
@@ -116,10 +132,15 @@ module.exports = {
             'code::after': {
               content: '""',
             },
-            strong: {fontWeight: theme('fontWeight.extrabold')},
+            strong: {fontWeight: theme('fontWeight.bold')},
             a: {
-              color: theme('colors.indigo.600'),
-              textDecoration: 'none',
+              color: theme('colors.blue.500'),
+              textDecoration: 'underline',
+              transition: 'all 150ms ease-in-out',
+              '&:hover': {
+                color: theme('colors.blue.600'),
+                transition: 'all 150ms ease-in-out',
+              },
             },
           },
         },
@@ -130,6 +151,6 @@ module.exports = {
       },
     },
   },
-  variants: {},
+  variants: {scale: ['hover', 'group-hover']},
   plugins: [require('@tailwindcss/ui'), require('@tailwindcss/typography')],
 }

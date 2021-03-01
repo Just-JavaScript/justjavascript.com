@@ -26,7 +26,7 @@ const Code = ({children, codeString, className = 'language-js', ...props}) => {
               borderRadius: 5,
               marginBottom: '1.25rem',
               overflowX: 'auto',
-              fontFamily: '"ibm-plex-mono", monospace',
+              fontFamily: '"Adelle Mono", monospace',
             }}
           >
             {tokens.map((line, i) => (

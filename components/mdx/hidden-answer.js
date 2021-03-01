@@ -7,7 +7,7 @@ const HiddenAnswer = ({
   title = 'Answer',
   byline = 'Don’t reveal until you have finished writing.',
   action = 'Reveal Answer',
-  className,
+  className = 'mb-8',
 }) => {
   const [isShown, setShown] = React.useState(false)
 
@@ -23,10 +23,10 @@ const HiddenAnswer = ({
               exit={{opacity: 0}}
               transition={{duration: 1, type: 'spring'}}
             >
-              <div className="font-sans text-2xl font-semibold">{title}</div>
+              <div className="font-serif text-2xl font-bold">{title}</div>
               <div className="mb-4">{byline}</div>
               <button
-                className="leading-8 px-5 py-3 rounded-md bg-indigo-500 hover:bg-indigo-600 transition-colors duration-200 ease-in-out text-white"
+                className="leading-8 text-base font-bold px-5 py-3 rounded-md bg-black hover:bg-gray-900 transition-colors duration-200 ease-in-out text-white"
                 onClick={() => setShown(!isShown)}
               >
                 {action}
@@ -34,14 +34,7 @@ const HiddenAnswer = ({
             </motion.div>
           )}
         </AnimatePresence>
-        <motion.div
-          initial={{
-            filter: 'blur(8px)',
-          }}
-          animate={{
-            filter: isShown ? 'blur(0px)' : 'blur(8px)',
-          }}
-          transition={{duration: 2, type: 'spring'}}
+        <div
           css={{
             'img, pre, .gif_player': {
               display: isShown ? 'inherit' : 'none',
@@ -49,9 +42,18 @@ const HiddenAnswer = ({
           }}
           className={!isShown ? `max-h-96 overflow-hidden w-full` : `w-full`}
         >
-          <div className="text-xl font-bold">Answer</div>
-          {children}
-        </motion.div>
+          <div>
+            <div className="text-2xl font-bold font-serif">Answer</div>
+            {children}
+          </div>
+          <motion.div
+            initial={{backdropFilter: 'blur(12px)'}}
+            animate={{
+              backdropFilter: isShown ? 'blur(0px)' : 'blur(12px)',
+            }}
+            className="w-full h-full absolute top-0 left-0 pointer-events-none"
+          />
+        </div>
       </div>
     </div>
   )

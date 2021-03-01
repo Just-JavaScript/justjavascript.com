@@ -6,7 +6,7 @@ const FunFact = ({children, className}) => {
     <div className={className}>
       <div className="relative flex items-center justify-center p-8 bg-gray-50 rounded-lg">
         <div className="w-full">
-          <div className="text-xl font-bold">Fun Fact</div>
+          <div className="text-2xl font-serif font-bold">Fun Fact</div>
           {children}
         </div>
       </div>

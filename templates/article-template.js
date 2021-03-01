@@ -2,8 +2,18 @@ import React from 'react'
 import {useLocalStorage} from 'react-use'
 import ToC from '../components/toc'
 import Layout from '../components/layout'
+import Pagination from '../components/mdx/pagination'
 
-const Article = ({children, title, series, episode, ...props}) => {
+const Article = ({
+  children,
+  title,
+  series,
+  episode,
+  next,
+  prev,
+  nextTitle,
+  ...props
+}) => {
   const [value, setValue] = useLocalStorage('pswrd', null)
   const [isAuthenticated, setAuthenticated] = React.useState(false)
   const [hasMounted, setMounted] = React.useState(false)
@@ -20,13 +30,11 @@ const Article = ({children, title, series, episode, ...props}) => {
   if (hasMounted) {
     if (isAuthenticated) {
       return (
-        <Layout
-          navContent={<ToC />}
-          className="prose sm:prose-lg max-w-none"
-          title={title}
-          {...props}
-        >
-          {children}
+        <Layout navContent={<ToC />} title={title} {...props}>
+          <div className="prose sm:prose-lg max-w-none">{children}</div>
+          <Pagination next={next} prev={prev}>
+            {nextTitle}
+          </Pagination>
         </Layout>
       )
     } else {
