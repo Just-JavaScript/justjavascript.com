@@ -23,7 +23,7 @@ const MultipleQuestions = (props) => {
     <QuizWrapper {...props}>
       <div className="md:py-8 py-8">
         <div className="mb-4 sm:px-0 px-5">
-          <span className="mr-2 p-2 rounded-full w-6 h-6 text-xs lining-nums font-bold inline-flex justify-center items-center bg-indigo-100 text-indigo-800">
+          <span className="mr-2 p-2 rounded-full w-6 h-6 text-xs lining-nums font-bold inline-flex justify-center items-center bg-black text-white font-mono">
             {props.number}
           </span>
         </div>
@@ -74,7 +74,7 @@ const MultipleQuestions = (props) => {
                       <QuestionToShow
                         nested
                         question={question}
-                        number={`${props.number}.${number}`}
+                        number={`${number}`}
                         currentAnswer={currentAnswer}
                         isLastQuestion={isLastQuestion}
                         state={state}

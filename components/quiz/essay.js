@@ -32,7 +32,7 @@ const Essay = (props) => {
     <QuizWrapper {...props}>
       <QuestionWrapper number={number} nested={nested}>
         {isMDX ? (
-          <div className="prose max-w-none">{question.prompt}</div>
+          <div className="prose prose-sans max-w-none">{question.prompt}</div>
         ) : (
           <Markdown>{question.prompt}</Markdown>
         )}
@@ -41,7 +41,7 @@ const Essay = (props) => {
         <form className="flex flex-col" onSubmit={formik.handleSubmit}>
           {showExplanation ? (
             <motion.div>
-              <Markdown className="rounded-md prose h-auto">
+              <Markdown className="rounded-md prose sm:prose-lg h-auto">
                 {formik.values.value}
               </Markdown>
             </motion.div>
@@ -51,7 +51,7 @@ const Essay = (props) => {
                 Your answer
               </label> */}
               <textarea
-                className="w-full p-3 bg-cool-gray-100 border border-gray-200 prose rounded-md h-40"
+                className="w-full p-3 bg-gray-50 border border-gray-200 prose rounded-md h-40"
                 disabled={isDisabled}
                 name="value"
                 placeholder="Type your answer here..."
