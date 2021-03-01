@@ -2,7 +2,7 @@ import {jsx} from '@emotion/react'
 import React from 'react'
 import {motion, AnimatePresence} from 'framer-motion'
 
-const Answer = ({
+const HiddenAnswer = ({
   children,
   title = 'Answer',
   byline = 'Don’t reveal until you have finished writing.',
@@ -57,4 +57,4 @@ const Answer = ({
   )
 }
 
-export default Answer
+export default HiddenAnswer

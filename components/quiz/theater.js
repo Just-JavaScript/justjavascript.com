@@ -7,7 +7,7 @@ import useEggheadQuestion from 'hooks/useEggheadQuestion'
 import Markdown from 'components/quiz/markdown'
 import SubmitAndContinue from 'components/quiz/submitAndContinue'
 import {motion, AnimatePresence} from 'framer-motion'
-import Answer from 'components/mdx/answer'
+import HiddenAnswer from 'components/mdx/hidden-answer'
 
 const Theater = ({
   question,
@@ -31,14 +31,14 @@ const Theater = ({
     >
       <QuestionWrapper number={number}>
         <Markdown>{question.prompt}</Markdown>
-        <Answer
+        <HiddenAnswer
           title="Correct Answer"
           byline=""
           action="Reveal"
           className="mt-4"
         >
           <div className="py-10">{question.answer.description}</div>
-        </Answer>
+        </HiddenAnswer>
       </QuestionWrapper>
       <AnswerWrapper>
         <form

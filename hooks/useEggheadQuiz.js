@@ -20,18 +20,21 @@ export default function useEggheadQuizMachine(
   })
 
   const {questions} = state.context
-  const currentQuestionIdx = questions && indexOf(questions, currentQuestion)
+  const currentQuestionIdx =
+    questions && indexOf(quizQuestions, currentQuestion)
   const nextQuestionId =
     questions &&
     (currentQuestionIdx + 1 === questions.length
       ? get(first(questions), 'id') // go back to first question
       : get(questions[currentQuestionIdx + 1], 'id'))
+
   const nextQuestion = questions && find(questions, {id: nextQuestionId})
   const nextQuestionIdx = nextQuestion && indexOf(questions, nextQuestion)
   const isAnswered = !isEmpty(get(currentQuestion, 'answer'))
   const currentAnswer = get(currentQuestion, 'answer') || null
   const isDisabled = state.matches('answering') || state.matches('answered')
-  const isLastQuestion = currentQuestionIdx + 1 === questions.length
+  const isLastQuestion =
+    questions && currentQuestionIdx + 1 === questions.length
   const showExplanation =
     currentQuestion.answer?.description &&
     (state.matches('answered') || currentQuestion.value)

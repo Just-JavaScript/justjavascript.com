@@ -28,11 +28,16 @@ const MultipleChoice = (props) => {
     question.correctChoices[0].value === formik.values.value
   const hasImages = question.choices[0]?.imageUrl
   const explanation = question.answer?.description
+  const isMDX = typeof question.prompt !== 'string'
 
   return (
     <QuizWrapper {...props}>
       <QuestionWrapper number={number} nested={nested}>
-        <Markdown>{question.prompt}</Markdown>
+        {isMDX ? (
+          <div className="prose max-w-none">{question.prompt}</div>
+        ) : (
+          <Markdown>{question.prompt}</Markdown>
+        )}
       </QuestionWrapper>
       <AnswerWrapper>
         <form className="flex flex-col" onSubmit={formik.handleSubmit}>
@@ -55,7 +60,7 @@ const MultipleChoice = (props) => {
                   hasAnswered && formik.values.value === choice.value
                 return (
                   <div
-                    className={`border-b bg-white ${
+                    className={`${hasImages ? '' : 'border-b'} bg-white ${
                       isDisabled ? '' : 'hover:bg-cool-gray-50'
                     } ${
                       question.choices.length === i + 1

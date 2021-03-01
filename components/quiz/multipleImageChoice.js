@@ -25,11 +25,16 @@ const MultipleImageChoice = (props) => {
   } = props
   const {formik} = useEggheadQuestion(question, handleSubmit)
   const hasAnsweredCorrectly = question.correctAnswer === formik.values.value
+  const isMDX = typeof question.prompt !== 'string'
 
   return (
     <QuizWrapper {...props}>
       <QuestionWrapper number={number} nested={nested}>
-        <Markdown>{question.prompt}</Markdown>
+        {isMDX ? (
+          <div className="prose max-w-none">{question.prompt}</div>
+        ) : (
+          <Markdown>{question.prompt}</Markdown>
+        )}
       </QuestionWrapper>
       <AnswerWrapper>
         <form className="flex flex-col" onSubmit={formik.handleSubmit}>

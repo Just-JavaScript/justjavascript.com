@@ -1,6 +1,6 @@
 import React from 'react'
 import Code from './code'
-import Answer from './answer'
+import HiddenAnswer from './hidden-answer'
 import FunFact from './fun-fact'
 import Pagination from './pagination'
 import GifPlayer from './gif-player'
@@ -15,7 +15,7 @@ export default {
   code: Code,
   img: ({src}) => <GifPlayer src={src} />,
   Video,
-  Answer,
+  HiddenAnswer,
   Pagination,
   GifPlayer,
   Subscribe,

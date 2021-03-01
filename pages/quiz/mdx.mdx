@@ -1,0 +1,111 @@
+import Quiz from 'components/mdx/quiz/index'
+import Prompt from 'components/mdx/quiz/prompt'
+import Question from 'components/mdx/quiz/question'
+import Answer from 'components/mdx/quiz/answer'
+
+<Quiz title="MDX Quiz" id="mdx-quiz">
+<Question type="EssayQuestion" id="1ckksrck08114q0930w6pm9y7f">
+<Prompt>
+
+## What happens if we run this code?
+
+Is this code valid? Why or why not?
+
+```js
+let numberOfTentacles = 10
+numberOfTentacles = 'eight'
+console.log(typeof numberOfTentacles)
+```
+
+</Prompt>
+
+<Answer>
+
+**Yes, it’s valid. It prints "string" to the console.**
+
+Variables don’t have types in JavaScript — only values do. The answer to `typeof(numberOfTentacles) `depends on **which value** the variable was pointing to at that time.
+
+The `numberOfTentacles` variable was pointing to "eight" string value at the time we asked about its type. So we got "string" as a result.
+
+</Answer>
+
+</Question>
+
+<Question type="QuestionSet" id="cklapczhk37td0a782euz0eo5" version={1}>
+
+<Prompt>
+
+### Answer this multi-part question:
+
+</Prompt>
+
+<Question type="SketchQuestion" id="cklap9tag38o50a293f3macdg">
+
+<Prompt>
+
+### Sketch a diagram of variables and values after this snippet of code runs. Use our mental model.
+
+```js
+let meals = 4
+let wheels = meals
+let eels = 2 + 2
+```
+
+</Prompt>
+
+</Question>
+
+<Question type="MultipleChoiceQuestion" id="id" version="1" choices={[
+{
+    "id": "cklaplpj4391y0a2980ij153x",
+    "value": "jjs-04-01-02-a",
+    "label": "A",
+    "imageUrl": "https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612887982/just-javascript-email-images/jj04/quiz-images/JJS-04-01-a.jpg"
+},
+{
+    "id": "cklapm6i8384k0a78jypn187g",
+    "value": "jjs-04-01-02-b",
+    "label": "B",
+    "imageUrl": "https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612888030/just-javascript-email-images/jj04/quiz-images/jjs-04-01-b.jpg"
+},
+{
+    "id": "cklapmya8381j0d20jl2yncmr",
+    "value": "jjs-04-01-02-c",
+    "label": "C",
+    "imageUrl": "https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612888142/just-javascript-email-images/jj04/quiz-images/jss-04-01-c.jpg"
+},
+{
+    "id": "cklapngsw38ap0d20poq33i7v",
+    "value": "jjs-04-01-02-d",
+    "label": "D",
+    "imageUrl": "https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612888220/just-javascript-email-images/jj04/quiz-images/jjs-04-01-d.jpg"
+}
+]}
+correctChoices={[
+{
+    "id": "cklapm6i8384k0a78jypn187g",
+    "value": "jjs-04-01-02-b",
+    "label": "B",
+    "imageUrl": "https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612888030/just-javascript-email-images/jj04/quiz-images/jjs-04-01-b.jpg"
+}
+]}>
+
+<Prompt>
+
+## Which one of these diagrams best matches your sketch and our mental model after that code runs?
+
+</Prompt>
+
+<Answer>
+
+### Diagram B is correct. It shows all variables pointing to the value 4.
+
+All other diagrams show more than a single value 4. But in our mental model, there is only one number value for each number!
+
+![https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612888030/just-javascript-email-images/jj04/quiz-images/jjs-04-01-b.jpg](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612888030/just-javascript-email-images/jj04/quiz-images/jjs-04-01-b.jpg)
+
+</Answer>
+
+</Question>
+</Question>
+</Quiz>

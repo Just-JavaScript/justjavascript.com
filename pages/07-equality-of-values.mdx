@@ -63,7 +63,7 @@ console.log(Object.is(worldWonders, dwarves)); // ?
 
 Write down your answers and think about *how* you would explain them.
 
-<Answer byline="Don’t reveal until you have finished writing.">
+<HiddenAnswer byline="Don’t reveal until you have finished writing.">
 
 This was not a trick question! Here are the answers:
 
@@ -79,7 +79,7 @@ In the previous module, we explored the types of values in our JavaScript univer
 
 If you struggle with this idea, you might want to revisit our celestial tour of values and work through the exercises again. It *will* make sense, I promise!
 
-</Answer>
+</HiddenAnswer>
 
 #### But What About Objects?
 
@@ -110,7 +110,7 @@ console.log(Object.is(chocolate, banana)); // ?
 
 Make sure to **use your diagram** to answer them.
 
-<Answer byline="Don’t reveal until you have finished sketching and writing.">
+<HiddenAnswer byline="Don’t reveal until you have finished sketching and writing.">
 
 Your drawing process should have followed these steps:
 
@@ -144,7 +144,7 @@ Now let’s check your answers:
 
 As you can see, we didn’t need any additional concepts to explain how **same value equality** works for objects. It comes naturally using our mental model. And that’s all there is to know about it!
 
-</Answer>
+</HiddenAnswer>
 
 ### Strict Equality: `a === b`
 
@@ -234,13 +234,13 @@ Instead, here are a few ways (they all work!) to check if `size` is `NaN`:
 
 The last one might be particularly surprising. Give it a few moments. If you don’t see how it detects `NaN`, try re-reading this section and thinking about it again.
 
-<Answer byline="Don’t reveal until you figured out the answer or gave it a few minutes.">
+<HiddenAnswer byline="Don’t reveal until you figured out the answer or gave it a few minutes.">
 
 **`size !== size`** works because `NaN === NaN` is `false`, as we already learned. So the reverse (`NaN !== NaN`) must be `true`.
 
 Since `NaN` is the only value that’s not Strict Equal to itself, `size !== size` can only mean that `size` is `NaN`.
 
-</Answer>
+</HiddenAnswer>
 
 <FunFact>
 

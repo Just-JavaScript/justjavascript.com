@@ -43,12 +43,17 @@ const Sketch = (props) => {
   }, [output])
 
   const explanation = question.answer?.description
+  const isMDX = typeof question.prompt !== 'string'
 
   return (
     <QuizWrapper {...props}>
       <QuestionWrapper number={number}>
         <motion.div layout>
-          <Markdown>{question.prompt}</Markdown>
+          {isMDX ? (
+            <div className="prose max-w-none">{question.prompt}</div>
+          ) : (
+            <Markdown>{question.prompt}</Markdown>
+          )}
         </motion.div>
       </QuestionWrapper>
       <AnswerWrapper>

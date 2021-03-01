@@ -17,6 +17,7 @@ const MultipleQuestions = (props) => {
   })
 
   const quiz = props.question
+  const isMDX = typeof quiz.prompt !== 'string'
 
   return (
     <QuizWrapper {...props}>
@@ -26,11 +27,14 @@ const MultipleQuestions = (props) => {
             {props.number}
           </span>
         </div>
-        {quiz.text && (
-          <Markdown className="mb-4 sm:px-0 px-5">{quiz.text}</Markdown>
-        )}
+        {quiz.prompt &&
+          (isMDX ? (
+            <div className="prose max-w-none">{quiz.prompt}</div>
+          ) : (
+            <Markdown>{quiz.prompt}</Markdown>
+          ))}
         <div className="flex flex-col justify-start space-y-3">
-          {props.question.questions.map((question, index) => {
+          {quiz.questions.map((question, index) => {
             const {
               state,
               handleSkip,

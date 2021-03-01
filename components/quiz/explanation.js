@@ -7,6 +7,8 @@ const components = {
 }
 
 export default function Explanation({children, label, className}) {
+  const isMDX = typeof children !== 'string'
+
   return (
     <motion.div
       layout
@@ -24,7 +26,7 @@ export default function Explanation({children, label, className}) {
         {label ? label : '💡'}
       </span>
       <div className="prose max-w-none">
-        <MDX components={components}>{children}</MDX>
+        {isMDX ? children : <MDX components={components}>{children}</MDX>}
       </div>
     </motion.div>
   )
