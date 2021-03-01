@@ -25,7 +25,7 @@ export default function Explanation({children, label, className}) {
       >
         {label ? label : '💡'}
       </span>
-      <div className="prose max-w-none">
+      <div className="prose prose-sans sm:prose-sans-lg max-w-none">
         {isMDX ? children : <MDX components={components}>{children}</MDX>}
       </div>
     </motion.div>

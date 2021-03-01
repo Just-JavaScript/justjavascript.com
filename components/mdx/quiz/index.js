@@ -81,7 +81,7 @@ const Quiz = ({children, title, id}) => {
   })
 
   return (
-    <div className="flex flex-col items-center justify-start min-h-screen w-full bg-cool-gray-50">
+    <div className="flex flex-col items-center justify-start min-h-screen w-full bg-gray-50">
       {map(quiz.questions, (question, index) => {
         const {
           state,

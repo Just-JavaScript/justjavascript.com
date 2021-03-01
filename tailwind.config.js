@@ -96,6 +96,62 @@ module.exports = {
             color: theme('colors.black'),
             'h1, h2, h3, h4': {
               color: theme('colors.black'),
+              lineHeight: theme('lineHeight.tight'),
+              // fontFamily: theme('fontFamily.serif').join(', '),
+              code: {
+                fontSize: '90%',
+              },
+            },
+            h1: {
+              fontSize: theme('fontSize.3xl'),
+              fontWeight: theme('fontWeight.extrabold'),
+            },
+            h2: {
+              fontSize: theme('fontSize.2xl'),
+              fontWeight: theme('fontWeight.extrabold'),
+            },
+            h3: {
+              fontSize: theme('fontSize.xl'),
+              fontWeight: theme('fontWeight.bold'),
+            },
+            h4: {
+              fontSize: theme('fontSize.lg'),
+              fontWeight: theme('fontWeight.bold'),
+            },
+            h5: {
+              fontSize: theme('fontSize.lg'),
+              fontWeight: theme('fontWeight.normal'),
+            },
+            code: {
+              background: theme('colors.gray.100'),
+              borderRadius: 3,
+              padding: '1px 5px 3px 5px',
+            },
+            'code::before': {
+              content: '""',
+            },
+            'code::after': {
+              content: '""',
+            },
+            strong: {fontWeight: theme('fontWeight.bold')},
+            a: {
+              color: theme('colors.blue.500'),
+              textDecoration: 'underline',
+              transition: 'all 150ms ease-in-out',
+              '&:hover': {
+                color: theme('colors.blue.600'),
+                transition: 'all 150ms ease-in-out',
+              },
+            },
+          },
+        },
+        serif: {
+          css: {
+            fontFamily: theme('fontFamily.sans').join(', '),
+            fontSize: theme('fontSize.base'),
+            color: theme('colors.black'),
+            'h1, h2, h3, h4': {
+              color: theme('colors.black'),
               fontFamily: theme('fontFamily.serif').join(', '),
               code: {
                 fontSize: '90%',
@@ -120,6 +176,114 @@ module.exports = {
             h5: {
               fontSize: theme('fontSize.lg'),
               fontWeight: theme('fontWeight.normal'),
+            },
+            code: {
+              background: theme('colors.gray.100'),
+              borderRadius: 3,
+              padding: '1px 5px 3px 5px',
+            },
+            'code::before': {
+              content: '""',
+            },
+            'code::after': {
+              content: '""',
+            },
+            strong: {fontWeight: theme('fontWeight.bold')},
+            a: {
+              color: theme('colors.blue.500'),
+              textDecoration: 'underline',
+              transition: 'all 150ms ease-in-out',
+              '&:hover': {
+                color: theme('colors.blue.600'),
+                transition: 'all 150ms ease-in-out',
+              },
+            },
+          },
+        },
+        sans: {
+          css: {
+            fontFamily: theme('fontFamily.sans').join(', '),
+            fontSize: theme('fontSize.base'),
+            color: theme('colors.black'),
+            'h1, h2, h3, h4': {
+              color: theme('colors.black'),
+              code: {
+                fontSize: '90%',
+              },
+            },
+            h1: {
+              fontSize: theme('fontSize.3xl'),
+              fontWeight: theme('fontWeight.extrabold'),
+            },
+            h2: {
+              fontSize: theme('fontSize.2xl'),
+              fontWeight: theme('fontWeight.extrabold'),
+            },
+            h3: {
+              fontSize: theme('fontSize.xl'),
+              fontWeight: theme('fontWeight.bold'),
+            },
+            h4: {
+              fontSize: theme('fontSize.lg'),
+              fontWeight: theme('fontWeight.bold'),
+            },
+            h5: {
+              fontSize: theme('fontSize.lg'),
+              fontWeight: theme('fontWeight.normal'),
+            },
+            code: {
+              background: theme('colors.gray.100'),
+              borderRadius: 3,
+              padding: '1px 5px 3px 5px',
+            },
+            'code::before': {
+              content: '""',
+            },
+            'code::after': {
+              content: '""',
+            },
+            strong: {fontWeight: theme('fontWeight.bold')},
+            a: {
+              color: theme('colors.blue.500'),
+              textDecoration: 'underline',
+              transition: 'all 150ms ease-in-out',
+              '&:hover': {
+                color: theme('colors.blue.600'),
+                transition: 'all 150ms ease-in-out',
+              },
+            },
+          },
+        },
+        'sans-lg': {
+          css: {
+            fontFamily: theme('fontFamily.sans').join(', '),
+            fontSize: theme('fontSize.lg'),
+            color: theme('colors.black'),
+            'h1, h2, h3, h4': {
+              color: theme('colors.black'),
+              code: {
+                fontSize: '80%',
+              },
+            },
+            h1: {
+              fontSize: theme('fontSize.4xl'),
+              fontWeight: theme('fontWeight.extrabold'),
+            },
+            h2: {
+              fontSize: theme('fontSize.3xl'),
+              fontWeight: theme('fontWeight.extrabold'),
+            },
+            h3: {
+              fontSize: theme('fontSize.2xl'),
+              fontWeight: theme('fontWeight.bold'),
+            },
+            h4: {
+              fontSize: theme('fontSize.xl'),
+              fontWeight: theme('fontWeight.bold'),
+            },
+            h5: {
+              fontSize: theme('fontSize.lg'),
+              fontWeight: theme('fontWeight.bold'),
             },
             code: {
               background: theme('colors.gray.100'),

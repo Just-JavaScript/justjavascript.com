@@ -18,7 +18,7 @@ export default function QuestionWrapper({children, number, className, nested}) {
               </div>
             ) : (
               <div className="mb-4">
-                <span className="mr-2 p-2 rounded-full w-6 h-6 text-xs lining-nums font-bold inline-flex justify-center items-center bg-indigo-100 text-indigo-800">
+                <span className="mr-2 p-2 rounded-full w-6 h-6 text-xs lining-nums font-bold inline-flex justify-center items-center bg-black text-white font-mono">
                   {number}
                 </span>
               </div>
