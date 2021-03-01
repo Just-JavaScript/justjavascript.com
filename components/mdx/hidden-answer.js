@@ -42,7 +42,7 @@ const HiddenAnswer = ({
           }}
           className={!isShown ? `max-h-96 overflow-hidden w-full` : `w-full`}
         >
-          <div>
+          <div style={{opacity: isShown ? 1 : 0.2}}>
             <div className="text-2xl font-bold font-serif">Answer</div>
             {children}
           </div>
