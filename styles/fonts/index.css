@@ -123,32 +123,23 @@
   font-family: 'Adelle Mono';
   font-weight: 400;
   font-style: normal;
-  src: url('./adelle-mono/da277a57-f4b8-480d-aacb-4728d8b7de63.woff2')
+  src: url('./adelle-mono/820e8181-0217-4197-9e66-ca36c536e708.woff2')
       format('woff2'),
-    url('./adelle-mono/2a91530f-e44c-4074-a06f-1419a5f53e09.woff')
+    url('./adelle-mono/7e36bcd6-7175-47cd-a3c1-6df509108d1a.woff')
       format('woff');
 }
 @font-face {
   font-family: 'Adelle Mono';
   font-weight: 400;
   font-style: italic;
-  src: url('./adelle-mono/c3a4dff4-86d8-4cbc-b797-c799639bb4ef.woff2')
+  src: url('./adelle-mono/9dcca2f2-5cc8-49c8-b768-20a6d9056f53.woff2')
       format('woff2'),
-    url('./adelle-mono/df1a2926-9f18-4ca2-a140-5e827a269121.woff')
+    url('./adelle-mono/229b52ad-35a2-4eb9-9627-31b3805c9228.woff')
       format('woff');
 }
 @font-face {
   font-family: 'Adelle Mono';
-  font-weight: 600;
-  font-style: italic;
-  src: url('./adelle-mono/630c61af-1719-4ef5-8c4b-34d559b7f7b9.woff2')
-      format('woff2'),
-    url('./adelle-mono/90ae920c-0f74-4a32-a8cd-08f04ea00a88.woff')
-      format('woff');
-}
-@font-face {
-  font-family: 'Adelle Mono';
-  font-weight: 600;
+  font-weight: 700;
   font-style: normal;
   src: url('./adelle-mono/00151ecd-1e8f-4039-9ddf-db8ec218b22c.woff2')
       format('woff2'),
