@@ -14,7 +14,9 @@ const Layout = ({
   return (
     <>
       <SEO title={title} />
-      <div className={`${maxWidth} max-w-screen-md mx-auto sm:px-8 px-5`}>
+      <div
+        className={`${maxWidth} max-w-screen-md mx-auto sm:px-8 px-5 sm:pb-24 pb-16`}
+      >
         <Header>{navContent}</Header>
         {headerContent}
         {title && (
