@@ -6,9 +6,7 @@ export default function Markdown({children, className}) {
     <ReactMarkdown
       source={children}
       escapeHtml={false}
-      className={`prose prose-sans sm:prose-sans-lg max-w-none ${
-        className ? className : ''
-      }`}
+      className={`prose prose-sans max-w-none ${className ? className : ''}`}
       renderers={{code: Code}}
     />
   )

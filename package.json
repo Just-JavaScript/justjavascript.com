@@ -19,7 +19,6 @@
     "@mdx-js/loader": "^1.6.22",
     "@mdx-js/mdx": "^1.6.22",
     "@mdx-js/react": "^1.6.22",
-    "@mdx-js/runtime": "^1.6.22",
     "@next/mdx": "^10.0.7",
     "@reach/dialog": "^0.11.2",
     "@reach/menu-button": "^0.11.2",
@@ -35,7 +34,9 @@
     "framer-motion": "^3.7.0",
     "lodash": "^4.17.20",
     "next": "10.0.7",
+    "next-images": "^1.7.0",
     "next-seo": "^4.17.0",
+    "next-svgr": "^0.0.2",
     "postcss": "^8.1.7",
     "prism-react-renderer": "^1.1.1",
     "react": "17.0.1",
@@ -53,6 +54,9 @@
     "yup": "^0.29.3"
   },
   "devDependencies": {
+    "@emotion/babel-preset-css-prop": "^11.2.0",
+    "babel-plugin-inline-react-svg": "^2.0.1",
+    "next-compose-plugins": "^2.2.1",
     "postcss-nested": "^5.0.4"
   }
 }
