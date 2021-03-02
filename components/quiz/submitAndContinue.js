@@ -18,8 +18,8 @@ export default function SubmitAndContinue({
       layout
       className={`w-full relative z-20 mt-4 px-3 py-3 flex items-center justify-center rounded-md font-semibold transition-colors ease-in-out duration-300 ${
         state.matches('answered')
-          ? 'bg-indigo-100 text-indigo-700 hover:bg-indigo-50'
-          : 'bg-indigo-600 text-white hover:bg-indigo-700'
+          ? 'bg-gray-100 text-black'
+          : 'bg-black text-white'
       }`}
       type="submit"
       disabled={isDisabled}
@@ -28,7 +28,7 @@ export default function SubmitAndContinue({
         'Next Question ↓'
       ) : isSubmitting ? (
         <svg
-          className="text-indigo-300"
+          className="text-white"
           xmlns="http://www.w3.org/2000/svg"
           width="24"
           height="24"

@@ -1,11 +1,6 @@
 import {motion} from 'framer-motion'
-import MDX from '@mdx-js/runtime'
 import Code from 'components/mdx/code'
-
-const components = {
-  code: Code,
-}
-
+import Markdown from 'components/quiz/markdown'
 export default function Explanation({children, label, className}) {
   const isMDX = typeof children !== 'string'
 
@@ -25,8 +20,8 @@ export default function Explanation({children, label, className}) {
       >
         {label ? label : '💡'}
       </span>
-      <div className="prose max-w-none">
-        {isMDX ? children : <MDX components={components}>{children}</MDX>}
+      <div className="prose prose-sans sm:prose-sans-lg max-w-none">
+        {isMDX ? children : <Markdown>{children}</Markdown>}
       </div>
     </motion.div>
   )

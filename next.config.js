@@ -2,7 +2,9 @@ require('dotenv').config()
 const images = require('remark-images')
 const emoji = require('remark-emoji')
 const unwrapImages = require('remark-unwrap-images')
-
+const withImages = require(`next-images`)
+const withSvgr = require(`next-svgr`)
+const withPlugins = require('next-compose-plugins')
 const withMDX = require('@next/mdx')({
   extension: /\.mdx?$/,
   options: {
@@ -10,19 +12,28 @@ const withMDX = require('@next/mdx')({
   },
 })
 
-module.exports = withMDX({
-  pageExtensions: ['js', 'jsx', 'md', 'mdx'],
+const IMAGE_HOST_DOMAINS = ['res.cloudinary.com']
+
+const nextConfig = {
   env: {
     CONVERTKIT_PUBLIC_KEY: process.env.CONVERTKIT_PUBLIC_KEY,
     PASSWORD: process.env.PASSWORD,
   },
-  // to support MDX Runtime
-  webpack: (config, {isServer}) => {
-    if (!isServer) {
-      config.node = {
-        fs: 'empty',
-      }
-    }
-    return config
+  images: {
+    domains: IMAGE_HOST_DOMAINS,
   },
-})
+  async redirects() {
+    return []
+  },
+}
+
+module.exports = withPlugins(
+  [
+    withSvgr,
+    withImages(),
+    withMDX({
+      pageExtensions: ['js', 'jsx', 'md', 'mdx'],
+    }),
+  ],
+  nextConfig
+)

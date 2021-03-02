@@ -21,7 +21,7 @@ function Quiz({quiz}) {
       <Head>
         <title>{quiz.title}</title>
       </Head>
-      <main className="flex flex-col items-center justify-start min-h-screen w-full bg-cool-gray-50">
+      <main className="flex flex-col items-center justify-start min-h-screen w-full bg-gray-50">
         <code className="z-10 opacity-25 fixed text-right right-5 top-5 font-mono text-sm">
           {JSON.stringify(currentQuestion)}
         </code>
