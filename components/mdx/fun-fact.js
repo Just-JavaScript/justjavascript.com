@@ -14,8 +14,8 @@ const FunFact = ({
           <div
             className="opacity-90"
             css={{
-              '> :first-child': {marginTop: 0},
-              '> :last-child': {marginBottom: 0},
+              '> :first-of-type': {marginTop: 0},
+              '> :last-of-type': {marginBottom: 0},
               code: {
                 backgroundColor: 'yellow',
               },

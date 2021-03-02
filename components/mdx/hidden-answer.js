@@ -6,7 +6,7 @@ const HiddenAnswer = ({
   children,
   title = 'Answer',
   byline = 'Don’t reveal until you have finished writing.',
-  action = 'Reveal Answer',
+  action = 'Reveal',
   className = 'mb-8',
 }) => {
   const [isShown, setShown] = React.useState(false)
@@ -26,7 +26,7 @@ const HiddenAnswer = ({
               <div className="font-serif text-2xl font-bold">{title}</div>
               <div className="mb-4">{byline}</div>
               <button
-                className="leading-8 text-base font-bold px-5 py-3 rounded-md bg-black hover:bg-gray-900 transition-colors duration-200 ease-in-out text-white"
+                className="leading-8 font-semibold sm:px-10 sm:py-3 px-8 py-2 rounded-md bg-black hover:bg-gray-900 transition-colors duration-200 ease-in-out text-white"
                 onClick={() => setShown(!isShown)}
               >
                 {action}
