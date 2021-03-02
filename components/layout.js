@@ -7,7 +7,6 @@ const Layout = ({
   children,
   title,
   navContent,
-  navClassName,
   headerContent,
   className,
   maxWidth = 'max-w-screen-md',
@@ -15,20 +14,8 @@ const Layout = ({
   return (
     <>
       <SEO title={title} />
-
-      <div className={`${maxWidth} mx-auto pb-24 sm:px-8 px-5`}>
-        <div className="grid grid-cols-3 relative">
-          <Header
-            className={
-              navClassName
-                ? navClassName
-                : 'relative z-10 flex items-center justify-center py-16 col-start-2'
-            }
-          />
-          <div className="col-start-3 relative flex items-center justify-end">
-            {navContent}
-          </div>
-        </div>
+      <div className={`${maxWidth} max-w-screen-md mx-auto sm:px-8 px-5`}>
+        <Header>{navContent}</Header>
         {headerContent}
         {title && (
           <>

@@ -1,6 +1,7 @@
+/** @jsxRuntime classic */
+/** @jsx jsx */
 import {jsx} from '@emotion/react'
 import React from 'react'
-import {motion, AnimatePresence} from 'framer-motion'
 
 const HiddenAnswer = ({
   children,
@@ -14,26 +15,19 @@ const HiddenAnswer = ({
   return (
     <div className={className}>
       <div className="relative flex items-center justify-center p-8 bg-gray-50 rounded-lg">
-        <AnimatePresence>
-          {!isShown && (
-            <motion.div
-              className="absolute z-10 flex flex-col items-center"
-              initial={{opacity: 0}}
-              animate={{opacity: 1}}
-              exit={{opacity: 0}}
-              transition={{duration: 1, type: 'spring'}}
+        {!isShown && (
+          <div className="absolute z-10 flex flex-col items-center">
+            <div className="font-serif text-2xl font-bold">{title}</div>
+            <div className="mb-4">{byline}</div>
+            <button
+              className="leading-8 font-semibold sm:px-10 sm:py-3 px-8 py-2 rounded-md bg-black hover:bg-gray-900 transition-colors duration-200 ease-in-out text-white"
+              onClick={() => setShown(!isShown)}
             >
-              <div className="font-serif text-2xl font-bold">{title}</div>
-              <div className="mb-4">{byline}</div>
-              <button
-                className="leading-8 font-semibold sm:px-10 sm:py-3 px-8 py-2 rounded-md bg-black hover:bg-gray-900 transition-colors duration-200 ease-in-out text-white"
-                onClick={() => setShown(!isShown)}
-              >
-                {action}
-              </button>
-            </motion.div>
-          )}
-        </AnimatePresence>
+              {action}
+            </button>
+          </div>
+        )}
+
         <div
           css={{
             'img, pre, .gif_player': {
@@ -44,11 +38,18 @@ const HiddenAnswer = ({
         >
           <div style={{opacity: isShown ? 1 : 0.2}}>
             <div className="text-2xl font-bold font-serif">Answer</div>
-            {children}
+            <div
+              css={{
+                '> :first-of-type': {marginTop: 0},
+                '> :last-of-type': {marginBottom: 0},
+              }}
+            >
+              {children}
+            </div>
           </div>
-          <motion.div
-            initial={{backdropFilter: 'blur(12px)'}}
-            animate={{
+
+          <div
+            css={{
               backdropFilter: isShown ? 'blur(0px)' : 'blur(12px)',
             }}
             className="w-full h-full absolute top-0 left-0 pointer-events-none"

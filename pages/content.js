@@ -21,11 +21,7 @@ export default function Content() {
   )
 
   return (
-    <Layout
-      title="Chapters"
-      className=" mx-auto pb-40 sm:px-8 px-5"
-      maxWidth="max-w-screen-xl"
-    >
+    <Layout title="Chapters" className="mx-auto pb-40">
       <div className="text-center flex flex-col">
         <LinkItem href={'01-mental-models'} number={'01'}>
           Mental Models
