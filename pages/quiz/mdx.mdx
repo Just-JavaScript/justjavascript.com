@@ -2,8 +2,51 @@ import Quiz from 'components/mdx/quiz/index'
 import Prompt from 'components/mdx/quiz/prompt'
 import Question from 'components/mdx/quiz/question'
 import Answer from 'components/mdx/quiz/answer'
+import Choice from 'components/mdx/quiz/choice'
 
 <Quiz title="MDX Quiz" id="mdx-quiz">
+
+<Question type="MultipleChoiceQuestion" id="test-question-multiple" version="1">
+
+<Choice>
+
+![A](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612888030/just-javascript-email-images/jj04/quiz-images/jjs-04-01-b.jpg)
+
+</Choice>
+<Choice correct>
+
+![B](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612888030/just-javascript-email-images/jj04/quiz-images/jjs-04-01-b.jpg)
+
+</Choice>
+<Choice>
+
+![C](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612888142/just-javascript-email-images/jj04/quiz-images/jss-04-01-c.jpg)
+
+</Choice>
+<Choice>
+
+![D](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612888220/just-javascript-email-images/jj04/quiz-images/jjs-04-01-d.jpg)
+
+</Choice>
+
+<Prompt>
+
+## Which one is correct?
+
+</Prompt>
+
+<Answer>
+
+### Diagram B is correct. It shows all variables pointing to the value 4.
+
+All other diagrams show more than a single value 4. But in our mental model, there is only one number value for each number!
+
+![https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612888030/just-javascript-email-images/jj04/quiz-images/jjs-04-01-b.jpg](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612888030/just-javascript-email-images/jj04/quiz-images/jjs-04-01-b.jpg)
+
+</Answer>
+
+</Question>
+
 <Question type="EssayQuestion" id="1ckksrck08114q0930w6pm9y7f">
 <Prompt>
 
@@ -55,40 +98,30 @@ let eels = 2 + 2
 
 </Question>
 
-<Question type="MultipleChoiceQuestion" id="id" version="1" choices={[
-{
-    "id": "cklaplpj4391y0a2980ij153x",
-    "value": "jjs-04-01-02-a",
-    "label": "A",
-    "imageUrl": "https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612887982/just-javascript-email-images/jj04/quiz-images/JJS-04-01-a.jpg"
-},
-{
-    "id": "cklapm6i8384k0a78jypn187g",
-    "value": "jjs-04-01-02-b",
-    "label": "B",
-    "imageUrl": "https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612888030/just-javascript-email-images/jj04/quiz-images/jjs-04-01-b.jpg"
-},
-{
-    "id": "cklapmya8381j0d20jl2yncmr",
-    "value": "jjs-04-01-02-c",
-    "label": "C",
-    "imageUrl": "https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612888142/just-javascript-email-images/jj04/quiz-images/jss-04-01-c.jpg"
-},
-{
-    "id": "cklapngsw38ap0d20poq33i7v",
-    "value": "jjs-04-01-02-d",
-    "label": "D",
-    "imageUrl": "https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612888220/just-javascript-email-images/jj04/quiz-images/jjs-04-01-d.jpg"
-}
-]}
-correctChoices={[
-{
-    "id": "cklapm6i8384k0a78jypn187g",
-    "value": "jjs-04-01-02-b",
-    "label": "B",
-    "imageUrl": "https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612888030/just-javascript-email-images/jj04/quiz-images/jjs-04-01-b.jpg"
-}
-]}>
+<Question type="MultipleChoiceQuestion" id="id" version="1">
+
+<Choice>
+
+This is a choice 1
+
+![image alt](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612888030/just-javascript-email-images/jj04/quiz-images/jjs-04-01-b.jpg)
+
+</Choice>
+<Choice correct>
+
+This is a choice 2
+
+</Choice>
+<Choice>
+
+This is a choice 3
+
+</Choice>
+<Choice>
+
+This is a choice 4
+
+</Choice>
 
 <Prompt>
 
