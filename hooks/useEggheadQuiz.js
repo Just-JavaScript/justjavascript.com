@@ -26,8 +26,6 @@ export default function useEggheadQuizMachine(
     },
   })
 
-  console.log(state)
-
   const {questions} = state.context
   const currentQuestionIdx =
     questions && indexOf(quizQuestions, currentQuestion)
@@ -88,12 +86,9 @@ export default function useEggheadQuizMachine(
     // const date = new Date(now).toUTCString()
     // const context = {quizId: quiz.id, questionId: question.id, date}
     // const response = {...values, question, context}
-    // console.log({values})
+
     const answer = values.answer.value
-    // console.log({answer})
-    // const {answer} = values.value
     send('SUBMIT', {userAnswer: answer, ...currentQuestion})
-    // send('SUBMIT', {answer: {...values, ...currentQuestion}})
   }
 
   return {
