@@ -60,18 +60,20 @@ const MultipleChoice = (props) => {
                   hasAnswered && formik.values.value === choice.value
                 return (
                   <div
-                    className={`${hasImages ? '' : 'border-b'} bg-white ${
+                    className={`${
+                      hasImages ? '' : 'border-b'
+                    } bg-white rounded-lg ${
                       isDisabled ? '' : 'hover:bg-cool-gray-50'
                     } ${
                       question.choices.length === i + 1
                         ? 'border-transparent'
                         : 'border-cool-gray-100'
-                    } ${correctAnswer ? 'bg-green-100' : ''}
-                         ${incorrectAnswer ? 'bg-red-100' : ''}`}
+                    } ${correctAnswer ? 'bg-teal-100' : ''}
+                         ${incorrectAnswer ? 'bg-rose-100' : ''}`}
                     key={choice.value}
                   >
                     <label
-                      className={`block py-2 px-3 ${
+                      className={`block px-3 pb-3 pt-2 ${
                         isDisabled ? '' : 'cursor-pointer'
                       }`}
                     >
@@ -101,7 +103,7 @@ const MultipleChoice = (props) => {
                         <img
                           src={choice.imageUrl}
                           alt={choice.label}
-                          className="border border-gray-200"
+                          className="border border-gray-200 rounded-lg mt-1"
                         />
                       )}
                     </label>
@@ -149,7 +151,7 @@ const MultipleChoice = (props) => {
               className={`w-full text-center mt-4 px-3 py-3 rounded-md font-semibold ${
                 hasAnsweredCorrectly
                   ? 'bg-green-100 text-green-700'
-                  : 'bg-cool-gray-100 text-cool-gray-700 '
+                  : 'bg-rose-100 text-rose-600 '
               } transition-colors ease-in-out duration-300`}
             >
               {hasAnsweredCorrectly ? 'Correct! 🎉' : 'Incorrect'}
