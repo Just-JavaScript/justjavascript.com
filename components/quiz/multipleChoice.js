@@ -25,7 +25,7 @@ const MultipleChoice = (props) => {
   } = props
   const {formik} = useEggheadQuestion(question, handleSubmit)
   const hasAnsweredCorrectly =
-    question.correctChoices[0].value === formik.values.value
+    question.correctChoices[0]?.value === formik.values.value
   const hasImages = question.choices[0]?.imageUrl
   const explanation = question.answer?.description
   const isMDX = typeof question.prompt !== 'string'
@@ -90,9 +90,13 @@ const MultipleChoice = (props) => {
                         }
                         className="mr-2 -mt-1 form-radio bg-cool-gray-100 border border-cool-gray-200"
                       />
-                      <Markdown className="inline-block prose md:prose-lg text-gray-900">
-                        {choice.label}
-                      </Markdown>{' '}
+                      {isMDX ? (
+                        <span className="prose max-w-none">{choice.label}</span>
+                      ) : (
+                        <Markdown className="inline-block prose md:prose-lg text-gray-900">
+                          {choice.label}
+                        </Markdown>
+                      )}
                       {choice.imageUrl && (
                         <img
                           src={choice.imageUrl}
