@@ -10,9 +10,15 @@ export const quizMachine = createMachine(
     title: 'Quiz Machine',
     context: {
       currentQuestionId: null,
-      quizId: null,
       questions: [],
       answers: [],
+      userAnswer: null,
+      quiz: {
+        id: null,
+        title: null,
+        slug: null,
+        version: 1,
+      },
     },
     states: {
       initializing: {
@@ -46,6 +52,9 @@ export const quizMachine = createMachine(
               answers: (context, event) => {
                 const {answers} = context
                 return [...answers, event.answer]
+              },
+              userAnswer: (_, event) => {
+                return event.userAnswer
               },
             }),
           },
@@ -82,7 +91,7 @@ export const quizMachine = createMachine(
       },
     },
     services: {
-      fetchQuizData: (context) => fetchQuizData(context.quizId),
+      fetchQuizData: (context) => fetchQuizData(context.quiz.id),
       postQuizAnswer: (context) => postQuizAnswer(context),
     },
   }

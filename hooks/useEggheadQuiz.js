@@ -3,6 +3,7 @@ import {quizMachine} from 'machines/quizMachine'
 import {isEmpty, first, indexOf, find, get} from 'lodash'
 import {useRouter} from 'next/router'
 import {scroller} from 'react-scroll'
+import slugify from 'slugify'
 
 export default function useEggheadQuizMachine(
   quiz,
@@ -10,14 +11,22 @@ export default function useEggheadQuizMachine(
   setCurrent
 ) {
   const quizQuestions = get(quiz, 'questions') || null
+  const {id, title, slug, version} = quiz
 
   const [state, send] = useMachine(quizMachine, {
     context: {
       questions: quizQuestions,
       currentQuestionId: get(currentQuestion, 'id') || null,
-      quizId: get(quiz, 'id'),
+      quiz: {
+        id: id,
+        title: title,
+        slug: slug || (title && slugify(title, {lower: true})),
+        version: version,
+      },
     },
   })
+
+  console.log(state)
 
   const {questions} = state.context
   const currentQuestionIdx =
@@ -79,8 +88,12 @@ export default function useEggheadQuizMachine(
     // const date = new Date(now).toUTCString()
     // const context = {quizId: quiz.id, questionId: question.id, date}
     // const response = {...values, question, context}
-
-    send('SUBMIT', {answer: {...values, ...currentQuestion}})
+    // console.log({values})
+    const answer = values.answer.value
+    // console.log({answer})
+    // const {answer} = values.value
+    send('SUBMIT', {userAnswer: answer, ...currentQuestion})
+    // send('SUBMIT', {answer: {...values, ...currentQuestion}})
   }
 
   return {

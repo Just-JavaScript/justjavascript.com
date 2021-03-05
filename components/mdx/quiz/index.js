@@ -3,6 +3,7 @@ import QuestionToShow from 'components/quiz/questionToShow'
 import {Element as ScrollElement} from 'react-scroll'
 import useEggheadQuiz from '../../../hooks/useEggheadQuiz'
 import {map, filter, first, find, get} from 'lodash'
+import getChoiceLabelByIndex from '../../../utils/getChoiceLabelByIndex'
 
 function getQuestions(questions) {
   const items = questions.map((question) => {
@@ -28,7 +29,7 @@ function getQuestions(questions) {
           )
           const isCorrect = choice.props.correct || false
           const label = imageUrl
-            ? choiceLabelByIndex(index)
+            ? getChoiceLabelByIndex(index)
             : filter(children, (ch) => ch.props.mdxType !== 'img')
 
           return {
@@ -96,22 +97,7 @@ function getQuestions(questions) {
   return items
 }
 
-function choiceLabelByIndex(index) {
-  switch (index) {
-    case 0:
-      return 'A'
-    case 1:
-      return 'B'
-    case 2:
-      return 'C'
-    case 3:
-      return 'D'
-    default:
-      return index
-  }
-}
-
-const Quiz = ({children, title, id}) => {
+const Quiz = ({children, title, version, slug, id}) => {
   const childrenArr = React.Children.toArray(children)
   const questions = getQuestions(childrenArr)
 
@@ -119,6 +105,8 @@ const Quiz = ({children, title, id}) => {
   const quiz = {
     id,
     title,
+    slug,
+    version,
     questions,
   }
 
