@@ -7,7 +7,7 @@ import getChoiceLabelByIndex from '../../../utils/getChoiceLabelByIndex'
 
 function getQuestions(questions) {
   const items = questions.map((question) => {
-    const {id, type, children, required, version} = question.props
+    const {id, type, children, required, version, canComment} = question.props
     const isMultipart = type === 'QuestionSet'
     const prompt =
       find(children, {props: {mdxType: 'Prompt'}}) || (!isMultipart && children)
@@ -55,7 +55,7 @@ function getQuestions(questions) {
     )
     const nestedQuestions = isMultipart
       ? nestedQuestionsNodes.map((q) => {
-          const {id, type, children, required, version} = q.props
+          const {id, type, children, required, version, canComment} = q.props
           const prompt =
             find(children, {props: {mdxType: 'Prompt'}}) || children
           const answer = find(children, {props: {mdxType: 'Answer'}})
@@ -67,14 +67,15 @@ function getQuestions(questions) {
           return {
             id,
             __typename: type,
-            required,
-            version,
             prompt,
             answer: {
               description: answer,
             },
             choices: getChoices(choicesNodes).choicesFromMdx,
             correctChoices: getChoices(choicesNodes).correctChoices,
+            required,
+            version,
+            canComment,
           }
         })
       : []
@@ -91,6 +92,7 @@ function getQuestions(questions) {
       correctChoices: getChoices(choicesNodes).correctChoices,
       required,
       version,
+      canComment,
       questions: [...nestedQuestions],
     }
   })

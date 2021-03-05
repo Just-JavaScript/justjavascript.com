@@ -1,9 +1,6 @@
 import getChoiceLabelByIndex from './getChoiceLabelByIndex'
 
-// Im sorry
-
-// pass quiz in json
-function TransformQuizFromJsonToMdx(quiz) {
+function ConvertQuizFromJsonToMdx(quiz) {
   const questions = quiz.questions
     .map((question) => {
       const prompt =
@@ -91,8 +88,10 @@ ${question.answer.description}
                   .join('')
               : ''
 
+            const canComment = question.canComment === true ? ` canComment` : ''
+
             return `
-<Question type="${question.__typename}" id="${question.title}">
+<Question type="${question.__typename}" id="${question.title}"${canComment}>
 
 ${choices}
 ${prompt}
@@ -103,8 +102,10 @@ ${answer}
           })
           .join('') || ''
 
+      const canComment = question.canComment === true ? ` canComment` : ''
+
       return `
-  <Question type="${question.__typename}" id="${question.title}">
+  <Question type="${question.__typename}" id="${question.title}"${canComment}>
   
   ${questionSet}
   ${choices}
@@ -125,4 +126,4 @@ ${answer}
   return out
 }
 
-export default TransformQuizFromJsonToMdx
+export default ConvertQuizFromJsonToMdx
