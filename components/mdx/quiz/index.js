@@ -115,6 +115,7 @@ const Quiz = ({children, title, id}) => {
   const childrenArr = React.Children.toArray(children)
   const questions = getQuestions(childrenArr)
 
+  // put it all together
   const quiz = {
     id,
     title,
