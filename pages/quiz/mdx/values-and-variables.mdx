@@ -1,0 +1,233 @@
+import Quiz from 'components/mdx/quiz/index'
+import Prompt from 'components/mdx/quiz/prompt'
+import Question from 'components/mdx/quiz/question'
+import Answer from 'components/mdx/quiz/answer'
+import Choice from 'components/mdx/quiz/choice'
+
+<Quiz title="JJS 03 Values and Variables" id="values-and-variables" version="1">
+
+<Question type="EssayQuestion" id="JJS 03 01 numberOfTentacles code">
+
+<Prompt>
+
+# What happens if we run this code?
+
+Is this code valid? Why or why not?
+
+```js
+let numberOfTentacles = 10
+numberOfTentacles = 'eight'
+console.log(typeof numberOfTentacles)
+```
+
+</Prompt>
+
+<Answer>
+
+**Yes, it’s valid. It prints "string" to the console.**
+
+Variables don’t have types in JavaScript — only values do. The answer to typeof(numberOfTentacles) depends on **which value** the variable was pointing to at that time.
+
+The numberOfTentacles variable was pointing to "eight" string value at the time we asked about its type. So we got "string" as a result.
+
+</Answer>
+
+</Question>
+
+<Question type="EssayQuestion" id="JJS 03 02 numberOfTentacles output">
+
+<Prompt>
+
+# Here's a slightly different example. What happens if we run it?
+
+Is there a difference in behavior compared to the last snippet? Explain why or why not using our mental model.
+
+```js
+let numberOfTentacles = 10;
+console.log(typeof(numberOfTentacles);
+numberOfTentacles = 'eight';
+```
+
+</Prompt>
+
+<Answer>
+
+**Yes, there is a difference. It prints "number" to the console.**
+
+Variables don’t have types in JavaScript — only values do. The answer to typeof(numberOfTentacles) depends on **which value** the variable was pointing to at that time.
+
+The numberOfTentacles variable was pointing to 10 number value at the time we asked about its type. So we got "number" as a result.
+
+</Answer>
+
+</Question>
+
+<Question type="EssayQuestion" id="JJS 03 03 answer.opposite">
+
+<Prompt>
+
+# What happens if we run this code?
+
+Explain why using our mental model.
+
+```js
+let answer = true
+answer.opposite = false
+console.log(answer.opposite)
+```
+
+</Prompt>
+
+<Answer>
+
+**This code won’t be able to set a property.**
+
+Booleans are primitive. And primitive values are immutable. We can’t change them — and setting a property on a value is a change.
+
+If our code runs in the [strict mode](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode), assigning a property on a primitive value would lead to an error. Otherwise, it will silently do nothing. In either case, we can’t set a property on a boolean value like _true_.
+
+</Answer>
+
+</Question>
+
+<Question type="EssayQuestion" id="JJS 03 04 null equals 10">
+
+<Prompt>
+
+# What happens if we run this code?
+
+Explain why using our mental model.
+
+```js
+null = 10
+console.log(null)
+```
+
+</Prompt>
+
+<Answer>
+
+**This code produces an error.**
+
+It is an error because the left side of the assignment must always be a “wire”. Variables are “wires”, so they can appear on the left side. A literal like _null_ is not a “wire”, so trying to assign something to it is meaningless.
+
+</Answer>
+
+</Question>
+
+<Question type="QuestionSet" id="JJS 03 05 Answer this multi-part question">
+
+<Question type="SketchQuestion" id="JJS 03 05 01 sketch">
+
+<Prompt>
+
+## Sketch a diagram of variables and values after this snippet of code runs. Use our mental model.
+
+```js
+let it = 'be'
+let them = 'eat cake'
+it = them
+```
+
+</Prompt>
+
+</Question>
+
+<Question type="MultipleChoiceQuestion" id="JJS 03 05 02 Which Matches Your Sketch">
+
+<Choice>
+
+![A](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612305600/just-javascript-email-images/jj03/quiz%20images/01%20eat%20cake.png)
+
+</Choice>
+
+<Choice correct>
+
+![B](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612305624/just-javascript-email-images/jj03/quiz%20images/B%20eat%20cake.png)
+
+</Choice>
+
+<Choice>
+
+![C](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612305642/just-javascript-email-images/jj03/quiz%20images/03%20eat%20cake.png)
+
+</Choice>
+
+<Choice>
+
+![D](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612305661/just-javascript-email-images/jj03/quiz%20images/04%20eat%20cake.png)
+
+</Choice>
+
+<Prompt>
+
+# Which one of these diagrams best matches your sketch and our mental model after that code runs?
+
+</Prompt>
+
+<Answer>
+
+**Diagram B is correct.** It shows both variables pointing at the same "eat cake" string value.
+
+Diagram A doesn’t match the mental model we’re building. It shows values inside variables, but in our mental model variables point to values.
+
+Diagram C is wrong because it shows a variable pointing to another variable. Variables can only point to values, not to other variables.
+
+Diagram D is wrong for both of the same reasons.
+
+</Answer>
+
+</Question>
+</Question>
+
+<Question type="EssayQuestion" id="JJS 03 07 feed pets">
+
+<Prompt>
+
+This code prints **_"T"_** to the console. The **_feed_** function is written by our colleague **in another file.** We don't know what it does.
+
+```js
+let pets = 'Tom and Jerry'
+feed(pets)
+console.log(pets[0])
+```
+
+</Prompt>
+
+<Answer>
+
+**No, our colleague cannot make this code log something other than _"T"_.**
+
+This is because when we call a function, we always pass a value, not a variable. We’re passing a string value — and **strings, like any primitives, are immutable.** Our colleague can’t mess with the "Tom and Jerry" string value, so its first character will always be _'T'_.
+
+</Answer>
+
+</Question>
+
+<Question type="EssayQuestion" id="JJS 03 08 What does feed do">
+
+<Prompt>
+
+This code prints **_"Tom"_** to the console. The **_feed_** function is written by our colleague **in another file.** We don't know what it does.
+
+```js
+let pets = ['Tom', 'Jerry']
+feed(pets)
+console.log(pets[0])
+```
+
+</Prompt>
+
+<Answer>
+
+**Yes, our colleague can make this code log something other than _"Tom"_.**
+
+Note that our colleague can’t change which value our variable points to. We pass a value — not a variable! However, our colleague can affect the array value itself, and change its elements.
+
+This is because **arrays, unlike strings, are mutable.** They are not primitive values — they are objects! In case you forget, here is a reminder of which values are primitive. Anything not on this list is an object, and our colleague can affect it.
+
+</Answer>
+
+</Question>
+
+</Quiz>

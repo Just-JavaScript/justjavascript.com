@@ -62,7 +62,7 @@ function getQuestions(questions) {
           const ch = React.Children.toArray(children)
           const choicesNodes = filter(
             ch,
-            (child) => child.props.mdxType === 'Choice'
+            (child) => child?.props?.mdxType === 'Choice'
           )
           return {
             id,

@@ -1,0 +1,273 @@
+import Quiz from 'components/mdx/quiz/index'
+import Prompt from 'components/mdx/quiz/prompt'
+import Question from 'components/mdx/quiz/question'
+import Answer from 'components/mdx/quiz/answer'
+import Choice from 'components/mdx/quiz/choice'
+
+<Quiz title="JJS 04 Counting the Values p1" id="counting-the-values-pt-1" version="1">
+
+<Question type="QuestionSet" id="JJS 04 01 Sketch a diagram">
+
+<Question type="SketchQuestion" id="JJS 04 01 01 Sketch a diagram">
+
+<Prompt>
+
+# Sketch a diagram of variables and values after this snippet of code runs. Use our mental model.
+
+```js
+let meals = 4
+let wheels = meals
+let eels = 2 + 2
+```
+
+</Prompt>
+
+</Question>
+
+<Question type="MultipleChoiceQuestion" id="JJS 04 01 02 Which one">
+
+<Choice>
+
+![A](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612887982/just-javascript-email-images/jj04/quiz-images/JJS-04-01-a.jpg)
+
+</Choice>
+
+<Choice correct>
+
+![B](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612888030/just-javascript-email-images/jj04/quiz-images/jjs-04-01-b.jpg)
+
+</Choice>
+
+<Choice>
+
+![C](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612888142/just-javascript-email-images/jj04/quiz-images/jss-04-01-c.jpg)
+
+</Choice>
+
+<Choice>
+
+![D](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612888220/just-javascript-email-images/jj04/quiz-images/jjs-04-01-d.jpg)
+
+</Choice>
+
+<Prompt>
+
+# Which one of these diagrams best matches your sketch and our mental model after that code runs?
+
+</Prompt>
+
+<Answer>
+
+# Diagram B is correct. It shows all variables pointing to the value 4.
+
+All other diagrams show more than a single value 4. But in our mental model, there is only one number value for each number!
+
+![https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612888030/just-javascript-email-images/jj04/quiz-images/jjs-04-01-b.jpg](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612888030/just-javascript-email-images/jj04/quiz-images/jjs-04-01-b.jpg)
+
+</Answer>
+
+</Question>
+
+</Question>
+
+<Question type="QuestionSet" id="JJS 04 02 Sketch a diagram">
+
+<Question type="SketchQuestion" id="JJS 04 02 01 Sketch a diagram">
+
+<Prompt>
+
+# Sketch a diagram of variables and values after this snippet of code runs. Use our mental model.
+
+```js
+let price = 100
+let offer = price + 1
+price = 200
+```
+
+</Prompt>
+
+</Question>
+
+<Question type="MultipleChoiceQuestion" id="JJS 04 02 02 Which one">
+
+<Choice>
+
+![A](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612889538/just-javascript-email-images/jj04/quiz-images/jjs-04-02-a.jpg)
+
+</Choice>
+
+<Choice correct>
+
+![B](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612889573/just-javascript-email-images/jj04/quiz-images/jjs-04-02-b.jpg)
+
+</Choice>
+
+<Choice>
+
+![C](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612889603/just-javascript-email-images/jj04/quiz-images/jjs-04-02-c.jpg)
+
+</Choice>
+
+<Choice>
+
+![D](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612889644/just-javascript-email-images/jj04/quiz-images/jjs-04-02-d.jpg)
+
+</Choice>
+
+<Prompt>
+
+# Which one of these diagrams best matches your sketch and our mental model after that code runs?
+
+</Prompt>
+
+<Answer>
+
+**Diagram B is correct.** It shows the price variable pointing to 200, and the offer variable pointing to 101.
+
+If you arrived at a different result, you might want to try again. Remember that = means "connect the wire of variable on the left to the current value on the right", and nothing more than that.
+
+![https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612889573/just-javascript-email-images/jj04/quiz-images/jjs-04-02-b.jpg](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612889573/just-javascript-email-images/jj04/quiz-images/jjs-04-02-b.jpg)
+
+</Answer>
+
+</Question>
+
+</Question>
+
+<Question type="QuestionSet" id="JJS 04 03 Sketch a diagram">
+
+<Question type="SketchQuestion" id="JJS 04 03 01 Sketch a diagram">
+
+<Prompt>
+
+# Sketch a diagram of variables and values after this snippet of code runs. Use our mental model.
+
+```js
+let shampoo
+let soap = null
+soap = shampoo
+```
+
+</Prompt>
+
+</Question>
+
+<Question type="MultipleChoiceQuestion" id="JJS 04 03 02 Which one">
+
+<Choice correct>
+
+![A](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1580435612/just-javascript-email-images/jj04/quiz-images/jj04-q2-1.png)
+
+</Choice>
+
+<Choice>
+
+![B](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1580435611/just-javascript-email-images/jj04/quiz-images/jj04-q2-2.png)
+
+</Choice>
+
+<Choice>
+
+![C](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1580435611/just-javascript-email-images/jj04/quiz-images/jj04-q2-3.png)
+
+</Choice>
+
+<Choice>
+
+![D](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1580435612/just-javascript-email-images/jj04/quiz-images/jj04-q2-4.png)
+
+</Choice>
+
+<Prompt>
+
+# Which one of these diagrams best matches your sketch and our mental model after that code runs?
+
+</Prompt>
+
+<Answer>
+
+# **Diagram A is correct.** It shows both `soap` and `shampoo` variables pointing to the value.
+
+Diagram B is wrong because it shows the value twice. There is only one value in our universe.
+
+Diagram C and Diagram D are both wrong because the shampoo variable doesn’t point to any value. After a variable is declared, it always points to a value. And if you don’t specify where it should point, it will point to !
+
+![https://res.cloudinary.com/dg3gyk0gu/image/upload/v1580435612/just-javascript-email-images/jj04/quiz-images/jj04-q2-1.png](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1580435612/just-javascript-email-images/jj04/quiz-images/jj04-q2-1.png)
+
+</Answer>
+
+</Question>
+
+</Question>
+
+<Question type="QuestionSet" id="JJS 04 04 Sketch a diagram">
+
+<Question type="SketchQuestion" id="JJS 04 04 01 Sketch a diagram">
+
+<Prompt>
+
+# Sketch a diagram of variables and values after this snippet of code runs. Use our mental model.
+
+```js
+let isSad = false
+let isHappy = !isSad
+let isFeeling = isSad || isHappy
+let isConfusing = isSad && isHappy
+isSad = true
+```
+
+</Prompt>
+
+</Question>
+
+<Question type="MultipleChoiceQuestion" id="JJS 04 04 02 Which one">
+
+<Choice>
+
+![A](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1580435614/just-javascript-email-images/jj04/quiz-images/jj04-q3-1.png)
+
+</Choice>
+
+<Choice>
+
+![B](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1580435614/just-javascript-email-images/jj04/quiz-images/jj04-q3-2.png)
+
+</Choice>
+
+<Choice correct>
+
+![C](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1580435613/just-javascript-email-images/jj04/quiz-images/jj04-q3-3.png)
+
+</Choice>
+
+<Choice>
+
+![D](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1580435614/just-javascript-email-images/jj04/quiz-images/jj04-q3-4.png)
+
+</Choice>
+
+<Prompt>
+
+# Which one of these diagrams best matches your sketch and our mental model after that code runs?
+
+</Prompt>
+
+<Answer>
+
+**Diagram C is correct. It shows all variables except isConfusing pointing to the true value, and isConfusing pointing to the false value.**
+
+Diagram A is wrong because variables should point to values, not expressions.
+
+Diagram B is wrong because in our mental model, there is only one true, and only one false value.
+
+Diagram D is wrong because the values are calculated incorrectly. At the time we calculated isHappy, isSad was false. Therefore, !isSad was true at that time, and that's where we pointed isHappy's wire. We never changed isHappy's wire again, so it should keep pointing to true.
+
+![https://res.cloudinary.com/dg3gyk0gu/image/upload/v1580435613/just-javascript-email-images/jj04/quiz-images/jj04-q3-3.png](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1580435613/just-javascript-email-images/jj04/quiz-images/jj04-q3-3.png)
+
+</Answer>
+
+</Question>
+
+</Question>
+
+</Quiz>

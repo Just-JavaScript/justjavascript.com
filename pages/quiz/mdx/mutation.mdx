@@ -1,0 +1,486 @@
+import Quiz from 'components/mdx/quiz/index'
+import Prompt from 'components/mdx/quiz/prompt'
+import Question from 'components/mdx/quiz/question'
+import Answer from 'components/mdx/quiz/answer'
+import Choice from 'components/mdx/quiz/choice'
+
+<Quiz title="JJS 08 Mutation" id="mutation" version="1">
+
+<Question type="SketchQuestion" id="JJS 08 01 Sketch a diagram">
+
+<Prompt>
+
+### First, sketch a diagram of variables and values after this snippet of code runs. Then, use your diagram to figure out what the code will print on the last line, and write the result into the input box at the bottom.
+
+If this code produces an error, write "error" as an answer.
+
+```js
+const speadsheet = {title: 'Sales'}
+const copy = spreadsheet
+copy.title = copy.title + ' (Copy)'
+
+console.log(spreadsheet.title) // ???
+```
+
+</Prompt>
+
+<Answer>
+
+**The last line will print "Sales (Copy)".**
+
+We have two variables pointing at the same object: spreadsheet and copy. We mutated that object's title property. So both spreadsheet.title and copy.title will give us the updated value.
+
+Note that although we declared both variables with const, it is not an error to mutate the object they point at. Const only prevents variable reassignment, not object mutation!
+
+![https://res.cloudinary.com/dg3gyk0gu/image/upload/v1613066274/just-javascript-email-images/jj08/Quiz%20Images/jjs-08-01-answer.png](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1613066274/just-javascript-email-images/jj08/Quiz%20Images/jjs-08-01-answer.png)
+
+</Answer>
+
+</Question>
+
+<Question type="SketchQuestion" id="JJS 08 02 Sketch a diagram">
+
+<Prompt>
+
+### First, sketch a diagram of variables and values after this snippet of code runs. Then, use your diagram to figure out what the code will print on the last line, and write the result as an answer.
+
+Don’t skip drawing the diagram. The answer will include it. Pay close attention to what the last line is asking!
+
+```js
+let batman = {
+  address: {city: 'Gotham'},
+}
+let robin = {
+  address: batman.address,
+}
+batman.address = {city: 'Ibiza'}
+
+console.log(robin.address.city) // ???
+```
+
+</Prompt>
+
+<Answer>
+
+**The last line will print "Gotham".**
+
+When we declared robin, we pointed its address property at the value of batman.address at the time of that declaration. That was an object whose city property was "Gotham".
+
+Since that point, we haven’t reassigned the robin variable and haven’t mutated the object reachable by robin.address. So robin.address.city is still "Gotham" by the end.
+
+If you have trouble following this, remember to read every line of code step by step as you draw the diagram.
+
+![https://res.cloudinary.com/dg3gyk0gu/image/upload/v1613066423/just-javascript-email-images/jj08/Quiz%20Images/jjs-08-02-answer.png](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1613066423/just-javascript-email-images/jj08/Quiz%20Images/jjs-08-02-answer.png)
+
+</Answer>
+
+</Question>
+
+<Question type="SketchQuestion" id="JJS 08 03 Sketch a diagram">
+
+<Prompt>
+
+### First, sketch a diagram of variables and values after this snippet of code runs. Then, use your diagram to figure out what the code will print on the last line, and write the result as an answer.
+
+Don’t skip drawing the diagram. The answer will include it. Pay close attention to what the last line is asking!
+
+```js
+let chip = {
+  address: {city: 'Disneyland'},
+}
+let dale = {
+  address: {
+    city: chip.address.city,
+  },
+}
+chip.address = {city: 'Tokyo'}
+
+console.log(dale.address.city) // ???
+```
+
+</Prompt>
+
+<Answer>
+
+**The last line will print "Disneyland".**
+
+When we declared dale, we pointed dale.address.city at "Disneyland", because that was the value of chip.address.city at that time.
+
+We mutated the chip object by changing its address property later, but neither of the wires in the dale.address.city chain were affected by this change.
+
+So `dale.address.city` is still "Disneyland".
+
+Note: you’ll also probably have a second “abandoned” object pointing at "Disneyland". There is no way to reach it by following the wires, so we omitted it from the diagram.
+
+![https://res.cloudinary.com/dg3gyk0gu/image/upload/v1613066586/just-javascript-email-images/jj08/Quiz%20Images/jjs-08-03-answer.png](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1613066586/just-javascript-email-images/jj08/Quiz%20Images/jjs-08-03-answer.png)
+
+</Answer>
+
+</Question>
+
+<Question type="QuestionSet" id="JJS 08 04 Sketch a diagram">
+
+<Question type="SketchQuestion" id="JJS 08 04 01 Sketch a diagram">
+
+<Prompt>
+
+## So far, we’ve been drawing the diagrams of our universe after the code runs. For this question, imagine you’re a detective arriving at a crime scene. You’ll need to sketch a diagram of the universe before this code runs!
+
+This question might feel confusing at first. Give it some time.
+
+**Hint: Use the console logs as clues to solve your case.**
+
+```js
+// ???
+console.log(music.taste) // "classical"
+onion.taste = 'umami'
+console.log(music.taste) // "umami"
+```
+
+</Prompt>
+
+</Question>
+
+<Question type="MultipleChoiceQuestion" id="JJS 08 04 02 Which one">
+
+<Choice>
+
+![A](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1613066837/just-javascript-email-images/jj08/Quiz%20Images/jjs-08-04-a.png)
+
+</Choice>
+
+<Choice correct>
+
+![B](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1613066880/just-javascript-email-images/jj08/Quiz%20Images/jjs-08-04-b.png)
+
+</Choice>
+
+<Prompt>
+
+# Which diagram matches your drawing the best?
+
+Remember we want to describe the universe before this code ran.
+
+</Prompt>
+
+<Answer>
+
+**Diagram B is the correct answer.**
+
+Diagram A is wrong because it shows music and onion pointing at different objects. However, we know **they must have been pointing at the same object,** since mutating onion.taste affected music.taste.
+
+![https://res.cloudinary.com/dg3gyk0gu/image/upload/v1613066880/just-javascript-email-images/jj08/Quiz%20Images/jjs-08-04-b.png](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1613066880/just-javascript-email-images/jj08/Quiz%20Images/jjs-08-04-b.png)
+
+</Answer>
+
+</Question>
+
+</Question>
+
+<Question type="SketchQuestion" id="JJS 08 05 Sketch a diagram">
+
+<Prompt>
+
+## First, sketch a diagram of variables and values after this snippet of code runs. Then, use your diagram to figure out what the code will print on the last line, and write the result as an answer.
+
+Don’t skip drawing the diagram. The answer will include it. Pay close attention to what the last line is asking!
+
+```js
+let ilana = {
+address: { city: 'New York' }
+};
+let place = ilana.address;
+place = { city: 'Boulder' };
+let abbi = {
+address: place;
+};
+
+console.log(ilana.address.city); // ???
+```
+
+</Prompt>
+
+<Answer>
+
+**The last line will print "New York".**
+
+In this example, no objects were mutated at all, and the ilana variable was not reassigned. So ilana.address.city stays the same throughout the code snippet, with its original value being "New York".
+
+![https://res.cloudinary.com/dg3gyk0gu/image/upload/v1613067588/just-javascript-email-images/jj08/Quiz%20Images/jjs-08-05-answer.png](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1613067588/just-javascript-email-images/jj08/Quiz%20Images/jjs-08-05-answer.png)
+
+</Answer>
+
+</Question>
+
+<Question type="SketchQuestion" id="JJS 08 06 Sketch a diagram">
+
+<Prompt>
+
+## First, sketch a diagram of variables and values after this snippet of code runs. Then, use your diagram to figure out what the code will print on the last line, and write the result as an answer.
+
+Don’t skip drawing the diagram. The answer will include it. Pay close attention to what the last line is asking!
+
+```js
+let rick = {
+  address: {city: 'C-137'},
+}
+let morty = {
+  address: rick.address,
+}
+rick.address = {city: '35C'}
+
+console.log(morty.addres.city) // ???
+```
+
+</Prompt>
+
+<Answer>
+
+**The last line will print "C-137".**
+
+In this example, morty.address initially points to the same object as the object as rick.address points to. That object’s city property points at "C-137".
+
+Later, we mutate the object rick points to, and change its address property. However, that object is not a part of the morty.address.city chain, so morty.address.city still gives us the initial "C-137" value.
+
+![https://res.cloudinary.com/dg3gyk0gu/image/upload/v1613067744/just-javascript-email-images/jj08/Quiz%20Images/JJS-08-06-ANSWER.png](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1613067744/just-javascript-email-images/jj08/Quiz%20Images/JJS-08-06-ANSWER.png)
+
+</Answer>
+
+</Question>
+
+<Question type="QuestionSet" id="JJS 08 07 Sketch a diagram">
+
+<Question type="SketchQuestion" id="JJS 08 07 01 Sketch a diagram">
+
+<Prompt>
+
+## For this question, imagine that you’re a detective arriving at a crime scene. Sketch a diagram of the universe before this code runs!
+
+Hint: Use the console logs as clues to solve your case.
+
+```js
+// ???
+console.log(burger.beef) // 'veggie'
+burger = rapper
+console.log(burger.beef) // 'legit'
+```
+
+</Prompt>
+
+</Question>
+
+<Question type="MultipleChoiceQuestion" id="JJS 08 07 02 Which one">
+
+<Choice correct>
+
+![A](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1613067962/just-javascript-email-images/jj08/Quiz%20Images/jjs-08-07-a.png)
+
+</Choice>
+
+<Choice>
+
+![B](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1613068004/just-javascript-email-images/jj08/Quiz%20Images/jjs-08-07-b.png)
+
+</Choice>
+
+<Prompt>
+
+# Which diagram matches your drawing the most?
+
+Remember we want to describe the universe _before_ this code ran.
+
+</Prompt>
+
+<Answer>
+
+**Diagram A is the correct answer.**
+
+Diagram B is wrong because it shows burger and rapper pointing at the same object before the code runs. However, if that were the case, then assigning burger = rapper wouldn’t do anything. But we know that burger.beef has changed after the variable reassignment. Therefore, these variables must have been pointing at different objects in the beginning.
+
+![https://res.cloudinary.com/dg3gyk0gu/image/upload/v1613067962/just-javascript-email-images/jj08/Quiz%20Images/jjs-08-07-a.png](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1613067962/just-javascript-email-images/jj08/Quiz%20Images/jjs-08-07-a.png)
+
+</Answer>
+
+</Question>
+
+</Question>
+
+<Question type="SketchQuestion" id="JJS 08 08 Sketch a diagram">
+
+<Prompt>
+
+Now we’re going to predict the future for a few more questions. They might seem a bit repetitive, but there are important variations in them, so pay attention!
+
+### First, sketch a diagram of variables and values after this snippet of code runs. Then, use your diagram to figure out what the code will print on the last line, and write the result as an answer.
+
+Don’t skip drawing the diagram. The answer will include it. Pay close attention to what the last line is asking!
+
+```js
+let daria = {
+  address: {city: 'Lawndale'},
+}
+let place = daria.address
+place.city = 'L.A.'
+let jane = {
+  address: place,
+}
+
+console.log(daria.address.city) // ???
+```
+
+</Prompt>
+
+<Answer>
+
+**The last line will print "L. A."**
+
+We initialized the place variable to point at the same object that `daria.address` was already pointing at. Then we mutated that object by setting its `city` property to `'L. A.'`. As a result, `daria.address.city` gives us `'L. A.'` in the end.
+
+![https://res.cloudinary.com/dg3gyk0gu/image/upload/v1613068230/just-javascript-email-images/jj08/Quiz%20Images/jjs-08-08-answer.png](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1613068230/just-javascript-email-images/jj08/Quiz%20Images/jjs-08-08-answer.png)
+
+</Answer>
+
+</Question>
+
+<Question type="SketchQuestion" id="JJS 08 09 Sketch a diagram">
+
+<Prompt>
+
+### First, sketch a diagram of variables and values after this snippet of code runs. Then, use your diagram to figure out what the code will print on the last line, and write the result as an answer.
+
+Don’t skip drawing the diagram. The answer will include it. Pay close attention to what the last line is asking!
+
+```js
+let walter = {
+  address: {city: 'Albuquerque'},
+}
+let gustavo = {
+  address: walter.address,
+}
+walter = {
+  address: {city: 'Crawford'},
+}
+
+console.log(gustavo.address.city) // ???
+```
+
+</Prompt>
+
+<Answer>
+
+**The last line will print "Albuquerque"**
+
+We initialized gustavo.address to point at the same object that walter.address was pointing initially, which is { city: 'Albuquerque' }.
+
+Later we changed where the walter variable wire points. However, that doesn’t affect the gustavo variable and isn’t an object mutation, so gustavo.address.city is still 'Albuquerque'.
+
+![https://res.cloudinary.com/dg3gyk0gu/image/upload/v1613068411/just-javascript-email-images/jj08/Quiz%20Images/jjs-08-09-answer.png](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1613068411/just-javascript-email-images/jj08/Quiz%20Images/jjs-08-09-answer.png)
+
+</Answer>
+
+</Question>
+
+<Question type="SketchQuestion" id="JJS 08 10 Sketch a diagram">
+
+<Prompt>
+
+### First, sketch a diagram of variables and values after this snippet of code runs. Then, use your diagram to figure out what the code will print on the last line, and write the result as an answer.
+
+Don’t skip drawing the diagram. The answer will include it. Pay close attention to what the last line is asking!
+
+```js
+let dipper = {
+  address: {
+    city: {name: 'Gravity Falls'},
+  },
+}
+
+let mabel = {
+  address: dipper.address,
+}
+
+dipper.address.city = {
+  name: 'Land of Ooo',
+}
+
+console.log(mabel.address.city.name) // ???
+```
+
+</Prompt>
+
+<Answer>
+
+**The last line will print "Land of Ooo"**
+
+When we declared `mabel`, we pointed `mabel.address` at the same object that `dipper.address` was pointing at.
+
+Then, we mutated that object — we set its `city` property to `{ name: 'Land of Ooo' }`.
+
+So when we read `mabel.address.city.name`, it gives us that object’s `name` property value, which is `'Land of Ooo'`.
+
+![https://res.cloudinary.com/dg3gyk0gu/image/upload/v1613068744/just-javascript-email-images/jj08/Quiz%20Images/jjs-08-10-answer.png](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1613068744/just-javascript-email-images/jj08/Quiz%20Images/jjs-08-10-answer.png)
+
+</Answer>
+
+</Question>
+
+<Question type="MultipleChoiceQuestion" id="JJS 08 11 Charlotte Mother Child">
+
+<Choice>
+
+![A](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1613068951/just-javascript-email-images/jj08/Quiz%20Images/jjs-08-11-a.png)
+
+</Choice>
+
+<Choice>
+
+![B](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1613069040/just-javascript-email-images/jj08/Quiz%20Images/jjs-08-11-b.png)
+
+</Choice>
+
+<Choice>
+
+![C](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1613069095/just-javascript-email-images/jj08/Quiz%20Images/jjs-08-11-c.png)
+
+</Choice>
+
+<Prompt>
+
+Like Sherlock, you are a consulting JavaScript detective. The JavaScript police came to you asking for help. They have three theories of what the universe was like **before** this code ran.
+
+Two of these theories are plausible. One of them is **probably wrong.** Choose which of these theories is probably wrong. Prepare to explain why, too.
+
+Hint: Use the console logs as clues to solve your case.
+
+```js
+// ???
+console.log(charlotte.mother.age) // 20
+console.log(charlotte.child.age) // 20
+
+charlotte.mother.age = 21
+
+console.log(charlotte.mother.age) // 21
+console.log(charlotte.child.age) // 21
+```
+
+</Prompt>
+
+<Answer>
+
+**The diagram B is the probably wrong one.**
+
+We changed charlotte.mother.age, and saw the change reflected in charlotte.child.age.
+
+The most likely explanation is that charlotte.mother and charlotte.child point at the same object. Both diagrams A show C had charlotte.mother and charlotte.child pointing at the same object.
+
+However, the diagram B shows them pointing at different objects. So diagram B is **the probably wrong one.**
+
+Keep in mind that our theories are only as good as our mental models. It is not impossible that diagram B would be correct, but we haven’t covered the relatively uncommon cases in which that could happen yet.
+
+![https://res.cloudinary.com/dg3gyk0gu/image/upload/v1613069040/just-javascript-email-images/jj08/Quiz%20Images/jjs-08-11-b.png](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1613069040/just-javascript-email-images/jj08/Quiz%20Images/jjs-08-11-b.png)
+
+</Answer>
+
+</Question>
+
+</Quiz>

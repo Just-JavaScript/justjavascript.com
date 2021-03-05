@@ -1,0 +1,495 @@
+import Quiz from 'components/mdx/quiz/index'
+import Prompt from 'components/mdx/quiz/prompt'
+import Question from 'components/mdx/quiz/question'
+import Answer from 'components/mdx/quiz/answer'
+import Choice from 'components/mdx/quiz/choice'
+
+<Quiz title="JJS 05 Counting the Values p2" id="counting-the-values-pt-2" version="1">
+
+<Question type="QuestionSet" id="JJS 05 01 Sketch a diagram">
+
+<Question type="SketchQuestion" id="JJS 05 01 01 Sketch a diagram">
+
+<Prompt>
+
+# Sketch a diagram of variables and values after this snippet of code runs. Use our mental model.
+
+```js
+let dwarves = 7
+let continents = '7'
+let worldWonders = 3 + 4
+```
+
+</Prompt>
+
+</Question>
+
+<Question type="MultipleChoiceQuestion" id="JJS 05 01 02 Which one">
+
+<Choice correct>
+
+![A](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1580435613/just-javascript-email-images/jj04/quiz-images/jj04-q1-1.png)
+
+</Choice>
+
+<Choice>
+
+![B](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1580435613/just-javascript-email-images/jj04/quiz-images/jj04-q1-2.png)
+
+</Choice>
+
+<Choice>
+
+![C](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1580435614/just-javascript-email-images/jj04/quiz-images/jj04-q1-3.png)
+
+</Choice>
+
+<Choice>
+
+![D](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1580435615/just-javascript-email-images/jj04/quiz-images/jj04-q1-4.png)
+
+</Choice>
+
+<Prompt>
+
+# Which one of these diagrams best matches your sketch and our mental model after that code runs?
+
+</Prompt>
+
+<Answer>
+
+**Diagram A is correct.** It shows dwarves and _worldWonders_ pointing to the 7 number value, and continents variable pointing to the _"7"_ string value.
+
+Diagram B is wrong because 7 and "7" are two different values — one is a number, and another one is a string. They are not the same value.
+
+Diagram C doesn’t match our mental model because it shows the value 7 more than once. In our mental model, there is only one value for each distinct number.
+
+Diagram D is wrong because a variable can’t point to another variable. It must point to a value.
+
+![https://res.cloudinary.com/dg3gyk0gu/image/upload/v1580435613/just-javascript-email-images/jj04/quiz-images/jj04-q1-1.png](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1580435613/just-javascript-email-images/jj04/quiz-images/jj04-q1-1.png)
+
+</Answer>
+
+</Question>
+
+</Question>
+
+<Question type="QuestionSet" id="JJS 05 02 Sketch a diagram">
+
+<Question type="SketchQuestion" id="JJS 05 02 01 Sketch a diagram">
+
+<Prompt>
+
+# Sketch a diagram of variables and values after this snippet of code runs. Use our mental model.
+
+```js
+let bees = {}
+let peas = bees
+let knees = {}
+```
+
+</Prompt>
+
+</Question>
+
+<Question type="MultipleChoiceQuestion" id="JJS 05 02 02 Which one">
+
+<Choice>
+
+![A](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612894029/just-javascript-email-images/jj05/quiz-images/jjjs-05-02-a.jpg)
+
+</Choice>
+
+<Choice>
+
+![B](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612894117/just-javascript-email-images/jj05/quiz-images/jjs-05-02-b.jpg)
+
+</Choice>
+
+<Choice>
+
+![C](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612894213/just-javascript-email-images/jj05/quiz-images/jjs-05-02-c.jpg)
+
+</Choice>
+
+<Choice correct>
+
+![D](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612894276/just-javascript-email-images/jj05/quiz-images/jjs-05-02-d.jpg)
+
+</Choice>
+
+<Prompt>
+
+# Which one of these diagrams best matches your sketch and our mental model after that code runs?
+
+</Prompt>
+
+<Answer>
+
+**Diagram D is correct.** It shows bees and peas pointing to one object value, and knees variable pointing to another object value.
+
+Diagram A is wrong because it shows peas pointing to something that isn’t a value. A variable must point to a value.
+
+Diagram B doesn’t match our mental model because it shows all variables pointing at the same value. However, {} creates a different object every time.
+
+Diagram C is wrong because it shows three objects. However, only two objects were created in this code example. Remember that = only points the variable on the left to the value of the expression on the right. That’s all it does.
+
+![https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612894276/just-javascript-email-images/jj05/quiz-images/jjs-05-02-d.jpg](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612894276/just-javascript-email-images/jj05/quiz-images/jjs-05-02-d.jpg)
+
+</Answer>
+
+</Question>
+
+</Question>
+
+<Question type="QuestionSet" id="JJS 05 03 Sketch a diagram">
+
+<Question type="SketchQuestion" id="JJS 05 03 01 Sketch a diagram">
+
+<Prompt>
+
+# Sketch a diagram of variables and values after this snippet of code runs. Use our mental model.
+
+```js
+let banana = function () {
+  return 2 + 2
+}
+let result = banana
+```
+
+</Prompt>
+
+</Question>
+
+<Question type="MultipleChoiceQuestion" id="JJS 05 03 02 Which one">
+
+<Choice>
+
+![A](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612895180/just-javascript-email-images/jj05/quiz-images/jjs-05-03-a.jpg)
+
+</Choice>
+
+<Choice>
+
+![B](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612895244/just-javascript-email-images/jj05/quiz-images/jjs-05-03-b.jpg)
+
+</Choice>
+
+<Choice>
+
+![C](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612895299/just-javascript-email-images/jj05/quiz-images/jjs-05-03-c.jpg)
+
+</Choice>
+
+<Choice correct>
+
+![D](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612895354/just-javascript-email-images/jj05/quiz-images/jjs-05-03-d.jpg)
+
+</Choice>
+
+<Prompt>
+
+# Which one of these diagrams best matches your sketch and our mental model after that code runs?
+
+</Prompt>
+
+<Answer>
+
+**Diagram D is correct.** It shows banana and result pointing to the same function value.
+
+Diagram A is wrong because it shows them pointing to two different function values. However, we ran only one `function() {}` declaration, so only one function value was created.
+
+Diagrams B and C are wrong because they show the `result` variable pointing to the value 4. However, there was no function call, so the code inside the function is irrelevant.
+
+Remember that `=` only means “connect the wire on the left to the value of expression on the right”. Since `banana` is pointing to a function value, `let result = banana` will make result point to the same value.
+
+![https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612895354/just-javascript-email-images/jj05/quiz-images/jjs-05-03-d.jpg](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612895354/just-javascript-email-images/jj05/quiz-images/jjs-05-03-d.jpg)
+
+</Answer>
+
+</Question>
+
+</Question>
+
+<Question type="QuestionSet" id="JJS 05 04 Sketch a diagram">
+
+<Question type="SketchQuestion" id="JJS 05 04 01 Sketch a diagram">
+
+<Prompt>
+
+# Sketch a diagram of variables and values after this snippet of code runs. Use our mental model.
+
+```js
+let ask = function () {
+  return 2
+}
+let halves = ask()
+let weeks = ask()
+```
+
+</Prompt>
+
+</Question>
+
+<Question type="MultipleChoiceQuestion" id="JJS 05 04 02 Which one">
+
+<Choice>
+
+![A](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612895833/just-javascript-email-images/jj05/quiz-images/jjs-05-04-a.jpg)
+
+</Choice>
+
+<Choice correct>
+
+![B](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612895890/just-javascript-email-images/jj05/quiz-images/jjs-05-04-b.jpg)
+
+</Choice>
+
+<Choice>
+
+![C](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612895958/just-javascript-email-images/jj05/quiz-images/jjs-05-04-c.jpg)
+
+</Choice>
+
+<Choice>
+
+![D](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612896031/just-javascript-email-images/jj05/quiz-images/jjs-05-04-d.jpg)
+
+</Choice>
+
+<Prompt>
+
+# Which one of these diagrams best matches your sketch and our mental model after that code runs?
+
+</Prompt>
+
+<Answer>
+
+**Diagram B is correct.** It shows the ask variable pointing to a function value, and halves and weeks variables pointing at the value 2.
+
+Diagram A is wrong because it shows multiple values for the number 2. In our mental model, each number only exists once.
+
+Diagram C is wrong because it shows all variables pointing to the function value. However, halves and weeks should point to 2 because it’s the result of calling our function that gets assigned to them. That result is 2.
+
+Diagram D is wrong because it shows the ask variable pointing to 2. However, it should be pointing to the function value that’s assigned to it.
+
+![https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612895890/just-javascript-email-images/jj05/quiz-images/jjs-05-04-b.jpg](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612895890/just-javascript-email-images/jj05/quiz-images/jjs-05-04-b.jpg)
+
+</Answer>
+
+</Question>
+
+</Question>
+
+<Question type="QuestionSet" id="JJS 05 05 Sketch a diagram">
+
+<Question type="SketchQuestion" id="JJS 05 05 01 Sketch a diagram">
+
+<Prompt>
+
+# Sketch a diagram of variables and values after this snippet of code runs. Use our mental model.
+
+```js
+let plant = function () {
+  return {}
+}
+let tree = plant()
+let flower = plant()
+```
+
+</Prompt>
+
+</Question>
+
+<Question type="MultipleChoiceQuestion" id="JJS 05 05 02 Which one">
+
+<Choice>
+
+![A](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612897154/just-javascript-email-images/jj05/quiz-images/jjs-05-05-a.jpg)
+
+</Choice>
+
+<Choice>
+
+![B](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612897218/just-javascript-email-images/jj05/quiz-images/jjs-05-05-b.jpg)
+
+</Choice>
+
+<Choice correct>
+
+![C](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612897281/just-javascript-email-images/jj05/quiz-images/jjs-05-05-c.jpg)
+
+</Choice>
+
+<Choice>
+
+![D](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612897349/just-javascript-email-images/jj05/quiz-images/jjs-05-05-d.jpg)
+
+</Choice>
+
+<Prompt>
+
+# Which one of these diagrams best matches your sketch and our mental model after that code runs?
+
+</Prompt>
+
+<Answer>
+
+**Diagram C is correct.** It shows the plant variable pointing a function value, while tree and flower point to two different object values.
+
+Diagram A doesn’t match our mental model because it shows three regular objects. Throughout this course, we’re going to distinguish functions as a separate type from regular objects.
+
+Diagram B is wrong because it shows tree and flower pointing to the same object. However, return {} runs twice — once for each function call — and so two different objects get created.
+
+Diagram D is wrong because it shows all variables pointing to the same function value. However, the right side of the last two assignments included (), which indicates a function call. So tree and flower should point to the respective returned values rather than to the function itself.
+
+![https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612897281/just-javascript-email-images/jj05/quiz-images/jjs-05-05-c.jpg](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612897281/just-javascript-email-images/jj05/quiz-images/jjs-05-05-c.jpg)
+
+</Answer>
+
+</Question>
+
+</Question>
+
+<Question type="QuestionSet" id="JJS 05 06 Sketch a diagram">
+
+<Question type="SketchQuestion" id="JJS 05 06 01 Sketch a diagram">
+
+<Prompt>
+
+# Sketch a diagram of variables and values after this snippet of code runs. Use our mental model.
+
+```js
+let cook = function () {
+  return 'tofu'
+}
+let make = function () {
+  return 'tofu'
+}
+let food = cook()
+let fuel = make()
+```
+
+</Prompt>
+
+</Question>
+
+<Question type="MultipleChoiceQuestion" id="JJS 05 06 02 Which one">
+
+<Choice correct>
+
+![A](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612897615/just-javascript-email-images/jj05/quiz-images/jjs-05-06-a.jpg)
+
+</Choice>
+
+<Choice>
+
+![B](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612897684/just-javascript-email-images/jj05/quiz-images/jjs-05-06-b.jpg)
+
+</Choice>
+
+<Choice>
+
+![C](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612897749/just-javascript-email-images/jj05/quiz-images/jjs-05-06-c.jpg)
+
+</Choice>
+
+<Choice>
+
+![D](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612897814/just-javascript-email-images/jj05/quiz-images/jjs-05-06-d.jpg)
+
+</Choice>
+
+<Prompt>
+
+# Which one of these diagrams best matches your sketch and our mental model after that code runs?
+
+</Prompt>
+
+<Answer>
+
+**Diagram A is correct.** It shows the cook and make variables pointing to two different function values, while food and fuel variables are pointing to the same string value.
+
+Diagrams B and C are wrong because they show cook and make pointing to the same function value. However, every time we execute function() {}, JavaScript creates a brand new function value. So they should point to different functions.
+
+Diagram D doesn’t match our mental model because it shows two different "tofu" string values. However, in our mental model there is only one value for every distinct string.
+
+![https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612897615/just-javascript-email-images/jj05/quiz-images/jjs-05-06-a.jpg](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612897615/just-javascript-email-images/jj05/quiz-images/jjs-05-06-a.jpg)
+
+</Answer>
+
+</Question>
+
+</Question>
+
+<Question type="QuestionSet" id="JJS 05 07 Sketch a diagram">
+
+<Question type="SketchQuestion" id="JJS 05 07 01 Sketch a diagram">
+
+<Prompt>
+
+# Sketch a diagram of variables and values after this snippet of code runs. Use our mental model.
+
+```js
+let spaghetti = function () {
+  return 2 + 2
+}
+let fettuccine = spaghetti
+let gnocchi = function () {
+  return 2 + 2
+}
+```
+
+</Prompt>
+
+</Question>
+
+<Question type="MultipleChoiceQuestion" id="JJS 05 07 02 Which one">
+
+<Choice>
+
+![A](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1580682686/just-javascript-email-images/jj05/quiz-images/jj04-q4-1.png)
+
+</Choice>
+
+<Choice correct>
+
+![B](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1580682686/just-javascript-email-images/jj05/quiz-images/jj04-q4-2.png)
+
+</Choice>
+
+<Choice>
+
+![C](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1580682686/just-javascript-email-images/jj05/quiz-images/jj04-q4-3.png)
+
+</Choice>
+
+<Choice>
+
+![D](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1580682686/just-javascript-email-images/jj05/quiz-images/jj04-q4-4.png)
+
+</Choice>
+
+<Prompt>
+
+# Which one of these diagrams best matches your sketch and our mental model after that code runs?
+
+</Prompt>
+
+<Answer>
+
+**Diagram B is correct.** It shows the spaghetti and fettucine variables pointing to the same function value, and gnocchi pointing to another function value.
+
+Diagrams A and C are wrong because they show fettucine pointing to the value 4. However, fettucine only points to a function value. We never called that function, so what it returns is irrelevant.
+
+Diagram D is wrong because it shows all the variables pointing to the same function. However, each function() {} creates a new function value. So spaghetti and gnocchi should point at different function values.
+
+![https://res.cloudinary.com/dg3gyk0gu/image/upload/v1580682686/just-javascript-email-images/jj05/quiz-images/jj04-q4-2.png](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1580682686/just-javascript-email-images/jj05/quiz-images/jj04-q4-2.png)
+
+</Answer>
+
+</Question>
+
+</Question>
+
+</Quiz>

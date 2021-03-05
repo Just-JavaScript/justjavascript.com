@@ -66,7 +66,7 @@ const MultipleQuestions = (props) => {
             }
 
             return (
-              <div key={question.id} className="relative" key={question.id}>
+              <div key={question.id + '-nested'} className="relative">
                 <ScrollElement name={question.id} />
                 {index <= currentQuestion.index && (
                   <>

@@ -1,0 +1,614 @@
+import Quiz from 'components/mdx/quiz/index'
+import Prompt from 'components/mdx/quiz/prompt'
+import Question from 'components/mdx/quiz/question'
+import Answer from 'components/mdx/quiz/answer'
+import Choice from 'components/mdx/quiz/choice'
+
+<Quiz title="JJS 07 Properties" id="properties" version="1">
+
+<Question type="QuestionSet" id="JJS 07 01 Sketch a diagram">
+
+<Question type="SketchQuestion" id="JJS 07 01 01 Sketch a diagram">
+
+<Prompt>
+
+# Sketch a diagram of variables and values after this snippet of code runs. Use our mental model.
+
+```js
+let ship = {name: 'Rocinante'}
+```
+
+</Prompt>
+
+</Question>
+
+<Question type="MultipleChoiceQuestion" id="JJS 07 01 02 Which one">
+
+<Choice>
+
+![A](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612903778/just-javascript-email-images/jj07/Quiz%20Images/jjs-07-01-a.png)
+
+</Choice>
+
+<Choice correct>
+
+![B](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612903876/just-javascript-email-images/jj07/Quiz%20Images/jjs-07-01-b.png)
+
+</Choice>
+
+<Choice>
+
+![C](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612903969/just-javascript-email-images/jj07/Quiz%20Images/jjs-07-01-c.png)
+
+</Choice>
+
+<Choice>
+
+![D](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612904056/just-javascript-email-images/jj07/Quiz%20Images/jjs-07-01-d.png)
+
+</Choice>
+
+<Prompt>
+
+# Which one of these diagrams best matches your sketch and our mental model after that code runs?
+
+</Prompt>
+
+<Answer>
+
+**Diagram B is correct.** It shows the ship variable pointing to an object, whose name property points to a string.
+
+*Diagram A *is wrong because it doesn't show the object value to which the ship variable is pointing.
+
+_Diagram C_ is wrong because it shows the string inside our object. In our mental model, properties are wires.
+
+_Diagram D_ is wrong because it shows ship.name as being a variable in code. However, it is a property and belongs to an object.
+
+![https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612903876/just-javascript-email-images/jj07/Quiz%20Images/jjs-07-01-b.png](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612903876/just-javascript-email-images/jj07/Quiz%20Images/jjs-07-01-b.png)
+
+</Answer>
+
+</Question>
+
+</Question>
+
+<Question type="QuestionSet" id="JJS 07 02 Sketch a diagram">
+
+<Question type="SketchQuestion" id="JJS 07 02 01 Sketch a diagram">
+
+<Prompt>
+
+# Sketch a diagram of variables and values after this snippet of code runs. Use our mental model.
+
+```js
+let captain = 'Jim'
+let ship = {captain: captain}
+captain = 'Naomi'
+```
+
+</Prompt>
+
+</Question>
+
+<Question type="MultipleChoiceQuestion" id="JJS 07 02 02 Which one">
+
+<Choice>
+
+![A](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612904428/just-javascript-email-images/jj07/Quiz%20Images/jjs-07-02-a.png)
+
+</Choice>
+
+<Choice>
+
+![B](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612904524/just-javascript-email-images/jj07/Quiz%20Images/jjs-07-02-b.png)
+
+</Choice>
+
+<Choice>
+
+![C](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612904617/just-javascript-email-images/jj07/Quiz%20Images/jjs-07-02-c.png)
+
+</Choice>
+
+<Choice correct>
+
+![D](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612904721/just-javascript-email-images/jj07/Quiz%20Images/jjs-07-02-d.png)
+
+</Choice>
+
+<Prompt>
+
+# Which one of these diagrams best matches your sketch and our mental model after that code runs?
+
+</Prompt>
+
+<Answer>
+
+**Diagram D is correct.** It shows the captain variable pointing to "Naomi". It also shows the ship variable pointing to an object whose captain property points to "Jim".
+
+_Diagrams A and B_ are wrong because they show the captain variable and the captain property of our object pointing to the same value. However, line 3 changed the variable alone.
+
+_Diagram C_ is wrong because it shows a property pointing to a variable, which is not possible. Properties point at values.
+
+![https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612904721/just-javascript-email-images/jj07/Quiz%20Images/jjs-07-02-d.png](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612904721/just-javascript-email-images/jj07/Quiz%20Images/jjs-07-02-d.png)
+
+</Answer>
+
+</Question>
+
+</Question>
+
+<Question type="QuestionSet" id="JJS 07 03 Sketch a diagram">
+
+<Question type="SketchQuestion" id="JJS 07 03 01 Sketch a diagram">
+
+<Prompt>
+
+# Sketch a diagram of variables and values after this snippet of code runs. Use our mental model.
+
+```js
+let turner = {name: 'Alex'}
+let kamal = {name: 'Alex'}
+```
+
+</Prompt>
+
+</Question>
+
+<Question type="MultipleChoiceQuestion" id="JJS 07 03 02 Which one">
+
+<Choice>
+
+![A](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612905080/just-javascript-email-images/jj07/Quiz%20Images/jjs-07-03-a.png)
+
+</Choice>
+
+<Choice correct>
+
+![B](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612905183/just-javascript-email-images/jj07/Quiz%20Images/jjs-07-03-b.png)
+
+</Choice>
+
+<Choice>
+
+![C](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612905305/just-javascript-email-images/jj07/Quiz%20Images/jjs-07-03-c.png)
+
+</Choice>
+
+<Choice>
+
+![D](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612905438/just-javascript-email-images/jj07/Quiz%20Images/jjs-07-03-d.png)
+
+</Choice>
+
+<Prompt>
+
+# Which one of these diagrams best matches your sketch and our mental model after that code runs?
+
+</Prompt>
+
+<Answer>
+
+**Diagram B is correct.** It shows the turner and kamal variables pointing to two different objects. Each of these objects have a name property that points to the same value "Alex".
+
+![https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612905183/just-javascript-email-images/jj07/Quiz%20Images/jjs-07-03-b.png](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612905183/just-javascript-email-images/jj07/Quiz%20Images/jjs-07-03-b.png)
+
+_Diagrams A_ doesn't match our mental model because it shows the string value "Alex" twice. In our universe, there is only one value for every distinct string.
+
+_Diagram C_ is wrong because it shows only one object value. However, every { } object literal creates a different object value, so we should have two of them.
+
+_Diagram D_ is wrong because it doesn't show objects at all.
+
+</Answer>
+
+</Question>
+
+</Question>
+
+<Question type="QuestionSet" id="JJS 07 04 Sketch a diagram">
+
+<Question type="SketchQuestion" id="JJS 07 04 01 Sketch a diagram">
+
+<Prompt>
+
+# Sketch a diagram of variables and values after this snippet of code runs. Use our mental model.
+
+```js
+let ice = {taste: undefined}
+let sand = {}
+let answer = ice.taste === sand.taste
+```
+
+</Prompt>
+
+</Question>
+
+<Question type="MultipleChoiceQuestion" id="JJS 07 04 02 Which one">
+
+<Choice correct>
+
+![A](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612910474/just-javascript-email-images/jj07/Quiz%20Images/jjs-07-04-a.png)
+
+</Choice>
+
+<Choice>
+
+![B](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612910580/just-javascript-email-images/jj07/Quiz%20Images/jjs-07-04-b.png)
+
+</Choice>
+
+<Choice>
+
+![C](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612910728/just-javascript-email-images/jj07/Quiz%20Images/jjs-07-04-c.png)
+
+</Choice>
+
+<Choice>
+
+![D](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612910879/just-javascript-email-images/jj07/Quiz%20Images/jjs-07-04-d.png)
+
+</Choice>
+
+<Prompt>
+
+# Which one of these diagrams best matches your sketch and our mental model after that code runs?
+
+</Prompt>
+
+<Answer>
+
+**Diagram A is correct.** It shows the sand variable pointing to an empty object. It also shows the ice variable pointing to an object with a taste property that itself points to the undefined value. The answer points to true.
+
+Here, _ice.taste_ is _undefined_ because _ice.taste_ points at the undefined value.
+
+However, _sand.taste_ is also _undefined_ — because **the rules say** that if a property doesn't exist, the value of the property expression is the _undefined value_. And indeed, the object sand points to doesn't have a taste property.
+
+We have _undefined_ on both sides of ===. There is only one _undefined_ value in our universe — so they must be equal and the _answer_ is _true_.
+
+![https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612910474/just-javascript-email-images/jj07/Quiz%20Images/jjs-07-04-a.png](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612910474/just-javascript-email-images/jj07/Quiz%20Images/jjs-07-04-a.png)
+
+</Answer>
+
+</Question>
+
+</Question>
+
+<Question type="QuestionSet" id="JJS 07 05 Sketch a diagram">
+
+<Question type="SketchQuestion" id="JJS 07 05 01 Sketch a diagram">
+
+<Prompt>
+
+# Sketch a diagram of variables and values after this snippet of code runs. Use our mental model.
+
+```js
+let ship = {
+  pilot: {name: 'Jim'},
+}
+```
+
+</Prompt>
+
+</Question>
+
+<Question type="MultipleChoiceQuestion" id="JJS 07 05 02 Which one">
+
+<Choice>
+
+![A](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612911510/just-javascript-email-images/jj07/Quiz%20Images/jjs-07-05-a.png)
+
+</Choice>
+
+<Choice correct>
+
+![B](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612911614/just-javascript-email-images/jj07/Quiz%20Images/jjs-07-05-b.png)
+
+</Choice>
+
+<Choice>
+
+![C](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612911713/just-javascript-email-images/jj07/Quiz%20Images/jjs-07-05-c.png)
+
+</Choice>
+
+<Choice>
+
+![D](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612911812/just-javascript-email-images/jj07/Quiz%20Images/jjs-07-05-d.png)
+
+</Choice>
+
+<Prompt>
+
+# Which one of these diagrams best matches your sketch and our mental model after that code runs?
+
+</Prompt>
+
+<Answer>
+
+**Diagram B is correct.** It shows the _ship_ variable pointing to an object, whose _pilot_ property points to another object, whose _name_ property points to _"Jim"_.
+
+![https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612911614/just-javascript-email-images/jj07/Quiz%20Images/jjs-07-05-b.png](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612911614/just-javascript-email-images/jj07/Quiz%20Images/jjs-07-05-b.png)
+
+_Diagram A_ is wrong because it only shows one object. But we have two { } object literals, and therefore, two different objects.
+
+_Diagram C_ is wrong because it shows an object inside another object. However, object nesting has no special meaning in our mental model — properties are always wires.
+
+_Diagram D_ is wrong because it doesn’t show any objects.
+
+</Answer>
+
+</Question>
+
+</Question>
+
+<Question type="QuestionSet" id="JJS 07 06 Sketch a diagram">
+
+<Question type="SketchQuestion" id="JJS 07 06 01 Sketch a diagram">
+
+<Prompt>
+
+# Sketch a diagram of variables and values after this snippet of code runs. Use our mental model.
+
+```js
+let singer = {surname: 'Turner'}
+let pilot = {surname: 'Kamal'}
+singer.surname = pilot.surname
+pilot.surname = singer.surname
+```
+
+</Prompt>
+
+</Question>
+
+<Question type="MultipleChoiceQuestion" id="JJS 07 06 02 Which one">
+
+<Choice>
+
+![A](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612912724/just-javascript-email-images/jj07/Quiz%20Images/jjs-07-06-a.png)
+
+</Choice>
+
+<Choice>
+
+![B](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612912838/just-javascript-email-images/jj07/Quiz%20Images/jjs-07-06-b.png)
+
+</Choice>
+
+<Choice>
+
+![C](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612912950/just-javascript-email-images/jj07/Quiz%20Images/jjs-07-06-c.png)
+
+</Choice>
+
+<Choice correct>
+
+![D](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612913072/just-javascript-email-images/jj07/Quiz%20Images/jjs-07-06-d.png)
+
+</Choice>
+
+<Prompt>
+
+# Which one of these diagrams best matches your sketch and our mental model after that code runs?
+
+</Prompt>
+
+<Answer>
+
+**Diagram D is correct.** It shows the _singer_ and the _pilot_ variables pointing to two different objects. Each of these objects have a surname property that points to the same value _"Kamal"_.
+
+If you got a different answer, you might have either forgotten to approach the problem step by step, or forgot what reading or writing a property does.
+
+To execute _singer.surname = pilot.surname_, we needed to take the singer.surname wire, and point it to the same value that pilot.surname was currently pointing at (_"Kamal"_ at the time). Now both of them point at _"Kamal"_.
+
+Then, when we execute _pilot.surname = singer.surname_, we take the _pilot.surname_ wire, and point it to where singer.surname is pointing at (_"Kamal"_ due to the previous step). So both of them still point to _"Kamal"_.
+
+![https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612913072/just-javascript-email-images/jj07/Quiz%20Images/jjs-07-06-d.png](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612913072/just-javascript-email-images/jj07/Quiz%20Images/jjs-07-06-d.png)
+
+</Answer>
+
+</Question>
+
+</Question>
+
+<Question type="EssayQuestion" id="JJS 07 07 Swap Values">
+
+<Prompt>
+
+**Can you figure out** the three lines of code necessary to swap the values of the surname properties of these two objects?
+
+If you get stuck and your physical form allows that, take something large into each hand and then try to swap the items in your hands. You might find it difficult unless you put one of them somewhere temporarily. Hint: in code, that "somewhere" can be a variable.
+
+```js
+let singer = {surname: 'Turer'}
+let pilot = {surname: 'Kamal'}
+// ??? line 1 ???
+// ??? line 2 ???
+// ??? line 3 ???
+console.log(singer.surname) // "Kamal"
+console.log(pilot.surname) // "Turner"
+```
+
+</Prompt>
+
+<Answer>
+
+Our problem is that we can't point two wires to different values in one line. We can only change where one of them points at a time.
+
+However, we can introduce a variable to "hold onto" the value of one of those wires. Then we can change where that wire points to without "forgetting" where the other wire needs to be pointed.
+
+This is similar to how in order to swap two things in your hands, you can give the first thing to your friend to hold, put the second thing in the first hand, and then take the first thing back from your friend.
+
+If you're still confused, you can sketch out this example step by step.
+
+```js
+let singer = {surname: 'Turner'}
+let pilot = {surname: 'Kamal'}
+let savedSingerSurname = singer.surname
+singer.surname = pilot.surname
+pilot.surname = savedSingerSurname
+console.log(singer.surname) // "Kamal"
+console.log(pilot.surname) // "Turner"
+```
+
+</Answer>
+
+</Question>
+
+<Question type="QuestionSet" id="JJS 07 08 Sketch a diagram">
+
+<Question type="SketchQuestion" id="JJS 07 08 01 Sketch a diagram">
+
+<Prompt>
+
+# Sketch a diagram of variables and values after this snippet of code runs. Use our mental model.
+
+```js
+let president = {
+  name: 'Pooh',
+  next: null,
+}
+
+president.next = {
+  name: 'Paddington',
+  next: president,
+}
+```
+
+</Prompt>
+
+</Question>
+
+<Question type="MultipleChoiceQuestion" id="JJS 07 08 02 Which one">
+
+<Choice correct>
+
+![A](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612914000/just-javascript-email-images/jj07/Quiz%20Images/jjs-07-08-a.png)
+
+</Choice>
+
+<Choice>
+
+![B](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612914114/just-javascript-email-images/jj07/Quiz%20Images/jjs-07-08-b.png)
+
+</Choice>
+
+<Prompt>
+
+# Which one of these diagrams best matches your sketch and our mental model after that code runs?
+
+</Prompt>
+
+<Answer>
+
+**Diagram A is correct.** It shows the president variable pointing to an object. That object's name property points to "Pooh". Its next property points to another object. The second object's name property points to "Paddington". The second object also has a next property, which points back to our first object!
+
+If you got a different answer, you might have either forgotten to approach the problem step by step, or forgot what reading or writing a property does.
+
+To execute president.next = { ... }, we attached the first object's next property wire to the second object we created.
+
+When inside of the second object literal, next: president meant that the newly created object's next property should point to the current value of the president variable — which was our first object.
+
+This is why the first and the second object's next properties point at the other object in a cycle. If you'd like, run this example in the console and try expanding the next property a few times!
+
+![https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612914000/just-javascript-email-images/jj07/Quiz%20Images/jjs-07-08-a.png](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612914000/just-javascript-email-images/jj07/Quiz%20Images/jjs-07-08-a.png)
+
+</Answer>
+
+</Question>
+
+</Question>
+
+<Question type="EssayQuestion" id="JJS 07 09 Diagram Question">
+
+<Prompt>
+
+# Now **use this diagram** to answer a question:
+
+## `console.log(president.next.next.next.name);`
+
+![https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612914000/just-javascript-email-images/jj07/Quiz%20Images/jjs-07-08-a.png](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612914000/just-javascript-email-images/jj07/Quiz%20Images/jjs-07-08-a.png)
+
+</Prompt>
+
+<Answer>
+
+It would print "Paddington".
+
+Remember to follow the wires!
+
+![https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612914000/just-javascript-email-images/jj07/Quiz%20Images/jjs-07-08-a.png](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612914000/just-javascript-email-images/jj07/Quiz%20Images/jjs-07-08-a.png)
+
+</Answer>
+
+</Question>
+
+<Question type="EssayQuestion" id="JJS 08 10 Write Code from Diagram">
+
+<Prompt>
+
+# **Write the code** that produces this diagram.
+
+![https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612914578/just-javascript-email-images/jj07/Quiz%20Images/jjs-07-10-question.png](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612914578/just-javascript-email-images/jj07/Quiz%20Images/jjs-07-10-question.png)
+
+</Prompt>
+
+<Answer>
+
+Here is one possible answer.
+
+```js
+let president = {name: 'Pooh'}
+president.next = president
+```
+
+Note that let president = { next: president } would not work.
+
+Assignment happens in three steps: (1) find the wire on the left, (2) find the value on the right, (3) point the wire to that value.
+
+By the time we create the { next: president } object (step 2), we haven't yet pointed president variable anywhere (step 3), so we can't use it yet!
+
+So instead, we create our object and assign it to the president variable first. Then, we point the next property wire from that object to itself.
+
+Good news for us, bad news for democracy.
+
+To check your solution, paste it into the console and expand the next property. You should be able to expand it forever.
+
+</Answer>
+
+</Question>
+
+<Question type="EssayQuestion" id="JJS 07 11 Station Owner">
+
+<Prompt>
+
+# What is the result of running this code?
+
+```js
+let station = {
+  Owner: {name: 'Fred'},
+}
+let name = station.owner.name
+console.log(name === station.Owner.name)
+```
+
+</Prompt>
+
+<Answer>
+
+**This code crashes.**
+
+When we execute let name = station.owner.name, we want to point the name wire to the result value of station.owner.name.
+
+To calculate station.owner.name, we want to know station.owner first. The object that station points to doesn't have a property called owner. (It has a property called Owner, which is a different property because their names are case-sensitive.) So, according to our rules, station.owner is undefined.
+
+But if station.owner is undefined, then it cannot appear on the left side of the dot. Calculating station.owner.name produces an error and the code stops executing.
+
+If this is confusing, take another look at the Missing Properties section.
+
+![https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612915134/just-javascript-email-images/jj07/Quiz%20Images/jjs-07-11-answer.png](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612915134/just-javascript-email-images/jj07/Quiz%20Images/jjs-07-11-answer.png)
+
+</Answer>
+
+</Question>
+
+</Quiz>
