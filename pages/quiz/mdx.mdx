@@ -5,7 +5,6 @@ import Answer from 'components/mdx/quiz/answer'
 import Choice from 'components/mdx/quiz/choice'
 
 <Quiz title="MDX Quiz Demo" id="mdx-quiz-demo" slug="could-be-dynamic-from-location" version={1}>
-
 <Question type="EssayQuestion" id="number-of-tentacles">
 <Prompt>
 
@@ -20,7 +19,6 @@ console.log(typeof numberOfTentacles)
 ```
 
 </Prompt>
-
 <Answer>
 
 **Yes, it’s valid. It prints "string" to the console.**
@@ -30,11 +28,9 @@ Variables don’t have types in JavaScript — only values do. The answer to `ty
 The `numberOfTentacles` variable was pointing to "eight" string value at the time we asked about its type. So we got "string" as a result.
 
 </Answer>
-
 </Question>
 
 <Question type="QuestionSet" id="sketch-and-pick-meals" version={1}>
-
 <Prompt>
 
 ### Answer this multi-part question:
@@ -42,7 +38,6 @@ The `numberOfTentacles` variable was pointing to "eight" string value at the tim
 </Prompt>
 
 <Question type="SketchQuestion" id="sketch-meals">
-
 <Prompt>
 
 ### Sketch a diagram of variables and values after this snippet of code runs. Use our mental model.
@@ -54,11 +49,9 @@ let eels = 2 + 2
 ```
 
 </Prompt>
-
 </Question>
 
 <Question type="MultipleChoiceQuestion" id="pick-meals">
-
 <Choice>
 
 ![A](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612888030/just-javascript-email-images/jj04/quiz-images/jjs-04-01-b.jpg)
@@ -79,13 +72,11 @@ let eels = 2 + 2
 ![D](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612888220/just-javascript-email-images/jj04/quiz-images/jjs-04-01-d.jpg)
 
 </Choice>
-
 <Prompt>
 
 ## Which one of these diagrams best matches your sketch and our mental model after that code runs?
 
 </Prompt>
-
 <Answer>
 
 ### Diagram B is correct. It shows all variables pointing to the value 4.
@@ -95,7 +86,6 @@ All other diagrams show more than a single value 4. But in our mental model, the
 ![https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612888030/just-javascript-email-images/jj04/quiz-images/jjs-04-01-b.jpg](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612888030/just-javascript-email-images/jj04/quiz-images/jjs-04-01-b.jpg)
 
 </Answer>
-
 </Question>
 </Question>
 </Quiz>
