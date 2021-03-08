@@ -10,25 +10,31 @@ import Choice from 'components/mdx/quiz/choice'
 
 <Prompt>
 
-# What happens if we run this code?
+## A Type Switcheroo
 
-Is this code valid? Why or why not?
+Is this code valid?
 
 ```js
-let numberOfTentacles = 10
-numberOfTentacles = 'eight'
-console.log(typeof numberOfTentacles)
+let numberOfTentacles = 10;
+numberOfTentacles = 'eight';
+console.log(typeof numberOfTentacles);
 ```
+
+**If it’s valid, what does it print? If not, what exactly is wrong with it?**
+
+Explain your thinking.
 
 </Prompt>
 
 <Answer>
 
-**Yes, it’s valid. It prints "string" to the console.**
+**Yes, it’s valid. It prints `"string"` to the console.**
 
-Variables don’t have types in JavaScript — only values do. The answer to typeof(numberOfTentacles) depends on **which value** the variable was pointing to at that time.
+Variables don’t have types in JavaScript — only values do. The answer to `typeof(numberOfTentacles)` depends on **which value** the variable was pointing to when we checked the type.
 
-The numberOfTentacles variable was pointing to "eight" string value at the time we asked about its type. So we got "string" as a result.
+The `numberOfTentacles` variable was pointing to the `"eight"` string value when we checked its type. So we got `"string"` as a result.
+
+*Note that `typeof numberOfTentacles` is equivalent to `typeof(numberOfTentacles)` because the expression inside is simple enough. You don’t have to write the parens.*
 
 </Answer>
 
@@ -38,25 +44,29 @@ The numberOfTentacles variable was pointing to "eight" string value at the time 
 
 <Prompt>
 
-# Here's a slightly different example. What happens if we run it?
+## Shuffle It Up
 
-Is there a difference in behavior compared to the last snippet? Explain why or why not using our mental model.
+Here's a slightly different example. What happens if you run it?
 
 ```js
 let numberOfTentacles = 10;
-console.log(typeof(numberOfTentacles);
+console.log(typeof numberOfTentacles);
 numberOfTentacles = 'eight';
 ```
+
+Is there a difference in the behavior compared to the last snippet? Does it error, or print something? This time, try to **use our mental model** in your explanation.
 
 </Prompt>
 
 <Answer>
 
-**Yes, there is a difference. It prints "number" to the console.**
+**Yes, there is a difference. It prints `"number"` to the console.**
 
-Variables don’t have types in JavaScript — only values do. The answer to typeof(numberOfTentacles) depends on **which value** the variable was pointing to at that time.
+Variables don’t have types in JavaScript — only values do. The answer to `typeof(numberOfTentacles)` depends on **which value** the variable was pointing to when we checked the type.
 
-The numberOfTentacles variable was pointing to 10 number value at the time we asked about its type. So we got "number" as a result.
+The `numberOfTentacles` variable was pointing to the `10` number value at the time we asked about its type. So we got `"number"` as a result.
+
+<i>Remember that you can’t answer a question by reading the code from the middle. To understand what happens, you have to always start at the beginning, and read one line at a time.</i>
 
 </Answer>
 
@@ -66,15 +76,17 @@ The numberOfTentacles variable was pointing to 10 number value at the time we as
 
 <Prompt>
 
-# What happens if we run this code?
+## Meddling with Truth
 
-Explain why using our mental model.
+What happens if we run this code?
 
 ```js
-let answer = true
-answer.opposite = false
-console.log(answer.opposite)
+let answer = true;
+answer.opposite = false;
+console.log(answer.opposite);
 ```
+
+Explain why **using our mental model**.
 
 </Prompt>
 
@@ -82,9 +94,11 @@ console.log(answer.opposite)
 
 **This code won’t be able to set a property.**
 
-Booleans are primitive. And primitive values are immutable. We can’t change them — and setting a property on a value is a change.
+Booleans are primitive. All primitive values are immutable. We can’t change them — and setting a property is a change.
 
-If our code runs in the [strict mode](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode), assigning a property on a primitive value would lead to an error. Otherwise, it will silently do nothing. In either case, we can’t set a property on a boolean value like _true_.
+If our code runs in the [strict mode](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode), setting a property on a primitive value will error. Otherwise, it silently does nothing.
+
+In either case, we can’t set a property on a boolean like `true`.
 
 </Answer>
 
@@ -94,14 +108,16 @@ If our code runs in the [strict mode](https://developer.mozilla.org/en-US/docs/W
 
 <Prompt>
 
-# What happens if we run this code?
+## Brave New Null
 
-Explain why using our mental model.
+What happens if we run this code?
 
 ```js
-null = 10
-console.log(null)
+null = 10;
+console.log(null);
 ```
+
+Explain why **using our mental model**.
 
 </Prompt>
 
@@ -109,7 +125,7 @@ console.log(null)
 
 **This code produces an error.**
 
-It is an error because the left side of the assignment must always be a “wire”. Variables are “wires”, so they can appear on the left side. A literal like _null_ is not a “wire”, so trying to assign something to it is meaningless.
+It is an error because **the left side of the assignment must always be a “wire”.** Variables are “wires”, so they can appear on the left side. A literal like `null` is not a “wire”, so trying to assign something to it is meaningless.
 
 </Answer>
 
@@ -121,13 +137,17 @@ It is an error because the left side of the assignment must always be a “wire�
 
 <Prompt>
 
-## Sketch a diagram of variables and values after this snippet of code runs. Use our mental model.
+## A Mind’s Eye
+
+Sketch a diagram of variables and values after this snippet of code runs:
 
 ```js
-let it = 'be'
-let them = 'eat cake'
-it = them
+let it = 'be';
+let them = 'eat cake';
+it = them;
 ```
+
+**Use our mental model!**
 
 </Prompt>
 
@@ -161,19 +181,21 @@ it = them
 
 <Prompt>
 
-# Which one of these diagrams best matches your sketch and our mental model after that code runs?
+### Which one of these diagrams best matches your sketch and our mental model after that code runs?
+
+Only one of these diagrams matches our mental model. Before you confirm your choice, think about what’s wrong with the others.
 
 </Prompt>
 
 <Answer>
 
-**Diagram B is correct.** It shows both variables pointing at the same "eat cake" string value.
+**Diagram B is correct.** It shows both variables pointing to the same `"eat cake"` string value.
 
-Diagram A doesn’t match the mental model we’re building. It shows values inside variables, but in our mental model variables point to values.
+Diagram A doesn’t match the mental model we’re building. It shows values _inside_ variables, but in our mental model **variables _point to_ values**. Values live outside of them.
 
-Diagram C is wrong because it shows a variable pointing to another variable. Variables can only point to values, not to other variables.
+Diagram C is wrong because it shows a variable pointing to another variable. **Variables can only point to _values_. They can never point to other variables!**
 
-Diagram D is wrong for both of the same reasons.
+Diagram D is wrong for both of these reasons.
 
 </Answer>
 
@@ -185,21 +207,50 @@ Diagram D is wrong for both of the same reasons.
 
 <Prompt>
 
-This code prints **_"T"_** to the console. The **_feed_** function is written by our colleague **in another file.** We don't know what it does.
+## Mutating a String
+
+The `feed` function is written by your colleague **in a different file:**
 
 ```js
-let pets = 'Tom and Jerry'
-feed(pets)
-console.log(pets[0])
+import feed from './feed.js';
+
+let pets = 'Tom and Jerry';
+feed(pets);
+console.log(pets[0]);
 ```
+
+This code prints `"T"` to the console because it’s the first letter of `pets`.
+
+Your colleague bets they can can change your `console.log` output by only editing their `feed.js` file. Do you believe them, or would you bet they can’t?
+
+Explain your reasoninig using your mental model.
 
 </Prompt>
 
 <Answer>
 
-**No, our colleague cannot make this code log something other than _"T"_.**
+**Your colleague will probably lose their bet.**
 
-This is because when we call a function, we always pass a value, not a variable. We’re passing a string value — and **strings, like any primitives, are immutable.** Our colleague can’t mess with the "Tom and Jerry" string value, so its first character will always be _'T'_.
+This is becase you can’t “pass a variable” in JavaScript, **you can only pass a _value_**. So it’s not the `pets` variable that we’re passing to `feed`. Rather, it’s _the value_ of that variable at that time, which is the `"Tom and Jerry"` string value.
+
+Since **strings are immutable**, there’s nothing the `feed` function could do to change that string. And since the `pets` variable itself is not being passed anywhere—only its current value is!—we know that `feed` could not change `pets` either.
+
+There is still, however, a slim chance that your collegue would win the bet. For example, they could do this in `feed.js`:
+
+```js
+export function feed(pets) {
+  // Overwrite console.log with a fake implementation
+  // so that you call it when you try to log "T"!
+  let realLog = console.log;
+  console.log = function(message) {
+    realLog('You got pranked!');
+  };
+}
+```
+
+Now, when you call `console.log`, you will call their function that ignores your message and prints something else. Or they could throw an error, preventing your code from running at all.
+
+Still, unless your colleague is a seasoned prankster, they will probably lose their bet.
 
 </Answer>
 
@@ -209,23 +260,44 @@ This is because when we call a function, we always pass a value, not a variable.
 
 <Prompt>
 
-This code prints **_"Tom"_** to the console. The **_feed_** function is written by our colleague **in another file.** We don't know what it does.
+## Mutating an Array
+
+Imagine the same situation, but `pets` pointed to an array instead of a string:
 
 ```js
-let pets = ['Tom', 'Jerry']
-feed(pets)
-console.log(pets[0])
+import feed from './feed.js';
+
+let pets = ['Tom', 'Jerry'];
+feed(pets);
+console.log(pets[0]);
 ```
+
+This code prints `"Tom"` to the console.
+
+Once again, your colleague bets they can can change the output by only editing their `feed.js` file. Do you believe them, or would you bet they can’t?
 
 </Prompt>
 
 <Answer>
 
-**Yes, our colleague can make this code log something other than _"Tom"_.**
+**Your colleague will very easily win their bet.**
 
-Note that our colleague can’t change which value our variable points to. We pass a value — not a variable! However, our colleague can affect the array value itself, and change its elements.
+You can’t “pass a variable” in JavaScript, **you can only pass a _value_**. So it’s not the `pets` variable that we’re passing to `feed`. Rather, it’s _the value_ of that variable at that time, which is the array whose elements include `"Tom"` and `"Jerry"`.
 
-This is because **arrays, unlike strings, are mutable.** They are not primitive values — they are objects! In case you forget, here is a reminder of which values are primitive. Anything not on this list is an object, and our colleague can affect it.
+However, unlike strings, **arrays are mutable!** This means that are colleague can add, change, or remove items in the array that we passed into their function, without any trouble:
+
+```js
+export function feed(pets) {
+  pets[0] = 'Pikachu';
+}
+```
+
+Note that despite also being called `pets`, the `pets` argument in the `feed` function has nothing to do with the `pets` variable in your code. They are two different “wires”. However, they both point to the same array, which is why changing it in one place will cause your code to read a different value from it.
+
+**Whenever you pass a mutable value, someone can mess it up!**
+
+We’ll revisit this idea in much more detail in a later module.
+
 
 </Answer>
 

@@ -10,11 +10,13 @@ import Choice from 'components/mdx/quiz/choice'
 
 <Prompt>
 
-## Open some JavaScript project or snippet that you have been working on
+## Gotta Log ’Em All
 
-Put `console.log(typeof(something))` into your code, replacing `something` with different variables in your code. Take your time, I’ll wait! We’re not in a rush.
+Open some JavaScript project that you have been working on.
 
-**Which value types did you manage to find an example for?** Try to “collect” as many types as you can. Did any of the results surprise you?
+Add `console.log(typeof(something))`, replacing `something` with different variables in your code. **Write down the value types you found in your project.**
+
+Try to “collect” as many types as you can. Did any of the results surprise you?
 
 </Prompt>
 
@@ -26,11 +28,19 @@ null
 
 <Prompt>
 
-## Imagine you see some code that checks whether a value is a Date
+## A Sketchy Date
 
-The check looks like this: `typeof(value) === 'date'`.
+You found a piece of code that checks whether `value` is a JavaScript Date:
 
-Will this code do what the author intended? Why or why not?
+```js
+if (typeof(value) === 'date') {
+  console.log('This is a date, indeed!');
+}
+```
+
+Will this code do what the author intended? Explain why or why not.
+
+*You don’t need to know much about Dates to answer this question.*
 
 </Prompt>
 
@@ -40,10 +50,17 @@ Will this code do what the author intended? Why or why not?
 
 **`typeof(value) === "date"` is always `false`.**
 
-This is because `"date"` is not one of the possible `typeof` results. Dates are _not_ one of the primitive types (unlike numbers and booleans), and they are also _not_ functions. So `typeof` a JavaScript Date can only be an `"object"`.
+You can tell this by the process of elimination:
 
-You don’t need to know anything about JavaScript Dates to answer this question. It is enough to know the `typeof` values!
+* Dates are _not_ one of the primitive types we’ve mentioned (such as Undefined, Null, Numbers, Booleans, and so on).
+* They are also _not_ functions.
 
+Like everything that didn’t have a separate section on our list, Dates are Objects. So `typeof` a JavaScript Date is `"object"`.
+
+```js
+let today = new Date();
+console.log(typeof(today)); // "object"
+```
 
 </Answer>
 
@@ -53,21 +70,21 @@ You don’t need to know anything about JavaScript Dates to answer this question
 
 <Prompt>
 
-## Find the liar
+## Liar Liar, Pants on Fire
 
 Out of the nine value types, one is a liar. When you use the `typeof` operator on a value of that type, **it gives a wrong answer** because of a bug in JavaScript.
 
 Do you know which value it is? You can find this value by trying `typeof` for each example in our list of nine types. Here they are, in case you need a recap:
 
-- **Undefined** (`undefined`), used for unintentionally missing values.
-- **Null** (`null`), used for intentionally missing values.
-- **Booleans** (`true` and `false`), used for logical operations.
-- **Numbers** (`-100`, `3.14`, and others), used for math calculations.
-- **BigInts** (uncommon and new), used for math on big numbers.
-- **Strings** (`"hello"`, `"abracadabra"`, and others), used for text.
-- **Symbols** (uncommon), used to perform rituals and hide secrets.
-- **Objects** (`{}` and others), used to group related data and code.
-- **Functions** (`x => x * 2` and others), used to refer to code.
+- **Undefined** (`undefined`)
+- **Null** (`null`)
+- **Booleans** (`true` and `false`)
+- **Numbers** (`-100`, `3.14`, and others)
+- **BigInts** (uncommon and new)
+- **Strings** (`"hello"`, `"abracadabra"`, and others)
+- **Symbols** (uncommon)
+- **Objects** (`{}` and others)
+- **Functions** (`x => x * 2` and others)
 
 Who is the liar?
 
@@ -89,7 +106,7 @@ You might ask: isn’t `typeof([]) === "object"` a bug? No. Arrays aren’t prim
 
 <Prompt>
 
-## A type of a type
+## A Type of a Type
 
 No matter what `value` we pick, we know that `typeof(value)` can only give us one of the several predetermined answers like `"number"`, `"string"`, and so on. What can say with a similar certainty about `typeof(typeof(value))`?
 
@@ -103,17 +120,17 @@ Here’s why. We know `typeof(value)` always gives us one of the predetermined s
 
 So `typeof` any of them is `"string"`. Because they’re strings!
 
-If you struggle with this idea, perhaps, you’re not reading this code in the right order. Nesting means that the `typeof` “inside” executes before the one “outside”, like this:
+If you struggle with this idea, perhaps, you’re not reading this code in the right order. Nesting means that the `typeof` “inside” executes _before_ the `typeof` “outside”, like so:
 
 ```
-// This is the one inside:
+// This is the typeof() inside:
 let type1 = typeof(value);
-// Could be "number", "string", "object", ...
+// It could be "number", "string", "object", ...
 // But these are all strings!
 
-// This is the one outside:
+// This is the typeof() outside:
 let type2 = typeof(type1);
-// Can only be "string" because type1 is a string
+// It is "string" because type1 is a string!
 ```
 
 </Answer>
