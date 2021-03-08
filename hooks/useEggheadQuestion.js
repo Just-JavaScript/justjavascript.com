@@ -12,7 +12,7 @@ export default function useEggheadQuestionMachine(question, handleSubmit) {
           value: isRequired
             ? yup.string().required('Pick one.').nullable()
             : yup.string().nullable(),
-          comment: yup.string().min(3, 'Must be at least 3 characters'),
+          comment: yup.string().min(3, 'Care to elaborate?'),
         })
 
       case 'multiple-image-choice':
@@ -20,7 +20,7 @@ export default function useEggheadQuestionMachine(question, handleSubmit) {
           value: isRequired
             ? yup.string().required('Pick one.').nullable()
             : yup.string().nullable(),
-          comment: yup.string().min(3, 'Must be at least 3 characters'),
+          comment: yup.string().min(3, 'Care to elaborate?'),
         })
 
       case 'EssayQuestion':
@@ -30,8 +30,8 @@ export default function useEggheadQuestionMachine(question, handleSubmit) {
             value: isRequired
               ? yup
                   .string()
-                  .required(`Answer can't stay empty`)
-                  .min(3, 'Answer must be at least 3 characters')
+                  .required(`Come on, don’t give up yet!`)
+                  .min(3, 'Care to elaborate?')
               : yup.string(),
           })
           .nullable()
