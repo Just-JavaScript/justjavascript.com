@@ -2,11 +2,11 @@ import * as yup from 'yup'
 import {useFormik} from 'formik'
 
 export default function useEggheadQuestionMachine(question, handleSubmit) {
-  const {__typename: type} = question || {}
+  const {kind} = question || {}
   const isRequired = question?.required !== false
 
-  function schemaFor(type) {
-    switch (type) {
+  function schemaFor(kind) {
+    switch (kind) {
       case 'MultipleChoiceQuestion':
         return yup.object().shape({
           value: isRequired
@@ -66,7 +66,7 @@ export default function useEggheadQuestionMachine(question, handleSubmit) {
     initialValues: {
       value: question?.value || '',
     },
-    validationSchema: schemaFor(type),
+    validationSchema: schemaFor(kind),
     onSubmit: (values, actions) => {
       if (formik.isValid) {
         handleSubmit({answer: values}, actions, question)

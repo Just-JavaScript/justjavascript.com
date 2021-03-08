@@ -6,9 +6,9 @@ import Choice from 'components/mdx/quiz/choice'
 
 <Quiz title="JJS 06 Equality of Values" id="equality-of-values" version="1">
 
-<Question type="QuestionSet" id="JJS 06 01 Sketch a diagram">
+<Question kind="QuestionSet" desc="string interning">
 
-<Question type="SketchQuestion" id="JJS 06 01 01 Sketch a diagram">
+<Question kind="SketchQuestion">
 
 <Prompt>
 
@@ -24,7 +24,7 @@ let nose = 'must' + 'ache'
 
 </Question>
 
-<Question type="MultipleChoiceQuestion" id="JJS 06 01 02 Which one">
+<Question kind="MultipleChoiceQuestion">
 
 <Choice>
 
@@ -70,7 +70,7 @@ None of the other diagrams match our mental model because they show more than on
 
 </Question>
 
-<Question type="EssayQuestion" id="JJS 06 02 Use Sketch to Determine Output">
+<Question kind="EssayQuestion" desc="string equality">
 
 <Prompt>
 
@@ -100,9 +100,9 @@ All of these examples print true.
 
 </Question>
 
-<Question type="QuestionSet" id="JJS 06 03 Sketch a diagram">
+<Question kind="QuestionSet" desc="objects and variables">
 
-<Question type="SketchQuestion" id="JJS 06 03 01 Sketch a diagram">
+<Question kind="SketchQuestion">
 
 <Prompt>
 
@@ -119,7 +119,7 @@ tomato = {}
 
 </Question>
 
-<Question type="MultipleChoiceQuestion" id="JJS 06 03 02 Which one">
+<Question kind="MultipleChoiceQuestion">
 
 <Choice>
 
@@ -165,7 +165,7 @@ Remember that {} means “create a new object value”, and let x = y means “p
 
 </Question>
 
-<Question type="EssayQuestion" id="JJS 06 04 Determine Output of Tomato Oregano Potato">
+<Question kind="EssayQuestion" desc="object equality">
 
 <Prompt>
 
@@ -193,7 +193,7 @@ Now **use this sketch** to determine the output of:
 
 </Question>
 
-<Question type="EssayQuestion" id="JJS 06 05 Tree Stone Water Diagram">
+<Question kind="EssayQuestion" desc="object references">
 
 <Prompt>
 
@@ -221,7 +221,7 @@ let water = tree
 
 </Question>
 
-<Question type="EssayQuestion" id="JJS 06 06 Ticket Message Appear">
+<Question kind="EssayQuestion" desc="comparison to object">
 
 <Prompt>
 
@@ -257,7 +257,7 @@ if (ticket === {id: 0}) {
 
 </Question>
 
-<Question type="EssayQuestion" id="JJS 06 07 Ticket Message Appear">
+<Question kind="EssayQuestion" desc="comparison to number">
 
 <Prompt>
 
@@ -293,7 +293,7 @@ if (ticketId === 0) {
 
 </Question>
 
-<Question type="EssayQuestion" id="JJS 06 08 Ticket ID not 0">
+<Question kind="EssayQuestion" desc="minus zero">
 
 <Prompt>
 
@@ -318,9 +318,9 @@ Even though 0 and -0 are two different values, === considers them equal.
 
 </Question>
 
-<Question type="QuestionSet" id="JJS 06 09 Sketch a diagram">
+<Question kind="QuestionSet" desc="nan">
 
-<Question type="SketchQuestion" id="JJS 06 09 01 Sketch a diagram">
+<Question kind="SketchQuestion">
 
 <Prompt>
 
@@ -341,7 +341,7 @@ let latte = coffee()
 
 </Question>
 
-<Question type="MultipleChoiceQuestion" id="JJS 06 09 02 Which one">
+<Question kind="MultipleChoiceQuestion">
 
 <Choice>
 
@@ -391,7 +391,7 @@ As a reminder, NaN is a special numeric value that represents an invalid result 
 
 </Question>
 
-<Question type="EssayQuestion" id="JJS 06 10 Sketch Tea Coffee Matcha Latte">
+<Question kind="EssayQuestion" desc="nan equality">
 
 <Prompt>
 

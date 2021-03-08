@@ -6,9 +6,9 @@ import Choice from 'components/mdx/quiz/choice'
 
 <Quiz title="JJS 07 Properties" id="properties" version="1">
 
-<Question type="QuestionSet" id="JJS 07 01 Sketch a diagram">
+<Question kind="QuestionSet" desc="var to object">
 
-<Question type="SketchQuestion" id="JJS 07 01 01 Sketch a diagram">
+<Question kind="SketchQuestion">
 
 <Prompt>
 
@@ -22,7 +22,7 @@ let ship = {name: 'Rocinante'}
 
 </Question>
 
-<Question type="MultipleChoiceQuestion" id="JJS 07 01 02 Which one">
+<Question kind="MultipleChoiceQuestion">
 
 <Choice>
 
@@ -72,9 +72,9 @@ _Diagram D_ is wrong because it shows ship.name as being a variable in code. How
 
 </Question>
 
-<Question type="QuestionSet" id="JJS 07 02 Sketch a diagram">
+<Question kind="QuestionSet" desc="reassign variable from object">
 
-<Question type="SketchQuestion" id="JJS 07 02 01 Sketch a diagram">
+<Question kind="SketchQuestion">
 
 <Prompt>
 
@@ -90,7 +90,7 @@ captain = 'Naomi'
 
 </Question>
 
-<Question type="MultipleChoiceQuestion" id="JJS 07 02 02 Which one">
+<Question kind="MultipleChoiceQuestion">
 
 <Choice>
 
@@ -138,9 +138,9 @@ _Diagram C_ is wrong because it shows a property pointing to a variable, which i
 
 </Question>
 
-<Question type="QuestionSet" id="JJS 07 03 Sketch a diagram">
+<Question kind="QuestionSet" desc="similar distinct objects">
 
-<Question type="SketchQuestion" id="JJS 07 03 01 Sketch a diagram">
+<Question kind="SketchQuestion">
 
 <Prompt>
 
@@ -155,7 +155,7 @@ let kamal = {name: 'Alex'}
 
 </Question>
 
-<Question type="MultipleChoiceQuestion" id="JJS 07 03 02 Which one">
+<Question kind="MultipleChoiceQuestion">
 
 <Choice>
 
@@ -205,9 +205,9 @@ _Diagram D_ is wrong because it doesn't show objects at all.
 
 </Question>
 
-<Question type="QuestionSet" id="JJS 07 04 Sketch a diagram">
+<Question kind="QuestionSet" desc="read nonexistent property">
 
-<Question type="SketchQuestion" id="JJS 07 04 01 Sketch a diagram">
+<Question kind="SketchQuestion">
 
 <Prompt>
 
@@ -223,7 +223,7 @@ let answer = ice.taste === sand.taste
 
 </Question>
 
-<Question type="MultipleChoiceQuestion" id="JJS 07 04 02 Which one">
+<Question kind="MultipleChoiceQuestion">
 
 <Choice correct>
 
@@ -273,9 +273,9 @@ We have _undefined_ on both sides of ===. There is only one _undefined_ value in
 
 </Question>
 
-<Question type="QuestionSet" id="JJS 07 05 Sketch a diagram">
+<Question kind="QuestionSet" desc="nesting">
 
-<Question type="SketchQuestion" id="JJS 07 05 01 Sketch a diagram">
+<Question kind="SketchQuestion">
 
 <Prompt>
 
@@ -291,7 +291,7 @@ let ship = {
 
 </Question>
 
-<Question type="MultipleChoiceQuestion" id="JJS 07 05 02 Which one">
+<Question kind="MultipleChoiceQuestion">
 
 <Choice>
 
@@ -341,9 +341,9 @@ _Diagram D_ is wrong because it doesn’t show any objects.
 
 </Question>
 
-<Question type="QuestionSet" id="JJS 07 06 Sketch a diagram">
+<Question kind="QuestionSet" desc="reassign properties">
 
-<Question type="SketchQuestion" id="JJS 07 06 01 Sketch a diagram">
+<Question kind="SketchQuestion">
 
 <Prompt>
 
@@ -360,7 +360,7 @@ pilot.surname = singer.surname
 
 </Question>
 
-<Question type="MultipleChoiceQuestion" id="JJS 07 06 02 Which one">
+<Question kind="MultipleChoiceQuestion">
 
 <Choice>
 
@@ -410,7 +410,7 @@ Then, when we execute _pilot.surname = singer.surname_, we take the _pilot.surna
 
 </Question>
 
-<Question type="EssayQuestion" id="JJS 07 07 Swap Values">
+<Question kind="EssayQuestion" desc="swap properties">
 
 <Prompt>
 
@@ -454,9 +454,9 @@ console.log(pilot.surname) // "Turner"
 
 </Question>
 
-<Question type="QuestionSet" id="JJS 07 08 Sketch a diagram">
+<Question kind="QuestionSet" desc="property cycle">
 
-<Question type="SketchQuestion" id="JJS 07 08 01 Sketch a diagram">
+<Question kind="SketchQuestion">
 
 <Prompt>
 
@@ -478,7 +478,7 @@ president.next = {
 
 </Question>
 
-<Question type="MultipleChoiceQuestion" id="JJS 07 08 02 Which one">
+<Question kind="MultipleChoiceQuestion">
 
 <Choice correct>
 
@@ -518,7 +518,7 @@ This is why the first and the second object's next properties point at the other
 
 </Question>
 
-<Question type="EssayQuestion" id="JJS 07 09 Diagram Question">
+<Question kind="EssayQuestion" desc="follow cycle">
 
 <Prompt>
 
@@ -542,7 +542,7 @@ Remember to follow the wires!
 
 </Question>
 
-<Question type="EssayQuestion" id="JJS 08 10 Write Code from Diagram">
+<Question kind="EssayQuestion" desc="self reference">
 
 <Prompt>
 
@@ -577,7 +577,7 @@ To check your solution, paste it into the console and expand the next property. 
 
 </Question>
 
-<Question type="EssayQuestion" id="JJS 07 11 Station Owner">
+<Question kind="EssayQuestion" desc="case sensitivity">
 
 <Prompt>
 

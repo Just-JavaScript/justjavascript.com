@@ -6,9 +6,9 @@ import Choice from 'components/mdx/quiz/choice'
 
 <Quiz title="JJS 09 Prototypes" id="prototypes" version="1">
 
-<Question type="QuestionSet" id="JJS 09 01 Sketch a diagram">
+<Question kind="QuestionSet" desc="two objects">
 
-<Question type="SketchQuestion" id="JJS 09 01 01 Sketch a diagram">
+<Question kind="SketchQuestion">
 
 <Prompt>
 
@@ -30,7 +30,7 @@ let cake = {
 
 </Question>
 
-<Question type="MultipleChoiceQuestion" id="JJS 09 01 02 Which one">
+<Question kind="MultipleChoiceQuestion">
 
 <Choice>
 
@@ -80,7 +80,7 @@ Diagram D is wrong because it shows both objects having a taste property. Howeve
 
 </Question>
 
-<Question type="EssayQuestion" id="JJS 09 02 Answer Cake Taste Lie">
+<Question kind="EssayQuestion" desc="equality">
 
 <Prompt>
 
@@ -122,9 +122,9 @@ So we have false === true, which is itself false.
 
 </Question>
 
-<Question type="QuestionSet" id="JJS 09 03 Sketch a diagram">
+<Question kind="QuestionSet" desc="prototype mutation">
 
-<Question type="SketchQuestion" id="JJS 09 03 01 Sketch a diagram">
+<Question kind="SketchQuestion">
 
 <Prompt>
 
@@ -146,7 +146,7 @@ lie.taste = 'butter'
 
 </Question>
 
-<Question type="MultipleChoiceQuestion" id="JJS 09 03 02 Which one">
+<Question kind="MultipleChoiceQuestion">
 
 <Choice>
 
@@ -194,7 +194,7 @@ Diagram D is wrong because it shows both variables pointing at the same object. 
 
 </Question>
 
-<Question type="EssayQuestion" id="JJS 09 04 Answer Lie Cake Taste">
+<Question kind="EssayQuestion" desc="read property">
 
 <Prompt>
 
@@ -226,9 +226,9 @@ This is also **"butter".** The object that cake points at doesn’t have a taste
 
 </Question>
 
-<Question type="QuestionSet" id="JJS 09 05 Sketch a diagram">
+<Question kind="QuestionSet" desc="descendant mutation">
 
-<Question type="SketchQuestion" id="JJS 09 05 01 Sketch a diagram">
+<Question kind="SketchQuestion">
 
 <Prompt>
 
@@ -250,7 +250,7 @@ miles.legs = 2
 
 </Question>
 
-<Question type="MultipleChoiceQuestion" id="JJS 09 05 02 Which one">
+<Question kind="MultipleChoiceQuestion">
 
 <Choice>
 
@@ -302,7 +302,7 @@ Recall that we only look at the prototype when we read properties that don't exi
 
 </Question>
 
-<Question type="EssayQuestion" id="JJS 09 06 Answer Spider Legs Miles">
+<Question kind="EssayQuestion" desc="read property">
 
 <Prompt>
 
@@ -334,7 +334,7 @@ This is **2** because the object miles points at has its own legs property point
 
 </Question>
 
-<Question type="SketchQuestion" id="JJS 09 07 Sketch a diagram" canComment>
+<Question kind="SketchQuestion" desc="read and write" canComment>
 
 <Prompt>
 
@@ -393,7 +393,7 @@ The object that `gwen` points at doesn't have a `legs` property, so we continue 
 
 </Question>
 
-<Question type="SketchQuestion" id="JJS 09 08 Sketch a diagram" canComment>
+<Question kind="SketchQuestion" desc="are two objects related" canComment>
 
 <Prompt>
 
@@ -409,9 +409,9 @@ After you're finished, **write the ??? part in the answer field**.
 ```js
 let goose = {location: 'heaven'}
 let cheese = // ???
-  // >>> Diagram this moment! <<<
+// >>> Diagram this moment! <<<
 
-  console.log(cheese === goose) // false
+console.log(cheese === goose) // false
 console.log(cheese.location) // "heaven"
 
 goose.location = 'hell'

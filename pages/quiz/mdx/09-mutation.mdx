@@ -6,7 +6,7 @@ import Choice from 'components/mdx/quiz/choice'
 
 <Quiz title="JJS 08 Mutation" id="mutation" version="1">
 
-<Question type="SketchQuestion" id="JJS 08 01 Sketch a diagram" canComment>
+<Question kind="SketchQuestion" desc="mutation through variable" canComment>
 
 <Prompt>
 
@@ -38,7 +38,7 @@ Note that although we declared both variables with const, it is not an error to 
 
 </Question>
 
-<Question type="SketchQuestion" id="JJS 08 02 Sketch a diagram" canComment>
+<Question kind="SketchQuestion" desc="reassign property" canComment>
 
 <Prompt>
 
@@ -76,7 +76,7 @@ If you have trouble following this, remember to read every line of code step by 
 
 </Question>
 
-<Question type="SketchQuestion" id="JJS 08 03 Sketch a diagram" canComment>
+<Question kind="SketchQuestion" desc="reassign property" canComment>
 
 <Prompt>
 
@@ -118,9 +118,9 @@ Note: you’ll also probably have a second “abandoned” object pointing at "D
 
 </Question>
 
-<Question type="QuestionSet" id="JJS 08 04 Sketch a diagram">
+<Question kind="QuestionSet" desc="deduce equal variables">
 
-<Question type="SketchQuestion" id="JJS 08 04 01 Sketch a diagram">
+<Question kind="SketchQuestion">
 
 <Prompt>
 
@@ -141,7 +141,7 @@ console.log(music.taste) // "umami"
 
 </Question>
 
-<Question type="MultipleChoiceQuestion" id="JJS 08 04 02 Which one">
+<Question kind="MultipleChoiceQuestion">
 
 <Choice>
 
@@ -177,7 +177,7 @@ Diagram A is wrong because it shows music and onion pointing at different object
 
 </Question>
 
-<Question type="SketchQuestion" id="JJS 08 05 Sketch a diagram" canComment>
+<Question kind="SketchQuestion" desc="no mutation" canComment>
 
 <Prompt>
 
@@ -187,12 +187,12 @@ Don’t skip drawing the diagram. The answer will include it. Pay close attentio
 
 ```js
 let ilana = {
-address: { city: 'New York' }
+  address: { city: 'New York' }
 };
 let place = ilana.address;
 place = { city: 'Boulder' };
 let abbi = {
-address: place;
+  address: place
 };
 
 console.log(ilana.address.city); // ???
@@ -212,7 +212,7 @@ In this example, no objects were mutated at all, and the ilana variable was not 
 
 </Question>
 
-<Question type="SketchQuestion" id="JJS 08 06 Sketch a diagram" canComment>
+<Question kind="SketchQuestion" desc="unrelated mutation" canComment>
 
 <Prompt>
 
@@ -248,9 +248,9 @@ Later, we mutate the object rick points to, and change its address property. How
 
 </Question>
 
-<Question type="QuestionSet" id="JJS 08 07 Sketch a diagram">
+<Question kind="QuestionSet" desc="two objects">
 
-<Question type="SketchQuestion" id="JJS 08 07 01 Sketch a diagram">
+<Question kind="SketchQuestion">
 
 <Prompt>
 
@@ -269,7 +269,7 @@ console.log(burger.beef) // 'legit'
 
 </Question>
 
-<Question type="MultipleChoiceQuestion" id="JJS 08 07 02 Which one">
+<Question kind="MultipleChoiceQuestion">
 
 <Choice correct>
 
@@ -305,7 +305,7 @@ Diagram B is wrong because it shows burger and rapper pointing at the same objec
 
 </Question>
 
-<Question type="SketchQuestion" id="JJS 08 08 Sketch a diagram" canComment>
+<Question kind="SketchQuestion" desc="inner mutation" canComment>
 
 <Prompt>
 
@@ -342,7 +342,7 @@ We initialized the place variable to point at the same object that `daria.addres
 
 </Question>
 
-<Question type="SketchQuestion" id="JJS 08 09 Sketch a diagram" canComment>
+<Question kind="SketchQuestion" desc="variable reassignment" canComment>
 
 <Prompt>
 
@@ -380,7 +380,7 @@ Later we changed where the walter variable wire points. However, that doesn’t 
 
 </Question>
 
-<Question type="SketchQuestion" id="JJS 08 10 Sketch a diagram" canComment>
+<Question kind="SketchQuestion" desc="deep mutation" canComment>
 
 <Prompt>
 
@@ -424,7 +424,7 @@ So when we read `mabel.address.city.name`, it gives us that object’s `name` pr
 
 </Question>
 
-<Question type="MultipleChoiceQuestion" id="JJS 08 11 Charlotte Mother Child">
+<Question kind="MultipleChoiceQuestion" desc="cycle">
 
 <Choice>
 

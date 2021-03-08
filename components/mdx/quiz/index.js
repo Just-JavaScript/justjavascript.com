@@ -5,10 +5,14 @@ import useEggheadQuiz from '../../../hooks/useEggheadQuiz'
 import {map, filter, first, find, get} from 'lodash'
 import getChoiceLabelByIndex from '../../../utils/getChoiceLabelByIndex'
 
-function getQuestions(questions) {
-  const items = questions.map((question) => {
-    const {id, type, children, required, version, canComment} = question.props
-    const isMultipart = type === 'QuestionSet'
+function getQuestions(questions, quizId, quizVersion) {
+  const items = questions.map((question, questionIndex) => {
+    const {kind, children, required, version, canComment} = question.props
+    let id = quizId + '@' + quizVersion + '/' + questionIndex;
+    if (question.props.desc) {
+      id += '(' + question.props.desc + ')';
+    }
+    const isMultipart = kind === 'QuestionSet'
     const prompt =
       find(children, {props: {mdxType: 'Prompt'}}) || (!isMultipart && children)
     const answer = find(children, {props: {mdxType: 'Answer'}})
@@ -54,8 +58,9 @@ function getQuestions(questions) {
       (q) => q.props.mdxType !== 'Prompt'
     )
     const nestedQuestions = isMultipart
-      ? nestedQuestionsNodes.map((q) => {
-          const {id, type, children, required, version, canComment} = q.props
+      ? nestedQuestionsNodes.map((q, childIndex) => {
+          const {kind, children, required, version, canComment} = q.props
+          let childId = id + '/' + childIndex;
           const prompt =
             find(children, {props: {mdxType: 'Prompt'}}) || children
           const answer = find(children, {props: {mdxType: 'Answer'}})
@@ -65,8 +70,8 @@ function getQuestions(questions) {
             (child) => child?.props?.mdxType === 'Choice'
           )
           return {
-            id,
-            __typename: type,
+            id: childId,
+            kind,
             prompt,
             answer: {
               description: answer,
@@ -83,7 +88,7 @@ function getQuestions(questions) {
     // assemble the final structure that useEggheadQuiz expects
     return {
       id,
-      __typename: type,
+      kind,
       prompt,
       answer: {
         description: answer,
@@ -101,7 +106,7 @@ function getQuestions(questions) {
 
 const Quiz = ({children, title, version, slug, id}) => {
   const childrenArr = React.Children.toArray(children)
-  const questions = getQuestions(childrenArr)
+  const questions = getQuestions(childrenArr, id, version)
 
   // put it all together
   const quiz = {
