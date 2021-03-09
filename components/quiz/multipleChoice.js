@@ -57,7 +57,9 @@ const MultipleChoice = (props) => {
                   hasAnswered &&
                   question?.correctChoices[0]?.value === choice.value
                 const incorrectAnswer =
-                  hasAnswered && formik.values.value === choice.value
+                  hasAnswered &&
+                  formik.values.value === choice.value &&
+                  !correctAnswer
                 return (
                   <div
                     className={`${
@@ -68,7 +70,7 @@ const MultipleChoice = (props) => {
                       question.choices.length === i + 1
                         ? 'border-transparent'
                         : 'border-cool-gray-100'
-                    } ${correctAnswer ? 'bg-teal-100' : ''}
+                    } ${correctAnswer ? 'bg-green-100' : ''}
                          ${incorrectAnswer ? 'bg-rose-100' : ''}`}
                     key={choice.value}
                   >
