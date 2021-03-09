@@ -18,7 +18,8 @@ module.exports = {
       },
       fontFamily: {
         sans: ['Adelle Sans', ...defaultTheme.fontFamily.sans],
-        serif: ['Recoleta', ...defaultTheme.fontFamily.serif],
+        serif: ['Souvenir', ...defaultTheme.fontFamily.serif],
+        // serif: ['Recoleta', ...defaultTheme.fontFamily.serif],
         mono: ['Adelle Mono', ...defaultTheme.fontFamily.mono],
       },
       fontSize: {

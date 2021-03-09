@@ -1,3 +1,74 @@
+/* ITC Souvenir - headings */
+
+@font-face {
+  font-family: 'Souvenir';
+  font-weight: 300;
+  src: url('./itc-souvenir/a08b6c44-0724-4de4-81c6-0fac850be8a9.woff2')
+      format('woff2'),
+    url('./itc-souvenir/74686ffa-8d0a-4f8c-af0f-6810428983cc.woff')
+      format('woff');
+}
+@font-face {
+  font-family: 'Souvenir';
+  font-weight: 300;
+  font-style: italic;
+  src: url('./itc-souvenir/0dbcd400-fd0a-42c9-8529-1ac65552e045.woff2')
+      format('woff2'),
+    url('./itc-souvenir/afed300d-a6e0-42e5-8bbe-03a84afbc372.woff')
+      format('woff');
+}
+@font-face {
+  font-family: 'Souvenir';
+  font-weight: 500;
+  src: url('./itc-souvenir/407181a3-a568-4379-a1cf-bb60661f0f70.woff2')
+      format('woff2'),
+    url('./itc-souvenir/9236ffb0-c485-4f91-99ef-e969f3836d89.woff')
+      format('woff');
+}
+@font-face {
+  font-family: 'Souvenir';
+  font-weight: 500;
+  font-style: italic;
+  src: url('./itc-souvenir/a0c7ec0c-6d74-4d78-9bc8-22ff144b47fc.woff2')
+      format('woff2'),
+    url('./itc-souvenir/90089bb4-3142-4266-bba5-dee4982b230b.woff')
+      format('woff');
+}
+@font-face {
+  font-family: 'Souvenir';
+  font-weight: 600;
+  src: url('./itc-souvenir/8ada76e2-1d29-49dd-ab92-837921d161c1.woff2')
+      format('woff2'),
+    url('./itc-souvenir/04ec5066-2f04-4cea-b433-a93ce0709ad4.woff')
+      format('woff');
+}
+@font-face {
+  font-family: 'Souvenir';
+  font-weight: 600;
+  font-style: italic;
+  src: url('./itc-souvenir/e705e9a8-671f-4dec-94d4-0fb03b850954.woff2')
+      format('woff2'),
+    url('./itc-souvenir/94fd118d-ed4e-4719-ae7c-9ca199cb2663.woff')
+      format('woff');
+}
+@font-face {
+  font-weight: 500;
+  font-family: 'Souvenir W01 Bold';
+  src: url('./itc-souvenir/4cb49953-72f6-4e38-9f4c-e5ee527416c4.woff2')
+      format('woff2'),
+    url('./itc-souvenir/4bad2dfd-7f10-4847-8344-3804d1941528.woff')
+      format('woff');
+}
+@font-face {
+  font-weight: 700;
+  font-style: italic;
+  font-family: 'Souvenir W01 Bold Italic';
+  src: url('./itc-souvenir/e21dfd33-3d52-47e5-b9f6-2338eb5ffe38.woff2')
+      format('woff2'),
+    url('./itc-souvenir/c26d9c1a-43c8-47a5-9c8c-0084b5b8c906.woff')
+      format('woff');
+}
+
 /* Recoleta - headings */
 
 @font-face {
