@@ -74,7 +74,7 @@ const MultipleQuestions = (props) => {
                       <QuestionToShow
                         nested
                         question={question}
-                        number={`${number}`}
+                        // number={`${number}`}
                         currentAnswer={currentAnswer}
                         isLastQuestion={isLastQuestion}
                         state={state}
