@@ -2,15 +2,16 @@ import * as React from 'react'
 import QuestionToShow from 'components/quiz/questionToShow'
 import {Element as ScrollElement} from 'react-scroll'
 import useEggheadQuiz from '../../../hooks/useEggheadQuiz'
-import {map, filter, first, find, get} from 'lodash'
-import getChoiceLabelByIndex from '../../../utils/getChoiceLabelByIndex'
+import {map, filter, first, indexOf, isEmpty, last, find, get} from 'lodash'
+import getChoiceLabelByIndex from 'utils/get-choice-label-by-index'
+import {GetUserAnswerFromLocalStorage} from 'utils/quiz-answers-in-local-storage'
 
 function getQuestions(questions, quizId, quizVersion) {
   const items = questions.map((question, questionIndex) => {
     const {kind, children, required, version, canComment} = question.props
-    let id = quizId + '@' + quizVersion + '/' + questionIndex;
+    let id = quizId + '@' + quizVersion + '/' + questionIndex
     if (question.props.desc) {
-      id += '(' + question.props.desc + ')';
+      id += '(' + question.props.desc + ')'
     }
     const isMultipart = kind === 'QuestionSet'
     const prompt =
@@ -60,7 +61,7 @@ function getQuestions(questions, quizId, quizVersion) {
     const nestedQuestions = isMultipart
       ? nestedQuestionsNodes.map((q, childIndex) => {
           const {kind, children, required, version, canComment} = q.props
-          let childId = id + '/' + childIndex;
+          let childId = id + '/' + childIndex
           const prompt =
             find(children, {props: {mdxType: 'Prompt'}}) || children
           const answer = find(children, {props: {mdxType: 'Answer'}})
@@ -90,6 +91,7 @@ function getQuestions(questions, quizId, quizVersion) {
       id,
       kind,
       prompt,
+      // userAnswer,
       answer: {
         description: answer,
       },
@@ -117,10 +119,32 @@ const Quiz = ({children, title, version, slug, id}) => {
     questions,
   }
 
+  // Persist answers in local storage
+
+  const ids = questions.map((q) => q.id)
+  // Get answered questions in current quiz
+  const completedQuestions = filter(ids, (id) =>
+    GetUserAnswerFromLocalStorage(id)
+  )
+
+  // Start from the last answered question
+  const defaultCurrentQuestionId = !isEmpty(completedQuestions)
+    ? get(find(questions, {id: last(completedQuestions)}), 'id')
+    : get(first(get(quiz, 'questions')), 'id')
+
+  const defaultCurrentQuestionIndex =
+    indexOf(ids, defaultCurrentQuestionId) || 0
+
   const [currentQuestion, setCurrentQuestion] = React.useState({
-    index: 0,
-    id: get(first(get(quiz, 'questions')), 'id'),
+    id: defaultCurrentQuestionId,
+    index: defaultCurrentQuestionIndex,
   })
+
+  // console.log('last completed question: ', last(completedQuestions))
+  // console.log('defaultCurrentQuestionIndex: ', defaultCurrentQuestionIndex)
+  // console.log('defaultCurrentQuestionId: ', defaultCurrentQuestionId)
+  // console.log('currentQuestion: ', currentQuestion)
+  // console.log('questions: ', questions)
 
   return (
     <div className="flex flex-col items-center justify-start min-h-screen w-full bg-gray-50">
@@ -138,12 +162,18 @@ const Quiz = ({children, title, version, slug, id}) => {
           nextQuestionIdx,
           nextQuestionId,
           number,
-        } = useEggheadQuiz(quiz, question, setCurrentQuestion)
+        } = useEggheadQuiz(
+          quiz,
+          question,
+          setCurrentQuestion,
+          defaultCurrentQuestionId,
+          defaultCurrentQuestionIndex
+        )
 
         return state.matches('initializing') ? (
           'loading...'
         ) : (
-          <div className="w-full mx-auto max-w-screen-sm" key={question.id}>
+          <div className="w-full mx-auto max-w-screen-md" key={question.id}>
             <ScrollElement name={question.id} />
             {index <= currentQuestion.index && (
               <QuestionToShow
@@ -167,6 +197,9 @@ const Quiz = ({children, title, version, slug, id}) => {
           </div>
         )
       })}
+      <div className="fixed left-5 bottom-5 opacity-50 font-mono text-xs">
+        currentQuestion: {JSON.stringify(currentQuestion, null, 2)}
+      </div>
     </div>
   )
 }

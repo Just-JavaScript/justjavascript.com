@@ -3,21 +3,36 @@ import {Element as ScrollElement} from 'react-scroll'
 import AnswerWrapper from 'components/quiz/answerWrapper'
 import QuizWrapper from 'components/quiz/wrapper'
 import QuestionToShow from 'components/quiz/questionToShow'
-import {get, first} from 'lodash'
+import {get, first, filter, last, find, isEmpty, indexOf} from 'lodash'
 import {scroller} from 'react-scroll'
 import {motion} from 'framer-motion'
 import useEggheadQuiz from 'hooks/useEggheadQuiz'
 import Continue from 'components/quiz/continue'
 import Markdown from 'components/quiz/markdown'
+import {GetUserAnswerFromLocalStorage} from 'utils/quiz-answers-in-local-storage'
 
 const MultipleQuestions = (props) => {
-  const [currentQuestion, setCurrentQuestion] = React.useState({
-    index: 0,
-    id: get(first(get(props.question, 'questions')), 'id'),
-  })
-
   const quiz = props.question
   const isMDX = typeof quiz.prompt !== 'string'
+
+  const ids = quiz.questions.map((q) => q.id)
+  // Get answered questions in current quiz
+  const completedQuestions = filter(ids, (id) =>
+    GetUserAnswerFromLocalStorage(id)
+  )
+
+  // Start from the last answered question
+  const defaultCurrentQuestionId = !isEmpty(completedQuestions)
+    ? get(find(quiz.questions, {id: last(completedQuestions)}), 'id')
+    : get(first(get(quiz, 'questions')), 'id')
+
+  const defaultCurrentQuestionIndex =
+    indexOf(ids, defaultCurrentQuestionId) || 0
+
+  const [currentQuestion, setCurrentQuestion] = React.useState({
+    id: defaultCurrentQuestionId,
+    index: defaultCurrentQuestionIndex,
+  })
 
   return (
     <QuizWrapper {...props}>
@@ -71,6 +86,7 @@ const MultipleQuestions = (props) => {
                 {index <= currentQuestion.index && (
                   <>
                     <AnswerWrapper className="w-full flex flex-col md:p-4 p-3 md:rounded-lg bg-cool-gray-100 border border-cool-gray-100">
+                      {question.id}
                       <QuestionToShow
                         nested
                         question={question}

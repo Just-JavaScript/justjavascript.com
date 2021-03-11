@@ -8,9 +8,10 @@ export default function SubmitAndContinue({
   isSubmitting,
 }) {
   React.useEffect(() => {
-    if (state.matches('answered')) {
-      handleContinue()
-    }
+    // todo: figure out how to keep this while also persisting answers from local storage
+    // if (state.matches('answered')) {
+    //   handleContinue()
+    // }
   }, [state])
 
   return state.matches('answered') ? null : (

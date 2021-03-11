@@ -1,7 +1,7 @@
 import {createMachine, assign} from 'xstate'
-import {get, find, first, isEmpty} from 'lodash'
-import {fetchQuizData} from 'utils/fetchQuizData'
-import {postQuizAnswer} from 'utils/postQuizAnswer'
+import {get, find, isEmpty} from 'lodash'
+import {postQuizAnswer} from 'utils/post-quiz-answer'
+import {GetUserAnswerFromLocalStorage} from 'utils/quiz-answers-in-local-storage'
 
 export const quizMachine = createMachine(
   {
@@ -22,26 +22,6 @@ export const quizMachine = createMachine(
     },
     states: {
       initializing: {
-        invoke: {
-          id: 'fetch-questions',
-          src: 'fetchQuizData',
-          onDone: {
-            target: 'idle',
-            actions: assign({
-              questions: (_context, event) => {
-                const {data} = event
-                const questions = get(data, 'questions')
-                return questions
-              },
-              currentQuestionId: (_context, event) => {
-                const {data} = event
-                const questions = get(data, 'questions')
-                const firstQuestionId = get(first(questions), 'id')
-                return firstQuestionId
-              },
-            }),
-          },
-        },
         always: [{target: 'idle', cond: 'questionsLoaded'}],
       },
       idle: {
@@ -51,7 +31,7 @@ export const quizMachine = createMachine(
             actions: assign({
               answers: (context, event) => {
                 const {answers} = context
-                return [...answers, event.answer]
+                return [...answers, event.userAnswer]
               },
               userAnswer: (_, event) => {
                 return event.userAnswer
@@ -84,14 +64,13 @@ export const quizMachine = createMachine(
         return !isEmpty(context.questions)
       },
       isAnswered: (context, _event) => {
-        get(
-          find(context.questions, {id: context.currentQuestionId}),
-          'answer'
-        ) !== ''
+        // return isEmpty(context.userAnswer) ? false : true
+        return !isEmpty(
+          GetUserAnswerFromLocalStorage(context.currentQuestionId)
+        )
       },
     },
     services: {
-      fetchQuizData: (context) => fetchQuizData(context.quiz.id),
       postQuizAnswer: (context) => postQuizAnswer(context),
     },
   }

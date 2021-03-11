@@ -1,9 +1,11 @@
+import React from 'react'
 import {useMachine} from '@xstate/react'
 import {quizMachine} from 'machines/quizMachine'
 import {isEmpty, first, indexOf, find, get} from 'lodash'
 import {useRouter} from 'next/router'
 import {scroller} from 'react-scroll'
 import slugify from 'slugify'
+import {GetUserAnswerFromLocalStorage} from 'utils/quiz-answers-in-local-storage'
 
 export default function useEggheadQuizMachine(
   quiz,
@@ -26,6 +28,8 @@ export default function useEggheadQuizMachine(
     },
   })
 
+  console.log(state)
+
   const {questions} = state.context
   const currentQuestionIdx =
     questions && indexOf(quizQuestions, currentQuestion)
@@ -37,14 +41,26 @@ export default function useEggheadQuizMachine(
 
   const nextQuestion = questions && find(questions, {id: nextQuestionId})
   const nextQuestionIdx = nextQuestion && indexOf(questions, nextQuestion)
-  const isAnswered = !isEmpty(get(currentQuestion, 'answer'))
-  const currentAnswer = get(currentQuestion, 'answer') || null
+
+  // persisting answers
+
+  const isAnswered = !isEmpty(
+    GetUserAnswerFromLocalStorage(get(currentQuestion, 'id'))
+  )
+
+  console.log(isAnswered)
+
+  const currentAnswer =
+    GetUserAnswerFromLocalStorage(get(currentQuestion, 'id')) || null
+
+  /////
+
   const isDisabled = state.matches('answering') || state.matches('answered')
   const isLastQuestion =
     questions && currentQuestionIdx + 1 === questions.length
+
   const showExplanation =
-    currentQuestion.answer?.description &&
-    (state.matches('answered') || currentQuestion.value)
+    state.matches('answered') && currentQuestion.answer?.description
 
   function scrollTo(question) {
     scroller.scrollTo(question, {
@@ -59,15 +75,24 @@ export default function useEggheadQuizMachine(
   const router = useRouter()
 
   function handleContinue() {
-    if (isLastQuestion) {
-      router.push(`/completed?quiz=${get(quiz, 'id')}`)
-    } else {
-      setCurrent({
-        index: nextQuestionIdx,
-        id: nextQuestionId,
-      })
-      scrollTo(nextQuestionId)
-    }
+    isLastQuestion
+      ? router.push(`/completed?quiz=${get(quiz, 'id')}`)
+      : nextQuestionId !==
+        (setCurrent({
+          index: nextQuestionIdx,
+          id: nextQuestionId,
+        }),
+        scrollTo(nextQuestionId))
+
+    // if (isLastQuestion) {
+    //   router.push(`/completed?quiz=${get(quiz, 'id')}`)
+    // } else {
+    //   setCurrent({
+    //     index: nextQuestionIdx,
+    //     id: nextQuestionId,
+    //   })
+    //   scrollTo(nextQuestionId)
+    // }
   }
 
   function handleSkip() {
