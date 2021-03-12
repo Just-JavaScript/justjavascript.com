@@ -68,14 +68,15 @@ export default function useEggheadQuizMachine(
     getUserAnswerFromLocalStorage(get(currentQuestion, 'id')) || null
 
   function handleContinue() {
-    isLastQuestion
-      ? router.push(`/completed?quiz=${get(quiz, 'id')}`)
-      : nextQuestionId !==
-        (setCurrent({
-          index: nextQuestionIdx,
-          id: nextQuestionId,
-        }),
-        scrollTo(nextQuestionId))
+    if (isLastQuestion) {
+      router.push(`/completed?quiz=${get(quiz, 'id')}`)
+    } else {
+      setCurrent({
+        index: nextQuestionIdx,
+        id: nextQuestionId,
+      })
+      scrollTo(nextQuestionId)
+    }
   }
 
   function handleSkip() {
@@ -97,6 +98,7 @@ export default function useEggheadQuizMachine(
 
     const answer = values.answer.value
     send('SUBMIT', {userAnswer: answer, ...currentQuestion})
+    !currentQuestion.answer?.description && handleContinue()
   }
 
   return {

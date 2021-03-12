@@ -9,13 +9,6 @@ export default function SubmitAndContinue({
   isDisabled,
   isSubmitting,
 }) {
-  React.useEffect(() => {
-    // todo: fix this
-    // state.matches('answered') &&
-    //   isEmpty(getUserAnswerFromLocalStorage(state.currrentQuestionId)) &&
-    //   handleContinue()
-  }, [state])
-
   return state.matches('answered') ? null : (
     <motion.button
       layout
