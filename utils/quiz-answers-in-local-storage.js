@@ -5,7 +5,7 @@ function StoreUserAnswerInLocalStorage(key, value) {
 }
 
 function GetUserAnswerFromLocalStorage(key) {
-  return isBrowser() && JSON.parse(localStorage.getItem(key))
+  return isBrowser() && localStorage.getItem(key) // JSON.parse
 }
 
 export {StoreUserAnswerInLocalStorage, GetUserAnswerFromLocalStorage}

@@ -68,7 +68,7 @@ const Sketch = (props) => {
             user={{name: 'Excalidraw User'}}
             initialData={
               currentAnswer && {
-                elements: currentAnswer,
+                elements: JSON.parse(currentAnswer),
                 scrollToCenter: true,
               }
             }

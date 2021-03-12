@@ -66,7 +66,7 @@ export default function useEggheadQuestionMachine(question, handleSubmit) {
   const formik = useFormik({
     initialValues: {
       comment: '',
-      value: GetUserAnswerFromLocalStorage(question.id) || '',
+      value: JSON.parse(GetUserAnswerFromLocalStorage(question.id)) || '',
     },
     validationSchema: schemaFor(kind),
     onSubmit: (values, actions) => {
