@@ -5,7 +5,6 @@ import QuizWrapper from 'components/quiz/wrapper'
 import QuestionToShow from 'components/quiz/questionToShow'
 import {get, first, filter, last, find, isEmpty, indexOf} from 'lodash'
 import {scroller} from 'react-scroll'
-import {motion} from 'framer-motion'
 import useEggheadQuiz from 'hooks/useEggheadQuiz'
 import Continue from 'components/quiz/continue'
 import Markdown from 'components/quiz/markdown'
@@ -17,14 +16,15 @@ import {
 const MultipleQuestions = (props) => {
   const parentQuestion = props.question
   const isMDX = typeof parentQuestion.prompt !== 'string'
-
   const ids = parentQuestion.questions.map((q) => q.id)
+
   // Get answered questions in current quiz
   const completedQuestions = filter(ids, (id) =>
     getUserAnswerFromLocalStorage(id)
   )
 
-  // Start from the last answered question
+  // Start from last answered question
+  // todo: might actually want to start from the question after that
   const defaultCurrentQuestionId = !isEmpty(completedQuestions)
     ? get(find(parentQuestion.questions, {id: last(completedQuestions)}), 'id')
     : get(first(get(parentQuestion, 'questions')), 'id')
@@ -38,7 +38,7 @@ const MultipleQuestions = (props) => {
   })
 
   // check whether all nested questions has been answered
-  // if so, mark parent question as answered
+  // if so, consider the parent question as answered
 
   const parentQuestionId = get(parentQuestion, 'id')
 
@@ -47,12 +47,7 @@ const MultipleQuestions = (props) => {
   })
 
   const isParentQuestionAnswered = answeredQuestions.every((q) => q === true)
-
-  function checkIfParentQuestionIsCompleted() {
-    isParentQuestionAnswered && storeUserAnswerInLocalStorage(parentQuestionId)
-  }
-
-  checkIfParentQuestionIsCompleted()
+  isParentQuestionAnswered && storeUserAnswerInLocalStorage(parentQuestionId)
 
   return (
     <QuizWrapper {...props}>

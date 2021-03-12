@@ -127,7 +127,8 @@ const Quiz = ({children, title, version, slug, id}) => {
     getUserAnswerFromLocalStorage(id)
   )
 
-  // Start from the last answered question
+  // Start from last answered question
+  // todo: might actually want to start from the question after that
   const defaultCurrentQuestionId = !isEmpty(completedQuestions)
     ? get(find(questions, {id: last(completedQuestions)}), 'id')
     : get(first(get(quiz, 'questions')), 'id')
