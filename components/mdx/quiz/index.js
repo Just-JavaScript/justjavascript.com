@@ -140,12 +140,6 @@ const Quiz = ({children, title, version, slug, id}) => {
     index: defaultCurrentQuestionIndex,
   })
 
-  // console.log('last completed question: ', last(completedQuestions))
-  // console.log('defaultCurrentQuestionIndex: ', defaultCurrentQuestionIndex)
-  // console.log('defaultCurrentQuestionId: ', defaultCurrentQuestionId)
-  // console.log('currentQuestion: ', currentQuestion)
-  // console.log('questions: ', questions)
-
   return (
     <div className="flex flex-col items-center justify-start min-h-screen w-full bg-gray-50">
       {map(quiz.questions, (question, index) => {

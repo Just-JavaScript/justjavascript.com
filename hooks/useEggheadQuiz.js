@@ -28,8 +28,6 @@ export default function useEggheadQuizMachine(
     },
   })
 
-  console.log(state)
-
   const {questions} = state.context
   const currentQuestionIdx =
     questions && indexOf(quizQuestions, currentQuestion)
@@ -41,19 +39,6 @@ export default function useEggheadQuizMachine(
 
   const nextQuestion = questions && find(questions, {id: nextQuestionId})
   const nextQuestionIdx = nextQuestion && indexOf(questions, nextQuestion)
-
-  // persisting answers
-
-  const isAnswered = !isEmpty(
-    GetUserAnswerFromLocalStorage(get(currentQuestion, 'id'))
-  )
-
-  console.log(isAnswered)
-
-  const currentAnswer =
-    GetUserAnswerFromLocalStorage(get(currentQuestion, 'id')) || null
-
-  /////
 
   const isDisabled = state.matches('answering') || state.matches('answered')
   const isLastQuestion =
@@ -74,6 +59,14 @@ export default function useEggheadQuizMachine(
 
   const router = useRouter()
 
+  // persisting answers
+
+  const isAnswered = !isEmpty(
+    GetUserAnswerFromLocalStorage(get(currentQuestion, 'id'))
+  )
+  const currentAnswer =
+    GetUserAnswerFromLocalStorage(get(currentQuestion, 'id')) || null
+
   function handleContinue() {
     isLastQuestion
       ? router.push(`/completed?quiz=${get(quiz, 'id')}`)
@@ -83,16 +76,6 @@ export default function useEggheadQuizMachine(
           id: nextQuestionId,
         }),
         scrollTo(nextQuestionId))
-
-    // if (isLastQuestion) {
-    //   router.push(`/completed?quiz=${get(quiz, 'id')}`)
-    // } else {
-    //   setCurrent({
-    //     index: nextQuestionIdx,
-    //     id: nextQuestionId,
-    //   })
-    //   scrollTo(nextQuestionId)
-    // }
   }
 
   function handleSkip() {

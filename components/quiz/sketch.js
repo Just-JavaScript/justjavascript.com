@@ -44,7 +44,6 @@ const Sketch = (props) => {
 
   const explanation = question.answer?.description
   const isMDX = typeof question.prompt !== 'string'
-  console.log({currentAnswer})
 
   return (
     <QuizWrapper {...props}>
