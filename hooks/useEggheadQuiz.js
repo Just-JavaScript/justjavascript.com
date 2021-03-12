@@ -98,7 +98,7 @@ export default function useEggheadQuizMachine(
 
     const answer = values.answer.value
     send('SUBMIT', {userAnswer: answer, ...currentQuestion})
-    !currentQuestion.answer?.description && handleContinue()
+    !currentQuestion.answer?.description && !isLastQuestion && handleContinue()
   }
 
   return {
