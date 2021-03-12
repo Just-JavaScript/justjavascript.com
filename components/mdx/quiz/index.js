@@ -4,7 +4,7 @@ import {Element as ScrollElement} from 'react-scroll'
 import useEggheadQuiz from '../../../hooks/useEggheadQuiz'
 import {map, filter, first, indexOf, isEmpty, last, find, get} from 'lodash'
 import getChoiceLabelByIndex from 'utils/get-choice-label-by-index'
-import {GetUserAnswerFromLocalStorage} from 'utils/quiz-answers-in-local-storage'
+import {getUserAnswerFromLocalStorage} from 'utils/quiz-answers-in-local-storage'
 
 function getQuestions(questions, quizId, quizVersion) {
   const items = questions.map((question, questionIndex) => {
@@ -124,7 +124,7 @@ const Quiz = ({children, title, version, slug, id}) => {
   const ids = questions.map((q) => q.id)
   // Get answered questions in current quiz
   const completedQuestions = filter(ids, (id) =>
-    GetUserAnswerFromLocalStorage(id)
+    getUserAnswerFromLocalStorage(id)
   )
 
   // Start from the last answered question

@@ -1,6 +1,6 @@
 import React from 'react'
 import {motion} from 'framer-motion'
-import {GetUserAnswerFromLocalStorage} from 'utils/quiz-answers-in-local-storage'
+import {getUserAnswerFromLocalStorage} from 'utils/quiz-answers-in-local-storage'
 import {isEmpty} from 'lodash'
 
 export default function SubmitAndContinue({
@@ -11,7 +11,7 @@ export default function SubmitAndContinue({
 }) {
   React.useEffect(() => {
     state.matches('answered') &&
-      isEmpty(GetUserAnswerFromLocalStorage(state.currrentQuestionId)) &&
+      isEmpty(getUserAnswerFromLocalStorage(state.currrentQuestionId)) &&
       handleContinue()
   }, [state])
 

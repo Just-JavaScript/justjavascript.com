@@ -5,7 +5,7 @@ import {isEmpty, first, indexOf, find, get} from 'lodash'
 import {useRouter} from 'next/router'
 import {scroller} from 'react-scroll'
 import slugify from 'slugify'
-import {GetUserAnswerFromLocalStorage} from 'utils/quiz-answers-in-local-storage'
+import {getUserAnswerFromLocalStorage} from 'utils/quiz-answers-in-local-storage'
 
 export default function useEggheadQuizMachine(
   quiz,
@@ -62,10 +62,10 @@ export default function useEggheadQuizMachine(
   // persisting answers
 
   const isAnswered = !isEmpty(
-    GetUserAnswerFromLocalStorage(get(currentQuestion, 'id'))
+    getUserAnswerFromLocalStorage(get(currentQuestion, 'id'))
   )
   const currentAnswer =
-    GetUserAnswerFromLocalStorage(get(currentQuestion, 'id')) || null
+    getUserAnswerFromLocalStorage(get(currentQuestion, 'id')) || null
 
   function handleContinue() {
     isLastQuestion

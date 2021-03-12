@@ -1,5 +1,5 @@
 import getChoiceLabelByIndex from './get-choice-label-by-index'
-import {StoreUserAnswerInLocalStorage} from 'utils/quiz-answers-in-local-storage'
+import {storeUserAnswerInLocalStorage} from 'utils/quiz-answers-in-local-storage'
 
 export const postQuizAnswer = (context) =>
   new Promise((resolve, reject) => {
@@ -14,7 +14,7 @@ export const postQuizAnswer = (context) =>
     }
     console.debug('submitted: ', dataToSubmit)
 
-    StoreUserAnswerInLocalStorage(context.currentQuestionId, context.userAnswer)
+    storeUserAnswerInLocalStorage(context.currentQuestionId, context.userAnswer)
 
     if (true) {
       setTimeout(() => resolve(), 800)

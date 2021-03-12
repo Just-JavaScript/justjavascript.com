@@ -1,7 +1,7 @@
 import {createMachine, assign} from 'xstate'
 import {get, find, isEmpty} from 'lodash'
 import {postQuizAnswer} from 'utils/post-quiz-answer'
-import {GetUserAnswerFromLocalStorage} from 'utils/quiz-answers-in-local-storage'
+import {getUserAnswerFromLocalStorage} from 'utils/quiz-answers-in-local-storage'
 
 export const quizMachine = createMachine(
   {
@@ -66,7 +66,7 @@ export const quizMachine = createMachine(
       isAnswered: (context, _event) => {
         // return isEmpty(context.userAnswer) ? false : true
         return !isEmpty(
-          GetUserAnswerFromLocalStorage(context.currentQuestionId)
+          getUserAnswerFromLocalStorage(context.currentQuestionId)
         )
       },
     },

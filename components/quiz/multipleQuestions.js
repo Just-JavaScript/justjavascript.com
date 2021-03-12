@@ -10,8 +10,8 @@ import useEggheadQuiz from 'hooks/useEggheadQuiz'
 import Continue from 'components/quiz/continue'
 import Markdown from 'components/quiz/markdown'
 import {
-  GetUserAnswerFromLocalStorage,
-  StoreUserAnswerInLocalStorage,
+  getUserAnswerFromLocalStorage,
+  storeUserAnswerInLocalStorage,
 } from 'utils/quiz-answers-in-local-storage'
 
 const MultipleQuestions = (props) => {
@@ -21,7 +21,7 @@ const MultipleQuestions = (props) => {
   const ids = parentQuestion.questions.map((q) => q.id)
   // Get answered questions in current quiz
   const completedQuestions = filter(ids, (id) =>
-    GetUserAnswerFromLocalStorage(id)
+    getUserAnswerFromLocalStorage(id)
   )
 
   // Start from the last answered question
@@ -43,13 +43,13 @@ const MultipleQuestions = (props) => {
   const parentQuestionId = get(parentQuestion, 'id')
 
   const answeredQuestions = parentQuestion.questions.map((question) => {
-    return !isEmpty(GetUserAnswerFromLocalStorage(question.id))
+    return !isEmpty(getUserAnswerFromLocalStorage(question.id))
   })
 
   const isParentQuestionAnswered = answeredQuestions.every((q) => q === true)
 
   function checkIfParentQuestionIsCompleted() {
-    isParentQuestionAnswered && StoreUserAnswerInLocalStorage(parentQuestionId)
+    isParentQuestionAnswered && storeUserAnswerInLocalStorage(parentQuestionId)
   }
 
   checkIfParentQuestionIsCompleted()
