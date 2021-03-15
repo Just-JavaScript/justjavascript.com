@@ -8,6 +8,8 @@
   "scripts": {
     "dev": "next",
     "build": "next build",
+    "build:data": "node ./data/cache-json-data.js -p",
+    "build:data:dev": "node ./data/cache-json-data.js",
     "postinstall": "cp -r ./node_modules/@excalidraw/excalidraw/dist/excalidraw-assets ./public/",
     "build:style": "tailwind build styles/index.css -o styles/output.css",
     "start": "next start",
@@ -64,8 +66,11 @@
     "@babel/plugin-transform-react-jsx": "^7.12.17",
     "@emotion/babel-plugin": "^11.2.0",
     "@emotion/babel-preset-css-prop": "^11.2.0",
+    "assert": "^2.0.0",
     "babel-plugin-inline-react-svg": "^2.0.1",
+    "commander": "^7.1.0",
     "next-compose-plugins": "^2.2.1",
+    "node-fetch": "^2.6.1",
     "postcss-nested": "^5.0.4"
   }
 }
