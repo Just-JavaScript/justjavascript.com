@@ -57,21 +57,25 @@ const MultipleChoice = (props) => {
                   hasAnswered &&
                   question?.correctChoices[0]?.value === choice.value
                 const incorrectAnswer =
-                  hasAnswered && formik.values.value === choice.value
+                  hasAnswered &&
+                  formik.values.value === choice.value &&
+                  !correctAnswer
                 return (
                   <div
-                    className={`${hasImages ? '' : 'border-b'} bg-white ${
+                    className={`${
+                      hasImages ? '' : 'border-b'
+                    } bg-white rounded-lg ${
                       isDisabled ? '' : 'hover:bg-cool-gray-50'
                     } ${
                       question.choices.length === i + 1
                         ? 'border-transparent'
                         : 'border-cool-gray-100'
                     } ${correctAnswer ? 'bg-green-100' : ''}
-                         ${incorrectAnswer ? 'bg-red-100' : ''}`}
+                         ${incorrectAnswer ? 'bg-rose-100' : ''}`}
                     key={choice.value}
                   >
                     <label
-                      className={`block py-2 px-3 ${
+                      className={`block px-3 pb-3 pt-2 ${
                         isDisabled ? '' : 'cursor-pointer'
                       }`}
                     >
@@ -101,7 +105,7 @@ const MultipleChoice = (props) => {
                         <img
                           src={choice.imageUrl}
                           alt={choice.label}
-                          className="border border-gray-200"
+                          className="border border-gray-200 rounded-lg mt-1"
                         />
                       )}
                     </label>
@@ -125,7 +129,7 @@ const MultipleChoice = (props) => {
                 ) : (
                   <>
                     <textarea
-                      className="w-full p-3 bg-cool-gray-100 border border-gray-200 prose rounded-md h-24 mt-4"
+                      className="w-full p-3 bg-cool-gray-100 border border-gray-200 prose max-w-none rounded-md h-24 mt-4"
                       disabled={isDisabled}
                       id="comment"
                       name="comment"
@@ -149,7 +153,7 @@ const MultipleChoice = (props) => {
               className={`w-full text-center mt-4 px-3 py-3 rounded-md font-semibold ${
                 hasAnsweredCorrectly
                   ? 'bg-green-100 text-green-700'
-                  : 'bg-cool-gray-100 text-cool-gray-700 '
+                  : 'bg-rose-100 text-rose-600 '
               } transition-colors ease-in-out duration-300`}
             >
               {hasAnsweredCorrectly ? 'Correct! 🎉' : 'Incorrect'}

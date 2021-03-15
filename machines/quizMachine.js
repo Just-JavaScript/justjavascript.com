@@ -1,7 +1,7 @@
 import {createMachine, assign} from 'xstate'
-import {get, find, first, isEmpty} from 'lodash'
-import {fetchQuizData} from 'utils/fetchQuizData'
-import {postQuizAnswer} from 'utils/postQuizAnswer'
+import {isEmpty} from 'lodash'
+import {postQuizAnswer} from 'utils/post-quiz-answer'
+import {getUserAnswerFromLocalStorage} from 'utils/quiz-answers-in-local-storage'
 
 export const quizMachine = createMachine(
   {
@@ -10,32 +10,18 @@ export const quizMachine = createMachine(
     title: 'Quiz Machine',
     context: {
       currentQuestionId: null,
-      quizId: null,
       questions: [],
       answers: [],
+      userAnswer: null,
+      quiz: {
+        id: null,
+        title: null,
+        slug: null,
+        version: 1,
+      },
     },
     states: {
       initializing: {
-        invoke: {
-          id: 'fetch-questions',
-          src: 'fetchQuizData',
-          onDone: {
-            target: 'idle',
-            actions: assign({
-              questions: (_context, event) => {
-                const {data} = event
-                const questions = get(data, 'questions')
-                return questions
-              },
-              currentQuestionId: (_context, event) => {
-                const {data} = event
-                const questions = get(data, 'questions')
-                const firstQuestionId = get(first(questions), 'id')
-                return firstQuestionId
-              },
-            }),
-          },
-        },
         always: [{target: 'idle', cond: 'questionsLoaded'}],
       },
       idle: {
@@ -45,7 +31,10 @@ export const quizMachine = createMachine(
             actions: assign({
               answers: (context, event) => {
                 const {answers} = context
-                return [...answers, event.answer]
+                return [...answers, event.userAnswer]
+              },
+              userAnswer: (_, event) => {
+                return event.userAnswer
               },
             }),
           },
@@ -75,14 +64,12 @@ export const quizMachine = createMachine(
         return !isEmpty(context.questions)
       },
       isAnswered: (context, _event) => {
-        get(
-          find(context.questions, {id: context.currentQuestionId}),
-          'answer'
-        ) !== ''
+        return !isEmpty(
+          getUserAnswerFromLocalStorage(context.currentQuestionId)
+        )
       },
     },
     services: {
-      fetchQuizData: (context) => fetchQuizData(context.quizId),
       postQuizAnswer: (context) => postQuizAnswer(context),
     },
   }

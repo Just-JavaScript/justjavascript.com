@@ -20,6 +20,7 @@ export default function Explanation({children, label, className}) {
       >
         {label ? label : '💡'}
       </span>
+
       <div className="prose prose-sans sm:prose-sans-lg max-w-none">
         {isMDX ? children : <Markdown>{children}</Markdown>}
       </div>

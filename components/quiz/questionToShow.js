@@ -12,7 +12,7 @@ import {
 
 export default function QuestionToShow({question, ...props}) {
   let QuestionToShow
-  switch (get(question, '__typename')) {
+  switch (get(question, 'kind')) {
     case 'MultipleChoiceQuestion':
       QuestionToShow = MultipleChoice
       break

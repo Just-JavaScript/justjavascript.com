@@ -31,7 +31,7 @@ const Sketch = (props) => {
     zenModeEnabled: true,
     viewBackgroundColor: '#f4f5f7',
   }
-  const [output, setOutput] = React.useState([])
+  const [output, setOutput] = React.useState()
 
   function onChange(sketch) {
     setOutput(sketch)
@@ -65,7 +65,12 @@ const Sketch = (props) => {
             onChange={(sketch) => onChange(sketch)}
             options={options}
             user={{name: 'Excalidraw User'}}
-            initialData={currentAnswer ? currentAnswer.value : output}
+            initialData={
+              currentAnswer && {
+                elements: JSON.parse(currentAnswer),
+                scrollToCenter: true,
+              }
+            }
           />
           <div className="w-full">
             {question.canComment === true && (
@@ -82,7 +87,7 @@ const Sketch = (props) => {
                 ) : (
                   <>
                     <textarea
-                      className="w-full p-3 bg-cool-gray-100 border border-gray-200 prose rounded-md h-24 mt-4"
+                      className="w-full p-3 bg-cool-gray-100 border border-gray-200 prose max-w-none rounded-md h-24 mt-4"
                       disabled={isDisabled}
                       id="comment"
                       name="comment"
@@ -126,7 +131,7 @@ const Sketch = (props) => {
         </AnimatePresence> */}
       </AnswerWrapper>
       <AnimatePresence>
-        {showExplanation && <Explanation>{explanation}</Explanation>}
+        <div>{showExplanation && <Explanation>{explanation}</Explanation>}</div>
       </AnimatePresence>
     </QuizWrapper>
   )

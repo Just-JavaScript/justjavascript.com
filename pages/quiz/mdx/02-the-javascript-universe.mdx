@@ -1,0 +1,140 @@
+import Quiz from 'components/mdx/quiz/index'
+import Prompt from 'components/mdx/quiz/prompt'
+import Question from 'components/mdx/quiz/question'
+import Answer from 'components/mdx/quiz/answer'
+import Choice from 'components/mdx/quiz/choice'
+
+<Quiz title="JJS 02 The JavaScript Universe" id="the-javascript-universe" version="1">
+
+<Question kind="EssayQuestion" desc="typeof">
+
+<Prompt>
+
+## Gotta Log ’Em All
+
+Open some JavaScript project that you have been working on.
+
+Add `console.log(typeof(something))`, replacing `something` with different variables in your code. **Write down the value types you found in your project.**
+
+Try to “collect” as many types as you can. Did any of the results surprise you?
+
+</Prompt>
+
+null
+
+</Question>
+
+<Question kind="EssayQuestion" desc="typeof date">
+
+<Prompt>
+
+## A Sketchy Date
+
+You found a piece of code that checks whether `value` is a JavaScript Date:
+
+```js
+if (typeof(value) === 'date') {
+  console.log('This is a date, indeed!');
+}
+```
+
+Will this code do what the author intended? Explain why or why not.
+
+*You don’t need to know much about Dates to answer this question.*
+
+</Prompt>
+
+<Answer>
+
+**This code will not work.**
+
+**`typeof(value) === "date"` is always `false`.**
+
+You can tell this by the process of elimination:
+
+* Dates are _not_ one of the primitive types we’ve mentioned (such as Undefined, Null, Numbers, Booleans, and so on).
+* They are also _not_ functions.
+
+Like everything that didn’t have a separate section on our list, Dates are Objects. So `typeof` a JavaScript Date is `"object"`.
+
+```js
+let today = new Date();
+console.log(typeof(today)); // "object"
+```
+
+</Answer>
+
+</Question>
+
+<Question kind="EssayQuestion" desc="typeof lie">
+
+<Prompt>
+
+## Liar Liar, Pants on Fire
+
+Out of the nine value types, one is a liar. When you use the `typeof` operator on a value of that type, **it gives a wrong answer** because of a bug in JavaScript.
+
+Do you know which value it is? You can find this value by trying `typeof` for each example in our list of nine types. Here they are, in case you need a recap:
+
+- **Undefined** (`undefined`)
+- **Null** (`null`)
+- **Booleans** (`true` and `false`)
+- **Numbers** (`-100`, `3.14`, and others)
+- **BigInts** (uncommon and new)
+- **Strings** (`"hello"`, `"abracadabra"`, and others)
+- **Symbols** (uncommon)
+- **Objects** (`{}` and others)
+- **Functions** (`x => x * 2` and others)
+
+Who is the liar?
+
+</Prompt>
+
+<Answer>
+
+**null is the value that "lies" about its type.**
+
+Concretely, `typeof(null)` is `"object"` even though **null is [not](https://262.ecma-international.org/10.0/#sec-terms-and-definitions-null-type) an object**. Null is a primitive value. (Here’s a [historical note](https://2ality.com/2013/10/typeof-null.html) on how that happened.) This is a very old bug in JavaScript. It cannot be fixed because fixing it would break a lot of existing code that, for better or worse, already relies on this quirk.
+
+You might ask: isn’t `typeof([]) === "object"` a bug? No. Arrays aren’t primitive, so they are objects! So are dates, and everything not on our list. Unlike null, they’re telling the truth.
+
+</Answer>
+
+</Question>
+
+<Question kind="EssayQuestion" desc="typeof typeof">
+
+<Prompt>
+
+## A Type of a Type
+
+No matter what `value` we pick, we know that `typeof(value)` can only give us one of the several predetermined answers like `"number"`, `"string"`, and so on. What can say with a similar certainty about `typeof(typeof(value))`?
+
+</Prompt>
+
+<Answer>
+
+**`typeof(typeof(value))` is always `"string"`.**
+
+Here’s why. We know `typeof(value)` always gives us one of the predetermined strings: `"undefined"`, `"boolean"`, `"number"`, and so on. Predetermined *strings*.
+
+So `typeof` any of them is `"string"`. Because they’re strings!
+
+If you struggle with this idea, perhaps, you’re not reading this code in the right order. Nesting means that the `typeof` “inside” executes _before_ the `typeof` “outside”, like so:
+
+```
+// This is the typeof() inside:
+let type1 = typeof(value);
+// It could be "number", "string", "object", ...
+// But these are all strings!
+
+// This is the typeof() outside:
+let type2 = typeof(type1);
+// It is "string" because type1 is a string!
+```
+
+</Answer>
+
+</Question>
+
+</Quiz>

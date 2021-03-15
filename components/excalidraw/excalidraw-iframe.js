@@ -1,4 +1,4 @@
-import {useRef, useState, useLayoutEffect, memo, forwardRef} from 'react';
+import {useRef, useState, useEffect, useLayoutEffect, memo, forwardRef} from 'react';
 
 let nextId = 0;
 
@@ -14,6 +14,7 @@ const ExcalidrawIframe = forwardRef(({
 }, ref) => {
   const [id, setId] = useState(() => '' + nextId++);
   const [error, setError] = useState(null);
+  const [mounted, setMounted] = useState(false);
   if (error) {
     throw error;
   }
@@ -22,6 +23,10 @@ const ExcalidrawIframe = forwardRef(({
     ...props,
     xcRef: ref
   };
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useLayoutEffect(() => {
     if (!window.__EXCALIDRAW__[id]) {
@@ -36,6 +41,17 @@ const ExcalidrawIframe = forwardRef(({
     // Forward prop changes to the iframe.
     window.__EXCALIDRAW__[id].setProps(props);
   }, [props, id]);
+
+  if (!mounted) {
+    // Fallback for SSR
+    return (
+      <div style={{
+        border: '2px solid black',
+        width,
+        height
+      }} />
+    );
+  }
 
   return (
     <iframe

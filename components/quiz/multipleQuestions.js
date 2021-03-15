@@ -3,21 +3,51 @@ import {Element as ScrollElement} from 'react-scroll'
 import AnswerWrapper from 'components/quiz/answerWrapper'
 import QuizWrapper from 'components/quiz/wrapper'
 import QuestionToShow from 'components/quiz/questionToShow'
-import {get, first} from 'lodash'
+import {get, first, filter, last, find, isEmpty, indexOf} from 'lodash'
 import {scroller} from 'react-scroll'
-import {motion} from 'framer-motion'
 import useEggheadQuiz from 'hooks/useEggheadQuiz'
 import Continue from 'components/quiz/continue'
 import Markdown from 'components/quiz/markdown'
+import {
+  getUserAnswerFromLocalStorage,
+  storeUserAnswerInLocalStorage,
+} from 'utils/quiz-answers-in-local-storage'
 
 const MultipleQuestions = (props) => {
+  const parentQuestion = props.question
+  const isMDX = typeof parentQuestion.prompt !== 'string'
+  const ids = parentQuestion.questions.map((q) => q.id)
+
+  // Get answered questions in current quiz
+  const completedQuestions = filter(ids, (id) =>
+    getUserAnswerFromLocalStorage(id)
+  )
+
+  // Start from last answered question
+  // todo: might actually want to start from the question after that
+  const defaultCurrentQuestionId = !isEmpty(completedQuestions)
+    ? get(find(parentQuestion.questions, {id: last(completedQuestions)}), 'id')
+    : get(first(get(parentQuestion, 'questions')), 'id')
+
+  const defaultCurrentQuestionIndex =
+    indexOf(ids, defaultCurrentQuestionId) || 0
+
   const [currentQuestion, setCurrentQuestion] = React.useState({
-    index: 0,
-    id: get(first(get(props.question, 'questions')), 'id'),
+    id: defaultCurrentQuestionId,
+    index: defaultCurrentQuestionIndex,
   })
 
-  const quiz = props.question
-  const isMDX = typeof quiz.prompt !== 'string'
+  // check whether all nested questions has been answered
+  // if so, consider the parent question as answered
+
+  const parentQuestionId = get(parentQuestion, 'id')
+
+  const answeredQuestions = parentQuestion.questions.map((question) => {
+    return !isEmpty(getUserAnswerFromLocalStorage(question.id))
+  })
+
+  const isParentQuestionAnswered = answeredQuestions.every((q) => q === true)
+  isParentQuestionAnswered && storeUserAnswerInLocalStorage(parentQuestionId)
 
   return (
     <QuizWrapper {...props}>
@@ -27,14 +57,14 @@ const MultipleQuestions = (props) => {
             {props.number}
           </span>
         </div>
-        {quiz.prompt &&
+        {parentQuestion.prompt &&
           (isMDX ? (
-            <div className="prose max-w-none">{quiz.prompt}</div>
+            <div className="prose max-w-none">{parentQuestion.prompt}</div>
           ) : (
-            <Markdown>{quiz.prompt}</Markdown>
+            <Markdown>{parentQuestion.prompt}</Markdown>
           ))}
         <div className="flex flex-col justify-start space-y-3">
-          {quiz.questions.map((question, index) => {
+          {parentQuestion.questions.map((question, index) => {
             const {
               state,
               handleSkip,
@@ -47,7 +77,7 @@ const MultipleQuestions = (props) => {
               number,
               nextQuestionId,
               nextQuestionIdx,
-            } = useEggheadQuiz(quiz, question, setCurrentQuestion)
+            } = useEggheadQuiz(parentQuestion, question, setCurrentQuestion)
 
             const displayContinue =
               isLastQuestion &&
@@ -66,7 +96,7 @@ const MultipleQuestions = (props) => {
             }
 
             return (
-              <div key={question.id} className="relative" key={question.id}>
+              <div key={question.id + '-nested'} className="relative">
                 <ScrollElement name={question.id} />
                 {index <= currentQuestion.index && (
                   <>
@@ -74,7 +104,7 @@ const MultipleQuestions = (props) => {
                       <QuestionToShow
                         nested
                         question={question}
-                        number={`${number}`}
+                        // number={`${number}`}
                         currentAnswer={currentAnswer}
                         isLastQuestion={isLastQuestion}
                         state={state}
@@ -101,14 +131,14 @@ const MultipleQuestions = (props) => {
                         currentQuestion={currentQuestion}
                       />
                     </AnswerWrapper>
-                    {displayContinue && (
+                    {/* {displayContinue && (
                       <motion.div
                         layout
                         className="py-3 flex items-center justify-center w-full"
                       >
                         <Continue onClick={props.handleContinue} />
                       </motion.div>
-                    )}
+                    )} */}
                     {!displayContinue && !isLastQuestion && (
                       <div className="z-10 absolute left-0 bottom-0 w-full flex items-center justify-center transform translate-y-11">
                         <div className="flex flex-col items-center">

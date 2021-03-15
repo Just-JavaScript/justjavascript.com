@@ -9,11 +9,17 @@ import Sketch from './sketch'
 import Layout from '../layout'
 import Subscribe from '../subscribe'
 import Video from './video'
+import Link from 'next/link'
 
 export default {
-  pre: ({children}) => <>{children}</>,
-  code: Code,
   img: ({src}) => <GifPlayer src={src} />,
+  pre: ({children}) => <>{children}</>,
+  a: (props) => (
+    <Link {...props}>
+      <a>{props.children}</a>
+    </Link>
+  ),
+  code: Code,
   Video,
   HiddenAnswer,
   Pagination,

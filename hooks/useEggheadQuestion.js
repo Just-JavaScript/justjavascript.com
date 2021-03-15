@@ -1,18 +1,19 @@
 import * as yup from 'yup'
 import {useFormik} from 'formik'
+import {getUserAnswerFromLocalStorage} from 'utils/quiz-answers-in-local-storage'
 
 export default function useEggheadQuestionMachine(question, handleSubmit) {
-  const {__typename: type} = question || {}
+  const {kind} = question || {}
   const isRequired = question?.required !== false
 
-  function schemaFor(type) {
-    switch (type) {
+  function schemaFor(kind) {
+    switch (kind) {
       case 'MultipleChoiceQuestion':
         return yup.object().shape({
           value: isRequired
             ? yup.string().required('Pick one.').nullable()
             : yup.string().nullable(),
-          comment: yup.string().min(3, 'Must be at least 3 characters'),
+          comment: yup.string().min(3, 'Care to elaborate?'),
         })
 
       case 'multiple-image-choice':
@@ -20,7 +21,7 @@ export default function useEggheadQuestionMachine(question, handleSubmit) {
           value: isRequired
             ? yup.string().required('Pick one.').nullable()
             : yup.string().nullable(),
-          comment: yup.string().min(3, 'Must be at least 3 characters'),
+          comment: yup.string().min(3, 'Care to elaborate?'),
         })
 
       case 'EssayQuestion':
@@ -30,8 +31,8 @@ export default function useEggheadQuestionMachine(question, handleSubmit) {
             value: isRequired
               ? yup
                   .string()
-                  .required(`Answer can't stay empty`)
-                  .min(3, 'Answer must be at least 3 characters')
+                  .required(`Come on, don’t give up yet!`)
+                  .min(3, 'Care to elaborate?')
               : yup.string(),
           })
           .nullable()
@@ -64,9 +65,10 @@ export default function useEggheadQuestionMachine(question, handleSubmit) {
 
   const formik = useFormik({
     initialValues: {
-      value: question?.value || '',
+      comment: '',
+      value: JSON.parse(getUserAnswerFromLocalStorage(question.id)) || '',
     },
-    validationSchema: schemaFor(type),
+    validationSchema: schemaFor(kind),
     onSubmit: (values, actions) => {
       if (formik.isValid) {
         handleSubmit({answer: values}, actions, question)

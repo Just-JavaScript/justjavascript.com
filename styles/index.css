@@ -14,7 +14,7 @@
 }
 
 ::selection {
-  @apply bg-yellow-200 text-black;
+  @apply bg-yellow-400 text-black;
 }
 
 /* START — @reach/menu-button */

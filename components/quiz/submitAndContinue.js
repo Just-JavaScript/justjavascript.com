@@ -1,5 +1,7 @@
 import React from 'react'
 import {motion} from 'framer-motion'
+import {getUserAnswerFromLocalStorage} from 'utils/quiz-answers-in-local-storage'
+import {isEmpty} from 'lodash'
 
 export default function SubmitAndContinue({
   state,
@@ -7,12 +9,6 @@ export default function SubmitAndContinue({
   isDisabled,
   isSubmitting,
 }) {
-  React.useEffect(() => {
-    if (state.matches('answered')) {
-      handleContinue()
-    }
-  }, [state])
-
   return state.matches('answered') ? null : (
     <motion.button
       layout
