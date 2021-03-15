@@ -40,21 +40,25 @@ export default function Wrapper({
       >
         {children}
         <AnimatePresence>
-          {displayContinue && (
-            <motion.div
-              initial={{opacity: 0}}
-              animate={{opacity: 1}}
-              exit={{opacity: 0}}
-              className={`${
-                nested ? 'absolute bottom-0 transform translate-y-32 z-20' : ''
-              } py-8 mx-auto w-full flex items-center justify-center`}
-            >
-              <Continue
-                isLastQuestion={isLastQuestion}
-                onClick={handleContinue}
-              />
-            </motion.div>
-          )}
+          <div>
+            {displayContinue && (
+              <motion.div
+                initial={{opacity: 0}}
+                animate={{opacity: 1}}
+                exit={{opacity: 0}}
+                className={`${
+                  nested
+                    ? 'absolute bottom-0 transform translate-y-32 z-20'
+                    : ''
+                } py-8 mx-auto w-full flex items-center justify-center`}
+              >
+                <Continue
+                  isLastQuestion={isLastQuestion}
+                  onClick={handleContinue}
+                />
+              </motion.div>
+            )}
+          </div>
         </AnimatePresence>
         {!displayContinue && !displaySkip && !nested && (
           <div className="py-16" />

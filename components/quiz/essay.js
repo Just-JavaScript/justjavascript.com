@@ -17,6 +17,7 @@ const Essay = (props) => {
     handleSubmit,
     isDisabled,
     currentAnswer,
+    isAnswered,
     handleSkip,
     number,
     isLastQuestion,
@@ -32,14 +33,16 @@ const Essay = (props) => {
     <QuizWrapper {...props}>
       <QuestionWrapper number={number} nested={nested}>
         {isMDX ? (
-          <div className="prose prose-sans max-w-none">{question.prompt}</div>
+          <div className="prose prose-sans sm:prose-sans-lg max-w-none">
+            {question.prompt}
+          </div>
         ) : (
           <Markdown>{question.prompt}</Markdown>
         )}
       </QuestionWrapper>
       <AnswerWrapper>
         <form className="flex flex-col" onSubmit={formik.handleSubmit}>
-          {showExplanation ? (
+          {isAnswered ? (
             <motion.div>
               <Markdown className="rounded-md prose sm:prose-lg h-auto">
                 {formik.values.value}
@@ -51,7 +54,7 @@ const Essay = (props) => {
                 Your answer
               </label> */}
               <textarea
-                className="w-full p-3 bg-gray-50 border border-gray-200 prose rounded-md h-40"
+                className="w-full p-3 bg-gray-50 border border-gray-200 prose max-w-none rounded-md h-40"
                 disabled={isDisabled}
                 name="value"
                 placeholder="Type your answer here..."
@@ -91,11 +94,13 @@ const Essay = (props) => {
           )}
         </form>
       </AnswerWrapper>
-      <AnimatePresence>
+      <div>
+        {/* <AnimatePresence> */}
         {showExplanation && (
           <Explanation className="max-h-full">{explanation}</Explanation>
         )}
-      </AnimatePresence>
+        {/* </AnimatePresence> */}
+      </div>
     </QuizWrapper>
   )
 }

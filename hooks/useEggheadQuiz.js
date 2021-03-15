@@ -1,9 +1,11 @@
+import React from 'react'
 import {useMachine} from '@xstate/react'
 import {quizMachine} from 'machines/quizMachine'
 import {isEmpty, first, indexOf, find, get} from 'lodash'
 import {useRouter} from 'next/router'
 import {scroller} from 'react-scroll'
 import slugify from 'slugify'
+import {getUserAnswerFromLocalStorage} from 'utils/quiz-answers-in-local-storage'
 
 export default function useEggheadQuizMachine(
   quiz,
@@ -37,14 +39,13 @@ export default function useEggheadQuizMachine(
 
   const nextQuestion = questions && find(questions, {id: nextQuestionId})
   const nextQuestionIdx = nextQuestion && indexOf(questions, nextQuestion)
-  const isAnswered = !isEmpty(get(currentQuestion, 'answer'))
-  const currentAnswer = get(currentQuestion, 'answer') || null
+
   const isDisabled = state.matches('answering') || state.matches('answered')
   const isLastQuestion =
     questions && currentQuestionIdx + 1 === questions.length
+
   const showExplanation =
-    currentQuestion.answer?.description &&
-    (state.matches('answered') || currentQuestion.value)
+    state.matches('answered') && currentQuestion.answer?.description
 
   function scrollTo(question) {
     scroller.scrollTo(question, {
@@ -57,6 +58,14 @@ export default function useEggheadQuizMachine(
   }
 
   const router = useRouter()
+
+  // persisting answers
+
+  const isAnswered = !isEmpty(
+    getUserAnswerFromLocalStorage(get(currentQuestion, 'id'))
+  )
+  const currentAnswer =
+    getUserAnswerFromLocalStorage(get(currentQuestion, 'id')) || null
 
   function handleContinue() {
     if (isLastQuestion) {
@@ -89,6 +98,7 @@ export default function useEggheadQuizMachine(
 
     const answer = values.answer.value
     send('SUBMIT', {userAnswer: answer, ...currentQuestion})
+    !currentQuestion.answer?.description && !isLastQuestion && handleContinue()
   }
 
   return {

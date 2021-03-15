@@ -1,5 +1,6 @@
 import * as yup from 'yup'
 import {useFormik} from 'formik'
+import {getUserAnswerFromLocalStorage} from 'utils/quiz-answers-in-local-storage'
 
 export default function useEggheadQuestionMachine(question, handleSubmit) {
   const {kind} = question || {}
@@ -64,7 +65,8 @@ export default function useEggheadQuestionMachine(question, handleSubmit) {
 
   const formik = useFormik({
     initialValues: {
-      value: question?.value || '',
+      comment: '',
+      value: JSON.parse(getUserAnswerFromLocalStorage(question.id)) || '',
     },
     validationSchema: schemaFor(kind),
     onSubmit: (values, actions) => {

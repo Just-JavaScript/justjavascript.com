@@ -1,9 +1,11 @@
-import getChoiceLabelByIndex from './getChoiceLabelByIndex'
+import getChoiceLabelByIndex from './get-choice-label-by-index'
+import {storeUserAnswerInLocalStorage} from 'utils/quiz-answers-in-local-storage'
 
 export const postQuizAnswer = (context) =>
   new Promise((resolve, reject) => {
     const dataToSubmit = {
-      answer: getChoiceLabelByIndex(context.userAnswer),
+      answer: context.userAnswer,
+      // answer: getChoiceLabelByIndex(context.userAnswer),
       quiz: {
         id: context.quiz.id,
         title: context.quiz.title,
@@ -11,6 +13,9 @@ export const postQuizAnswer = (context) =>
       },
     }
     console.debug('submitted: ', dataToSubmit)
+
+    storeUserAnswerInLocalStorage(context.currentQuestionId, context.userAnswer)
+
     if (true) {
       setTimeout(() => resolve(), 800)
     } else {

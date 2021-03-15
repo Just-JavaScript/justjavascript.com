@@ -129,7 +129,7 @@ const MultipleChoice = (props) => {
                 ) : (
                   <>
                     <textarea
-                      className="w-full p-3 bg-cool-gray-100 border border-gray-200 prose rounded-md h-24 mt-4"
+                      className="w-full p-3 bg-cool-gray-100 border border-gray-200 prose max-w-none rounded-md h-24 mt-4"
                       disabled={isDisabled}
                       id="comment"
                       name="comment"
