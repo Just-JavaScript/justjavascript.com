@@ -14,13 +14,15 @@ const QuizCompleted = () => {
   return (
     <Layout>
       <div className="flex flex-col items-center space-y-16">
-        <h1 className="text-5xl text-center tracking-tight font-serif font-extrabold leading-tighter">
-          Awesome, you've completed "{currentEpisode.title}" quiz.
-        </h1>
+        {currentEpisode && (
+          <h1 className="text-5xl text-center tracking-tight font-serif font-extrabold leading-tighter">
+            Awesome, you've completed "{currentEpisode.title}" quiz.
+          </h1>
+        )}
         {nextEpisode && (
           <Link href={`/${nextEpisode.path}`}>
             <a className="inline-flex px-4 py-3 bg-black text-white font-serif text-lg rounded-md font-semibold">
-              Continue to {nextEpisode.title}
+              Continue {nextEpisode && `to ${nextEpisode.title}`}
             </a>
           </Link>
         )}
