@@ -44,7 +44,7 @@ export default function ToC() {
         {/* prettier-ignore */}
         <svg width="20" height="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g fill="none"><path d="M4 8h16M4 16h16" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></g></svg>
       </MenuButton>
-      <MenuList>
+      <MenuList className="relative z-20">
         <Item url="/01-mental-models">
           <a>Mental Models</a>
         </Item>

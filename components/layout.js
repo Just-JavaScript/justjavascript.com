@@ -9,52 +9,30 @@ const Layout = ({
   navContent,
   headerContent,
   className,
-  maxWidth = 'max-w-screen-md',
+  episode,
+  maxWidth = 'max-w-4xl',
 }) => {
   return (
     <>
       <SEO title={title} />
-      <div
-        className={`${maxWidth} max-w-screen-md mx-auto sm:px-8 px-5 sm:pb-24 pb-16`}
-      >
+      <div className={`sm:px-8 px-5 sm:pb-24 pb-16`}>
         <Header>{navContent}</Header>
         {headerContent}
         {title && (
-          <>
-            <h1 className="overflow-hidden relative lg:text-7xl sm:text-5xl text-4xl text-center font-extrabold font-serif leading-tight mb-8">
-              <motion.span
-                initial={{y: '105%'}}
-                animate={{y: '0%'}}
-                transition={{
-                  type: 'spring',
-                  mass: 0.25,
-                  damping: 10,
-                  stiffness: 100,
-                  delay: 0.05,
-                }}
-                className="inline-block"
-              >
-                {title}
-              </motion.span>
+          <div className=" pt-24 sm:pb-48 pb-40 relative flex items-center justify-center text-center">
+            <h1 className="overflow-hidden relative lg:text-9xl md:text-6xl sm:text-5xl text-5xl font-extrabold font-serif leading-tighter mb-8 z-10">
+              {title}
             </h1>
-            <motion.div
-              className="overflow-hidden w-10 mx-auto rounded-lg"
-              initial={{opacity: 0, y: 40}}
-              animate={{opacity: 1, y: 0}}
-              transition={{
-                type: 'spring',
-                mass: 0.25,
-                damping: 10,
-                stiffness: 100,
-                delay: 0.2,
-              }}
-            >
-              {/* prettier-ignore */}
-              <motion.svg animate={{x: [0, -16]}}  transition={{ease: 'linear', repeat: Infinity, duration: 1.5}} className="mb-24 text-gray-400 mx-auto w-24" width="123" height="16" viewBox="0 0 123 16"><polyline fill="none" stroke="currentColor" strokeWidth="4" points="652.5 379 662.5 369 672.5 379 682.5 369 692.5 379 702.5 369 712.5 379 722.5 369 732.5 379 742.5 369 752.5 379 762.5 369 772.5 379" transform="translate(-651 -366)"/></motion.svg>
-            </motion.div>
-          </>
+            {episode && (
+              <span className="absolute z-0 sm:text-8xl text-6xl transform scale-[3] text-gray-100 font-extrabold font-serif">
+                {('0' + episode).slice(-2)}
+              </span>
+            )}
+          </div>
         )}
-        <article className={className}>{children}</article>
+        <article className={`${maxWidth} ${className} mx-auto`}>
+          {children}
+        </article>
       </div>
     </>
   )

@@ -30,8 +30,8 @@ const Article = ({
   if (hasMounted) {
     if (isAuthenticated) {
       return (
-        <Layout navContent={<ToC />} title={title} {...props}>
-          <div className="prose prose-serif sm:prose-lg max-w-none">
+        <Layout navContent={<ToC />} title={title} episode={episode} {...props}>
+          <div className="prose prose-serif lg:prose-xl sm:prose-lg max-w-none">
             {children}
           </div>
           <Pagination next={next} prev={prev}>
