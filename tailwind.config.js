@@ -167,7 +167,6 @@ module.exports = {
             },
           },
         },
-
         serif: {
           css: {
             fontFamily: theme('fontFamily.sans').join(', '),
@@ -229,6 +228,10 @@ module.exports = {
             fontFamily: theme('fontFamily.sans').join(', '),
             fontSize: theme('fontSize.base'),
             color: theme('colors.black'),
+            'h1, h2, h3': {
+              textAlign: 'left',
+              padding: 'inherit',
+            },
             'h1, h2, h3, h4': {
               color: theme('colors.black'),
               code: {
