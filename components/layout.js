@@ -10,12 +10,13 @@ const Layout = ({
   headerContent,
   className,
   episode,
+  background,
   maxWidth = 'max-w-4xl',
 }) => {
   return (
     <>
       <SEO title={title} />
-      <div className={`sm:px-8 px-5 sm:pb-24 pb-16`}>
+      <div className={`sm:px-8 px-5 sm:pb-24 pb-16 ${background}`}>
         <Header>{navContent}</Header>
         {headerContent}
         {title && (

@@ -7,22 +7,30 @@ export default function Content() {
     <Link href={href}>
       <a
         className={
-          'group relative flex items-center justify-center sm:text-5xl text-2xl font-extrabold py-12 w-full bg-white font-serif transition-all ease-in-out duration-200'
+          'rounded-lg group hover:shadow-xl sm:px-16 px-8 sm:py-32 py-24 relative flex flex-col items-center justify-center  font-extrabold w-full bg-white font-serif transition-all ease-in-out duration-200'
         }
       >
-        <span className="text-5xl absolute mr-4 font-serif text-gray-100 font-extrabold z-10 group-hover:text-gray-200 transition-colors ease-in-out duration-300">
+        <span className="sm:text-8xl text-6xl font-serif text-gray-200 font-extrabold z-10 group-hover:text-orange-500 transition-colors ease-in-out duration-150">
           {number}
         </span>
-        <span className="relative z-10 transform group-hover:scale-105 transition-all ease-in-out duration-300 leading-none">
+        <div className="sm:text-4xl text-2xl relative z-10 transform group-hover:scale-105 transition-all ease-in-out duration-200 leading-none">
           {children}
-        </span>
+        </div>
+        {number === '01' && (
+          <div className="text-sm uppercase font-sans font-bold pt-2 tracking-wide text-orange-500">
+            {'Start Here'}
+          </div>
+        )}
       </a>
     </Link>
   )
 
   return (
-    <Layout title="Chapters" className="mx-auto pb-40">
-      <div className="text-center flex flex-col">
+    <Layout className="mx-auto pb-40" maxWidth="" background="bg-gray-50">
+      {/* <h1 className="lg:text-8xl sm:text-7xl text-5xl font-extrabold tracking-tight text-center font-serif leading-tighter pb-24">
+        Explore JavaScript Universe
+      </h1> */}
+      <div className="grid sm:grid-cols-2 grid-cols-1 gap-5 text-center max-w-screen-lg mx-auto">
         <LinkItem href={'01-mental-models'} number={'01'}>
           Mental Models
         </LinkItem>
