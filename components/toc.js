@@ -4,50 +4,50 @@ import {Menu, MenuList, MenuButton, MenuItem} from '@reach/menu-button'
 
 export const episodes = [
   {
-    slug: '01-mental-models',
+    path: '01-mental-models',
     title: 'Mental Models',
   },
   {
-    slug: '02-the-javascript-universe',
+    path: '02-the-javascript-universe',
     title: 'The JavaScript Universe',
     quiz: '02-the-javascript-universe',
   },
   {
-    slug: '03-values-and-variables',
+    path: '03-values-and-variables',
     title: 'Values and Variables',
     quiz: '03-values-and-variables',
   },
   {
-    slug: '04-studying-from-the-inside',
+    path: '04-studying-from-the-inside',
     title: 'Studying from the Inside',
   },
   {
-    slug: '05-meeting-the-primitive-values',
+    path: '05-meeting-the-primitive-values',
     title: 'Meeting the Primitive Values',
     quiz: '05-meeting-the-primitive-values',
   },
   {
-    slug: '06-meeting-objects-and-functions',
+    path: '06-meeting-objects-and-functions',
     title: 'Meeting Objects and Functions',
     quiz: '06-meeting-objects-and-functions',
   },
   {
-    slug: '07-equality-of-values',
+    path: '07-equality-of-values',
     title: 'Equality of Values',
     quiz: '07-equality-of-values',
   },
   {
-    slug: '08-properties',
+    path: '08-properties',
     title: 'Properties',
     quiz: '08-properties',
   },
   {
-    slug: '09-mutation',
+    path: '09-mutation',
     title: 'Mutation',
     quiz: '09-mutation',
   },
   {
-    slug: '10-prototypes',
+    path: '10-prototypes',
     title: 'Prototypes',
     quiz: '10-prototypes',
   },
@@ -97,7 +97,7 @@ export default function ToC() {
       </MenuButton>
       <MenuList className="relative z-20">
         {episodes.map((episode) => (
-          <Item url={`/${episode.slug}`}>
+          <Item key={episode.path} url={`/${episode.path}`}>
             <a>{episode.title}</a>
           </Item>
         ))}

@@ -1,6 +1,7 @@
 import React from 'react'
 import Layout from '../components/layout'
 import Link from 'next/link'
+import {episodes} from 'components/toc'
 
 export default function Content() {
   const LinkItem = ({href, number, children}) => (
@@ -31,36 +32,17 @@ export default function Content() {
         Explore JavaScript Universe
       </h1> */}
       <div className="grid sm:grid-cols-2 grid-cols-1 gap-5 text-center max-w-screen-lg mx-auto">
-        <LinkItem href={'01-mental-models'} number={'01'}>
-          Mental Models
-        </LinkItem>
-        <LinkItem href={'02-the-javascript-universe'} number={'02'}>
-          The JavaScript Universe
-        </LinkItem>
-        <LinkItem href={'03-values-and-variables'} number={'03'}>
-          Values and Variables
-        </LinkItem>
-        <LinkItem href={'04-studying-from-the-inside'} number={'04'}>
-          Studying from the Inside
-        </LinkItem>
-        <LinkItem href={'05-meeting-the-primitive-values'} number={'05'}>
-          Meeting the Primitive Values
-        </LinkItem>
-        <LinkItem href={'06-meeting-objects-and-functions'} number={'06'}>
-          Meeting Objects and Functions
-        </LinkItem>
-        <LinkItem href={'07-equality-of-values'} number={'07'}>
-          Equality Of Values
-        </LinkItem>
-        <LinkItem href={'08-properties'} number={'08'}>
-          Properties
-        </LinkItem>
-        <LinkItem href={'09-mutation'} number={'09'}>
-          Mutation
-        </LinkItem>
-        <LinkItem href={'10-prototypes'} number={'10'}>
-          Prototypes
-        </LinkItem>
+        {episodes.map((episode, index) => {
+          return (
+            <LinkItem
+              key={episode.path}
+              href={episode.path}
+              number={('0' + (index + 1)).slice(-2)}
+            >
+              {episode.title}
+            </LinkItem>
+          )
+        })}
       </div>
     </Layout>
   )

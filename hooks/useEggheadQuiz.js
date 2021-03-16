@@ -69,7 +69,10 @@ export default function useEggheadQuizMachine(
 
   function handleContinue() {
     if (isLastQuestion) {
-      router.push(`/completed?quiz=${get(quiz, 'id')}`)
+      router.push({
+        pathname: `/quiz/completed`,
+        query: {quiz: router.pathname.replace('/quiz/', '')},
+      })
     } else {
       setCurrent({
         index: nextQuestionIdx,
