@@ -5,8 +5,7 @@ import TeamPlanToggle from './team-plan-toggle'
 import Countdown from './countdown'
 import {isEmpty, get, find, noop} from 'lodash'
 import ParityCouponMessage from './parity-coupon-message'
-import {useCommerceMachine} from '../../hooks/use-commerce-machine'
-import useConvertkit from '../../hooks/use-convertkit'
+import {useCommerceMachine} from '../../hooks/useCommerceMachine'
 
 const PurchaseButton = ({
   purchasing,
@@ -20,7 +19,7 @@ const PurchaseButton = ({
     <button
       className={`${
         purchasing ? purchasingStyles : 'hover:scale-105'
-      } flex mx-auto text-center rounded-lg border border-transparent border-b-2 border-tomato-500 focus:shadow-outline-brand bg-brand hover:bg-tomato-500 px-10 py-5 sm:text-lg text-base font-semibold leading-6 text-white transition-all ease-in-out duration-150 transform hover:shadow-xl`}
+      } flex mx-auto text-center rounded-lg border border-transparent border-b-2 border-tomato-500 font-serif focus:shadow-outline-black bg-black px-10 py-5 sm:text-lg text-base font-semibold leading-6 text-white transition-all ease-in-out duration-150 transform hover:shadow-xl`}
       aria-describedby={`${bundle.title} Tier`}
       onClick={onClick}
     >
@@ -43,7 +42,6 @@ const PurchaseBundle = ({
     'individual',
   )
   const [isPPP, setIsPPP] = React.useState(false)
-  const {subscriber} = useConvertkit()
 
   const isPurchasing =
     state.matches('stripePurchase') ||
@@ -59,17 +57,6 @@ const PurchaseBundle = ({
     }
   }, [isPurchasing, bundleSlug, setPurchasingPackage])
 
-  React.useEffect(() => {
-    if (
-      teamAvailable &&
-      subscriber?.fields?.job_title === 'manager' &&
-      planType != 'team'
-    ) {
-      activateTeamPlan()
-    }
-    // don't want this to update until a subscriber loads and not again after that
-  }, [subscriber])
-
   if (isEmpty(bundle)) {
     return null
   }
@@ -77,7 +64,7 @@ const PurchaseBundle = ({
   const availableCoupons = state?.context?.price?.available_coupons || []
   const parityCoupon = find(availableCoupons, {
     coupon_region_restricted: true,
-  }) as Coupon
+  })
   const countryCode = get(parityCoupon, 'coupon_region_restricted_to')
   const countryName = get(parityCoupon, 'coupon_region_restricted_to_name')
   const displayParityCouponOffer =
@@ -94,11 +81,11 @@ const PurchaseBundle = ({
     send('DISMISS_COUPON')
   }
 
-  const setQuantity = ({quantity, bulk}: {quantity: number; bulk: boolean}) => {
+  const setQuantity = ({quantity, bulk}) => {
     send('SET_QUANTITY', {quantity, bulk})
   }
 
-  const setTeamQuantity = ({quantity}: {quantity: number}) => {
+  const setTeamQuantity = ({quantity}) => {
     setQuantity({quantity, bulk: true})
   }
 
@@ -165,18 +152,11 @@ const PurchaseBundle = ({
     purchasingOtherPackage
 
   const teamAvailable = isEmpty(upgradeFromSellable)
-
+  console.log(state)
   return (
     <>
       <div className="py-10">
         <div>
-          {/* <h3
-              className={`text-center text-xl leading-8 font-medium text-gray-900
-              `}
-              id={`tier-${bundle.title}`}
-            >
-              {bundle.title}
-            </h3> */}
           {state.context.error && (
             <div className="w-full bg-white border border-tomato-400 p-4 mt-4 rounded-lg mb-4">
               <h4 className="text-tomato-600 w-full text-center">
@@ -235,7 +215,6 @@ const PurchaseBundle = ({
             </div>
           </motion.div>
         </div>
-        <div>
           <div className="rounded-lg">
             {disablePurchaseButton ? (
               <PurchaseButton purchasing bundle={bundle}>
@@ -247,7 +226,6 @@ const PurchaseBundle = ({
               </PurchaseButton>
             )}
           </div>
-        </div>
         {/* {teamAvailable && (
           <motion.div layout className="mt-10 flex justify-center w-full">
             <TeamPlanToggle

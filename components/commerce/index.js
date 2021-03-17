@@ -11,23 +11,12 @@ const Commerce = ({bundles, children, className}) => {
     <div className={className} id="buy">
       <Element name="buy" />
       <div className="text-center px-5">
-        <Image
-          src="/package@2x.png"
-          width={617}
-          height={471}
-          alt="Preview of the De-Coding the Technical Interview Process eBook by Emma Bostian"
-        />
-        <h1 className="pb-5 pt-10 text-3xl font-extrabold text-text sm:text-4xl sm:leading-10 lg:text-5xl leading-tight max-w-screen-md mx-auto">
-          Learn How to Nail Every Aspect of Your Next Tech Interview
+        <h1 className="pb-5 pt-10 text-3xl font-extrabold font-serif sm:text-4xl sm:leading-10 lg:text-5xl leading-tight max-w-screen-md mx-auto">
+          Learn my JavaScript Mental Models
         </h1>
         <div className="text-center font-medium sm:text-lg text-base max-w-lg mx-auto">
           <p>
-            Includes <strong>PDF</strong> in light and{' '}
-            <span className="bg-gray-900 text-white px-1 py-px rounded-sm">
-              dark mode
-            </span>
-            , EPUB to read on your favorite ebook reader, and{' '}
-            <strong>full access to the book online</strong>.{' '}
+            Just JavaScript is my distilled mental model of how JavaScript works and a collaboration with Maggie Appleton.
           </p>
         </div>
         {/* <p className="uppercase font-semibold tracking-wide text-brand">
