@@ -1,7 +1,6 @@
 import React from 'react'
 import {Element} from 'react-scroll'
 import PurchaseBundle from './purchase-bundle'
-import Image from 'next/image'
 import Stripe from '../../images/stripe.svg'
 import CCs from '../../images/cc.svg'
 
@@ -16,12 +15,10 @@ const Commerce = ({bundles, children, className}) => {
         </h1>
         <div className="text-center font-medium sm:text-lg text-base max-w-lg mx-auto">
           <p>
-            Just JavaScript is my distilled mental model of how JavaScript works and a collaboration with Maggie Appleton.
+            Just JavaScript is my distilled mental model of how JavaScript works
+            and a collaboration with Maggie Appleton.
           </p>
         </div>
-        {/* <p className="uppercase font-semibold tracking-wide text-brand">
-          Start Today
-        </p> */}
         {children}
       </div>
       <PurchaseBundle bundle={basic} />

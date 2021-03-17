@@ -10,11 +10,7 @@ const loginSchema = yup.object().shape({
   email: yup.string().email().required('enter your email'),
 })
 
-function ClaimCouponOverlay({
-  onPurchaseComplete,
-  purchaseState,
-  error,
-}) {
+function ClaimCouponOverlay({onPurchaseComplete, purchaseState, error}) {
   const [isOpen, setIsOpen] = React.useState(true)
   const closeModal = () => setIsOpen(false)
   const openModal = () => setIsOpen(true)
@@ -98,12 +94,12 @@ function ClaimCouponOverlay({
                   </svg>
                 </div>
                 <h2 className="text-2xl font-semibold mt-8 leading-tight text-center">
-                  Access Technical Interviews
+                  Access Just Javascript
                 </h2>
                 <p className="my-4 text-gray-700 text-center text-base">
-                  Enter your email address that will be used to log in to
-                  Technical Interviews and access the content. Please double
-                  check that it is correct.
+                  Enter your email address that will be used to log in to Just
+                  Javascript and access the content. Please double check that it
+                  is correct.
                 </p>
                 <Formik
                   initialValues={{email: ''}}

@@ -7,12 +7,7 @@ import {isEmpty, get, find, noop} from 'lodash'
 import ParityCouponMessage from './parity-coupon-message'
 import {useCommerceMachine} from '../../hooks/useCommerceMachine'
 
-const PurchaseButton = ({
-  purchasing,
-  children,
-  bundle,
-  onClick,
-}) => {
+const PurchaseButton = ({purchasing, children, bundle, onClick}) => {
   const purchasingStyles = 'opacity-50 cursor-default'
 
   return (
@@ -38,9 +33,7 @@ const PurchaseBundle = ({
     sellable: bundle,
     upgradeFromSellable,
   })
-  const [planType, setPlanType] = React.useState(
-    'individual',
-  )
+  const [planType, setPlanType] = React.useState('individual')
   const [isPPP, setIsPPP] = React.useState(false)
 
   const isPurchasing =
@@ -109,10 +102,7 @@ const PurchaseBundle = ({
   const displayPrice = currentPrice ? currentPrice : '--'
   const displayFullPrice = fullPrice ? fullPrice : '--'
 
-  const getPercentOff = ({
-    price,
-    quantity,
-  }) => {
+  const getPercentOff = ({price, quantity}) => {
     if (!price) return
     if (isEmpty(price.bulk_discount) && isEmpty(price.coupon)) {
       return
@@ -141,7 +131,7 @@ const PurchaseBundle = ({
     } else if (planType === 'team') {
       return 'Level Up Your Team'
     } else {
-      return 'Ace Your Coding Interview'
+      return 'Understand JavaScript'
     }
   }
 
@@ -215,17 +205,17 @@ const PurchaseBundle = ({
             </div>
           </motion.div>
         </div>
-          <div className="rounded-lg">
-            {disablePurchaseButton ? (
-              <PurchaseButton purchasing bundle={bundle}>
-                Navigating to checkout...
-              </PurchaseButton>
-            ) : (
-              <PurchaseButton onClick={createStripeSession} bundle={bundle}>
-                {getPurchaseButtonText()}
-              </PurchaseButton>
-            )}
-          </div>
+        <div className="rounded-lg">
+          {disablePurchaseButton ? (
+            <PurchaseButton purchasing bundle={bundle}>
+              Navigating to checkout...
+            </PurchaseButton>
+          ) : (
+            <PurchaseButton onClick={createStripeSession} bundle={bundle}>
+              {getPurchaseButtonText()}
+            </PurchaseButton>
+          )}
+        </div>
         {/* {teamAvailable && (
           <motion.div layout className="mt-10 flex justify-center w-full">
             <TeamPlanToggle
