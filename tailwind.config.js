@@ -21,8 +21,13 @@ module.exports = {
         serif: ['Recoleta', ...defaultTheme.fontFamily.serif],
         mono: ['Adelle Mono', ...defaultTheme.fontFamily.mono],
       },
+      lineHeight: {
+        tighter: 1.2,
+      },
       fontSize: {
         // Minor third
+        '9xl': '6.192em',
+        '8xl': '5.16em',
         '7xl': '4.3em',
         '6xl': '3.583em',
         '5xl': '2.986em',
@@ -34,69 +39,18 @@ module.exports = {
         base: '1em',
       },
       typography: (theme) => ({
-        lg: {
-          css: {
-            fontFamily: theme('fontFamily.sans').join(', '),
-            fontSize: theme('fontSize.lg'),
-            color: theme('colors.black'),
-            'h1, h2, h3, h4': {
-              color: theme('colors.black'),
-              fontFamily: theme('fontFamily.serif').join(', '),
-              code: {
-                fontSize: '80%',
-              },
-            },
-            h1: {
-              fontSize: theme('fontSize.4xl'),
-              fontWeight: theme('fontWeight.extrabold'),
-            },
-            h2: {
-              fontSize: theme('fontSize.3xl'),
-              fontWeight: theme('fontWeight.extrabold'),
-            },
-            h3: {
-              fontSize: theme('fontSize.2xl'),
-              fontWeight: theme('fontWeight.bold'),
-            },
-            h4: {
-              fontSize: theme('fontSize.xl'),
-              fontWeight: theme('fontWeight.bold'),
-            },
-            h5: {
-              fontSize: theme('fontSize.lg'),
-              fontWeight: theme('fontWeight.bold'),
-            },
-            code: {
-              background: theme('colors.gray.100'),
-              borderRadius: 3,
-              padding: '1px 5px 3px 5px',
-            },
-            'code::before': {
-              content: '""',
-            },
-            'code::after': {
-              content: '""',
-            },
-            strong: {fontWeight: theme('fontWeight.bold')},
-            a: {
-              color: theme('colors.blue.500'),
-              textDecoration: 'underline',
-              transition: 'all 150ms ease-in-out',
-              '&:hover': {
-                color: theme('colors.blue.600'),
-                transition: 'all 150ms ease-in-out',
-              },
-            },
-          },
-        },
         DEFAULT: {
           css: {
             fontFamily: theme('fontFamily.sans').join(', '),
             fontSize: theme('fontSize.base'),
             color: theme('colors.black'),
+            'h1, h2, h3': {
+              textAlign: 'center',
+              padding: '1em 0',
+            },
             'h1, h2, h3, h4': {
               color: theme('colors.black'),
-              lineHeight: theme('lineHeight.tight'),
+              lineHeight: theme('lineHeight.tighter'),
               // fontFamily: theme('fontFamily.serif').join(', '),
               code: {
                 fontSize: '90%',
@@ -135,13 +89,81 @@ module.exports = {
             },
             strong: {fontWeight: theme('fontWeight.bold')},
             a: {
-              color: theme('colors.blue.500'),
+              color: theme('colors.orange.500'),
               textDecoration: 'underline',
               transition: 'all 150ms ease-in-out',
               '&:hover': {
-                color: theme('colors.blue.600'),
+                color: theme('colors.orange.500'),
                 transition: 'all 150ms ease-in-out',
               },
+            },
+          },
+        },
+        xl: {
+          css: {
+            fontSize: theme('fontSize.xl'),
+            'h1, h2, h3, h4, h5': {
+              lineHeight: theme('lineHeight.tighter'),
+            },
+            h1: {
+              fontSize: theme('fontSize.7xl'),
+              fontWeight: theme('fontWeight.extrabold'),
+            },
+            h2: {
+              fontSize: theme('fontSize.6xl'),
+              fontWeight: theme('fontWeight.extrabold'),
+            },
+            h3: {
+              fontSize: theme('fontSize.5xl'),
+              fontWeight: theme('fontWeight.extrabold'),
+            },
+            h4: {
+              fontSize: theme('fontSize.4xl'),
+              fontWeight: theme('fontWeight.extrabold'),
+            },
+            h5: {
+              fontSize: theme('fontSize.3xl'),
+              fontWeight: theme('fontWeight.bold'),
+            },
+          },
+        },
+        lg: {
+          css: {
+            fontFamily: theme('fontFamily.sans').join(', '),
+            fontSize: theme('fontSize.lg'),
+            color: theme('colors.black'),
+            'h1, h2, h3, h4': {
+              color: theme('colors.black'),
+              lineHeight: theme('lineHeight.tighter'),
+              fontFamily: theme('fontFamily.serif').join(', '),
+              code: {
+                fontSize: '80%',
+              },
+            },
+            h1: {
+              fontSize: theme('fontSize.5xl'),
+              fontWeight: theme('fontWeight.extrabold'),
+            },
+            h2: {
+              fontSize: theme('fontSize.4xl'),
+              fontWeight: theme('fontWeight.extrabold'),
+            },
+            h3: {
+              fontSize: theme('fontSize.3xl'),
+              fontWeight: theme('fontWeight.extrabold'),
+            },
+            h4: {
+              fontSize: theme('fontSize.2xl'),
+              fontWeight: theme('fontWeight.extrabold'),
+            },
+            h5: {
+              fontSize: theme('fontSize.xl'),
+              fontWeight: theme('fontWeight.extrabold'),
+            },
+            code: {
+              background: theme('colors.gray.100'),
+              borderRadius: 3,
+              padding: '1px 5px 3px 5px',
             },
           },
         },
@@ -152,29 +174,30 @@ module.exports = {
             color: theme('colors.black'),
             'h1, h2, h3, h4': {
               color: theme('colors.black'),
+              lineHeight: theme('lineHeight.tighter'),
               fontFamily: theme('fontFamily.serif').join(', '),
               code: {
                 fontSize: '90%',
               },
             },
             h1: {
-              fontSize: theme('fontSize.3xl'),
+              fontSize: theme('fontSize.5xl'),
               fontWeight: theme('fontWeight.extrabold'),
             },
             h2: {
-              fontSize: theme('fontSize.2xl'),
+              fontSize: theme('fontSize.4xl'),
               fontWeight: theme('fontWeight.extrabold'),
             },
             h3: {
-              fontSize: theme('fontSize.xl'),
+              fontSize: theme('fontSize.3xl'),
               fontWeight: theme('fontWeight.bold'),
             },
             h4: {
-              fontSize: theme('fontSize.lg'),
+              fontSize: theme('fontSize.2xl'),
               fontWeight: theme('fontWeight.bold'),
             },
             h5: {
-              fontSize: theme('fontSize.lg'),
+              fontSize: theme('fontSize.xl'),
               fontWeight: theme('fontWeight.normal'),
             },
             code: {
@@ -205,6 +228,10 @@ module.exports = {
             fontFamily: theme('fontFamily.sans').join(', '),
             fontSize: theme('fontSize.base'),
             color: theme('colors.black'),
+            'h1, h2, h3': {
+              textAlign: 'left',
+              padding: 'inherit',
+            },
             'h1, h2, h3, h4': {
               color: theme('colors.black'),
               code: {
@@ -244,11 +271,11 @@ module.exports = {
             },
             strong: {fontWeight: theme('fontWeight.bold')},
             a: {
-              color: theme('colors.blue.500'),
+              color: theme('colors.orange.500'),
               textDecoration: 'underline',
               transition: 'all 150ms ease-in-out',
               '&:hover': {
-                color: theme('colors.blue.600'),
+                color: theme('colors.orange.600'),
                 transition: 'all 150ms ease-in-out',
               },
             },
@@ -259,6 +286,10 @@ module.exports = {
             fontFamily: theme('fontFamily.sans').join(', '),
             fontSize: theme('fontSize.lg'),
             color: theme('colors.black'),
+            'h1, h2, h3': {
+              textAlign: 'left',
+              padding: 'inherit',
+            },
             'h1, h2, h3, h4': {
               color: theme('colors.black'),
               code: {

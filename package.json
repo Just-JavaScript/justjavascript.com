@@ -73,10 +73,12 @@
     "@emotion/babel-plugin": "^11.2.0",
     "@emotion/babel-preset-css-prop": "^11.2.0",
     "assert": "^2.0.0",
+    "@tailwindcss/jit": "^0.1.1",
     "babel-plugin-inline-react-svg": "^2.0.1",
     "commander": "^7.1.0",
     "next-compose-plugins": "^2.2.1",
     "node-fetch": "^2.6.1",
-    "postcss-nested": "^5.0.4"
+    "postcss-nested": "^5.0.4",
+    "postcss-preset-env": "^6.7.0"
   }
 }

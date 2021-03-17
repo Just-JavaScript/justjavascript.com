@@ -59,7 +59,9 @@ const MultipleQuestions = (props) => {
         </div>
         {parentQuestion.prompt &&
           (isMDX ? (
-            <div className="prose max-w-none">{parentQuestion.prompt}</div>
+            <div className="prose prose-sans max-w-none">
+              {parentQuestion.prompt}
+            </div>
           ) : (
             <Markdown>{parentQuestion.prompt}</Markdown>
           ))}

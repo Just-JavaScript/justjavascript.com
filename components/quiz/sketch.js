@@ -50,7 +50,7 @@ const Sketch = (props) => {
       <QuestionWrapper number={number}>
         <motion.div layout>
           {isMDX ? (
-            <div className="prose max-w-none">{question.prompt}</div>
+            <div className="prose prose-sans max-w-none">{question.prompt}</div>
           ) : (
             <Markdown>{question.prompt}</Markdown>
           )}
@@ -87,7 +87,7 @@ const Sketch = (props) => {
                 ) : (
                   <>
                     <textarea
-                      className="w-full p-3 bg-cool-gray-100 border border-gray-200 prose max-w-none rounded-md h-24 mt-4"
+                      className="w-full p-3 bg-cool-gray-100 border border-gray-200 prose prose-sans max-w-none rounded-md h-24 mt-4"
                       disabled={isDisabled}
                       id="comment"
                       name="comment"

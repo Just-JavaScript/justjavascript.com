@@ -54,7 +54,7 @@ const Essay = (props) => {
                 Your answer
               </label> */}
               <textarea
-                className="w-full p-3 bg-gray-50 border border-gray-200 prose max-w-none rounded-md h-40"
+                className="w-full p-3 bg-gray-50 border border-gray-200 prose prose-sans max-w-none rounded-md h-40"
                 disabled={isDisabled}
                 name="value"
                 placeholder="Type your answer here..."

@@ -71,8 +71,8 @@ import Image from 'next/image'
 export default ({children}) => {
   return (
     <Layout
-      className="prose lg:prose-xl max-w-none"
-      title="Just JavaScript"
+      maxWidth="max-w-screen-md"
+      className="prose lg:prose-xl prose-lg max-w-none"
       headerContent={
         <div className="flex items-center justify-center">
           <Image

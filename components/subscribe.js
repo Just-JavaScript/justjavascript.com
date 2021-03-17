@@ -2,7 +2,7 @@ import React from 'react'
 
 const Subscribe = (props) => (
   <div className="sm:p-16 p-10 bg-white  text-black rounded-lg sm:my-16 my-8">
-    <div className="sm:text-3xl text-2xl font-serif transform scale-110 font-extrabold mb-8 text-center leading-tight max-w-md mx-auto">
+    <div className="sm:text-3xl text-2xl font-serif transform font-extrabold mb-8 text-center leading-tight max-w-lg mx-auto">
       {props.children}
     </div>
     <form

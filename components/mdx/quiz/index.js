@@ -5,6 +5,7 @@ import useEggheadQuiz from '../../../hooks/useEggheadQuiz'
 import {map, filter, first, indexOf, isEmpty, last, find, get} from 'lodash'
 import getChoiceLabelByIndex from 'utils/get-choice-label-by-index'
 import {getUserAnswerFromLocalStorage} from 'utils/quiz-answers-in-local-storage'
+import Layout from 'components/layout'
 
 function getQuestions(questions, quizId, quizVersion) {
   const items = questions.map((question, questionIndex) => {
@@ -142,60 +143,70 @@ const Quiz = ({children, title, version, slug, id}) => {
   })
 
   return (
-    <div className="flex flex-col items-center justify-start min-h-screen w-full bg-gray-50">
-      {map(quiz.questions, (question, index) => {
-        const {
-          state,
-          handleSkip,
-          isAnswered,
-          isDisabled,
-          handleSubmit,
-          currentAnswer,
-          handleContinue,
-          isLastQuestion,
-          showExplanation,
-          nextQuestionIdx,
-          nextQuestionId,
-          number,
-        } = useEggheadQuiz(
-          quiz,
-          question,
-          setCurrentQuestion,
-          defaultCurrentQuestionId,
-          defaultCurrentQuestionIndex
-        )
+    <Layout maxWidth="" background="bg-gray-50">
+      <header className="text-center pb-24">
+        <div className="lg:text-8xl sm:text-7xl text-7xl font-serif font-extrabold tracking-tight">
+          Quiz
+        </div>
+        <h1 className="text-lg font-sans font-semibold">
+          {quiz.title.slice(7)}
+        </h1>
+      </header>
+      <div className="flex flex-col items-center justify-start min-h-screen w-full">
+        {map(quiz.questions, (question, index) => {
+          const {
+            state,
+            handleSkip,
+            isAnswered,
+            isDisabled,
+            handleSubmit,
+            currentAnswer,
+            handleContinue,
+            isLastQuestion,
+            showExplanation,
+            nextQuestionIdx,
+            nextQuestionId,
+            number,
+          } = useEggheadQuiz(
+            quiz,
+            question,
+            setCurrentQuestion,
+            defaultCurrentQuestionId,
+            defaultCurrentQuestionIndex
+          )
 
-        return state.matches('initializing') ? (
-          'loading...'
-        ) : (
-          <div className="w-full mx-auto max-w-screen-md" key={question.id}>
-            <ScrollElement name={question.id} />
-            {index <= currentQuestion.index && (
-              <QuestionToShow
-                question={question}
-                number={number}
-                currentAnswer={currentAnswer}
-                isLastQuestion={isLastQuestion}
-                state={state}
-                handleSubmit={handleSubmit}
-                handleContinue={handleContinue}
-                isDisabled={isDisabled}
-                handleSkip={handleSkip}
-                showExplanation={showExplanation}
-                isAnswered={isAnswered}
-                currentQuestion={currentQuestion}
-                nextQuestionIdx={nextQuestionIdx}
-                nextQuestionId={nextQuestionId}
-                setCurrentQuestion={setCurrentQuestion}
-              />
-            )}
-          </div>
-        )
-      })}
-      <div className="fixed left-5 bottom-5 opacity-50 font-mono text-xs">
-        currentQuestion: {JSON.stringify(currentQuestion, null, 2)}
+          return state.matches('initializing') ? (
+            'loading...'
+          ) : (
+            <div className="w-full mx-auto max-w-screen-md" key={question.id}>
+              <ScrollElement name={question.id} />
+              {index <= currentQuestion.index && (
+                <QuestionToShow
+                  question={question}
+                  number={number}
+                  currentAnswer={currentAnswer}
+                  isLastQuestion={isLastQuestion}
+                  state={state}
+                  handleSubmit={handleSubmit}
+                  handleContinue={handleContinue}
+                  isDisabled={isDisabled}
+                  handleSkip={handleSkip}
+                  showExplanation={showExplanation}
+                  isAnswered={isAnswered}
+                  currentQuestion={currentQuestion}
+                  nextQuestionIdx={nextQuestionIdx}
+                  nextQuestionId={nextQuestionId}
+                  setCurrentQuestion={setCurrentQuestion}
+                />
+              )}
+            </div>
+          )
+        })}
+        <div className="fixed left-5 bottom-5 opacity-50 font-mono text-xs">
+          currentQuestion: {JSON.stringify(currentQuestion, null, 2)}
+        </div>
       </div>
-    </div>
+    </Layout>
   )
 }
 

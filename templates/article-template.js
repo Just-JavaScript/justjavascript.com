@@ -20,8 +20,10 @@ const Article = ({
   }
 
   return (
-    <Layout navContent={<ToC />} title={title} {...props}>
-      <div className="prose prose-serif sm:prose-lg max-w-none">{children}</div>
+    <Layout navContent={<ToC />} title={title} episode={episode} {...props}>
+      <div className="prose lg:prose-xl prose-lg max-w-none">
+        {children}
+      </div>
       <Pagination next={next} prev={prev}>
         {nextTitle}
       </Pagination>

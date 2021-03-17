@@ -34,7 +34,7 @@ const MultipleChoice = (props) => {
     <QuizWrapper {...props}>
       <QuestionWrapper number={number} nested={nested}>
         {isMDX ? (
-          <div className="prose max-w-none">{question.prompt}</div>
+          <div className="prose prose-sans max-w-none">{question.prompt}</div>
         ) : (
           <Markdown>{question.prompt}</Markdown>
         )}
@@ -95,7 +95,9 @@ const MultipleChoice = (props) => {
                         className="mr-2 -mt-1 form-radio bg-cool-gray-100 border border-cool-gray-200"
                       />
                       {isMDX ? (
-                        <span className="prose max-w-none">{choice.label}</span>
+                        <span className="prose prose-sans max-w-none">
+                          {choice.label}
+                        </span>
                       ) : (
                         <Markdown className="inline-block prose md:prose-lg text-gray-900">
                           {choice.label}
@@ -129,7 +131,7 @@ const MultipleChoice = (props) => {
                 ) : (
                   <>
                     <textarea
-                      className="w-full p-3 bg-cool-gray-100 border border-gray-200 prose max-w-none rounded-md h-24 mt-4"
+                      className="w-full p-3 bg-cool-gray-100 border border-gray-200 prose prose-sans max-w-none rounded-md h-24 mt-4"
                       disabled={isDisabled}
                       id="comment"
                       name="comment"

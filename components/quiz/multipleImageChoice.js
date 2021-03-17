@@ -31,7 +31,7 @@ const MultipleImageChoice = (props) => {
     <QuizWrapper {...props}>
       <QuestionWrapper number={number} nested={nested}>
         {isMDX ? (
-          <div className="prose max-w-none">{question.prompt}</div>
+          <div className="prose prose-sans max-w-none">{question.prompt}</div>
         ) : (
           <Markdown>{question.prompt}</Markdown>
         )}

@@ -2,6 +2,57 @@ import React from 'react'
 import {useRouter} from 'next/router'
 import {Menu, MenuList, MenuButton, MenuItem} from '@reach/menu-button'
 
+export const episodes = [
+  {
+    path: '01-mental-models',
+    title: 'Mental Models',
+  },
+  {
+    path: '02-the-javascript-universe',
+    title: 'The JavaScript Universe',
+    quiz: '02-the-javascript-universe',
+  },
+  {
+    path: '03-values-and-variables',
+    title: 'Values and Variables',
+    quiz: '03-values-and-variables',
+  },
+  {
+    path: '04-studying-from-the-inside',
+    title: 'Studying from the Inside',
+  },
+  {
+    path: '05-meeting-the-primitive-values',
+    title: 'Meeting the Primitive Values',
+    quiz: '05-meeting-the-primitive-values',
+  },
+  {
+    path: '06-meeting-objects-and-functions',
+    title: 'Meeting Objects and Functions',
+    quiz: '06-meeting-objects-and-functions',
+  },
+  {
+    path: '07-equality-of-values',
+    title: 'Equality of Values',
+    quiz: '07-equality-of-values',
+  },
+  {
+    path: '08-properties',
+    title: 'Properties',
+    quiz: '08-properties',
+  },
+  {
+    path: '09-mutation',
+    title: 'Mutation',
+    quiz: '09-mutation',
+  },
+  {
+    path: '10-prototypes',
+    title: 'Prototypes',
+    quiz: '10-prototypes',
+  },
+]
+
 export default function ToC() {
   const router = useRouter()
 
@@ -44,37 +95,12 @@ export default function ToC() {
         {/* prettier-ignore */}
         <svg width="20" height="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g fill="none"><path d="M4 8h16M4 16h16" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></g></svg>
       </MenuButton>
-      <MenuList>
-        <Item url="/01-mental-models">
-          <a>Mental Models</a>
-        </Item>
-        <Item url="/02-the-javascript-universe">
-          <a>The JavaScript Universe</a>
-        </Item>
-        <Item url="/03-values-and-variables">
-          <a>Values And Variables</a>
-        </Item>
-        <Item url="/04-studying-from-the-inside">
-          <a>Studying from the Inside</a>
-        </Item>
-        <Item url="/05-meeting-the-primitive-values">
-          <a>Meeting the Primitive Values</a>
-        </Item>
-        <Item url="/06-meeting-objects-and-functions">
-          <a>Meeting Objects and Functions</a>
-        </Item>
-        <Item url="/07-equality-of-values">
-          <a>Equality Of Values</a>
-        </Item>
-        <Item url="/08-properties">
-          <a>Properties</a>
-        </Item>
-        <Item url="/09-mutation">
-          <a>Mutation</a>
-        </Item>
-        <Item url="/10-prototypes">
-          <a>Prototypes</a>
-        </Item>
+      <MenuList className="relative z-20">
+        {episodes.map((episode) => (
+          <Item key={episode.path} url={`/${episode.path}`}>
+            <a>{episode.title}</a>
+          </Item>
+        ))}
         <Item url="/content">
           <a className="flex items-center">
             {/* prettier-ignore */}
