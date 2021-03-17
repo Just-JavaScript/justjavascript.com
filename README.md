@@ -22,11 +22,15 @@ You can start editing the page by modifying `pages/index.mdx`. The page auto-upd
 
 This project uses [TailwindCSS](https://tailwindcss.com/) with [Tailwind Typography](https://github.com/tailwindlabs/tailwindcss-typography) and [Tailwind UI](http://tailwindui.com/) plugins for styling, and [Framer Motion](https://www.framer.com/api/motion/) for animations.
 
+## View Content in Dev without logging in
+
+You can set the `NEXT_PUBLIC_DISABLE_LOGIN_FOR_DEV=true` env variable to view the content without logging in when the `NODE_ENV === 'development`.
+
 ## Logging In
 
 To log in, you need to have a purchase associated with the log in email.
 
-Once you have a purchase, head over to the `/login` page and enter your email. 
+Once you have a purchase, head over to the `/login` page and enter your email.
 
 If you are in production, you should receive an email with a log in link.
 

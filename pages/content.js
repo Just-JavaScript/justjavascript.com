@@ -1,8 +1,15 @@
 import React from 'react'
 import Layout from '../components/layout'
 import Link from 'next/link'
+import useLoginRequired from 'hooks/useLoginRequired'
 
 export default function Content() {
+  const isVerifying = useLoginRequired()
+
+  if (isVerifying) {
+    return null
+  }
+
   const LinkItem = ({href, number, children}) => (
     <Link href={href}>
       <a
