@@ -10,7 +10,7 @@ export const auth = new Auth()
 
 const defaultViewerContext = {
   authenticated: false,
-  loading: true
+  loading: true,
 }
 
 export function useViewer() {
@@ -37,6 +37,8 @@ function useAuthedViewer() {
     const accessToken = get(queryHash, 'access_token')
     const noAccessTokenFound = isEmpty(accessToken)
     const viewerIsPresent = !isEmpty(viewer)
+    const querySearch = queryString.parse(window.location.search)
+    const viewAsUser = get(querySearch, 'show-as-user')
 
     let viewerMonitorIntervalId
 
@@ -67,8 +69,16 @@ function useAuthedViewer() {
         window.clearInterval(viewerMonitorIntervalId)
       }
     }
+    const loadBecomeViewer = () => {
+      auth.becomeUser(viewAsUser, accessToken).then((viewer) => {
+        setViewer(viewer)
+        setLoading(() => false)
+      })
+    }
 
-    if (viewerIsPresent) {
+    if (viewAsUser && accessToken) {
+      loadBecomeViewer()
+    } else if (viewerIsPresent) {
       loadViewerFromStorage()
       clearAccessToken()
     } else if (noAccessTokenFound) {
