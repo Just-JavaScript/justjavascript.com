@@ -1,4 +1,4 @@
-import React, {FunctionComponent} from 'react'
+import React from 'react'
 import * as yup from 'yup'
 import {Formik} from 'formik'
 import {useViewer} from 'context/viewer-context'
@@ -81,8 +81,7 @@ const LoginForm = ({
                   return (
                     <>
                       <form onSubmit={handleSubmit} className={formClassName}>
-
-                          <div className="w-full text-center">
+                        <div className="w-full text-center">
                           <label
                             htmlFor="email"
                             className="block text-sm font-large leading-5 text-gray-700"
@@ -100,15 +99,14 @@ const LoginForm = ({
                               className="form-input placeholder-gray-600 block w-full sm:text-lg sm:leading-5 text-center font-serif font-semibold"
                               placeholder="you@example.com"
                               type="email"
-                              />
-                            </div>
+                            />
                           </div>
+                        </div>
                         <div className="flex justify-center items-center w-full">
                           <button
                             type="submit"
                             disabled={isSubmitting}
                             className="mt-8 inline-flex items-center px-16 py-4 border border-transparent text-base leading-6 font-bold rounded-md text-white bg-black transition-transform transform hover:scale-105 ease-in-out duration-150"
-
                           >
                             {button}
                           </button>

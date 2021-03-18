@@ -5,6 +5,7 @@ import get from 'lodash/get'
 import isEqual from 'lodash/isEqual'
 import isEmpty from 'lodash/isEmpty'
 import filter from 'lodash/filter'
+import reduce from 'lodash/reduce'
 
 export const auth = new Auth()
 
@@ -97,7 +98,20 @@ function useAuthedViewer() {
   const sitePurchases = filter(get(viewer, 'purchased', []), {
     site: process.env.NEXT_PUBLIC_SITE_NAME,
   })
+  const canViewContent = reduce(
+    sitePurchases,
+    (canViewContent, currentPurchase) => {
+      if (canViewContent) {
+        return canViewContent
+      }
 
+      return get(currentPurchase, 'bulk', false) !== true
+    },
+    false,
+  )
+
+  const isUnclaimedBulkPurchaser = !canViewContent
+  console.log({isUnclaimedBulkPurchaser, canViewContent})
   const values = React.useMemo(
     () => ({
       viewer,
@@ -110,6 +124,7 @@ function useAuthedViewer() {
       isAuthenticated: () => auth.isAuthenticated(),
       authToken: auth.getAuthToken,
       requestSignInEmail: (email) => auth.requestSignInEmail(email),
+      isUnclaimedBulkPurchaser,
       loading,
     }),
     [viewer, loading],

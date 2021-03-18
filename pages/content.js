@@ -3,11 +3,12 @@ import Layout from '../components/layout'
 import Link from 'next/link'
 import useLoginRequired from 'hooks/useLoginRequired'
 import {episodes} from 'components/toc'
+import useRedirectUnclaimedBulkToInvoice from 'hooks/useRedirectUnclaimedBulkToInvoice'
 
-export default function Content() {
-  const isVerifying = useLoginRequired()
-
-  if (isVerifying) {
+export default function Content({bundles}) {
+  const isVerifyingLogin = useLoginRequired()
+  const isVerifyingClaimedPurchase = useRedirectUnclaimedBulkToInvoice()
+  if (isVerifyingLogin || isVerifyingClaimedPurchase) {
     return null
   }
 

@@ -3,6 +3,7 @@ import ToC from '../components/toc'
 import Layout from '../components/layout'
 import Pagination from '../components/mdx/pagination'
 import useLoginRequired from 'hooks/useLoginRequired'
+import useRedirectUnclaimedBulkToInvoice from 'hooks/useRedirectUnclaimedBulkToInvoice'
 
 const Article = ({
   children,
@@ -14,16 +15,15 @@ const Article = ({
   nextTitle,
   ...props
 }) => {
-  const isVerifying = useLoginRequired()
-  if (isVerifying) {
+  const isVerifyingLogin = useLoginRequired()
+  const isVerifyingClaimedPurchase = useRedirectUnclaimedBulkToInvoice()
+  if (isVerifyingLogin || isVerifyingClaimedPurchase) {
     return null
   }
 
   return (
     <Layout navContent={<ToC />} title={title} episode={episode} {...props}>
-      <div className="prose lg:prose-xl prose-lg max-w-none">
-        {children}
-      </div>
+      <div className="prose lg:prose-xl prose-lg max-w-none">{children}</div>
       <Pagination next={next} prev={prev}>
         {nextTitle}
       </Pagination>
