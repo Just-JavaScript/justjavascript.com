@@ -111,7 +111,6 @@ function useAuthedViewer() {
   )
 
   const isUnclaimedBulkPurchaser = !canViewContent
-  console.log({isUnclaimedBulkPurchaser, canViewContent})
   const values = React.useMemo(
     () => ({
       viewer,
