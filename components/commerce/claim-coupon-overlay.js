@@ -93,7 +93,7 @@ function ClaimCouponOverlay({onPurchaseComplete, purchaseState, error}) {
                     />
                   </svg>
                 </div>
-                <h2 className="text-2xl font-semibold mt-8 leading-tight text-center">
+                <h2 className="text-2xl font-semibold mt-8 leading-tight text-center font-serif">
                   Access Just Javascript
                 </h2>
                 <p className="my-4 text-gray-700 text-center text-base">

@@ -67,6 +67,7 @@ _Dan_
 
 import Layout from 'components/layout'
 import Image from 'next/image'
+import ClaimCoupon from 'components/commerce/claim-coupon'
 
 export default ({children}) => {
   return (
@@ -84,6 +85,7 @@ export default ({children}) => {
         </div>
       }
     >
+      <ClaimCoupon />
       {children}
     </Layout>
   )
