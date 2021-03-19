@@ -37,7 +37,7 @@ const ParityCouponMessage = ({
       </p>
       <div className="mt-4">
         <label
-          className={`inline-flex items-center px-4 py-3 rounded-md  hover:bg-white transition-all ease-in-out duration-150 cursor-pointer border ${
+          className={`inline-flex items-center px-4 py-3 rounded-md hover:bg-gray-100 transition-all ease-in-out duration-150 cursor-pointer border ${
             isPPP ? 'border-blue-500' : 'bg-white border-gray-300'
           }`}
         >

@@ -21,9 +21,10 @@ with a link to access your purchase and start learning.
 
   return (
     <Layout>
-      <div className="flex flex-col justify-center px-8 mx-auto prose lg:prose-lg">
-        <Markdown source={instructionText} className="prose lg:prose-lg" />
-      </div>
+      <Markdown
+        source={instructionText}
+        className="prose lg:prose-lg max-w-screen-lg mx-auto text-center"
+      />
     </Layout>
   )
 }

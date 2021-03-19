@@ -14,7 +14,7 @@ const PurchaseButton = ({purchasing, children, bundle, onClick}) => {
     <button
       className={`${
         purchasing ? purchasingStyles : 'hover:scale-105'
-      } flex mx-auto text-center rounded-lg border border-transparent border-b-2 border-tomato-500 font-serif focus:shadow-outline-black bg-black px-10 py-5 sm:text-lg text-base font-semibold leading-6 text-white transition-all ease-in-out duration-150 transform hover:shadow-xl`}
+      } flex mx-auto text-center rounded-lg border border-transparent border-b-2 border-tomato-500 font-serif focus:shadow-outline-black bg-black px-10 py-5 text-lg font-bold leading-6 text-white transition-all ease-in-out duration-150 transform hover:shadow-xl`}
       aria-describedby={`${bundle.title} Tier`}
       onClick={onClick}
     >
@@ -159,19 +159,21 @@ const PurchaseBundle = ({
           {expiresAt && !isPPP && <Countdown date={expiresAt} />}
           <div className="flex items-center justify-center">
             <span className="px-3 flex items-start leading-none tracking-tight text-gray-900 sm:text-6xl">
-              <span className="mt-1 mr-1 text-3xl font-medium text-gray-700">
+              <span className="mt-1 mr-1 text-lg font-serif font-extrabold text-gray-300">
                 $
               </span>
-              <span className="font-extrabold text-6xl">{displayPrice}</span>
+              <span className="font-extrabold font-serif sm:text-9xl text-7xl">
+                {displayPrice}
+              </span>
               {((state.context.quantity && state.context.quantity > 4) ||
                 displayPercentOff) && (
                 <div className="flex flex-col">
-                  <span className="ml-2 font-medium line-through text-4xl text-cool-gray-500">
+                  <span className="ml-2 font-extrabold line-through text-4xl font-serif text-gray-700">
                     {typeof displayFullPrice === 'number' &&
                       displayFullPrice * (state.context.quantity || 1)}
                   </span>
                   {displayPercentOff && (
-                    <span className="text-base ml-2 tracking-normal font-semibold text-green-500">
+                    <span className="text-base ml-2 tracking-normal font-semibold text-rose-500">
                       {`Save ${displayPercentOff}%`}
                     </span>
                   )}
@@ -179,7 +181,9 @@ const PurchaseBundle = ({
               )}
             </span>
           </div>
-          <div className="mb-8 opacity-50 text-center">yours forever</div>
+          <div className="mb-8 text-center uppercase font-semibold tracking-wide text-sm text-gray-700">
+            yours forever
+          </div>
           <motion.div
             initial={{opacity: 0, margin: '0px 0px'}}
             animate={{opacity: 1, margin: '20px 0px'}}
@@ -231,7 +235,7 @@ const PurchaseBundle = ({
         state.context.quantity === 1 &&
         !isEmpty(parityCoupon) &&
         planType === 'individual' && (
-          <div className="px-5 pb-5 max-w-screen-sm mx-auto">
+          <div className="max-w-screen-sm mx-auto">
             <ParityCouponMessage
               coupon={parityCoupon}
               countryName={countryName}

@@ -9,11 +9,11 @@ const Commerce = ({bundles, children, className}) => {
   return (
     <div className={className} id="buy">
       <Element name="buy" />
-      <div className="text-center px-5">
-        <h1 className="pb-5 pt-10 text-3xl font-extrabold font-serif sm:text-4xl sm:leading-10 lg:text-5xl leading-tight max-w-screen-md mx-auto">
+      <div className="text-center px-5 pb-8">
+        <h1 className="pb-5 font-extrabold font-serif lg:text-7xl sm:text-6xl text-4xl leading-tighter max-w-screen-md mx-auto">
           Learn my JavaScript Mental Models
         </h1>
-        <div className="text-center font-medium sm:text-lg text-base max-w-lg mx-auto">
+        <div className="text-center font-medium sm:text-lg text-base max-w-xl text-gray-600 mx-auto">
           <p>
             Just JavaScript is my distilled mental model of how JavaScript works
             and a collaboration with Maggie Appleton.
