@@ -5,12 +5,13 @@ import get from 'lodash/get'
 import isEqual from 'lodash/isEqual'
 import isEmpty from 'lodash/isEmpty'
 import filter from 'lodash/filter'
+import reduce from 'lodash/reduce'
 
 export const auth = new Auth()
 
 const defaultViewerContext = {
   authenticated: false,
-  loading: true
+  loading: true,
 }
 
 export function useViewer() {
@@ -37,6 +38,8 @@ function useAuthedViewer() {
     const accessToken = get(queryHash, 'access_token')
     const noAccessTokenFound = isEmpty(accessToken)
     const viewerIsPresent = !isEmpty(viewer)
+    const querySearch = queryString.parse(window.location.search)
+    const viewAsUser = get(querySearch, 'show-as-user')
 
     let viewerMonitorIntervalId
 
@@ -67,8 +70,16 @@ function useAuthedViewer() {
         window.clearInterval(viewerMonitorIntervalId)
       }
     }
+    const loadBecomeViewer = () => {
+      auth.becomeUser(viewAsUser, accessToken).then((viewer) => {
+        setViewer(viewer)
+        setLoading(() => false)
+      })
+    }
 
-    if (viewerIsPresent) {
+    if (viewAsUser && accessToken) {
+      loadBecomeViewer()
+    } else if (viewerIsPresent) {
       loadViewerFromStorage()
       clearAccessToken()
     } else if (noAccessTokenFound) {
@@ -87,7 +98,19 @@ function useAuthedViewer() {
   const sitePurchases = filter(get(viewer, 'purchased', []), {
     site: process.env.NEXT_PUBLIC_SITE_NAME,
   })
+  const canViewContent = reduce(
+    sitePurchases,
+    (canViewContent, currentPurchase) => {
+      if (canViewContent) {
+        return canViewContent
+      }
 
+      return get(currentPurchase, 'bulk', false) !== true
+    },
+    false,
+  )
+
+  const isUnclaimedBulkPurchaser = !canViewContent
   const values = React.useMemo(
     () => ({
       viewer,
@@ -100,6 +123,7 @@ function useAuthedViewer() {
       isAuthenticated: () => auth.isAuthenticated(),
       authToken: auth.getAuthToken,
       requestSignInEmail: (email) => auth.requestSignInEmail(email),
+      isUnclaimedBulkPurchaser,
       loading,
     }),
     [viewer, loading],

@@ -1,9 +1,17 @@
 import React from 'react'
 import Layout from '../components/layout'
 import Link from 'next/link'
+import useLoginRequired from 'hooks/useLoginRequired'
 import {episodes} from 'components/toc'
+import useRedirectUnclaimedBulkToInvoice from 'hooks/useRedirectUnclaimedBulkToInvoice'
 
-export default function Content() {
+export default function Content({bundles}) {
+  const isVerifyingLogin = useLoginRequired()
+  const isVerifyingClaimedPurchase = useRedirectUnclaimedBulkToInvoice()
+  if (isVerifyingLogin || isVerifyingClaimedPurchase) {
+    return null
+  }
+
   const LinkItem = ({href, number, children}) => (
     <Link href={href}>
       <a

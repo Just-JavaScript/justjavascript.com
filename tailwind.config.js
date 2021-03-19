@@ -26,17 +26,17 @@ module.exports = {
       },
       fontSize: {
         // Minor third
-        '9xl': '6.192em',
-        '8xl': '5.16em',
-        '7xl': '4.3em',
-        '6xl': '3.583em',
-        '5xl': '2.986em',
-        '4xl': '2.488em',
-        '3xl': '2.074em',
-        '2xl': '1.728em',
-        xl: '1.44em',
-        lg: '1.2em',
-        base: '1em',
+        '9xl': '6.192rem',
+        '8xl': '5.16rem',
+        '7xl': '4.3rem',
+        '6xl': '3.583rem',
+        '5xl': '2.986rem',
+        '4xl': '2.488rem',
+        '3xl': '2.074rem',
+        '2xl': '1.728rem',
+        xl: '1.44rem',
+        lg: '1.2rem',
+        base: '1rem',
       },
       typography: (theme) => ({
         DEFAULT: {
@@ -347,5 +347,9 @@ module.exports = {
     },
   },
   variants: {scale: ['hover', 'group-hover']},
-  plugins: [require('@tailwindcss/ui'), require('@tailwindcss/typography')],
+  plugins: [
+    require('@tailwindcss/ui'),
+    require('@tailwindcss/typography'),
+    require('@tailwindcss/forms'),
+  ],
 }

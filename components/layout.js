@@ -20,7 +20,7 @@ const Layout = ({
         <Header>{navContent}</Header>
         {headerContent}
         {title && (
-          <div className=" pt-24 sm:pb-48 pb-40 relative flex items-center justify-center text-center">
+          <div className="pt-24 sm:pb-48 pb-40 relative flex items-center justify-center text-center">
             <h1 className="overflow-hidden relative lg:text-9xl md:text-6xl sm:text-5xl text-5xl font-extrabold font-serif leading-tighter mb-8 z-10">
               {title}
             </h1>

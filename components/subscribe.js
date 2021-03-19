@@ -1,8 +1,8 @@
 import React from 'react'
 
 const Subscribe = (props) => (
-  <div className="sm:p-16 p-10 bg-white  text-black rounded-lg sm:my-16 my-8">
-    <div className="sm:text-3xl text-2xl font-serif transform font-extrabold mb-8 text-center leading-tight max-w-lg mx-auto">
+  <div className="sm:px-16 sm:py-14 px-0 py-8 bg-white text-black rounded-lg sm:my-16 my-8">
+    <div className="sm:text-6xl text-4xl font-serif transform font-extrabold mb-8 text-center leading-tighter mx-auto">
       {props.children}
     </div>
     <form
@@ -21,7 +21,7 @@ const Subscribe = (props) => (
             <input
               id="first_name"
               name="fields[first_name]"
-              className="form-input placeholder-gray-600 block w-full sm:text-lg sm:leading-5 text-center font-serif font-semibold"
+              className="form-input border-0 py-4 placeholder-gray-600 block w-full text-xl sm:leading-5 text-center font-serif font-semibold"
               placeholder="Preferred name"
               type="text"
             />
@@ -39,7 +39,7 @@ const Subscribe = (props) => (
               required
               id="email_address"
               name="email_address"
-              className="form-input placeholder-gray-600 block w-full sm:text-lg sm:leading-5 text-center font-serif font-semibold"
+              className="form-input border-0 py-4 placeholder-gray-600 block w-full text-xl sm:leading-5 text-center font-serif font-semibold"
               placeholder="you@example.com"
               type="email"
             />
@@ -50,7 +50,7 @@ const Subscribe = (props) => (
         <span className="inline-flex rounded-md shadow-sm">
           <button
             type="submit"
-            className="mt-8 inline-flex items-center px-16 py-4 border border-transparent text-base leading-6 font-bold font-serif rounded-md text-white bg-black transition-transform transform hover:scale-105 ease-in-out duration-150"
+            className="mt-8 inline-flex items-center px-16 py-4 border border-transparent text-lg leading-6 font-bold font-serif rounded-md text-white bg-black transition-transform transform hover:scale-105 ease-in-out duration-150"
           >
             Join Now
           </button>
