@@ -11,6 +11,7 @@
     "build:data": "node ./data/cache-json-data.js -p",
     "build:data:dev": "node ./data/cache-json-data.js",
     "postinstall": "cp -r ./node_modules/@excalidraw/excalidraw/dist/excalidraw-assets ./public/",
+    "postbuild": "NODE_ENV=production next-sitemap",
     "build:style": "tailwind build styles/index.css -o styles/output.css",
     "start": "next start",
     "export": "npm run build && next export"
@@ -38,6 +39,7 @@
     "cookie": "^0.4.1",
     "date-fns": "^2.19.0",
     "dotenv": "^8.2.0",
+    "dotenv-flow": "^3.2.0",
     "focus-visible": "^5.2.0",
     "formik": "^2.2.5",
     "framer-motion": "^3.7.0",
@@ -46,6 +48,7 @@
     "next": "10.0.7",
     "next-images": "^1.7.0",
     "next-seo": "^4.17.0",
+    "next-sitemap": "^1.6.3",
     "next-svgr": "^0.0.2",
     "postcss": "^8.1.7",
     "prism-react-renderer": "^1.1.1",

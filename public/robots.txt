@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://justjavascript.com
+
+# Sitemaps
+Sitemap: https://justjavascript.com/sitemap.xml
