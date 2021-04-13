@@ -6,14 +6,17 @@ import {useRouter} from 'next/router'
 import {scroller} from 'react-scroll'
 import slugify from 'slugify'
 import {getUserAnswerFromLocalStorage} from 'utils/quiz-answers-in-local-storage'
+import {useViewer} from 'context/viewer-context'
 
 export default function useEggheadQuizMachine(
   quiz,
   currentQuestion,
-  setCurrent
+  setCurrent,
 ) {
   const quizQuestions = get(quiz, 'questions') || null
   const {id, title, slug, version} = quiz
+  const {viewer} = useViewer()
+  const contactId = get(viewer, 'contact_id')
 
   const [state, send] = useMachine(quizMachine, {
     context: {
@@ -62,7 +65,7 @@ export default function useEggheadQuizMachine(
   // persisting answers
 
   const isAnswered = !isEmpty(
-    getUserAnswerFromLocalStorage(get(currentQuestion, 'id'))
+    getUserAnswerFromLocalStorage(get(currentQuestion, 'id')),
   )
   const currentAnswer =
     getUserAnswerFromLocalStorage(get(currentQuestion, 'id')) || null
@@ -100,7 +103,11 @@ export default function useEggheadQuizMachine(
     // const response = {...values, question, context}
 
     const answer = values.answer.value
-    send('SUBMIT', {userAnswer: answer, ...currentQuestion})
+    send('SUBMIT', {
+      userAnswer: answer,
+      contactId: contactId,
+      ...currentQuestion,
+    })
     !currentQuestion.answer?.description && !isLastQuestion && handleContinue()
   }
 

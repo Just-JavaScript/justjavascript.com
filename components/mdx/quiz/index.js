@@ -10,7 +10,7 @@ import Layout from 'components/layout'
 function getQuestions(questions, quizId, quizVersion) {
   const items = questions.map((question, questionIndex) => {
     const {kind, children, required, version, canComment} = question.props
-    let id = quizId + '@' + quizVersion + '/' + questionIndex
+    let id = quizId + '.' + quizVersion + '.' + questionIndex
     if (question.props.desc) {
       id += '(' + question.props.desc + ')'
     }
@@ -22,7 +22,7 @@ function getQuestions(questions, quizId, quizVersion) {
     // choices for MultipleChoiceQuestion
     const choicesNodes = filter(
       children,
-      (child) => child.props.mdxType === 'Choice'
+      (child) => child.props.mdxType === 'Choice',
     )
     function getChoices(choices) {
       const choicesFromMdx =
@@ -31,7 +31,7 @@ function getQuestions(questions, quizId, quizVersion) {
           const children = React.Children.toArray(choice.props.children)
           const imageUrl = get(
             find(children, {props: {mdxType: 'img'}}),
-            'props.src'
+            'props.src',
           )
           const isCorrect = choice.props.correct || false
           const label = imageUrl
@@ -57,7 +57,7 @@ function getQuestions(questions, quizId, quizVersion) {
     // nested questions
     const nestedQuestionsNodes = filter(
       question.props.children,
-      (q) => q.props.mdxType !== 'Prompt'
+      (q) => q.props.mdxType !== 'Prompt',
     )
     const nestedQuestions = isMultipart
       ? nestedQuestionsNodes.map((q, childIndex) => {
@@ -69,7 +69,7 @@ function getQuestions(questions, quizId, quizVersion) {
           const ch = React.Children.toArray(children)
           const choicesNodes = filter(
             ch,
-            (child) => child?.props?.mdxType === 'Choice'
+            (child) => child?.props?.mdxType === 'Choice',
           )
           return {
             id: childId,
@@ -125,7 +125,7 @@ const Quiz = ({children, title, version, slug, id}) => {
   const ids = questions.map((q) => q.id)
   // Get answered questions in current quiz
   const completedQuestions = filter(ids, (id) =>
-    getUserAnswerFromLocalStorage(id)
+    getUserAnswerFromLocalStorage(id),
   )
 
   // Start from last answered question
@@ -172,7 +172,7 @@ const Quiz = ({children, title, version, slug, id}) => {
             question,
             setCurrentQuestion,
             defaultCurrentQuestionId,
-            defaultCurrentQuestionIndex
+            defaultCurrentQuestionIndex,
           )
 
           return state.matches('initializing') ? (

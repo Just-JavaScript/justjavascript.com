@@ -2,6 +2,7 @@ import {createMachine, assign} from 'xstate'
 import {isEmpty} from 'lodash'
 import {postQuizAnswer} from 'utils/post-quiz-answer'
 import {getUserAnswerFromLocalStorage} from 'utils/quiz-answers-in-local-storage'
+import {setAnswerForUser} from 'utils/firebase'
 
 export const quizMachine = createMachine(
   {
@@ -28,15 +29,18 @@ export const quizMachine = createMachine(
         on: {
           SUBMIT: {
             target: 'answering',
-            actions: assign({
-              answers: (context, event) => {
-                const {answers} = context
-                return [...answers, event.userAnswer]
-              },
-              userAnswer: (_, event) => {
-                return event.userAnswer
-              },
-            }),
+            actions: [
+              assign({
+                answers: (context, event) => {
+                  const {answers} = context
+                  return [...answers, event.userAnswer]
+                },
+                userAnswer: (_, event) => {
+                  return event.userAnswer
+                },
+              }),
+              'storeAnswer',
+            ],
           },
         },
         always: [{target: 'answered', cond: 'isAnswered'}],
@@ -65,12 +69,27 @@ export const quizMachine = createMachine(
       },
       isAnswered: (context, _event) => {
         return !isEmpty(
-          getUserAnswerFromLocalStorage(context.currentQuestionId)
+          getUserAnswerFromLocalStorage(context.currentQuestionId),
         )
+      },
+    },
+    actions: {
+      storeAnswer: (context, event) => {
+        console.log({event})
+        const dataToSubmit = {
+          answer: event.userAnswer,
+          // answer: getChoiceLabelByIndex(context.userAnswer),
+          quiz: {
+            id: context.quiz.id,
+            title: context.quiz.title,
+            question: {id: context.currentQuestionId},
+          },
+        }
+        setAnswerForUser({contactId: event.contactId, answer: dataToSubmit})
       },
     },
     services: {
       postQuizAnswer: (context) => postQuizAnswer(context),
     },
-  }
+  },
 )
