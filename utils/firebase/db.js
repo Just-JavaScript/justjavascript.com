@@ -2,7 +2,7 @@ import firebase from 'firebase/app'
 import 'firebase/firestore'
 import 'firebase/auth'
 
-const config = {
+export const config = {
   apiKey: process.env.FIREBASE_PUBLIC_API_KEY,
   authDomain: process.env.FIREBASE_PROJECT_ID + '.firebaseapp.com',
   projectId: process.env.FIREBASE_PROJECT_ID,
