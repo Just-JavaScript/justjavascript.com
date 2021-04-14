@@ -10,30 +10,32 @@ const config = {
   messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
   appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
 }
-
-const api = {}
-
-if (!firebase.apps.length) {
-  console.debug('running firebase initialization')
-  firebase.initializeApp(config)
-  firebase.auth().setPersistence(firebase.auth.Auth.Persistence.SESSION)
+const initializeApp = async (firebaseAuthToken) => {
+  if (!firebase.apps.length) {
+    firebase.initializeApp(config)
+  }
+  const firebaseUserCredential = await firebase
+    .auth()
+    .signInWithCustomToken(firebaseAuthToken)
   const db = firebase.firestore()
   const usersCollectionRef = db.collection('users')
-  const setAnswerForUser = ({contactId, answer}) => {
-    console.debug('setting quiz answer')
-    const contactRef = usersCollectionRef.doc(contactId)
-    return contactRef.get().then((doc) => {
-      const updatePayload = {[answer.quiz.question.id]: answer}
-      if (doc.exists) {
-        return contactRef.update(updatePayload)
-      } else {
-        return contactRef.set(updatePayload)
-      }
-    })
-  }
-  api.setAnswerForUser = setAnswerForUser
-} else {
-  api.setAnswerForUser = () => console.error('firebase is not set up correctly')
+  return {db, usersCollectionRef, firebaseUserCredential}
 }
 
-export default api
+const setAnswerForUser = async ({firebaseAuthToken, answer}) => {
+  const {firebaseUserCredential, usersCollectionRef} = await initializeApp(
+    firebaseAuthToken,
+  )
+  const contactId = firebaseUserCredential.user.uid
+  const contactRef = usersCollectionRef.doc(contactId)
+  return contactRef.get().then((doc) => {
+    const updatePayload = {[answer.quiz.question.id]: answer}
+    if (doc.exists) {
+      return contactRef.update(updatePayload)
+    } else {
+      return contactRef.set(updatePayload)
+    }
+  })
+}
+
+export default {setAnswerForUser}
