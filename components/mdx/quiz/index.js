@@ -62,7 +62,7 @@ function getQuestions(questions, quizId, quizVersion) {
     const nestedQuestions = isMultipart
       ? nestedQuestionsNodes.map((q, childIndex) => {
           const {kind, children, required, version, canComment} = q.props
-          let childId = id + '/' + childIndex
+          let childId = id + '.' + childIndex
           const prompt =
             find(children, {props: {mdxType: 'Prompt'}}) || children
           const answer = find(children, {props: {mdxType: 'Answer'}})
