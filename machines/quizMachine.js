@@ -2,7 +2,7 @@ import {createMachine, assign} from 'xstate'
 import {isEmpty} from 'lodash'
 import {postQuizAnswer} from 'utils/post-quiz-answer'
 import {getUserAnswerFromLocalStorage} from 'utils/quiz-answers-in-local-storage'
-import {setAnswerForUser} from 'utils/firebase'
+import quizApi from 'utils/firebase/db'
 
 export const quizMachine = createMachine(
   {
@@ -85,7 +85,10 @@ export const quizMachine = createMachine(
             question: {id: context.currentQuestionId},
           },
         }
-        setAnswerForUser({contactId: event.contactId, answer: dataToSubmit})
+        quizApi.setAnswerForUser({
+          contactId: event.contactId,
+          answer: dataToSubmit,
+        })
       },
     },
     services: {
