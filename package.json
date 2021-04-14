@@ -48,7 +48,6 @@
     "js-cookie": "^2.2.1",
     "lodash": "^4.17.20",
     "next": "10.0.7",
-    "next-firebase-auth": "^0.13.0-alpha.0",
     "next-images": "^1.7.0",
     "next-seo": "^4.17.0",
     "next-sitemap": "^1.6.3",
