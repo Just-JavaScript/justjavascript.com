@@ -2,7 +2,6 @@ import {createMachine, assign} from 'xstate'
 import {isEmpty} from 'lodash'
 import {postQuizAnswer} from 'utils/post-quiz-answer'
 import {getUserAnswerFromLocalStorage} from 'utils/quiz-answers-in-local-storage'
-import quizApi from 'utils/firebase/db'
 
 export const quizMachine = createMachine(
   {
@@ -39,7 +38,6 @@ export const quizMachine = createMachine(
                   return event.userAnswer
                 },
               }),
-              'storeAnswer',
             ],
           },
         },
@@ -71,24 +69,6 @@ export const quizMachine = createMachine(
         return !isEmpty(
           getUserAnswerFromLocalStorage(context.currentQuestionId),
         )
-      },
-    },
-    actions: {
-      storeAnswer: (context, event) => {
-        console.log({event})
-        const dataToSubmit = {
-          answer: event.userAnswer,
-          // answer: getChoiceLabelByIndex(context.userAnswer),
-          quiz: {
-            id: context.quiz.id,
-            title: context.quiz.title,
-            question: {id: context.currentQuestionId},
-          },
-        }
-        quizApi.setAnswerForUser({
-          contactId: event.contactId,
-          answer: dataToSubmit,
-        })
       },
     },
     services: {

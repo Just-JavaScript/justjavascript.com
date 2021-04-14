@@ -1,5 +1,5 @@
-import getChoiceLabelByIndex from './get-choice-label-by-index'
 import {storeUserAnswerInLocalStorage} from 'utils/quiz-answers-in-local-storage'
+import axios from './configured-axios'
 
 export const postQuizAnswer = (context) =>
   new Promise((resolve, reject) => {
@@ -14,6 +14,7 @@ export const postQuizAnswer = (context) =>
     }
     console.debug('submitted: ', dataToSubmit)
 
+    axios.post('/api/quiz', dataToSubmit)
     storeUserAnswerInLocalStorage(context.currentQuestionId, context.userAnswer)
 
     if (true) {

@@ -3,6 +3,7 @@ import OAuthClient from 'client-oauth2'
 import axios from 'axios'
 import get from 'lodash/get'
 import cookie from 'utils/cookies'
+import getAccessTokenFromCookie from './get-access-token-from-cookie'
 import * as serverCookie from 'cookie'
 
 const http = axios.create()
@@ -18,7 +19,17 @@ export const VIEWING_AS_USER_KEY = 'jjs_sellable_viewing_as_user'
 export function getTokenFromCookieHeaders(serverCookies = '') {
   const parsedCookie = serverCookie.parse(serverCookies)
   const eggheadToken = parsedCookie[ACCESS_TOKEN_KEY] || ''
-  return {eggheadToken, loginRequired: eggheadToken.length <= 0}
+  const convertkitId = parsedCookie['ck_subscriber_id'] || ''
+  return {convertkitId, eggheadToken, loginRequired: eggheadToken.length <= 0}
+}
+
+export const getAuthorizationHeader = () => {
+  const token = getAccessTokenFromCookie()
+  const authorizationHeader = token && {
+    Authorization: `Bearer ${token}`,
+  }
+
+  return authorizationHeader
 }
 
 export default class Auth {
@@ -159,10 +170,7 @@ export default class Auth {
     return !expired
   }
 
-  refreshUser(
-    accessToken,
-    loadFullUser = false,
-  ) {
+  refreshUser(accessToken, loadFullUser = false) {
     return new Promise((resolve, reject) => {
       if (typeof localStorage === 'undefined') {
         reject('no local storage')
@@ -191,9 +199,7 @@ export default class Auth {
         reject('localStorage is not defined')
       }
       const expires = authResult.data.expires_in
-      const expiresAt = JSON.stringify(
-        (expires) * 1000 + new Date().getTime(),
-      )
+      const expiresAt = JSON.stringify(expires * 1000 + new Date().getTime())
 
       localStorage.setItem(ACCESS_TOKEN_KEY, authResult.accessToken)
       localStorage.setItem(EXPIRES_AT_KEY, expiresAt)
