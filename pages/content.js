@@ -11,7 +11,6 @@ export default function Content() {
   const isVerifyingLogin = useLoginRequired()
   const {isUnclaimedBulkPurchaser, viewer} = useViewer()
   useRedirectUnclaimedBulkToInvoice(isUnclaimedBulkPurchaser)
-
   if (isVerifyingLogin || isUnclaimedBulkPurchaser || isEmpty(viewer)) {
     return null
   }
