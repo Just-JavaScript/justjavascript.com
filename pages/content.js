@@ -3,12 +3,16 @@ import Layout from '../components/layout'
 import Link from 'next/link'
 import useLoginRequired from 'hooks/useLoginRequired'
 import {episodes} from 'components/toc'
-import useRedirectUnclaimedBulkToInvoice from 'hooks/useRedirectUnclaimedBulkToInvoice'
+import useRedirectUnclaimedBulkToInvoice from 'hooks/useRedirectToLearn'
+import {useViewer} from 'context/viewer-context'
+import isEmpty from 'lodash/isEmpty'
 
-export default function Content({bundles}) {
+export default function Content() {
   const isVerifyingLogin = useLoginRequired()
-  const isVerifyingClaimedPurchase = useRedirectUnclaimedBulkToInvoice()
-  if (isVerifyingLogin || isVerifyingClaimedPurchase) {
+  const {isUnclaimedBulkPurchaser, viewer} = useViewer()
+  useRedirectUnclaimedBulkToInvoice(isUnclaimedBulkPurchaser)
+
+  if (isVerifyingLogin || isUnclaimedBulkPurchaser || isEmpty(viewer)) {
     return null
   }
 

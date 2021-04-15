@@ -3,7 +3,8 @@ import ToC from '../components/toc'
 import Layout from '../components/layout'
 import Pagination from '../components/mdx/pagination'
 import useLoginRequired from 'hooks/useLoginRequired'
-import useRedirectUnclaimedBulkToInvoice from 'hooks/useRedirectUnclaimedBulkToInvoice'
+import useRedirectToLearn from 'hooks/useRedirectToLearn'
+import {useViewer} from 'context/viewer-context'
 
 const Article = ({
   children,
@@ -16,8 +17,10 @@ const Article = ({
   ...props
 }) => {
   const isVerifyingLogin = useLoginRequired()
-  const isVerifyingClaimedPurchase = useRedirectUnclaimedBulkToInvoice()
-  if (isVerifyingLogin || isVerifyingClaimedPurchase) {
+  const {isUnclaimedBulkPurchaser, loading} = useViewer()
+  useRedirectToLearn(isUnclaimedBulkPurchaser)
+
+  if (isVerifyingLogin || isUnclaimedBulkPurchaser || loading) {
     return null
   }
 

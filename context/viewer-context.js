@@ -24,7 +24,6 @@ function useAuthedViewer() {
   const [viewer, setViewer] = React.useState()
   const [loading, setLoading] = React.useState(true)
   const previousViewer = React.useRef(viewer)
-
   React.useEffect(() => {
     setViewer(auth.getLocalUser())
   }, [])
@@ -109,8 +108,8 @@ function useAuthedViewer() {
     },
     false,
   )
+  const isUnclaimedBulkPurchaser = !canViewContent && sitePurchases.length > 0
 
-  const isUnclaimedBulkPurchaser = !canViewContent
   const values = React.useMemo(
     () => ({
       viewer,
