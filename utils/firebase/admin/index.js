@@ -1,4 +1,8 @@
-import {FIREBASE_ADMIN_PRIVATE_KEY, FIREBASE_ADMIN_CLIENT_EMAIL} from './config'
+import {
+  FIREBASE_ADMIN_PRIVATE_KEY,
+  FIREBASE_ADMIN_PROJECT_ID,
+  FIREBASE_ADMIN_CLIENT_EMAIL,
+} from './config'
 import * as firebaseAdmin from 'firebase-admin'
 
 const generateAuthToken = async (eggheadUser) => {
