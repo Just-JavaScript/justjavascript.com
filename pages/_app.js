@@ -9,9 +9,9 @@ import '../styles/gifplayer.css'
 const App = ({Component, pageProps}) => {
   return (
     <ViewerProvider>
-    <MDXProvider components={mdxComponents}>
-      <Component {...pageProps} />
-    </MDXProvider>
+      <MDXProvider components={mdxComponents}>
+        <Component {...pageProps} />
+      </MDXProvider>
     </ViewerProvider>
   )
 }

@@ -28,15 +28,17 @@ export const quizMachine = createMachine(
         on: {
           SUBMIT: {
             target: 'answering',
-            actions: assign({
-              answers: (context, event) => {
-                const {answers} = context
-                return [...answers, event.userAnswer]
-              },
-              userAnswer: (_, event) => {
-                return event.userAnswer
-              },
-            }),
+            actions: [
+              assign({
+                answers: (context, event) => {
+                  const {answers} = context
+                  return [...answers, event.userAnswer]
+                },
+                userAnswer: (_, event) => {
+                  return event.userAnswer
+                },
+              }),
+            ],
           },
         },
         always: [{target: 'answered', cond: 'isAnswered'}],
@@ -65,12 +67,12 @@ export const quizMachine = createMachine(
       },
       isAnswered: (context, _event) => {
         return !isEmpty(
-          getUserAnswerFromLocalStorage(context.currentQuestionId)
+          getUserAnswerFromLocalStorage(context.currentQuestionId),
         )
       },
     },
     services: {
       postQuizAnswer: (context) => postQuizAnswer(context),
     },
-  }
+  },
 )
