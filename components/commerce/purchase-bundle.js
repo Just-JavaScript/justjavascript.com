@@ -5,7 +5,7 @@ import TeamPlanToggle from './team-plan-toggle'
 import Countdown from './countdown'
 import {isEmpty, get, find, noop} from 'lodash'
 import ParityCouponMessage from './parity-coupon-message'
-import {useCommerceMachine} from '../../hooks/useCommerceMachine'
+import {useCommerceMachine} from '../../hooks/use-commerce-machine'
 
 const PurchaseButton = ({purchasing, children, bundle, onClick}) => {
   const purchasingStyles = 'opacity-50 cursor-default'

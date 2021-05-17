@@ -1,11 +1,11 @@
 import React from 'react'
 import {Element as ScrollElement} from 'react-scroll'
-import AnswerWrapper from 'components/quiz/answerWrapper'
+import AnswerWrapper from 'components/quiz/answer-wrapper'
 import QuizWrapper from 'components/quiz/wrapper'
-import QuestionToShow from 'components/quiz/questionToShow'
+import QuestionToShow from 'components/quiz/question-to-show'
 import {get, first, filter, last, find, isEmpty, indexOf} from 'lodash'
 import {scroller} from 'react-scroll'
-import useEggheadQuiz from 'hooks/useEggheadQuiz'
+import useEggheadQuiz from 'hooks/use-egghead-quiz'
 import Continue from 'components/quiz/continue'
 import Markdown from 'components/quiz/markdown'
 import {
@@ -51,9 +51,9 @@ const MultipleQuestions = (props) => {
 
   return (
     <QuizWrapper {...props}>
-      <div className="md:py-8 py-8">
-        <div className="mb-4 sm:px-0 px-5">
-          <span className="mr-2 p-2 rounded-full w-6 h-6 text-xs lining-nums font-bold inline-flex justify-center items-center bg-black text-white font-mono">
+      <div className="py-8 md:py-8">
+        <div className="px-5 mb-4 sm:px-0">
+          <span className="inline-flex items-center justify-center w-6 h-6 p-2 mr-2 font-mono text-xs font-bold text-white bg-black rounded-full lining-nums">
             {props.number}
           </span>
         </div>
@@ -102,7 +102,7 @@ const MultipleQuestions = (props) => {
                 <ScrollElement name={question.id} />
                 {index <= currentQuestion.index && (
                   <>
-                    <AnswerWrapper className="w-full flex flex-col md:p-4 p-3 md:rounded-lg bg-cool-gray-100 border border-cool-gray-100">
+                    <AnswerWrapper className="flex flex-col w-full p-3 border md:p-4 md:rounded-lg bg-cool-gray-100 border-cool-gray-100">
                       <QuestionToShow
                         nested
                         question={question}
@@ -136,17 +136,17 @@ const MultipleQuestions = (props) => {
                     {/* {displayContinue && (
                       <motion.div
                         layout
-                        className="py-3 flex items-center justify-center w-full"
+                        className="flex items-center justify-center w-full py-3"
                       >
                         <Continue onClick={props.handleContinue} />
                       </motion.div>
                     )} */}
                     {!displayContinue && !isLastQuestion && (
-                      <div className="z-10 absolute left-0 bottom-0 w-full flex items-center justify-center transform translate-y-11">
+                      <div className="absolute bottom-0 left-0 z-10 flex items-center justify-center w-full transform translate-y-11">
                         <div className="flex flex-col items-center">
-                          <div className="w-2 h-2 rounded-full bg-white" />
-                          <div className="w-px p-px h-16 bg-white" />
-                          <div className="w-2 h-2 rounded-full bg-white" />
+                          <div className="w-2 h-2 bg-white rounded-full" />
+                          <div className="w-px h-16 p-px bg-white" />
+                          <div className="w-2 h-2 bg-white rounded-full" />
                         </div>
                       </div>
                     )}

@@ -44,7 +44,7 @@ module.exports = {
             fontFamily: theme('fontFamily.sans').join(', '),
             fontSize: theme('fontSize.base'),
             color: theme('colors.black'),
-            'h1, h2, h3': {
+            'h1, h2': {
               textAlign: 'center',
               padding: '1em 0',
             },
@@ -114,15 +114,15 @@ module.exports = {
               fontWeight: theme('fontWeight.extrabold'),
             },
             h3: {
-              fontSize: theme('fontSize.5xl'),
-              fontWeight: theme('fontWeight.extrabold'),
-            },
-            h4: {
               fontSize: theme('fontSize.4xl'),
               fontWeight: theme('fontWeight.extrabold'),
             },
-            h5: {
+            h4: {
               fontSize: theme('fontSize.3xl'),
+              fontWeight: theme('fontWeight.extrabold'),
+            },
+            h5: {
+              fontSize: theme('fontSize.2xl'),
               fontWeight: theme('fontWeight.bold'),
             },
           },
@@ -341,8 +341,7 @@ module.exports = {
         },
       }),
       boxShadow: {
-        lg:
-          '0 10px 30px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
+        lg: '0 10px 30px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
       },
     },
   },

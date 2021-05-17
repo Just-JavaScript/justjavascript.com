@@ -22,7 +22,7 @@ const Code = ({children, codeString, className = 'language-js', ...props}) => {
             style={{
               ...style,
               padding: '20px',
-              fontSize: '80%',
+              fontSize: '75%',
               borderRadius: 5,
               marginBottom: '1.25rem',
               overflowX: 'auto',

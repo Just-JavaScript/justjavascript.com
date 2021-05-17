@@ -1,13 +1,13 @@
 import React from 'react'
-import QuestionWrapper from 'components/quiz/questionWrapper'
-import AnswerWrapper from 'components/quiz/answerWrapper'
+import QuestionWrapper from 'components/quiz/question-wrapper'
+import AnswerWrapper from 'components/quiz/answer-wrapper'
 import Explanation from 'components/quiz/explanation'
 import QuizWrapper from 'components/quiz/wrapper'
 import Markdown from 'components/quiz/markdown'
 import Submit from 'components/quiz/submit'
-import useEggheadQuestion from 'hooks/useEggheadQuestion'
+import useEggheadQuestion from 'hooks/use-egghead-question'
 import {motion, AnimatePresence} from 'framer-motion'
-import SubmitAndContinue from 'components/quiz/submitAndContinue'
+import SubmitAndContinue from 'components/quiz/submit-and-continue'
 
 const Essay = (props) => {
   const {
@@ -44,7 +44,7 @@ const Essay = (props) => {
         <form className="flex flex-col" onSubmit={formik.handleSubmit}>
           {isAnswered ? (
             <motion.div>
-              <Markdown className="rounded-md prose sm:prose-lg h-auto">
+              <Markdown className="h-auto prose rounded-md sm:prose-lg">
                 {formik.values.value}
               </Markdown>
             </motion.div>
@@ -54,7 +54,7 @@ const Essay = (props) => {
                 Your answer
               </label> */}
               <textarea
-                className="w-full p-3 bg-gray-50 border border-gray-200 prose prose-sans max-w-none rounded-md h-40"
+                className="w-full h-40 p-3 prose border border-gray-200 rounded-md bg-gray-50 prose-sans max-w-none"
                 disabled={isDisabled}
                 name="value"
                 placeholder="Type your answer here..."

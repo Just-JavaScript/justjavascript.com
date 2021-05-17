@@ -2,10 +2,10 @@ require('dotenv').config({
   path: `.env.development`,
 })
 
-const { program } = require('commander')
+const {program} = require('commander')
 const fetch = require('node-fetch')
 const assert = require('assert')
-const content = require('./content')
+const content = require('./learn')
 const fs = require('fs')
 
 program
@@ -13,7 +13,7 @@ program
   .usage('[OPTIONS]...')
   .option(
     '-p, --production',
-    'Sets api url to https://app.egghead.io [Defaults to http://app.egghead.af:5000].',
+    'Sets api url to https://app.egghead.io [Defaults to http://app.egghead.af:5000].'
   )
   .parse(process.argv)
 
@@ -25,7 +25,7 @@ const API_URL = options.production
 
 assert(
   process.env.BUNDLE_BUDDY_TOKEN !== undefined,
-  'You must have the BUNDLE_BUDDY_TOKEN env variable set!',
+  'You must have the BUNDLE_BUDDY_TOKEN env variable set!'
 )
 
 const headers = {
@@ -41,13 +41,13 @@ function fetchContentCollectionByType(content, type) {
     .map(async (collection) => {
       const {type, ...typelessCollection} = collection
       console.log(
-        `fetching: ${API_URL}/api/v1/playlists/${collection.resource_id}`,
+        `fetching: ${API_URL}/api/v1/playlists/${collection.resource_id}`
       )
       const response = await fetch(
         `${API_URL}/api/v1/playlists/${collection.resource_id}`,
         {
           headers,
-        },
+        }
       ).then((response) => {
         if (response.status === 403) {
           throw 'Request failed, is your BUNDLE_BUDDY_TOKEN valid?'
@@ -76,7 +76,7 @@ function storeData(data, path) {
 
 async function writeDataToJSON() {
   const bundles = await Promise.all(
-    fetchContentCollectionByType(content, 'bundle'),
+    fetchContentCollectionByType(content, 'bundle')
   )
 
   const path = './data/'

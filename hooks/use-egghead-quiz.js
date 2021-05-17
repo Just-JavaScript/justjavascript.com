@@ -1,6 +1,6 @@
 import React from 'react'
 import {useMachine} from '@xstate/react'
-import {quizMachine} from 'machines/quizMachine'
+import {quizMachine} from 'machines/quiz-machine'
 import {isEmpty, first, indexOf, find, get} from 'lodash'
 import {useRouter} from 'next/router'
 import {scroller} from 'react-scroll'
@@ -8,11 +8,7 @@ import slugify from 'slugify'
 import {getUserAnswerFromLocalStorage} from 'utils/quiz-answers-in-local-storage'
 import {useViewer} from 'context/viewer-context'
 
-export default function useEggheadQuizMachine(
-  quiz,
-  currentQuestion,
-  setCurrent,
-) {
+export default function useEggheadQuiz(quiz, currentQuestion, setCurrent) {
   const quizQuestions = get(quiz, 'questions') || null
   const {id, title, slug, version} = quiz
   const {viewer} = useViewer()
@@ -65,7 +61,7 @@ export default function useEggheadQuizMachine(
   // persisting answers
 
   const isAnswered = !isEmpty(
-    getUserAnswerFromLocalStorage(get(currentQuestion, 'id')),
+    getUserAnswerFromLocalStorage(get(currentQuestion, 'id'))
   )
   const currentAnswer =
     getUserAnswerFromLocalStorage(get(currentQuestion, 'id')) || null

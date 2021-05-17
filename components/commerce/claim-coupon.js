@@ -1,6 +1,6 @@
 import React from 'react'
 import ClaimCouponOverlay from './claim-coupon-overlay'
-import {useCommerceMachine} from 'hooks/useCommerceMachine'
+import {useCommerceMachine} from 'hooks/use-commerce-machine'
 import get from 'lodash/get'
 import getBundles from 'utils/get-bundles'
 
