@@ -2,8 +2,7 @@ import React from 'react'
 import ToC from '../components/toc'
 import Layout from '../components/layout'
 import Pagination from '../components/mdx/pagination'
-import useLoginRequired from 'hooks/useLoginRequired'
-import useRedirectToLearn from 'hooks/useRedirectToLearn'
+import useLoginRequired from 'hooks/use-login-required'
 import {useViewer} from 'context/viewer-context'
 
 const Article = ({
@@ -18,15 +17,13 @@ const Article = ({
 }) => {
   const isVerifyingLogin = useLoginRequired()
   const {isUnclaimedBulkPurchaser, loading} = useViewer()
-  useRedirectToLearn(isUnclaimedBulkPurchaser)
-
   if (isVerifyingLogin || isUnclaimedBulkPurchaser || loading) {
     return null
   }
 
   return (
     <Layout navContent={<ToC />} title={title} episode={episode} {...props}>
-      <div className="prose lg:prose-xl prose-lg max-w-none">{children}</div>
+      <div className="prose prose-lg lg:prose-xl max-w-none">{children}</div>
       <Pagination next={next} prev={prev}>
         {nextTitle}
       </Pagination>

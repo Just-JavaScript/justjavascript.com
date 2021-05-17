@@ -1,6 +1,5 @@
 import React from 'react'
-import {motion} from 'framer-motion'
-import Header from './header'
+import Navigation from './navigation'
 import SEO from './seo'
 
 const Layout = ({
@@ -17,11 +16,11 @@ const Layout = ({
     <>
       <SEO title={title} />
       <div className={`sm:px-8 px-5 sm:pb-24 pb-16 ${background}`}>
-        <Header>{navContent}</Header>
+        <Navigation>{navContent}</Navigation>
         {headerContent}
         {title && (
-          <div className="pt-24 sm:pb-48 pb-40 relative flex items-center justify-center text-center">
-            <h1 className="overflow-hidden relative lg:text-9xl md:text-6xl sm:text-5xl text-5xl font-extrabold font-serif leading-tighter mb-8 z-10">
+          <div className="relative flex items-center justify-center pt-24 pb-40 text-center sm:pb-48">
+            <h1 className="relative z-10 mb-8 overflow-hidden font-serif text-5xl font-extrabold lg:text-9xl md:text-6xl sm:text-5xl leading-tighter">
               {title}
             </h1>
             {episode && (

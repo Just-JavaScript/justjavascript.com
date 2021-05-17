@@ -106,7 +106,7 @@ function useAuthedViewer() {
 
       return get(currentPurchase, 'bulk', false) !== true
     },
-    false,
+    false
   )
   const isUnclaimedBulkPurchaser = !canViewContent && sitePurchases.length > 0
 
@@ -123,9 +123,10 @@ function useAuthedViewer() {
       authToken: auth.getAuthToken,
       requestSignInEmail: (email) => auth.requestSignInEmail(email),
       isUnclaimedBulkPurchaser,
+      purchased: sitePurchases.length > 0,
       loading,
     }),
-    [viewer, loading],
+    [viewer, loading]
   )
 
   return values

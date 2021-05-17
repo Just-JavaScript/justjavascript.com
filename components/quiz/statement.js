@@ -1,5 +1,5 @@
 import React from 'react'
-import QuestionWrapper from 'components/quiz/questionWrapper'
+import QuestionWrapper from 'components/quiz/question-wrapper'
 import QuizWrapper from 'components/quiz/wrapper'
 import Markdown from 'components/quiz/markdown'
 import Continue from './continue'

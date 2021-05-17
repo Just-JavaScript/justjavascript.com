@@ -3,13 +3,13 @@ import * as React from 'react'
 import Layout from '../components/layout'
 
 const Redirect = () => {
-    const router = useRouter()
+  const router = useRouter()
 
-    React.useEffect(() => {
-        router.replace('/content')
-    })
+  React.useEffect(() => {
+    router.replace('/learn')
+  })
 
-    return null
+  return null
 }
 
 export default Redirect

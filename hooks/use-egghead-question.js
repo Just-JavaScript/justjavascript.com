@@ -2,7 +2,7 @@ import * as yup from 'yup'
 import {useFormik} from 'formik'
 import {getUserAnswerFromLocalStorage} from 'utils/quiz-answers-in-local-storage'
 
-export default function useEggheadQuestionMachine(question, handleSubmit) {
+export default function useEggheadQuestion(question, handleSubmit) {
   const {kind} = question || {}
   const isRequired = question?.required !== false
 

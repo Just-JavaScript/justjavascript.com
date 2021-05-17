@@ -1,7 +1,7 @@
 import * as React from 'react'
-import QuestionToShow from 'components/quiz/questionToShow'
+import QuestionToShow from 'components/quiz/question-to-show'
 import {Element as ScrollElement} from 'react-scroll'
-import useEggheadQuiz from '../../../hooks/useEggheadQuiz'
+import useEggheadQuiz from 'hooks/use-egghead-quiz'
 import {map, filter, first, indexOf, isEmpty, last, find, get} from 'lodash'
 import getChoiceLabelByIndex from 'utils/get-choice-label-by-index'
 import {getUserAnswerFromLocalStorage} from 'utils/quiz-answers-in-local-storage'
@@ -22,7 +22,7 @@ function getQuestions(questions, quizId, quizVersion) {
     // choices for MultipleChoiceQuestion
     const choicesNodes = filter(
       children,
-      (child) => child.props.mdxType === 'Choice',
+      (child) => child.props.mdxType === 'Choice'
     )
     function getChoices(choices) {
       const choicesFromMdx =
@@ -31,7 +31,7 @@ function getQuestions(questions, quizId, quizVersion) {
           const children = React.Children.toArray(choice.props.children)
           const imageUrl = get(
             find(children, {props: {mdxType: 'img'}}),
-            'props.src',
+            'props.src'
           )
           const isCorrect = choice.props.correct || false
           const label = imageUrl
@@ -57,7 +57,7 @@ function getQuestions(questions, quizId, quizVersion) {
     // nested questions
     const nestedQuestionsNodes = filter(
       question.props.children,
-      (q) => q.props.mdxType !== 'Prompt',
+      (q) => q.props.mdxType !== 'Prompt'
     )
     const nestedQuestions = isMultipart
       ? nestedQuestionsNodes.map((q, childIndex) => {
@@ -69,7 +69,7 @@ function getQuestions(questions, quizId, quizVersion) {
           const ch = React.Children.toArray(children)
           const choicesNodes = filter(
             ch,
-            (child) => child?.props?.mdxType === 'Choice',
+            (child) => child?.props?.mdxType === 'Choice'
           )
           return {
             id: childId,
@@ -125,7 +125,7 @@ const Quiz = ({children, title, version, slug, id}) => {
   const ids = questions.map((q) => q.id)
   // Get answered questions in current quiz
   const completedQuestions = filter(ids, (id) =>
-    getUserAnswerFromLocalStorage(id),
+    getUserAnswerFromLocalStorage(id)
   )
 
   // Start from last answered question
@@ -144,15 +144,15 @@ const Quiz = ({children, title, version, slug, id}) => {
 
   return (
     <Layout maxWidth="" background="bg-gray-50">
-      <header className="text-center pb-24">
-        <div className="lg:text-8xl sm:text-7xl text-7xl font-serif font-extrabold tracking-tight">
+      <header className="pb-24 text-center">
+        <div className="font-serif font-extrabold tracking-tight lg:text-8xl sm:text-7xl text-7xl">
           Quiz
         </div>
-        <h1 className="text-lg font-sans font-semibold">
+        <h1 className="font-sans text-lg font-semibold">
           {quiz.title.slice(7)}
         </h1>
       </header>
-      <div className="flex flex-col items-center justify-start min-h-screen w-full">
+      <div className="flex flex-col items-center justify-start w-full min-h-screen">
         {map(quiz.questions, (question, index) => {
           const {
             state,
@@ -172,13 +172,13 @@ const Quiz = ({children, title, version, slug, id}) => {
             question,
             setCurrentQuestion,
             defaultCurrentQuestionId,
-            defaultCurrentQuestionIndex,
+            defaultCurrentQuestionIndex
           )
 
           return state.matches('initializing') ? (
             'loading...'
           ) : (
-            <div className="w-full mx-auto max-w-screen-md" key={question.id}>
+            <div className="w-full max-w-screen-md mx-auto" key={question.id}>
               <ScrollElement name={question.id} />
               {index <= currentQuestion.index && (
                 <QuestionToShow
@@ -202,9 +202,11 @@ const Quiz = ({children, title, version, slug, id}) => {
             </div>
           )
         })}
-        <div className="fixed left-5 bottom-5 opacity-50 font-mono text-xs">
-          currentQuestion: {JSON.stringify(currentQuestion, null, 2)}
-        </div>
+        {process.env.NODE_ENV === 'development' && (
+          <div className="fixed font-mono text-xs opacity-50 left-5 bottom-5">
+            currentQuestion: {JSON.stringify(currentQuestion, null, 2)}
+          </div>
+        )}
       </div>
     </Layout>
   )
