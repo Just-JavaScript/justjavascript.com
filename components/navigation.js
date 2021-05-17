@@ -8,7 +8,11 @@ const Header = ({children, ...props}) => {
 
   return (
     <div className="mb-16 sm:mb-24">
-      <nav className="flex items-center justify-between w-full max-w-screen-xl sm:mx-auto">
+      <nav
+        className={`flex items-center ${
+          sellingLive ? 'justify-between' : 'justify-center'
+        } w-full max-w-screen-xl sm:mx-auto`}
+      >
         <Link href={purchased ? '/learn' : '/'}>
           <a
             aria-label="Homepage"
