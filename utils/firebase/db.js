@@ -24,7 +24,7 @@ const initializeApp = async (firebaseAuthToken) => {
 
 const setAnswerForUser = async ({firebaseAuthToken, answer}) => {
   const {firebaseUserCredential, usersCollectionRef} = await initializeApp(
-    firebaseAuthToken,
+    firebaseAuthToken
   )
   const contactId = firebaseUserCredential.user.uid
   const contactRef = usersCollectionRef.doc(contactId)
@@ -38,4 +38,36 @@ const setAnswerForUser = async ({firebaseAuthToken, answer}) => {
   })
 }
 
-export default {setAnswerForUser}
+const getProgressForUser = async ({firebaseAuthToken}) => {
+  const {firebaseUserCredential, usersCollectionRef} = await initializeApp(
+    firebaseAuthToken
+  )
+  const contactId = firebaseUserCredential.user.uid
+  const contactRef = usersCollectionRef.doc(contactId)
+
+  return contactRef.get().then((doc) => {
+    if (doc.exists) {
+      const progress = doc.data().progress
+      return progress
+    }
+  })
+}
+
+const setUserProgress = async ({firebaseAuthToken, episode, progress}) => {
+  const {firebaseUserCredential, usersCollectionRef} = await initializeApp(
+    firebaseAuthToken
+  )
+  const contactId = firebaseUserCredential.user.uid
+  const contactRef = usersCollectionRef.doc(contactId)
+
+  return contactRef.get().then((doc) => {
+    const updatePayload = {progress: {[episode]: {...progress}}}
+    if (doc.exists) {
+      return contactRef.set(updatePayload, {merge: true})
+    } else {
+      return contactRef.set(updatePayload)
+    }
+  })
+}
+
+export default {setAnswerForUser, getProgressForUser, setUserProgress}

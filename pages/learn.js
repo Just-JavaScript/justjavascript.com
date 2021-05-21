@@ -6,9 +6,11 @@ import {episodes} from 'components/toc'
 import useRedirectUnclaimedBulkToInvoice from 'hooks/use-redirect-to-learn'
 import {useViewer} from 'context/viewer-context'
 import isEmpty from 'lodash/isEmpty'
+import {useProgress} from 'context/progress-context'
 
 export default function Learn() {
   const isVerifyingLogin = useLoginRequired()
+  const {progress} = useProgress()
 
   const {isUnclaimedBulkPurchaser, viewer, loading} = useViewer()
   useRedirectUnclaimedBulkToInvoice(isUnclaimedBulkPurchaser)
