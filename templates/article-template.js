@@ -48,6 +48,7 @@ const Article = ({
             episode: EPISODE_ID,
             progress: {
               completed: !completed,
+              date: Date.now(),
             },
           })
         }}

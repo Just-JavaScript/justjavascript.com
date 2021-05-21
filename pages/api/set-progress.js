@@ -31,8 +31,8 @@ const handler = async (req, res) => {
 
     await quizApi.setUserProgress({
       firebaseAuthToken: firebaseToken,
-      episode, // episode: 'episode-id-5',
-      progress, // progress: {completed: false, started: true, date: Date.now()},
+      episode,
+      progress,
     })
 
     res.status(200).json({status: true})
