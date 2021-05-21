@@ -60,11 +60,11 @@ const ExcalidrawIframe = forwardRef(({
         if (node) {
           node.contentWindow.onerror = (e) => {
             delete window.__EXCALIDRAW__[id];
-            setError(e.error || new Error());
+            setError(e.error || new Error(e));
           };
           node.contentWindow.onunhandledrejection = (e) => {
             delete window.__EXCALIDRAW__[id];
-            setError(e.reason || new Error());
+            setError(e.reason || new Error(e));
           };
         }
       }}
