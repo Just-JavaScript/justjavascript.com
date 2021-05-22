@@ -7,6 +7,7 @@ import {useViewer} from 'context/viewer-context'
 import {useProgress} from 'context/progress-context'
 import {useRouter} from 'next/router'
 import Spinner from 'components/spinner'
+import isUndefined from 'lodash/isUndefined'
 
 const Article = ({
   children,
@@ -20,13 +21,29 @@ const Article = ({
 }) => {
   const router = useRouter()
   const EPISODE_ID = router.pathname.substring(1)
-  const {progress, setProgress, isValidating} = useProgress()
+  const {progress, setProgress} = useProgress()
   const isVerifyingLogin = useLoginRequired()
   const {isUnclaimedBulkPurchaser, loading} = useViewer()
   const currentEpisodeProgress = progress && progress[EPISODE_ID]
   const [completed, setCompleted] = React.useState(
     currentEpisodeProgress?.completed
   )
+
+  function handleSetProgress() {
+    setProgress({
+      episode: EPISODE_ID,
+      progress: {
+        completed: !completed,
+        date: Date.now(),
+      },
+      setCompleted: (initialProgress) => {
+        // handle error state in case user is offline or api request fails
+        isUndefined(initialProgress)
+          ? setCompleted(!completed)
+          : setCompleted(initialProgress)
+      },
+    })
+  }
 
   React.useEffect(() => {
     currentEpisodeProgress && setCompleted(currentEpisodeProgress.completed)
@@ -43,22 +60,16 @@ const Article = ({
       <button
         className="inline-flex px-4 py-3 mt-8 text-white bg-black rounded-md"
         type="button"
-        onClick={() => {
-          setProgress({
-            episode: EPISODE_ID,
-            progress: {
-              completed: !completed,
-              date: Date.now(),
-            },
-          })
-        }}
+        onClick={() => handleSetProgress()}
       >
-        {isValidating ? (
-          <Spinner className="text-whte" />
-        ) : completed ? (
-          'Completed'
+        {progress ? (
+          completed ? (
+            'Completed'
+          ) : (
+            'Mark as complete'
+          )
         ) : (
-          'Mark as complete'
+          <Spinner className="text-white" />
         )}
       </button>
       <Pagination next={next} prev={prev}>

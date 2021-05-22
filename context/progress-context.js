@@ -13,13 +13,12 @@ export function useProgress() {
 export const ProgressContext = React.createContext(defaultProgressContext)
 
 export const ProgressProvider = ({children}) => {
-  const [loading, setLoading] = React.useState(false)
   const {data, isValidating, error} = useSWR('/api/get-progress', fetcher, {
     revalidateOnFocus: false,
   })
-  function setProgress({episode, progress}) {
-    setLoading(true)
-    return axios
+  async function setProgress({episode, progress, setCompleted}) {
+    setCompleted()
+    return await axios
       .post('/api/set-progress', {
         episode,
         progress,
@@ -27,8 +26,8 @@ export const ProgressProvider = ({children}) => {
       .then(() => {
         mutate('/api/get-progress')
       })
-      .finally(() => {
-        setLoading(false)
+      .catch(() => {
+        setCompleted(!progress.completed)
       })
   }
   return (
@@ -36,7 +35,8 @@ export const ProgressProvider = ({children}) => {
       value={{
         progress: data,
         setProgress,
-        isValidating: loading || isValidating,
+        isValidating,
+        error,
       }}
     >
       {children}
