@@ -4,7 +4,7 @@ import Question from 'components/mdx/quiz/question'
 import Answer from 'components/mdx/quiz/answer'
 import Choice from 'components/mdx/quiz/choice'
 
-<Quiz title="JJS 05 Counting the Values p2" id="counting-the-values-pt-2" version="1">
+<Quiz title="JJS 06 Meeting Objects and Functions" id="meeting-objects-and-functions" version="1">
 
 <Question kind="QuestionSet" desc="strings and numbers">
 
@@ -12,13 +12,17 @@ import Choice from 'components/mdx/quiz/choice'
 
 <Prompt>
 
-# Sketch a diagram of variables and values after this snippet of code runs. Use our mental model.
+# But Isn't Seven the Most Magical Number?
+
+Sketch a diagram of variables and values after this snippet of code runs.
 
 ```js
-let dwarves = 7
-let continents = '7'
-let worldWonders = 3 + 4
+let dwarves = 7;
+let continents = '7';
+let worldWonders = 3 + 4;
 ```
+
+**Use our mental model.**
 
 </Prompt>
 
@@ -52,17 +56,19 @@ let worldWonders = 3 + 4
 
 <Prompt>
 
-# Which one of these diagrams best matches your sketch and our mental model after that code runs?
+### Which one of these diagrams best matches your sketch and our mental model after that code runs?
+
+Only one of these diagrams matches our mental model. Before you confirm your choice, think about what’s wrong with the others.
 
 </Prompt>
 
 <Answer>
 
-**Diagram A is correct.** It shows dwarves and _worldWonders_ pointing to the 7 number value, and continents variable pointing to the _"7"_ string value.
+**Diagram A is correct.** It shows `dwarves` and `worldWonders` pointing to the `7` number value, and `continents` variable pointing to the `"7"` string value.
 
-Diagram B is wrong because 7 and "7" are two different values — one is a number, and another one is a string. They are not the same value.
+Diagram B is wrong because `7` and `"7"` are two different values — one is a number, and another one is a string. They are not the same value.
 
-Diagram C doesn’t match our mental model because it shows the value 7 more than once. In our mental model, there is only one value for each distinct number.
+Diagram C doesn’t match our mental model because it shows the value `7` more than once. In our mental model, there is only one value for each distinct number.
 
 Diagram D is wrong because a variable can’t point to another variable. It must point to a value.
 
@@ -80,13 +86,17 @@ Diagram D is wrong because a variable can’t point to another variable. It must
 
 <Prompt>
 
-# Sketch a diagram of variables and values after this snippet of code runs. Use our mental model.
+# Bee’s Knees
+
+Sketch a diagram of variables and values after this snippet of code runs.
 
 ```js
-let bees = {}
-let peas = bees
-let knees = {}
+let bees = {};
+let peas = bees;
+let knees = {};
 ```
+
+**Use our mental model.**
 
 </Prompt>
 
@@ -120,19 +130,21 @@ let knees = {}
 
 <Prompt>
 
-# Which one of these diagrams best matches your sketch and our mental model after that code runs?
+### Which one of these diagrams best matches your sketch and our mental model after that code runs?
+
+Only one of these diagrams matches our mental model. Before you confirm your choice, think about what’s wrong with the others.
 
 </Prompt>
 
 <Answer>
 
-**Diagram D is correct.** It shows bees and peas pointing to one object value, and knees variable pointing to another object value.
+**Diagram D is correct.** It shows `bees` and `peas` pointing to one object value, and `knees` variable pointing to another object value.
 
-Diagram A is wrong because it shows peas pointing to something that isn’t a value. A variable must point to a value.
+Diagram A is wrong because it shows `peas` pointing to something that isn’t a value. A variable must point to a value.
 
-Diagram B doesn’t match our mental model because it shows all variables pointing at the same value. However, {} creates a different object every time.
+Diagram B doesn’t match our mental model because it shows all variables pointing at the same value. However, `{}` creates a different object every time.
 
-Diagram C is wrong because it shows three objects. However, only two objects were created in this code example. Remember that = only points the variable on the left to the value of the expression on the right. That’s all it does.
+Diagram C is wrong because it shows three objects. However, only two objects were created in this code example. Remember that `=` only points the variable on the left to the value of the expression on the right. That’s all it does.
 
 ![https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612894276/just-javascript-email-images/jj05/quiz-images/jjs-05-02-d.jpg](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612894276/just-javascript-email-images/jj05/quiz-images/jjs-05-02-d.jpg)
 
@@ -148,14 +160,18 @@ Diagram C is wrong because it shows three objects. However, only two objects wer
 
 <Prompt>
 
-# Sketch a diagram of variables and values after this snippet of code runs. Use our mental model.
+# This Stuff Is Bananas
+
+Sketch a diagram of variables and values after this snippet of code runs.
 
 ```js
 let banana = function () {
-  return 2 + 2
-}
-let result = banana
+  return 2 + 2;
+};
+let result = banana;
 ```
+
+**Use our mental model.**
 
 </Prompt>
 
@@ -189,17 +205,19 @@ let result = banana
 
 <Prompt>
 
-# Which one of these diagrams best matches your sketch and our mental model after that code runs?
+### Which one of these diagrams best matches your sketch and our mental model after that code runs?
+
+Only one of these diagrams matches our mental model. Before you confirm your choice, think about what’s wrong with the others.
 
 </Prompt>
 
 <Answer>
 
-**Diagram D is correct.** It shows banana and result pointing to the same function value.
+**Diagram D is correct.** It shows `banana` and `result` pointing to the same function value.
 
 Diagram A is wrong because it shows them pointing to two different function values. However, we ran only one `function() {}` declaration, so only one function value was created.
 
-Diagrams B and C are wrong because they show the `result` variable pointing to the value 4. However, there was no function call, so the code inside the function is irrelevant.
+Diagrams B and C are wrong because they show the `result` variable pointing to the value `4`. However, there was no function call, so the code inside the function is irrelevant.
 
 Remember that `=` only means “connect the wire on the left to the value of expression on the right”. Since `banana` is pointing to a function value, `let result = banana` will make result point to the same value.
 
@@ -217,15 +235,19 @@ Remember that `=` only means “connect the wire on the left to the value of exp
 
 <Prompt>
 
-# Sketch a diagram of variables and values after this snippet of code runs. Use our mental model.
+# Gimme Two
+
+Sketch a diagram of variables and values after this snippet of code runs.
 
 ```js
 let ask = function () {
-  return 2
-}
-let halves = ask()
-let weeks = ask()
+  return 2;
+};
+let halves = ask();
+let weeks = ask();
 ```
+
+**Use our mental model.**
 
 </Prompt>
 
@@ -259,19 +281,21 @@ let weeks = ask()
 
 <Prompt>
 
-# Which one of these diagrams best matches your sketch and our mental model after that code runs?
+### Which one of these diagrams best matches your sketch and our mental model after that code runs?
+
+Only one of these diagrams matches our mental model. Before you confirm your choice, think about what’s wrong with the others.
 
 </Prompt>
 
 <Answer>
 
-**Diagram B is correct.** It shows the ask variable pointing to a function value, and halves and weeks variables pointing at the value 2.
+**Diagram B is correct.** It shows the `ask` variable pointing to a function value, and `halves` and `weeks` variables pointing at the value `2`.
 
-Diagram A is wrong because it shows multiple values for the number 2. In our mental model, each number only exists once.
+Diagram A is wrong because it shows multiple values for the number `2`. In our mental model, each number only exists once.
 
-Diagram C is wrong because it shows all variables pointing to the function value. However, halves and weeks should point to 2 because it’s the result of calling our function that gets assigned to them. That result is 2.
+Diagram C is wrong because it shows all variables pointing to the function value. However, `halves` and `weeks` should point to `2` because it’s the result of calling our function that gets assigned to them. That result is `2`.
 
-Diagram D is wrong because it shows the ask variable pointing to 2. However, it should be pointing to the function value that’s assigned to it.
+Diagram D is wrong because it shows the ask variable pointing to `2`. However, it should be pointing to the function value that’s assigned to it.
 
 ![https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612895890/just-javascript-email-images/jj05/quiz-images/jjs-05-04-b.jpg](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612895890/just-javascript-email-images/jj05/quiz-images/jjs-05-04-b.jpg)
 
@@ -287,15 +311,19 @@ Diagram D is wrong because it shows the ask variable pointing to 2. However, it 
 
 <Prompt>
 
-# Sketch a diagram of variables and values after this snippet of code runs. Use our mental model.
+# Nature vs Nurture
+
+Sketch a diagram of variables and values after this snippet of code runs.
 
 ```js
 let plant = function () {
-  return {}
-}
-let tree = plant()
-let flower = plant()
+  return {};
+};
+let tree = plant();
+let flower = plant();
 ```
+
+**Use our mental model.**
 
 </Prompt>
 
@@ -329,19 +357,21 @@ let flower = plant()
 
 <Prompt>
 
-# Which one of these diagrams best matches your sketch and our mental model after that code runs?
+### Which one of these diagrams best matches your sketch and our mental model after that code runs?
+
+Only one of these diagrams matches our mental model. Before you confirm your choice, think about what’s wrong with the others.
 
 </Prompt>
 
 <Answer>
 
-**Diagram C is correct.** It shows the plant variable pointing a function value, while tree and flower point to two different object values.
+**Diagram C is correct.** It shows the `plant` variable pointing a function value, while `tree` and `flower` point to two different object values.
 
 Diagram A doesn’t match our mental model because it shows three regular objects. Throughout this course, we’re going to distinguish functions as a separate type from regular objects.
 
-Diagram B is wrong because it shows tree and flower pointing to the same object. However, return {} runs twice — once for each function call — and so two different objects get created.
+Diagram B is wrong because it shows `tree` and `flower` pointing to the same object. However, `return {}` runs twice — once for each function call — and so two different objects get created.
 
-Diagram D is wrong because it shows all variables pointing to the same function value. However, the right side of the last two assignments included (), which indicates a function call. So tree and flower should point to the respective returned values rather than to the function itself.
+Diagram D is wrong because it shows all variables pointing to the same function value. However, the right side of the last two assignments included `()`, which indicates a function call. So `tree` and `flower` should point to the respective returned values rather than to the function itself.
 
 ![https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612897281/just-javascript-email-images/jj05/quiz-images/jjs-05-05-c.jpg](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612897281/just-javascript-email-images/jj05/quiz-images/jjs-05-05-c.jpg)
 
@@ -357,18 +387,22 @@ Diagram D is wrong because it shows all variables pointing to the same function 
 
 <Prompt>
 
-# Sketch a diagram of variables and values after this snippet of code runs. Use our mental model.
+# There Can't Be Too Much Tofu
+
+Sketch a diagram of variables and values after this snippet of code runs.
 
 ```js
 let cook = function () {
-  return 'tofu'
-}
+  return 'tofu';
+};
 let make = function () {
-  return 'tofu'
-}
-let food = cook()
-let fuel = make()
+  return 'tofu';
+};
+let food = cook();
+let fuel = make();
 ```
+
+**Use our mental model.**
 
 </Prompt>
 
@@ -402,17 +436,19 @@ let fuel = make()
 
 <Prompt>
 
-# Which one of these diagrams best matches your sketch and our mental model after that code runs?
+### Which one of these diagrams best matches your sketch and our mental model after that code runs?
+
+Only one of these diagrams matches our mental model. Before you confirm your choice, think about what’s wrong with the others.
 
 </Prompt>
 
 <Answer>
 
-**Diagram A is correct.** It shows the cook and make variables pointing to two different function values, while food and fuel variables are pointing to the same string value.
+**Diagram A is correct.** It shows the `cook` and `make` variables pointing to two different function values, while `food` and `fuel` variables are pointing to the same string value.
 
-Diagrams B and C are wrong because they show cook and make pointing to the same function value. However, every time we execute function() {}, JavaScript creates a brand new function value. So they should point to different functions.
+Diagrams B and C are wrong because they show `cook` and `make` pointing to the same function value. However, every time we execute `function() {}`, JavaScript creates a brand new function value. So they should point to different functions.
 
-Diagram D doesn’t match our mental model because it shows two different "tofu" string values. However, in our mental model there is only one value for every distinct string.
+Diagram D doesn’t match our mental model because it shows two different `"tofu"` string values. However, in our mental model there is only one value for every distinct string.
 
 ![https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612897615/just-javascript-email-images/jj05/quiz-images/jjs-05-06-a.jpg](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612897615/just-javascript-email-images/jj05/quiz-images/jjs-05-06-a.jpg)
 
@@ -428,17 +464,21 @@ Diagram D doesn’t match our mental model because it shows two different "tofu"
 
 <Prompt>
 
-# Sketch a diagram of variables and values after this snippet of code runs. Use our mental model.
+# Copy Pasta
+
+Sketch a diagram of variables and values after this snippet of code runs.
 
 ```js
 let spaghetti = function () {
-  return 2 + 2
-}
-let fettuccine = spaghetti
+  return 2 + 2;
+};
+let fettuccine = spaghetti;
 let gnocchi = function () {
-  return 2 + 2
-}
+  return 2 + 2;
+};
 ```
+
+**Use our mental model.**
 
 </Prompt>
 
@@ -472,17 +512,19 @@ let gnocchi = function () {
 
 <Prompt>
 
-# Which one of these diagrams best matches your sketch and our mental model after that code runs?
+### Which one of these diagrams best matches your sketch and our mental model after that code runs?
+
+Only one of these diagrams matches our mental model. Before you confirm your choice, think about what’s wrong with the others.
 
 </Prompt>
 
 <Answer>
 
-**Diagram B is correct.** It shows the spaghetti and fettucine variables pointing to the same function value, and gnocchi pointing to another function value.
+**Diagram B is correct.** It shows the `spaghetti` and `fettucine` variables pointing to the same function value, and `gnocchi` pointing to another function value.
 
-Diagrams A and C are wrong because they show fettucine pointing to the value 4. However, fettucine only points to a function value. We never called that function, so what it returns is irrelevant.
+Diagrams A and C are wrong because they show `fettucine` pointing to the value `4`. However, `fettucine` only points to a function value. We never called that function, so what it returns is irrelevant.
 
-Diagram D is wrong because it shows all the variables pointing to the same function. However, each function() {} creates a new function value. So spaghetti and gnocchi should point at different function values.
+Diagram D is wrong because it shows all the variables pointing to the same function. However, each `function() {}` creates a new function value. So `spaghetti` and `gnocchi` should point at different function values.
 
 ![https://res.cloudinary.com/dg3gyk0gu/image/upload/v1580682686/just-javascript-email-images/jj05/quiz-images/jj04-q4-2.png](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1580682686/just-javascript-email-images/jj05/quiz-images/jj04-q4-2.png)
 
