@@ -13,7 +13,6 @@ import {useProgress} from 'context/progress-context'
 export default function Learn() {
   const isVerifyingLogin = useLoginRequired()
   const {progress} = useProgress()
-  console.log(progress)
 
   const {isUnclaimedBulkPurchaser, viewer, loading, viewingAsUserEmail} =
     useViewer()
