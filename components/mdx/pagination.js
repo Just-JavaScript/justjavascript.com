@@ -12,21 +12,21 @@ const Pagination = (props) => {
   const nextPath = isEmpty(quiz) ? props.next : `/quiz/${quizSlug}`
 
   return (
-    <div className="flex items-center justify-center bg-gray-100 sm:mt-32 mt-16 absolute left-0 w-full">
+    <div className="absolute left-0 flex items-center justify-center w-full bg-gray-100">
       {/* {props.prev && (
         <Link href={props.prev}>
-          <a className="lg:py-48 sm:py-32 py-24 px-8">
+          <a className="px-8 py-24 lg:py-48 sm:py-32">
             ←
           </a>
         </Link>
       )} */}
       {nextPath && (
         <Link href={nextPath}>
-          <a className="group flex flex-col items-center justify-center w-full lg:py-48 sm:py-32 py-24">
-            <span className="uppercase font-bold text-sm pb-4 text-orange-500 tracking-wider no-underline">
+          <a className="flex flex-col items-center justify-center w-full py-24 group lg:py-48 sm:py-32">
+            <span className="pb-4 text-sm font-bold tracking-wider text-orange-500 no-underline uppercase">
               {'up next'}
             </span>
-            <div className="flex items-center lg:text-5xl sm:text-4xl text-3xl font-bold font-serif leading-tight group-hover:underline">
+            <div className="flex items-center font-serif text-3xl font-bold leading-tight lg:text-5xl sm:text-4xl group-hover:underline">
               {(quiz && `Quiz: ${get(quiz, 'title')}`) || props.children} →
             </div>
           </a>

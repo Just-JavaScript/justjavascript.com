@@ -1,4 +1,3 @@
-import isEmpty from 'lodash/isEmpty'
 import {getTokenFromCookieHeaders} from 'utils/auth'
 import fetchEggheadUser from 'utils/fetch-egghead-user'
 import firebaseAdminApi from 'utils/firebase/admin'
@@ -9,11 +8,8 @@ const handler = async (req, res) => {
     console.error('non-post request made')
     res.status(404).end()
   }
-  const answer = req.body
 
-  if (isEmpty(answer) || isEmpty(answer?.quiz?.question?.id)) {
-    return res.status(400).json({error: 'Malformed Request Body.'})
-  }
+  const {episode, progress} = req.body
 
   try {
     const cookieHeader = req.headers.cookie
@@ -32,11 +28,13 @@ const handler = async (req, res) => {
       throw new Error('token is empty')
     }
 
-    await firebaseApi.setAnswerForUser({
+    await firebaseApi.setUserProgress({
       firebaseAuthToken: firebaseToken,
-      answer,
+      episode,
+      progress,
     })
-    return res.status(200).json({status: true})
+
+    res.status(200).json({status: true})
   } catch (e) {
     // eslint-disable-next-line no-console
     console.error(e)

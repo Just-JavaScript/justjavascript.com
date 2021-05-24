@@ -7,6 +7,7 @@ import {scroller} from 'react-scroll'
 import slugify from 'slugify'
 import {getUserAnswerFromLocalStorage} from 'utils/quiz-answers-in-local-storage'
 import {useViewer} from 'context/viewer-context'
+import {useProgress} from 'context/progress-context'
 
 export default function useEggheadQuiz(quiz, currentQuestion, setCurrent) {
   const quizQuestions = get(quiz, 'questions') || null
@@ -66,8 +67,20 @@ export default function useEggheadQuiz(quiz, currentQuestion, setCurrent) {
   const currentAnswer =
     getUserAnswerFromLocalStorage(get(currentQuestion, 'id')) || null
 
+  const {setProgress} = useProgress()
+
   function handleContinue() {
     if (isLastQuestion) {
+      // set quiz as complete
+      setProgress({
+        episode: router.pathname.substring(1),
+        progress: {
+          completed: true,
+          date: Date.now(),
+        },
+        setCompleted: () => {},
+      })
+      // navigate to completed page
       router.push({
         pathname: `/quiz/completed`,
         query: {quiz: router.pathname.replace('/quiz/', '')},
