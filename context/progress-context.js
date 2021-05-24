@@ -16,6 +16,7 @@ export const ProgressProvider = ({children}) => {
   const {data, isValidating, error} = useSWR('/api/get-progress', fetcher, {
     revalidateOnFocus: false,
   })
+
   async function setProgress({episode, progress, setCompleted}) {
     setCompleted()
     return await axios
@@ -34,7 +35,7 @@ export const ProgressProvider = ({children}) => {
     <ProgressContext.Provider
       value={{
         progress: data,
-        setProgress,
+        setProgress: (props) => (isValidating ? {} : setProgress(props)),
         isValidating,
         error,
       }}

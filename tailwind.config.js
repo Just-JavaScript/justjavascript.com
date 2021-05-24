@@ -226,7 +226,7 @@ module.exports = {
         sans: {
           css: {
             fontFamily: theme('fontFamily.sans').join(', '),
-            fontSize: theme('fontSize.base'),
+            fontSize: theme('fontSize.lg'),
             color: theme('colors.black'),
             'h1, h2, h3': {
               textAlign: 'left',

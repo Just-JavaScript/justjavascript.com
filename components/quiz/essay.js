@@ -44,15 +44,16 @@ const Essay = (props) => {
         <form className="flex flex-col" onSubmit={formik.handleSubmit}>
           {isAnswered ? (
             <motion.div>
+              <div className="pb-2 text-lg font-semibold">Your answer</div>
               <Markdown className="h-auto prose rounded-md sm:prose-lg">
                 {formik.values.value}
               </Markdown>
             </motion.div>
           ) : (
             <>
-              {/* <label className="text-lg font-semibold" htmlFor="value">
+              <label className="pb-2 text-lg font-semibold" htmlFor="value">
                 Your answer
-              </label> */}
+              </label>
               <textarea
                 className="w-full h-40 p-3 prose border border-gray-200 rounded-md bg-gray-50 prose-sans max-w-none"
                 disabled={isDisabled}

@@ -1,3 +1,4 @@
+import React from 'react'
 import Tooltip from '@reach/tooltip'
 import Finish from 'components/quiz/finish'
 import Continue from 'components/quiz/continue'
@@ -14,8 +15,9 @@ export default function Wrapper({
   nested,
 }) {
   const displayContinue =
-    currentQuestion.id === question.id &&
+    !nested &&
     state.matches('answered') &&
+    currentQuestion.id === question.id &&
     (question.answer?.description || question.correctChoices) &&
     !isLastQuestion
 
@@ -63,37 +65,46 @@ export default function Wrapper({
         {!displayContinue && !displaySkip && !nested && (
           <div className="py-16" />
         )}
-        <motion.div className="flex-grow h-full flex flex-col justify-end">
+        <motion.div
+          className={`flex flex-col ${
+            displayFinish ? 'justify-start' : 'justify-end'
+          } flex-grow h-full`}
+        >
           <AnimatePresence>
             {displaySkip && (
               <motion.div
+                key="skip"
                 initial={{opacity: 0}}
                 animate={{opacity: 1}}
                 exit={{opacity: 0}}
-                className="w-full flex items-center justify-center py-16"
+                className="flex items-center justify-center w-full py-16"
               >
                 <Tooltip
-                  label="Next question"
-                  className="px-3 py-2 border border-gray-200 bg-white shadow-sm rounded-sm text-sm"
+                  label="Skip and continue"
+                  className="px-3 py-2 text-sm bg-white border border-gray-200 rounded-sm shadow-sm"
                 >
                   <button
                     type="button"
                     onClick={handleSkip}
-                    className="w-10 h-10 rounded-full bg-white border border-cool-gray-200 flex items-center justify-center text-center text-gray-500 hover:text-gray-900 ease-in-out transition-colors duration-150"
+                    className="flex items-center justify-center p-4 text-center text-gray-800 transition-colors duration-150 ease-in-out bg-white border rounded-full border-cool-gray-200 hover:text-gray-900"
                   >
-                    ↓
+                    <span className="sr-only">Skip and continue</span>
+                    <i className=" gg-arrow-down" aria-hidden="true" />
                   </button>
                 </Tooltip>
               </motion.div>
             )}
-            {!displaySkip && !displayContinue && <div />}
+            {!displaySkip && !displayContinue && <div key="empty" />}
+            {displayFinish && (
+              <div
+                className="flex items-center justify-center w-full"
+                key="finish"
+              >
+                <Finish onClick={handleContinue} />
+              </div>
+            )}
           </AnimatePresence>
         </motion.div>
-        {displayFinish && (
-          <div className="w-full flex items-center justify-center py-16">
-            <Finish onClick={handleContinue} />
-          </div>
-        )}
       </div>
     </AnimateSharedLayout>
   )

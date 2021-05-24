@@ -11,7 +11,7 @@ const Header = ({children, ...props}) => {
       <nav
         className={`flex items-center ${
           sellingLive ? 'justify-between' : 'justify-center'
-        } w-full max-w-screen-xl sm:mx-auto`}
+        } w-full`}
       >
         <Link href={purchased ? '/learn' : '/'}>
           <a

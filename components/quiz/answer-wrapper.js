@@ -7,7 +7,7 @@ export default function AnswerWrapper({children, className}) {
       className={
         className
           ? className
-          : 'w-full flex flex-col md:p-8 p-5 md:rounded-lg bg-white border border-gray-100'
+          : 'w-full flex flex-col md:p-8 p-5 md:rounded-b-lg border-t border-gray-100 bg-white '
       }
     >
       {children}

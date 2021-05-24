@@ -92,14 +92,14 @@ const MultipleChoice = (props) => {
                             ? choice.value === currentAnswer.value
                             : false)
                         }
-                        className="mr-2 -mt-1 form-radio bg-cool-gray-100 border border-cool-gray-200"
+                        className="mr-2 -mt-1 border form-radio bg-cool-gray-100 border-cool-gray-200"
                       />
                       {isMDX ? (
                         <span className="prose prose-sans max-w-none">
                           {choice.label}
                         </span>
                       ) : (
-                        <Markdown className="inline-block prose md:prose-lg text-gray-900">
+                        <Markdown className="inline-block prose text-gray-900 md:prose-lg">
                           {choice.label}
                         </Markdown>
                       )}
@@ -107,7 +107,7 @@ const MultipleChoice = (props) => {
                         <img
                           src={choice.imageUrl}
                           alt={choice.label}
-                          className="border border-gray-200 rounded-lg mt-1"
+                          className="mt-1 border border-gray-200 rounded-lg"
                         />
                       )}
                     </label>
@@ -131,7 +131,7 @@ const MultipleChoice = (props) => {
                 ) : (
                   <>
                     <textarea
-                      className="w-full p-3 bg-cool-gray-100 border border-gray-200 prose prose-sans max-w-none rounded-md h-24 mt-4"
+                      className="w-full h-24 p-3 mt-4 prose bg-gray-100 border border-gray-200 rounded-md prose-sans max-w-none"
                       disabled={isDisabled}
                       id="comment"
                       name="comment"

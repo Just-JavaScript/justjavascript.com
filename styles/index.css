@@ -4,6 +4,8 @@
 
 @tailwind utilities;
 
+@import './icons.css';
+
 /*
   Hide the focus indicator if the element receives focus via the mouse,
   but it will still show up on keyboard focus. 
@@ -14,7 +16,7 @@
 }
 
 ::selection {
-  @apply bg-yellow-400 text-black;
+  @apply text-black bg-yellow-400;
 }
 
 /* START — @reach/menu-button */
@@ -37,7 +39,7 @@
 
 [data-reach-menu-list],
 [data-reach-menu-items] {
-  @apply block border bg-white border-gray-200 rounded-lg shadow-md py-1 outline-none;
+  @apply block py-1 bg-white border border-gray-200 rounded-lg shadow-md outline-none;
 }
 
 [data-reach-menu-item] {

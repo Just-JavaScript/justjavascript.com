@@ -81,13 +81,13 @@ const Sketch = (props) => {
                   )}
                 </label>
                 {state.matches('answered') ? (
-                  <Markdown className="p-3 mt-4">
+                  <Markdown className="p-3 mt-4 prose prose-sans">
                     {formik.values.comment}
                   </Markdown>
                 ) : (
                   <>
                     <textarea
-                      className="w-full p-3 bg-cool-gray-100 border border-gray-200 prose prose-sans max-w-none rounded-md h-24 mt-4"
+                      className="w-full h-24 p-3 mt-4 bg-gray-100 border border-gray-200 rounded-md max-w-none"
                       disabled={isDisabled}
                       id="comment"
                       name="comment"
@@ -119,7 +119,9 @@ const Sketch = (props) => {
               />
             )
           )}
-          {formik.submitCount > 0 && formik.errors.value}
+          {formik.submitCount > 0 && (
+            <div className="pt-3">{formik.errors.value}</div>
+          )}
         </form>
         {/* <AnimatePresence>
           {explanation && state.matches('answered') && (
