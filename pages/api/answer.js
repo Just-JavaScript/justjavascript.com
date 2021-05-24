@@ -2,7 +2,7 @@ import isEmpty from 'lodash/isEmpty'
 import {getTokenFromCookieHeaders} from 'utils/auth'
 import fetchEggheadUser from 'utils/fetch-egghead-user'
 import firebaseAdminApi from 'utils/firebase/admin'
-import quizApi from 'utils/firebase/db'
+import firebaseApi from 'utils/firebase/db'
 
 const handler = async (req, res) => {
   if (req.method !== 'POST') {
@@ -32,7 +32,10 @@ const handler = async (req, res) => {
       throw new Error('token is empty')
     }
 
-    await quizApi.setAnswerForUser({firebaseAuthToken: firebaseToken, answer})
+    await firebaseApi.setAnswerForUser({
+      firebaseAuthToken: firebaseToken,
+      answer,
+    })
     return res.status(200).json({status: true})
   } catch (e) {
     // eslint-disable-next-line no-console
