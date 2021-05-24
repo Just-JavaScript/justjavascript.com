@@ -3,6 +3,7 @@ import {motion} from 'framer-motion'
 const Spinner = ({className = 'text-black'}) => {
   return (
     <svg
+      aria-hidden="true"
       className={className}
       xmlns="http://www.w3.org/2000/svg"
       width="24"

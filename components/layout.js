@@ -19,7 +19,7 @@ const Layout = ({
         <Navigation>{navContent}</Navigation>
         {headerContent}
         {title && (
-          <div className="relative flex items-center justify-center pt-24 pb-40 text-center sm:pb-48">
+          <header className="relative flex items-center justify-center pt-24 pb-40 text-center sm:pb-48">
             <h1 className="relative z-10 mb-8 overflow-hidden font-serif text-5xl font-extrabold lg:text-9xl md:text-6xl sm:text-5xl leading-tighter">
               {title}
             </h1>
@@ -28,7 +28,7 @@ const Layout = ({
                 {('0' + episode).slice(-2)}
               </span>
             )}
-          </div>
+          </header>
         )}
         <article className={`${maxWidth} ${className} mx-auto`}>
           {children}
