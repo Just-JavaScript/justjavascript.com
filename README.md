@@ -219,3 +219,4 @@ We are setting the `auth.uid` to be the `eggheadUser.contact_id`. We are also se
 2. Click "Start Collection"
 3. name the collection `users`
 4. add the "Document ID" of `test_id` to add the first document in the collection
+
