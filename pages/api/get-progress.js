@@ -1,8 +1,7 @@
-import isEmpty from 'lodash/isEmpty'
 import {getTokenFromCookieHeaders} from 'utils/auth'
 import fetchEggheadUser from 'utils/fetch-egghead-user'
 import firebaseAdminApi from 'utils/firebase/admin'
-import quizApi from 'utils/firebase/db'
+import firebaseApi from 'utils/firebase/db'
 
 const handler = async (req, res) => {
   if (req.method !== 'GET') {
@@ -27,7 +26,7 @@ const handler = async (req, res) => {
       throw new Error('token is empty')
     }
 
-    const progress = await quizApi.getProgressForUser({
+    const progress = await firebaseApi.getProgressForUser({
       firebaseAuthToken: firebaseToken,
     })
     res.status(200).json(progress)
