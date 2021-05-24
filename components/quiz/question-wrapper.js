@@ -4,21 +4,25 @@ import {motion, AnimateSharedLayout} from 'framer-motion'
 export default function QuestionWrapper({children, number, className, nested}) {
   return (
     <div
-      className={className ? className : 'md:px-8 px-5 h-full md:py-8 py-8'}
+      className={
+        className
+          ? className
+          : 'md:px-8 px-5 h-full md:py-8 py-8 bg-white rounded-t-lg'
+      }
       id={number}
     >
       <AnimateSharedLayout>
         <motion.div layout className="relative">
           {number &&
             (nested ? (
-              <div className="transform sm:-translate-x-8 sm:absolute sm:mb-0 mb-3">
-                <span className="mr-2 p-2  w-6 h-6 text-xs lining-nums font-bold inline-flex justify-center items-center text-cool-gray-500">
+              <div className="mb-3 transform sm:-translate-x-8 sm:absolute sm:mb-0">
+                <span className="inline-flex items-center justify-center w-6 h-6 p-2 mr-2 text-xs font-bold lining-nums text-cool-gray-500">
                   {number}
                 </span>
               </div>
             ) : (
               <div className="mb-4">
-                <span className="mr-2 p-2 rounded-full w-6 h-6 text-xs lining-nums font-bold inline-flex justify-center items-center bg-black text-white font-mono">
+                <span className="inline-flex items-center justify-center w-6 h-6 p-2 mr-2 font-mono text-xs font-bold text-white bg-black rounded-full lining-nums">
                   {number}
                 </span>
               </div>

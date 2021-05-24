@@ -14,12 +14,6 @@ export const postQuizAnswer = (context) =>
     }
     console.debug('submitted: ', dataToSubmit)
 
-    axios.post('/api/answer', dataToSubmit)
     storeUserAnswerInLocalStorage(context.currentQuestionId, context.userAnswer)
-
-    if (true) {
-      setTimeout(() => resolve(), 800)
-    } else {
-      reject()
-    }
+    axios.post('/api/answer', dataToSubmit).then(() => resolve())
   })

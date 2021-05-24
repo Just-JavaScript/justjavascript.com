@@ -50,7 +50,7 @@ const MultipleQuestions = (props) => {
   isParentQuestionAnswered && storeUserAnswerInLocalStorage(parentQuestionId)
 
   return (
-    <QuizWrapper {...props}>
+    <QuizWrapper {...props} nested>
       <div className="py-8 md:py-8">
         <div className="px-5 mb-4 sm:px-0">
           <span className="inline-flex items-center justify-center w-6 h-6 p-2 mr-2 font-mono text-xs font-bold text-white bg-black rounded-full lining-nums">
@@ -102,7 +102,7 @@ const MultipleQuestions = (props) => {
                 <ScrollElement name={question.id} />
                 {index <= currentQuestion.index && (
                   <>
-                    <AnswerWrapper className="flex flex-col w-full p-3 border md:p-4 md:rounded-lg bg-cool-gray-100 border-cool-gray-100">
+                    <AnswerWrapper className="flex flex-col w-full p-3 bg-white border border-gray-200 shadow-lg md:p-4 md:rounded-lg">
                       <QuestionToShow
                         nested
                         question={question}
@@ -133,14 +133,11 @@ const MultipleQuestions = (props) => {
                         currentQuestion={currentQuestion}
                       />
                     </AnswerWrapper>
-                    {/* {displayContinue && (
-                      <motion.div
-                        layout
-                        className="flex items-center justify-center w-full py-3"
-                      >
+                    {displayContinue && (
+                      <div className="flex items-center justify-center w-full py-3">
                         <Continue onClick={props.handleContinue} />
-                      </motion.div>
-                    )} */}
+                      </div>
+                    )}
                     {!displayContinue && !isLastQuestion && (
                       <div className="absolute bottom-0 left-0 z-10 flex items-center justify-center w-full transform translate-y-11">
                         <div className="flex flex-col items-center">

@@ -50,32 +50,33 @@ const Invoice = () => {
   }
   return (
     <Layout>
-      <div className="max-w-screen-md mx-auto py-16">
-        <div className="flex sm:flex-row flex-col items-center justify-between py-5 print:hidden">
-          <h2 className="text-lg font-medium leading-tight sm:mb-0 mb-4">
+      <div className="max-w-screen-md py-16 mx-auto">
+        <div className="flex flex-col items-center justify-between py-5 sm:flex-row print:hidden">
+          <h2 className="mb-4 text-lg font-medium leading-tight sm:mb-0">
             Your Invoice for Just JavaScript by Dan Abramov
           </h2>
           <button
             onClick={() => {
               window.print()
             }}
-            className="flex items-center leading-6 px-5 py-3 rounded-md bg-gray-700 text-white hover:bg-gray-900 transition-colors ease-in-out duration-200"
+            className="flex items-center px-5 py-3 leading-6 text-white transition-colors duration-200 ease-in-out bg-gray-700 rounded-md hover:bg-gray-900"
           >
             Download PDF or Print
           </button>
         </div>
         <TeamInvites teamPurchases={teamPurchases} />
-        <div className="border border-gray-200 print:border-none rounded-sm">
+        <div className="border border-gray-200 rounded-sm print:border-none">
           <div className="px-10 py-16">
-            <div className="grid grid-cols-3 w-full justify-between items-start">
-              <div className="col-span-2 flex items-center">
+            <div className="grid items-start justify-between w-full grid-cols-3">
+              <div className="flex flex-col items-start col-span-2 justify-cenbter">
                 {/* <Logo className="w-10 mr-2" /> */}
-                <span className="sm:inline-block hidden text-lg font-semibold">
+                <span className="hidden font-serif text-3xl font-bold leading-none sm:inline-block">
                   Just JavaScript
                 </span>
+                <span className="text-gray-600">by Dan Abramov</span>
               </div>
               <div>
-                <h5 className="uppercase text-xs mb-2 text-gray-500">From</h5>
+                <h5 className="mb-2 text-xs text-gray-500 uppercase">From</h5>
                 Just JavaScript by Dan Abramov
                 <br />
                 co egghead.io LLC
@@ -89,7 +90,7 @@ const Invoice = () => {
             </div>
             <div className="grid grid-cols-3 pb-64">
               <div className="col-span-2">
-                <h5 className="text-2xl font-bold mb-2">Invoice</h5>
+                <h5 className="mb-2 text-2xl font-bold">Invoice</h5>
                 {firstPurchase && (
                   <>
                     Invoice ID: <strong>{firstPurchase.guid}</strong>
@@ -102,7 +103,7 @@ const Invoice = () => {
                 )}
               </div>
               <div className="pt-13">
-                <h5 className="uppercase text-xs mb-2 text-gray-500">
+                <h5 className="mb-2 text-xs text-gray-500 uppercase">
                   Invoice For
                 </h5>
                 <div>
@@ -121,7 +122,7 @@ const Invoice = () => {
                 />
               </div>
             </div>
-            <table className="table-auto w-full text-left">
+            <table className="w-full text-left table-auto">
               <thead className="table-header-group">
                 <tr className="table-row">
                   <th>Description</th>
