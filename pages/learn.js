@@ -99,11 +99,7 @@ export default function Learn() {
       }
 
   return (
-    <Layout
-      className="pb-40 mx-auto -mt-16 sm:-mt-24"
-      maxWidth=""
-      background="bg-gray-100"
-    >
+    <Layout className="pb-40 mx-auto " maxWidth="" background="bg-gray-100">
       {/* <h1 className="pb-24 font-serif text-5xl font-extrabold tracking-tight text-center lg:text-8xl sm:text-7xl leading-tighter">
         Explore JavaScript Universe
       </h1> */}

@@ -7,7 +7,7 @@ const Header = ({children, ...props}) => {
   const {purchased, viewer, logout} = useViewer()
 
   return (
-    <div className="mb-16 sm:mb-24">
+    <div className="absolute top-0 left-0 w-full p-5">
       <nav
         className={`flex items-center ${
           sellingLive ? 'justify-between' : 'justify-center'
@@ -16,12 +16,12 @@ const Header = ({children, ...props}) => {
         <Link href={purchased ? '/learn' : '/'}>
           <a
             aria-label="Homepage"
-            className="py-5 font-serif text-xl font-extrabold leading-tight sm:text-2xl sm:py-8"
+            className="font-serif text-xl font-extrabold leading-tight sm:text-2xl"
           >
             Just JavaScript
           </a>
         </Link>
-        <div className="flex items-center justify-center">
+        <div className="flex items-center justify-center space-x-3">
           {sellingLive && (
             <>
               {viewer ? (
@@ -35,9 +35,7 @@ const Header = ({children, ...props}) => {
               )}
             </>
           )}
-          {children && (
-            <div className="flex items-center px-5 py-3">{children}</div>
-          )}
+          {children && <div className="flex items-center p-1">{children}</div>}
         </div>
       </nav>
     </div>

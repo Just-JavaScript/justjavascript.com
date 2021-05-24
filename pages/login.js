@@ -10,7 +10,7 @@ const loginSchema = yup.object().shape({
 
 const LoginForm = ({
   image,
-  className = 'w-full mx-auto flex flex-col items-center justify-center text-gray-900',
+  className = 'flex flex-col items-center justify-center w-full mx-auto text-gray-900',
   children,
   button = 'Email a login link',
   label = 'Email address',
@@ -22,17 +22,17 @@ const LoginForm = ({
   const {requestSignInEmail} = useViewer()
 
   return (
-    <Layout>
+    <Layout background="bg-gray-100">
       <div className={className}>
         {image}
         <div className={`w-full mx-auto rounded-lg ${image ? 'mt-5' : ''}`}>
           {isSubmitted && (
-            <h2 className="text-center text-3xl leading-9 font-bold font-serif">
+            <h2 className="font-serif text-3xl font-bold leading-9 text-center">
               Email Sent
             </h2>
           )}
           {isError && (
-            <h2 className="text-center text-3xl leading-9 font-bold font-serif">
+            <h2 className="font-serif text-3xl font-bold leading-9 text-center">
               Something went wrong!
             </h2>
           )}
@@ -42,13 +42,13 @@ const LoginForm = ({
               children
             ) : (
               <>
-                <h2 className="text-center text-6xl leading-tighter font-extrabold font-serif">
+                <h2 className="font-serif text-6xl font-extrabold text-center leading-tighter">
                   Log in
                 </h2>
                 <p></p>
               </>
             ))}
-          <div className="sm:mt-8 mt-4 sm:mx-auto sm:w-full sm:max-w-xl">
+          <div className="mt-4 sm:mt-8 sm:mx-auto sm:w-full sm:max-w-xl">
             <div className="pb-8">
               {!isSubmitted && !isError && (
                 <Formik
@@ -80,11 +80,11 @@ const LoginForm = ({
                           <div className="w-full text-center">
                             <label
                               htmlFor="email"
-                              className="block text-sm font-large leading-5 text-gray-700"
+                              className="block pb-2 leading-5 text-gray-700"
                             >
                               {label}
                             </label>
-                            <div className="mt-1 relative border-b-2 border-gray-200">
+                            <div className="relative">
                               <input
                                 required
                                 id="email"
@@ -92,17 +92,17 @@ const LoginForm = ({
                                 value={values.email}
                                 onChange={handleChange}
                                 onBlur={handleBlur}
-                                className="form-input border-0 py-4 placeholder-gray-600 block w-full sm:text-lg sm:leading-5 text-center font-serif font-semibold"
+                                className="block w-full max-w-sm py-4 mx-auto font-sans text-center placeholder-gray-400 border-0 shadow-lg form-input sm:text-lg sm:leading-5"
                                 placeholder="you@example.com"
                                 type="email"
                               />
                             </div>
                           </div>
-                          <div className="flex justify-center items-center w-full">
+                          <div className="flex items-center justify-center w-full">
                             <button
                               type="submit"
                               disabled={isSubmitting}
-                              className="mt-8 inline-flex items-center px-16 py-4 border border-transparent text-base leading-6 font-bold rounded-md text-white bg-black transition-transform transform hover:scale-105 ease-in-out duration-150"
+                              className="inline-flex items-center px-16 py-4 mt-8 text-base font-bold leading-6 text-white transition-transform duration-150 ease-in-out transform bg-black border border-transparent rounded-md hover:scale-105"
                             >
                               {button}
                             </button>
@@ -114,8 +114,8 @@ const LoginForm = ({
                 </Formik>
               )}
               {isSubmitted && (
-                <div className="text-center leading-tight space-y-4">
-                  <h3 className="text-xl leading-tighter font-semibold">
+                <div className="space-y-4 leading-tight text-center">
+                  <h3 className="text-xl font-semibold leading-tighter">
                     Please check your inbox for your sign in link.
                   </h3>
                   <p>
