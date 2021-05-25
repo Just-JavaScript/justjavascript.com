@@ -43,9 +43,9 @@ const Invoice = () => {
     (purchase) => purchase.quantity > 1
   )
   const totalPrice = getTotalPrice(sitePurchases)
-  const isVerifying = useLoginRequired()
+  const {isVerifyingLogin} = useLoginRequired()
 
-  if (isVerifying) {
+  if (isVerifyingLogin) {
     return null
   }
   return (

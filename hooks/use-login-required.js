@@ -19,5 +19,5 @@ export default function useLoginRequired() {
     }
   }, [loginRequired])
 
-  return isVerifying
+  return {isVerifyingLogin: isVerifying, disableLoginForDev}
 }

@@ -8,7 +8,6 @@ export default function useSellingLive() {
 
   React.useEffect(() => {
     const {live} = queryString.parse(window.location.search)
-    console.log(queryString.parse(window.location.search))
     setSellingLive(SELLING_LIVE || live === 'true')
   }, [])
 

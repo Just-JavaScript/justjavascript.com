@@ -11,17 +11,17 @@ import WelcomeMessage from 'components/welcome-message'
 import {useProgress} from 'context/progress-context'
 
 export default function Learn() {
-  const isVerifyingLogin = useLoginRequired()
+  const {isVerifyingLogin, disableLoginForDev} = useLoginRequired()
   const {progress} = useProgress()
 
   const {isUnclaimedBulkPurchaser, viewer, loading, viewingAsUserEmail} =
     useViewer()
+
   useRedirectUnclaimedBulkToInvoice(isUnclaimedBulkPurchaser)
+
   if (
-    isVerifyingLogin ||
-    isUnclaimedBulkPurchaser ||
-    isEmpty(viewer) ||
-    loading
+    !disableLoginForDev() &&
+    (isVerifyingLogin || isUnclaimedBulkPurchaser || isEmpty(viewer) || loading)
   ) {
     return null
   }

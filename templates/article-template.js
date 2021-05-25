@@ -24,7 +24,7 @@ const Article = ({
   const router = useRouter()
   const EPISODE_ID = router.pathname.substring(1)
   const {progress, setProgress} = useProgress()
-  const isVerifyingLogin = useLoginRequired()
+  const {isVerifyingLogin, disableLoginForDev} = useLoginRequired()
   const {isUnclaimedBulkPurchaser, loading} = useViewer()
   const currentEpisodeProgress = progress && progress[EPISODE_ID]
   const [completed, setCompleted] = React.useState(
@@ -51,7 +51,10 @@ const Article = ({
     currentEpisodeProgress && setCompleted(currentEpisodeProgress.completed)
   }, [currentEpisodeProgress])
 
-  if (isVerifyingLogin || isUnclaimedBulkPurchaser || loading) {
+  if (
+    !disableLoginForDev() &&
+    (isVerifyingLogin || isUnclaimedBulkPurchaser || loading)
+  ) {
     return null
   }
 

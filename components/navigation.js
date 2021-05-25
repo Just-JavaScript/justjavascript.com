@@ -1,10 +1,12 @@
 import Link from 'next/link'
 import useSellingLive from 'hooks/use-selling-live'
 import {useViewer} from 'context/viewer-context'
+import useLoginRequired from 'hooks/use-login-required'
 
 const Header = ({children, ...props}) => {
   const sellingLive = useSellingLive()
   const {purchased, viewer, logout} = useViewer()
+  const {disableLoginForDev} = useLoginRequired()
 
   return (
     <div className="absolute top-0 left-0 w-full p-5">
@@ -13,7 +15,9 @@ const Header = ({children, ...props}) => {
           sellingLive ? 'justify-between' : 'justify-center'
         } w-full`}
       >
-        <Link href={purchased ? '/learn' : '/'}>
+        <Link
+          href={purchased ? '/learn' : disableLoginForDev() ? '/learn' : '/'}
+        >
           <a
             aria-label="Homepage"
             className="font-serif text-xl font-extrabold leading-tight sm:text-2xl"
