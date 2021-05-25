@@ -61,8 +61,8 @@ const Article = ({
   return (
     <Layout navContent={<ToC />} title={title} episode={episode} {...props}>
       <main className="prose prose-lg lg:prose-xl max-w-none">{children}</main>
-      <footer className="mt-16 text-center sm:mt-32">
-        <div className="flex flex-col items-center justify-center py-24 lg:py-48 sm:py-32">
+      <footer className="text-center">
+        <div className="flex flex-col items-center justify-center py-24 lg:py-40 sm:py-32">
           <h5>
             <div className="text-3xl font-bold sm:text-4xl">Finished?</div>
             <div className="pt-2 pb-8 sm:text-lg opacity-80">
@@ -106,11 +106,11 @@ const Article = ({
                         {completed ? (
                           <>
                             {/* <i className="gg-check" aria-hidden="true" /> */}
-                            {'Done'}
+                            {'Finished'}
                             <span className="sr-only">Mark as unfinished</span>
                           </>
                         ) : (
-                          <>{'Mark as done'}</>
+                          <>{'Finish this episode'}</>
                         )}
                       </>
                     ) : (
