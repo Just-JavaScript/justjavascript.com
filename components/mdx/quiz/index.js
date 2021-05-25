@@ -149,7 +149,7 @@ const Quiz = ({children, title, version, slug, id}) => {
 
   return (
     <Layout maxWidth="" background="bg-gray-100">
-      <header className="pb-24 text-center">
+      <header className="py-24 text-center">
         <div className="font-serif font-extrabold tracking-tight lg:text-8xl sm:text-7xl text-7xl">
           Quiz
         </div>

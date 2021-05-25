@@ -49,8 +49,8 @@ const Invoice = () => {
     return null
   }
   return (
-    <Layout>
-      <div className="max-w-screen-md py-16 mx-auto">
+    <Layout background="print:bg-white bg-gray-100">
+      <div className="max-w-screen-md mx-auto print:max-w-none">
         <div className="flex flex-col items-center justify-between py-5 sm:flex-row print:hidden">
           <h2 className="mb-4 text-lg font-medium leading-tight sm:mb-0">
             Your Invoice for Just JavaScript by Dan Abramov
@@ -59,18 +59,18 @@ const Invoice = () => {
             onClick={() => {
               window.print()
             }}
-            className="flex items-center px-5 py-3 leading-6 text-white transition-colors duration-200 ease-in-out bg-gray-700 rounded-md hover:bg-gray-900"
+            className="flex items-center px-5 py-3 leading-6 text-white transition-colors duration-200 ease-in-out bg-black border border-transparent rounded-md hover:bg-transparent hover:text-black hover:border-black"
           >
             Download PDF or Print
           </button>
         </div>
         <TeamInvites teamPurchases={teamPurchases} />
-        <div className="border border-gray-200 rounded-sm print:border-none">
+        <div className="bg-white rounded-lg shadow-xl print:shadow-none ">
           <div className="px-10 py-16">
             <div className="grid items-start justify-between w-full grid-cols-3">
-              <div className="flex flex-col items-start col-span-2 justify-cenbter">
+              <div className="flex flex-col items-start justify-center col-span-2">
                 {/* <Logo className="w-10 mr-2" /> */}
-                <span className="hidden font-serif text-3xl font-bold leading-none sm:inline-block">
+                <span className="font-serif text-3xl font-bold leading-none sm:inline-block">
                   Just JavaScript
                 </span>
                 <span className="text-gray-600">by Dan Abramov</span>

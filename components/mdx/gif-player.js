@@ -10,9 +10,9 @@ export default function GifPlayer(props) {
   return props.src.includes('gif') ? (
     <ReactGifPlayer
       gif={props.src}
-      className="border rounded-lg border-gray-100 shadow-lg hover:shadow-xl cursor-pointer transition-all duration-300 ease-in-out"
+      className="transition-all duration-300 ease-in-out border border-gray-100 rounded-lg shadow-lg cursor-pointer hover:shadow-xl"
     />
   ) : (
-    <img src={props.src} alt={props.alt} {...props} />
+    <img src={props.src} alt={props.alt} className="mx-auto" {...props} />
   )
 }

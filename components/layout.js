@@ -10,20 +10,18 @@ const Layout = ({
   className,
   episode,
   background = '',
-  maxWidth = 'max-w-4xl',
+  maxWidth = 'max-w-screen-lg',
 }) => {
   return (
     <>
       <SEO title={title} />
       <div className={background}>
-        <div
-          className={`flex flex-col min-h-screen items-center justify-center`}
-        >
+        <div className="flex flex-col items-center justify-center min-h-screen print:h-auto">
           <Navigation>{navContent}</Navigation>
-          <div className="flex-shrink-0 w-full px-5 pt-16 pb-16 lg:pt-32 sm:pt-24 sm:px-8 sm:pb-24">
+          <div className="flex-shrink-0 w-full px-5 pt-16 pb-16 lg:pt-24 sm:pt-16 sm:px-8 sm:pb-24 print:pt-0">
             {headerContent}
             {title && (
-              <header className="relative flex items-center justify-center pt-24 pb-40 text-center sm:pb-48">
+              <header className="relative flex items-center justify-center py-24 min-h-[65vh] text-center">
                 <h1 className="relative z-10 mb-8 overflow-hidden font-serif text-5xl font-extrabold lg:text-9xl md:text-6xl sm:text-5xl leading-tighter">
                   {title}
                 </h1>

@@ -2,7 +2,7 @@ import React from 'react'
 
 const Video = (props) => {
   return (
-    <div className="sm:mx-0 -mx-5">
+    <div className="flex justify-center -mx-5 sm:mx-0">
       <video
         controls
         loop
@@ -10,7 +10,7 @@ const Video = (props) => {
         playsInline
         src={props.src}
         autoPlay
-        className="sm:mx-0 sm:border sm:rounded-lg border-gray-100 sm:shadow-lg hover:shadow-xl cursor-pointer transition-all duration-300 ease-in-out"
+        className="transition-all duration-300 ease-in-out border-gray-100 cursor-pointer sm:mx-0 sm:border-2 sm:rounded-lg"
         {...props}
       />
     </div>

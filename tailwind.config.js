@@ -16,6 +16,9 @@ module.exports = {
       colors: {
         ...colors,
       },
+      screens: {
+        print: {raw: 'print'},
+      },
       fontFamily: {
         sans: ['Adelle Sans', ...defaultTheme.fontFamily.sans],
         serif: ['Recoleta', ...defaultTheme.fontFamily.serif],
