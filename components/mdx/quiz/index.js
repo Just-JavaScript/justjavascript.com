@@ -33,6 +33,10 @@ function getQuestions(questions, quizId, quizVersion) {
             find(children, {props: {mdxType: 'img'}}),
             'props.src'
           )
+          const imageAlt = get(
+            find(children, {props: {mdxType: 'img'}}),
+            'props.alt'
+          )
           const isCorrect = choice.props.correct || false
           const label = imageUrl
             ? getChoiceLabelByIndex(index)
@@ -43,6 +47,7 @@ function getQuestions(questions, quizId, quizVersion) {
             value: `${index}`,
             label,
             imageUrl,
+            imageAlt,
             isCorrect,
           }
         })
