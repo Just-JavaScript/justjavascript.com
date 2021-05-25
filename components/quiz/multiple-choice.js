@@ -106,7 +106,7 @@ const MultipleChoice = (props) => {
                       {choice.imageUrl && (
                         <img
                           src={choice.imageUrl}
-                          alt={choice.label}
+                          alt={choice.imageAlt}
                           className="mt-1 border border-gray-200 rounded-lg"
                         />
                       )}

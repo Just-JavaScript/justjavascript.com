@@ -33,6 +33,10 @@ function getQuestions(questions, quizId, quizVersion) {
             find(children, {props: {mdxType: 'img'}}),
             'props.src'
           )
+          const imageAlt = get(
+            find(children, {props: {mdxType: 'img'}}),
+            'props.alt'
+          )
           const isCorrect = choice.props.correct || false
           const label = imageUrl
             ? getChoiceLabelByIndex(index)
@@ -43,6 +47,7 @@ function getQuestions(questions, quizId, quizVersion) {
             value: `${index}`,
             label,
             imageUrl,
+            imageAlt,
             isCorrect,
           }
         })
@@ -144,7 +149,7 @@ const Quiz = ({children, title, version, slug, id}) => {
 
   return (
     <Layout maxWidth="" background="bg-gray-100">
-      <header className="pb-24 text-center">
+      <header className="py-24 text-center">
         <div className="font-serif font-extrabold tracking-tight lg:text-8xl sm:text-7xl text-7xl">
           Quiz
         </div>

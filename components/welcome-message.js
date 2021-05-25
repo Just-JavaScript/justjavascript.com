@@ -16,18 +16,17 @@ export default function WelcomeMessage({
     <motion.div className={className}>
       <div className="relative py-3 pl-3 pr-12 mx-auto md:py-4">
         <div className="flex flex-col justify-center md:flex-row md:items-center md:text-center md:space-x-3">
-          <div>
+          <div className="text-base sm:text-lg">
             <span role="img" aria-describedby="tada">
               🎉
             </span>
-            <span className="font-medium">{text} </span>
+            <span>{text} </span>
             {path && cta && (
               <Link href={path}>
                 <a className="underline">{cta}</a>
               </Link>
             )}
           </div>
-
           <button
             onClick={() => setOn(false)}
             type="button"

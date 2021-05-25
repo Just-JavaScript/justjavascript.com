@@ -12,7 +12,7 @@ export default function SubmitAndContinue({
   return state.matches('answered') ? null : (
     <motion.button
       layout
-      className={`w-full relative z-20 mt-4 px-3 py-3 flex items-center justify-center rounded-md font-semibold transition-colors ease-in-out duration-300 ${
+      className={`w-full relative z-20 mt-4 px-3 py-3 flex items-center justify-center rounded-md font-semibold transition-colors ease-in-out duration-300 focus:ring focus:outline-none focus:ring-orange-500 ${
         state.matches('answered')
           ? 'bg-gray-100 text-black'
           : 'bg-black text-white'

@@ -3,18 +3,16 @@ import * as yup from 'yup'
 import {Formik} from 'formik'
 import {useViewer} from 'context/viewer-context'
 import Layout from 'components/layout'
+import Image from 'next/image'
 
 const loginSchema = yup.object().shape({
   email: yup.string().email().required('enter your email'),
 })
 
 const LoginForm = ({
-  image,
-  className = 'flex flex-col items-center justify-center w-full mx-auto text-gray-900',
   children,
   button = 'Email a login link',
-  label = 'Email address',
-  formClassName = '',
+  label = 'Enter your email address to log in',
   track,
 }) => {
   const [isSubmitted, setIsSubmitted] = React.useState(false) // false
@@ -22,19 +20,27 @@ const LoginForm = ({
   const {requestSignInEmail} = useViewer()
 
   return (
-    <Layout background="bg-gray-100">
-      <div className={className}>
-        {image}
-        <div className={`w-full mx-auto rounded-lg ${image ? 'mt-5' : ''}`}>
+    <Layout background="bg-white">
+      <div className="flex flex-col items-center justify-center w-full mx-auto text-gray-900 sm:flex-row">
+        <div className="flex-shrink-0 max-w-xs sm:w-auto">
+          <Image
+            src="/crystal-ball@2x.png"
+            width={800 / 2}
+            height={837 / 2}
+            alt="a crystal ball with javascript entities"
+            quality={100}
+          />
+        </div>
+        <div className="w-full pl-0 mx-auto text-center rounded-lg sm:pl-8 sm:text-left">
           {isSubmitted && (
-            <h2 className="font-serif text-3xl font-bold leading-9 text-center">
+            <h1 className="font-serif text-4xl font-bold sm:text-5xl">
               Email Sent
-            </h2>
+            </h1>
           )}
           {isError && (
-            <h2 className="font-serif text-3xl font-bold leading-9 text-center">
+            <h1 className="font-serif text-3xl font-bold leading-9 ">
               Something went wrong!
-            </h2>
+            </h1>
           )}
           {!isSubmitted &&
             !isError &&
@@ -42,14 +48,14 @@ const LoginForm = ({
               children
             ) : (
               <>
-                <h2 className="font-serif text-6xl font-extrabold text-center leading-tighter">
-                  Log in
-                </h2>
+                <h1 className="font-serif text-6xl font-extrabold leading-tighter">
+                  Welcome back!
+                </h1>
                 <p></p>
               </>
             ))}
-          <div className="mt-4 sm:mt-8 sm:mx-auto sm:w-full sm:max-w-xl">
-            <div className="pb-8">
+          <div className="sm:w-full sm:max-w-xl">
+            <div className="py-4">
               {!isSubmitted && !isError && (
                 <Formik
                   initialValues={{email: ''}}
@@ -76,8 +82,8 @@ const LoginForm = ({
                     } = props
                     return (
                       <>
-                        <form onSubmit={handleSubmit} className={formClassName}>
-                          <div className="w-full text-center">
+                        <form onSubmit={handleSubmit} className="text-lg">
+                          <div className="w-full py-4">
                             <label
                               htmlFor="email"
                               className="block pb-2 leading-5 text-gray-700"
@@ -86,23 +92,25 @@ const LoginForm = ({
                             </label>
                             <div className="relative">
                               <input
+                                autoFocus
                                 required
                                 id="email"
                                 name="email"
                                 value={values.email}
                                 onChange={handleChange}
                                 onBlur={handleBlur}
-                                className="block w-full max-w-sm py-4 mx-auto font-sans text-center placeholder-gray-400 border-0 shadow-lg form-input sm:text-lg sm:leading-5"
+                                className="w-full max-w-sm px-4 py-3 text-lg rounded-lg focus:border-transparent focus:outline-none focus:ring focus:ring-orange-400"
                                 placeholder="you@example.com"
                                 type="email"
+                                autoComplete="email"
                               />
                             </div>
                           </div>
-                          <div className="flex items-center justify-center w-full">
+                          <div className="pt-4">
                             <button
                               type="submit"
                               disabled={isSubmitting}
-                              className="inline-flex items-center px-16 py-4 mt-8 text-base font-bold leading-6 text-white transition-transform duration-150 ease-in-out transform bg-black border border-transparent rounded-md hover:scale-105"
+                              className="inline-flex px-4 py-3 text-white transition-all duration-200 ease-in-out transform bg-black rounded-lg hover:scale-105 focus:scale-90 focus:ring focus:outline-none focus:ring-orange-400 hover:shadow-xl"
                             >
                               {button}
                             </button>
@@ -114,11 +122,11 @@ const LoginForm = ({
                 </Formik>
               )}
               {isSubmitted && (
-                <div className="space-y-4 leading-tight text-center">
-                  <h3 className="text-xl font-semibold leading-tighter">
+                <div className="space-y-6">
+                  <h2 className="text-xl font-semibold leading-tighter">
                     Please check your inbox for your sign in link.
-                  </h3>
-                  <p>
+                  </h2>
+                  <p className="leading-relaxed opacity-80">
                     Sometimes this can land in SPAM! While we hope that isn't
                     the case if it doesn't arrive in a minute or three, please
                     check.

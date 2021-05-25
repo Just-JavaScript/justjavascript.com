@@ -9,9 +9,9 @@ const Header = ({children, ...props}) => {
   const {disableLoginForDev} = useLoginRequired()
 
   return (
-    <div className="absolute top-0 left-0 w-full p-5">
+    <div className="absolute top-0 left-0 w-full p-5 print:hidden">
       <nav
-        className={`flex items-center ${
+        className={`flex items-center max-w-screen-lg mx-auto ${
           sellingLive ? 'justify-between' : 'justify-center'
         } w-full`}
       >
@@ -20,16 +20,20 @@ const Header = ({children, ...props}) => {
         >
           <a
             aria-label="Homepage"
-            className="font-serif text-xl font-extrabold leading-tight sm:text-2xl"
+            className="font-serif text-lg font-extrabold leading-tight sm:text-2xl"
           >
             Just JavaScript
           </a>
         </Link>
-        <div className="flex items-center justify-center space-x-3">
+        <div className="flex items-center justify-center space-x-3 text-sm sm:text-base">
           {sellingLive && (
             <>
               {viewer ? (
-                <button onClick={() => logout} type="button">
+                <button
+                  onClick={() => logout}
+                  type="button"
+                  className="opacity-75 hover:opacity-100"
+                >
                   Log out
                 </button>
               ) : (
