@@ -3,11 +3,13 @@ import Layout from 'components/layout'
 import LandingCopy from 'components/landing-copy.mdx'
 import Image from 'next/image'
 import useRedirectToLearn from 'hooks/use-redirect-to-learn'
+import ClaimCoupon from 'components/commerce/claim-coupon'
 
 const LandingPage = () => {
   useRedirectToLearn()
   return (
     <Layout maxWidth="" background="bg-white" navClassName="text-white">
+      <ClaimCoupon />
       <div className="relative flex items-center justify-center -mx-5">
         <header className="w-full min-h-[75vh] bg-black text-white flex sm:flex-row flex-col-reverse items-center justify-between px-5">
           <div className="flex items-center justify-between w-full max-w-screen-lg pb-8 mx-auto sm:pb-0">
