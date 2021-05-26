@@ -49,6 +49,8 @@ const getProgressForUser = async ({firebaseAuthToken}) => {
     if (doc.exists) {
       const progress = doc.data().progress
       return progress
+    } else {
+      return undefined
     }
   })
 }

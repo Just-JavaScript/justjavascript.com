@@ -14,7 +14,11 @@ const Navigation = ({children, className = '', ...props}) => {
     >
       <nav
         className={`flex items-center max-w-screen-lg mx-auto ${
-          sellingLive ? 'justify-between' : 'justify-center'
+          sellingLive
+            ? 'justify-between'
+            : viewer
+            ? 'justify-between'
+            : 'justify-center'
         } w-full`}
       >
         <Link
@@ -28,23 +32,20 @@ const Navigation = ({children, className = '', ...props}) => {
           </a>
         </Link>
         <div className="flex items-center justify-center space-x-3 text-sm sm:text-base">
-          {sellingLive && (
-            <>
-              {viewer ? (
-                <button
-                  onClick={() => logout}
-                  type="button"
-                  className="opacity-75 hover:opacity-100"
-                >
-                  Log out
-                </button>
-              ) : (
-                <Link href="/login">
-                  <a>Restore purchases</a>
-                </Link>
-              )}
-            </>
-          )}
+          {viewer ? (
+            <button
+              onClick={() => logout}
+              type="button"
+              className="opacity-75 hover:opacity-100"
+            >
+              Log out
+            </button>
+          ) : sellingLive ? (
+            <Link href="/login">
+              <a>Restore purchases</a>
+            </Link>
+          ) : null}
+
           {children && <div className="flex items-center p-1">{children}</div>}
         </div>
       </nav>
