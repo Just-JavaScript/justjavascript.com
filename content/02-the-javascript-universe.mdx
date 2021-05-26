@@ -1,12 +1,4 @@
-export const meta = {
-    title: "The JavaScript Universe",
-    series: 1,
-    episode: 2,
-    next: "03-values-and-variables",
-    prev: "01-mental-models",
-    nextTitle: "Values and Variables"
-}
-
+<Article title="The JavaScript Universe" series={1} episode={2} next="03-values-and-variables"  prev='01-mental-models' nextTitle='Values and Variables' bottomContent={'Now it’s time to put what we learned to action.\n\nEven if you already have a decent amount of experience with JavaScript don’t skip the exercises! I personally learned some of these things only a few years ago.\n\nAfter the exercises, we will continue to refine our mental model. This module presents a crude sketch—an approximation. We will focus on different parts of the picture and fill them in with more details, like a [progressive JPEG](https://www.liquidweb.com/kb/what-is-a-progressive-jpeg/) image.\n\nThese might seem like small steps, but we’re laying the foundation for everything else to come. We’re building our JavaScript universe, together.'}>
 
 *In the beginning was the Value.*
 
@@ -192,12 +184,4 @@ Let’s recap what we know so far:
 4. **We can ask questions with expressions.** Expressions exist in our code, so they are not values. Rather, JavaScript will *answer* our expressions with values. For example, the `2 + 2` *expression* is answered with the *value* `4`.
 5. **We can inspect the type of something by wrapping it in a `typeof` expression.** For example, `typeof(4)` results in the string value `"number"`.
 
-export const bottomContent = `Now it’s time to put what we learned to action.\n\nEven if you already have a decent amount of experience with JavaScript don’t skip the exercises! I personally learned some of these things only a few years ago.\n\nAfter the exercises, we will continue to refine our mental model. This module presents a crude sketch—an approximation. We will focus on different parts of the picture and fill them in with more details, like a [progressive JPEG](https://www.liquidweb.com/kb/what-is-a-progressive-jpeg/) image.\n\nThese might seem like small steps, but we’re laying the foundation for everything else to come. We’re building our JavaScript universe, together.`
-
-import Article from '../templates/article-template'
-
-export default ({children}) => (
-<Article {...meta} bottomContent={bottomContent}>
-{children}
 </Article>
-)

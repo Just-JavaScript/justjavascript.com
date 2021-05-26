@@ -1,11 +1,4 @@
-export const meta = {
-  title: "Meeting Objects and Functions",
-  series: 1,
-  episode: 6,
-  next: "07-equality-of-values",
-  prev: "05-meeting-the-primitive-values",
-  nextTitle: "Equality of Values"
-}
+<Article title="Meeting Objects and Functions" series={1} episode={6} next="07-equality-of-values" prev="05-meeting-the-primitive-values" nextTitle="Equality of Values" bottomContent={`This module also has exercises for you to practice!\n\n**Don’t skip them!**\n\nEven though you’re likely familiar with the concept of variables, these exercises will help you cement the mental model we’re building. We need this foundation before we can get to more complex topics.`} >
 
 Without further ado, let’s resume our tour of our JavaScript universe!
 
@@ -212,13 +205,4 @@ It was fun to visit the different “celestial spheres” of JavaScript. Now tha
 
 Primitive values (strings, numbers, etc...), which we encountered in the first part of our tour, have always existed in our universe. **For example, writing `2` or `"hello"` always “summons” the same number or a string value. Objects and functions behave differently and allow us to generate our own values. Writing `{}` or `function() {}` always *creates* a brand new, different value.** This idea is crucial to understanding equality in JavaScript, which will be our next topic.
 
-export const bottomContent = `This module also has exercises for you to practice!\n\n**Don’t skip them!**\n\nEven though you’re likely familiar with the concept of variables, these exercises will help you cement the mental model we’re building. We need this foundation before we can get to more complex topics.`
-
-import Article from '../templates/article-template'
-
-export default ({children}) => (
-<Article {...meta} bottomContent={bottomContent}>
-{children}
 </Article>
-)
-

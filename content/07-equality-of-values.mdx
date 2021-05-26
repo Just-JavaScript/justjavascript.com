@@ -1,11 +1,4 @@
-export const meta = {
-  title: "Equality of Values",
-  series: 1,
-  episode: 7,
-  next: "08-properties",
-  prev: "06-meeting-objects-and-functions",
-  nextTitle: "Properties"
-}
+<Article title="Equality of Values" series=1 episode=7 next="08-properties" prev="06-meeting-objects-and-functions" nextTitle="Properties" bottomContent={`This module also has exercises for you to practice!\n\n**Don’t skip them!**\n\nEven though you’re likely familiar with the concept of variables, these exercises will help you cement the mental model we’re building. We need this foundation before we can get to more complex topics.`}>
 
 It’s time to talk about equality in JavaScript! Here’s why it matters.
 
@@ -348,13 +341,4 @@ However even that usage of `==` might be controversial on some teams. It’s bes
 * You can check whether `x` is `NaN` using `Number.isNaN(x)`.
 * **Loose equality** (`==`) uses a set of arcane rules and is often avoided.
 
-
-export const bottomContent = `This module also has exercises for you to practice!\n\n**Don’t skip them!**\n\nEven though you’re likely familiar with the concept of variables, these exercises will help you cement the mental model we’re building. We need this foundation before we can get to more complex topics.`
-
-import Article from '../templates/article-template'
-
-export default ({children}) => (
-<Article {...meta} bottomContent={bottomContent}>
-{children}
 </Article>
-)

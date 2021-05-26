@@ -5,8 +5,8 @@ import {get, isEmpty, find} from 'lodash'
 import {useRouter} from 'next/router'
 
 const Pagination = (props) => {
-  const {pathname} = useRouter()
-  const currentSlug = pathname.slice(1)
+  const router = useRouter()
+  const currentSlug = router.asPath.slice(1)
   const quiz = find(episodes, {quiz: currentSlug})
   const quizSlug = get(quiz, 'quiz')
   const nextPath = isEmpty(quiz) ? props.next : `/quiz/${quizSlug}`

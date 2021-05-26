@@ -1,11 +1,4 @@
-export const meta = {
-  title: "Properties",
-  series: 1,
-  episode: 8,
-  next: "09-mutation",
-  prev: "07-equality-of-values",
-  nextTitle: "Mutation"
-}
+<Article title="Properties" series={1} episode={8} next="09-mutation" prev="07-equality-of-values" nextTitle="Mutation" bottomContent={`This module also has exercises for you to practice!\n\n**Don’t skip them!**\n\nEven though you’re likely familiar with the concept of variables, these exercises will help you cement the mental model we’re building. We need this foundation before we can get to more complex topics.`}>
 
 Meet Sherlock Holmes, a world-renowned detective from London:
 
@@ -255,12 +248,4 @@ Note that this mental model of properties is still a bit simplified. It is good 
 
 If you got confused by the Sherlock Holmes example in the beginning, try walking through it again using our new mental model and focusing on properties as wires. The next module will include a detailed walkthrough in case you’re still not quite sure why it works this way.
 
-export const bottomContent = `This module also has exercises for you to practice!\n\n**Don’t skip them!**\n\nEven though you’re likely familiar with the concept of variables, these exercises will help you cement the mental model we’re building. We need this foundation before we can get to more complex topics.`
-
-import Article from '../templates/article-template'
-
-export default ({children}) => (
-<Article {...meta} bottomContent={bottomContent}>
-{children}
 </Article>
-)
