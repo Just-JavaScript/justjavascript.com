@@ -109,16 +109,16 @@ module.exports = {
               lineHeight: theme('lineHeight.tighter'),
             },
             h1: {
-              fontSize: theme('fontSize.7xl'),
+              fontSize: theme('fontSize.8xl'),
               fontWeight: theme('fontWeight.extrabold'),
             },
             h2: {
-              fontSize: theme('fontSize.6xl'),
+              fontSize: theme('fontSize.7xl'),
               fontWeight: theme('fontWeight.extrabold'),
             },
             h3: {
-              fontSize: theme('fontSize.4xl'),
-              fontWeight: theme('fontWeight.extrabold'),
+              fontSize: theme('fontSize.5xl'),
+              fontWeight: theme('fontWeight.semibold'),
             },
             h4: {
               fontSize: theme('fontSize.3xl'),
