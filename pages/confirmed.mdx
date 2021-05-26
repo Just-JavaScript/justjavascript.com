@@ -1,17 +1,37 @@
-<Layout className="prose lg:prose-xl prose-lg max-w-screen-md">
+<h1 className="uppercase sm:text-base text-sm font-bold tracking-wide text-teal-500">
+  Confirmed!
+</h1>
 
-## Confirmed!
+<h2 className="sm:text-2xl text-xl font-semibold text-center leading-tight py-6">
+  You'll receive emails from me (Dan Abramov) about Just JavaScript including
+  the current rough drafts of each module. When you receive the drafts, please
+  take the time to reply with your thoughts.
+</h2>
 
-You'll receive emails from me (Dan Abramov) about Just JavaScript including the current rough drafts of each module. When you receive the drafts, please take the time to reply with your thoughts.
+<div className="prose sm:prose-lg max-w-none">
+  <p>It is a huge help to me and the reason I'm sharing drafts like this.</p>
+  <p>
+    Also every email I send about Just JavaScript will have a handy unsubscribe
+    link at the bottom. Please feel free to use it if you don't want to receive
+    emails about this!
+  </p>
+  <br />
+  <br />
+  <i>Thanks,</i>
+  <br />
+  <i>Dan</i>
+</div>
 
-It is a huge help to me and the reason I'm sharing drafts like this.
+import Layout from 'components/layout'
+import EmailConfirmed from '../images/email-confirmed.svg'
 
-Also every email I send about Just JavaScript will have a handy unsubscribe link at the bottom. Please feel free to use it if you don't want to receive emails about this!
-
-<br />
-
-_Thanks,_  
-_Dan_
-
-</Layout>
-
+export default ({children}) => (
+  <Layout>
+    <div className="py-24">
+      <div>
+        <EmailConfirmed className="w-28 h-28 mx-auto" aria-hidden="true" />
+      </div>
+      <div className="text-center max-w-screen-sm mx-auto">{children}</div>
+    </div>
+  </Layout>
+)

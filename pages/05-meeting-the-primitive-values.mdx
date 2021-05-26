@@ -1,4 +1,12 @@
-<Article title="Meeting the Primitive Values" series={1} episode={5} next="06-meeting-objects-and-functions" prev="04-studying-from-the-inside" nextTitle="Meeting Objects and Functions">
+export const meta = {
+    title: "Meeting the Primitive Values",
+    series: 1,
+    episode: 5,
+    next: "06-meeting-objects-and-functions",
+    prev: "04-study-from-the-inside",
+    nextTitle: "Meeting Objects and Functions"
+}
+
 
 Until now, we have been observing our JavaScript universe from the surface of our planet. We have familiarized ourselves with the values that populate our universe from a distance, but in this module, we’re changing that. We’re going to hop in a spaceship and go exploring, introducing ourselves to every value in our JavaScript universe.
 
@@ -329,12 +337,12 @@ We’ve also learned a few interesting facts about JavaScript numbers:
 
 We will continue our sightseeing tour by meeting the non-primitive values, specifically, objects and functions.
 
-## Exercises
+export const bottomContent = `This module also has exercises for you to practice!\n\n**Don’t skip them!**\n\nEven though you’re likely familiar with the concept of variables, these exercises will help you cement the mental model we’re building. We need this foundation before we can get to more complex topics.`
 
-This module also has exercises for you to practice!
+import Article from '../templates/article-template'
 
-**Don’t skip them!**
-
-Even though you’re probably familiar with different types of values, these exercises will help you cement the mental model we’re building. This foundation will help as you explore increasingly complex topics.
-
+export default ({children}) => (
+<Article {...meta} bottomContent={bottomContent}>
+{children}
 </Article>
+)

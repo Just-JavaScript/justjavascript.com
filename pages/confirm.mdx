@@ -1,15 +1,32 @@
-<Layout className="prose lg:prose-xl prose-lg max-w-screen-md">
+<h1 className="uppercase sm:text-base text-sm font-semibold tracking-wide text-indigo-500">
+  Just one last step and you are signed up...
+</h1>
 
-## Thanks so much for signing up! There's one last step.
+<h2 className="sm:text-2xl text-xl font-semibold text-center leading-tight py-6">
+  Please check your inbox for an email that just got sent. You'll need to click
+  the confirmation link to receive any further emails.
+</h2>
 
-Please check your inbox for an email that just got sent. You'll need to click the confirmation link to receive any further emails.
+<p className="opacity-80 prose max-w-none">
+  If you don't see the email after a few minutes, you might check your spam
+  folder or other filters and add `dan@overreacted.io` to your contacts.
+  <br />
+  <br />
+  <i>Thanks,</i>
+  <br />
+  <i>Dan</i>
+</p>
 
-If you don't see the email after a few minutes, you might check your spam folder or other filters and add `dan@overreacted.io` to your contacts.
+import Layout from 'components/layout'
+import EmailNotification from '../images/email-notification.svg'
 
-<br />
-
-_Thanks,_  
-_Dan_
-
-</Layout>
-
+export default ({children}) => (
+  <Layout>
+    <div className="py-24">
+      <div>
+        <EmailNotification className="w-28 h-28 mx-auto" aria-hidden="true" />
+      </div>
+      <div className="text-center max-w-screen-sm mx-auto">{children}</div>
+    </div>
+  </Layout>
+)

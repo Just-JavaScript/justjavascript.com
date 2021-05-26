@@ -61,32 +61,3 @@ I want to hear from you.
 When you receive my drafts by email, please hit the Reply button and tell me if you love them, hate them, or if they leave you indifferent.
 
 You will help motivate me to finish this project!!
-
-_Cheers,_  
-_Dan_
-
-import Layout from 'components/layout'
-import Image from 'next/image'
-import ClaimCoupon from 'components/commerce/claim-coupon'
-
-export default ({children}) => {
-  return (
-    <Layout
-      maxWidth="max-w-screen-md"
-      className="prose lg:prose-xl prose-lg"
-      headerContent={
-        <div className="flex items-center justify-center">
-          <Image
-            src="/crystal-ball@2x.png"
-            width={800 / 2}
-            height={837 / 2}
-            alt="a crystal ball"
-          />
-        </div>
-      }
-    >
-      <ClaimCoupon />
-      {children}
-    </Layout>
-  )
-}
