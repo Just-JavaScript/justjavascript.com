@@ -151,9 +151,10 @@ const Article = ({
           <Pagination next={next} prev={prev} nextTitle={nextTitle}>
             <div>
               {bottomContent ? (
-                <ReactMarkdown className="max-w-screen-lg mx-auto prose prose-lg lg:prose-xl">
-                  {bottomContent}
-                </ReactMarkdown>
+                <ReactMarkdown
+                  children={bottomContent}
+                  className="max-w-screen-lg mx-auto prose prose-lg lg:prose-xl"
+                />
               ) : (
                 nextTitle
               )}
