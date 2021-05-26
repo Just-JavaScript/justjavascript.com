@@ -130,25 +130,29 @@ export default function Learn() {
           className="max-w-screen-lg p-5 mx-auto mb-5 bg-white rounded-lg"
           {...welcomeMessageProps}
         />
-        <motion.ul className="grid max-w-screen-lg grid-cols-1 gap-5 mx-auto text-center sm:grid-cols-2">
-          {episodes.map((episode, index) => {
-            const isCompleted = get(progress, episode.path)?.completed
+        {episodes && (
+          <motion.ul className="grid max-w-screen-lg grid-cols-1 gap-5 mx-auto text-center sm:grid-cols-2">
+            {episodes.map((episode, index) => {
+              const isCompleted = get(progress, episode.path)?.completed
 
-            return (
-              <LinkItem
-                idx={index}
-                key={episode.path}
-                href={episode.path}
-                number={('0' + (index + 1)).slice(-2)}
-                completed={progress && isCompleted}
-                quiz={episode.quiz}
-                quizCompleted={get(progress, `quiz/${episode.path}`)?.completed}
-              >
-                {episode.title}
-              </LinkItem>
-            )
-          })}
-        </motion.ul>
+              return (
+                <LinkItem
+                  idx={index}
+                  key={episode.path}
+                  href={episode.path}
+                  number={('0' + (index + 1)).slice(-2)}
+                  completed={progress && isCompleted}
+                  quiz={episode.quiz}
+                  quizCompleted={
+                    get(progress, `quiz/${episode.path}`)?.completed
+                  }
+                >
+                  {episode.title}
+                </LinkItem>
+              )
+            })}
+          </motion.ul>
+        )}
       </div>
     </Layout>
   )
