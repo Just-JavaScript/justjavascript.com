@@ -1,4 +1,11 @@
-<Article title="Mental Models" series={1} episode={1} next="02-the-javascript-universe" nextTitle="The JavaScript Universe">
+export const meta = {
+  title: "Mental Models",
+  series: 1,
+  episode: 1,
+  next: "02-the-javascript-universe",
+  nextTitle: "The JavaScript Universe"
+}
+
 
 Read this code:
 
@@ -87,8 +94,13 @@ This is why having an accurate mental model is so important. Simulating a comput
 
 Don’t worry if you can’t find the bug at all—it just means you’ll get the most out of this course! Over the next modules, we’ll rebuild our mental model of JavaScript together, so that you can catch bugs like this immediately.
 
-In the next module, we’ll start building mental models for some of the most fundamental JavaScript concepts—values and expressions.
+export const bottomContent = `In the next module, we’ll start building mental models for some of the most fundamental JavaScript concepts—values and expressions.`
 
 
+import Article from '../templates/article-template'
+
+export default ({children}) => (
+<Article {...meta} bottomContent={bottomContent}>
+{children}
 </Article>
-
+)

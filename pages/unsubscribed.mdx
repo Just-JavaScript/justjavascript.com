@@ -1,13 +1,24 @@
-<Layout className="prose lg:prose-xl prose-lg max-w-screen-md">
+<h1 className="sm:text-4xl text-3xl font-extrabold font-serif text-center leading-tight py-6">
+  Unsubscribed
+</h1>
 
-## Unsubscribed
+<p className="opacity-80 prose max-w-none">
+  You've been removed from the Just JavaScript email list and won't receive any
+  more emails about it.
+  <br />
+  <br />
+  <i>Thanks,</i>
+  <br />
+  <i>Dan</i>
+</p>
 
-You've been removed from the Just JavaScript email list and won't receive any more emails about it.
+import Layout from 'components/layout'
+import EmailNotification from '../images/email-notification.svg'
 
-<br />
-
-_Thanks,_  
-_Dan_
-
-</Layout>
-
+export default ({children}) => (
+  <Layout>
+    <div className="py-24">
+      <div className="text-center max-w-sm mx-auto">{children}</div>
+    </div>
+  </Layout>
+)

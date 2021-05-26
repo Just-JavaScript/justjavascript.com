@@ -1,4 +1,9 @@
-<Article title="Prototypes" series={1} episode={10} prev="09-mutation">
+export const meta = {
+  title: "Prototypes",
+  series: 1,
+  episode: 10,
+  prev: "09-mutation"
+}
 
 In previous modules, we’ve covered object properties and mutation, but we’re not quite done—we still need to talk about prototypes!
 
@@ -441,12 +446,12 @@ Personally, I don’t use a lot of classes in my daily coding, and I rarely deal
 - We can “pollute” a prototype shared by many objects by mutating it. We can even do this to the Object Prototype—the default prototype for `{}` objects! (But we shouldn’t, unless we’re pranking our colleagues.)
 - You probably won’t use prototypes much directly in practice. However, they are fundamental to JavaScript objects, so it is handy to understand their underlying mechanics. Some advanced JavaScript features, including classes, can be expressed in terms of prototypes.
 
-## Exercises
+export const bottomContent = `This module also has exercises for you to practice!\n\n**Don’t skip them!**\n\nEven though you’re likely familiar with the concept of variables, these exercises will help you cement the mental model we’re building. We need this foundation before we can get to more complex topics.`
 
-This module also has exercises for you to practice!
+import Article from '../templates/article-template'
 
-**Don’t skip them!**
-
-Even though you’re probably familiar with the concept of prototypes, these exercises will help you cement the mental model we’re building. This foundation will help as you explore increasingly complex topics.
-
+export default ({children}) => (
+<Article {...meta} bottomContent={bottomContent}>
+{children}
 </Article>
+)

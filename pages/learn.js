@@ -121,15 +121,15 @@ export default function Learn() {
       }
 
   return (
-    <Layout className="pb-40 mx-auto" background="bg-gray-100">
+    <Layout background="bg-gray-100">
       {/* <h1 className="pb-24 font-serif text-5xl font-extrabold tracking-tight text-center lg:text-8xl sm:text-7xl leading-tighter">
         Explore JavaScript Universe
       </h1> */}
-      <WelcomeMessage
-        className="max-w-screen-lg p-5 mx-auto mb-5 bg-white rounded-lg"
-        {...welcomeMessageProps}
-      />
-      <>
+      <div className="py-20">
+        <WelcomeMessage
+          className="max-w-screen-lg p-5 mx-auto mb-5 bg-white rounded-lg"
+          {...welcomeMessageProps}
+        />
         <motion.ul className="grid max-w-screen-lg grid-cols-1 gap-5 mx-auto text-center sm:grid-cols-2">
           {episodes.map((episode, index) => {
             const isCompleted = get(progress, episode.path)?.completed
@@ -149,7 +149,7 @@ export default function Learn() {
             )
           })}
         </motion.ul>
-      </>
+      </div>
     </Layout>
   )
 }

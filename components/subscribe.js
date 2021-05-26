@@ -1,27 +1,27 @@
 import React from 'react'
 
 const Subscribe = (props) => (
-  <div className="sm:px-16 sm:py-14 px-0 py-8 bg-white text-black rounded-lg sm:my-16 my-8">
-    <div className="sm:text-6xl text-4xl font-serif transform font-extrabold mb-8 text-center leading-tighter mx-auto">
+  <div className="px-0 py-8 my-8 text-black bg-white rounded-lg sm:px-16 sm:py-14 sm:my-16">
+    <div className="mx-auto mb-16 font-serif text-4xl font-extrabold text-center transform sm:text-6xl leading-tighter">
       {props.children}
     </div>
     <form
       action={`https://app.convertkit.com/forms/1152408/subscriptions`}
       method="post"
     >
-      <div className="flex flex-col space-y-5 items-center text-center w-full">
+      <div className="flex flex-col items-center w-full max-w-md mx-auto space-y-8">
         <div className="w-full">
           <label
             htmlFor="first_name"
-            className="block text-sm font-medium leading-5 text-gray-700"
+            className="block text-base leading-5 text-gray-700"
           >
             First name
           </label>
-          <div className="mt-1 relative border-b-2 border-gray-200">
+          <div className="relative mt-1">
             <input
               id="first_name"
               name="fields[first_name]"
-              className="form-input border-0 py-4 placeholder-gray-600 block w-full text-xl sm:leading-5 text-center font-serif font-semibold"
+              className="block w-full px-5 py-4 font-sans text-lg placeholder-gray-500 bg-white border border-gray-100 rounded-lg shadow-xl focus:border-transparent focus:outline-none focus:ring-orange-500 focus:ring"
               placeholder="Preferred name"
               type="text"
             />
@@ -30,27 +30,27 @@ const Subscribe = (props) => (
         <div className="w-full">
           <label
             htmlFor="email"
-            className="block text-sm font-medium leading-5 text-gray-700"
+            className="block text-base leading-5 text-gray-700"
           >
-            Email
+            Email*
           </label>
-          <div className="mt-1 relative border-b-2 border-gray-200">
+          <div className="relative mt-1">
             <input
               required
               id="email_address"
               name="email_address"
-              className="form-input border-0 py-4 placeholder-gray-600 block w-full text-xl sm:leading-5 text-center font-serif font-semibold"
+              className="block w-full px-5 py-4 font-sans text-lg placeholder-gray-500 bg-white border border-gray-100 rounded-lg shadow-xl focus:border-transparent focus:outline-none focus:ring-orange-500 focus:ring"
               placeholder="you@example.com"
               type="email"
             />
           </div>
         </div>
       </div>
-      <div className="w-full flex items-center justify-center mt-5">
+      <div className="flex items-center justify-center w-full mt-5">
         <span className="inline-flex rounded-md shadow-sm">
           <button
             type="submit"
-            className="mt-8 inline-flex items-center px-16 py-4 border border-transparent text-lg leading-6 font-bold font-serif rounded-md text-white bg-black transition-transform transform hover:scale-105 ease-in-out duration-150"
+            className="inline-flex items-center px-16 py-4 mt-8 font-sans text-lg font-bold leading-6 text-white transition-all duration-150 ease-in-out transform bg-black border border-transparent rounded-md hover:shadow-xl hover:scale-105"
           >
             Join Now
           </button>

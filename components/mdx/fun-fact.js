@@ -5,13 +5,13 @@ import React from 'react'
 
 const FunFact = ({
   children,
-  className = 'sm:my-12 my-8 bg-yellow-50 rounded-lg transform sm:-rotate-1',
+  className = 'my-8 transform rounded-lg sm:my-12 bg-yellow-50 sm:-rotate-1',
 }) => {
   return (
     <div className={className}>
-      <div className="relative flex items-center justify-center sm:py-8 py-6 sm:px-10 px-5 rounded-lg">
+      <div className="relative flex items-center justify-center px-5 py-6 rounded-lg sm:py-8 sm:px-10">
         <div className="w-full">
-          <div className="text-xl font-serif font-bold flex sm:pb-4 pb-2">
+          <div className="flex pb-2 font-serif text-xl font-bold md:text-3xl sm:text-2xl sm:pb-4">
             Fun Fact
           </div>
           <div
@@ -28,7 +28,7 @@ const FunFact = ({
           </div>
         </div>
         <div
-          className="w-3 h-full absolute left-0 top-0 -ml-2"
+          className="absolute top-0 left-0 w-3 h-full -ml-2"
           style={{
             backgroundImage: `url(/caret.svg)`,
             backgroundSize: '0.75rem auto',
