@@ -1,4 +1,12 @@
-<Article title="Properties" series={1} episode={8} next="08-mutation" prev="07-equality-of-values" nextTitle="Mutation">
+export const meta = {
+  title: "Properties",
+  series: 1,
+  episode: 8,
+  next: "09-mutation",
+  prev: "07-equality-of-values",
+  nextTitle: "Mutation"
+}
+
 Meet Sherlock Holmes, a world-renowned detective from London:
 
 ```js
@@ -247,12 +255,12 @@ Note that this mental model of properties is still a bit simplified. It is good 
 
 If you got confused by the Sherlock Holmes example in the beginning, try walking through it again using our new mental model and focusing on properties as wires. The next module will include a detailed walkthrough in case you’re still not quite sure why it works this way.
 
-## Exercises
+export const bottomContent = `This module also has exercises for you to practice!\n\n**Don’t skip them!**\n\nEven though you’re likely familiar with the concept of variables, these exercises will help you cement the mental model we’re building. We need this foundation before we can get to more complex topics.`
 
-This module also has exercises for you to practice!
+import Article from '../templates/article-template'
 
-**Don’t skip them!**
-
-Even though you’re probably familiar with the concept of properties, these exercises will help you cement the mental model we’re building. This foundation will help as you explore increasingly complex topics.
-
+export default ({children}) => (
+<Article {...meta} bottomContent={bottomContent}>
+{children}
 </Article>
+)

@@ -16,17 +16,17 @@ function ClaimCouponOverlay({onPurchaseComplete, purchaseState, error}) {
     onPurchaseComplete({email})
   }
   return (
-    <DialogOverlay className="z-40 px-5" isOpen={isOpen}>
+    <DialogOverlay className="z-40 px-5 pr-8" isOpen={isOpen}>
       <DialogContent
         style={{width: '100%'}}
         aria-label="enter your email to claim your purchase"
-        className="rounded-lg shadow-lg sm:max-w-screen-sm text-text relative w-full z-50"
+        className="relative z-50 w-full rounded-lg shadow-lg sm:max-w-screen-sm text-text"
       >
         {error ? (
           <>
-            <div className="flex items-center justify-center -mt-20 relative">
+            <div className="relative flex items-center justify-center -mt-20">
               <svg
-                className="text-white p-6 rounded-full bg-gray-800"
+                className="p-6 text-white bg-orange-500 rounded-full"
                 width="100px"
                 height="100px"
                 xmlns="http://www.w3.org/2000/svg"
@@ -42,18 +42,18 @@ function ClaimCouponOverlay({onPurchaseComplete, purchaseState, error}) {
                 />
               </svg>
             </div>
-            <h2 className="text-2xl font-semibold mt-8 leading-tight text-center">
+            <h2 className="mt-8 text-2xl font-semibold leading-tight text-center">
               {error}
             </h2>
-            <div className="hidden sm:block absolute top-0 right-0 pt-4 pr-4">
+            <div className="absolute top-0 right-0 block pt-4 pr-4">
               <button
                 onClick={closeModal}
                 type="button"
-                className="text-gray-400 hover:text-gray-500 focus:outline-none focus:text-gray-500 transition ease-in-out duration-150"
+                className="text-gray-400 transition duration-150 ease-in-out hover:text-gray-500 focus:outline-none focus:text-gray-500"
                 aria-label="Close"
               >
                 <svg
-                  className="h-6 w-6"
+                  className="w-6 h-6"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -70,9 +70,9 @@ function ClaimCouponOverlay({onPurchaseComplete, purchaseState, error}) {
           </>
         ) : (
           <>
-            <div className="flex items-center justify-center -mt-20 relative">
+            <div className="relative flex items-center justify-center -mt-20">
               <svg
-                className="text-white p-6 rounded-full bg-gray-800"
+                className="p-6 text-black bg-white rounded-full shadow-xl"
                 width="100px"
                 height="100px"
                 version="1.1"
@@ -86,10 +86,10 @@ function ClaimCouponOverlay({onPurchaseComplete, purchaseState, error}) {
                 />
               </svg>
             </div>
-            <h2 className="sm:text-4xl text-3xl font-extrabold mt-8 leading-tighter text-center font-serif">
+            <h2 className="mt-8 font-serif text-3xl font-extrabold text-center sm:text-4xl leading-tighter">
               Access Just Javascript
             </h2>
-            <p className="my-4 text-gray-700 text-center text-base">
+            <p className="my-4 text-base text-center text-gray-700 sm:text-lg sm:px-16">
               Enter your email address that will be used to log in to Just
               Javascript and access the content. Please double check that it is
               correct.
@@ -101,17 +101,17 @@ function ClaimCouponOverlay({onPurchaseComplete, purchaseState, error}) {
             >
               <div>
                 <Form>
-                  <div className="sm:max-w-sm mx-auto my-8">
+                  <div className="mx-auto my-8 sm:max-w-sm">
                     <label
                       htmlFor="email"
                       className="block text-sm font-medium leading-5 text-gray-700"
                     >
                       Email
                     </label>
-                    <div className="mt-1 relative rounded-md shadow-sm">
-                      <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                    <div className="relative mt-1 rounded-md shadow-sm">
+                      <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                         <svg
-                          className="h-5 w-5 text-gray-400"
+                          className="w-5 h-5 text-gray-400"
                           viewBox="0 0 20 20"
                           fill="currentColor"
                         >
@@ -120,7 +120,7 @@ function ClaimCouponOverlay({onPurchaseComplete, purchaseState, error}) {
                         </svg>
                       </div>
                       <Field
-                        className="form-input bg-gray-100 border-2 border-gray-300 focus:shadow-outline-gray-899 text-text block w-full pl-10 sm:text-sm sm:leading-8"
+                        className="block w-full pl-10 bg-white border border-gray-200 shadow-xl focus:border-transparent focus:outline-none focus:ring focus:ring-orange-500 form-input focus:shadow-outline-orange sm:leading-8"
                         autoFocus
                         type="email"
                         name="email"
@@ -130,12 +130,12 @@ function ClaimCouponOverlay({onPurchaseComplete, purchaseState, error}) {
                       />
                     </div>
                   </div>
-                  <div className="sm:mb-8 mb-6 flex items-center justify-center mt-6">
+                  <div className="flex items-center justify-center mt-6 mb-6 sm:mb-8">
                     <span className="inline-flex rounded-md shadow-sm">
                       {purchaseState === 'priceLoaded' && (
                         <button
                           type="submit"
-                          className="inline-flex items-center px-5 py-3 border border-transparent text-base leading-8 font-semibold rounded-md text-white bg-black hover:bg-gray-800 focus:outline-none focus:border-gray-900 focus:shadow-outline-gray-500 active:bg-gray-500 transition ease-in-out duration-150 "
+                          className="inline-flex items-center px-10 py-3 text-base font-semibold leading-8 text-white transition duration-150 ease-in-out transform bg-black border border-transparent rounded-md focus:ring focus:ring-orange-500 hover:scale-105 hover:shadow-xl hover:bg-gray-800 focus:outline-none focus:border-gray-900 focus:shadow-outline-gray-500 active:bg-gray-500 "
                         >
                           Get Access
                         </button>
@@ -143,7 +143,7 @@ function ClaimCouponOverlay({onPurchaseComplete, purchaseState, error}) {
                       {purchaseState === 'handlePurchase' && (
                         <button
                           disabled
-                          className="inline-flex items-center px-5 py-3 border border-transparent text-base leading-8 font-semibold rounded-md text-white o-80 cursor-wait bg-gray-300 focus:outline-none transition ease-in-out duration-150"
+                          className="inline-flex items-center px-5 py-3 text-base font-semibold leading-8 text-white transition duration-150 ease-in-out bg-gray-300 border border-transparent rounded-md cursor-wait o-80 focus:outline-none"
                         >
                           Claiming Coupon...
                         </button>
@@ -153,15 +153,15 @@ function ClaimCouponOverlay({onPurchaseComplete, purchaseState, error}) {
                 </Form>
 
                 {purchaseState === 'priceLoaded' && (
-                  <div className="hidden sm:block absolute top-0 right-0 pt-4 pr-4">
+                  <div className="absolute top-0 right-0 block pt-4 pr-4">
                     <button
                       onClick={closeModal}
                       type="button"
-                      className="text-gray-400 hover:text-gray-500 focus:outline-none focus:text-gray-500 transition ease-in-out duration-150"
+                      className="text-gray-400 transition duration-150 ease-in-out hover:text-gray-500 focus:outline-none focus:text-gray-500"
                       aria-label="Close"
                     >
                       <svg
-                        className="h-6 w-6"
+                        className="w-6 h-6"
                         fill="none"
                         viewBox="0 0 24 24"
                         stroke="currentColor"

@@ -2,12 +2,14 @@ import Link from 'next/link'
 import useSellingLive from 'hooks/use-selling-live'
 import {useViewer} from 'context/viewer-context'
 
-const Header = ({children, ...props}) => {
+const Navigation = ({children, className = '', ...props}) => {
   const sellingLive = useSellingLive()
   const {purchased, viewer, logout} = useViewer()
 
   return (
-    <div className="absolute top-0 left-0 w-full p-5 print:hidden">
+    <div
+      className={`absolute top-0 left-0 z-10 w-full p-5 print:hidden ${className}`}
+    >
       <nav
         className={`flex items-center max-w-screen-lg mx-auto ${
           sellingLive ? 'justify-between' : 'justify-center'
@@ -16,7 +18,7 @@ const Header = ({children, ...props}) => {
         <Link href={purchased ? '/learn' : '/'}>
           <a
             aria-label="Homepage"
-            className="font-serif text-lg font-extrabold leading-tight sm:text-2xl"
+            className="font-serif text-lg font-bold leading-tight sm:text-2xl"
           >
             Just JavaScript
           </a>
@@ -46,4 +48,4 @@ const Header = ({children, ...props}) => {
   )
 }
 
-export default Header
+export default Navigation

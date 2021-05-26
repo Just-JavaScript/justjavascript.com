@@ -1,17 +1,30 @@
-<Layout className="prose lg:prose-xl prose-lg max-w-screen-md">
+<h1 className="sm:text-2xl text-xl font-semibold text-center leading-tight py-6">
+  Check your inbox!
+</h1>
 
-## Check your inbox!
+<div className="opacity-80 prose max-w-none">
+  <p>It's great that you want to get started. I'm excited to share Just JavaScript with you.</p>
 
-It's great that you want to get started. I'm excited to share Just JavaScript with you.
+<p>Each module I send will have a short survey link.</p>
 
-Each module I send will have a short survey link.
+<p>If you can spare a few minutes, it's a big help if you fill them out. You can also reply to any of the emails that I send. I read all of them, and try to reply to as many as possible.</p>
+  <br />
+  <br />
+  <i>Thanks,</i>
+  <br />
+  <i>Dan</i>
+</div>
 
-If you can spare a few minutes, it's a big help if you fill them out. You can also reply to any of the emails that I send. I read all of them, and try to reply to as many as possible.
+import Layout from 'components/layout'
+import EmailNotification from '../images/email-notification.svg'
 
-<br />
-
-_Thanks,_  
-_Dan_
-
-</Layout>
-
+export default ({children}) => (
+  <Layout>
+    <div className="py-24">
+      <div>
+        <EmailNotification className="w-28 h-28 mx-auto" aria-hidden="true" />
+      </div>
+      <div className="text-center max-w-screen-sm mx-auto">{children}</div>
+    </div>
+  </Layout>
+)
