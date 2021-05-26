@@ -30,7 +30,7 @@ const Article = ({
   const {isUnclaimedBulkPurchaser, loading} = useViewer()
   const currentEpisodeProgress = progress && progress[EPISODE_ID]
   const [completed, setCompleted] = React.useState(
-    currentEpisodeProgress?.completed
+    currentEpisodeProgress?.completed || false
   )
 
   function handleSetProgress() {
@@ -110,7 +110,7 @@ const Article = ({
                       role="switch"
                       aria-checked={completed}
                     >
-                      {progress ? (
+                      {!isUndefined(progress) ? (
                         <>
                           <div
                             className={`${
