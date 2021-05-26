@@ -33,7 +33,7 @@ const LandingPage = () => {
           </div>
         </header>
       </div>
-      <article className="max-w-screen-md pt-16 mx-auto prose lg:prose-xl sm:prose-lg">
+      <article className="max-w-screen-md py-8 mx-auto prose sm:py-16 lg:prose-xl sm:prose-lg">
         <LandingCopy />
       </article>
       {/* <footer>footer</footer> */}

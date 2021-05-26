@@ -20,8 +20,8 @@ const LoginForm = ({
   const {requestSignInEmail} = useViewer()
 
   return (
-    <Layout background="bg-white">
-      <div className="flex flex-col items-center justify-center w-full mx-auto text-gray-900 sm:flex-row">
+    <Layout title="Log In to Just JavaScript" background="bg-white">
+      <div className="flex flex-col items-center justify-center w-full max-w-screen-md mx-auto text-gray-900 sm:flex-row">
         <div className="flex-shrink-0 max-w-xs sm:w-auto">
           <Image
             src="/crystal-ball@2x.png"
