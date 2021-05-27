@@ -84,9 +84,9 @@ const Article = ({
           {children}
         </main>
         <footer>
-          <div className="flex flex-col items-center justify-center py-24 text-center lg:py-40 sm:py-32">
+          <div className="flex flex-col items-center justify-center pt-24 text-center lg:pt-40 sm:pt-32">
             <h5>
-              <div className="text-3xl font-bold sm:text-4xl">
+              <div className="text-2xl font-bold sm:text-3xl">
                 Finished reading?
               </div>
               <div className="pt-2 pb-8 sm:text-lg opacity-80">
@@ -132,7 +132,7 @@ const Article = ({
                           {completed ? (
                             <>
                               {/* <i className="gg-check" aria-hidden="true" /> */}
-                              {'Finished'}
+                              {'Nice job!'}
                               <span className="sr-only">
                                 Mark as unfinished
                               </span>
@@ -153,15 +153,21 @@ const Article = ({
               }}
             </InView>
           </div>
-          <Pagination next={next} prev={prev} nextTitle={nextTitle}>
+          <Pagination
+            next={next}
+            prev={prev}
+            nextTitle={nextTitle}
+            completed={completed}
+          >
             <div>
-              {bottomContent ? (
+              {nextTitle}
+              {/* {bottomContent ? (
                 <ReactMarkdown className="max-w-screen-lg mx-auto prose prose-lg lg:prose-xl">
                   {bottomContent}
                 </ReactMarkdown>
               ) : (
                 nextTitle
-              )}
+              )} */}
             </div>
           </Pagination>
         </footer>

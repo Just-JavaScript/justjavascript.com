@@ -294,13 +294,18 @@ This might seem a bit annoying, but using wires makes it much easier to explain 
 
 * **Language matters.** We’re building a mental model so that we can be confident in what *can* or *cannot* happen in our universe. We might speak about these ideas in a casual way (and nitpicking is often counterproductive) but our understanding of the meaning behind the terms needs to be precise.
 
+## Exercises
 
-export const bottomContent = `This module also has exercises for you to practice!\n\n**Don’t skip them!**\n\nEven though you’re likely familiar with the concept of variables, these exercises will help you cement the mental model we’re building. We need this foundation before we can get to more complex topics.`
+This module also has exercises for you to practice!
+
+**Don’t skip them!**
+
+Even though you’re likely familiar with the concept of variables, these exercises will help you cement the mental model we’re building. We need this foundation before we can get to more complex topics.
 
 import Article from '../templates/article-template'
 
 export default ({children}) => (
-<Article {...meta} bottomContent={bottomContent}>
+<Article {...meta}>
 {children}
 </Article>
 )

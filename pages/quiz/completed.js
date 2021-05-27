@@ -13,19 +13,20 @@ const QuizCompleted = () => {
 
   return (
     <Layout>
-      <div className="flex flex-col items-center space-y-16">
+      <div className="flex flex-col items-center">
+        <h1 className="font-serif text-5xl font-extrabold tracking-tight text-center sm:text-6xl leading-tighter">
+          Nice job!
+        </h1>
         {currentEpisode && (
-          <h1 className="font-serif text-5xl font-extrabold tracking-tight text-center sm:text-6xl leading-tighter">
-            <div>Great!</div>
-            <div className="pt-4 font-sans text-xl font-normal tracking-normal">
-              You've completed "{currentEpisode.title}" quiz.
-            </div>
-          </h1>
+          <div className="pt-8 pb-12 font-sans text-xl font-normal tracking-normal">
+            You've completed the {currentEpisode.title} quiz.
+          </div>
         )}
         {nextEpisode && (
           <Link href={`/${nextEpisode.path}`}>
-            <a className="inline-flex items-center px-6 py-4 font-sans text-lg font-semibold text-white bg-black rounded-md">
-              Continue {nextEpisode && `to ${nextEpisode.title}`}{' '}
+            <a className="inline-flex items-center px-6 py-4 font-sans text-lg font-semibold text-white transition-all duration-200 ease-in-out transform bg-black rounded-md hover:shadow-xl hover:scale-105 focus:scale-95">
+              Continue learning
+              {/* {nextEpisode && `to ${nextEpisode.title}`}{' '} */}
               <i className="ml-2 gg-arrow-right" aria-hidden="true" />
             </a>
           </Link>
