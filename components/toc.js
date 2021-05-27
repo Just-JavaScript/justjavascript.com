@@ -57,7 +57,7 @@ export default function ToC() {
   const router = useRouter()
 
   function isActive(url) {
-    return url !== '/' ? router.pathname.match(url) : false
+    return url !== '/' ? router.asPath.match(url) : false
   }
 
   const Item = (props) => {
