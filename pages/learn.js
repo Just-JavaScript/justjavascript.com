@@ -46,7 +46,7 @@ export default function Learn() {
         <Link href={href}>
           <a
             className={
-              'rounded-lg group h-full hover:shadow-xl overflow-hidden sm:px-16 px-8 sm:py-32 py-24 relative flex flex-col items-center justify-center font-extrabold w-full bg-white font-serif transition-all ease-in-out duration-200'
+              'rounded-lg group h-full hover:shadow-xl overflow-hidden sm:px-16 px-8 sm:pt-32 pt-24 sm:pb-40 pb-32 relative flex flex-col items-center justify-center font-extrabold w-full bg-white font-serif transition-all ease-in-out duration-200'
             }
           >
             <div className="relative z-10 font-serif text-6xl font-extrabold text-gray-200 transition-colors duration-150 ease-in-out sm:text-8xl group-hover:text-orange-500">
@@ -77,7 +77,6 @@ export default function Learn() {
                 </div>
               )}
             </div>
-
             <div className="relative z-10 pb-4 text-2xl leading-none transition-all duration-200 ease-in-out transform sm:text-4xl group-hover:scale-105">
               {children}
             </div>
@@ -92,20 +91,31 @@ export default function Learn() {
             )}
           </a>
         </Link>
-        {!isEmpty(quiz) && (
-          <Link href={`/quiz/${quiz}`}>
-            <a className="absolute flex items-center justify-center px-5 py-3 mt-2 text-gray-900 transition-all duration-200 ease-in-out bg-white rounded-full shadow-lg bottom-10 hover:bg-black hover:text-white group">
-              <span className="sr-only">{children}</span>
-              {'Quiz'}
-              <i aria-hidden="true" className="ml-1 gg-arrow-right" />
-              {/* {quizCompleted ? (
+        <div className="absolute flex flex-wrap justify-center mt-2 sm:bottom-10 bottom-6">
+          {!isEmpty(quiz) && (
+            <Link href={`/quiz/${quiz}`}>
+              <a className="flex items-center justify-center px-5 py-3 m-1 text-gray-900 transition-all duration-200 ease-in-out bg-white rounded-full shadow-lg hover:bg-black hover:text-white group">
+                <span className="sr-only">{children}</span>
+                {'Take a Quiz'}
+                {/* <i aria-hidden="true" className="ml-1 gg-arrow-right" /> */}
+                {/* {quizCompleted ? (
               <i aria-hidden="true" className="w-3 ml-1 gg-check" />
             ) : (
               <i aria-hidden="true" className="ml-1 gg-arrow-right" />
             )} */}
+              </a>
+            </Link>
+          )}
+          <Link href={href}>
+            <a className="flex items-center justify-center px-5 py-3 m-1 text-gray-900 transition-all duration-200 ease-in-out bg-white rounded-full shadow-lg hover:bg-black hover:text-white group">
+              Read Episode
+              <i
+                aria-hidden="true"
+                className="ml-1 transform scale-75 gg-arrow-right"
+              />
             </a>
           </Link>
-        )}
+        </div>
       </motion.li>
     )
   }
