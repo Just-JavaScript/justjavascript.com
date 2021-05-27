@@ -32,7 +32,7 @@ export default function WelcomeMessage({
             type="button"
             className="absolute right-0 p-2 text-gray-900 transition-all duration-200 ease-in-out bg-white rounded-full shadow-lg hover:text-gray-900 hover:bg-white"
           >
-            <span className="sr-only">Dismiss</span>
+            <span className="sr-only">Dismiss welcome banner</span>
             <svg
               className="w-5 h-5 dark:text-white"
               xmlns="http://www.w3.org/2000/svg"
