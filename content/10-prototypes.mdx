@@ -1,9 +1,4 @@
-export const meta = {
-  title: "Prototypes",
-  series: 1,
-  episode: 10,
-  prev: "09-mutation"
-}
+<Article title="Prototypes" series={1} episode={10} next="10-prototypes" nextTitle="Prototypes" prev="09-mutation">
 
 In previous modules, we’ve covered object properties and mutation, but we’re not quite done—we still need to talk about prototypes!
 
@@ -454,10 +449,4 @@ This module also has exercises for you to practice!
 
 Even though you’re likely familiar with the concept of variables, these exercises will help you cement the mental model we’re building. We need this foundation before we can get to more complex topics.
 
-import Article from '../templates/article-template'
-
-export default ({children}) => (
-<Article {...meta}>
-{children}
 </Article>
-)

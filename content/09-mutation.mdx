@@ -1,11 +1,4 @@
-export const meta = {
-  title: "Mutation",
-  series: 1,
-  episode: 9,
-  next: "10-protptypes",
-  prev: "08-properties",
-  nextTitle: "Prototypes"
-}
+<Article title="Mutation" series={1} episode={9} next="10-prototypes" prev="08-properties" nextTitle="Prototypes">
 
 In the previous module about *properties*, we introduced the mystery of Sherlock Holmes moving to Malibu, but we haven’t explained it yet.
 
@@ -294,10 +287,5 @@ This module also has exercises for you to practice!
 
 Even though you’re likely familiar with the concept of variables, these exercises will help you cement the mental model we’re building. We need this foundation before we can get to more complex topics.
 
-import Article from '../templates/article-template'
-
-export default ({children}) => (
-<Article {...meta}>
-{children}
 </Article>
-)
+

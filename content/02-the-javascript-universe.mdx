@@ -1,12 +1,4 @@
-export const meta = {
-    title: "The JavaScript Universe",
-    series: 1,
-    episode: 2,
-    next: "03-values-and-variables",
-    prev: "01-mental-models",
-    nextTitle: "Values and Variables"
-}
-
+<Article title="The JavaScript Universe" series={1} episode={2} next="03-values-and-variables"  prev="01-mental-models" nextTitle="Values and Variables">
 
 *In the beginning was the Value.*
 
@@ -202,10 +194,4 @@ After the exercises, we will continue to refine our mental model. This module pr
 
 These might seem like small steps, but we’re laying the foundation for everything else to come. We’re building our JavaScript universe, together.
 
-import Article from '../templates/article-template'
-
-export default ({children}) => (
-<Article {...meta}>
-{children}
 </Article>
-)
