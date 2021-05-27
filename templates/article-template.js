@@ -83,7 +83,7 @@ const Article = ({
         <footer>
           <div className="flex flex-col items-center justify-center pt-24 text-center lg:pt-40 sm:pt-32">
             <h5>
-              <div className="text-3xl font-bold sm:text-4xl">
+              <div className="text-2xl font-bold sm:text-3xl">
                 Finished reading?
               </div>
               <div className="pt-2 pb-8 sm:text-lg opacity-80">
@@ -129,7 +129,7 @@ const Article = ({
                           {completed ? (
                             <>
                               {/* <i className="gg-check" aria-hidden="true" /> */}
-                              {'Great job!'}
+                              {'Nice job!'}
                               <span className="sr-only">
                                 Mark as unfinished
                               </span>
