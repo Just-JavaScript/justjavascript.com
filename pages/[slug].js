@@ -4,7 +4,7 @@ import {serialize} from 'next-mdx-remote/serialize'
 import {MDXRemote} from 'next-mdx-remote'
 import mdxComponents from 'components/mdx'
 import matter from 'gray-matter'
-import {contentFilePaths, CONTENT_PATH} from 'utils/mdxUtils'
+import {CONTENT_PATH} from 'utils/mdxUtils'
 import path from 'path'
 import isArray from 'lodash/isArray'
 import useLoginRequired from 'hooks/use-login-required'
@@ -23,12 +23,22 @@ const EpisodePage = ({source, meta, ...props}) => {
   return <MDXRemote {...source} components={components} />
 }
 
-export const getStaticProps = async ({params}) => {
+export const getServerSideProps = async ({params}) => {
   // MDX text - can be from a local file, database, anywhere
   if (!params?.slug || isArray(params?.slug)) {
-    return {props: {}}
+    return {
+      notFound: true,
+    }
   }
+
   const postFilePath = path.join(CONTENT_PATH, `${params.slug}.mdx`)
+
+  if (!fs.existsSync(postFilePath)) {
+    return {
+      notFound: true,
+    }
+  }
+
   const source = fs.readFileSync(postFilePath)
   const {content, data} = matter(source)
   //   const {meta} = source
@@ -46,20 +56,6 @@ export const getStaticProps = async ({params}) => {
     props: {
       source: mdxSource,
     },
-  }
-}
-
-export const getStaticPaths = async () => {
-  const paths = contentFilePaths
-    // Remove file extensions for page paths
-    .map((path) => path.replace(/\.mdx?$/, ''))
-    // Map the path into the static paths object required by Next.js
-    .map((slug) => {
-      return {params: {slug}}
-    })
-  return {
-    paths,
-    fallback: false,
   }
 }
 
