@@ -125,7 +125,7 @@ export default function Learn() {
       {/* <h1 className="pb-24 font-serif text-5xl font-extrabold tracking-tight text-center lg:text-8xl sm:text-7xl leading-tighter">
         Explore JavaScript Universe
       </h1> */}
-      <div className="py-20">
+      <main className="py-20">
         <WelcomeMessage
           className="max-w-screen-lg p-5 mx-auto mb-5 bg-white rounded-lg"
           {...welcomeMessageProps}
@@ -153,7 +153,18 @@ export default function Learn() {
             })}
           </motion.ul>
         )}
-      </div>
+      </main>
+      <footer className="flex flex-col items-center justify-center w-full max-w-screen-lg py-16 mx-auto space-y-16 sm:py-24 sm:space-y-0 sm:justify-between sm:flex-row">
+        <Link href="/invoice">
+          <a className="flex items-center px-4 py-2 transition-all duration-200 ease-in-out rounded-lg sm:text-lg hover:bg-white hover:shadow-xl">
+            <i className="gg-file" />
+            <span className="pl-3">Get your invoice</span>
+          </a>
+        </Link>
+        <Link href="/">
+          <a className="font-serif text-2xl font-extrabold">JJS</a>
+        </Link>
+      </footer>
     </Layout>
   )
 }

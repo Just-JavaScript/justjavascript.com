@@ -50,7 +50,7 @@ const Invoice = () => {
   }
   return (
     <Layout background="print:bg-white bg-gray-100">
-      <div className="max-w-screen-md mx-auto print:max-w-none">
+      <div className="max-w-screen-md py-24 mx-auto print:py-0 print:max-w-none">
         <div className="flex flex-col items-center justify-between py-5 sm:flex-row print:hidden">
           <h2 className="mb-4 text-lg font-medium leading-tight sm:mb-0">
             Your Invoice for Just JavaScript by Dan Abramov
