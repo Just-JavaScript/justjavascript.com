@@ -32,9 +32,9 @@ const Pagination = (props) => {
           </div>
         ) : (
           <div>
-            {props.children && (
+            {/* {props.children && (
               <div className="pb-10 lg:pb-24 sm:pb-16">{props.children}</div>
-            )}
+            )} */}
             <div className="absolute left-0 flex items-center justify-center w-full px-5 text-center text-white bg-black">
               <Link href={nextPath}>
                 <a className="flex flex-col items-center justify-center w-full py-24 group lg:py-48 sm:py-32">

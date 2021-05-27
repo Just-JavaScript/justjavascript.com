@@ -1,11 +1,10 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
 import {jsx} from '@emotion/react'
-import React from 'react'
 
 const FunFact = ({
   children,
-  className = 'my-8 transform rounded-lg sm:my-12 bg-yellow-50 sm:-rotate-1',
+  className = 'my-8 transform rounded-lg sm:my-12 bg-yellow-50',
 }) => {
   return (
     <div className={className}>
