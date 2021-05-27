@@ -107,7 +107,7 @@ console.log(sherlock.age); // 64
 
 Here, `sherlock.age` is our old friend, an *expression*—a question to our JavaScript universe. To answer it, JavaScript first follows the `sherlock` wire:
 
-<Video src="https://res.cloudinary.com/dg3gyk0gu/video/upload/v1614268150/just-javascript-email-images/jj07/sherlock_readage-mp4.mp4" title="Following the sherlock variable wire" />
+<Video src="https://res.cloudinary.com/dg3gyk0gu/video/upload/f_auto/just-javascript-email-images/jj07/sherlock_readage-mp4.mp4" title="Following the sherlock variable wire" />
 
 It leads to an object. From that object, JavaScript follows the `age` property.
 
@@ -143,7 +143,7 @@ Let’s split this code into the left and the right side, separated by `=`.
 
 We follow the `sherlock` wire, and then pick the `age` property wire:
 
-<Video src="https://res.cloudinary.com/dg3gyk0gu/video/upload/v1614268150/just-javascript-email-images/jj07/sherlock_reassign_age-1-mp4.mp4" title="Following the age property wire on the left side" />
+<Video src="https://res.cloudinary.com/dg3gyk0gu/video/upload/f_auto/just-javascript-email-images/jj07/sherlock_reassign_age-1-mp4.mp4" title="Following the age property wire on the left side" />
 
 Note that we don’t _follow_ the `age` wire to `64`. We don’t care what its current value is. On the left side of the assignment, we are looking for **the wire itself**.
 
@@ -153,13 +153,13 @@ Remember which wire we picked? Carry on.
 
 Unlike the left side, the right side of an assignment always expresses a *value*. In this example, the right side’s value is the number value `65`. Let’s summon it:
 
-<Video src="https://res.cloudinary.com/dg3gyk0gu/video/upload/v1614268150/just-javascript-email-images/jj07/sherlock_reassign_age-2-mp4.mp4" title="Evaluating the right side: 65" />
+<Video src="https://res.cloudinary.com/dg3gyk0gu/video/upload/f_auto/just-javascript-email-images/jj07/sherlock_reassign_age-2-mp4.mp4" title="Evaluating the right side: 65" />
 
 Now we are ready to perform the assignment.
 
 **At last, we point the wire on the left side to the value on the right side:**
 
-<Video src="https://res.cloudinary.com/dg3gyk0gu/video/upload/v1614268150/just-javascript-email-images/jj07/sherlock_reassign_age-3-mp4.mp4" title="Changing the age property wire to 65" />
+<Video src="https://res.cloudinary.com/dg3gyk0gu/video/upload/f_auto/just-javascript-email-images/jj07/sherlock_reassign_age-3-mp4.mp4" title="Changing the age property wire to 65" />
 
 And we’re done! From now on, reading `sherlock.age` would give us `65`.
 
