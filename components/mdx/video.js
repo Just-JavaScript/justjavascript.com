@@ -4,7 +4,6 @@ const Video = (props) => {
   return (
     <div className="flex justify-center -mx-5 sm:mx-0">
       <video
-        width="100%"
         controls
         loop
         muted

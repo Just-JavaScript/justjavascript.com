@@ -81,11 +81,13 @@ const Article = ({
           {children}
         </main>
         <footer>
-          <div className="flex flex-col items-center justify-center py-24 text-center lg:py-40 sm:py-32">
+          <div className="flex flex-col items-center justify-center pt-24 text-center lg:pt-40 sm:pt-32">
             <h5>
-              <div className="text-3xl font-bold sm:text-4xl">Finished?</div>
+              <div className="text-3xl font-bold sm:text-4xl">
+                Finished reading?
+              </div>
               <div className="pt-2 pb-8 sm:text-lg opacity-80">
-                Mark this episode as done to track your progress.
+                Mark this episode as learned to track your progress.
               </div>
             </h5>
             <InView key={module.slug} delay={200}>
@@ -127,13 +129,13 @@ const Article = ({
                           {completed ? (
                             <>
                               {/* <i className="gg-check" aria-hidden="true" /> */}
-                              {'Finished'}
+                              {'Great job!'}
                               <span className="sr-only">
                                 Mark as unfinished
                               </span>
                             </>
                           ) : (
-                            <>{'Finish this episode'}</>
+                            <>{'Mark as learned'}</>
                           )}
                         </>
                       ) : (
@@ -148,16 +150,21 @@ const Article = ({
               }}
             </InView>
           </div>
-          <Pagination next={next} prev={prev} nextTitle={nextTitle}>
+          <Pagination
+            next={next}
+            prev={prev}
+            nextTitle={nextTitle}
+            completed={completed}
+          >
             <div>
-              {bottomContent ? (
-                <ReactMarkdown
-                  children={bottomContent}
-                  className="max-w-screen-lg mx-auto prose prose-lg lg:prose-xl"
-                />
+              {nextTitle}
+              {/* {bottomContent ? (
+                <ReactMarkdown className="max-w-screen-lg mx-auto prose prose-lg lg:prose-xl">
+                  {bottomContent}
+                </ReactMarkdown>
               ) : (
                 nextTitle
-              )}
+              )} */}
             </div>
           </Pagination>
         </footer>
