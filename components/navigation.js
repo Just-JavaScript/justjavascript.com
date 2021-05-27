@@ -30,7 +30,7 @@ const Navigation = ({children, className = '', ...props}) => {
         <div className="flex items-center justify-center space-x-3 text-sm sm:text-base">
           {viewer ? (
             <button
-              onClick={() => logout}
+              onClick={() => logout()}
               type="button"
               className="opacity-75 hover:opacity-100"
             >
