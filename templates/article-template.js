@@ -86,9 +86,11 @@ const Article = ({
         <footer>
           <div className="flex flex-col items-center justify-center py-24 text-center lg:py-40 sm:py-32">
             <h5>
-              <div className="text-3xl font-bold sm:text-4xl">Finished?</div>
+              <div className="text-3xl font-bold sm:text-4xl">
+                Finished reading?
+              </div>
               <div className="pt-2 pb-8 sm:text-lg opacity-80">
-                Mark this episode as done to track your progress.
+                Mark this episode as learned to track your progress.
               </div>
             </h5>
             <InView key={module.slug} delay={200}>
@@ -136,7 +138,7 @@ const Article = ({
                               </span>
                             </>
                           ) : (
-                            <>{'Finish this episode'}</>
+                            <>{'Mark as learned'}</>
                           )}
                         </>
                       ) : (
