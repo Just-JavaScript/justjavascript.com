@@ -178,7 +178,7 @@ export default function Learn() {
                 <LinkItem
                   idx={index}
                   key={episode.path}
-                  href={episode.path}
+                  href={`/${episode.path}`}
                   number={('0' + (index + 1)).slice(-2)}
                   completed={progress && isCompleted}
                   quiz={episode.quiz}

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
 import {useLocalStorage} from 'react-use'
 import {motion} from 'framer-motion'
@@ -11,7 +11,11 @@ export default function WelcomeMessage({
   storageKey = 'jjs-welcome-banner',
 }) {
   const [isOn, setOn] = useLocalStorage(storageKey, true)
-  if (!isOn) return null
+  const [mounted, setMounted] = useState(false)
+  useEffect(() => {
+    setMounted(true)
+  }, []);
+  if (!isOn || !mounted) return null
   return (
     <motion.div className={className}>
       <div className="relative py-3 pl-3 pr-12 mx-auto md:py-4">
