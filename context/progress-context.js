@@ -19,17 +19,18 @@ export const ProgressProvider = ({children}) => {
 
   async function setProgress({episode, progress, setCompleted}) {
     setCompleted()
-    return await axios
-      .post('/api/set-progress', {
-        episode,
-        progress,
-      })
-      .then(() => {
-        mutate('/api/get-progress')
-      })
-      .catch(() => {
-        setCompleted(!progress.completed)
-      })
+    return Promise.resolve();
+    // return await axios
+    //   .post('/api/set-progress', {
+    //     episode,
+    //     progress,
+    //   })
+    //   .then(() => {
+    //     mutate('/api/get-progress')
+    //   })
+    //   .catch(() => {
+    //     setCompleted(!progress.completed)
+    //   })
   }
   return (
     <ProgressContext.Provider
