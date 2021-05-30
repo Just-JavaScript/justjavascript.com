@@ -1,6 +1,16 @@
 import {forwardRef, memo, useEffect, useState} from 'react';
 import ExcalidrawImpl from '@excalidraw/excalidraw';
 
+// https://github.com/excalidraw/excalidraw/issues/3685
+if (typeof HTMLDivElement !== 'undefined') {
+  const realFocus = HTMLDivElement.prototype.focus;
+  HTMLDivElement.prototype.focus = function() {
+    if (this.className.indexOf('excalidraw-container') === -1) {
+      realFocus.apply(this, arguments);
+    }
+  }
+}
+
 const ExcalidrawWrapper = ({
   forwardedRef,
   ...props
