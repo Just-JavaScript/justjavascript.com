@@ -1,5 +1,5 @@
 import { createRef, useRef, useEffect, memo } from 'react';
-import Excalidraw from '../excalidraw/excalidraw-iframe'
+import Excalidraw from '../excalidraw/excalidraw'
 import debounce from 'lodash/debounce'
 import {ErrorBoundary} from 'react-error-boundary'
 
@@ -70,7 +70,7 @@ function Sketch({ id }) {
       ref={ref.current.xcRef}
       initialData={{
         elements: ref.current.elements,
-        scrollToCenter: true
+        scrollToContent: true
       }}
       onChange={ref.current.handleChange}
     />
