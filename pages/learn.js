@@ -18,14 +18,14 @@ export default function Learn() {
   const {isUnclaimedBulkPurchaser, viewer, loading, viewingAsUserEmail} =
     useViewer()
   useRedirectUnclaimedBulkToInvoice(isUnclaimedBulkPurchaser)
-  if (
-    isVerifyingLogin ||
-    isUnclaimedBulkPurchaser ||
-    isEmpty(viewer) ||
-    loading
-  ) {
-    return null
-  }
+  // if (
+  //   isVerifyingLogin ||
+  //   isUnclaimedBulkPurchaser ||
+  //   isEmpty(viewer) ||
+  //   loading
+  // ) {
+  //   return null
+  // }
 
   const LinkItem = ({
     idx,

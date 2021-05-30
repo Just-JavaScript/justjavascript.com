@@ -29,14 +29,14 @@ export const getServerSideProps = async ({params, req}) => {
   const {cookies} = req
   const token = get(cookies, ACCESS_TOKEN_KEY)
 
-  if (!token) {
-    return {
-      redirect: {
-        destination: '/login',
-        permanent: false,
-      },
-    }
-  }
+  // if (!token) {
+  //   return {
+  //     redirect: {
+  //       destination: '/login',
+  //       permanent: false,
+  //     },
+  //   }
+  // }
 
   // MDX text - can be from a local file, database, anywhere
   if (!params?.slug || isArray(params?.slug)) {
