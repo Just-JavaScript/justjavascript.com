@@ -1,4 +1,4 @@
-import { createRef, useRef, useEffect, memo } from 'react';
+import { createRef, useMemo, useRef, useEffect, memo } from 'react';
 import Excalidraw from '../excalidraw/excalidraw'
 import debounce from 'lodash/debounce'
 import {ErrorBoundary} from 'react-error-boundary'
@@ -56,23 +56,18 @@ function Sketch({ id }) {
   }
   // Bump if Excalidraw changes the format.
   const key = 'excalidraw::v1::' + id;
-  const ref = useRef(null);
-  if (!ref.current) {
-    ref.current = new ExcalidrawImperative(key);
-  }
-  useEffect(() => {
-    const xc = ref.current;
-    xc.listen();
-    return () => xc.unlisten();
-  }, []);
+  const xcRef = useRef();
+  const initialElements = useMemo(() => readState(key), [key]);
   return (
     <Excalidraw
-      ref={ref.current.xcRef}
+      ref={xcRef}
       initialData={{
-        elements: ref.current.elements,
+        elements: initialElements,
         scrollToContent: true
       }}
-      onChange={ref.current.handleChange}
+      onChange={(elements) => {
+        writeState(key, elements);
+      }}
     />
   );
 }
@@ -94,57 +89,3 @@ function writeState(key, state) {
 }
 
 writeState = debounce(writeState, 1000);
-
-let listeners = {};
-let isNotifying = false;
-let nextId = 0;
-
-class ExcalidrawImperative {
-  constructor(key) {
-    this.id = nextId++;
-    this.key = key;
-    this.xcRef = createRef();
-    this.elements = readState(key);
-    this.broadcastSyncedEdit = debounce(this.broadcastSyncedEdit, 1000);
-  }
-
-  listen = () => {
-    listeners[this.key] = listeners[this.key] || [];
-    listeners[this.key].push(this.handleSyncedEdit);
-  };
-
-  unlisten = () => {
-    listeners[this.key] = listeners[this.key].filter(l =>
-      l === this.handleSyncedEdit
-    )
-  };
-
-  handleSyncedEdit = (originId, elements) => {
-    if (originId !== this.id && this.xcRef.current) {
-      // Excalidraw gets buggy if we reuse the elements.
-      this.xcRef.current.updateScene(JSON.parse(JSON.stringify({
-        elements,
-      })));
-    }
-  };
-
-  handleChange = (elements) => {
-    if (!isNotifying) {
-      this.elements = elements;
-      writeState(this.key, elements);
-      this.broadcastSyncedEdit(elements);
-    }
-  };
-
-  broadcastSyncedEdit = (elements) => {
-    const toNotify = listeners[this.key];
-    if (toNotify) {
-      isNotifying = true;
-      try {
-        toNotify.forEach(cb => cb(this.id, elements));
-      } finally {
-        isNotifying = false;
-      }
-    }
-  }
-}
