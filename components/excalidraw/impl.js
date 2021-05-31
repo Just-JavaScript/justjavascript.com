@@ -1,4 +1,4 @@
-import {forwardRef, memo, useEffect, useState} from 'react';
+import {forwardRef, memo, useEffect, useState, useRef} from 'react';
 import ExcalidrawImpl from '@excalidraw/excalidraw';
 
 // https://github.com/excalidraw/excalidraw/issues/3685
@@ -15,11 +15,10 @@ const ExcalidrawWrapper = ({
   forwardedRef,
   ...props
 }) => {
+  const ref = useRef();
   useEffect(() => {
     const handleResize = () => {
-      if (forwardedRef.current) {
-        forwardedRef.current.scrollToContent();
-      }
+      ref.current?.scrollToContent();
     };
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
@@ -40,7 +39,12 @@ const ExcalidrawWrapper = ({
         }
       `}</style>
       <ExcalidrawImpl
-        ref={forwardedRef}
+        ref={(inst) => {
+          ref.current = inst;
+          if (forwardedRef) {
+            forwardedRef.current = inst;
+          }
+        }}
         {...props}
         zenModeEnabled={true}
         renderFooter={() => null}
