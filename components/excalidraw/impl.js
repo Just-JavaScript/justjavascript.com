@@ -25,18 +25,7 @@ const ExcalidrawWrapper = ({
     return () => window.removeEventListener('resize', handleResize);
   }, []);
   return (
-    <div
-      style={{
-        position: 'relative',
-        width: '100%',
-        height: 450,
-        border: '2px solid black'
-      }}
-      onWheelCapture={e => {
-        // Stop Excalidraw from hijacking scroll
-        e.stopPropagation();
-      }}
-    >
+    <>
       <style jsx global>{`
         /* https://github.com/excalidraw/excalidraw/issues/3012 */
         .Island .Stack .Shape:nth-child(3),
@@ -45,6 +34,7 @@ const ExcalidrawWrapper = ({
         .ToolIcon__lock,
         .ToolIcon__keybinding,
         .layer-ui__wrapper__footer-left,
+        .layer-ui__wrapper__footer-right,
         .App-bottom-bar .App-toolbar-content {
           display: none !important;
         }
@@ -55,7 +45,7 @@ const ExcalidrawWrapper = ({
         zenModeEnabled={true}
         renderFooter={() => null}
       />
-    </div>
+    </>
   );
 }
 
