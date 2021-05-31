@@ -1086,10 +1086,10 @@
   resolved "https://registry.yarnpkg.com/@emotion/weak-memoize/-/weak-memoize-0.2.5.tgz#8eed982e2ee6f7f4e44c253e12962980791efd46"
   integrity sha512-6U71C2Wp7r5XtFtQzYrW5iKFT67OixrSxjI4MptCHzdSVlgabczzqLe0ZSgnub/5Kp4hSbpDB1tMytZY9pwxxA==
 
-"@excalidraw/excalidraw@^0.4.0":
-  version "0.4.0"
-  resolved "https://registry.yarnpkg.com/@excalidraw/excalidraw/-/excalidraw-0.4.0.tgz#3bd87999959f0f48d17886b5ca4ad6ea44b642d9"
-  integrity sha512-1G9LkpNDJXtUWczskVmQ7byZ0UrUpm3Bs48BJvVhCMNpM3Rpnth57nMJI/6nMiVE96C1qF5Y56MEKonAY+Jqrw==
+"@excalidraw/excalidraw@^0.8.0":
+  version "0.8.0"
+  resolved "https://registry.yarnpkg.com/@excalidraw/excalidraw/-/excalidraw-0.8.0.tgz#b95210581ffafb5f2e433c8a9fe1b64328d5ecbf"
+  integrity sha512-QSCorwl2NVZr1kv6+pSfMgxwb85v7qmjW37p0n+LMWrW+VgGWQxa3LtQqTIJ8OvdLNLNfO3kN7nHXNC4Z1h3ug==
 
 "@firebase/analytics-types@0.4.0":
   version "0.4.0"
