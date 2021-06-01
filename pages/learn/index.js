@@ -1,5 +1,5 @@
 import React from 'react'
-import Layout from '../components/layout'
+import Layout from 'components/layout'
 import Link from 'next/link'
 import useLoginRequired from 'hooks/use-login-required'
 import {episodes} from 'components/toc'
@@ -177,18 +177,18 @@ export default function Learn() {
         {mounted && episodes && (
           <motion.ul className="grid max-w-screen-lg grid-cols-1 gap-5 mx-auto text-center sm:grid-cols-2">
             {episodes.map((episode, index) => {
-              const isCompleted = get(progress, episode.path)?.completed
+              const isCompleted = get(progress, episode.slug)?.completed
 
               return (
                 <LinkItem
                   idx={index}
-                  key={episode.path}
-                  href={`/${episode.path}`}
+                  key={episode.slug}
+                  href={episode.path}
                   number={('0' + (index + 1)).slice(-2)}
                   completed={progress && isCompleted}
                   quiz={episode.quiz}
                   quizCompleted={
-                    get(progress, `quiz/${episode.path}`)?.completed
+                    get(progress, `quiz/${episode.slug}`)?.completed
                   }
                 >
                   {episode.title}
