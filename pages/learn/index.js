@@ -34,7 +34,8 @@ export default function Learn() {
   }
 
   function handleResetProgress() {
-    window.confirm('Are you sure?') && resetProgress()
+    window.confirm('This will reset all your progress. Are you sure?') &&
+      resetProgress()
   }
 
   const LinkItem = ({
