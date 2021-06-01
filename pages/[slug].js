@@ -15,10 +15,13 @@ import {ACCESS_TOKEN_KEY} from 'utils/auth'
 const components = mdxComponents
 
 const EpisodePage = ({source, meta, ...props}) => {
-  const isVerifyingLogin = useLoginRequired()
+  const {isVerifyingLogin, disableLoginForDev} = useLoginRequired()
   const {isUnclaimedBulkPurchaser, loading} = useViewer()
 
-  if (isVerifyingLogin || isUnclaimedBulkPurchaser || loading) {
+  if (
+    !disableLoginForDev() &&
+    (isVerifyingLogin || isUnclaimedBulkPurchaser || loading)
+  ) {
     return null
   }
 
@@ -26,10 +29,13 @@ const EpisodePage = ({source, meta, ...props}) => {
 }
 
 export const getServerSideProps = async ({params, req}) => {
+  const disableLoginForDev = () =>
+    process.env.NODE_ENV === 'development' &&
+    process.env.NEXT_PUBLIC_DISABLE_LOGIN_FOR_DEV === 'true'
   const {cookies} = req
   const token = get(cookies, ACCESS_TOKEN_KEY)
 
-  if (!token) {
+  if (!disableLoginForDev() && !token) {
     return {
       redirect: {
         destination: '/login',
