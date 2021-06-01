@@ -67,7 +67,7 @@ export default function ToC() {
   const router = useRouter()
 
   function isActive(url) {
-    return url !== '/' ? router.asPath.match(url) : false
+    return url !== '/learn' ? router.query.slug.match(url) : false
   }
 
   const Item = (props) => {
@@ -107,7 +107,7 @@ export default function ToC() {
       </MenuButton>
       <MenuList className="relative z-20">
         {episodes.map((episode) => (
-          <Item key={episode.path} url={`/${episode.path}`}>
+          <Item key={episode.slug} url={episode.slug}>
             <a>{episode.title}</a>
           </Item>
         ))}
