@@ -1,6 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import useSWR, {mutate} from 'swr'
+import {useViewer} from 'context/viewer-context'
 
 const fetcher = (url) => axios.get(url).then((res) => res.data)
 
@@ -13,9 +14,14 @@ export function useProgress() {
 export const ProgressContext = React.createContext(defaultProgressContext)
 
 export const ProgressProvider = ({children}) => {
-  const {data, isValidating, error} = useSWR('/api/get-progress', fetcher, {
-    revalidateOnFocus: false,
-  })
+  const {purchased} = useViewer()
+  const {data, isValidating, error} = useSWR(
+    purchased ? '/api/get-progress' : null,
+    fetcher,
+    {
+      revalidateOnFocus: false,
+    }
+  )
 
   async function setProgress({episode, progress, setCompleted}) {
     setCompleted()

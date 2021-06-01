@@ -12,8 +12,13 @@ import {useProgress} from 'context/progress-context'
 import {motion} from 'framer-motion'
 
 export default function Learn() {
+  const [mounted, setMounted] = React.useState(false)
   const {isVerifyingLogin, disableLoginForDev} = useLoginRequired()
   const {progress} = useProgress()
+
+  React.useEffect(() => {
+    setMounted(true)
+  }, [])
 
   const {isUnclaimedBulkPurchaser, viewer, loading, viewingAsUserEmail} =
     useViewer()
@@ -169,7 +174,7 @@ export default function Learn() {
           className="max-w-screen-lg p-5 mx-auto mb-5 bg-white rounded-lg"
           {...welcomeMessageProps}
         />
-        {episodes && (
+        {mounted && episodes && (
           <motion.ul className="grid max-w-screen-lg grid-cols-1 gap-5 mx-auto text-center sm:grid-cols-2">
             {episodes.map((episode, index) => {
               const isCompleted = get(progress, episode.path)?.completed
