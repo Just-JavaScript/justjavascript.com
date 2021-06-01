@@ -151,7 +151,7 @@ const PurchaseBundle = ({
             <div className="w-full bg-white border border-tomato-400 p-4 mt-4 rounded-lg mb-4">
               <h4 className="text-tomato-600 w-full text-center">
                 🚨 There was an error processing your card.{' '}
-                <strong>{state.context.error}</strong>. Please contact your
+                <strong>{'' + state.context.error}</strong>. Please contact your
                 bank. Reload the page to try another card.
               </h4>
             </div>

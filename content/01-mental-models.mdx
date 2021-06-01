@@ -1,19 +1,4 @@
-export const meta = {
-  title: "Mental Models",
-  series: 1,
-  episode: 1,
-  next: "02-the-javascript-universe",
-  nextTitle: "The JavaScript Universe"
-}
-
-
-Read this code:
-
-```javascript
-let a = 10;
-let b = a;
-a = 0;
-```
+<Article title="Mental Models" series={1} episode={1} next="02-the-javascript-universe" nextTitle="The JavaScript Universe">
 
 What are the values of `a` and `b` after it runs? Work it out in your head before reading further.
 
@@ -96,10 +81,4 @@ Don’t worry if you can’t find the bug at all—it just means you’ll get th
 
 In the next module, we’ll start building mental models for some of the most fundamental JavaScript concepts—values and expressions.
 
-import Article from '../templates/article-template'
-
-export default ({children}) => (
-<Article {...meta}>
-{children}
 </Article>
-)

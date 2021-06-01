@@ -1,11 +1,4 @@
-export const meta = {
-  title: "Equality of Values",
-  series: 1,
-  episode: 7,
-  next: "08-properties",
-  prev: "06-meeting-objects-and-functions",
-  nextTitle: "Properties"
-}
+<Article title="Equality of Values" series={1} episode={7} next="08-properties" prev="06-meeting-objects-and-functions" nextTitle="Properties">
 
 It’s time to talk about equality in JavaScript! Here’s why it matters.
 
@@ -356,10 +349,5 @@ This module also has exercises for you to practice!
 
 Even though you’re likely familiar with the concept of variables, these exercises will help you cement the mental model we’re building. We need this foundation before we can get to more complex topics.
 
-import Article from '../templates/article-template'
-
-export default ({children}) => (
-<Article {...meta}>
-{children}
 </Article>
-)
+

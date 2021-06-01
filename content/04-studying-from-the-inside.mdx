@@ -1,11 +1,4 @@
-export const meta = {
-    title: "Studying from the Inside",
-    series: 1,
-    episode: 4,
-    next: "05-meeting-the-primitive-values",
-    prev: "03-values-and-variables",
-    nextTitle: "Meeting the Primitive Values"
-}
+<Article title="Studying from the Inside" series={1} episode={4} next="05-meeting-the-primitive-values" prev="03-values-and-variables" nextTitle="Meeting the Primitive Values">
 
 In the next module, we’ll take a closer look at our JavaScript universe and the values in it. But before we can get to that, we need to address the elephant in the room. *Is our JavaScript universe even real?*
 
@@ -61,10 +54,4 @@ I shrug.
 
 <Video src="https://res.cloudinary.com/dg3gyk0gu/video/upload/f_auto/just-javascript-email-images/jj04/dream-glitch-meta-optim-mp4.mp4" title="are we in a simulation too?" />
 
-import Article from '../templates/article-template'
-
-export default ({children}) => (
-<Article {...meta}>
-{children}
 </Article>
-)

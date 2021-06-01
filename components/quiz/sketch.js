@@ -7,7 +7,7 @@ import Markdown from 'components/quiz/markdown'
 import Submit from 'components/quiz/submit'
 import Continue from 'components/quiz/continue'
 import SubmitAndContinue from 'components/quiz/submit-and-continue'
-import Excalidraw from 'components/excalidraw/excalidraw-iframe'
+import Excalidraw from 'components/excalidraw/excalidraw'
 import useEggheadQuestion from 'hooks/use-egghead-question'
 import {motion, AnimatePresence} from 'framer-motion'
 import {isEmpty} from 'lodash'
@@ -68,7 +68,7 @@ const Sketch = (props) => {
             initialData={
               currentAnswer && {
                 elements: JSON.parse(currentAnswer),
-                scrollToCenter: true,
+                scrollToContent: true,
               }
             }
           />

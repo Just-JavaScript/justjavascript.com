@@ -53,12 +53,9 @@ const Article = ({
     currentEpisodeProgress && setCompleted(currentEpisodeProgress.completed)
   }, [currentEpisodeProgress])
 
-  if (
-    !disableLoginForDev() &&
-    (isVerifyingLogin || isUnclaimedBulkPurchaser || loading)
-  ) {
-    return null
-  }
+  // if (isVerifyingLogin || isUnclaimedBulkPurchaser || loading) {
+  //   return null
+  // }
 
   return (
     <Layout

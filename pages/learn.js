@@ -47,10 +47,10 @@ export default function Learn() {
           <a
             tabIndex={-1}
             className={
-              'rounded-lg h-full group-hover:shadow-xl overflow-hidden sm:px-16 px-8 sm:pt-32 pt-24 sm:pb-40 pb-32 relative flex flex-col items-center justify-center font-extrabold w-full bg-white font-serif transition-all ease-in-out duration-200'
+              'rounded-lg h-full  group-hover:shadow-xl overflow-hidden sm:px-16 px-8 sm:pt-32 pt-24 sm:pb-40 pb-32 relative flex flex-col items-center justify-center font-extrabold w-full bg-white font-serif transition-all ease-in-out duration-200'
             }
           >
-            <div className="relative z-10 font-serif font-extrabold text-gray-200 transition-colors duration-150 ease-in-out text-8xl group-hover:text-gray-400 sm:text-8xl">
+            <div className="relative z-10 font-serif font-extrabold text-gray-200 transition-colors duration-150 ease-in-out text-8xl group-hover:text-gray-300 sm:text-8xl">
               {number}
               {completed && (
                 <div
@@ -65,17 +65,18 @@ export default function Learn() {
                 >
                   {quiz && !quizCompleted && (
                     <svg
+                      className="absolute left-0 text-emerald-500"
                       xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="14"
-                      viewBox="0 0 24 14"
-                      className="absolute bottom-0 text-emerald-500"
+                      width="12"
+                      height="24"
+                      viewBox="0 0 12 24"
                     >
                       <path
-                        // stroke="white"
-                        fill="currentColor"
-                        fill-rule="evenodd"
-                        d="M12,14 C18.627417,14 24,8.627417 24,2 C24,2 19,6 12,2 C5,-2 0,2 0,2 C0,8.627417 5.372583,14 12,14 Z"
+                        fill="#10B981"
+                        stroke="white"
+                        strokeWidth={2}
+                        fillRule="evenodd"
+                        d="M12,24 C12,24 12,0 12,0 C5.372583,0 0,5.372583 0,12 C0,18.627417 5.372583,24 12,24 Z"
                       />
                     </svg>
                   )}
@@ -86,7 +87,7 @@ export default function Learn() {
                       quiz
                         ? quizCompleted
                           ? 'text-white'
-                          : 'text-transparent'
+                          : 'text-emerald-700'
                         : completed
                         ? 'text-white'
                         : ''
@@ -111,6 +112,16 @@ export default function Learn() {
           </a>
         </Link>
         <div className="absolute flex flex-wrap justify-center mt-2 sm:bottom-10 bottom-6">
+          <Link href={href}>
+            <a className="flex items-center justify-center px-5 py-3 m-1 text-gray-900 transition-all duration-200 ease-in-out bg-white border border-gray-100 rounded-full shadow-lg hover:bg-black hover:text-white group">
+              Read Episode
+              <span className="sr-only"> {children}</span>
+              {/* <i
+                aria-hidden="true"
+                className="ml-1 transform scale-75 gg-arrow-right"
+              /> */}
+            </a>
+          </Link>
           {!isEmpty(quiz) && (
             <Link href={`/quiz/${quiz}`}>
               <a className="flex items-center justify-center px-5 py-3 m-1 text-gray-900 transition-all duration-200 ease-in-out bg-white border border-gray-100 rounded-full hover:bg-black hover:text-white group">
@@ -133,16 +144,6 @@ export default function Learn() {
               </a>
             </Link>
           )}
-          <Link href={href}>
-            <a className="flex items-center justify-center px-5 py-3 m-1 text-gray-900 transition-all duration-200 ease-in-out bg-white border border-gray-100 rounded-full shadow-lg hover:bg-black hover:text-white group">
-              Read Episode
-              <span className="sr-only"> {children}</span>
-              <i
-                aria-hidden="true"
-                className="ml-1 transform scale-75 gg-arrow-right"
-              />
-            </a>
-          </Link>
         </div>
       </motion.li>
     )
@@ -177,7 +178,7 @@ export default function Learn() {
                 <LinkItem
                   idx={index}
                   key={episode.path}
-                  href={episode.path}
+                  href={`/${episode.path}`}
                   number={('0' + (index + 1)).slice(-2)}
                   completed={progress && isCompleted}
                   quiz={episode.quiz}
