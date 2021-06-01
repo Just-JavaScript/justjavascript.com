@@ -2,8 +2,6 @@ import React from 'react'
 import ToC from '../components/toc'
 import Layout from '../components/layout'
 import Pagination from '../components/mdx/pagination'
-import useLoginRequired from 'hooks/use-login-required'
-import {useViewer} from 'context/viewer-context'
 import {useProgress} from 'context/progress-context'
 import {useRouter} from 'next/router'
 import Spinner from 'components/spinner'
@@ -23,10 +21,8 @@ const Article = ({
   ...props
 }) => {
   const router = useRouter()
-  const EPISODE_ID = router.asPath.substring(1)
+  const EPISODE_ID = router.query.slug
   const {progress, setProgress} = useProgress()
-  const {isVerifyingLogin, disableLoginForDev} = useLoginRequired()
-  const {isUnclaimedBulkPurchaser, loading} = useViewer()
   const currentEpisodeProgress = progress && progress[EPISODE_ID]
   const [completed, setCompleted] = React.useState(
     currentEpisodeProgress?.completed || false
@@ -51,10 +47,6 @@ const Article = ({
   React.useEffect(() => {
     currentEpisodeProgress && setCompleted(currentEpisodeProgress.completed)
   }, [currentEpisodeProgress])
-
-  // if (isVerifyingLogin || isUnclaimedBulkPurchaser || loading) {
-  //   return null
-  // }
 
   return (
     <Layout

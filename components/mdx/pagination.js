@@ -6,7 +6,7 @@ import {useRouter} from 'next/router'
 
 const Pagination = (props) => {
   const router = useRouter()
-  const currentSlug = router.asPath.slice(1)
+  const currentSlug = router.query.slug
   const quiz = find(episodes, {quiz: currentSlug})
   const quizSlug = get(quiz, 'quiz')
   const nextPath = isEmpty(quiz) ? props.next : `/quiz/${quizSlug}`

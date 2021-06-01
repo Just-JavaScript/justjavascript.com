@@ -7,8 +7,8 @@ import Link from 'next/link'
 
 const QuizCompleted = () => {
   const {query} = useRouter()
-  const currentIdx = findIndex(episodes, {path: query.quiz})
-  const currentEpisode = find(episodes, {path: query.quiz})
+  const currentIdx = findIndex(episodes, {slug: query.quiz})
+  const currentEpisode = find(episodes, {slug: query.quiz})
   const nextEpisode = episodes[currentIdx + 1]
 
   return (
