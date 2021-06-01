@@ -14,6 +14,7 @@ export function useProgress() {
 export const ProgressContext = React.createContext(defaultProgressContext)
 
 export const ProgressProvider = ({children}) => {
+  const [isResetting, setIsResetting] = React.useState(false)
   const {purchased} = useViewer()
   const {data, isValidating, error} = useSWR(
     purchased ? '/api/get-progress' : null,
@@ -37,11 +38,28 @@ export const ProgressProvider = ({children}) => {
         setCompleted(!progress.completed)
       })
   }
+
+  async function resetProgress() {
+    setIsResetting(true)
+    return await axios
+      .post('/api/reset-progress')
+      .then(() => {
+        mutate('/api/get-progress')
+      })
+      .catch(() => {
+        setIsResetting(false)
+        console.debug('something went wrong when resetting your progress')
+      })
+      .finally(() => setIsResetting(false))
+  }
+
   return (
     <ProgressContext.Provider
       value={{
         progress: data,
         setProgress: (props) => (isValidating ? {} : setProgress(props)),
+        isResetting,
+        resetProgress,
         isValidating,
         error,
       }}

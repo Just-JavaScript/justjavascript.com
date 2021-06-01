@@ -7,6 +7,7 @@ import useRedirectUnclaimedBulkToInvoice from 'hooks/use-redirect-to-learn'
 import {useViewer} from 'context/viewer-context'
 import isEmpty from 'lodash/isEmpty'
 import get from 'lodash/get'
+import Spinner from 'components/spinner'
 import WelcomeMessage from 'components/welcome-message'
 import {useProgress} from 'context/progress-context'
 import {motion} from 'framer-motion'
@@ -14,7 +15,7 @@ import {motion} from 'framer-motion'
 export default function Learn() {
   const [mounted, setMounted] = React.useState(false)
   const isVerifyingLogin = useLoginRequired()
-  const {progress} = useProgress()
+  const {progress, resetProgress, isResetting} = useProgress()
 
   React.useEffect(() => {
     setMounted(true)
@@ -30,6 +31,10 @@ export default function Learn() {
     loading
   ) {
     return null
+  }
+
+  function handleResetProgress() {
+    window.confirm('Are you sure?') && resetProgress()
   }
 
   const LinkItem = ({
@@ -199,12 +204,22 @@ export default function Learn() {
         )}
       </main>
       <footer className="flex flex-col items-center justify-center w-full max-w-screen-lg py-16 mx-auto space-y-16 sm:py-24 sm:space-y-0 sm:justify-between sm:flex-row">
-        <Link href="/invoice">
-          <a className="flex items-center px-4 py-2 transition-all duration-200 ease-in-out rounded-lg sm:text-lg hover:bg-white hover:shadow-xl">
-            <i className="gg-file" />
-            <span className="pl-3">Get your invoice</span>
-          </a>
-        </Link>
+        <div>
+          <Link href="/invoice">
+            <a className="flex items-center px-4 py-2 transition-all duration-200 ease-in-out rounded-lg sm:text-lg hover:bg-white hover:shadow-xl">
+              <i className="gg-file" />
+              <span className="pl-3">Get your invoice</span>
+            </a>
+          </Link>
+          {!isEmpty(progress) && (
+            <button
+              onClick={() => handleResetProgress()}
+              className="flex items-center px-4 py-2 transition-all duration-200 ease-in-out rounded-lg sm:text-lg hover:bg-white hover:shadow-xl"
+            >
+              {isResetting ? <Spinner /> : 'Reset progress'}
+            </button>
+          )}
+        </div>
         <Link href="/">
           <a tabIndex={-1} className="font-serif text-2xl font-extrabold">
             JJS
