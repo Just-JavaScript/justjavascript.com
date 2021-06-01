@@ -45,7 +45,7 @@ const Essay = (props) => {
           {isAnswered ? (
             <motion.div>
               <div className="pb-2 text-lg font-semibold">Your answer</div>
-              <Markdown className="h-auto prose rounded-md sm:prose-lg">
+              <Markdown className="h-auto prose rounded-md sm:prose-lg whitespace-pre-wrap">
                 {formik.values.value}
               </Markdown>
             </motion.div>
