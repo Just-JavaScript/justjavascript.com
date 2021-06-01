@@ -10,7 +10,6 @@ import Spinner from 'components/spinner'
 import isUndefined from 'lodash/isUndefined'
 import {InView} from 'react-intersection-observer'
 import {motion} from 'framer-motion'
-import ReactMarkdown from 'react-markdown'
 
 const Article = ({
   children,
@@ -24,7 +23,7 @@ const Article = ({
   ...props
 }) => {
   const router = useRouter()
-  const EPISODE_ID = router.pathname.substring(1)
+  const EPISODE_ID = router.asPath.substring(1)
   const {progress, setProgress} = useProgress()
   const isVerifyingLogin = useLoginRequired()
   const {isUnclaimedBulkPurchaser, loading} = useViewer()
