@@ -14,7 +14,7 @@ const PurchaseButton = ({purchasing, children, bundle, onClick}) => {
     <button
       className={`${
         purchasing ? purchasingStyles : 'hover:scale-105'
-      } flex mx-auto text-center rounded-lg border border-transparent border-b-2 border-tomato-500 font-serif focus:shadow-outline-black bg-black px-10 py-5 text-lg font-bold leading-6 text-white transition-all ease-in-out duration-150 transform hover:shadow-xl`}
+      } flex mx-auto text-center rounded-lg border border-transparent font-sans  focus:scale-90 bg-black px-10 py-5 text-lg font-bold leading-6 text-white transition-all ease-in-out duration-150 transform hover:shadow-xl`}
       aria-describedby={`${bundle.title} Tier`}
       onClick={onClick}
     >
@@ -142,14 +142,14 @@ const PurchaseBundle = ({
     purchasingOtherPackage
 
   const teamAvailable = isEmpty(upgradeFromSellable)
-  console.log(state)
+
   return (
     <>
       <div className="py-10">
         <div>
           {state.context.error && (
-            <div className="w-full bg-white border border-tomato-400 p-4 mt-4 rounded-lg mb-4">
-              <h4 className="text-tomato-600 w-full text-center">
+            <div className="w-full p-4 mt-4 mb-4 bg-white border rounded-lg border-tomato-400">
+              <h4 className="w-full text-center text-tomato-600">
                 🚨 There was an error processing your card.{' '}
                 <strong>{'' + state.context.error}</strong>. Please contact your
                 bank. Reload the page to try another card.
@@ -158,22 +158,22 @@ const PurchaseBundle = ({
           )}
           {expiresAt && !isPPP && <Countdown date={expiresAt} />}
           <div className="flex items-center justify-center">
-            <span className="px-3 flex items-start leading-none tracking-tight text-gray-900 sm:text-6xl">
-              <span className="mt-1 mr-1 text-lg font-serif font-extrabold text-gray-300">
-                $
+            <span className="flex items-start px-3 leading-none tracking-tight text-gray-900 sm:text-6xl">
+              <span className="mt-1 mr-1 font-mono text-2xl font-semibold tracking-wide text-gray-500 sm:text-3xl">
+                US$
               </span>
-              <span className="font-extrabold font-serif sm:text-9xl text-7xl">
+              <span className="font-serif text-6xl font-bold sm:text-7xl tabular-nums">
                 {displayPrice}
               </span>
               {((state.context.quantity && state.context.quantity > 4) ||
                 displayPercentOff) && (
                 <div className="flex flex-col">
-                  <span className="ml-2 font-extrabold line-through text-4xl font-serif text-gray-700">
+                  <span className="ml-2 font-serif text-4xl font-semibold text-gray-700 line-through">
                     {typeof displayFullPrice === 'number' &&
                       displayFullPrice * (state.context.quantity || 1)}
                   </span>
                   {displayPercentOff && (
-                    <span className="text-base ml-2 tracking-normal font-semibold text-rose-500">
+                    <span className="ml-2 text-base font-semibold tracking-normal text-rose-500">
                       {`Save ${displayPercentOff}%`}
                     </span>
                   )}
@@ -181,7 +181,7 @@ const PurchaseBundle = ({
               )}
             </span>
           </div>
-          <div className="mb-8 text-center uppercase font-semibold tracking-wide text-sm text-gray-700">
+          <div className="py-2 font-mono text-base font-semibold tracking-wide text-center uppercase">
             yours forever
           </div>
           <motion.div
@@ -190,7 +190,7 @@ const PurchaseBundle = ({
             exit={{opacity: 0, margin: '0px 0px'}}
             className="flex justify-center"
           >
-            <div className="flex space-x-3 items-center">
+            <div className="flex items-center space-x-3">
               <label htmlFor="quantity" className="">
                 Quantity
               </label>
@@ -200,7 +200,7 @@ const PurchaseBundle = ({
                   const newQuantity = event.target.value
                   setTeamQuantity({quantity: Number(newQuantity)})
                 }}
-                className="form-input text-lg text-center flex font-semibold leading-tight border-gray-200 w-16"
+                className="flex w-16 text-lg font-semibold leading-tight text-center border-gray-200 form-input"
                 name="quantity"
                 type="number"
                 min="1"
@@ -221,7 +221,7 @@ const PurchaseBundle = ({
           )}
         </div>
         {/* {teamAvailable && (
-          <motion.div layout className="mt-10 flex justify-center w-full">
+          <motion.div layout className="flex justify-center w-full mt-10">
             <TeamPlanToggle
               planType={planType}
               activateIndividualPlan={activateIndividualPlan}
