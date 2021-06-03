@@ -4,7 +4,7 @@ import Question from 'components/mdx/quiz/question'
 import Answer from 'components/mdx/quiz/answer'
 import Choice from 'components/mdx/quiz/choice'
 
-<Quiz title="JJS 06 Equality of Values" id="equality-of-values" version="1">
+<Quiz title="JJS 07 Equality of Values" id="equality-of-values" version="1">
 
 <Question kind="QuestionSet" desc="string interning">
 
@@ -12,13 +12,17 @@ import Choice from 'components/mdx/quiz/choice'
 
 <Prompt>
 
-# Sketch a diagram of variables and values after this snippet of code runs. Use our mental model.
+# Face Off
+
+Sketch a diagram of variables and values after this snippet of code runs.
 
 ```js
-let fingernails = 'mustache'
-let toes = fingernails
-let nose = 'must' + 'ache'
+let fingernails = 'mustache';
+let toes = fingernails;
+let nose = 'must' + 'ache';
 ```
+
+**Use our mental model.**
 
 </Prompt>
 
@@ -52,15 +56,17 @@ let nose = 'must' + 'ache'
 
 <Prompt>
 
-# Which one of these diagrams best matches your sketch and our mental model after that code runs?
+### Which one of these diagrams best matches your sketch and our mental model after that code runs?
+
+Only one of these diagrams matches our mental model. Before you confirm your choice, think about what’s wrong with the others.
 
 </Prompt>
 
 <Answer>
 
-**B is the correct diagram.** All variables point to the same "mustache" string value.
+**Diagram B is correct.** All variables point to the same `"mustache"` string value.
 
-None of the other diagrams match our mental model because they show more than one "mustache" string value. In our universe, every distinct string only exists once.
+None of the other diagrams match our mental model because they show more than one `"mustache"` string value. In our universe, every distinct string only exists once.
 
 ![https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612898922/just-javascript-email-images/jj06/Quiz%20Images/jjs-06-01-b.jpg](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612898922/just-javascript-email-images/jj06/Quiz%20Images/jjs-06-01-b.jpg)
 
@@ -76,11 +82,11 @@ None of the other diagrams match our mental model because they show more than on
 
 Now **use this sketch** to determine the output of:
 
-1. **console.log(fingernails === toes);**
-2. **console.log(toes === nose);**
-3. **console.log(nose === fingernails);**
+1. `console.log(fingernails === toes);`
+2. `console.log(toes === nose);`
+3. `console.log(nose === fingernails);`
 
-Hint: usually, a === b when a and b point to the same value.
+Hint: usually, `a === b` when `a` and `b` point to the same value.
 
 ![https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612898922/just-javascript-email-images/jj06/Quiz%20Images/jjs-06-01-b.jpg](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612898922/just-javascript-email-images/jj06/Quiz%20Images/jjs-06-01-b.jpg)
 
@@ -88,11 +94,11 @@ Hint: usually, a === b when a and b point to the same value.
 
 <Answer>
 
-All of these examples print true.
+All of these examples print `true`.
 
-1. fingernails === toes: This is true because fingernails and toes point at the same string.
-2. toes === nose: This is true because toes and nose point at the same string.
-3. nose === fingernails: This is true because nose and fingernails point at the same string.
+1. `fingernails === toes`: This is `true` because `fingernails` and `toes` point at the same string.
+2. `toes === nose`: This is `true` because `toes` and `nose` point at the same string.
+3. `nose === fingernails`: This is `true` because `nose` and `fingernails` point at the same string.
 
 ![https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612898922/just-javascript-email-images/jj06/Quiz%20Images/jjs-06-01-b.jpg](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612898922/just-javascript-email-images/jj06/Quiz%20Images/jjs-06-01-b.jpg)
 
@@ -106,14 +112,18 @@ All of these examples print true.
 
 <Prompt>
 
-# Sketch a diagram of variables and values after this snippet of code runs. Use our mental model.
+# Tomato, Tomato
+
+Sketch a diagram of variables and values after this snippet of code runs.
 
 ```js
-let tomato = {}
-let oregano = tomato
-let potato = {}
-tomato = {}
+let tomato = {};
+let oregano = tomato;
+let potato = {};
+tomato = {};
 ```
+
+**Use our mental model.**
 
 </Prompt>
 
@@ -147,15 +157,17 @@ tomato = {}
 
 <Prompt>
 
-# Which one of these diagrams best matches your sketch and our mental model after that code runs?
+### Which one of these diagrams best matches your sketch and our mental model after that code runs?
+
+Only one of these diagrams matches our mental model. Before you confirm your choice, think about what’s wrong with the others.
 
 </Prompt>
 
 <Answer>
 
-**C is the correct diagram.** It shows each variable pointing at a different object value.
+**Diagram C is correct.** It shows each variable pointing at a different object value.
 
-Remember that {} means “create a new object value”, and let x = y means “point x’s wire to the current value of y”. If you follow each line of code in this example step by step, you will arrive at the same result.
+Remember that `{}` means “create a new object value”, and `let x = y` means “point `x`’s wire to the current value of `y`”. If you follow each line of code in this example step by step, you will arrive at the same result.
 
 ![https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612899693/just-javascript-email-images/jj06/Quiz%20Images/jjs-06-03-c.jpg](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612899693/just-javascript-email-images/jj06/Quiz%20Images/jjs-06-03-c.jpg)
 
@@ -171,9 +183,9 @@ Remember that {} means “create a new object value”, and let x = y means “p
 
 Now **use this sketch** to determine the output of:
 
-1. **console.log(tomato === oregano);**
-2. **console.log(oregano === potato);**
-3. **console.log(potato === tomato);**
+1. `console.log(tomato === oregano);`
+2. `console.log(oregano === potato);`
+3. `console.log(potato === tomato);`
 
 ![https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612899693/just-javascript-email-images/jj06/Quiz%20Images/jjs-06-03-c.jpg](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612899693/just-javascript-email-images/jj06/Quiz%20Images/jjs-06-03-c.jpg)
 
@@ -183,9 +195,9 @@ Now **use this sketch** to determine the output of:
 
 **All of these examples print `false`.**
 
-1. **tomato === oregano**: This is **false** because tomato and oregano point at different objects.
-2. **oregano === potato**: This is **false** because oregano and potato point at different objects.
-3. **potato === tomato**: This is **false** because potato and tomato point at different objects.
+1. `tomato === oregano`: This is `false` because `tomato` and `oregano` point at different objects.
+2. `oregano === potato`: This is `false` because `oregano` and `potato` point at different objects.
+3. `potato === tomato`: This is `false` because `potato` and `tomato` point at different objects.
 
 ![https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612899693/just-javascript-email-images/jj06/Quiz%20Images/jjs-06-03-c.jpg](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612899693/just-javascript-email-images/jj06/Quiz%20Images/jjs-06-03-c.jpg)
 
@@ -196,6 +208,8 @@ Now **use this sketch** to determine the output of:
 <Question kind="EssayQuestion" desc="object references">
 
 <Prompt>
+
+# It’s Only Natural
 
 **Look at this diagram of variables and values.** Write three lines of code that, when executed, would lead to this diagram.
 
@@ -212,9 +226,9 @@ Compare it to your answer.
 If you’d like, verify your answer in the browser console. Hint: you might find `===` or `Object.is` helpful to check your answer against the diagram.
 
 ```js
-let tree = {}
-let stone = {}
-let water = tree
+let tree = {};
+let stone = {};
+let water = tree;
 ```
 
 </Answer>
@@ -225,14 +239,16 @@ let water = tree
 
 <Prompt>
 
-# The author of this code expects it to print a message. **Will the message appear?**
+# You Shall Not Pass
+
+The author of this code expects it to print a message. **Will the message appear?**
 
 Use our mental model to answer this. Make a sketch if you’d like!
 
 ```js
-let ticket = {id: 0}
-if (ticket === {id: 0}) {
-  console.log('Bad ticket')
+let ticket = { id: 0 };
+if (ticket === { id: 0 }) {
+  console.log('Bad ticket');
 }
 ```
 
@@ -242,14 +258,14 @@ if (ticket === {id: 0}) {
 
 **No, the message will not appear.**
 
-When we “ask” `ticket === { id: 0 }`, we need to figure out what value is on each side of ===. On the left side, we have ticket, whose value is the object we created on the first line by writing `{ id: 0 }`. On the right side, we have a `{ id: 0 }` object literal — which also creates a completely new value!
+When we “ask” `ticket === { id: 0 }`, we need to figure out what value is on each side of `===`. On the left side, we have `ticket`, whose value is the object we created on the first line by writing `{ id: 0 }`. On the right side, we have a `{ id: 0 }` object literal — which also creates a completely new value!
 
-We have **different object values on each side of ===**. So the check will **not** pass, and the function will **not** print our message.
+We have **different object values on each side of `===`**. So the check will **not** pass, and the function will **not** print our message.
 
 ```js
-let ticket = {id: 0}
-if (ticket === {id: 0}) {
-  console.log('Bad ticket')
+let ticket = { id: 0 };
+if (ticket === { id: 0 }) { // false
+  console.log('Bad ticket'); // Will not run.
 }
 ```
 
@@ -261,14 +277,16 @@ if (ticket === {id: 0}) {
 
 <Prompt>
 
-# The author of this code expects it to print a message. **Will the message appear?**
+# All Things Must Pass
+
+The author of this code expects it to print a message. **Will the message appear?**
 
 Use our mental model to answer this. Make a sketch if you’d like!
 
 ```js
-let ticketId = 0
+let ticketId = 0;
 if (ticketId === 0) {
-  console.log('Bad ticket')
+  console.log('Bad ticket');
 }
 ```
 
@@ -278,14 +296,14 @@ if (ticketId === 0) {
 
 **Yes, the message will appear.**
 
-When we “ask” `ticketId === 0`, we need to figure out what value is on each side of ===. On the left side, we have `ticketId`, which points to the number value 0. On the right side, we have the 0 literal — which also results in the number value 0.
+When we “ask” `ticketId === 0`, we need to figure out what value is on each side of `===`. On the left side, we have `ticketId`, which points to the number value `0`. On the right side, we have the `0` literal — which also results in the number value `0`.
 
-There is only one number value _0_ in our universe, and **we have that same value on both sides of ===.** The check **will** pass, and the function **will** print our message.
+There is only one number value `0` in our universe, and **we have that same value on both sides of `===`.** The check **will** pass, and the function **will** print our message.
 
 ```js
-let ticketId = 0
-if (ticketId === 0) {
-  console.log('Bad ticket')
+let ticketId = 0;
+if (ticketId === 0) { // true
+  console.log('Bad ticket'); // Will run!
 }
 ```
 
@@ -297,12 +315,14 @@ if (ticketId === 0) {
 
 <Prompt>
 
-# Can you think of a different value than **0** that would also cause a message to be printed?
+# Twin Shadow
+
+Can you think of a different value than `0` that would also cause a message to be printed?
 
 ```js
 let ticketId = ???;
 if (ticketId === 0) {
-console.log('Bad ticket');
+  console.log('Bad ticket');
 }
 ```
 
@@ -310,9 +330,9 @@ console.log('Bad ticket');
 
 <Answer>
 
-**The other value that would cause the message to be printed is -0.**
+**The other value that would cause the message to be printed is `-0`.**
 
-Even though 0 and -0 are two different values, === considers them equal.
+Even though `0` and `-0` are two different values, `===` considers them equal.
 
 </Answer>
 
@@ -324,18 +344,22 @@ Even though 0 and -0 are two different values, === considers them equal.
 
 <Prompt>
 
-# Sketch a diagram of variables and values after this snippet of code runs. Use our mental model.
+# Spill the Beans
+
+Sketch a diagram of variables and values after this snippet of code runs.
 
 ```js
-let tea = function () {
-  return 0 / 0
-}
-let coffee = function () {
-  return 0 / 0
-}
-let matcha = tea()
-let latte = coffee()
+let tea = function() {
+  return 0 / 0;
+};
+let coffee = function() {
+  return 0 / 0;
+};
+let matcha = tea();
+let latte = coffee();
 ```
+
+**Use our mental model.**
 
 </Prompt>
 
@@ -369,19 +393,21 @@ let latte = coffee()
 
 <Prompt>
 
-# Which one of these diagrams best matches your sketch and our mental model after that code runs?
+### Which one of these diagrams best matches your sketch and our mental model after that code runs?
+
+Only one of these diagrams matches our mental model. Before you confirm your choice, think about what’s wrong with the others.
 
 </Prompt>
 
 <Answer>
 
-**D is the correct diagram.** It shows tea and coffee pointing to two different function values, while matcha and latte are pointing to the same NaN value.
+**Diagram D is correct.** It shows `tea` and `coffee` pointing to two different function values, while `matcha` and `latte` are pointing to the same `NaN` value.
 
-Diagram A is wrong because it shows matcha and latte pointing to two different NaN values. In our universe, there is only one NaN value.
+Diagram A is wrong because it shows `matcha` and `latte` pointing to two different `NaN` values. In our universe, there is only one `NaN` value.
 
-Diagrams B and C are wrong because they show tea and coffee pointing to the same value. Each function definition creates a new value, so tea and coffee should point to two different values.
+Diagrams B and C are wrong because they show `tea` and `coffee` pointing to the same value. Each function definition creates a new value, so `tea` and `coffee` should point to two different values.
 
-As a reminder, NaN is a special numeric value that represents an invalid result — like when you try to calculate 0 / 0.
+As a reminder, `NaN` is a special numeric value that represents an invalid result — like when you try to calculate `0 / 0`.
 
 ![https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612902727/just-javascript-email-images/jj06/Quiz%20Images/jjs-06-09-d.jpg](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612902727/just-javascript-email-images/jj06/Quiz%20Images/jjs-06-09-d.jpg)
 
@@ -397,10 +423,10 @@ As a reminder, NaN is a special numeric value that represents an invalid result 
 
 Now **use this sketch** to determine the output of:
 
-1. **console.log(tea === coffee);**
-2. **console.log(Object.is(tea, coffee));**
-3. **console.log(matcha === latte);**
-4. **console.log(Object.is(matcha, latte));**
+1. `console.log(tea === coffee);`
+2. `console.log(Object.is(tea, coffee));`
+3. `console.log(matcha === latte);`
+4. `console.log(Object.is(matcha, latte));`
 
 ![https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612902619/just-javascript-email-images/jj06/Quiz%20Images/jjs-06-09-c.jpg](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612902619/just-javascript-email-images/jj06/Quiz%20Images/jjs-06-09-c.jpg)
 
@@ -408,12 +434,12 @@ Now **use this sketch** to determine the output of:
 
 <Answer>
 
-**Only Object.is(matcha, latte) is true, all the other answers are false.**
+**Only `Object.is(matcha, latte)` is `true`, all the other answers are `false`.**
 
-1. **tea === coffee** — This is **false** because tea and coffee point at two different function values.
-2. **Object.is(tea, coffee)** — This is **false** because tea and coffee point at two different function values.
-3. **matcha === latte** — This is **false** because both of them point at NaN, and NaN === NaN is always false. (If you forgot about this, you can re-read the section about special cases of Strict Equality.)
-4. **Object.is(matcha, latte)** — This is **true** because matcha and latte point at the same NaN number value.
+1. `tea === coffee`: This is `false` because `tea` and `coffee` point at two different function values.
+2. `Object.is(tea, coffee)`: This is `false` because `tea` and `coffee` point at two different function values.
+3. `matcha === latte`: This is `false` because both of them point at `NaN`, and `NaN === NaN` is always `false`. (If you forgot about this, you can re-read the section about special cases of Strict Equality.)
+4. `Object.is(matcha, latte)`: This is `true` because `matcha` and `latte` point at the same `NaN` number value.
 
 ![https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612902727/just-javascript-email-images/jj06/Quiz%20Images/jjs-06-09-d.jpg](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612902727/just-javascript-email-images/jj06/Quiz%20Images/jjs-06-09-d.jpg)
 
