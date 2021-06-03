@@ -7,10 +7,10 @@ import useRedirectUnclaimedBulkToInvoice from 'hooks/use-redirect-to-learn'
 import {useViewer} from 'context/viewer-context'
 import isEmpty from 'lodash/isEmpty'
 import get from 'lodash/get'
-import Spinner from 'components/spinner'
 import WelcomeMessage from 'components/welcome-message'
 import {useProgress} from 'context/progress-context'
 import {motion} from 'framer-motion'
+import ResetProgress from '../../components/reset-progress'
 
 export default function Learn() {
   const [mounted, setMounted] = React.useState(false)
@@ -213,12 +213,11 @@ export default function Learn() {
             </a>
           </Link>
           {!isEmpty(progress) && (
-            <button
-              onClick={() => handleResetProgress()}
-              className="flex items-center px-4 py-2 transition-all duration-200 ease-in-out rounded-lg sm:text-lg hover:bg-white hover:shadow-xl"
-            >
-              {isResetting ? <Spinner /> : 'Reset progress'}
-            </button>
+            <ResetProgress
+              progress={progress}
+              resetProgress={resetProgress}
+              isResetting={isResetting}
+            />
           )}
         </div>
         <Link href="/">

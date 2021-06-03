@@ -2,6 +2,7 @@ import React from 'react'
 import axios from 'axios'
 import useSWR, {mutate} from 'swr'
 import {useViewer} from 'context/viewer-context'
+import isEmpty from 'lodash/isEmpty'
 
 const fetcher = (url) => axios.get(url).then((res) => res.data)
 
@@ -50,7 +51,7 @@ export const ProgressProvider = ({children}) => {
         setIsResetting(false)
         console.debug('something went wrong when resetting your progress')
       })
-      .finally(() => setIsResetting(false))
+      .finally(() => isEmpty(data) && setIsResetting(false))
   }
 
   return (
