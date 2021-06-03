@@ -205,7 +205,7 @@ export default function Learn() {
         )}
       </main>
       <footer className="flex flex-col items-center justify-center w-full max-w-screen-lg py-16 mx-auto space-y-16 sm:py-24 sm:space-y-0 sm:justify-between sm:flex-row">
-        <div>
+        <div className="flex flex-col items-center sm:items-start">
           <Link href="/invoice">
             <a className="flex items-center px-4 py-2 transition-all duration-200 ease-in-out rounded-lg sm:text-lg hover:bg-white hover:shadow-xl">
               <i className="gg-file" />

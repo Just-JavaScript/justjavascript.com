@@ -24,7 +24,7 @@ const ResetProgress = ({progress, resetProgress, isResetting}) => {
         onClick={open}
         className="flex items-center px-4 py-2 transition-all duration-200 ease-in-out rounded-lg sm:text-lg hover:bg-white hover:shadow-xl"
       >
-        {isResetting ? (
+        {isResetting && !isEmpty(progress) ? (
           <Spinner />
         ) : (
           <>
