@@ -11,7 +11,7 @@ const handler = async (req, res) => {
   }
   const answer = req.body
 
-  if (isEmpty(answer) || isEmpty(answer?.quiz?.question?.id)) {
+  if (isEmpty(answer) || isEmpty(answer?.quiz?.id)) {
     return res.status(400).json({error: 'Malformed Request Body.'})
   }
 

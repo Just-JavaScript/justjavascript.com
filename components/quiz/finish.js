@@ -7,7 +7,7 @@ export default function Finish({onClick}) {
         layout
         initial={{opacity: 0}}
         animate={{opacity: 1}}
-        className="flex items-center justify-center w-full px-5 py-8 font-semibold text-white transition-colors duration-300 ease-in-out bg-teal-500 rounded-md hover:bg-teal-600"
+        className="flex items-center justify-center w-full px-5 py-8 text-lg font-semibold text-white transition-colors duration-300 ease-in-out rounded-md bg-emerald-500 hover:bg-emerald-600"
         type="button"
         onClick={onClick}
       >
