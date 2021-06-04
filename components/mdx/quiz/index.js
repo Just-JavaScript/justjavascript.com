@@ -10,7 +10,7 @@ import Layout from 'components/layout'
 function getQuestions(questions, quizId, quizVersion) {
   const items = questions.map((question, questionIndex) => {
     const {kind, children, required, version, canComment} = question.props
-    let id = quizId + '.' + quizVersion + '.' + questionIndex
+    let id = quizId + '~' + quizVersion + '~' + questionIndex
     if (question.props.desc) {
       id += '(' + question.props.desc + ')'
     }
@@ -208,6 +208,7 @@ const Quiz = ({children, title, version, slug, id}) => {
                   nextQuestionIdx={nextQuestionIdx}
                   nextQuestionId={nextQuestionId}
                   setCurrentQuestion={setCurrentQuestion}
+                  quiz={quiz}
                 />
               )}
             </div>
