@@ -12,6 +12,11 @@ export const postQuizAnswer = (context) =>
     }
     console.debug('submitted: ', dataToSubmit)
 
-    storeUserAnswerInLocalStorage(context.currentQuestionId, context.userAnswer)
-    axios.post('/api/answer', dataToSubmit).then(() => resolve())
+    axios.post('/api/answer', dataToSubmit).then(() => {
+      resolve()
+      storeUserAnswerInLocalStorage(
+        context.currentQuestionId,
+        context.userAnswer
+      )
+    })
   })

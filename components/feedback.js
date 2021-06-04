@@ -1,41 +1,45 @@
 import React from 'react'
+import * as yup from 'yup'
 import {postQuizAnswer} from 'utils/post-quiz-answer'
 import Spinner from 'components/spinner'
 import {getUserAnswerFromLocalStorage} from 'utils/quiz-answers-in-local-storage'
 import isEmpty from 'lodash/isEmpty'
+import {useFormik} from 'formik'
 
 const Feedback = ({quiz}) => {
   const {id: quizId} = quiz
   const key = `${quizId}~feedback`
   const answer = JSON.parse(getUserAnswerFromLocalStorage(key))
-  const answered = !isEmpty(answer)
-  const [value, setValue] = React.useState(answer)
-  const [error, setError] = React.useState()
   const [submitted, setSubmitted] = React.useState(false)
-  const [submitting, setSubmitting] = React.useState(false)
-  const disabled = !submitting && (submitted || answered)
-  const context = {
-    userAnswer: value,
-    currentQuestionId: key,
-    quiz: {
-      id: quizId,
+
+  const formik = useFormik({
+    initialValues: {
+      feedback: answer,
     },
-  }
-  function handleSubmitFeedback() {
-    if (!isEmpty(value)) {
-      setError('')
-      setSubmitting(true)
-      postQuizAnswer(context)
+    validationSchema: yup.object().shape({
+      feedback: yup.string().required(`Can't stay empty`),
+    }),
+    onSubmit: (values, actions) => {
+      const dataToSubmit = {
+        userAnswer: values.feedback,
+        currentQuestionId: key,
+        quiz: {
+          id: quizId,
+        },
+      }
+      postQuizAnswer(dataToSubmit)
         .then(() => {
-          setSubmitting(false)
           setSubmitted(true)
-          setError('')
         })
-        .catch((err) => setError(err))
-    } else {
-      setError("Can't stay empty.")
-    }
-  }
+        .catch((err) => {
+          setSubmitted(false)
+          actions.setErrors({feedback: `Something went wrong. ${err}`})
+        })
+    },
+  })
+
+  const disabled =
+    formik.isSubmitting || submitted || !isEmpty(formik.initialValues.feedback)
 
   return (
     <div>
@@ -58,26 +62,25 @@ const Feedback = ({quiz}) => {
           Dan
         </p>
       </div>
-      <form
-        className="py-4"
-        onSubmit={(e) => {
-          handleSubmitFeedback()
-          e.preventDefault()
-        }}
-      >
+      <form className="py-4" onSubmit={formik.handleSubmit}>
+        <label htmlFor="feedback">Your feedback</label>
         <textarea
+          required={true}
           disabled={disabled}
-          value={value}
-          onChange={(e) => setValue(e.currentTarget.value)}
+          value={formik.values.feedback}
+          onChange={formik.handleChange}
           rows={5}
+          name="feedback"
           className="w-full p-3 prose border border-gray-200 rounded-md bg-gray-50 prose-sans max-w-none focus:shadow-outline-orange focus:ring-orange-500 focus:border-transparent"
           placeholder="Type your feedback here..."
         />
-        {!isEmpty(error) && error}
+        {formik.errors.feedback &&
+          formik.touched.feedback &&
+          formik.errors.feedback}
         <button
           disabled={disabled}
           className={`flex items-center justify-center w-full px-3 py-3 mt-4 font-semibold transition-colors duration-300 ease-in-out  rounded-md  focus:outline-none focus:ring focus:ring-orange-500 ${
-            disabled
+            submitted
               ? 'cursor-not-allowed bg-white text-black'
               : 'cursor-hand bg-black text-white hover:bg-gray-900'
           }`}
@@ -85,7 +88,7 @@ const Feedback = ({quiz}) => {
         >
           {submitted ? (
             'Sent. Thanks!'
-          ) : submitting ? (
+          ) : formik.isSubmitting ? (
             <Spinner className="text-white" />
           ) : (
             'Send feedback'
