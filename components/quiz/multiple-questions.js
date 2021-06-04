@@ -79,7 +79,11 @@ const MultipleQuestions = (props) => {
               number,
               nextQuestionId,
               nextQuestionIdx,
-            } = useEggheadQuiz(parentQuestion, question, setCurrentQuestion)
+            } = useEggheadQuiz(
+              {...parentQuestion, id: props.quiz.id},
+              question,
+              setCurrentQuestion
+            )
 
             const displayContinue =
               isLastQuestion &&
