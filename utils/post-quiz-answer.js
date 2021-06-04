@@ -1,11 +1,14 @@
 import {storeUserAnswerInLocalStorage} from 'utils/quiz-answers-in-local-storage'
 import axios from './configured-axios'
+import isArray from 'lodash/isArray'
 
 export const postQuizAnswer = (context) =>
   new Promise((resolve, reject) => {
     const dataToSubmit = {
       question: context.currentQuestionId,
-      answer: JSON.stringify(context.userAnswer),
+      answer: isArray(context.userAnswer)
+        ? JSON.stringify(context.userAnswer)
+        : context.userAnswer,
       quiz: {
         id: context.quiz.id,
       },
