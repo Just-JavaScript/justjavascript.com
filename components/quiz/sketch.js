@@ -45,6 +45,8 @@ const Sketch = (props) => {
   const explanation = question.answer?.description
   const isMDX = typeof question.prompt !== 'string'
 
+  const answerFromLs = JSON.parse(currentAnswer)
+
   return (
     <QuizWrapper {...props}>
       <QuestionWrapper number={number}>
@@ -67,7 +69,7 @@ const Sketch = (props) => {
             user={{name: 'Excalidraw User'}}
             initialData={
               currentAnswer && {
-                elements: JSON.parse(currentAnswer),
+                elements: answerFromLs?.value || answerFromLs,
                 scrollToContent: true,
               }
             }
@@ -82,7 +84,7 @@ const Sketch = (props) => {
                 </label>
                 {state.matches('answered') ? (
                   <Markdown className="p-3 mt-4 prose prose-sans">
-                    {formik.values.comment}
+                    {answerFromLs.comment}
                   </Markdown>
                 ) : (
                   <>

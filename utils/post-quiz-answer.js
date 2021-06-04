@@ -5,7 +5,7 @@ export const postQuizAnswer = (context) =>
   new Promise((resolve, reject) => {
     const dataToSubmit = {
       question: context.currentQuestionId,
-      answer: context.userAnswer,
+      answer: JSON.stringify(context.userAnswer),
       quiz: {
         id: context.quiz.id,
       },
