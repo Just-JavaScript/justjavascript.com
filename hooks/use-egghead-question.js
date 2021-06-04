@@ -49,6 +49,7 @@ export default function useEggheadQuestion(question, handleSubmit) {
           value: isRequired
             ? yup.array().required('Sketch something.')
             : yup.array(),
+          comment: yup.string().min(3, 'Care to elaborate?'),
         })
 
       case 'true-false':
@@ -63,10 +64,14 @@ export default function useEggheadQuestion(question, handleSubmit) {
     }
   }
 
+  const answer = JSON.parse(getUserAnswerFromLocalStorage(question.id))
+  const initialValue = answer?.value || answer || ''
+  const initialComment = answer ? answer.comment : ''
+
   const formik = useFormik({
     initialValues: {
-      comment: '',
-      value: JSON.parse(getUserAnswerFromLocalStorage(question.id)) || '',
+      comment: initialComment,
+      value: initialValue,
     },
     validationSchema: schemaFor(kind),
     onSubmit: (values, actions) => {

@@ -3,6 +3,7 @@ import Tooltip from '@reach/tooltip'
 import Finish from 'components/quiz/finish'
 import Continue from 'components/quiz/continue'
 import {AnimateSharedLayout, AnimatePresence, motion} from 'framer-motion'
+import Feedback from 'components/feedback'
 
 export default function Wrapper({
   question,
@@ -13,6 +14,7 @@ export default function Wrapper({
   isLastQuestion,
   currentQuestion,
   nested,
+  quiz,
 }) {
   const displayContinue =
     !nested &&
@@ -32,6 +34,16 @@ export default function Wrapper({
     (question.required === true
       ? isLastQuestion && state.matches('answered')
       : isLastQuestion)
+
+  const [mounted, setMounted] = React.useState(false)
+
+  React.useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  if (!mounted) {
+    return null
+  }
 
   return (
     <AnimateSharedLayout>
@@ -95,9 +107,10 @@ export default function Wrapper({
               </motion.div>
             )}
             {!displaySkip && !displayContinue && <div key="empty" />}
+            {displayFinish && <Feedback quiz={quiz} />}
             {displayFinish && (
               <div
-                className="flex items-center justify-center w-full"
+                className="flex items-center justify-center w-full py-10 sm:py-16"
                 key="finish"
               >
                 <Finish onClick={handleContinue} />

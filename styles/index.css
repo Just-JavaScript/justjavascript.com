@@ -5,6 +5,7 @@
 @tailwind utilities;
 
 @import './icons.css';
+@import './nprogress.css';
 
 /*
   Hide the focus indicator if the element receives focus via the mouse,

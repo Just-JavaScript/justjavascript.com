@@ -10,7 +10,7 @@ import Layout from 'components/layout'
 function getQuestions(questions, quizId, quizVersion) {
   const items = questions.map((question, questionIndex) => {
     const {kind, children, required, version, canComment} = question.props
-    let id = quizId + '.' + quizVersion + '.' + questionIndex
+    let id = quizId + '~' + quizVersion + '~' + questionIndex
     if (question.props.desc) {
       id += '(' + question.props.desc + ')'
     }
@@ -147,6 +147,12 @@ const Quiz = ({children, title, version, slug, id}) => {
     index: defaultCurrentQuestionIndex,
   })
 
+  const [mounted, setMounted] = React.useState(false)
+
+  React.useEffect(() => {
+    setMounted(true)
+  }, [])
+
   return (
     <Layout maxWidth="" background="bg-gray-100">
       <header className="py-24 text-center">
@@ -202,12 +208,13 @@ const Quiz = ({children, title, version, slug, id}) => {
                   nextQuestionIdx={nextQuestionIdx}
                   nextQuestionId={nextQuestionId}
                   setCurrentQuestion={setCurrentQuestion}
+                  quiz={quiz}
                 />
               )}
             </div>
           )
         })}
-        {process.env.NODE_ENV === 'development' && (
+        {mounted && process.env.NODE_ENV === 'development' && (
           <div className="fixed font-mono text-xs opacity-50 left-5 bottom-5">
             currentQuestion: {JSON.stringify(currentQuestion, null, 2)}
           </div>
