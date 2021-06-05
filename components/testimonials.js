@@ -4,12 +4,19 @@ import ReactMarkdown from 'react-markdown'
 
 export const data = [
   {
-    body: 'Pellentesque senectus **aliquet diam dui vitae proin eleifend**, facilisi primis odio habitant sociosqu id fames ultrices, suscipit posuere rhoncus elementum habitasse purus. Massa lobortis curae dictumst ultrices lorem commodo orci cubilia vestibulum natoque, ante viverra imperdiet sapien ridiculus augue ad cras velit, magna ultricies eu at enim suspendisse pharetra rhoncus mattis.',
-    author: {name: 'Joe Doe', image: '/dan-abramov.jpg'},
+    body: `I think if you are the type of person that likes If Hemingway Wrote Javascript, you will love this. It’s beautiful, thoughtful, funny, and different. It definitely clarified some things for me 😊 (like that there’s only one \`true\` and one \`false\` value and then there’s just a bazillion of wires that can point to those… 🤯)`,
+    author: {name: 'Eva Martina', image: '/testimonials/eva-martina.jpg'},
   },
   {
-    body: 'Eget ipsum mollis ornare _pellentesque pulvinar_ ad sodales mauris taciti consequat, platea parturient habitant tellus sollicitudin etiam magnis montes imperdiet. Laoreet sodales ipsum fringilla maecenas scelerisque ad magnis feugiat nisl, cursus montes inceptos massa egestas tempus aptent netus condimentum arcu, praesent parturient posuere semper litora donec sollicitudin leo.',
-    author: {name: 'Joe Doe', image: '/dan-abramov.jpg'},
+    body: `I've been writing Javascript for many, many years... it is hard to find new approaches to understanding concepts that are already right at my fingertips, but the content that Dan and Maggie created feels like a fresh breath of air. The idea of setting up new mental models to write excellent Javascript is refreshing and helpful to increase my knowledge and skills even further.`,
+    author: {
+      name: 'Matías Hernández',
+      image: '/testimonials/matias-hernandez.jpg',
+    },
+  },
+  {
+    body: `Binged on justjavascript.com. A big thanks to Dan and Maggie for taking this amazing metaphorical universe of Javascript. This is such an amazing take on every fundamental JS concept. 🙌`,
+    author: {name: 'Rajat Jain', image: '/testimonials/rajat-jain.jpg'},
   },
 ]
 
