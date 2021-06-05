@@ -6,7 +6,6 @@ import {map, filter, first, indexOf, isEmpty, last, find, get} from 'lodash'
 import getChoiceLabelByIndex from 'utils/get-choice-label-by-index'
 import {getUserAnswerFromLocalStorage} from 'utils/quiz-answers-in-local-storage'
 import Layout from 'components/layout'
-import resetQuizAnswers from 'utils/reset-quiz-answers'
 import ResetProgress from '../../reset-progress'
 
 function getQuestions(questions, quizId, quizVersion) {
