@@ -6,6 +6,8 @@ import {map, filter, first, indexOf, isEmpty, last, find, get} from 'lodash'
 import getChoiceLabelByIndex from 'utils/get-choice-label-by-index'
 import {getUserAnswerFromLocalStorage} from 'utils/quiz-answers-in-local-storage'
 import Layout from 'components/layout'
+import resetQuizAnswers from 'utils/reset-quiz-answers'
+import ResetProgress from '../../reset-progress'
 
 function getQuestions(questions, quizId, quizVersion) {
   const items = questions.map((question, questionIndex) => {
@@ -155,13 +157,23 @@ const Quiz = ({children, title, version, slug, id}) => {
 
   return (
     <Layout maxWidth="" background="bg-gray-100">
-      <header className="py-24 text-center">
-        <div className="font-serif font-extrabold tracking-tight lg:text-8xl sm:text-7xl text-7xl">
+      <header className="flex flex-col items-center justify-center py-24 text-center">
+        <h1 className="font-serif font-extrabold tracking-tight lg:text-8xl sm:text-7xl text-7xl">
           Quiz
-        </div>
-        <h1 className="font-sans text-lg font-semibold">
-          {quiz.title.slice(7)}
         </h1>
+        <h2 className="font-sans text-lg font-semibold">
+          {quiz.title.slice(7)}
+        </h2>
+        {!isEmpty(completedQuestions) && (
+          <div className="pt-8">
+            <ResetProgress
+              questions={[
+                ...get(quiz, 'questions'),
+                {id: `${get(quiz, 'id')}~feedback`},
+              ]}
+            />
+          </div>
+        )}
       </header>
       <div className="flex flex-col items-center justify-start w-full min-h-screen">
         {map(quiz.questions, (question, index) => {

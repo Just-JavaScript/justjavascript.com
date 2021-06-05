@@ -74,26 +74,8 @@ const setUserProgress = async ({firebaseAuthToken, episode, progress}) => {
   })
 }
 
-const resetUserProgress = async ({firebaseAuthToken}) => {
-  const {firebaseUserCredential, usersCollectionRef} = await initializeApp(
-    firebaseAuthToken
-  )
-  const contactId = firebaseUserCredential.user.uid
-  const contactRef = usersCollectionRef.doc(contactId)
-
-  return contactRef.get().then((doc) => {
-    const updatePayload = {progress: {}}
-    if (doc.exists) {
-      return contactRef.set(updatePayload, {merge: true})
-    } else {
-      return contactRef.set(updatePayload)
-    }
-  })
-}
-
 export default {
   setAnswerForUser,
   getProgressForUser,
   setUserProgress,
-  resetUserProgress,
 }

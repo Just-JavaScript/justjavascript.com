@@ -10,12 +10,11 @@ import get from 'lodash/get'
 import WelcomeMessage from 'components/welcome-message'
 import {useProgress} from 'context/progress-context'
 import {motion} from 'framer-motion'
-import ResetProgress from '../../components/reset-progress'
 
 export default function Learn() {
   const [mounted, setMounted] = React.useState(false)
   const isVerifyingLogin = useLoginRequired()
-  const {progress, resetProgress, isResetting} = useProgress()
+  const {progress} = useProgress()
 
   React.useEffect(() => {
     setMounted(true)
@@ -31,11 +30,6 @@ export default function Learn() {
     loading
   ) {
     return null
-  }
-
-  function handleResetProgress() {
-    window.confirm('This will reset all your progress. Are you sure?') &&
-      resetProgress()
   }
 
   const LinkItem = ({
@@ -212,13 +206,6 @@ export default function Learn() {
               <span className="pl-3">Get your invoice</span>
             </a>
           </Link>
-          {!isEmpty(progress) && (
-            <ResetProgress
-              progress={progress}
-              resetProgress={resetProgress}
-              isResetting={isResetting}
-            />
-          )}
         </div>
         <Link href="/">
           <a tabIndex={-1} className="font-serif text-2xl font-extrabold">
