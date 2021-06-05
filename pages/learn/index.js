@@ -43,9 +43,9 @@ export default function Learn() {
   }) => {
     return (
       <motion.li
-        animate={!progress && {x: [-10, 0], opacity: [0, 1]}}
+        animate={isEmpty(progress) && {x: [-10, 0], opacity: [0, 1]}}
         transition={{delay: idx / 10}}
-        initial={!progress && {opacity: 0}}
+        initial={isEmpty(progress) ? {x: -10, opacity: 0} : false}
         className="relative flex flex-col items-center transition-all duration-200 ease-in-out group"
       >
         <Link href={href}>
