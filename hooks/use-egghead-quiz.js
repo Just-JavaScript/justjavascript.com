@@ -111,7 +111,7 @@ export default function useEggheadQuiz(quiz, currentQuestion, setCurrent) {
     // const context = {quizId: quiz.id, questionId: question.id, date}
     // const response = {...values, question, context}
 
-    const answer = values.answer.value
+    const answer = values.answer.comment ? values.answer : values.answer.value
     send('SUBMIT', {
       userAnswer: answer,
       contactId: contactId,

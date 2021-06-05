@@ -8,4 +8,12 @@ function getUserAnswerFromLocalStorage(key) {
   return isBrowser() && localStorage.getItem(key) // JSON.parse
 }
 
-export {storeUserAnswerInLocalStorage, getUserAnswerFromLocalStorage}
+function removeQuizAnswersFromLocalStorage(questions) {
+  return isBrowser() && questions.forEach((q) => localStorage.removeItem(q.id))
+}
+
+export {
+  storeUserAnswerInLocalStorage,
+  getUserAnswerFromLocalStorage,
+  removeQuizAnswersFromLocalStorage,
+}

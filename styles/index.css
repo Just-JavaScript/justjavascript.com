@@ -5,6 +5,7 @@
 @tailwind utilities;
 
 @import './icons.css';
+@import './nprogress.css';
 
 /*
   Hide the focus indicator if the element receives focus via the mouse,
@@ -84,6 +85,6 @@
 /* END — @reach/menu-button */
 
 /* ReachUI */
-@import '@reach/tooltip/styles.css';
-@import '@reach/dialog/styles.css';
+@import '../node_modules/@reach/tooltip/styles.css';
+@import '../node_modules/@reach/dialog/styles.css';
 @import './fonts/index.css';

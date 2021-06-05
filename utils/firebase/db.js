@@ -29,9 +29,11 @@ const setAnswerForUser = async ({firebaseAuthToken, answer}) => {
   const contactId = firebaseUserCredential.user.uid
   const contactRef = usersCollectionRef.doc(contactId)
   return contactRef.get().then((doc) => {
-    const updatePayload = {[answer.quiz.question.id]: answer}
+    const updatePayload = {
+      [answer.quiz.id]: {[answer.question]: {answer: answer.answer}},
+    }
     if (doc.exists) {
-      return contactRef.update(updatePayload)
+      return contactRef.set(updatePayload, {merge: true})
     } else {
       return contactRef.set(updatePayload)
     }
@@ -72,4 +74,8 @@ const setUserProgress = async ({firebaseAuthToken, episode, progress}) => {
   })
 }
 
-export default {setAnswerForUser, getProgressForUser, setUserProgress}
+export default {
+  setAnswerForUser,
+  getProgressForUser,
+  setUserProgress,
+}
