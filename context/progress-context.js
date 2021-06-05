@@ -37,6 +37,7 @@ export const ProgressProvider = ({children}) => {
         setCompleted(!progress.completed)
       })
   }
+
   return (
     <ProgressContext.Provider
       value={{

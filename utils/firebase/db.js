@@ -74,4 +74,8 @@ const setUserProgress = async ({firebaseAuthToken, episode, progress}) => {
   })
 }
 
-export default {setAnswerForUser, getProgressForUser, setUserProgress}
+export default {
+  setAnswerForUser,
+  getProgressForUser,
+  setUserProgress,
+}
