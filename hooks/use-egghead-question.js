@@ -5,6 +5,7 @@ import {getUserAnswerFromLocalStorage} from 'utils/quiz-answers-in-local-storage
 export default function useEggheadQuestion(question, handleSubmit) {
   const {kind} = question || {}
   const isRequired = question?.required !== false
+  const canComment = question?.canComment
 
   function schemaFor(kind) {
     switch (kind) {
@@ -49,7 +50,12 @@ export default function useEggheadQuestion(question, handleSubmit) {
           value: isRequired
             ? yup.array().required('Sketch something.')
             : yup.array(),
-          comment: yup.string().min(3, 'Care to elaborate?'),
+          comment: canComment
+            ? yup
+                .string()
+                .required('Write your answer.')
+                .min(3, 'Care to elaborate?')
+            : yup.string().min(3, 'Care to elaborate?'),
         })
 
       case 'true-false':

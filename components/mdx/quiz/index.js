@@ -163,7 +163,7 @@ const Quiz = ({children, title, version, slug, id}) => {
         <h2 className="font-sans text-lg font-semibold">
           {quiz.title.slice(7)}
         </h2>
-        {!isEmpty(completedQuestions) && (
+        {!isEmpty(completedQuestions) && mounted && (
           <div className="pt-8">
             <ResetProgress
               questions={[
