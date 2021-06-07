@@ -24,7 +24,8 @@ export default function Wrapper({
     !isLastQuestion
 
   const displaySkip =
-    !nested &&
+    // !nested &&
+    question.questions &&
     !displayContinue &&
     currentQuestion.id === question.id &&
     !isLastQuestion
