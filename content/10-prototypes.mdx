@@ -15,7 +15,7 @@ We have just created an empty object with `{}`. We definitely didn’t set any p
 
 And yet, it *is* possible that `pizza.taste` is `"pineapple"`! This may be a contrived example, but it shows that our mental model is incomplete.
 
-In this module, we’ll introduce *prototypes*. Prototypes explain what happens in this puzzle and—more importantly—are at the heart of several other fundamental JavaScript features. Occasionally people neglect learning about prototypes because they seem too unusual, but the core idea is remarkably simple.
+In this module, we’ll introduce *prototypes*. Prototypes explain what happens in this puzzle and—more importantly—are at the heart of several other fundamental JavaScript features. Occasionally people neglect to learn about prototypes because they seem too unusual, but the core idea is remarkably simple.
 
 ## Prototypes
 
@@ -139,14 +139,14 @@ console.log(human.age); // undefined
 console.log(gwen.age); // 19
 ```
 
-The `human` variable points to object that has a `teeth` property, so the value of `human.teeth` is `32`. The `gwen` variable points to an object that doesn’t have a `teeth` property. However, that object has a prototype, which *does* have a `teeth` property. This is why the value of `gwen.teeth` is also `32`.
+The `human` variable points to an object that has a `teeth` property, so the value of `human.teeth` is `32`. The `gwen` variable points to an object that doesn’t have a `teeth` property. However, that object has a prototype, which *does* have a `teeth` property. This is why the value of `gwen.teeth` is also `32`.
 
 ```js
 console.log(human.teeth); // 32
 console.log(gwen.teeth); // 32
 ```
 
-Neither of our objects have a `tail` property, so we get `undefined` for both:
+Neither of our objects has a `tail` property, so we get `undefined` for both:
 
 ```js
 console.log(human.tail); // undefined
@@ -189,7 +189,7 @@ We can see that JavaScript will search for the property on our object, then on i
 
 ![Prototype Chain](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1590534071/just-javascript-email-images/jj09/protochain.png)
 
-This is similar to saying, “I don’t know, but Alice might know.” Then Alice might say, “Actually I don’t know either—ask Bob.” Eventually, you will either arrive at the answer or run out of people to ask!
+This is similar to saying, “I don’t know, but Alice might know.” Then Alice might say, “Actually, I don’t know either—ask Bob.” Eventually, you will either arrive at the answer or run out of people to ask!
 
 This sequence of objects to “visit” is known as our object’s *prototype chain*. (However, unlike a chain you might wear, prototype chains can’t be circular!)
 
@@ -299,7 +299,7 @@ Surprisingly, `obj.__proto__` is not `null` or `undefined`! Instead, you’ll se
 
 ![Root Prototype](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1590534071/just-javascript-email-images/jj09/root1.png)
 
-At first, this might be a bit mindblowing. Let that sink in. All this time, we were thinking `{}` created an “empty” object, but it’s not so empty after all! It has a hidden `__proto__` wire that points to the Object Prototype by default.
+At first, this might be a bit mind-blowing. Let that sink in. All this time, we were thinking `{}` created an “empty” object, but it’s not so empty after all! It has a hidden `__proto__` wire that points to the Object Prototype by default.
 
 This explains why JavaScript objects seem to have “built-in” properties:
 
@@ -358,7 +358,7 @@ console.log(watson.smell); // "banana"
 
 Mutating a shared prototype like we just did is called *prototype pollution*.
 
-In the past, prototype pollution was a popular way to extend JavaScript with custom features. However, over the years the web community realized that it is fragile and makes it hard to [add new language features](https://esdiscuss.org/topic/having-a-non-enumerable-array-prototype-contains-may-not-be-web-compatible), so we prefer to avoid it.
+In the past, prototype pollution was a popular way to extend JavaScript with custom features. However, over the years, the web community realized that it is fragile and makes it hard to [add new language features](https://esdiscuss.org/topic/having-a-non-enumerable-array-prototype-contains-may-not-be-web-compatible), so we prefer to avoid it.
 
 Now you can solve the pineapple pizza puzzle from the beginning of this module! Check your solution in your console.
 
