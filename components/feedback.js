@@ -42,28 +42,29 @@ const Feedback = ({quiz}) => {
     formik.isSubmitting || submitted || !isEmpty(formik.initialValues.feedback)
 
   return (
-    <div>
-      <span className="px-2 py-1 text-sm font-semibold text-white uppercase bg-black rounded-md">
+    <div className="px-5 py-16 border-t border-b border-gray-200">
+      {/* <span className="px-2 py-1 text-sm font-semibold text-white uppercase bg-black rounded-md">
         Feedback
-      </span>
-      <h4 className="py-4 text-2xl font-bold leading-tight sm:text-3xl">
+      </span> */}
+      <h4 className="py-4 font-serif text-2xl font-bold leading-tight text-center sm:text-4xl">
         Tell me what you think of this module and Just JavaScript so far.
       </h4>
-      <div className="prose sm:prose-lg max-w-none">
+      <div className="prose text-center sm:prose-lg max-w-none">
         <p>
           Was anything particularly insightful? Or confusing? I want to know!
         </p>
         <p>
           There's no character limit for this question. I personally read every
-          response, whether it's a few words or many paragraphs.
-        </p>
-        <p>
-          Cheers, <br />
-          Dan
+          response, whether it's a few words or many paragraphs. Cheers, Dan.
         </p>
       </div>
       <form className="py-4" onSubmit={formik.handleSubmit}>
-        <label htmlFor="feedback">Your feedback</label>
+        <label
+          htmlFor="feedback"
+          className="inline-flex pb-2 text-lg font-semibold"
+        >
+          Your feedback
+        </label>
         <textarea
           required={true}
           disabled={disabled}

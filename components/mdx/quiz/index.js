@@ -156,80 +156,82 @@ const Quiz = ({children, title, version, slug, id}) => {
 
   return (
     <Layout maxWidth="" background="bg-gray-100">
-      <header className="flex flex-col items-center justify-center py-24 text-center">
-        <h1 className="font-serif font-extrabold tracking-tight lg:text-8xl sm:text-7xl text-7xl">
-          Quiz
-        </h1>
-        <h2 className="font-sans text-lg font-semibold">
-          {quiz.title.slice(7)}
-        </h2>
-        {!isEmpty(completedQuestions) && mounted && (
-          <div className="pt-8">
-            <ResetProgress
-              questions={[
-                ...get(quiz, 'questions'),
-                {id: `${get(quiz, 'id')}~feedback`},
-              ]}
-            />
-          </div>
-        )}
-      </header>
-      <div className="flex flex-col items-center justify-start w-full min-h-screen">
-        {map(quiz.questions, (question, index) => {
-          const {
-            state,
-            handleSkip,
-            isAnswered,
-            isDisabled,
-            handleSubmit,
-            currentAnswer,
-            handleContinue,
-            isLastQuestion,
-            showExplanation,
-            nextQuestionIdx,
-            nextQuestionId,
-            number,
-          } = useEggheadQuiz(
-            quiz,
-            question,
-            setCurrentQuestion,
-            defaultCurrentQuestionId,
-            defaultCurrentQuestionIndex
-          )
-
-          return state.matches('initializing') ? (
-            'loading...'
-          ) : (
-            <div className="w-full max-w-screen-md mx-auto" key={question.id}>
-              <ScrollElement name={question.id} />
-              {index <= currentQuestion.index && (
-                <QuestionToShow
-                  question={question}
-                  number={number}
-                  currentAnswer={currentAnswer}
-                  isLastQuestion={isLastQuestion}
-                  state={state}
-                  handleSubmit={handleSubmit}
-                  handleContinue={handleContinue}
-                  isDisabled={isDisabled}
-                  handleSkip={handleSkip}
-                  showExplanation={showExplanation}
-                  isAnswered={isAnswered}
-                  currentQuestion={currentQuestion}
-                  nextQuestionIdx={nextQuestionIdx}
-                  nextQuestionId={nextQuestionId}
-                  setCurrentQuestion={setCurrentQuestion}
-                  quiz={quiz}
-                />
-              )}
+      <div className="min-h-screen">
+        <header className="flex flex-col items-center justify-center py-24 text-center">
+          <h1 className="font-serif font-extrabold tracking-tight lg:text-8xl sm:text-7xl text-7xl">
+            Quiz
+          </h1>
+          <h2 className="font-sans text-lg font-semibold">
+            {quiz.title.slice(7)}
+          </h2>
+          {!isEmpty(completedQuestions) && mounted && (
+            <div className="pt-8">
+              <ResetProgress
+                questions={[
+                  ...get(quiz, 'questions'),
+                  {id: `${get(quiz, 'id')}~feedback`},
+                ]}
+              />
             </div>
-          )
-        })}
-        {mounted && process.env.NODE_ENV === 'development' && (
-          <div className="fixed font-mono text-xs opacity-50 left-5 bottom-5">
-            currentQuestion: {JSON.stringify(currentQuestion, null, 2)}
-          </div>
-        )}
+          )}
+        </header>
+        <div className="flex flex-col items-center justify-start w-full">
+          {map(quiz.questions, (question, index) => {
+            const {
+              state,
+              handleSkip,
+              isAnswered,
+              isDisabled,
+              handleSubmit,
+              currentAnswer,
+              handleContinue,
+              isLastQuestion,
+              showExplanation,
+              nextQuestionIdx,
+              nextQuestionId,
+              number,
+            } = useEggheadQuiz(
+              quiz,
+              question,
+              setCurrentQuestion,
+              defaultCurrentQuestionId,
+              defaultCurrentQuestionIndex
+            )
+
+            return state.matches('initializing') ? (
+              'loading...'
+            ) : (
+              <div className="w-full max-w-screen-md mx-auto" key={question.id}>
+                <ScrollElement name={question.id} />
+                {index <= currentQuestion.index && (
+                  <QuestionToShow
+                    question={question}
+                    number={number}
+                    currentAnswer={currentAnswer}
+                    isLastQuestion={isLastQuestion}
+                    state={state}
+                    handleSubmit={handleSubmit}
+                    handleContinue={handleContinue}
+                    isDisabled={isDisabled}
+                    handleSkip={handleSkip}
+                    showExplanation={showExplanation}
+                    isAnswered={isAnswered}
+                    currentQuestion={currentQuestion}
+                    nextQuestionIdx={nextQuestionIdx}
+                    nextQuestionId={nextQuestionId}
+                    setCurrentQuestion={setCurrentQuestion}
+                    quiz={quiz}
+                  />
+                )}
+              </div>
+            )
+          })}
+          {mounted && process.env.NODE_ENV === 'development' && (
+            <div className="fixed font-mono text-xs opacity-50 left-5 bottom-5">
+              currentQuestion: {JSON.stringify(currentQuestion, null, 2)}
+            </div>
+          )}
+        </div>
       </div>
     </Layout>
   )
