@@ -118,14 +118,9 @@ export default class Auth {
       }
       if (typeof window !== 'undefined') {
         this.eggheadAuth.token.getToken(window.location).then(
-          (user) => {
-            this.setSession(user).then(
-              () => {
-                window.history.pushState(
-                  '',
-                  document.title,
-                  window.location.pathname + window.location.search,
-                )
+          (authResult) => {
+            this.setSession(authResult).then(
+              (user) => {
                 resolve(user)
               },
               (error) => {

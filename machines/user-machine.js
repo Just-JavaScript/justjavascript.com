@@ -187,7 +187,6 @@ export const authenticationMachine = createMachine(
         if (!isBrowser()) {
           return
         }
-
         switch (event.type) {
           case 'REPORT_IS_LOGGED_IN': {
             if (window.location.pathname !== '/redirect') {
@@ -206,9 +205,9 @@ export const authenticationMachine = createMachine(
           }
         }
       },
-      assignViewerToContext: assign((context, event) => {
+      assignViewerToContext: assign((_context, event) => {
         if (
-          event.type !== 'REPORT_IS_LOGGED_IN' ||
+          event.type !== 'REPORT_IS_LOGGED_IN' &&
           event.type !== 'REPORT_REFRESHED_VIEWER'
         ) {
           return {}
