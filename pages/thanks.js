@@ -45,10 +45,10 @@ export const getServerSideProps = async ({query}) => {
       },
     }
   } catch (e) {
+    console.error(e.message)
     return {
       props: {
-        error: e,
-        email: displayEmail,
+        error: e.message,
       },
     }
   }
