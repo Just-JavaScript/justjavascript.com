@@ -75,7 +75,6 @@ You might think this means `null` is an object. Don’t fall into this trap! It 
 
 Unfortunately, `typeof(null)` is a historical accident that we’ll have to live with forever.
 
-(We discussed this in the Quizz in section 2)
 </FunFact>
 
 In practice, `null` is used for *intentionally* missing values. Why have both `null` and `undefined`? This could help you distinguish a coding mistake (which might result in `undefined`) from valid missing data (which you might express as `null`). However, this is only a convention, and JavaScript doesn’t enforce this usage. Some people avoid both of them as much as possible!
@@ -114,7 +113,7 @@ Check your answer against this picture:
 
 First, verify that `isHappy` points to `false`, `isFeeling` points to `true`, and `isConfusing` points to `false`. (If you got different answers, there is a mistake somewhere along the way—walk through each line step by step.)
 
-Next, verify that **there is only one `true` and one `false` value on your sketch**. This is important! Regardless of how booleans are stored in the memory, *in our mental model*, there are only two of them.
+Next, verify that **there is only one `true` and one `false` value on your sketch**. This is important! Regardless of how booleans are stored in the memory, *in our mental model* there are only two of them.
 
 </HiddenAnswer>
 
