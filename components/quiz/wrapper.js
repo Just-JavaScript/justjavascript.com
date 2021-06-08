@@ -24,7 +24,8 @@ export default function Wrapper({
     !isLastQuestion
 
   const displaySkip =
-    !nested &&
+    // !nested &&
+    question.questions &&
     !displayContinue &&
     currentQuestion.id === question.id &&
     !isLastQuestion
@@ -49,7 +50,7 @@ export default function Wrapper({
     <AnimateSharedLayout>
       <div
         className={`${
-          !nested ? 'min-h-screen' : ''
+          !nested ? 'flex-shrink-0' : ''
         } flex flex-col justify-between relative`}
       >
         {children}

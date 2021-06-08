@@ -2,7 +2,7 @@ import {motion} from 'framer-motion'
 
 export default function Finish({onClick}) {
   return (
-    <div className="flex flex-col items-center justify-center w-full rounded-lg">
+    <div className="flex flex-col items-center justify-center w-full pb-16 rounded-lg sm:pb-24">
       <motion.button
         layout
         initial={{opacity: 0}}

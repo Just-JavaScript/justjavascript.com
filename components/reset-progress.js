@@ -32,7 +32,7 @@ const ResetProgress = (questions) => {
           leastDestructiveRef={cancelRef}
           onDismiss={close}
         >
-          <AlertDialogContent className="rounded-lg shadow-xl">
+          <AlertDialogContent className="max-w-screen-sm rounded-lg shadow-xl">
             <AlertDialogLabel className="text-xl font-semibold">
               Please Confirm
             </AlertDialogLabel>

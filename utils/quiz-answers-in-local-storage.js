@@ -9,7 +9,16 @@ function getUserAnswerFromLocalStorage(key) {
 }
 
 function removeQuizAnswersFromLocalStorage(questions) {
-  return isBrowser() && questions.forEach((q) => localStorage.removeItem(q.id))
+  return (
+    isBrowser() &&
+    questions.forEach((q) => {
+      localStorage.removeItem(q.id)
+      q.questions &&
+        q.questions.forEach((q) => {
+          localStorage.removeItem(q.id)
+        })
+    })
+  )
 }
 
 export {
