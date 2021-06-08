@@ -24,7 +24,6 @@ export const ViewerContext = React.createContext(defaultViewerContext)
 
 function useAuthedViewer() {
   const [state, send] = useMachine(authenticationMachine)
-  console.log({state: state.history})
   const authMachineState = state.value
   const viewer = get(state.context, 'viewer')
   const sitePurchases = filter(get(viewer, 'purchased', []), {
@@ -53,7 +52,6 @@ function useAuthedViewer() {
       isUnclaimedBulkPurchaser,
       purchased: sitePurchases.length > 0,
       reloadViewer: () => {
-        console.log(state.value)
         if (state.matches('loggedIn')) {
           send({type: 'REFRESH_VIEWER', refreshViewer: true})
         }

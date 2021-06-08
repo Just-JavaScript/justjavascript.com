@@ -8,6 +8,7 @@ import map from 'lodash/map'
 import TeamInvites from 'components/team-invites'
 import Layout from 'components/layout'
 import useLoginRequired from 'hooks/use-login-required'
+import {useRefreshViewer} from 'hooks/use-refresh-viewer'
 
 const InvoiceItem = ({purchase}) => {
   return (
@@ -31,19 +32,20 @@ const getTotalPrice = (purchases) => {
   return reduce(
     purchases,
     (totalAmount, currentPurchase) => totalAmount + currentPurchase.price,
-    0
+    0,
   )
 }
 
 const Invoice = () => {
-  const {sitePurchases, viewer} = useViewer()
+  const {sitePurchases, viewer, reloadViewer} = useViewer()
   const [invoiceInfo, setInvoiceInfo] = useLocalStorage('invoice-info', '')
   const firstPurchase = get(sitePurchases, '[0]')
   const teamPurchases = sitePurchases.filter(
-    (purchase) => purchase.quantity > 1
+    (purchase) => purchase.quantity > 1,
   )
   const totalPrice = getTotalPrice(sitePurchases)
   const isVerifying = useLoginRequired()
+  useRefreshViewer()
 
   if (isVerifying) {
     return null
