@@ -44,29 +44,18 @@ export const track = (event, paramsOrCallback, potentialCallback) => {
 export const signupAfterPurchase = (title, email) => {
   const api_key = process.env.CONVERTKIT_PUBLIC_KEY
   const form = process.env.CONVERTKIT_SIGNUP_FORM
-  const tagHash = {
-    'purchased testing js': 746923,
-    'purchased Basic Testing': 746932,
-    'purchased Full Testing': 746933,
-    'purchased Pro Testing': 746922,
-    'purchased Standard Testing': 746934,
-    purchased: 746921,
-  }
-  const tags = [
-    tagHash.purchased,
-    tagHash['purchased testing js'],
-    tagHash[`purchased ${title}`],
-  ]
+  const tagHash = {}
+  const tags = []
 
-  return axios({
-    method: 'post',
-    url: `https://api.convertkit.com/v3/forms/${form}/subscribe`,
-    data: {
-      email,
-      api_key,
-      tags,
-    },
-  })
+  // return axios({
+  //   method: 'post',
+  //   url: `https://api.convertkit.com/v3/forms/${form}/subscribe`,
+  //   data: {
+  //     email,
+  //     api_key,
+  //     tags,
+  //   },
+  // })
 }
 
 export const identify = (user) => {
