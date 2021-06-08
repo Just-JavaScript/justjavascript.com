@@ -7,10 +7,9 @@ import matter from 'gray-matter'
 import {CONTENT_PATH} from 'utils/mdxUtils'
 import path from 'path'
 import isArray from 'lodash/isArray'
-import get from 'lodash/get'
 import useLoginRequired from 'hooks/use-login-required'
 import {useViewer} from 'context/viewer-context'
-import {ACCESS_TOKEN_KEY} from 'utils/auth'
+import {serverSideAuthCheck} from 'utils/serverSideAuthCheck'
 
 const components = mdxComponents
 
@@ -26,16 +25,10 @@ const EpisodePage = ({source, meta, ...props}) => {
 }
 
 export const getServerSideProps = async ({params, req}) => {
-  const {cookies} = req
-  const token = get(cookies, ACCESS_TOKEN_KEY)
+  const possibleAuthRedirect = serverSideAuthCheck({req})
 
-  if (!token) {
-    return {
-      redirect: {
-        destination: '/login',
-        permanent: false,
-      },
-    }
+  if (possibleAuthRedirect) {
+    return possibleAuthRedirect
   }
 
   // MDX text - can be from a local file, database, anywhere

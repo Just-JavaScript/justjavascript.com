@@ -118,14 +118,9 @@ export default class Auth {
       }
       if (typeof window !== 'undefined') {
         this.eggheadAuth.token.getToken(window.location).then(
-          (user) => {
-            this.setSession(user).then(
-              () => {
-                window.history.pushState(
-                  '',
-                  document.title,
-                  window.location.pathname + window.location.search,
-                )
+          (authResult) => {
+            this.setSession(authResult).then(
+              (user) => {
                 resolve(user)
               },
               (error) => {
@@ -170,14 +165,14 @@ export default class Auth {
     return !expired
   }
 
-  refreshUser(accessToken, loadFullUser = false) {
+  refreshUser(accessToken, loadFullUser = false, authDomain = AUTH_DOMAIN) {
     return new Promise((resolve, reject) => {
       if (typeof localStorage === 'undefined') {
         reject('no local storage')
       }
       const token = accessToken || cookie.get(ACCESS_TOKEN_KEY)
       http
-        .get(`${AUTH_DOMAIN}/api/v1/users/current?minimal=${loadFullUser}`, {
+        .get(`${authDomain}/api/v1/users/current?minimal=${loadFullUser}`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -193,7 +188,7 @@ export default class Auth {
     })
   }
 
-  setSession(authResult) {
+  setSession(authResult, authDomain = AUTH_DOMAIN) {
     return new Promise((resolve, reject) => {
       if (typeof localStorage === 'undefined') {
         reject('localStorage is not defined')
@@ -206,7 +201,7 @@ export default class Auth {
       cookie.set(ACCESS_TOKEN_KEY, authResult.accessToken, {
         expires: parseInt(expiresAt, 10),
       })
-      resolve(this.refreshUser(authResult.accessToken))
+      resolve(this.refreshUser(authResult.accessToken, false, authDomain))
     })
   }
 

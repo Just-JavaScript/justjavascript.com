@@ -26,6 +26,8 @@ This project uses [TailwindCSS](https://tailwindcss.com/) with [Tailwind Typogra
 
 You can set the `NEXT_PUBLIC_DISABLE_LOGIN_FOR_DEV=true` env variable to view the content without logging in when the `NODE_ENV === 'development`.
 
+You may also get a production access key from the egghead team and paste it into `NEXT_PUBLIC_DEV_USER_TOKEN`. This will log you into the use associated with this access token.
+
 ## Logging In
 
 To log in, you need to have a purchase associated with the log in email.

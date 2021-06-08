@@ -142,7 +142,6 @@ const PurchaseBundle = ({
     purchasingOtherPackage
 
   const teamAvailable = isEmpty(upgradeFromSellable)
-  console.log(state)
   return (
     <>
       <div className="py-10">
