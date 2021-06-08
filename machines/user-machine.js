@@ -96,8 +96,24 @@ export const authenticationMachine = createMachine(
           LOG_OUT: {
             target: 'loggedOut',
           },
-          REFRESH_VIEWER: {
-            target: 'checkingIfLoggedIn',
+        },
+        initial: 'stable',
+        states: {
+          stable: {
+            on: {
+              REFRESH_VIEWER: {
+                target: 'refreshing',
+              },
+            },
+          },
+          refreshing: {
+            invoke: {src: 'refreshViewer'},
+            on: {
+              REPORT_REFRESHED_VIEWER: {
+                target: 'stable',
+                actions: 'assignViewerToContext',
+              },
+            },
           },
         },
       },
@@ -117,6 +133,16 @@ export const authenticationMachine = createMachine(
   },
   {
     services: {
+      refreshViewer: (_context, _event) => async (send, _onReceive) => {
+        const newViewer = await fetchViewer({
+          refreshViewer: true,
+        })
+
+        send({
+          type: 'REPORT_REFRESHED_VIEWER',
+          viewer: newViewer,
+        })
+      },
       loggedOutInterval: (context, _event) => (send, _onReceive) => {
         const id = auth.monitor(() => {
           const newViewer = auth.getLocalUser()
@@ -127,17 +153,15 @@ export const authenticationMachine = createMachine(
 
         return () => clearInterval(id)
       },
-      checkIfLoggedIn: (_context, event) => async (send, _onReceive) => {
+      checkIfLoggedIn: (_context, _event) => async (send, _onReceive) => {
         try {
           const queryHash = queryString.parse(window.location.hash)
           const accessToken = get(queryHash, 'access_token')
           const querySearch = queryString.parse(window.location.search)
           const viewAsUser = get(querySearch, 'show-as-user')
-          const refreshViewer = event.refreshViewer
           const newViewer = await fetchViewer({
             accessToken,
             viewAsUser,
-            refreshViewer,
           })
 
           const resultEvent = isEmpty(newViewer)
@@ -183,7 +207,10 @@ export const authenticationMachine = createMachine(
         }
       },
       assignViewerToContext: assign((context, event) => {
-        if (event.type !== 'REPORT_IS_LOGGED_IN') {
+        if (
+          event.type !== 'REPORT_IS_LOGGED_IN' ||
+          event.type !== 'REPORT_REFRESHED_VIEWER'
+        ) {
           return {}
         }
         return {

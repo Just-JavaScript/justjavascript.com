@@ -58,6 +58,7 @@ function useAuthedViewer() {
       },
       loading: state.matches('checkingIfLoggedIn'),
       authState: authMachineState,
+      authHistory: state.history,
     }),
     [viewer, authMachineState],
   )
