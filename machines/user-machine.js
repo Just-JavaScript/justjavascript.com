@@ -8,32 +8,9 @@ import filter from 'lodash/filter'
 import reduce from 'lodash/reduce'
 import queryString from 'query-string'
 import {isBrowser} from '../utils/is-browser'
+import getDevAccessToken from 'utils/get-dev-access-token'
 
 const auth = new Auth()
-
-// export type AuthenticationMachineContext = {
-//   userDetails?: UserDetails;
-// };
-
-// interface UserDetails {
-//   username: string;
-// }
-
-// export type AuthenticationMachineEvent =
-//   | {
-//       type: 'REPORT_IS_LOGGED_IN';
-//       userDetails: UserDetails;
-//     }
-//   | {
-//       type: 'REPORT_IS_LOGGED_OUT';
-//     }
-//   | {
-//       type: 'LOG_OUT';
-//     }
-//   | {
-//       type: 'LOG_IN';
-//       userDetails: UserDetails;
-//     };
 
 const fetchViewer = async ({
   accessToken,
@@ -42,6 +19,15 @@ const fetchViewer = async ({
 }) => {
   if (!isBrowser()) {
     return
+  }
+
+  const devAccessToken = getDevAccessToken()
+
+  if (devAccessToken) {
+    return await auth.setSession(
+      {accessToken: devAccessToken, data: {expires_in: 4200000}},
+      'https://app.egghead.io',
+    )
   }
 
   if (viewAsUser && accessToken) {
