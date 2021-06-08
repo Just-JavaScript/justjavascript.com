@@ -6,6 +6,8 @@ import isEqual from 'lodash/isEqual'
 import isEmpty from 'lodash/isEmpty'
 import filter from 'lodash/filter'
 import reduce from 'lodash/reduce'
+import {useMachine} from '@xstate/react'
+import {authenticationMachine} from '../machines/user-machine'
 
 export const auth = new Auth()
 
@@ -21,79 +23,10 @@ export function useViewer() {
 export const ViewerContext = React.createContext(defaultViewerContext)
 
 function useAuthedViewer() {
-  const [viewer, setViewer] = React.useState()
-  const [loading, setLoading] = React.useState(true)
-  const previousViewer = React.useRef(viewer)
-  React.useEffect(() => {
-    setViewer(auth.getLocalUser())
-  }, [])
-
-  React.useEffect(() => {
-    previousViewer.current = viewer
-  })
-
-  React.useEffect(() => {
-    const queryHash = queryString.parse(window.location.hash)
-    const accessToken = get(queryHash, 'access_token')
-    const noAccessTokenFound = isEmpty(accessToken)
-    const viewerIsPresent = !isEmpty(viewer)
-    const querySearch = queryString.parse(window.location.search)
-    const viewAsUser = get(querySearch, 'show-as-user')
-
-    let viewerMonitorIntervalId
-
-    const loadViewerFromStorage = async () => {
-      const newViewer = await auth.refreshUser(accessToken)
-      if (!isEqual(newViewer, viewer)) {
-        setViewer(newViewer)
-      }
-      setLoading(() => false)
-    }
-
-    const clearAccessToken = () => {
-      if (!isEmpty(accessToken)) {
-        window.history.replaceState({}, document.title, '.')
-      }
-    }
-
-    const setViewerOnInterval = () => {
-      const newViewer = auth.getLocalUser()
-      if (!isEmpty(newViewer) && !isEqual(newViewer, previousViewer.current)) {
-        setViewer(newViewer)
-      }
-    }
-
-    const clearUserMonitorInterval = () => {
-      const intervalPresentForClearing = !isEmpty(viewerMonitorIntervalId)
-      if (intervalPresentForClearing) {
-        window.clearInterval(viewerMonitorIntervalId)
-      }
-    }
-    const loadBecomeViewer = () => {
-      auth.becomeUser(viewAsUser, accessToken).then((viewer) => {
-        setViewer(viewer)
-        setLoading(() => false)
-      })
-    }
-
-    if (viewAsUser && accessToken) {
-      loadBecomeViewer()
-    } else if (viewerIsPresent) {
-      loadViewerFromStorage()
-      clearAccessToken()
-    } else if (noAccessTokenFound) {
-      viewerMonitorIntervalId = auth.monitor(setViewerOnInterval)
-      setLoading(() => false)
-    } else {
-      auth.handleAuthentication().then((viewer) => {
-        setViewer(viewer)
-        setLoading(() => false)
-      })
-    }
-
-    return clearUserMonitorInterval
-  }, [viewer])
-
+  const [state, send] = useMachine(authenticationMachine)
+  console.log({state: state.history})
+  const authMachineState = state.value
+  const viewer = get(state.context, 'viewer')
   const sitePurchases = filter(get(viewer, 'purchased', []), {
     site: process.env.NEXT_PUBLIC_SITE_NAME,
   })
@@ -106,7 +39,7 @@ function useAuthedViewer() {
 
       return get(currentPurchase, 'bulk', false) !== true
     },
-    false
+    false,
   )
   const isUnclaimedBulkPurchaser = !canViewContent && sitePurchases.length > 0
 
@@ -114,19 +47,21 @@ function useAuthedViewer() {
     () => ({
       viewer,
       sitePurchases,
-      logout: () => {
-        auth.logout()
-        window.location.reload()
-      },
-      setSession: (session) => auth.setSession(session),
-      isAuthenticated: () => auth.isAuthenticated(),
+      logout: () => send('LOG_OUT'),
       authToken: auth.getAuthToken,
       requestSignInEmail: (email) => auth.requestSignInEmail(email),
       isUnclaimedBulkPurchaser,
       purchased: sitePurchases.length > 0,
-      loading,
+      reloadViewer: () => {
+        console.log(state.value)
+        if (state.matches('loggedIn')) {
+          send({type: 'REFRESH_VIEWER', refreshViewer: true})
+        }
+      },
+      loading: state.matches('checkingIfLoggedIn'),
+      authState: authMachineState,
     }),
-    [viewer, loading]
+    [viewer, authMachineState],
   )
 
   return values
