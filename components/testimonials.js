@@ -31,7 +31,7 @@ const Testimonials = () => {
           {tweets.map((t) => {
             const { text, name, handle, url, avatar } = t;
             return (
-              <article>
+              <article key={handle}>
                 <a
                   className="p-5 block bg-white shadow-xl mb-4 rounded-xl"
                   href={url}
