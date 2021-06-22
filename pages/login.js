@@ -123,7 +123,7 @@ const LoginForm = ({
               )}
               {isSubmitted && (
                 <div className="space-y-6">
-                  <h2 className="text-xl font-semibold leading-tighter">
+                  <h2 className="text-lg font-semibold leading-tighter">
                     Please check your inbox for your sign in link.
                   </h2>
                   <p className="leading-relaxed opacity-80">
