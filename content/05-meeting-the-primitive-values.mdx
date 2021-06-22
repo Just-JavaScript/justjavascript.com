@@ -18,7 +18,7 @@ console.log(typeof(undefined)); // "undefined"
 
 ![illustration of a black, spikey undefined icon next to a big black hole](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1580435620/just-javascript-email-images/jj04/undefined-revised.png)
 
-It’s called undefined so you might think it’s not there—but it *is* a value, and a very real one! Like a black hole, `undefined` is grumpy and can often spell trouble. For example, reading a property from it will break your program:
+It’s called undefined, so you might think it’s not there—but it *is* a value, and a very real one! Like a black hole, `undefined` is grumpy and can often spell trouble. For example, reading a property from it will break your program:
 
 ```js
 let person = undefined;
@@ -144,9 +144,9 @@ console.log(0.1 + 0.2 === 0.3); // false
 console.log(0.1 + 0.2 === 0.30000000000000004); // true
 ```
 
-This might look very surprising! Contrary to a popular belief, this doesn’t mean that JavaScript numbers are broken. This behavior is common in different programming languages. It even has a name: *floating point math*.
+This might look very surprising! Contrary to popular belief, this doesn’t mean that JavaScript numbers are broken. This behavior is common in different programming languages. It even has a name: *floating-point math*.
 
-You see, JavaScript doesn’t implement the kind of math we use in real life. Floating point math is “math for computers.” Don’t worry too much about this name or how it works exactly. Very few people know about all its subtleties, and that’s the point! It works well enough in practice that most of the time you won’t think about it. Still, let’s take a quick look at what makes it different.
+You see, JavaScript doesn’t implement the kind of math we use in real life. Floating-point math is “math for computers.” Don’t worry too much about this name or how it works exactly. Very few people know about all its subtleties, and that’s the point! It works well enough in practice that most of the time you won’t think about it. Still, let’s take a quick look at what makes it different.
 
 #### Colors and Numbers
 
@@ -156,7 +156,7 @@ Scanners usually distinguish at most 16 million colors. If you draw a picture wi
 
 *We can say that a scanner uses colors with limited precision.*
 
-Floating point math is similar. In real math, there is an infinite set of numbers. But in floating point math, **there are only 18 quintillion of them.** So when we write numbers in our code or do calculations with them, JavaScript picks the *closest* numbers that it knows about—just like our scanner does with colors.
+Floating-point math is similar. In real math, there is an infinite set of numbers. But in floating-point math, **there are only 18 quintillion of them.** So when we write numbers in our code or do calculations with them, JavaScript picks the *closest* numbers that it knows about—just like our scanner does with colors.
 
 *In other words, JavaScript uses numbers with limited precision.*
 
@@ -181,11 +181,11 @@ Luckily, any **whole** numbers between `Number.MIN_SAFE_INTEGER` and `Number.MAX
 
 But when we write `0.1` or `0.2`, we don’t get *exactly* `0.1` and `0.2`. We get the closest available numbers in JavaScript. They are almost exactly the same, but there might be a tiny difference. These tiny differences add up, which is why `0.1 + 0.2` doesn’t give us *exactly* the same number as writing `0.3`.
 
-If this is still confusing, don’t worry. You can [learn more about floating point math](https://floating-point-gui.de/formats/fp/), but you already know more than I did when I started writing this guide! Unless you work on finance apps, you likely won’t need to worry about this.
+If this is still confusing, don’t worry. You can [learn more about floating-point math](https://floating-point-gui.de/formats/fp/), but you already know more than I did when I started writing this guide! Unless you work on finance apps, you likely won’t need to worry about this.
 
 #### Special Numbers
 
-It is worth noting that floating point math includes a few *special numbers*. You might occasionally run into `NaN`, `Infinity`, `-Infinity`, and `-0`. They exist because sometimes you might execute operations like `1 / 0`, and JavaScript needs to represent their result somehow. The floating point math standard specifies how they work, and what happens when you use them.
+It is worth noting that floating-point math includes a few *special numbers*. You might occasionally run into `NaN`, `Infinity`, `-Infinity`, and `-0`. They exist because sometimes you might execute operations like `1 / 0`, and JavaScript needs to represent their result somehow. The floating-point math standard specifies how they work, and what happens when you use them.
 
 Here’s how special numbers may come up in your code:
 
@@ -205,7 +205,7 @@ You might be confused by why it claims to be a number:
 console.log(typeof(NaN)); // "number"
 ```
 
-However, there is no trick here. From JavaScript perspective, `NaN` *is* a numeric value. It is not null, undefined, a string, or some other type. But in the floating point math, the *name* for that term is [“not a number”](https://en.wikipedia.org/wiki/NaN). So it *is* a numeric value. It happens to be called “not a number” because it represents an invalid result.
+However, there is no trick here. From a JavaScript perspective, `NaN` *is* a numeric value. It is not null, undefined, a string, or some other type. But in the floating-point math, the *name* for that term is [“not a number”](https://en.wikipedia.org/wiki/NaN). So it *is* a numeric value. It happens to be called “not a number” because it represents an invalid result.
 
 It’s uncommon to write code using these special numbers. However, they might come up due to a coding mistake. So it’s good to know they exist.
 
@@ -216,7 +216,7 @@ It’s uncommon to write code using these special numbers. However, they might c
 
 If numbers expanded our JavaScript universe, the next stop on our tour, BigInts, will really keep us busy exploring. In fact, we could explore them forever!
 
-Regular numbers can’t represent large integers with precision, so BigInts [fill that gap](https://v8.dev/features/bigint) (literally). How many BigInts are there in our universe? The specification says they have an *arbitrary precision*. This means that **in our JavaScript universe, there is an infinite number of BigInts—one for each integer in math**.
+Regular numbers can’t represent large integers with precision, so BigInts [fill that gap](https://v8.dev/features/bigint) (literally). How many BigInts are there in our universe? The specification says they have *arbitrary precision*. This means that **in our JavaScript universe, there is an infinite number of BigInts—one for each integer in math**.
 
 If this sounds strange, consider that you’re already comfortable with the idea of there being infinite integers in math. (If you’re not, give it a few moments!) It’s not much of a leap then from a “math universe” to a “JavaScript universe.”
 
