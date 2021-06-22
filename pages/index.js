@@ -14,6 +14,7 @@ import Testimonials from "components/testimonials";
 const LandingPage = ({ bundles }) => {
   useRedirectToLearn();
   const sellingLive = useSellingLive();
+
   return (
     <Layout maxWidth="" background="bg-white" navClassName="text-white">
       <ClaimCoupon />
