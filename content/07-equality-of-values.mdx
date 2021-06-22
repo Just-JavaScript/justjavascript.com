@@ -2,7 +2,7 @@
 
 It’s time to talk about equality in JavaScript! Here’s why it matters.
 
-Imagine attending a masked carnival with only a few types of mask to choose from. Groups of people with the exact same outfit would be joking, dancing, and moving around the room. It would be confusing! You might talk to two people, and not realize that you really talked to the same person twice. Or you might *think* you talked to one person when, in reality, you talked to two different people!
+Imagine attending a masked carnival with only a few types of masks to choose from. Groups of people with the exact same outfit would be joking, dancing, and moving around the room. It would be confusing! You might talk to two people, and not realize that you really talked to the same person twice. Or you might *think* you talked to one person when, in reality, you talked to two different people!
 
 ![A pair of carnival masks](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1582119857/just-javascript-email-images/jj06/masks.png)
 
@@ -96,7 +96,7 @@ cherry = {};
 
 Open a notepad or use the sketchpad below and draw a diagram of variables and values. You’ll want to draw it step by step, as it’s hard to do in your head.
 
-Remember that `{}` always means “create a new object value.” Also remember that `=` means “point the wire on the left side to the value on the right side.”
+Remember that `{}` always means “create a new object value.” Also, remember that `=` means “point the wire on the left side to the value on the right side.”
 
 <Sketch id="equality-of-values-1" />
 
@@ -163,7 +163,7 @@ So what’s the difference between `Object.is` and `===`?
 
 **Same value equality**—`Object.is(a, b)`—has a direct meaning in our mental model. It corresponds to the idea of “the same value” in our universe.
 
-In almost all cases, the same intuition works for **strict value equaliy**. For example, `2 === 2` is `true` because `2` always “summons” the same value:
+In almost all cases, the same intuition works for **strict value equality**. For example, `2 === 2` is `true` because `2` always “summons” the same value:
 
 <Video src="https://res.cloudinary.com/dg3gyk0gu/video/upload/f_auto/just-javascript-email-images/jj06/equality_small-mp4.mp4" title="illustration of 2 === 2" />
 
@@ -250,7 +250,7 @@ A quick historical anecdote: ensuring developers could detect `NaN` this way was
 
 #### Second Special Case: `-0`
 
-In regular math, there is no such concept as “minus zero,” but it exists in floating point math for [practical reasons](https://softwareengineering.stackexchange.com/a/280708). Here’s an interesting fact about it.
+In regular math, there is no such concept as “minus zero,” but it exists in floating-point math for [practical reasons](https://softwareengineering.stackexchange.com/a/280708). Here’s an interesting fact about it.
 
 **Both `0 === -0` and `-0 === 0` are always `true`:**
 
@@ -310,7 +310,7 @@ The rules of loose equality are widely acknowledged as an early bad design decis
 
 </FunFact>
 
-The one relatively-common use case worth knowing is:
+The one relatively common use case worth knowing is:
 
 ```js
 if (x == null) {
@@ -326,7 +326,7 @@ if (x === null || x === undefined) {
 }
 ```
 
-However even that usage of `==` might be controversial on some teams. It’s best to discuss how much `==` is tolerated in your codebase as a team before using it.
+However, even that usage of `==` might be controversial on some teams. It’s best to discuss how much `==` is tolerated in your codebase as a team before using it.
 
 ## Recap
 

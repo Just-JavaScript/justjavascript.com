@@ -112,7 +112,7 @@ One important thing to keep in mind when naming a property is that a single obje
 
 Property names are also always case-sensitive! For example, `age` and `Age` would be two completely different properties from JavaScript’s point of view.
 
-If we don’t know a property name ahead of time but we have it in code as a string value, we can use the `[]` “bracket notation” to read it from an object:
+If we don’t know a property name ahead of time, but we have it in code as a string value, we can use the `[]` “bracket notation” to read it from an object:
 
 ```js
 let sherlock = { surname: 'Holmes', age: 64 };
@@ -188,7 +188,7 @@ Note **this does not mean** that our object has a `boat` property pointing to `u
 
 It is tempting to think `sherlock.boat` directly corresponds to the concept of a property in our mental model, but **that’s not quite correct**. It is a *question*—and so JavaScript *follows the rules* to answer it.
 
-It looks at the object that `sherlock` points to, sees that it **doesn’t** have a `boat` property, and gives us back the `undefined` value because **that’s what the rules say**. There is no deeper reason to this: computers follow the rules.
+It looks at the object that `sherlock` points to, sees that it **doesn’t** have a `boat` property, and gives us back the `undefined` value because **that’s what the rules say**. There is no deeper reason for this: computers follow the rules.
 
 <FunFact>
 
