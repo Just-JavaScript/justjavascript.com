@@ -2,11 +2,9 @@ import React from 'react'
 import Layout from 'components/layout'
 import LandingCopy from 'components/landing-copy.mdx'
 import Image from 'next/image'
-import useRedirectToLearn from 'hooks/use-redirect-to-learn'
 import ClaimCoupon from 'components/commerce/claim-coupon'
 
 const LandingPage = () => {
-  useRedirectToLearn()
   return (
     <Layout maxWidth="" background="bg-white" navClassName="text-white">
       <ClaimCoupon />

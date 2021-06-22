@@ -3,13 +3,13 @@ import Layout from 'components/layout'
 import Link from 'next/link'
 import useLoginRequired from 'hooks/use-login-required'
 import {episodes} from 'components/toc'
-import useRedirectUnclaimedBulkToInvoice from 'hooks/use-redirect-to-learn'
 import {useViewer} from 'context/viewer-context'
 import isEmpty from 'lodash/isEmpty'
 import get from 'lodash/get'
 import WelcomeMessage from 'components/welcome-message'
 import {useProgress} from 'context/progress-context'
 import {motion} from 'framer-motion'
+import {serverSideAuthCheck} from 'utils/serverSideAuthCheck'
 
 export default function Learn() {
   const [mounted, setMounted] = React.useState(false)
@@ -20,18 +20,11 @@ export default function Learn() {
     setMounted(true)
   }, [])
 
-  const {isUnclaimedBulkPurchaser, viewer, loading, viewingAsUserEmail} =
-    useViewer()
-  useRedirectUnclaimedBulkToInvoice(isUnclaimedBulkPurchaser)
-  if (
-    isVerifyingLogin ||
-    isUnclaimedBulkPurchaser ||
-    isEmpty(viewer) ||
-    loading
-  ) {
+  const {viewingAsUserEmail} = useViewer()
+
+  if (isVerifyingLogin) {
     return null
   }
-
   const LinkItem = ({
     idx,
     href,
@@ -215,4 +208,16 @@ export default function Learn() {
       </footer>
     </Layout>
   )
+}
+
+export const getServerSideProps = async ({req}) => {
+  const possibleAuthRedirect = serverSideAuthCheck({req})
+
+  if (possibleAuthRedirect) {
+    return possibleAuthRedirect
+  }
+
+  return {
+    props: {},
+  }
 }

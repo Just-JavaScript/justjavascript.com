@@ -15,6 +15,5 @@ export default async function fetchEggheadUser(token) {
       },
     },
   )
-  console.log('successfully fetched egghead user')
   return current
 }
