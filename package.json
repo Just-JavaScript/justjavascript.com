@@ -67,6 +67,7 @@
     "react-gif-player": "^0.4.2",
     "react-intersection-observer": "^8.32.0",
     "react-markdown": "^5.0.2",
+    "react-masonry-css": "^1.0.16",
     "react-scroll": "^1.8.1",
     "react-use": "^17.1.1",
     "react-use-clipboard": "^1.0.7",

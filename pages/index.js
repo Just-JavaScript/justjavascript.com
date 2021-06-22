@@ -1,19 +1,19 @@
-import React from 'react'
-import Layout from 'components/layout'
-import SubscribeCopy from 'components/subscribe-copy.mdx'
-import LandingCopy from 'components/landing-copy.mdx'
-import Image from 'next/image'
-import useRedirectToLearn from 'hooks/use-redirect-to-learn'
-import ClaimCoupon from 'components/commerce/claim-coupon'
-import useSellingLive from 'hooks/use-selling-live'
-import DevBundles from 'data/bundles.development.json'
-import ProdBundles from 'data/bundles.production.json'
-import Commerce from 'components/commerce'
-import Testimonials from 'components/testimonials'
+import React from "react";
+import Layout from "components/layout";
+import SubscribeCopy from "components/subscribe-copy.mdx";
+import LandingCopy from "components/landing-copy.mdx";
+import Image from "next/image";
+import useRedirectToLearn from "hooks/use-redirect-to-learn";
+import ClaimCoupon from "components/commerce/claim-coupon";
+import useSellingLive from "hooks/use-selling-live";
+import DevBundles from "data/bundles.development.json";
+import ProdBundles from "data/bundles.production.json";
+import Commerce from "components/commerce";
+import Testimonials from "components/testimonials";
 
-const LandingPage = ({bundles}) => {
-  useRedirectToLearn()
-  const sellingLive = useSellingLive()
+const LandingPage = ({ bundles }) => {
+  useRedirectToLearn();
+  const sellingLive = useSellingLive();
   return (
     <Layout maxWidth="" background="bg-white" navClassName="text-white">
       <ClaimCoupon />
@@ -23,7 +23,7 @@ const LandingPage = ({bundles}) => {
             <h1 className="relative z-10 max-w-2xl font-serif text-3xl font-extrabold md:text-6xl sm:text-5xl leading-tighter">
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-orange-100">
                 JavaScript,
-              </span>{' '}
+              </span>{" "}
               <span className="font-light">
                 like you’ve never seen it before.
               </span>
@@ -54,15 +54,15 @@ const LandingPage = ({bundles}) => {
         </>
       )}
     </Layout>
-  )
-}
+  );
+};
 
 export async function getStaticProps() {
   const bundles =
-    process.env.NODE_ENV === 'production' ? ProdBundles : DevBundles
+    process.env.NODE_ENV === "production" ? ProdBundles : DevBundles;
   return {
-    props: {bundles},
-  }
+    props: { bundles },
+  };
 }
 
-export default LandingPage
+export default LandingPage;
