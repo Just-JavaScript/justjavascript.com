@@ -1,17 +1,36 @@
-import React from 'react'
-import Navigation from './navigation'
-import SEO from './seo'
+import React from "react";
+import Navigation from "./navigation";
+import { NextSeo } from "next-seo";
 
 const Layout = ({
   children,
-  title,
   navClassName,
   navChildren,
-  background = 'bg-gray-100',
+  noIndex,
+  meta,
+  background = "bg-gray-100",
 }) => {
+  const {
+    title,
+    description,
+    titleAppendSiteName = false,
+    url,
+    ogImage,
+  } = meta || {};
   return (
     <>
-      <SEO title={title} />
+      <NextSeo
+        title={title}
+        description={description}
+        openGraph={{
+          title,
+          description,
+          url,
+          images: ogImage ? [ogImage] : undefined,
+        }}
+        canonical={url}
+        noindex={noIndex}
+      />
       <div className={background}>
         <div className="flex flex-col items-center justify-center min-h-screen print:min-h-full print:h-auto">
           <Navigation className={navClassName}>{navChildren}</Navigation>
@@ -19,7 +38,7 @@ const Layout = ({
         </div>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default Layout
+export default Layout;

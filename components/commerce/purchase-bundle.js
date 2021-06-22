@@ -1,5 +1,4 @@
 import React from "react";
-
 import { motion, AnimatePresence } from "framer-motion";
 import TeamPlanToggle from "./team-plan-toggle";
 import Countdown from "./countdown";

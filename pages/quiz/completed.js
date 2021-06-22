@@ -1,19 +1,19 @@
-import * as React from 'react'
-import Layout from 'components/layout'
-import {useRouter} from 'next/router'
-import {episodes} from 'components/toc'
-import {findIndex, find} from 'lodash'
-import Link from 'next/link'
-import Confetti from 'components/confetti'
+import * as React from "react";
+import Layout from "components/layout";
+import { useRouter } from "next/router";
+import { episodes } from "components/toc";
+import { findIndex, find } from "lodash";
+import Link from "next/link";
+import Confetti from "components/confetti";
 
 const QuizCompleted = () => {
-  const {query} = useRouter()
-  const currentIdx = findIndex(episodes, {slug: query.quiz})
-  const currentEpisode = find(episodes, {slug: query.quiz})
-  const nextEpisode = episodes[currentIdx + 1]
+  const { query } = useRouter();
+  const currentIdx = findIndex(episodes, { slug: query.quiz });
+  const currentEpisode = find(episodes, { slug: query.quiz });
+  const nextEpisode = episodes[currentIdx + 1];
 
   return (
-    <Layout>
+    <Layout meta={{ title: "Great work!" }}>
       <Confetti />
       <div className="flex flex-col items-center">
         <h1 className="font-serif text-5xl font-extrabold tracking-tight text-center sm:text-6xl leading-tighter">
@@ -35,7 +35,7 @@ const QuizCompleted = () => {
         )}
       </div>
     </Layout>
-  )
-}
+  );
+};
 
-export default QuizCompleted
+export default QuizCompleted;
