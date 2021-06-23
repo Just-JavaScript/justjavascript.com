@@ -2,7 +2,7 @@ import React from 'react'
 import Tooltip from '@reach/tooltip'
 import Finish from 'components/quiz/finish'
 import Continue from 'components/quiz/continue'
-import {AnimateSharedLayout, AnimatePresence, motion} from 'framer-motion'
+import { AnimateSharedLayout, AnimatePresence, motion } from 'framer-motion'
 import Feedback from 'components/feedback'
 
 export default function Wrapper({
@@ -31,7 +31,8 @@ export default function Wrapper({
     !isLastQuestion
 
   const displayFinish =
-    !nested &&
+    // !nested &&
+    question.questions &&
     (question.required === true
       ? isLastQuestion && state.matches('answered')
       : isLastQuestion)
@@ -58,9 +59,9 @@ export default function Wrapper({
           <div>
             {displayContinue && (
               <motion.div
-                initial={{opacity: 0}}
-                animate={{opacity: 1}}
-                exit={{opacity: 0}}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
                 className={`${
                   nested
                     ? 'absolute bottom-0 transform translate-y-32 z-20'
@@ -87,9 +88,9 @@ export default function Wrapper({
             {displaySkip && (
               <motion.div
                 key="skip"
-                initial={{opacity: 0}}
-                animate={{opacity: 1}}
-                exit={{opacity: 0}}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
                 className="flex items-center justify-center w-full py-16"
               >
                 <Tooltip
