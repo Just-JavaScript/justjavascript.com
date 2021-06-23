@@ -2,9 +2,11 @@ import React from 'react'
 import Link from 'next/link'
 import useSellingLive from 'hooks/use-selling-live'
 import { useRouter } from 'next/router'
+import { useViewer } from 'context/viewer-context'
 
 const Footer = () => {
   const sellingLive = useSellingLive()
+  const { purchased } = useViewer()
   const { pathname } = useRouter()
 
   return sellingLive || pathname === '/learn' ? (
@@ -28,7 +30,7 @@ const Footer = () => {
           pathname === '/learn' ? 'sm:items-end' : 'sm:items-center'
         } items-center pb-16`}
       >
-        <Link href="/">
+        <Link href={purchased ? '/learn' : '/'}>
           <a tabIndex={-1} className="font-serif text-2xl font-extrabold">
             JJS
           </a>
