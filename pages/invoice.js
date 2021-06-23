@@ -1,16 +1,16 @@
 import * as React from 'react'
-import {useLocalStorage} from 'react-use'
-import {format, parseISO} from 'date-fns'
-import {useViewer} from 'context/viewer-context'
+import { useLocalStorage } from 'react-use'
+import { format, parseISO } from 'date-fns'
+import { useViewer } from 'context/viewer-context'
 import reduce from 'lodash/reduce'
 import get from 'lodash/get'
 import map from 'lodash/map'
 import TeamInvites from 'components/team-invites'
 import Layout from 'components/layout'
 import useLoginRequired from 'hooks/use-login-required'
-import {useRefreshViewer} from 'hooks/use-refresh-viewer'
+import { useRefreshViewer } from 'hooks/use-refresh-viewer'
 
-const InvoiceItem = ({purchase}) => {
+const InvoiceItem = ({ purchase }) => {
   return (
     <tr className="table-row">
       <td>
@@ -32,16 +32,16 @@ const getTotalPrice = (purchases) => {
   return reduce(
     purchases,
     (totalAmount, currentPurchase) => totalAmount + currentPurchase.price,
-    0,
+    0
   )
 }
 
 const Invoice = () => {
-  const {sitePurchases, viewer, reloadViewer} = useViewer()
+  const { sitePurchases, viewer, reloadViewer } = useViewer()
   const [invoiceInfo, setInvoiceInfo] = useLocalStorage('invoice-info', '')
   const firstPurchase = get(sitePurchases, '[0]')
   const teamPurchases = sitePurchases.filter(
-    (purchase) => purchase.quantity > 1,
+    (purchase) => purchase.quantity > 1
   )
   const totalPrice = getTotalPrice(sitePurchases)
   const isVerifying = useLoginRequired()
@@ -142,10 +142,6 @@ const Invoice = () => {
             <div className="flex flex-col items-end py-16">
               <div>
                 <span className="mr-3">Total</span>
-                <strong>USD {totalPrice}.00</strong>
-              </div>
-              <div className="font-bold">
-                <span className="mr-3 text-lg">Amount Due</span>
                 <strong>USD {totalPrice}.00</strong>
               </div>
             </div>
