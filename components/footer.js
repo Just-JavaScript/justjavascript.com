@@ -11,7 +11,7 @@ const Footer = () => {
 
   return sellingLive || pathname === '/learn' ? (
     <footer
-      className={`lg:px-0 px-5 flex flex-col sm:items-start items-center justify-center w-full max-w-screen-lg pt-16 mx-auto space-y-16 sm:pt-24 sm:space-y-0 ${
+      className={`print:hidden lg:px-0 px-5 flex flex-col sm:items-start items-center justify-center w-full max-w-screen-lg pt-16 mx-auto space-y-16 sm:pt-24 sm:space-y-0 ${
         pathname === '/learn' ? 'sm:justify-between' : 'sm:justify-center'
       } sm:flex-row`}
     >
