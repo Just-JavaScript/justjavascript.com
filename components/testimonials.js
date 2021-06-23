@@ -170,7 +170,13 @@ const tweets = [
     text: `I’m really loving the Just JavaScript course by @dan_abramov and @Mappletons! It’s been especially helpful in correcting my mental model for how JS is different from other languages (like C++, which was my first programming language). #CodeNewbie https://justjavascript.com`,
     url: 'https://twitter.com/meganesulli/status/1250602059595829249',
   },
-
+  {
+    name: 'Daniel Dietrich',
+    handle: 'danieldietrich',
+    avatar: '/avatars/daniel-dietrich.png',
+    text: `I can recommend Just JavaScript by @dan_abramov and @Mappletons, a course suitable for beginners.\n\nI already know #JavaScript but I really enjoyed the course. Especially the concept of building a “mental model”.`,
+    url: 'https://twitter.com/danieldietrich/status/1289829383482433536',
+  },
   {
     name: 'David Lopez',
     handle: 'letsbelopez',
@@ -248,14 +254,6 @@ const tweets = [
     text: `@dan_abramov is just killing it with his https://justjavascript.com course.  Oh how I wish I had this back when I was really struggling with JavaScript.\n\n(as opposed to just kind of struggling like I do now) 🙂`,
     url: 'https://twitter.com/deanriverson/status/1221212779765329921',
   },
-  {
-    name: 'Daniel Dietrich',
-    handle: 'danieldietrich',
-    avatar: '/avatars/daniel-dietrich.png',
-    text: `I can recommend Just JavaScript by @dan_abramov and @Mappletons, a course suitable for beginners.\n\nI already know #JavaScript but I really enjoyed the course. Especially the concept of building a “mental model”.`,
-    url: 'https://twitter.com/danieldietrich/status/1289829383482433536',
-  },
-
   {
     name: 'Adrian Paredes',
     handle: 'AdrianM_Paredes',

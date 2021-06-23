@@ -10,10 +10,20 @@ import DevBundles from 'data/bundles.development.json'
 import ProdBundles from 'data/bundles.production.json'
 import Commerce from 'components/commerce'
 import Testimonials from 'components/testimonials'
+import { useRouter } from 'next/router'
+import { scroller } from 'react-scroll'
 
 const LandingPage = ({ bundles }) => {
   useRedirectToLearn()
+  const router = useRouter()
   const sellingLive = useSellingLive()
+  const scrollToBuy = router.asPath === '/?buy'
+  React.useEffect(() => {
+    scrollToBuy === true &&
+      scroller.scrollTo('buy', {
+        offset: -30,
+      })
+  }, [scrollToBuy])
 
   return (
     <Layout maxWidth="" background="bg-white" navClassName="text-white">
@@ -48,7 +58,7 @@ const LandingPage = ({ bundles }) => {
       </article>
       {sellingLive && (
         <>
-          <section className="py-8">
+          <section className="py-8" id="buy">
             <Commerce bundles={bundles} />
           </section>
           <Testimonials />
