@@ -93,5 +93,9 @@
     "node-fetch": "^2.6.1",
     "postcss-nested": "^5.0.4",
     "postcss-preset-env": "^6.7.0"
+  },
+  "prettier": {
+    "semi": false,
+    "singleQuote": true
   }
 }

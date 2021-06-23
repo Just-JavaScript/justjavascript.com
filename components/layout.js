@@ -1,6 +1,7 @@
-import React from "react";
-import Navigation from "./navigation";
-import { NextSeo } from "next-seo";
+import React from 'react'
+import Navigation from './navigation'
+import { NextSeo } from 'next-seo'
+import Footer from 'components/footer'
 
 const Layout = ({
   children,
@@ -8,7 +9,7 @@ const Layout = ({
   navChildren,
   noIndex,
   meta,
-  background = "bg-gray-100",
+  background = 'bg-gray-100',
 }) => {
   const {
     title,
@@ -16,7 +17,7 @@ const Layout = ({
     titleAppendSiteName = false,
     url,
     ogImage,
-  } = meta || {};
+  } = meta || {}
   return (
     <>
       <NextSeo
@@ -36,9 +37,10 @@ const Layout = ({
           <Navigation className={navClassName}>{navChildren}</Navigation>
           <div className="flex-shrink-0 w-full px-5">{children}</div>
         </div>
+        <Footer />
       </div>
     </>
-  );
-};
+  )
+}
 
-export default Layout;
+export default Layout

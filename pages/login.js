@@ -1,26 +1,26 @@
-import React from "react";
-import * as yup from "yup";
-import { Formik } from "formik";
-import { useViewer } from "context/viewer-context";
-import Layout from "components/layout";
-import Image from "next/image";
+import React from 'react'
+import * as yup from 'yup'
+import { Formik } from 'formik'
+import { useViewer } from 'context/viewer-context'
+import Layout from 'components/layout'
+import Image from 'next/image'
 
 const loginSchema = yup.object().shape({
-  email: yup.string().email().required("enter your email"),
-});
+  email: yup.string().email().required('enter your email'),
+})
 
 const LoginForm = ({
   children,
-  button = "Email a login link",
-  label = "Enter your email address to log in",
+  button = 'Email a login link',
+  label = 'Enter your email address to log in',
   track,
 }) => {
-  const [isSubmitted, setIsSubmitted] = React.useState(false); // false
-  const [isError, setIsError] = React.useState(false);
-  const { requestSignInEmail } = useViewer();
+  const [isSubmitted, setIsSubmitted] = React.useState(false) // false
+  const [isError, setIsError] = React.useState(false)
+  const { requestSignInEmail } = useViewer()
 
   return (
-    <Layout meta={{ title: "Log In to Just JavaScript" }} background="bg-white">
+    <Layout meta={{ title: 'Log In to Just JavaScript' }} background="bg-white">
       <div className="flex flex-col items-center justify-center w-full max-w-screen-md mx-auto text-gray-900 sm:flex-row">
         <div className="flex-shrink-0 max-w-xs sm:w-auto">
           <Image
@@ -58,18 +58,18 @@ const LoginForm = ({
             <div className="py-4">
               {!isSubmitted && !isError && (
                 <Formik
-                  initialValues={{ email: "" }}
+                  initialValues={{ email: '' }}
                   validationSchema={loginSchema}
                   onSubmit={(values) => {
-                    setIsSubmitted(true);
+                    setIsSubmitted(true)
                     requestSignInEmail(values.email)
                       .then(() => {
-                        track && track(values.email);
+                        track && track(values.email)
                       })
                       .catch(() => {
-                        setIsSubmitted(false);
-                        setIsError(true);
-                      });
+                        setIsSubmitted(false)
+                        setIsError(true)
+                      })
                   }}
                 >
                   {(props) => {
@@ -79,7 +79,7 @@ const LoginForm = ({
                       handleChange,
                       handleBlur,
                       handleSubmit,
-                    } = props;
+                    } = props
                     return (
                       <>
                         <form onSubmit={handleSubmit} className="text-lg">
@@ -92,14 +92,13 @@ const LoginForm = ({
                             </label>
                             <div className="relative">
                               <input
-                                autoFocus
                                 required
                                 id="email"
                                 name="email"
                                 value={values.email}
                                 onChange={handleChange}
                                 onBlur={handleBlur}
-                                className="w-full max-w-sm px-4 py-3 text-lg rounded-lg focus:border-transparent focus:outline-none focus:ring focus:ring-orange-400"
+                                className="w-full shadow-xl max-w-sm px-4 py-3 text-lg rounded-lg border border-gray-200 focus:border-transparent focus:outline-none focus:ring focus:ring-orange-400"
                                 placeholder="you@example.com"
                                 type="email"
                                 autoComplete="email"
@@ -117,7 +116,7 @@ const LoginForm = ({
                           </div>
                         </form>
                       </>
-                    );
+                    )
                   }}
                 </Formik>
               )}
@@ -136,7 +135,7 @@ const LoginForm = ({
               {isError && (
                 <div className="text-text">
                   <p>
-                    Login Link Not Sent{" "}
+                    Login Link Not Sent{' '}
                     <span role="img" aria-label="sweating">
                       😅
                     </span>
@@ -158,7 +157,7 @@ const LoginForm = ({
         </div>
       </div>
     </Layout>
-  );
-};
+  )
+}
 
-export default LoginForm;
+export default LoginForm

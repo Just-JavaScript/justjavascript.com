@@ -1,12 +1,12 @@
-import React from "react";
-import { Element } from "react-scroll";
-import PurchaseBundle from "./purchase-bundle";
-import Stripe from "../../images/stripe.svg";
-import CCs from "../../images/cc.svg";
-import Image from "next/image";
+import React from 'react'
+import { Element } from 'react-scroll'
+import PurchaseBundle from './purchase-bundle'
+import Stripe from '../../images/stripe.svg'
+import CCs from '../../images/cc.svg'
+import Image from 'next/image'
 
 const Commerce = ({ bundles, children }) => {
-  const [basic] = bundles;
+  const [basic] = bundles
   return (
     <div className="px-5 py-10 -m-5 bg-gray-50 sm:py-16" id="buy">
       <Element name="buy" />
@@ -40,7 +40,7 @@ const Commerce = ({ bundles, children }) => {
         <CCs className="mx-3 my-2 saturate-0 filter" />
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Commerce;
+export default Commerce

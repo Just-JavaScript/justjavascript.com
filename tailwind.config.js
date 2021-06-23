@@ -18,7 +18,7 @@ module.exports = {
         ...colors,
       },
       screens: {
-        print: {raw: 'print'},
+        print: { raw: 'print' },
       },
       fontFamily: {
         sans: ['Adelle Sans', ...defaultTheme.fontFamily.sans],
@@ -91,7 +91,8 @@ module.exports = {
             'code::after': {
               content: '""',
             },
-            strong: {fontWeight: theme('fontWeight.bold')},
+
+            strong: { fontWeight: theme('fontWeight.bold') },
             a: {
               color: theme('colors.orange.500'),
               textDecoration: 'underline',
@@ -215,7 +216,7 @@ module.exports = {
             'code::after': {
               content: '""',
             },
-            strong: {fontWeight: theme('fontWeight.bold')},
+            strong: { fontWeight: theme('fontWeight.bold') },
             a: {
               color: theme('colors.blue.500'),
               textDecoration: 'underline',
@@ -273,7 +274,7 @@ module.exports = {
             'code::after': {
               content: '""',
             },
-            strong: {fontWeight: theme('fontWeight.bold')},
+            strong: { fontWeight: theme('fontWeight.bold') },
             a: {
               color: theme('colors.orange.500'),
               textDecoration: 'underline',
@@ -331,7 +332,7 @@ module.exports = {
             'code::after': {
               content: '""',
             },
-            strong: {fontWeight: theme('fontWeight.bold')},
+            strong: { fontWeight: theme('fontWeight.bold') },
             a: {
               color: theme('colors.blue.500'),
               textDecoration: 'underline',
@@ -349,7 +350,7 @@ module.exports = {
       },
     },
   },
-  variants: {scale: ['hover', 'group-hover']},
+  variants: { scale: ['hover', 'group-hover'] },
   plugins: [
     require('@tailwindcss/ui'),
     require('@tailwindcss/typography'),
