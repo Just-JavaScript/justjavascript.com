@@ -6,7 +6,9 @@ export default function Finish({ onClick }) {
       <div
         className="absolute bottom-full border h-16 border-dashed border-emerald-500"
         aria-hidden="true"
-      />
+      >
+        <div className="absolute bg-gradient-to-b from-gray-100 to-transparent h-10 top-0 -mt-1 -ml-1 w-2 z-10" />
+      </div>
       <motion.button
         layout
         initial={{ opacity: 0 }}

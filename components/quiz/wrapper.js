@@ -103,16 +103,15 @@ export default function Wrapper({
             ) : (
               !nested && <motion.div layout layoutId="skip" className="py-8" />
             )}
-
-            {displayFinish && quiz && <Feedback quiz={quiz} />}
             {displayFinish && (
               <div
-                className="flex items-center justify-center w-full py-10 sm:py-16"
+                className="flex items-center justify-center w-full pt-10 sm:pt-24"
                 key="finish"
               >
                 <Finish onClick={handleContinue} />
               </div>
             )}
+            {displayFinish && quiz && <Feedback quiz={quiz} />}
           </AnimatePresence>
         </motion.div>
       </div>

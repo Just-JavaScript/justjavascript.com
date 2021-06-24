@@ -42,7 +42,7 @@ const Feedback = ({ quiz }) => {
     formik.isSubmitting || submitted || !isEmpty(formik.initialValues.feedback)
 
   return (
-    <div className="px-5 py-16">
+    <div className="px-5 pb-8">
       {/* <span className="px-2 py-1 text-sm font-semibold text-white uppercase bg-black rounded-md">
         Feedback
       </span> */}
