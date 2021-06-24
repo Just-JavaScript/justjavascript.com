@@ -28,11 +28,17 @@ const Essay = (props) => {
   const { formik } = useEggheadQuestion(question, handleSubmit)
   const explanation = question.answer?.description
   const isMDX = typeof question.prompt !== 'string'
+  const [mounted, setMounted] = React.useState(false)
 
   const questionRef = React.useRef()
   React.useEffect(() => {
+    setMounted(true)
     questionRef?.current?.focus()
   }, [])
+
+  if (!mounted) {
+    return null
+  }
 
   return (
     <div ref={questionRef} tabIndex={-1}>

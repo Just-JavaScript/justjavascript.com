@@ -1,24 +1,25 @@
 import * as React from 'react'
 import QuestionToShow from 'components/quiz/question-to-show'
-import {Element as ScrollElement} from 'react-scroll'
+import { Element as ScrollElement } from 'react-scroll'
 import useEggheadQuiz from 'hooks/use-egghead-quiz'
-import {map, filter, first, indexOf, isEmpty, last, find, get} from 'lodash'
+import { map, filter, first, indexOf, isEmpty, last, find, get } from 'lodash'
 import getChoiceLabelByIndex from 'utils/get-choice-label-by-index'
-import {getUserAnswerFromLocalStorage} from 'utils/quiz-answers-in-local-storage'
+import { getUserAnswerFromLocalStorage } from 'utils/quiz-answers-in-local-storage'
 import Layout from 'components/layout'
 import ResetProgress from '../../reset-progress'
 
 function getQuestions(questions, quizId, quizVersion) {
   const items = questions.map((question, questionIndex) => {
-    const {kind, children, required, version, canComment} = question.props
+    const { kind, children, required, version, canComment } = question.props
     let id = quizId + '~' + quizVersion + '~' + questionIndex
     if (question.props.desc) {
       id += '(' + question.props.desc + ')'
     }
     const isMultipart = kind === 'QuestionSet'
     const prompt =
-      find(children, {props: {mdxType: 'Prompt'}}) || (!isMultipart && children)
-    const answer = find(children, {props: {mdxType: 'Answer'}})
+      find(children, { props: { mdxType: 'Prompt' } }) ||
+      (!isMultipart && children)
+    const answer = find(children, { props: { mdxType: 'Answer' } })
 
     // choices for MultipleChoiceQuestion
     const choicesNodes = filter(
@@ -31,11 +32,11 @@ function getQuestions(questions, quizId, quizVersion) {
         map(choices, (choice, index) => {
           const children = React.Children.toArray(choice.props.children)
           const imageUrl = get(
-            find(children, {props: {mdxType: 'img'}}),
+            find(children, { props: { mdxType: 'img' } }),
             'props.src'
           )
           const imageAlt = get(
-            find(children, {props: {mdxType: 'img'}}),
+            find(children, { props: { mdxType: 'img' } }),
             'props.alt'
           )
           const isCorrect = choice.props.correct || false
@@ -52,7 +53,7 @@ function getQuestions(questions, quizId, quizVersion) {
             isCorrect,
           }
         })
-      const correctChoice = find(choicesFromMdx, {isCorrect: true})
+      const correctChoice = find(choicesFromMdx, { isCorrect: true })
 
       return {
         choicesFromMdx,
@@ -67,11 +68,11 @@ function getQuestions(questions, quizId, quizVersion) {
     )
     const nestedQuestions = isMultipart
       ? nestedQuestionsNodes.map((q, childIndex) => {
-          const {kind, children, required, version, canComment} = q.props
+          const { kind, children, required, version, canComment } = q.props
           let childId = id + '.' + childIndex
           const prompt =
-            find(children, {props: {mdxType: 'Prompt'}}) || children
-          const answer = find(children, {props: {mdxType: 'Answer'}})
+            find(children, { props: { mdxType: 'Prompt' } }) || children
+          const answer = find(children, { props: { mdxType: 'Answer' } })
           const ch = React.Children.toArray(children)
           const choicesNodes = filter(
             ch,
@@ -113,7 +114,7 @@ function getQuestions(questions, quizId, quizVersion) {
   return items
 }
 
-const Quiz = ({children, title, version, slug, id}) => {
+const Quiz = ({ children, title, version, slug, id }) => {
   const childrenArr = React.Children.toArray(children)
   const questions = getQuestions(childrenArr, id, version)
 
@@ -137,7 +138,7 @@ const Quiz = ({children, title, version, slug, id}) => {
   // Start from last answered question
   // todo: might actually want to start from the question after that
   const defaultCurrentQuestionId = !isEmpty(completedQuestions)
-    ? get(find(questions, {id: last(completedQuestions)}), 'id')
+    ? get(find(questions, { id: last(completedQuestions) }), 'id')
     : get(first(get(quiz, 'questions')), 'id')
 
   const defaultCurrentQuestionIndex =
@@ -169,7 +170,7 @@ const Quiz = ({children, title, version, slug, id}) => {
               <ResetProgress
                 questions={[
                   ...get(quiz, 'questions'),
-                  {id: `${get(quiz, 'id')}~feedback`},
+                  { id: `${get(quiz, 'id')}~feedback` },
                 ]}
               />
             </div>

@@ -1,9 +1,9 @@
 import * as yup from 'yup'
-import {useFormik} from 'formik'
-import {getUserAnswerFromLocalStorage} from 'utils/quiz-answers-in-local-storage'
+import { useFormik } from 'formik'
+import { getUserAnswerFromLocalStorage } from 'utils/quiz-answers-in-local-storage'
 
 export default function useEggheadQuestion(question, handleSubmit) {
-  const {kind} = question || {}
+  const { kind } = question || {}
   const isRequired = question?.required !== false
   const canComment = question?.canComment
 
@@ -82,10 +82,10 @@ export default function useEggheadQuestion(question, handleSubmit) {
     validationSchema: schemaFor(kind),
     onSubmit: (values, actions) => {
       if (formik.isValid) {
-        handleSubmit({answer: values}, actions, question)
+        handleSubmit({ answer: values }, actions, question)
       }
     },
   })
 
-  return {formik}
+  return { formik }
 }

@@ -9,7 +9,7 @@ import { useFormik } from 'formik'
 const Feedback = ({ quiz }) => {
   const { id: quizId } = quiz
   const key = `${quizId}~feedback`
-  const answer = JSON.parse(getUserAnswerFromLocalStorage(key))
+  const answer = JSON.parse(getUserAnswerFromLocalStorage(key)) || ''
   const [submitted, setSubmitted] = React.useState(false)
 
   const formik = useFormik({
@@ -42,7 +42,7 @@ const Feedback = ({ quiz }) => {
     formik.isSubmitting || submitted || !isEmpty(formik.initialValues.feedback)
 
   return (
-    <div className="px-5 pb-8">
+    <div className="sm:px-5 pb-8">
       {/* <span className="px-2 py-1 text-sm font-semibold text-white uppercase bg-black rounded-md">
         Feedback
       </span> */}
