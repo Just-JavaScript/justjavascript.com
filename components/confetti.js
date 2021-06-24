@@ -52,6 +52,7 @@ const Confetti = ({
       }}
     >
       <ReactConfetti
+        aria-hidden="true"
         width={width - 20}
         height={height}
         numberOfPieces={party ? 300 : 0}

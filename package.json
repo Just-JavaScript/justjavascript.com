@@ -28,6 +28,7 @@
     "@reach/alert-dialog": "^0.15.0",
     "@reach/dialog": "^0.11.2",
     "@reach/menu-button": "^0.11.2",
+    "@reach/skip-nav": "^0.15.0",
     "@reach/tooltip": "^0.11.2",
     "@stripe/stripe-js": "^1.13.1",
     "@tailwindcss/typography": "^0.4.0",

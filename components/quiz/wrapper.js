@@ -101,7 +101,7 @@ export default function Wrapper({
                 </Tooltip>
               </motion.div>
             ) : (
-              !nested && <motion.div layout layoutId="skip" className="py-8" />
+              <motion.div layout layoutId="skip" className="py-8" />
             )}
             {displayFinish && (
               <div

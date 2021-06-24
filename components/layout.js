@@ -2,6 +2,7 @@ import React from 'react'
 import Navigation from './navigation'
 import { NextSeo } from 'next-seo'
 import Footer from 'components/footer'
+import { SkipNavLink, SkipNavContent } from '@reach/skip-nav'
 
 const Layout = ({
   children,
@@ -34,8 +35,12 @@ const Layout = ({
       />
       <div className={background}>
         <div className="flex flex-col items-center justify-center min-h-screen print:min-h-full print:h-auto">
+          <SkipNavLink />
           <Navigation className={navClassName}>{navChildren}</Navigation>
-          <div className="flex-shrink-0 w-full px-5">{children}</div>
+          <div className="flex-shrink-0 w-full px-5">
+            <SkipNavContent />
+            {children}
+          </div>
         </div>
         <Footer />
       </div>

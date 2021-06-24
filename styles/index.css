@@ -87,4 +87,5 @@
 /* ReachUI */
 @import '../node_modules/@reach/tooltip/styles.css';
 @import '../node_modules/@reach/dialog/styles.css';
+@import '../node_modules/@reach/skip-nav/styles.css';
 @import './fonts/index.css';
