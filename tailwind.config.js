@@ -146,16 +146,16 @@ module.exports = {
               },
             },
             h1: {
-              fontSize: theme('fontSize.5xl'),
+              fontSize: theme('fontSize.6xl'),
               fontWeight: theme('fontWeight.extrabold'),
             },
             h2: {
-              fontSize: theme('fontSize.4xl'),
+              fontSize: theme('fontSize.6xl'),
               fontWeight: theme('fontWeight.extrabold'),
             },
             h3: {
               fontSize: theme('fontSize.3xl'),
-              fontWeight: theme('fontWeight.extrabold'),
+              fontWeight: theme('fontWeight.semibold'),
             },
             h4: {
               fontSize: theme('fontSize.2xl'),

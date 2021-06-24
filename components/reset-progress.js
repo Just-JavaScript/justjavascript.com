@@ -45,14 +45,14 @@ const ResetProgress = (questions) => {
                 className="px-4 py-2 text-white transition-colors duration-100 ease-in-out bg-black rounded-md hover:bg-gray-600"
                 onClick={handleResetProgress}
               >
-                Yes, reset my progress
+                Yes, start over
               </button>{' '}
               <button
                 className="px-4 py-2 transition-colors duration-100 ease-in-out border border-gray-100 rounded-md hover:bg-gray-100"
                 ref={cancelRef}
                 onClick={close}
               >
-                Nevermind, don't reset
+                Nevermind, don't reset my progress
               </button>
             </div>
           </AlertDialogContent>

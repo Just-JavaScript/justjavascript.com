@@ -57,8 +57,8 @@ const Article = ({
     >
       <article>
         {title && (
-          <header className="relative flex items-center justify-center py-48 min-h-[65vh] text-center">
-            <h1 className="relative z-10 mb-8 overflow-hidden font-serif text-5xl font-extrabold lg:text-9xl md:text-6xl sm:text-5xl leading-tighter">
+          <header className="relative flex items-center justify-center pt-48 sm:pb-40 pb-32 min-h-[60vh] text-center">
+            <h1 className="lg:px-10 px-0 relative z-10 mb-8 overflow-hidden font-serif text-5xl font-extrabold lg:text-8xl xl:text-9xl md:text-6xl sm:text-5xl leading-tighter">
               {title}
             </h1>
             {episode && (
@@ -68,7 +68,7 @@ const Article = ({
             )}
           </header>
         )}
-        <main className="mx-auto prose prose-lg lg:prose-xl">{children}</main>
+        <main className="mx-auto prose md:prose-lg">{children}</main>
         <footer>
           <div className="flex flex-col items-center justify-center pt-24 text-center lg:pt-40 sm:pt-32">
             <h5>
@@ -145,16 +145,7 @@ const Article = ({
             nextTitle={nextTitle}
             completed={completed}
           >
-            <div>
-              {nextTitle}
-              {/* {bottomContent ? (
-                <ReactMarkdown className="max-w-screen-lg mx-auto prose prose-lg lg:prose-xl">
-                  {bottomContent}
-                </ReactMarkdown>
-              ) : (
-                nextTitle
-              )} */}
-            </div>
+            <div>{nextTitle}</div>
           </Pagination>
         </footer>
       </article>

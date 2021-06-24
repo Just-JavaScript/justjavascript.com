@@ -54,25 +54,21 @@ export default function Wrapper({
       >
         {children}
         <AnimatePresence>
-          <div>
-            {displayContinue && (
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                className={`${
-                  nested
-                    ? 'absolute bottom-0 transform translate-y-32 z-20'
-                    : ''
-                } py-8 mx-auto w-full flex items-center justify-center`}
-              >
-                <Continue
-                  isLastQuestion={isLastQuestion}
-                  onClick={handleContinue}
-                />
-              </motion.div>
-            )}
-          </div>
+          {displayContinue && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className={`${
+                nested ? 'absolute bottom-0 transform translate-y-32 z-20' : ''
+              } py-8 mx-auto w-full flex items-center justify-center`}
+            >
+              <Continue
+                isLastQuestion={isLastQuestion}
+                onClick={handleContinue}
+              />
+            </motion.div>
+          )}
         </AnimatePresence>
         <motion.div
           className={`flex flex-col ${
@@ -105,8 +101,9 @@ export default function Wrapper({
                 </Tooltip>
               </motion.div>
             ) : (
-              <motion.div layout layoutId="skip" className="py-2" />
+              !nested && <motion.div layout layoutId="skip" className="py-8" />
             )}
+
             {displayFinish && quiz && <Feedback quiz={quiz} />}
             {displayFinish && (
               <div
