@@ -96,6 +96,14 @@
   },
   "prettier": {
     "semi": false,
-    "singleQuote": true
+    "singleQuote": true,
+    "overrides": [
+      {
+        "files": "*.mdx",
+        "options": {
+          "semi": true
+        }
+      }
+    ]
   }
 }
