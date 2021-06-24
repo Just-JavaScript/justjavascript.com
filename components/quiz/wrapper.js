@@ -25,15 +25,18 @@ export default function Wrapper({
 
   const displaySkip =
     // !nested &&
-    question.questions &&
-    !displayContinue &&
-    currentQuestion.id === question.id &&
-    !isLastQuestion
+    question.questions
+      ? currentQuestion.id === question.id && !isLastQuestion
+      : !displayContinue &&
+        currentQuestion.id === question.id &&
+        !isLastQuestion &&
+        !nested
 
-  const displayFinish =
-    question.required === true
-      ? isLastQuestion && state.matches('answered') && !nested
-      : isLastQuestion && !nested
+  const displayFinish = question.questions
+    ? isLastQuestion
+    : question.required === true
+    ? isLastQuestion && state.matches('answered') && !nested
+    : isLastQuestion && !nested
 
   const [mounted, setMounted] = React.useState(false)
 
@@ -49,10 +52,10 @@ export default function Wrapper({
     <AnimateSharedLayout>
       <div
         className={`${
-          !nested ? 'flex-shrink-0' : ''
-        } flex flex-col justify-between relative`}
+          !nested ? 'flex-shrink-0 min-h-screen' : ''
+        } flex flex-col justify-between relative `}
       >
-        {children}
+        <div>{children}</div>
         <AnimatePresence>
           {displayContinue && (
             <motion.div
@@ -73,7 +76,7 @@ export default function Wrapper({
         <motion.div
           className={`flex flex-col ${
             displayFinish ? 'justify-start' : 'justify-end'
-          } flex-grow h-full`}
+          }  h-full`}
         >
           <AnimatePresence>
             {displaySkip ? (
@@ -84,7 +87,7 @@ export default function Wrapper({
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                className="flex items-center justify-center w-full py-8"
+                className="flex items-center justify-center w-full py-8 mb-8"
               >
                 <Tooltip
                   label="Skip and continue"
@@ -101,7 +104,7 @@ export default function Wrapper({
                 </Tooltip>
               </motion.div>
             ) : (
-              !nested && (
+              (!nested || question.questions) && (
                 <motion.div
                   layout
                   key="skip"

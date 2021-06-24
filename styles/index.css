@@ -7,6 +7,12 @@
 @import './icons.css';
 @import './nprogress.css';
 
+/* ReachUI */
+@import '../node_modules/@reach/tooltip/styles.css';
+@import '../node_modules/@reach/dialog/styles.css';
+@import '../node_modules/@reach/skip-nav/styles.css';
+@import './fonts/index.css';
+
 /*
   Hide the focus indicator if the element receives focus via the mouse,
   but it will still show up on keyboard focus. 
@@ -82,10 +88,12 @@
   /* outline: none; */
 }
 
-/* END — @reach/menu-button */
+[data-reach-dialog-content] {
+  width: 100%;
+  margin: 10vh auto;
+  background: white;
+  padding: 2rem;
+  outline: none;
+}
 
-/* ReachUI */
-@import '../node_modules/@reach/tooltip/styles.css';
-@import '../node_modules/@reach/dialog/styles.css';
-@import '../node_modules/@reach/skip-nav/styles.css';
-@import './fonts/index.css';
+/* END — @reach/menu-button */

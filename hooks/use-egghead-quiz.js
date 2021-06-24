@@ -51,9 +51,9 @@ export default function useEggheadQuiz(quiz, currentQuestion, setCurrent) {
     scroller.scrollTo(question, {
       // tweak this for pleasant scrolling exp
       smooth: 'easeInOutQuart',
-      delay: 100,
+      delay: 0,
       duration: 900,
-      offset: -60,
+      offset: -30,
       ignoreCancelEvents: true,
     })
   }

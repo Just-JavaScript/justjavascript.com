@@ -28,7 +28,7 @@ const ResetProgress = (questions) => {
       </button>
       {showDialog && (
         <AlertDialogOverlay
-          className="z-50 bg-black backdrop-filter backdrop-blur-lg bg-opacity-20 sm:px-0 px-5"
+          className="z-50 bg-black backdrop-filter backdrop-blur-lg bg-opacity-20 sm:px-0 px-5 "
           leastDestructiveRef={cancelRef}
           onDismiss={close}
         >
