@@ -74,22 +74,21 @@ export default function Wrapper({
             )}
           </div>
         </AnimatePresence>
-        {!displayContinue && !displaySkip && !nested && (
-          <div className="py-16" />
-        )}
         <motion.div
           className={`flex flex-col ${
             displayFinish ? 'justify-start' : 'justify-end'
           } flex-grow h-full`}
         >
           <AnimatePresence>
-            {displaySkip && (
+            {displaySkip ? (
               <motion.div
+                layout
+                layoutId="skip"
                 key="skip"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                className="flex items-center justify-center w-full py-16"
+                className="flex items-center justify-center w-full py-8"
               >
                 <Tooltip
                   label="Skip and continue"
@@ -98,15 +97,16 @@ export default function Wrapper({
                   <button
                     type="button"
                     onClick={handleSkip}
-                    className="flex items-center justify-center p-4 text-center text-gray-800 transition-colors duration-150 ease-in-out bg-white border rounded-full border-cool-gray-200 hover:text-gray-900"
+                    className="flex hover:scale-105 transform  items-center justify-center p-4 text-center text-gray-800 transition-all hover:shadow-xl duration-500 ease-in-out bg-white border rounded-full border-cool-gray-200 hover:text-gray-900"
                   >
                     <span className="sr-only">Skip and continue</span>
                     <i className=" gg-arrow-down" aria-hidden="true" />
                   </button>
                 </Tooltip>
               </motion.div>
+            ) : (
+              <motion.div layout layoutId="skip" className="py-2" />
             )}
-            {!displaySkip && !displayContinue && <div key="empty" />}
             {displayFinish && quiz && <Feedback quiz={quiz} />}
             {displayFinish && (
               <div

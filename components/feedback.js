@@ -1,13 +1,13 @@
 import React from 'react'
 import * as yup from 'yup'
-import {postQuizAnswer} from 'utils/post-quiz-answer'
+import { postQuizAnswer } from 'utils/post-quiz-answer'
 import Spinner from 'components/spinner'
-import {getUserAnswerFromLocalStorage} from 'utils/quiz-answers-in-local-storage'
+import { getUserAnswerFromLocalStorage } from 'utils/quiz-answers-in-local-storage'
 import isEmpty from 'lodash/isEmpty'
-import {useFormik} from 'formik'
+import { useFormik } from 'formik'
 
-const Feedback = ({quiz}) => {
-  const {id: quizId} = quiz
+const Feedback = ({ quiz }) => {
+  const { id: quizId } = quiz
   const key = `${quizId}~feedback`
   const answer = JSON.parse(getUserAnswerFromLocalStorage(key))
   const [submitted, setSubmitted] = React.useState(false)
@@ -33,7 +33,7 @@ const Feedback = ({quiz}) => {
         })
         .catch((err) => {
           setSubmitted(false)
-          actions.setErrors({feedback: `Something went wrong. ${err}`})
+          actions.setErrors({ feedback: `Something went wrong. ${err}` })
         })
     },
   })
@@ -42,7 +42,7 @@ const Feedback = ({quiz}) => {
     formik.isSubmitting || submitted || !isEmpty(formik.initialValues.feedback)
 
   return (
-    <div className="px-5 py-16 border-t border-b border-gray-200">
+    <div className="px-5 py-16">
       {/* <span className="px-2 py-1 text-sm font-semibold text-white uppercase bg-black rounded-md">
         Feedback
       </span> */}

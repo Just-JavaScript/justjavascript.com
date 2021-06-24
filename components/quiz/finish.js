@@ -1,12 +1,16 @@
-import {motion} from 'framer-motion'
+import { motion } from 'framer-motion'
 
-export default function Finish({onClick}) {
+export default function Finish({ onClick }) {
   return (
-    <div className="flex flex-col items-center justify-center w-full pb-16 rounded-lg sm:pb-24">
+    <div className="relative flex flex-col items-center justify-center w-full pb-16 rounded-lg sm:pb-24">
+      <div
+        className="absolute bottom-full border h-16 border-dashed border-emerald-500"
+        aria-hidden="true"
+      />
       <motion.button
         layout
-        initial={{opacity: 0}}
-        animate={{opacity: 1}}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
         className="flex items-center justify-center w-full px-5 py-8 text-lg font-semibold text-white transition-colors duration-300 ease-in-out rounded-md bg-emerald-500 hover:bg-emerald-600"
         type="button"
         onClick={onClick}

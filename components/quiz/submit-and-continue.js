@@ -1,7 +1,5 @@
 import React from 'react'
-import {motion} from 'framer-motion'
-import {getUserAnswerFromLocalStorage} from 'utils/quiz-answers-in-local-storage'
-import {isEmpty} from 'lodash'
+import { motion } from 'framer-motion'
 
 export default function SubmitAndContinue({
   state,
@@ -12,7 +10,7 @@ export default function SubmitAndContinue({
   return state.matches('answered') ? null : (
     <motion.button
       layout
-      className={`w-full relative z-20 mt-4 px-3 py-3 flex items-center justify-center rounded-md font-semibold transition-colors ease-in-out duration-300 focus:ring focus:outline-none focus:ring-orange-500 ${
+      className={`w-full relative hover:shadow-xl hover:bg-gray-600 z-20 mt-4 px-3 py-3 flex items-center justify-center rounded-md font-semibold transition-all ease-in-out duration-300 focus:ring focus:outline-none focus:ring-orange-500 ${
         state.matches('answered')
           ? 'bg-gray-100 text-black'
           : 'bg-black text-white'
@@ -31,8 +29,8 @@ export default function SubmitAndContinue({
           viewBox="0 0 24 24"
         >
           <motion.g
-            animate={{rotateZ: [0, 360]}}
-            transition={{repeat: Infinity}}
+            animate={{ rotateZ: [0, 360] }}
+            transition={{ repeat: Infinity }}
             fill="currentColor"
           >
             <path fill="none" d="M0 0h24v24H0z"></path>

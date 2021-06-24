@@ -1,13 +1,13 @@
-import {motion} from 'framer-motion'
+import { motion } from 'framer-motion'
 
-export default function Submit({isDisabled, isSubmitting}) {
+export default function Submit({ isDisabled, isSubmitting }) {
   if (isDisabled && !isSubmitting) {
     return null
   }
   return (
     <motion.button
       layout
-      className="flex items-center justify-center w-full px-3 py-3 mt-4 font-semibold text-white transition-colors duration-300 ease-in-out bg-black rounded-md hover:bg-gray-900 focus:outline-none focus:ring focus:ring-orange-500"
+      className="flex items-center hover:shadow-xl justify-center w-full px-3 py-3 mt-4 font-semibold text-white transition-all duration-300 ease-in-out bg-black rounded-md hover:bg-gray-600 focus:outline-none focus:ring focus:ring-orange-500"
       type="submit"
       disabled={isDisabled}
     >
@@ -20,8 +20,8 @@ export default function Submit({isDisabled, isSubmitting}) {
           viewBox="0 0 24 24"
         >
           <motion.g
-            animate={{rotateZ: [0, 360]}}
-            transition={{repeat: Infinity}}
+            animate={{ rotateZ: [0, 360] }}
+            transition={{ repeat: Infinity }}
             fill="currentColor"
           >
             <path fill="none" d="M0 0h24v24H0z"></path>
