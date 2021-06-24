@@ -19,29 +19,33 @@ const initializeApp = async (firebaseAuthToken) => {
     .signInWithCustomToken(firebaseAuthToken)
   const db = firebase.firestore()
   const usersCollectionRef = db.collection('users')
-  return {db, usersCollectionRef, firebaseUserCredential}
+  return { db, usersCollectionRef, firebaseUserCredential }
 }
 
-const setAnswerForUser = async ({firebaseAuthToken, answer}) => {
-  const {firebaseUserCredential, usersCollectionRef} = await initializeApp(
+const setAnswerForUser = async ({ firebaseAuthToken, answer }) => {
+  const { firebaseUserCredential, usersCollectionRef } = await initializeApp(
     firebaseAuthToken
   )
   const contactId = firebaseUserCredential.user.uid
   const contactRef = usersCollectionRef.doc(contactId)
+  const timestamp = firebase.firestore.Timestamp.fromDate(new Date())
+
   return contactRef.get().then((doc) => {
     const updatePayload = {
-      [answer.quiz.id]: {[answer.question]: {answer: answer.answer}},
+      [answer.quiz.id]: {
+        [answer.question]: { answer: answer.answer, date: timestamp },
+      },
     }
     if (doc.exists) {
-      return contactRef.set(updatePayload, {merge: true})
+      return contactRef.set(updatePayload, { merge: true })
     } else {
       return contactRef.set(updatePayload)
     }
   })
 }
 
-const getProgressForUser = async ({firebaseAuthToken}) => {
-  const {firebaseUserCredential, usersCollectionRef} = await initializeApp(
+const getProgressForUser = async ({ firebaseAuthToken }) => {
+  const { firebaseUserCredential, usersCollectionRef } = await initializeApp(
     firebaseAuthToken
   )
   const contactId = firebaseUserCredential.user.uid
@@ -57,17 +61,17 @@ const getProgressForUser = async ({firebaseAuthToken}) => {
   })
 }
 
-const setUserProgress = async ({firebaseAuthToken, episode, progress}) => {
-  const {firebaseUserCredential, usersCollectionRef} = await initializeApp(
+const setUserProgress = async ({ firebaseAuthToken, episode, progress }) => {
+  const { firebaseUserCredential, usersCollectionRef } = await initializeApp(
     firebaseAuthToken
   )
   const contactId = firebaseUserCredential.user.uid
   const contactRef = usersCollectionRef.doc(contactId)
 
   return contactRef.get().then((doc) => {
-    const updatePayload = {progress: {[episode]: {...progress}}}
+    const updatePayload = { progress: { [episode]: { ...progress } } }
     if (doc.exists) {
-      return contactRef.set(updatePayload, {merge: true})
+      return contactRef.set(updatePayload, { merge: true })
     } else {
       return contactRef.set(updatePayload)
     }
