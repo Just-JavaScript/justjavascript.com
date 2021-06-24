@@ -5,6 +5,7 @@ import Countdown from './countdown'
 import { isEmpty, get, find, noop } from 'lodash'
 import ParityCouponMessage from './parity-coupon-message'
 import { useCommerceMachine } from '../../hooks/use-commerce-machine'
+import { episodes } from 'components/toc'
 
 const PurchaseButton = ({ purchasing, children, bundle, onClick }) => {
   const purchasingStyles = 'opacity-50 cursor-default'
@@ -219,6 +220,20 @@ const PurchaseBundle = ({
               {getPurchaseButtonText()}
             </PurchaseButton>
           )}
+        </div>
+        <div className="sm:p-0 p-5">
+          <p className="font-semibold pb-4">
+            Includes all 10 chapters + quiz exercises.
+          </p>
+          <ul>
+            {episodes.map((e) => {
+              return (
+                <li className="-ml-1 pb-1">
+                  {'・'} {e.title}
+                </li>
+              )
+            })}
+          </ul>
         </div>
         {/* {teamAvailable && (
           <motion.div layout className="flex justify-center w-full mt-10">

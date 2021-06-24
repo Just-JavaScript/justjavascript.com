@@ -10,15 +10,15 @@ const Commerce = ({ bundles, children }) => {
   return (
     <div className="px-5 py-10 -m-5 bg-gray-50 sm:py-16" id="buy">
       <Element name="buy" />
-      {/* <div className="flex items-center justify-center w-full pb-5">
+      <div className="flex items-center justify-center w-full pb-5">
         <Image
-          src="/cover-and-chapters@2x.png"
-          width={760 / 1.5}
-          height={530 / 1.5}
+          src="/chapters-tilted-3@2x.png"
+          width={1010 / 2.5}
+          height={676 / 2.5}
           alt="Just JavaScript by Dan Abramov and Maggie Appleton, 10 chapters"
           quality={100}
         />
-      </div> */}
+      </div>
       <div className="px-5 pb-12 text-center">
         <h2 className="max-w-screen-sm pb-3 mx-auto font-serif text-4xl font-extrabold lg:text-6xl sm:text-5xl leading-tighter">
           Learn my JavaScript Mental Models
