@@ -101,7 +101,8 @@
       {
         "files": "*.mdx",
         "options": {
-          "semi": true
+          "semi": true,
+          "trailingComma": "none"
         }
       }
     ]

@@ -1,7 +1,12 @@
 import React from 'react'
-import {motion, AnimateSharedLayout} from 'framer-motion'
+import { motion, AnimateSharedLayout } from 'framer-motion'
 
-export default function QuestionWrapper({children, number, className, nested}) {
+export default function QuestionWrapper({
+  children,
+  number,
+  className,
+  nested,
+}) {
   return (
     <div
       className={
@@ -23,6 +28,7 @@ export default function QuestionWrapper({children, number, className, nested}) {
             ) : (
               <div className="mb-4">
                 <span className="inline-flex items-center justify-center w-6 h-6 p-2 mr-2 font-mono text-xs font-bold text-white bg-black rounded-full lining-nums">
+                  <span className="sr-only">question</span>
                   {number}
                 </span>
               </div>

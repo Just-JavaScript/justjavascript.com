@@ -1,14 +1,15 @@
-import {motion} from 'framer-motion'
-import Code from 'components/mdx/code'
+import React from 'react'
+import { motion } from 'framer-motion'
 import Markdown from 'components/quiz/markdown'
-export default function Explanation({children, label, className}) {
+
+export default function Explanation({ children, label, className }) {
   const isMDX = typeof children !== 'string'
 
   return (
     <motion.div
       layout
-      initial={{opacity: 0, height: '0%'}}
-      animate={{opacity: 1, height: '100%'}}
+      initial={{ opacity: 0, height: '0%' }}
+      animate={{ opacity: 1, height: '100%' }}
       className={`bg-white md:mt-3 mt-3 relative z-0 md:p-8 p-5 flex space-x-3 md:rounded-lg border border-cool-gray-100 overflow-y-auto ${
         className ? className : ''
       }`}

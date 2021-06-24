@@ -31,11 +31,9 @@ export default function Wrapper({
     !isLastQuestion
 
   const displayFinish =
-    // !nested &&
-    question.questions &&
-    (question.required === true
-      ? isLastQuestion && state.matches('answered')
-      : isLastQuestion)
+    question.required === true
+      ? isLastQuestion && state.matches('answered') && !nested
+      : isLastQuestion && !nested
 
   const [mounted, setMounted] = React.useState(false)
 
@@ -109,7 +107,7 @@ export default function Wrapper({
               </motion.div>
             )}
             {!displaySkip && !displayContinue && <div key="empty" />}
-            {displayFinish && <Feedback quiz={quiz} />}
+            {displayFinish && quiz && <Feedback quiz={quiz} />}
             {displayFinish && (
               <div
                 className="flex items-center justify-center w-full py-10 sm:py-16"
