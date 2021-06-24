@@ -228,7 +228,7 @@ const PurchaseBundle = ({
           <ul>
             {episodes.map((e) => {
               return (
-                <li className="-ml-1 pb-1">
+                <li key={e.title} className="-ml-1 pb-1">
                   {'・'} {e.title}
                 </li>
               )
