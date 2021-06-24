@@ -29,7 +29,7 @@ const QuizCompleted = () => {
           Great work!
         </h1>
         {currentEpisode && (
-          <div className="pt-8 pb-12 font-sans text-xl font-normal tracking-normal">
+          <div className="pt-8 pb-12 font-sans text-xl text-center font-normal tracking-normal">
             You've completed the {currentEpisode.title} quiz.
           </div>
         )}

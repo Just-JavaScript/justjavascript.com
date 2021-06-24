@@ -176,62 +176,64 @@ const Quiz = ({ children, title, version, slug, id }) => {
             </div>
           )}
         </header>
-        <div className="flex flex-col items-center justify-start w-full">
-          {map(quiz.questions, (question, index) => {
-            const {
-              state,
-              handleSkip,
-              isAnswered,
-              isDisabled,
-              handleSubmit,
-              currentAnswer,
-              handleContinue,
-              isLastQuestion,
-              showExplanation,
-              nextQuestionIdx,
-              nextQuestionId,
-              number,
-            } = useEggheadQuiz(
-              quiz,
-              question,
-              setCurrentQuestion,
-              defaultCurrentQuestionId,
-              defaultCurrentQuestionIndex
-            )
+        <div className="sm:mx-auto -mx-5">
+          <div className="flex flex-col items-center justify-start w-full">
+            {map(quiz.questions, (question, index) => {
+              const {
+                state,
+                handleSkip,
+                isAnswered,
+                isDisabled,
+                handleSubmit,
+                currentAnswer,
+                handleContinue,
+                isLastQuestion,
+                showExplanation,
+                nextQuestionIdx,
+                nextQuestionId,
+                number,
+              } = useEggheadQuiz(
+                quiz,
+                question,
+                setCurrentQuestion,
+                defaultCurrentQuestionId,
+                defaultCurrentQuestionIndex
+              )
 
-            return state.matches('initializing') ? (
-              'loading...'
-            ) : (
-              <div className="w-full max-w-screen-md mx-auto" key={question.id}>
-                <ScrollElement name={question.id} />
-                {index <= currentQuestion.index && (
-                  <QuestionToShow
-                    question={question}
-                    number={number}
-                    currentAnswer={currentAnswer}
-                    isLastQuestion={isLastQuestion}
-                    state={state}
-                    handleSubmit={handleSubmit}
-                    handleContinue={handleContinue}
-                    isDisabled={isDisabled}
-                    handleSkip={handleSkip}
-                    showExplanation={showExplanation}
-                    isAnswered={isAnswered}
-                    currentQuestion={currentQuestion}
-                    nextQuestionIdx={nextQuestionIdx}
-                    nextQuestionId={nextQuestionId}
-                    setCurrentQuestion={setCurrentQuestion}
-                    quiz={quiz}
-                  />
-                )}
+              return state.matches('initializing') ? (
+                'loading...'
+              ) : (
+                <div className="w-full max-w-screen-md" key={question.id}>
+                  <ScrollElement name={question.id} />
+                  {index <= currentQuestion.index && (
+                    <QuestionToShow
+                      question={question}
+                      number={number}
+                      currentAnswer={currentAnswer}
+                      isLastQuestion={isLastQuestion}
+                      state={state}
+                      handleSubmit={handleSubmit}
+                      handleContinue={handleContinue}
+                      isDisabled={isDisabled}
+                      handleSkip={handleSkip}
+                      showExplanation={showExplanation}
+                      isAnswered={isAnswered}
+                      currentQuestion={currentQuestion}
+                      nextQuestionIdx={nextQuestionIdx}
+                      nextQuestionId={nextQuestionId}
+                      setCurrentQuestion={setCurrentQuestion}
+                      quiz={quiz}
+                    />
+                  )}
+                </div>
+              )
+            })}
+            {mounted && process.env.NODE_ENV === 'development' && (
+              <div className="fixed font-mono text-xs opacity-50 left-5 bottom-5">
+                currentQuestion: {JSON.stringify(currentQuestion, null, 2)}
               </div>
-            )
-          })}
-          {mounted && process.env.NODE_ENV === 'development' && (
-            <div className="fixed font-mono text-xs opacity-50 left-5 bottom-5">
-              currentQuestion: {JSON.stringify(currentQuestion, null, 2)}
-            </div>
-          )}
+            )}
+          </div>
         </div>
       </div>
     </Layout>

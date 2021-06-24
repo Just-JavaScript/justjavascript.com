@@ -53,6 +53,7 @@ export default function useEggheadQuiz(quiz, currentQuestion, setCurrent) {
       smooth: 'easeInOutQuart',
       delay: 100,
       duration: 900,
+      offset: -60,
       ignoreCancelEvents: true,
     })
   }

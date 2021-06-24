@@ -15,6 +15,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        transparent: 'rgba(255, 255, 255, 0)', // safari fix
         ...colors,
       },
       screens: {
