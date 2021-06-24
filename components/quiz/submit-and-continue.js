@@ -38,7 +38,7 @@ export default function SubmitAndContinue({
           </motion.g>
         </svg>
       ) : (
-        'Submit and continue'
+        'Send Answer'
       )}
     </motion.button>
   )
