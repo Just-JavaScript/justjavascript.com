@@ -9,7 +9,7 @@ const Confetti = ({
   gravity = 0.2,
   recycle = false,
 }) => {
-  const {width, height} = useWindowSize()
+  const { width, height } = useWindowSize()
   const [party, setParty] = React.useState(false)
 
   React.useEffect(() => setParty(true), [])
@@ -42,7 +42,7 @@ const Confetti = ({
 
   return (
     <div
-      className="text-orange-500"
+      className="text-emerald-500"
       style={{
         pointerEvents: 'none',
         position: 'absolute',
@@ -52,6 +52,7 @@ const Confetti = ({
       }}
     >
       <ReactConfetti
+        aria-hidden="true"
         width={width - 20}
         height={height}
         numberOfPieces={party ? 300 : 0}
@@ -68,7 +69,7 @@ const Confetti = ({
         gravity={gravity}
         initialVelocityX={initialVelocityX}
         initialVelocityY={initialVelocityY}
-        colors={['#000', '#f97316', '#cdcdcd']}
+        colors={['#000', 'rgb(16, 185, 129)', 'rgb(255, 38, 151)', '#cdcdcd']}
       />
     </div>
   )

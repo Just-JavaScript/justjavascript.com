@@ -2,25 +2,25 @@ import React from 'react'
 import Layout from 'components/layout'
 import Link from 'next/link'
 import useLoginRequired from 'hooks/use-login-required'
-import {episodes} from 'components/toc'
-import {useViewer} from 'context/viewer-context'
+import { episodes } from 'components/toc'
+import { useViewer } from 'context/viewer-context'
 import isEmpty from 'lodash/isEmpty'
 import get from 'lodash/get'
 import WelcomeMessage from 'components/welcome-message'
-import {useProgress} from 'context/progress-context'
-import {motion} from 'framer-motion'
-import {serverSideAuthCheck} from 'utils/serverSideAuthCheck'
+import { useProgress } from 'context/progress-context'
+import { motion } from 'framer-motion'
+import { serverSideAuthCheck } from 'utils/serverSideAuthCheck'
 
 export default function Learn() {
   const [mounted, setMounted] = React.useState(false)
   const isVerifyingLogin = useLoginRequired()
-  const {progress} = useProgress()
+  const { progress } = useProgress()
 
   React.useEffect(() => {
     setMounted(true)
   }, [])
 
-  const {viewingAsUserEmail} = useViewer()
+  const { viewingAsUserEmail } = useViewer()
 
   if (isVerifyingLogin) {
     return null
@@ -35,12 +35,7 @@ export default function Learn() {
     quizCompleted,
   }) => {
     return (
-      <motion.li
-        animate={isEmpty(progress) && {x: [-10, 0], opacity: [0, 1]}}
-        transition={{delay: idx / 10}}
-        initial={isEmpty(progress) ? {x: -10, opacity: 0} : false}
-        className="relative flex flex-col items-center transition-all duration-200 ease-in-out group"
-      >
+      <li className="relative flex flex-col items-center transition-all duration-200 ease-in-out group">
         <Link href={href}>
           <a
             tabIndex={-1}
@@ -100,8 +95,8 @@ export default function Learn() {
             </div>
             {progress && number === '01' && !completed && (
               <motion.div
-                animate={{opacity: [0, 1]}}
-                initial={{opacity: 0}}
+                animate={{ opacity: [0, 1] }}
+                initial={{ opacity: 0 }}
                 className="pt-2 font-sans text-sm font-bold tracking-wide text-orange-500 uppercase"
               >
                 {'Start Here'}
@@ -143,7 +138,7 @@ export default function Learn() {
             </Link>
           )}
         </div>
-      </motion.li>
+      </li>
     )
   }
 
@@ -191,27 +186,12 @@ export default function Learn() {
           </motion.ul>
         )}
       </main>
-      <footer className="flex flex-col items-center justify-center w-full max-w-screen-lg py-16 mx-auto space-y-16 sm:py-24 sm:space-y-0 sm:justify-between sm:flex-row">
-        <div className="flex flex-col items-center sm:items-start">
-          <Link href="/invoice">
-            <a className="flex items-center px-4 py-2 transition-all duration-200 ease-in-out rounded-lg sm:text-lg hover:bg-white hover:shadow-xl">
-              <i className="gg-file" />
-              <span className="pl-3">Get your invoice</span>
-            </a>
-          </Link>
-        </div>
-        <Link href="/">
-          <a tabIndex={-1} className="font-serif text-2xl font-extrabold">
-            JJS
-          </a>
-        </Link>
-      </footer>
     </Layout>
   )
 }
 
-export const getServerSideProps = async ({req}) => {
-  const possibleAuthRedirect = serverSideAuthCheck({req})
+export const getServerSideProps = async ({ req }) => {
+  const possibleAuthRedirect = serverSideAuthCheck({ req })
 
   if (possibleAuthRedirect) {
     return possibleAuthRedirect

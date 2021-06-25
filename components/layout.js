@@ -1,22 +1,48 @@
 import React from 'react'
 import Navigation from './navigation'
-import SEO from './seo'
+import { NextSeo } from 'next-seo'
+import Footer from 'components/footer'
+import { SkipNavLink, SkipNavContent } from '@reach/skip-nav'
 
 const Layout = ({
   children,
-  title,
   navClassName,
   navChildren,
+  noIndex,
+  meta,
   background = 'bg-gray-100',
 }) => {
+  const {
+    title,
+    description,
+    titleAppendSiteName = false,
+    url,
+    ogImage,
+  } = meta || {}
   return (
     <>
-      <SEO title={title} />
+      <NextSeo
+        title={title}
+        description={description}
+        openGraph={{
+          title,
+          description,
+          url,
+          images: ogImage ? [ogImage] : undefined,
+        }}
+        canonical={url}
+        noindex={noIndex}
+      />
       <div className={background}>
         <div className="flex flex-col items-center justify-center min-h-screen print:min-h-full print:h-auto">
+          <SkipNavLink />
           <Navigation className={navClassName}>{navChildren}</Navigation>
-          <div className="flex-shrink-0 w-full px-5">{children}</div>
+          <div className="flex-shrink-0 w-full px-5">
+            <SkipNavContent />
+            {children}
+          </div>
         </div>
+        <Footer />
       </div>
     </>
   )

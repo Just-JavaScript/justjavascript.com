@@ -2,12 +2,12 @@ import React from 'react'
 import ToC from '../components/toc'
 import Layout from '../components/layout'
 import Pagination from '../components/mdx/pagination'
-import {useProgress} from 'context/progress-context'
-import {useRouter} from 'next/router'
+import { useProgress } from 'context/progress-context'
+import { useRouter } from 'next/router'
 import Spinner from 'components/spinner'
 import isUndefined from 'lodash/isUndefined'
-import {InView} from 'react-intersection-observer'
-import {motion} from 'framer-motion'
+import { InView } from 'react-intersection-observer'
+import { motion } from 'framer-motion'
 
 const Article = ({
   children,
@@ -22,7 +22,7 @@ const Article = ({
 }) => {
   const router = useRouter()
   const EPISODE_ID = router.query.slug
-  const {progress, setProgress} = useProgress()
+  const { progress, setProgress } = useProgress()
   const currentEpisodeProgress = progress && progress[EPISODE_ID]
   const [completed, setCompleted] = React.useState(
     currentEpisodeProgress?.completed || false
@@ -52,25 +52,24 @@ const Article = ({
     <Layout
       navChildren={<ToC />}
       background="bg-white"
-      title={title}
+      meta={{ title }}
       {...props}
     >
       <article>
         {title && (
-          <header className="relative flex items-center justify-center py-48 min-h-[65vh] text-center">
-            <h1 className="relative z-10 mb-8 overflow-hidden font-serif text-5xl font-extrabold lg:text-9xl md:text-6xl sm:text-5xl leading-tighter">
+          <header className="relative flex items-center justify-center pt-48 sm:pb-40 pb-32 min-h-[60vh] text-center">
+            <h1 className="lg:px-10 px-0 relative z-10 mb-8 overflow-hidden font-serif text-5xl font-extrabold lg:text-8xl xl:text-9xl md:text-6xl sm:text-5xl leading-tighter">
               {title}
             </h1>
             {episode && (
               <span className="absolute z-0 sm:text-8xl text-6xl transform md:scale-[5] scale-[3.5] text-gray-100 font-extrabold font-serif">
+                <span className="sr-only">episode </span>
                 {('0' + episode).slice(-2)}
               </span>
             )}
           </header>
         )}
-        <main className="max-w-screen-lg mx-auto prose prose-lg lg:prose-xl">
-          {children}
-        </main>
+        <main className="mx-auto prose md:prose-lg">{children}</main>
         <footer>
           <div className="flex flex-col items-center justify-center pt-24 text-center lg:pt-40 sm:pt-32">
             <h5>
@@ -82,12 +81,12 @@ const Article = ({
               </div>
             </h5>
             <InView key={module.slug} delay={200}>
-              {({inView, ref}) => {
+              {({ inView, ref }) => {
                 return (
                   <motion.div
                     ref={ref}
                     animate={
-                      !completed && {rotateZ: inView ? [0, -5, 5, 0] : 0}
+                      !completed && { rotateZ: inView ? [0, -5, 5, 0] : 0 }
                     }
                   >
                     <button
@@ -147,16 +146,7 @@ const Article = ({
             nextTitle={nextTitle}
             completed={completed}
           >
-            <div>
-              {nextTitle}
-              {/* {bottomContent ? (
-                <ReactMarkdown className="max-w-screen-lg mx-auto prose prose-lg lg:prose-xl">
-                  {bottomContent}
-                </ReactMarkdown>
-              ) : (
-                nextTitle
-              )} */}
-            </div>
+            <div>{nextTitle}</div>
           </Pagination>
         </footer>
       </article>

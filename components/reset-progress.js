@@ -28,11 +28,11 @@ const ResetProgress = (questions) => {
       </button>
       {showDialog && (
         <AlertDialogOverlay
-          className="z-50 bg-black backdrop-filter backdrop-blur-lg bg-opacity-20"
+          className="z-50 bg-black backdrop-filter backdrop-blur-lg bg-opacity-20 sm:px-0 px-5 "
           leastDestructiveRef={cancelRef}
           onDismiss={close}
         >
-          <AlertDialogContent className="max-w-screen-sm rounded-lg shadow-xl">
+          <AlertDialogContent className="max-w-screen-sm rounded-lg shadow-xl sm:w-auto w-full">
             <AlertDialogLabel className="text-xl font-semibold">
               Please Confirm
             </AlertDialogLabel>
@@ -40,19 +40,19 @@ const ResetProgress = (questions) => {
               Are you sure you want to start this quiz over and reset your
               progress?
             </AlertDialogDescription>
-            <div className="flex space-x-5">
+            <div className="flex sm:flex-row flex-col sm:space-x-5 sm:space-y-0 space-y-5">
               <button
                 className="px-4 py-2 text-white transition-colors duration-100 ease-in-out bg-black rounded-md hover:bg-gray-600"
                 onClick={handleResetProgress}
               >
-                Yes, reset my progress
+                Yes, start over
               </button>{' '}
               <button
                 className="px-4 py-2 transition-colors duration-100 ease-in-out border border-gray-100 rounded-md hover:bg-gray-100"
                 ref={cancelRef}
                 onClick={close}
               >
-                Nevermind, don't reset
+                Nevermind, don't reset my progress
               </button>
             </div>
           </AlertDialogContent>

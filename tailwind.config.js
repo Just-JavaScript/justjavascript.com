@@ -2,6 +2,7 @@ const defaultTheme = require('tailwindcss/defaultTheme')
 const colors = require('tailwindcss/colors')
 
 module.exports = {
+  mode: 'jit',
   purge: {
     content: [
       './components/**/*.js',
@@ -14,10 +15,11 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        transparent: 'rgba(255, 255, 255, 0)', // safari fix
         ...colors,
       },
       screens: {
-        print: {raw: 'print'},
+        print: { raw: 'print' },
       },
       fontFamily: {
         sans: ['Adelle Sans', ...defaultTheme.fontFamily.sans],
@@ -90,7 +92,8 @@ module.exports = {
             'code::after': {
               content: '""',
             },
-            strong: {fontWeight: theme('fontWeight.bold')},
+
+            strong: { fontWeight: theme('fontWeight.bold') },
             a: {
               color: theme('colors.orange.500'),
               textDecoration: 'underline',
@@ -144,16 +147,16 @@ module.exports = {
               },
             },
             h1: {
-              fontSize: theme('fontSize.5xl'),
+              fontSize: theme('fontSize.6xl'),
               fontWeight: theme('fontWeight.extrabold'),
             },
             h2: {
-              fontSize: theme('fontSize.4xl'),
+              fontSize: theme('fontSize.6xl'),
               fontWeight: theme('fontWeight.extrabold'),
             },
             h3: {
               fontSize: theme('fontSize.3xl'),
-              fontWeight: theme('fontWeight.extrabold'),
+              fontWeight: theme('fontWeight.semibold'),
             },
             h4: {
               fontSize: theme('fontSize.2xl'),
@@ -214,7 +217,7 @@ module.exports = {
             'code::after': {
               content: '""',
             },
-            strong: {fontWeight: theme('fontWeight.bold')},
+            strong: { fontWeight: theme('fontWeight.bold') },
             a: {
               color: theme('colors.blue.500'),
               textDecoration: 'underline',
@@ -229,7 +232,7 @@ module.exports = {
         sans: {
           css: {
             fontFamily: theme('fontFamily.sans').join(', '),
-            fontSize: theme('fontSize.lg'),
+            fontSize: theme('fontSize.base'),
             color: theme('colors.black'),
             'h1, h2, h3': {
               textAlign: 'left',
@@ -272,7 +275,7 @@ module.exports = {
             'code::after': {
               content: '""',
             },
-            strong: {fontWeight: theme('fontWeight.bold')},
+            strong: { fontWeight: theme('fontWeight.bold') },
             a: {
               color: theme('colors.orange.500'),
               textDecoration: 'underline',
@@ -330,7 +333,7 @@ module.exports = {
             'code::after': {
               content: '""',
             },
-            strong: {fontWeight: theme('fontWeight.bold')},
+            strong: { fontWeight: theme('fontWeight.bold') },
             a: {
               color: theme('colors.blue.500'),
               textDecoration: 'underline',
@@ -348,10 +351,6 @@ module.exports = {
       },
     },
   },
-  variants: {scale: ['hover', 'group-hover']},
-  plugins: [
-    require('@tailwindcss/ui'),
-    require('@tailwindcss/typography'),
-    require('@tailwindcss/forms'),
-  ],
+  variants: { scale: ['hover', 'group-hover'] },
+  plugins: [require('@tailwindcss/typography'), require('@tailwindcss/forms')],
 }
