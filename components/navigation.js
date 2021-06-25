@@ -58,7 +58,7 @@ const Navigation = ({ children, className = '', ...props }) => {
         <Link href={purchased ? '/learn' : '/'}>
           <a
             aria-label="Homepage"
-            className="font-serif text-lg font-bold leading-tight sm:text-2xl"
+            className="font-serif text-lg font-bold leading-none sm:text-xl"
           >
             Just JavaScript
           </a>

@@ -20,7 +20,7 @@ const Commerce = ({ bundles, children }) => {
         />
       </div>
       <div className="px-5 pb-12 text-center">
-        <h2 className="max-w-screen-sm pb-3 mx-auto font-serif text-4xl font-extrabold lg:text-6xl sm:text-5xl leading-tighter">
+        <h2 className="lg:max-w-screen-sm max-w-lg pb-3 mx-auto font-serif text-4xl font-extrabold lg:text-6xl sm:text-5xl leading-tighter">
           Learn my JavaScript Mental Models
         </h2>
         <div className="max-w-xl mx-auto text-base font-medium text-center md:text-lg sm:text-lg">

@@ -1,5 +1,5 @@
 import React from 'react'
-import Tooltip from '@reach/tooltip'
+import Tippy from '@tippyjs/react'
 import Finish from 'components/quiz/finish'
 import Continue from 'components/quiz/continue'
 import { AnimateSharedLayout, AnimatePresence, motion } from 'framer-motion'
@@ -89,8 +89,8 @@ export default function Wrapper({
                 exit={{ opacity: 0 }}
                 className="flex items-center justify-center w-full py-8 mb-8"
               >
-                <Tooltip
-                  label="Skip and continue"
+                <Tippy
+                  content="Skip and continue"
                   className="px-3 py-2 text-sm bg-white border border-gray-200 rounded-sm shadow-sm"
                 >
                   <button
@@ -101,7 +101,7 @@ export default function Wrapper({
                     <span className="sr-only">Skip and continue</span>
                     <i className=" gg-arrow-down" aria-hidden="true" />
                   </button>
-                </Tooltip>
+                </Tippy>
               </motion.div>
             ) : (
               (!nested || question.questions) && (

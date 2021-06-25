@@ -352,9 +352,5 @@ module.exports = {
     },
   },
   variants: { scale: ['hover', 'group-hover'] },
-  plugins: [
-    require('@tailwindcss/ui'),
-    require('@tailwindcss/typography'),
-    require('@tailwindcss/forms'),
-  ],
+  plugins: [require('@tailwindcss/typography'), require('@tailwindcss/forms')],
 }

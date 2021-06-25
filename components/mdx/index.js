@@ -12,8 +12,8 @@ import Video from './video'
 import Link from 'next/link'
 
 export default {
-  img: ({src}) => <GifPlayer src={src} />,
-  pre: ({children}) => <>{children}</>,
+  img: ({ src }) => <GifPlayer src={src} />,
+  pre: ({ children }) => <>{children}</>,
   a: (props) => (
     <Link {...props}>
       <a>{props.children}</a>

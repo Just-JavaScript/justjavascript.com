@@ -12,6 +12,8 @@ import Commerce from 'components/commerce'
 import Testimonials from 'components/testimonials'
 import { useRouter } from 'next/router'
 import { scroller } from 'react-scroll'
+import Creators from 'components/creators'
+import TechnicalDetails from 'components/technical-details'
 
 const LandingPage = ({ bundles }) => {
   useRedirectToLearn()
@@ -29,20 +31,20 @@ const LandingPage = ({ bundles }) => {
     <Layout maxWidth="" background="bg-white" navClassName="text-white">
       <ClaimCoupon />
       <header className="relative flex items-center justify-center -mx-5">
-        <div className="w-full min-h-[75vh] bg-black text-white flex sm:flex-row flex-col-reverse items-center justify-between px-5">
-          <div className="flex items-center justify-between w-full max-w-screen-lg pb-8 mx-auto sm:pb-0">
-            <h1 className="relative z-10 max-w-2xl font-serif text-3xl font-extrabold md:text-6xl sm:text-5xl leading-tighter">
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-orange-100">
-                JavaScript,
-              </span>{' '}
-              <span className="font-light">
-                like you’ve never seen it before.
-              </span>
-            </h1>
-            <div className="">
+        <div className="w-full min-h-[calc(65vh+55px)] py-24 bg-black text-white flex sm:flex-row flex-col-reverse items-center justify-center px-5">
+          <div className="text-center w-full max-w-screen-lg mx-auto">
+            <div className="relative z-10">
+              <h1 className="text-transparent bg-clip-text bg-gradient-to-r from-white to-orange-100 relative z-10 max-w-xl mx-auto font-serif text-4xl font-extrabold md:text-6xl sm:text-5xl leading-tighter">
+                <span>Explore the</span> JavaScript Universe
+              </h1>
+              <h2 className="font-light sm:text-xl text-lg text-orange-200 font-serif pt-4">
+                Rebuild your mental model from the inside out.
+              </h2>
+            </div>
+            <div className="pointer-events-none">
               <Image
-                objectFit="contain"
-                objectPosition="70%"
+                className="object-contain lg:opacity-100 opacity-80"
+                objectPosition="90%"
                 src="/planet@2x.png"
                 layout="fill"
                 quality={100}
@@ -52,12 +54,31 @@ const LandingPage = ({ bundles }) => {
             </div>
           </div>
         </div>
+        <svg
+          className="text-white absolute bottom-0 left-0 w-full"
+          viewBox="0 0 779 55"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            fillRule="evenodd"
+            clipRule="evenodd"
+            d="M778.746 55H0.583008C76.8933 22.1802 222.538 0.000244141 389.665 0.000244141C556.791 0.000244141 702.436 22.1802 778.746 55Z"
+            fill="currentColor"
+          />
+        </svg>
       </header>
       <article className="max-w-screen-sm py-8 mx-auto prose sm:py-16 lg:prose-lg sm:prose-lg">
         {sellingLive ? <LandingCopy /> : <SubscribeCopy />}
       </article>
       {sellingLive && (
         <>
+          <section className="py-8">
+            <Creators />
+          </section>
+          <section className="py-8">
+            <TechnicalDetails />
+          </section>
           <section className="py-8" id="buy">
             <Commerce bundles={bundles} />
           </section>
