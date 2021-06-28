@@ -9,6 +9,7 @@ const Layout = ({
   navClassName,
   navChildren,
   noIndex,
+  noFooter = false,
   meta,
   background = 'bg-gray-100',
 }) => {
@@ -42,7 +43,7 @@ const Layout = ({
             {children}
           </div>
         </div>
-        <Footer />
+        {!noFooter && <Footer />}
       </div>
     </>
   )
