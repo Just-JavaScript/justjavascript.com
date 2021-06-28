@@ -18,5 +18,6 @@ module.exports = {
     '/quiz/*',
     '/invoice',
     '/thanks',
+    '/outro',
   ],
 }
