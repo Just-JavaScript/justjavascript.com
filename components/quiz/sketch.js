@@ -9,8 +9,8 @@ import Continue from 'components/quiz/continue'
 import SubmitAndContinue from 'components/quiz/submit-and-continue'
 import Excalidraw from 'components/excalidraw/excalidraw'
 import useEggheadQuestion from 'hooks/use-egghead-question'
-import {motion, AnimatePresence} from 'framer-motion'
-import {isEmpty} from 'lodash'
+import { motion, AnimatePresence } from 'framer-motion'
+import { isEmpty } from 'lodash'
 
 const Sketch = (props) => {
   const {
@@ -26,7 +26,7 @@ const Sketch = (props) => {
     showExplanation,
     number,
   } = props
-  const {formik} = useEggheadQuestion(question, handleSubmit)
+  const { formik } = useEggheadQuestion(question, handleSubmit)
   const options = {
     zenModeEnabled: true,
     viewBackgroundColor: '#f4f5f7',
@@ -38,7 +38,7 @@ const Sketch = (props) => {
   }
 
   React.useEffect(() => {
-    formik.setValues({value: output})
+    formik.setValues({ value: output, comment: formik.values.comment })
     return () => {}
   }, [output])
 
@@ -66,7 +66,7 @@ const Sketch = (props) => {
           <Excalidraw
             onChange={(sketch) => onChange(sketch)}
             options={options}
-            user={{name: 'Excalidraw User'}}
+            user={{ name: 'Excalidraw User' }}
             initialData={
               currentAnswerParsed && {
                 elements: currentAnswerParsed?.value
@@ -85,13 +85,16 @@ const Sketch = (props) => {
                   )}
                 </label>
                 {state.matches('answered') ? (
-                  <Markdown className="p-3 mt-4 prose prose-sans">
-                    {currentAnswerParsed.comment}
-                  </Markdown>
+                  <div className="p-3 mt-4">
+                    <div className="font-bold">Your answer</div>
+                    <Markdown className="pt-2 prose prose-sans">
+                      {currentAnswerParsed.comment}
+                    </Markdown>
+                  </div>
                 ) : (
                   <>
                     <textarea
-                      className="w-full h-24 p-3 mt-4 bg-gray-100 border border-gray-200 rounded-md max-w-none"
+                      className="w-full h-24 p-3 mt-4 bg-gray-100 border border-gray-200 rounded-md max-w-none focus:border-orange-500 focus:outline-none focus:ring-0"
                       disabled={isDisabled}
                       id="comment"
                       name="comment"
