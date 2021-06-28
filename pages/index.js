@@ -31,7 +31,7 @@ const LandingPage = ({ bundles }) => {
     <Layout maxWidth="" background="bg-white" navClassName="text-white">
       <ClaimCoupon />
       <header className="relative flex items-center justify-center -mx-5">
-        <div className="w-full min-h-[calc(65vh+55px)] py-24 bg-black text-white flex sm:flex-row flex-col-reverse items-center justify-center px-5">
+        <div className="w-full min-h-[calc(65vh+55px)] pt-24 sm:pb-40 pb-24 bg-black text-white flex sm:flex-row flex-col-reverse items-center justify-center px-5">
           <div className="text-center w-full max-w-screen-lg mx-auto">
             <div className="relative z-10">
               <h1 className="text-transparent bg-clip-text bg-gradient-to-r from-white to-orange-100 relative z-10 max-w-xl mx-auto font-serif text-4xl font-extrabold md:text-6xl sm:text-5xl leading-tighter">
@@ -68,7 +68,7 @@ const LandingPage = ({ bundles }) => {
           />
         </svg>
       </header>
-      <article className="max-w-screen-sm py-8 mx-auto prose sm:py-16 lg:prose-lg sm:prose-lg">
+      <article className="max-w-screen-sm sm:pt-0 pt-8 pb-8 mx-auto prose sm:pb-16 lg:prose-lg sm:prose-lg">
         {sellingLive ? <LandingCopy /> : <SubscribeCopy />}
       </article>
       {sellingLive && (
