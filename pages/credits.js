@@ -13,34 +13,36 @@ const CreditsPage = () => {
       }}
     >
       <div className="max-w-screen-lg w-full mx-auto sm:py-24 py-20">
-        <div className="max-w-sm w-full mx-auto sm:px-0 px-5">
-          <Image src={BlackHole} placeholder="blur" alt="" priority={true} />
-        </div>
-        <h1 className="font-serif max-w-lg mx-auto font-extrabold text-center lg:text-6xl sm:text-5xl text-4xl leading-[100%]">
-          Humans behind Just JavaScript
-        </h1>
-        <h2 className="max-w-screen-sm mx-auto w-full sm:text-xl text-lg pt-8 text-center">
-          Just JavaScript will help you develop a rock-solid understanding of
-          how JavaScript works through intuitive visual explanations and
-          learning challenges.
-        </h2>
-        <div className="pt-16 max-w-screen-sm sm:text-lg mx-auto w-full">
-          <p>
-            Bringing Just JavaScript to you is a collaboration between Dan
-            Abramov, Maggie Appleton, and the team behind{' '}
-            <a
-              href="https://egghead.io"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-orange-500 underline"
-            >
-              egghead.io
-            </a>
-            . Dan and Maggie created the content, while the rest of the team
-            provided planning, design, development, and delivery support.
-          </p>
-          {/* <p className="pt-5">Meet humans behind Just JavaScript.</p> */}
-        </div>
+        <header>
+          <div className="max-w-sm w-full mx-auto sm:px-0 px-5">
+            <Image src={BlackHole} placeholder="blur" alt="" priority={true} />
+          </div>
+          <h1 className="font-serif max-w-lg mx-auto font-extrabold text-center lg:text-6xl sm:text-5xl text-4xl leading-[100%]">
+            Humans behind Just JavaScript
+          </h1>
+          <h2 className="max-w-screen-sm mx-auto w-full sm:text-xl text-lg pt-8 text-center">
+            Just JavaScript will help you develop a rock-solid understanding of
+            how JavaScript works through intuitive visual explanations and
+            learning challenges.
+          </h2>
+          <div className="pt-16 max-w-screen-sm sm:text-lg mx-auto w-full">
+            <p>
+              Bringing Just JavaScript to you is a collaboration between Dan
+              Abramov, Maggie Appleton, and the team behind{' '}
+              <a
+                href="https://egghead.io"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-orange-500 underline"
+              >
+                egghead.io
+              </a>
+              . Dan and Maggie created the content, while the rest of the team
+              provided planning, design, development, and delivery support.
+            </p>
+            {/* <p className="pt-5">Meet humans behind Just JavaScript.</p> */}
+          </div>
+        </header>
         <main>
           <div className="grid sm:grid-cols-2 grid-cols-1 sm:gap-0 gap-8 max-w-screen-sm mx-auto w-full py-10">
             {creators.map((creator) => {
