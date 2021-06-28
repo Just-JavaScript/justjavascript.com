@@ -35,11 +35,19 @@ const Footer = () => {
             JJS
           </a>
         </Link>
-
         {sellingLive && (
-          <div className="pt-16">
+          <div
+            className={`pt-16 flex flex-col ${
+              pathname === '/learn' ? 'sm:items-end' : 'sm:items-center'
+            }`}
+          >
+            <Link href="/credits">
+              <a className="opacity-80 hover:opacity-100 text-sm hover:underline">
+                Credits
+              </a>
+            </Link>
             <Link href="/terms">
-              <a className="opacity-80 hover:opacity-100 text-sm">
+              <a className="opacity-80 hover:opacity-100 text-sm hover:underline">
                 Terms & Conditions
               </a>
             </Link>
