@@ -8,6 +8,7 @@ const CreditsPage = () => {
     <Layout
       background="bg-white"
       meta={{
+        title: 'Meet humans behind Just JavaScript',
         ogImage: { url: 'https://justjavascript.com/team/og-image@2x.png' },
       }}
     >

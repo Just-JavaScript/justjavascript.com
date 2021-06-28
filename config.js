@@ -1,6 +1,7 @@
 export default {
   defaultTitle: 'Just JavaScript',
-  description: 'Learn the JavaScript Mental Models',
+  description:
+    'Just JavaScript will help you develop a rock-solid understanding of how JavaScript works through intuitive visual explanations and learning challenges.',
   author: 'Dan Abramov',
   email: 'dan@overreacted.io',
   siteUrl: 'justjavascript.com',
@@ -21,7 +22,8 @@ export default {
   },
   openGraph: {
     title: 'Just JavaScript',
-    description: 'Learn the JavaScript Mental Models.',
+    description:
+      'Just JavaScript will help you develop a rock-solid understanding of how JavaScript works through intuitive visual explanations and learning challenges.',
     type: 'website',
     site_name: 'Just JavaScript',
     profile: {
