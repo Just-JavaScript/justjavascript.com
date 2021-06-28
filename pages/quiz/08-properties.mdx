@@ -382,7 +382,7 @@ Diagram D is wrong because it doesn’t show any objects.
 Sketch a diagram of variables and values after this snippet of code runs.
 
 ```js
-let singer = { surname: 'Turner' }
+let singer = { surname: 'Turner' };
 let pilot = { surname: 'Kamal' };
 singer.surname = pilot.surname;
 pilot.surname = singer.surname;
@@ -457,13 +457,13 @@ Then, when we execute `pilot.surname = singer.surname`, we take the `pilot.surna
 If you get stuck and your physical form allows that, take something large into each hand and then try to swap the items in your hands. You might find it difficult unless you put one of them somewhere temporarily. Hint: in code, that "somewhere" can be a variable.
 
 ```js
-let singer = {surname: 'Turner'}
-let pilot = {surname: 'Kamal'}
+let singer = {surname: 'Turner'};
+let pilot = {surname: 'Kamal'};
 // ??? line 1 ???
 // ??? line 2 ???
 // ??? line 3 ???
-console.log(singer.surname) // "Kamal"
-console.log(pilot.surname) // "Turner"
+console.log(singer.surname); // "Kamal"
+console.log(pilot.surname); // "Turner"
 ```
 
 </Prompt>
@@ -506,12 +506,12 @@ Sketch a diagram of variables and values after this snippet of code runs.
 let president = {
   name: 'Pooh',
   next: null,
-}
+};
 
 president.next = {
   name: 'Paddington',
   next: president,
-}
+};
 ```
 
 **Use our mental model.**
