@@ -19,7 +19,7 @@ const Creators = () => {
           />
         </div>
         <div className="sm:text-4xl text-3xl -translate-y-8 font-serif font-bold ">
-          Hi, I'm{' '}
+          Hi, I’m{' '}
           <span className=" bg-black px-2 rounded-sm text-white">
             Dan Abramov.
           </span>
@@ -34,15 +34,15 @@ const Creators = () => {
       /> */}
       <div className="prose sm:prose-lg max-w-screen-sm w-full mx-auto pt-8">
         <p>
-          I'm a core member of the React team, and co-author of Redux and Create
+          I’m a member of the React team, and a co-author of Redux and Create
           React App.
         </p>
         <strong className="block text-xl font-sans text-left leading-normal">
-          I made Just JavaScript because it's the course I <em>wish</em> I had
+          I made Just JavaScript because it’s the course I <em>wish</em> I had
           when I got started.
         </strong>
         <p>
-          It's my distilled mental model of how JavaScript works – a way of
+          It’s my distilled mental model of how JavaScript works—a way of
           thinking about JS that will completely shift your understanding of the
           language.
         </p>
@@ -70,15 +70,15 @@ const Creators = () => {
           </div>
         </div>
         <p>
-          We've built an experience that will teach you to see JavaScript in a
-          whole new light. It's a unique interactive learning environment based
+          We’ve built an experience that will teach you to see JavaScript in a
+          whole new light. It’s a unique interactive learning environment based
           around explorable explanations. Nothing about this course is a passive
           experience!
         </p>
         <p>
-          You'll reconsider what you thought you knew about the language, and
-          come away with an intuitive understanding that helps you solve
-          problems and deliver real value to people.
+          You’ll reconsider what you thought you knew about the language, and
+          come away with an intuitive understanding that will, with a bit of practice,{' '}
+          become your second nature.
         </p>
       </div>
     </div>

@@ -8,24 +8,24 @@ const TechnicalDetails = () => {
       </h3>
 
       <Markdown className="prose sm:prose-lg max-w-screen-sm w-full mx-auto pt-8">{`
-The first season of Just JavaScript consists of ten episodes for you to learn from. 
+The first season of Just JavaScript consists of ten episodes. 
 
 We begin by establishing the mental model.
 
-**This mental model isn't scoped only to Just JavaScript. It will serve as your basis for development you do for the rest of your career.**
+**This mental model isn’t scoped only to Just JavaScript. It will serve as your basis for development you do for the rest of your career.**
 
-As you explore the JavaScript Universe, you'll see how the mental model adjusts your understanding of some of JavaScript's primary features:
+As you explore the JavaScript Universe, you’ll see how the mental model adjusts your understanding of some of JavaScript's primary features:
 
 - Values & variables
 - Statements & expressions
-- Primitive types & symbols
+- Primitive types
 - Objects & functions
 - null & undefined
-- Prototypes & properties
+- Properties & prototypes
 
 Change the way you understand code, and you will change the trajectory of your career.
 
-It's Just JavaScript.
+In the end, it’s all Just JavaScript.
             `}</Markdown>
     </div>
   )
