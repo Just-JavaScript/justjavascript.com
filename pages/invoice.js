@@ -55,7 +55,7 @@ const Invoice = () => {
       <div className="max-w-screen-md py-24 mx-auto print:py-0 print:max-w-none">
         <div className="flex flex-col items-center justify-between py-5 sm:flex-row print:hidden">
           <h2 className="mb-4 text-lg font-medium leading-tight sm:mb-0">
-            Your Invoice for Just JavaScript by Dan Abramov
+            Your Invoice for Just JavaScript
           </h2>
           <button
             onClick={() => {
@@ -75,11 +75,10 @@ const Invoice = () => {
                 <span className="font-serif text-3xl font-bold leading-none sm:inline-block">
                   Just JavaScript
                 </span>
-                <span className="text-gray-600">by Dan Abramov</span>
               </div>
               <div>
                 <h5 className="mb-2 text-xs text-gray-500 uppercase">From</h5>
-                Just JavaScript by Dan Abramov
+                <strong>Just JavaScript</strong>
                 <br />
                 co egghead.io LLC
                 <br />
@@ -104,7 +103,7 @@ const Invoice = () => {
                   </>
                 )}
               </div>
-              <div className="pt-13">
+              <div className="pt-10">
                 <h5 className="mb-2 text-xs text-gray-500 uppercase">
                   Invoice For
                 </h5>
