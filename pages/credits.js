@@ -9,7 +9,7 @@ const CreditsPage = () => {
       background="bg-white"
       meta={{
         title: 'Meet humans behind Just JavaScript',
-        ogImage: { url: 'https://justjavascript.com/team/og-image@2x.png' },
+        ogImage: { url: 'https://justjavascript.com/team/og-image@2x.jpg' },
       }}
     >
       <div className="max-w-screen-lg w-full mx-auto sm:py-24 py-20">
