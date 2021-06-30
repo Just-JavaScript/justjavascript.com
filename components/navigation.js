@@ -5,8 +5,10 @@ import { useMedia } from 'react-use'
 import { useCommerceMachine } from 'hooks/use-commerce-machine'
 import getBundles from 'utils/get-bundles'
 import MessageBar from 'components/message-bar'
+import { useRouter } from 'next/router'
 
 const Navigation = ({ children, className = '', ...props }) => {
+  const router = useRouter()
   const isTablet = useMedia('(max-width: 920px)')
   const sellingLive = useSellingLive()
   const sellable = getBundles()[0]
@@ -63,7 +65,14 @@ const Navigation = ({ children, className = '', ...props }) => {
             Just JavaScript
           </a>
         </Link>
-        <div className="flex items-center justify-center space-x-3 text-sm sm:text-base">
+        <div className="flex items-center justify-center space-x-4 text-sm sm:text-base">
+          {viewer && router.pathname === '/' && (
+            <Link href="/learn">
+              <a className="px-2 py-1 hover:bg-gray-300 hover:bg-opacity-20 rounded-md ease-in-out duration-200 transition-all">
+                Access Content
+              </a>
+            </Link>
+          )}
           {viewer ? (
             <button
               onClick={() => logout()}
