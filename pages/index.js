@@ -14,6 +14,7 @@ import { useRouter } from 'next/router'
 import { scroller } from 'react-scroll'
 import Creators from 'components/creators'
 import TechnicalDetails from 'components/technical-details'
+import bg from 'public/bg@2x.jpg'
 
 const LandingPage = ({ bundles }) => {
   useRedirectToLearn()
@@ -55,7 +56,8 @@ const LandingPage = ({ bundles }) => {
           </div>
         </div>
         <svg
-          className="text-white absolute bottom-0 left-0 w-full"
+          aria-hidden="true"
+          className="text-white absolute bottom-0 left-0 w-full z-20"
           viewBox="0 0 779 55"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
@@ -68,12 +70,28 @@ const LandingPage = ({ bundles }) => {
           />
         </svg>
       </header>
-      <article className="max-w-screen-sm sm:pt-0 pt-8 pb-8 mx-auto prose sm:pb-16 lg:prose-lg sm:prose-lg">
-        {sellingLive ? <LandingCopy /> : <SubscribeCopy />}
-      </article>
+      <div className="-mx-5 -mb-3">
+        <div className="relative flex items-start justify-center h-full ">
+          <div className="z-20 xl:-mt-16 bg-white md:p-16 p-5 sm:shadow-container mx-auto flex items-center jusfify-start">
+            <article className="w-full max-w-screen-sm sm:pt-0 pt-8 pb-8 mx-auto prose sm:pb-16 lg:prose-lg sm:prose-lg">
+              {sellingLive ? <LandingCopy /> : <SubscribeCopy />}
+            </article>
+          </div>
+          <Image
+            aria-hidden="true"
+            quality={80}
+            layout="fill"
+            src={bg}
+            alt=""
+            objectFit="cover"
+            loading="eager"
+            className="opacity-30"
+          />
+        </div>
+      </div>
       {sellingLive && (
         <>
-          <section className="py-8">
+          <section className="py-8 relative z-20">
             <Creators />
           </section>
           <section className="py-8">
