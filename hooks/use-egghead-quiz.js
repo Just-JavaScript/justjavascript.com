@@ -1,18 +1,18 @@
 import React from 'react'
-import {useMachine} from '@xstate/react'
-import {quizMachine} from 'machines/quiz-machine'
-import {isEmpty, first, indexOf, find, get} from 'lodash'
-import {useRouter} from 'next/router'
-import {scroller} from 'react-scroll'
+import { useMachine } from '@xstate/react'
+import { quizMachine } from 'machines/quiz-machine'
+import { isEmpty, first, indexOf, find, get } from 'lodash'
+import { useRouter } from 'next/router'
+import { scroller } from 'react-scroll'
 import slugify from 'slugify'
-import {getUserAnswerFromLocalStorage} from 'utils/quiz-answers-in-local-storage'
-import {useViewer} from 'context/viewer-context'
-import {useProgress} from 'context/progress-context'
+import { getUserAnswerFromLocalStorage } from 'utils/quiz-answers-in-local-storage'
+import { useViewer } from 'context/viewer-context'
+import { useProgress } from 'context/progress-context'
 
 export default function useEggheadQuiz(quiz, currentQuestion, setCurrent) {
   const quizQuestions = get(quiz, 'questions') || null
-  const {id, title, slug, version} = quiz
-  const {viewer} = useViewer()
+  const { id, title, slug, version } = quiz
+  const { viewer } = useViewer()
   const contactId = get(viewer, 'contact_id')
 
   const [state, send] = useMachine(quizMachine, {
@@ -22,13 +22,13 @@ export default function useEggheadQuiz(quiz, currentQuestion, setCurrent) {
       quiz: {
         id: id,
         title: title,
-        slug: slug || (title && slugify(title, {lower: true})),
+        slug: slug || (title && slugify(title, { lower: true })),
         version: version,
       },
     },
   })
 
-  const {questions} = state.context
+  const { questions } = state.context
   const currentQuestionIdx =
     questions && indexOf(quizQuestions, currentQuestion)
   const nextQuestionId =
@@ -37,7 +37,7 @@ export default function useEggheadQuiz(quiz, currentQuestion, setCurrent) {
       ? get(first(questions), 'id') // go back to first question
       : get(questions[currentQuestionIdx + 1], 'id'))
 
-  const nextQuestion = questions && find(questions, {id: nextQuestionId})
+  const nextQuestion = questions && find(questions, { id: nextQuestionId })
   const nextQuestionIdx = nextQuestion && indexOf(questions, nextQuestion)
 
   const isDisabled = state.matches('answering') || state.matches('answered')
@@ -51,8 +51,9 @@ export default function useEggheadQuiz(quiz, currentQuestion, setCurrent) {
     scroller.scrollTo(question, {
       // tweak this for pleasant scrolling exp
       smooth: 'easeInOutQuart',
-      delay: 100,
+      delay: 0,
       duration: 900,
+      offset: -30,
       ignoreCancelEvents: true,
     })
   }
@@ -67,7 +68,7 @@ export default function useEggheadQuiz(quiz, currentQuestion, setCurrent) {
   const currentAnswer =
     getUserAnswerFromLocalStorage(get(currentQuestion, 'id')) || null
 
-  const {setProgress} = useProgress()
+  const { setProgress } = useProgress()
 
   function handleContinue() {
     if (isLastQuestion) {
@@ -83,7 +84,7 @@ export default function useEggheadQuiz(quiz, currentQuestion, setCurrent) {
       // navigate to completed page
       router.push({
         pathname: `/quiz/completed`,
-        query: {quiz: router.pathname.replace('/quiz/', '')},
+        query: { quiz: router.pathname.replace('/quiz/', '') },
       })
     } else {
       setCurrent({
@@ -95,23 +96,22 @@ export default function useEggheadQuiz(quiz, currentQuestion, setCurrent) {
   }
 
   function handleSkip() {
-    setCurrent({index: nextQuestionIdx, id: nextQuestionId})
+    setCurrent({ index: nextQuestionIdx, id: nextQuestionId })
     scrollTo(nextQuestionId)
   }
   function handleShowNextQuestion() {
     !isLastQuestion &&
       !state.matches('idle') &&
-      setCurrent({index: nextQuestionIdx, id: nextQuestionId})
+      setCurrent({ index: nextQuestionIdx, id: nextQuestionId })
   }
 
   function handleSubmit(values, _actions) {
-    // TODO: submit all required variables
     // const now = Date.now()
     // const date = new Date(now).toUTCString()
     // const context = {quizId: quiz.id, questionId: question.id, date}
     // const response = {...values, question, context}
 
-    const answer = values.answer.value
+    const answer = values.answer.comment ? values.answer : values.answer.value
     send('SUBMIT', {
       userAnswer: answer,
       contactId: contactId,

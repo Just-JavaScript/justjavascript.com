@@ -2,15 +2,12 @@ import React from 'react'
 import ToC from '../components/toc'
 import Layout from '../components/layout'
 import Pagination from '../components/mdx/pagination'
-import useLoginRequired from 'hooks/use-login-required'
-import {useViewer} from 'context/viewer-context'
-import {useProgress} from 'context/progress-context'
-import {useRouter} from 'next/router'
+import { useProgress } from 'context/progress-context'
+import { useRouter } from 'next/router'
 import Spinner from 'components/spinner'
 import isUndefined from 'lodash/isUndefined'
-import {InView} from 'react-intersection-observer'
-import {motion} from 'framer-motion'
-import ReactMarkdown from 'react-markdown'
+import { InView } from 'react-intersection-observer'
+import { motion } from 'framer-motion'
 
 const Article = ({
   children,
@@ -24,10 +21,8 @@ const Article = ({
   ...props
 }) => {
   const router = useRouter()
-  const EPISODE_ID = router.pathname.substring(1)
-  const {progress, setProgress} = useProgress()
-  const isVerifyingLogin = useLoginRequired()
-  const {isUnclaimedBulkPurchaser, loading} = useViewer()
+  const EPISODE_ID = router.query.slug
+  const { progress, setProgress } = useProgress()
   const currentEpisodeProgress = progress && progress[EPISODE_ID]
   const [completed, setCompleted] = React.useState(
     currentEpisodeProgress?.completed || false
@@ -53,37 +48,32 @@ const Article = ({
     currentEpisodeProgress && setCompleted(currentEpisodeProgress.completed)
   }, [currentEpisodeProgress])
 
-  if (isVerifyingLogin || isUnclaimedBulkPurchaser || loading) {
-    return null
-  }
-
   return (
     <Layout
       navChildren={<ToC />}
       background="bg-white"
-      title={title}
+      meta={{ title }}
       {...props}
     >
       <article>
         {title && (
-          <header className="relative flex items-center justify-center py-48 min-h-[65vh] text-center">
-            <h1 className="relative z-10 mb-8 overflow-hidden font-serif text-5xl font-extrabold lg:text-9xl md:text-6xl sm:text-5xl leading-tighter">
+          <header className="relative flex items-center justify-center pt-48 sm:pb-40 pb-32 min-h-[60vh] text-center">
+            <h1 className="lg:px-10 px-0 relative z-10 mb-8 overflow-hidden font-serif text-5xl font-extrabold lg:text-8xl xl:text-9xl md:text-6xl sm:text-5xl leading-tighter">
               {title}
             </h1>
             {episode && (
               <span className="absolute z-0 sm:text-8xl text-6xl transform md:scale-[5] scale-[3.5] text-gray-100 font-extrabold font-serif">
+                <span className="sr-only">episode </span>
                 {('0' + episode).slice(-2)}
               </span>
             )}
           </header>
         )}
-        <main className="max-w-screen-lg mx-auto prose prose-lg lg:prose-xl">
-          {children}
-        </main>
+        <main className="mx-auto prose md:prose-lg">{children}</main>
         <footer>
-          <div className="flex flex-col items-center justify-center py-24 text-center lg:py-40 sm:py-32">
+          <div className="flex flex-col items-center justify-center pt-24 text-center lg:pt-40 sm:pt-32">
             <h5>
-              <div className="text-3xl font-bold sm:text-4xl">
+              <div className="text-2xl font-bold sm:text-3xl">
                 Finished reading?
               </div>
               <div className="pt-2 pb-8 sm:text-lg opacity-80">
@@ -91,12 +81,12 @@ const Article = ({
               </div>
             </h5>
             <InView key={module.slug} delay={200}>
-              {({inView, ref}) => {
+              {({ inView, ref }) => {
                 return (
                   <motion.div
                     ref={ref}
                     animate={
-                      !completed && {rotateZ: inView ? [0, -5, 5, 0] : 0}
+                      !completed && { rotateZ: inView ? [0, -5, 5, 0] : 0 }
                     }
                   >
                     <button
@@ -129,7 +119,7 @@ const Article = ({
                           {completed ? (
                             <>
                               {/* <i className="gg-check" aria-hidden="true" /> */}
-                              {'Finished'}
+                              {'Nice job!'}
                               <span className="sr-only">
                                 Mark as unfinished
                               </span>
@@ -150,16 +140,13 @@ const Article = ({
               }}
             </InView>
           </div>
-          <Pagination next={next} prev={prev} nextTitle={nextTitle}>
-            <div>
-              {bottomContent ? (
-                <ReactMarkdown className="max-w-screen-lg mx-auto prose prose-lg lg:prose-xl">
-                  {bottomContent}
-                </ReactMarkdown>
-              ) : (
-                nextTitle
-              )}
-            </div>
+          <Pagination
+            next={next}
+            prev={prev}
+            nextTitle={nextTitle}
+            completed={completed}
+          >
+            <div>{nextTitle}</div>
           </Pagination>
         </footer>
       </article>

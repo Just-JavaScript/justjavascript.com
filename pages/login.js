@@ -1,7 +1,7 @@
 import React from 'react'
 import * as yup from 'yup'
-import {Formik} from 'formik'
-import {useViewer} from 'context/viewer-context'
+import { Formik } from 'formik'
+import { useViewer } from 'context/viewer-context'
 import Layout from 'components/layout'
 import Image from 'next/image'
 
@@ -17,10 +17,10 @@ const LoginForm = ({
 }) => {
   const [isSubmitted, setIsSubmitted] = React.useState(false) // false
   const [isError, setIsError] = React.useState(false)
-  const {requestSignInEmail} = useViewer()
+  const { requestSignInEmail } = useViewer()
 
   return (
-    <Layout title="Log In to Just JavaScript" background="bg-white">
+    <Layout meta={{ title: 'Log In to Just JavaScript' }} background="bg-white">
       <div className="flex flex-col items-center justify-center w-full max-w-screen-md mx-auto text-gray-900 sm:flex-row">
         <div className="flex-shrink-0 max-w-xs sm:w-auto">
           <Image
@@ -58,7 +58,7 @@ const LoginForm = ({
             <div className="py-4">
               {!isSubmitted && !isError && (
                 <Formik
-                  initialValues={{email: ''}}
+                  initialValues={{ email: '' }}
                   validationSchema={loginSchema}
                   onSubmit={(values) => {
                     setIsSubmitted(true)
@@ -92,14 +92,13 @@ const LoginForm = ({
                             </label>
                             <div className="relative">
                               <input
-                                autoFocus
                                 required
                                 id="email"
                                 name="email"
                                 value={values.email}
                                 onChange={handleChange}
                                 onBlur={handleBlur}
-                                className="w-full max-w-sm px-4 py-3 text-lg rounded-lg focus:border-transparent focus:outline-none focus:ring focus:ring-orange-400"
+                                className="w-full shadow-xl max-w-sm px-4 py-3 text-lg rounded-lg border border-gray-200 focus:border-transparent focus:outline-none focus:ring focus:ring-orange-400"
                                 placeholder="you@example.com"
                                 type="email"
                                 autoComplete="email"
@@ -123,7 +122,7 @@ const LoginForm = ({
               )}
               {isSubmitted && (
                 <div className="space-y-6">
-                  <h2 className="text-xl font-semibold leading-tighter">
+                  <h2 className="text-lg font-semibold leading-tighter">
                     Please check your inbox for your sign in link.
                   </h2>
                   <p className="leading-relaxed opacity-80">

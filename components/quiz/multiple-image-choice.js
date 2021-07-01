@@ -40,7 +40,7 @@ const MultipleImageChoice = (props) => {
         <form className="flex flex-col" onSubmit={formik.handleSubmit}>
           <div role="group" aria-labelledby="choices">
             <div
-              className="grid gap-2 sm:grid-cols-2 grid-cols-1 py-4"
+              className="grid grid-cols-1 gap-2 py-4 sm:grid-cols-2"
               role="group"
               aria-labelledby="choices"
             >
@@ -74,12 +74,12 @@ const MultipleImageChoice = (props) => {
                               ? choice.value === currentAnswer.value
                               : false)
                           }
-                          className="mr-1 form-radio bg-cool-gray-100 border border-cool-gray-200"
+                          className="mr-1 border form-radio bg-cool-gray-100 border-cool-gray-200"
                         />
                         {choice.label}
                         <img
-                          src={choice.image}
-                          alt={choice.label}
+                          src={choice.imageUrl}
+                          alt={choice.imageAlt}
                           className="border border-gray-200"
                         />
                       </label>
@@ -101,7 +101,7 @@ const MultipleImageChoice = (props) => {
               ) : (
                 <>
                   <textarea
-                    className="w-full p-3 bg-cool-gray-100 border border-gray-200 prose rounded-md h-24 mt-4"
+                    className="w-full h-24 p-3 mt-4 prose border border-gray-200 rounded-md bg-cool-gray-100"
                     disabled={isDisabled}
                     id="comment"
                     name="comment"

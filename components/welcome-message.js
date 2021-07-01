@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
 import {useLocalStorage} from 'react-use'
 import {motion} from 'framer-motion'
@@ -11,7 +11,11 @@ export default function WelcomeMessage({
   storageKey = 'jjs-welcome-banner',
 }) {
   const [isOn, setOn] = useLocalStorage(storageKey, true)
-  if (!isOn) return null
+  const [mounted, setMounted] = useState(false)
+  useEffect(() => {
+    setMounted(true)
+  }, []);
+  if (!isOn || !mounted) return null
   return (
     <motion.div className={className}>
       <div className="relative py-3 pl-3 pr-12 mx-auto md:py-4">
@@ -32,7 +36,7 @@ export default function WelcomeMessage({
             type="button"
             className="absolute right-0 p-2 text-gray-900 transition-all duration-200 ease-in-out bg-white rounded-full shadow-lg hover:text-gray-900 hover:bg-white"
           >
-            <span className="sr-only">Dismiss</span>
+            <span className="sr-only">Dismiss welcome banner</span>
             <svg
               className="w-5 h-5 dark:text-white"
               xmlns="http://www.w3.org/2000/svg"

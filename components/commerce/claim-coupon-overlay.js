@@ -43,7 +43,7 @@ function ClaimCouponOverlay({onPurchaseComplete, purchaseState, error}) {
               </svg>
             </div>
             <h2 className="mt-8 text-2xl font-semibold leading-tight text-center">
-              {error}
+              {'' + error}
             </h2>
             <div className="absolute top-0 right-0 block pt-4 pr-4">
               <button

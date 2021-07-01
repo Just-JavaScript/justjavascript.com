@@ -1,10 +1,10 @@
 import React from 'react'
-import {Element as ScrollElement} from 'react-scroll'
+import { Element as ScrollElement } from 'react-scroll'
 import AnswerWrapper from 'components/quiz/answer-wrapper'
 import QuizWrapper from 'components/quiz/wrapper'
 import QuestionToShow from 'components/quiz/question-to-show'
-import {get, first, filter, last, find, isEmpty, indexOf} from 'lodash'
-import {scroller} from 'react-scroll'
+import { get, first, filter, last, find, isEmpty, indexOf } from 'lodash'
+import { scroller } from 'react-scroll'
 import useEggheadQuiz from 'hooks/use-egghead-quiz'
 import Continue from 'components/quiz/continue'
 import Markdown from 'components/quiz/markdown'
@@ -26,7 +26,10 @@ const MultipleQuestions = (props) => {
   // Start from last answered question
   // todo: might actually want to start from the question after that
   const defaultCurrentQuestionId = !isEmpty(completedQuestions)
-    ? get(find(parentQuestion.questions, {id: last(completedQuestions)}), 'id')
+    ? get(
+        find(parentQuestion.questions, { id: last(completedQuestions) }),
+        'id'
+      )
     : get(first(get(parentQuestion, 'questions')), 'id')
 
   const defaultCurrentQuestionIndex =
@@ -51,7 +54,7 @@ const MultipleQuestions = (props) => {
 
   return (
     <QuizWrapper {...props} nested>
-      <div className="py-8 md:py-8">
+      <div className="py-8 md:py-16">
         <div className="px-5 mb-4 sm:px-0">
           <span className="inline-flex items-center justify-center w-6 h-6 p-2 mr-2 font-mono text-xs font-bold text-white bg-black rounded-full lining-nums">
             {props.number}
@@ -79,7 +82,11 @@ const MultipleQuestions = (props) => {
               number,
               nextQuestionId,
               nextQuestionIdx,
-            } = useEggheadQuiz(parentQuestion, question, setCurrentQuestion)
+            } = useEggheadQuiz(
+              { ...parentQuestion, id: props.quiz.id },
+              question,
+              setCurrentQuestion
+            )
 
             const displayContinue =
               isLastQuestion &&

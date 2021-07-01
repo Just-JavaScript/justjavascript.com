@@ -221,9 +221,9 @@ console.log(pets[0]);
 
 This code prints `"T"` to the console because it’s the first letter of `pets`.
 
-Your colleague bets they can can change your `console.log` output by only editing their `feed.js` file. Do you believe them, or would you bet they can’t?
+Your colleague bets they can change your `console.log` output by only editing their `feed.js` file. Do you believe them, or would you bet they can’t?
 
-Explain your reasoninig using your mental model.
+Explain your reasoning using your mental model.
 
 </Prompt>
 
@@ -231,7 +231,7 @@ Explain your reasoninig using your mental model.
 
 **Your colleague will probably lose their bet.**
 
-This is becase you can’t “pass a variable” in JavaScript, **you can only pass a _value_**. So it’s not the `pets` variable that we’re passing to `feed`. Rather, it’s _the value_ of that variable at that time, which is the `"Tom and Jerry"` string value.
+This is because you can’t “pass a variable” in JavaScript, **you can only pass a _value_**. So it’s not the `pets` variable that we’re passing to `feed`. Rather, it’s _the value_ of that variable at that time, which is the `"Tom and Jerry"` string value.
 
 Since **strings are immutable**, there’s nothing the `feed` function could do to change that string. And since the `pets` variable itself is not being passed anywhere—only its current value is!—we know that `feed` could not change `pets` either.
 
@@ -274,7 +274,7 @@ console.log(pets[0]);
 
 This code prints `"Tom"` to the console.
 
-Once again, your colleague bets they can can change the output by only editing their `feed.js` file. Do you believe them, or would you bet they can’t?
+Once again, your colleague bets they can change the output by only editing their `feed.js` file. Do you believe them, or would you bet they can’t?
 
 </Prompt>
 

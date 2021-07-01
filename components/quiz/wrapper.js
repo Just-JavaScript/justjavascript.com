@@ -1,8 +1,9 @@
 import React from 'react'
-import Tooltip from '@reach/tooltip'
+import Tippy from '@tippyjs/react'
 import Finish from 'components/quiz/finish'
 import Continue from 'components/quiz/continue'
-import {AnimateSharedLayout, AnimatePresence, motion} from 'framer-motion'
+import { AnimateSharedLayout, AnimatePresence, motion } from 'framer-motion'
+import Feedback from 'components/feedback'
 
 export default function Wrapper({
   question,
@@ -13,6 +14,7 @@ export default function Wrapper({
   isLastQuestion,
   currentQuestion,
   nested,
+  quiz,
 }) {
   const displayContinue =
     !nested &&
@@ -22,87 +24,104 @@ export default function Wrapper({
     !isLastQuestion
 
   const displaySkip =
-    !nested &&
-    !displayContinue &&
-    currentQuestion.id === question.id &&
-    !isLastQuestion
+    // !nested &&
+    question.questions
+      ? currentQuestion.id === question.id && !isLastQuestion
+      : !displayContinue &&
+        currentQuestion.id === question.id &&
+        !isLastQuestion &&
+        !nested
 
-  const displayFinish =
-    !nested &&
-    (question.required === true
-      ? isLastQuestion && state.matches('answered')
-      : isLastQuestion)
+  const displayFinish = question.questions
+    ? isLastQuestion
+    : question.required === true
+    ? isLastQuestion && state.matches('answered') && !nested
+    : isLastQuestion && !nested
+
+  const [mounted, setMounted] = React.useState(false)
+
+  React.useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  if (!mounted) {
+    return null
+  }
 
   return (
     <AnimateSharedLayout>
       <div
         className={`${
-          !nested ? 'min-h-screen' : ''
-        } flex flex-col justify-between relative`}
+          !nested ? 'flex-shrink-0 min-h-screen' : ''
+        } flex flex-col justify-between relative `}
       >
-        {children}
+        <div>{children}</div>
         <AnimatePresence>
-          <div>
-            {displayContinue && (
-              <motion.div
-                initial={{opacity: 0}}
-                animate={{opacity: 1}}
-                exit={{opacity: 0}}
-                className={`${
-                  nested
-                    ? 'absolute bottom-0 transform translate-y-32 z-20'
-                    : ''
-                } py-8 mx-auto w-full flex items-center justify-center`}
-              >
-                <Continue
-                  isLastQuestion={isLastQuestion}
-                  onClick={handleContinue}
-                />
-              </motion.div>
-            )}
-          </div>
+          {displayContinue && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className={`${
+                nested ? 'absolute bottom-0 transform translate-y-32 z-20' : ''
+              } py-8 mx-auto w-full flex items-center justify-center`}
+            >
+              <Continue
+                isLastQuestion={isLastQuestion}
+                onClick={handleContinue}
+              />
+            </motion.div>
+          )}
         </AnimatePresence>
-        {!displayContinue && !displaySkip && !nested && (
-          <div className="py-16" />
-        )}
         <motion.div
           className={`flex flex-col ${
             displayFinish ? 'justify-start' : 'justify-end'
-          } flex-grow h-full`}
+          }  h-full`}
         >
           <AnimatePresence>
-            {displaySkip && (
+            {displaySkip ? (
               <motion.div
+                layout
+                layoutId="skip"
                 key="skip"
-                initial={{opacity: 0}}
-                animate={{opacity: 1}}
-                exit={{opacity: 0}}
-                className="flex items-center justify-center w-full py-16"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                className="flex items-center justify-center w-full py-8 mb-8"
               >
-                <Tooltip
-                  label="Skip and continue"
+                <Tippy
+                  content="Skip and continue"
                   className="px-3 py-2 text-sm bg-white border border-gray-200 rounded-sm shadow-sm"
                 >
                   <button
                     type="button"
                     onClick={handleSkip}
-                    className="flex items-center justify-center p-4 text-center text-gray-800 transition-colors duration-150 ease-in-out bg-white border rounded-full border-cool-gray-200 hover:text-gray-900"
+                    className="flex hover:scale-105 transform  items-center justify-center p-4 text-center text-gray-800 transition-all hover:shadow-xl duration-500 ease-in-out bg-white border rounded-full border-cool-gray-200 hover:text-gray-900"
                   >
                     <span className="sr-only">Skip and continue</span>
                     <i className=" gg-arrow-down" aria-hidden="true" />
                   </button>
-                </Tooltip>
+                </Tippy>
               </motion.div>
+            ) : (
+              (!nested || question.questions) && (
+                <motion.div
+                  layout
+                  key="skip"
+                  layoutId="skip"
+                  className="py-8"
+                />
+              )
             )}
-            {!displaySkip && !displayContinue && <div key="empty" />}
             {displayFinish && (
               <div
-                className="flex items-center justify-center w-full"
+                className="flex items-center justify-center w-full pt-10 sm:pt-24"
                 key="finish"
               >
                 <Finish onClick={handleContinue} />
               </div>
             )}
+            {displayFinish && quiz && <Feedback quiz={quiz} />}
           </AnimatePresence>
         </motion.div>
       </div>
