@@ -17,7 +17,7 @@ import TechnicalDetails from 'components/technical-details'
 import bg from 'public/bg@2x.jpg'
 
 const LandingPage = ({ bundles }) => {
-  useRedirectToLearn()
+  // useRedirectToLearn()
   const router = useRouter()
   const sellingLive = useSellingLive()
   const scrollToBuy = router.asPath === '/?buy'
@@ -71,27 +71,32 @@ const LandingPage = ({ bundles }) => {
         </svg>
       </header>
       <div className="-mx-5 -mb-3">
-        <div className="relative flex items-start justify-center h-full">
-          <div className="z-20 xl:-mt-16 bg-white md:p-16 p-5 sm:shadow-container mx-auto flex items-center jusfify-start">
-            <article className="w-full max-w-screen-sm sm:pt-0 pt-8 pb-8 mx-auto prose sm:pb-16 lg:prose-lg sm:prose-lg">
-              {sellingLive ? <LandingCopy /> : <SubscribeCopy />}
-            </article>
+        {sellingLive ? (
+          <div className="relative flex items-start justify-center h-full">
+            <div className="z-20 xl:-mt-16 bg-white md:p-16 p-5 sm:shadow-container mx-auto flex items-center jusfify-start">
+              <article className="w-full max-w-screen-sm sm:pt-0 pt-8 pb-8 mx-auto prose sm:pb-16 lg:prose-lg sm:prose-lg">
+                <LandingCopy />
+              </article>
+            </div>
+            <div className="h-[37%] absolute w-full left-0 bottom-0">
+              <Image
+                aria-hidden="true"
+                quality={100}
+                layout="fill"
+                src={bg}
+                alt=""
+                objectFit="cover"
+                objectPosition="top"
+                loading="eager"
+                className="opacity-50"
+              />
+            </div>
           </div>
-
-          <div className="h-[37%] absolute w-full left-0 bottom-0">
-            <Image
-              aria-hidden="true"
-              quality={100}
-              layout="fill"
-              src={bg}
-              alt=""
-              objectFit="cover"
-              objectPosition="top"
-              loading="eager"
-              className="opacity-100"
-            />
-          </div>
-        </div>
+        ) : (
+          <article className="w-full max-w-screen-sm sm:pt-0 pt-8 pb-8 mx-auto prose sm:pb-16 lg:prose-lg sm:prose-lg">
+            <SubscribeCopy />
+          </article>
+        )}
       </div>
       {sellingLive && (
         <>
