@@ -348,6 +348,8 @@ module.exports = {
       }),
       boxShadow: {
         lg: '0 10px 30px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
+        container:
+          '0 30px 40px -3px rgba(0, 0, 0, 0.08), 0 15px 10px -2px rgba(0, 0, 0, 0.05)',
       },
     },
   },

@@ -14,7 +14,7 @@ const PurchaseButton = ({ purchasing, children, bundle, onClick }) => {
     <button
       className={`${
         purchasing ? purchasingStyles : 'hover:scale-105'
-      } flex mx-auto text-center rounded-lg border border-transparent font-sans  focus:scale-90 bg-black px-10 py-5 text-lg font-bold leading-6 text-white transition-all ease-in-out duration-150 transform hover:shadow-xl`}
+      } flex mx-auto text-center rounded-lg border border-transparent font-sans focus:scale-90 bg-black px-10 py-5 text-lg font-bold leading-6 text-white transition-all ease-in-out duration-150 transform hover:shadow-container`}
       aria-describedby={`${bundle.title} Tier`}
       onClick={onClick}
     >

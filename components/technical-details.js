@@ -2,8 +2,8 @@ import Markdown from 'react-markdown'
 
 const TechnicalDetails = () => {
   return (
-    <div className="bg-gradient-to-t from-white to-gray-50 -m-5 px-5 py-20">
-      <h3 className="py-8 sm:text-4xl text-3xl font-serif text-center font-bold pt-4 pb-8">
+    <div className="bg-gradient-to-t from-white to-gray-50 -m-5 px-5 sm:py-20 py-8">
+      <h3 className="py-8 sm:text-4xl text-3xl font-serif text-center font-bold pt-4 md:pb-8 pb-2">
         Technical Details
       </h3>
 

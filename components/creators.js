@@ -3,7 +3,7 @@ import Image from 'next/image'
 
 const Creators = () => {
   return (
-    <div className="bg-gradient-to-t from-white to-gray-50 -m-5 px-5 py-20">
+    <div className="bg-gradient-to-t from-white to-gray-50 -m-5 px-5 sm:py-20 py-8">
       {/* <h3 className="py-8 sm:text-4xl text-3xl font-serif text-center font-bold pt-4 pb-8">
         About the creator
       </h3> */}
@@ -18,12 +18,8 @@ const Creators = () => {
             className="rounded-full saturate-0"
           />
         </div>
-        <div className="sm:text-4xl text-3xl -translate-y-8 font-serif font-bold ">
-          Hi, I’m{' '}
-          <span className=" bg-black px-2 rounded-sm text-white">
-            Dan Abramov.
-          </span>
-          <span className="text-gray-800" />
+        <div className="sm:text-4xl text-3xl pt-2 font-serif font-bold">
+          Hi, I’m Dan Abramov.
         </div>
       </div>
       {/* <Image
@@ -50,24 +46,30 @@ const Creators = () => {
           When I started thinking about how to explain it, I knew this needed to
           be a visual experience.
         </p>
-        <div className="flex space-x-5 items-center">
-          <p className="sm:max-w-md leading-normal">
-            So I teamed up with illustrator{' '}
-            <span className="font-serif font-bold text-xl">
-              Maggie Appleton
-            </span>{' '}
-            to make it happen.
-          </p>
+        <div className="flex md:flex-row flex-col md:space-x-8 items-center py-4">
           <div className="flex-shrink-0">
             <Image
               src="/maggie-appleton.jpg"
-              width={150}
-              height={150}
+              width={180}
+              height={180}
               quality={100}
               alt="Maggie Appleton, the illustrator and co-creator of Just JavaScript"
               className="rounded-full"
             />
           </div>
+          <p className="leading-normal text-xl font-bold">
+            So I teamed up with illustrator <br className="md:block hidden" />
+            <a
+              href="https://maggieappleton.com/"
+              target="_blank"
+              rel="noopener"
+            >
+              <span className="text-black no-underline font-bold">
+                Maggie Appleton
+              </span>
+            </a>{' '}
+            to make it happen.
+          </p>
         </div>
         <p>
           We’ve built an experience that will teach you to see JavaScript in a
@@ -77,8 +79,8 @@ const Creators = () => {
         </p>
         <p>
           You’ll reconsider what you thought you knew about the language, and
-          come away with an intuitive understanding that will, with a bit of practice,{' '}
-          become your second nature.
+          come away with an intuitive understanding that will, with a bit of
+          practice, become your second nature.
         </p>
       </div>
     </div>
