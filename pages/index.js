@@ -17,7 +17,7 @@ import TechnicalDetails from 'components/technical-details'
 import bg from 'public/bg@2x.jpg'
 
 const LandingPage = ({ bundles }) => {
-  // useRedirectToLearn()
+  useRedirectToLearn()
   const router = useRouter()
   const sellingLive = useSellingLive()
   const scrollToBuy = router.asPath === '/?buy'
