@@ -12,7 +12,10 @@ const withMDX = require('@next/mdx')({
   },
 })
 
-const IMAGE_HOST_DOMAINS = ['res.cloudinary.com']
+const IMAGE_HOST_DOMAINS = [
+  'res.cloudinary.com',
+  'hardcore-golick-433858.netlify.app',
+]
 
 const nextConfig = {
   env: {
