@@ -93,7 +93,7 @@ const LandingPage = ({ bundles }) => {
             </div>
           </div>
         ) : (
-          <article className="w-full max-w-screen-sm sm:pt-0 pt-8 pb-8 mx-auto prose sm:pb-16 lg:prose-lg sm:prose-lg">
+          <article className="w-full max-w-screen-sm sm:pt-0 pt-8 pb-8 mx-auto prose sm:pb-16 lg:prose-lg sm:prose-lg px-5">
             <SubscribeCopy />
           </article>
         )}
