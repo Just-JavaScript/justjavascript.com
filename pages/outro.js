@@ -12,7 +12,7 @@ const OutroPage = () => {
         </header>
         <main className="prose sm:prose-lg mx-auto">
           <p>I look around, as if awoken from a dream.</p>
-          <p>There is nobody in my room. It’s just me and my laptop. A cold coffee mug. A ticking clock. An open editor with my program. I must have spaced out!</p>
+          <p>There is nobody else in my room. It’s just me and my laptop. A cold coffee mug. A ticking clock. An open editor with my program. I must have spaced out!</p>
           <p>I peer into the code, trying to remember what I was doing.</p>
           <p>In the neon light, I read my program—a list of instructions. There is a lot going on: there are <code>if</code> statements, variable declarations, commas and curly braces.</p>
           <p>My code is the same as when I wrote it. And yet it somehow feels different.</p>
