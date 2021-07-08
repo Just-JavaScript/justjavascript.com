@@ -52,7 +52,7 @@ const ResetProgress = (questions) => {
                 ref={cancelRef}
                 onClick={close}
               >
-                Nevermind, don't reset my progress
+                Nevermind, don’t reset my progress
               </button>
             </div>
           </AlertDialogContent>
