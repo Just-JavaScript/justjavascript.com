@@ -3,7 +3,6 @@ import Layout from 'components/layout'
 import SubscribeCopy from 'components/subscribe-copy.mdx'
 import LandingCopy from 'components/landing-copy.mdx'
 import Image from 'next/image'
-import useRedirectToLearn from 'hooks/use-redirect-to-learn'
 import ClaimCoupon from 'components/commerce/claim-coupon'
 import useSellingLive from 'hooks/use-selling-live'
 import DevBundles from 'data/bundles.development.json'
@@ -17,7 +16,6 @@ import TechnicalDetails from 'components/technical-details'
 import bg from 'public/bg@2x.jpg'
 
 const LandingPage = ({ bundles }) => {
-  useRedirectToLearn()
   const router = useRouter()
   const sellingLive = useSellingLive()
   const scrollToBuy = router.asPath === '/?buy'
