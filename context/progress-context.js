@@ -1,6 +1,6 @@
 import React from 'react'
 import axios from 'axios'
-import useSWR, {mutate} from 'swr'
+import useSWR from 'swr'
 import {useViewer} from 'context/viewer-context'
 
 const fetcher = (url) => axios.get(url).then((res) => res.data)
@@ -29,9 +29,6 @@ export const ProgressProvider = ({children}) => {
       .post('/api/set-progress', {
         episode,
         progress,
-      })
-      .then(() => {
-        mutate('/api/get-progress')
       })
       .catch(() => {
         setCompleted(!progress.completed)
