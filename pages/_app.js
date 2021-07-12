@@ -11,9 +11,22 @@ import NProgress from "nprogress";
 import { DefaultSeo } from "next-seo";
 import config from "../config";
 
-Router.events.on("routeChangeStart", () => NProgress.start());
-Router.events.on("routeChangeComplete", () => NProgress.done());
-Router.events.on("routeChangeError", () => NProgress.done());
+let timer
+const delay = 500
+NProgress.configure({showSpinner: false})
+const handleStartLoading = () => {
+  timer = setTimeout(() => {
+    NProgress.start()
+  }, delay)
+}
+const handleStopLoading = () => {
+  clearTimeout(timer)
+  NProgress.done()
+}
+Router.events.on('routeChangeStart', handleStartLoading)
+Router.events.on('routeChangeComplete', handleStopLoading)
+Router.events.on('routeChangeError', handleStopLoading)
+
 
 const App = ({ Component, pageProps }) => {
   return (

@@ -1,9 +1,8 @@
 import React from 'react'
-import {motion} from 'framer-motion'
 
-export default function AnswerWrapper({children, className}) {
+export default function AnswerWrapper({ children, className }) {
   return (
-    <motion.div
+    <div
       className={
         className
           ? className
@@ -11,6 +10,6 @@ export default function AnswerWrapper({children, className}) {
       }
     >
       {children}
-    </motion.div>
+    </div>
   )
 }

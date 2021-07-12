@@ -6,7 +6,6 @@ import QuizWrapper from 'components/quiz/wrapper'
 import Markdown from 'components/quiz/markdown'
 import Submit from 'components/quiz/submit'
 import useEggheadQuestion from 'hooks/use-egghead-question'
-import { motion, AnimatePresence } from 'framer-motion'
 import SubmitAndContinue from 'components/quiz/submit-and-continue'
 
 const Essay = (props) => {
@@ -33,7 +32,7 @@ const Essay = (props) => {
   const questionRef = React.useRef()
   React.useEffect(() => {
     setMounted(true)
-    questionRef?.current?.focus()
+    questionRef?.current?.focus({ preventScroll: true })
   }, [])
 
   if (!mounted) {
@@ -55,12 +54,12 @@ const Essay = (props) => {
         <AnswerWrapper>
           <form className="flex flex-col" onSubmit={formik.handleSubmit}>
             {isAnswered ? (
-              <motion.div>
+              <div>
                 <div className="pb-2 text-lg font-semibold">Your answer</div>
-                <Markdown className="h-auto prose rounded-md sm:prose-lg whitespace-pre-wrap">
+                <Markdown className="min-h-[10rem] prose rounded-md  whitespace-pre-wrap">
                   {formik.values.value}
                 </Markdown>
-              </motion.div>
+              </div>
             ) : (
               <>
                 <label className="pb-2 text-lg font-semibold" htmlFor="value">
@@ -77,18 +76,10 @@ const Essay = (props) => {
                 />
               </>
             )}
-            <AnimatePresence>
-              {formik.submitCount > 0 && formik.errors.value && (
-                <motion.span
-                  className="mt-3"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                >
-                  {formik.errors.value}
-                </motion.span>
-              )}
-            </AnimatePresence>
+
+            {formik.submitCount > 0 && formik.errors.value && (
+              <span className="mt-3">{formik.errors.value}</span>
+            )}
 
             {explanation ? (
               <Submit

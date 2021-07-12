@@ -5,7 +5,6 @@ import Explanation from 'components/quiz/explanation'
 import QuizWrapper from 'components/quiz/wrapper'
 import Markdown from 'components/quiz/markdown'
 import Submit from 'components/quiz/submit'
-import Continue from 'components/quiz/continue'
 import SubmitAndContinue from 'components/quiz/submit-and-continue'
 import Excalidraw from 'components/excalidraw/excalidraw'
 import useEggheadQuestion from 'hooks/use-egghead-question'
@@ -50,32 +49,34 @@ const Sketch = (props) => {
   return (
     <QuizWrapper {...props}>
       <QuestionWrapper number={number}>
-        <motion.div layout>
+        <div>
           {isMDX ? (
             <div className="prose prose-sans max-w-none">{question.prompt}</div>
           ) : (
             <Markdown>{question.prompt}</Markdown>
           )}
-        </motion.div>
+        </div>
       </QuestionWrapper>
       <AnswerWrapper>
         <form
           className="flex flex-col items-start"
           onSubmit={formik.handleSubmit}
         >
-          <Excalidraw
-            onChange={(sketch) => onChange(sketch)}
-            options={options}
-            user={{ name: 'Excalidraw User' }}
-            initialData={
-              currentAnswerParsed && {
-                elements: currentAnswerParsed?.value
-                  ? currentAnswerParsed.value
-                  : currentAnswerParsed,
-                scrollToContent: true,
+          <div className="w-full">
+            <Excalidraw
+              onChange={(sketch) => onChange(sketch)}
+              options={options}
+              user={{ name: 'Excalidraw User' }}
+              initialData={
+                currentAnswerParsed && {
+                  elements: currentAnswerParsed?.value
+                    ? currentAnswerParsed.value
+                    : currentAnswerParsed,
+                  scrollToContent: true,
+                }
               }
-            }
-          />
+            />
+          </div>
           <div className="w-full">
             {question.canComment === true && (
               <>
@@ -126,18 +127,10 @@ const Sketch = (props) => {
               />
             )
           )}
-          {formik.submitCount > 0 && (
+          {formik.submitCount > 0 && formik.errors.value && (
             <div className="pt-3">{formik.errors.value}</div>
           )}
         </form>
-        {/* <AnimatePresence>
-          {explanation && state.matches('answered') && (
-            <Continue
-              isLastQuestion={isLastQuestion}
-              onClick={handleContinue}
-            />
-          )}
-        </AnimatePresence> */}
       </AnswerWrapper>
       <AnimatePresence>
         <div>{showExplanation && <Explanation>{explanation}</Explanation>}</div>
