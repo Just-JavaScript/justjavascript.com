@@ -22,7 +22,7 @@ const Article = ({
 }) => {
   const router = useRouter()
   const EPISODE_ID = router.query.slug
-  const { progress, setProgress } = useProgress()
+  const { progress, setProgress, isValidating } = useProgress()
   const currentEpisodeProgress = progress && progress[EPISODE_ID]
   const [completed, setCompleted] = React.useState(
     currentEpisodeProgress?.completed || false
@@ -127,6 +127,7 @@ const Article = ({
                           ) : (
                             <>{'Mark as learned'}</>
                           )}
+                          {isValidating && <Spinner className="text-white" />}
                         </>
                       ) : (
                         <>

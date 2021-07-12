@@ -7,7 +7,9 @@ export default function Explanation({ children, label, className }) {
 
   const explanationRef = React.useRef()
   React.useEffect(() => {
-    explanationRef?.current?.focus()
+    explanationRef?.current?.focus({
+      preventScroll: true,
+    })
   }, [])
 
   return (
