@@ -223,7 +223,7 @@ const PurchaseBundle = ({
         </div>
         <div className="sm:p-0 p-5">
           <p className="font-semibold pb-4">
-            Includes all 10 chapters + quiz exercises.
+            Includes all 10 episodes + quiz exercises.
           </p>
           <ul>
             {episodes.map((e) => {
