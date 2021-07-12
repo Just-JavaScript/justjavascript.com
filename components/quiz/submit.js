@@ -5,8 +5,7 @@ export default function Submit({ isDisabled, isSubmitting }) {
     return null
   }
   return (
-    <motion.button
-      layout
+    <button
       className="flex items-center hover:shadow-xl justify-center w-full px-3 py-3 mt-4 font-semibold text-white transition-all duration-300 ease-in-out bg-black rounded-md hover:bg-gray-600 focus:outline-none focus:ring focus:ring-orange-500"
       type="submit"
       disabled={isDisabled}
@@ -35,6 +34,6 @@ export default function Submit({ isDisabled, isSubmitting }) {
       ) : (
         `Send Answer`
       )}
-    </motion.button>
+    </button>
   )
 }

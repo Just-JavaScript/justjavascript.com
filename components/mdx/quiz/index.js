@@ -99,7 +99,6 @@ function getQuestions(questions, quizId, quizVersion) {
       id,
       kind,
       prompt,
-      // userAnswer,
       answer: {
         description: answer,
       },
@@ -157,7 +156,7 @@ const Quiz = ({ children, title, version, slug, id }) => {
 
   return (
     <Layout maxWidth="" background="bg-gray-100">
-      <div className="min-h-screen">
+      <div>
         <header className="flex flex-col items-center justify-center py-24 text-center">
           <h1 className="font-serif font-extrabold tracking-tight lg:text-8xl sm:text-7xl text-7xl">
             Quiz

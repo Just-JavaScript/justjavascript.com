@@ -54,7 +54,7 @@ const MultipleQuestions = (props) => {
 
   return (
     <QuizWrapper {...props} nested>
-      <div className="py-8 md:py-16">
+      <div>
         <div className="px-5 mb-4 sm:px-0">
           <span className="inline-flex items-center justify-center w-6 h-6 p-2 mr-2 font-mono text-xs font-bold text-white bg-black rounded-full lining-nums">
             {props.number}
@@ -98,7 +98,7 @@ const MultipleQuestions = (props) => {
             function scrollTo(question) {
               scroller.scrollTo(question, {
                 smooth: 'easeInOutQuart',
-                delay: 100,
+                delay: 0,
                 duration: 900,
                 ignoreCancelEvents: true,
               })
@@ -109,7 +109,7 @@ const MultipleQuestions = (props) => {
                 <ScrollElement name={question.id} />
                 {index <= currentQuestion.index && (
                   <>
-                    <AnswerWrapper className="flex flex-col w-full p-3 bg-white border border-gray-200 shadow-lg md:p-4 md:rounded-lg">
+                    <AnswerWrapper className="flex flex-col w-full p-3 border bg-white border-gray-200 shadow-lg md:p-4 md:rounded-lg">
                       <QuestionToShow
                         nested
                         question={question}
@@ -140,16 +140,18 @@ const MultipleQuestions = (props) => {
                         currentQuestion={currentQuestion}
                       />
                     </AnswerWrapper>
-                    {displayContinue && (
-                      <div className="flex items-center justify-center w-full py-3">
-                        <Continue onClick={props.handleContinue} />
-                      </div>
-                    )}
+                    <div
+                      className={`${
+                        displayContinue ? 'visible' : 'invisible'
+                      } flex items-center justify-center w-full py-3`}
+                    >
+                      <Continue onClick={props.handleContinue} />
+                    </div>
                     {!displayContinue && !isLastQuestion && (
-                      <div className="absolute bottom-0 left-0 z-10 flex items-center justify-center w-full transform translate-y-11">
+                      <div className="absolute bottom-0 left-0 z-10 flex items-center justify-center w-full translate-y-8">
                         <div className="flex flex-col items-center">
                           <div className="w-2 h-2 bg-white rounded-full" />
-                          <div className="w-px h-16 p-px bg-white" />
+                          <div className="w-px h-32 p-px bg-white" />
                           <div className="w-2 h-2 bg-white rounded-full" />
                         </div>
                       </div>
