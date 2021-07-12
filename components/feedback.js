@@ -42,7 +42,7 @@ const Feedback = ({ quiz }) => {
     formik.isSubmitting || submitted || !isEmpty(formik.initialValues.feedback)
 
   return (
-    <div className="sm:px-5 pb-8">
+    <div className="sm:px-5 pb-16">
       {/* <span className="px-2 py-1 text-sm font-semibold text-white uppercase bg-black rounded-md">
         Feedback
       </span> */}
@@ -54,8 +54,9 @@ const Feedback = ({ quiz }) => {
           Was anything particularly insightful? Or confusing? I want to know!
         </p>
         <p>
-          There's no character limit for this question. I try to personally read every
-          response, whether it’s a few words or many paragraphs. Cheers, Dan.
+          There's no character limit for this question. I try to personally read
+          every response, whether it’s a few words or many paragraphs. Cheers,
+          Dan.
         </p>
       </div>
       <form className="py-4" onSubmit={formik.handleSubmit}>
