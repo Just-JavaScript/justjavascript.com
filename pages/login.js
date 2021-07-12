@@ -123,12 +123,11 @@ const LoginForm = ({
               {isSubmitted && (
                 <div className="space-y-6">
                   <h2 className="text-lg font-semibold leading-tighter">
-                    Please check your inbox for your sign in link.
+                    Please check your inbox for your sign-in link.
                   </h2>
                   <p className="leading-relaxed opacity-80">
-                    Sometimes this can land in SPAM! While we hope that isn't
-                    the case if it doesn't arrive in a minute or three, please
-                    check.
+                    Sometimes this can land in SPAM! While we hope that this won’t
+                    happen, please check if it doesn’t arrive in a minute or three.
                   </p>
                 </div>
               )}
@@ -146,7 +145,7 @@ const LoginForm = ({
                     to try again.
                   </p>
                   <p className="pt-3">
-                    If you <strong>aren't</strong> running aggressive adblocking
+                    If you <strong>aren’t</strong> running aggressive adblocking
                     please check the console for errors and email
                     support@egghead.io with any info and we will help you ASAP.
                   </p>

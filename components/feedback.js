@@ -54,8 +54,8 @@ const Feedback = ({ quiz }) => {
           Was anything particularly insightful? Or confusing? I want to know!
         </p>
         <p>
-          There's no character limit for this question. I personally read every
-          response, whether it's a few words or many paragraphs. Cheers, Dan.
+          There's no character limit for this question. I try to personally read every
+          response, whether it’s a few words or many paragraphs. Cheers, Dan.
         </p>
       </div>
       <form className="py-4" onSubmit={formik.handleSubmit}>
