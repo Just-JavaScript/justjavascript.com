@@ -10,6 +10,7 @@ import "../styles/gifplayer.css";
 import NProgress from "nprogress";
 import { DefaultSeo } from "next-seo";
 import config from "../config";
+import { RouterScrollProvider } from '@moxy/next-router-scroll'
 
 Router.events.on("routeChangeStart", () => NProgress.start());
 Router.events.on("routeChangeComplete", () => NProgress.done());
@@ -21,9 +22,11 @@ const App = ({ Component, pageProps }) => {
       <DefaultSeo {...config} />
       <ViewerProvider>
         <ProgressProvider>
+          <RouterScrollProvider>
           <MDXProvider components={mdxComponents}>
             <Component {...pageProps} />
           </MDXProvider>
+          </RouterScrollProvider>
         </ProgressProvider>
       </ViewerProvider>
     </>

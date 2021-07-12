@@ -10,14 +10,17 @@ import WelcomeMessage from 'components/welcome-message'
 import { useProgress } from 'context/progress-context'
 import { motion } from 'framer-motion'
 import { serverSideAuthCheck } from 'utils/serverSideAuthCheck'
+import { useRouterScroll } from '@moxy/next-router-scroll'
 
 export default function Learn() {
   const [mounted, setMounted] = React.useState(false)
   const isVerifyingLogin = useLoginRequired()
   const { progress } = useProgress()
+  const { updateScroll } = useRouterScroll()
 
   React.useEffect(() => {
     setMounted(true)
+    updateScroll()
   }, [])
 
   const { viewingAsUserEmail } = useViewer()

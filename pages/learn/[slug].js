@@ -10,12 +10,18 @@ import isArray from 'lodash/isArray'
 import useLoginRequired from 'hooks/use-login-required'
 import {useViewer} from 'context/viewer-context'
 import {serverSideAuthCheck} from 'utils/serverSideAuthCheck'
+import { useRouterScroll } from '@moxy/next-router-scroll'
 
 const components = mdxComponents
 
 const EpisodePage = ({source, meta, ...props}) => {
   const isVerifyingLogin = useLoginRequired()
   const {isUnclaimedBulkPurchaser, loading} = useViewer()
+  const { updateScroll } = useRouterScroll()
+  
+  React.useEffect(() => {
+    updateScroll()
+  }, [])
 
   if (isVerifyingLogin || isUnclaimedBulkPurchaser || loading) {
     return null
