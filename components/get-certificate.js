@@ -11,7 +11,7 @@ import Spinner from 'components/spinner'
 const GetCertificate = () => {
   const { authToken, viewer: user, reloadViewer } = useViewer()
   const [state, setState] = React.useState({
-    firstName: '',
+    firstName: get(user, 'name') || '',
     lastName: '',
     loading: false,
     success: false,
@@ -23,11 +23,14 @@ const GetCertificate = () => {
   function handleClick() {
     if (nameIsPresent) {
       const [firstName, lastName, rest] = get(user, 'full_name').split(' ')
+
       if (isEmpty(lastName)) {
         setState({
           firstName: firstName,
           lastName: `${lastName}${rest ? ` ${rest}` : ''}`,
+          ...state,
         })
+
         setShowForm(true)
       } else {
         window.open(
@@ -93,8 +96,8 @@ const GetCertificate = () => {
       lastName: state.lastName,
     },
     validationSchema: yup.object().shape({
-      firstName: yup.string().required('First name is required.'),
-      lastName: yup.string().required('Last name is required.'),
+      firstName: yup.string().required('Required'),
+      lastName: yup.string().required('Required'),
     }),
     onSubmit: (values, actions) => {
       if (formik.isValid) {
