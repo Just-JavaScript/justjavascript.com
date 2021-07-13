@@ -53,6 +53,7 @@ const Article = ({
       navChildren={<ToC />}
       background="bg-white"
       meta={{ title }}
+      displayLogout={false}
       {...props}
     >
       <article>
@@ -91,13 +92,13 @@ const Article = ({
                   >
                     <button
                       type="button"
-                      className={`inline-flex  items-center justify-center px-5 py-3 text-white text-lg  ${
+                      className={`rounded-full inline-flex items-center justify-center px-5 py-3 text-white text-lg  ${
                         progress
                           ? completed
                             ? ' bg-emerald-500'
                             : 'bg-black'
                           : 'bg-black'
-                      } rounded-md`}
+                      }`}
                       onClick={() => handleSetProgress()}
                       role="switch"
                       aria-checked={completed}

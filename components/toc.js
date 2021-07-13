@@ -1,6 +1,6 @@
 import React from 'react'
-import {useRouter} from 'next/router'
-import {Menu, MenuList, MenuButton, MenuItem} from '@reach/menu-button'
+import { useRouter } from 'next/router'
+import { Menu, MenuList, MenuButton, MenuItem } from '@reach/menu-button'
 
 export const episodes = [
   {
@@ -78,7 +78,7 @@ export default function ToC() {
       >
         {isActive(props.url) && (
           <svg
-            className="inline-block -ml-5 text-gray-500"
+            className="inline-block -ml-5 mb-1 text-gray-500"
             width="20"
             height="20"
             viewBox="0 0 20 20"
@@ -101,11 +101,12 @@ export default function ToC() {
 
   return (
     <Menu>
-      <MenuButton>
+      <MenuButton className="sm:p-2 p-0.5">
         {/* prettier-ignore */}
-        <svg width="20" height="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g fill="none"><path d="M4 8h16M4 16h16" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></g></svg>
+        <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g fill="none"><path d="M4 8h16M4 16h16" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></g></svg>
+        <span className="sr-only">Episodes</span>
       </MenuButton>
-      <MenuList className="relative z-20">
+      <MenuList className="relative z-20 w-56">
         {episodes.map((episode) => (
           <Item key={episode.slug} url={episode.slug}>
             <a>{episode.title}</a>
@@ -114,7 +115,7 @@ export default function ToC() {
         <Item url="/learn">
           <a className="flex items-center">
             {/* prettier-ignore */}
-            <svg className="mr-2" width="18" height="18" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><g fill="none"><path d="M10.707 2.293a1 1 0 0 0-1.414 0l-7 7a1 1 0 0 0 1.414 1.414L4 10.414V17a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1v-2a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1v-6.586l.293.293a1 1 0 0 0 1.414-1.414l-7-7z" fill="currentColor"/></g></svg>
+            <svg aria-hidden="true" className="mr-2" width="18" height="18" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><g fill="none"><path d="M10.707 2.293a1 1 0 0 0-1.414 0l-7 7a1 1 0 0 0 1.414 1.414L4 10.414V17a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1v-2a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1v-6.586l.293.293a1 1 0 0 0 1.414-1.414l-7-7z" fill="currentColor"/></g></svg>
             Index
           </a>
         </Item>

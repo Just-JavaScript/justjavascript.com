@@ -14,8 +14,11 @@ import { scroller } from 'react-scroll'
 import Creators from 'components/creators'
 import TechnicalDetails from 'components/technical-details'
 import bg from 'public/bg@2x.jpg'
+import { useViewer } from 'context/viewer-context'
+import Link from 'next/link'
 
 const LandingPage = ({ bundles }) => {
+  const { purchased, viewer } = useViewer()
   const router = useRouter()
   const sellingLive = useSellingLive()
   const scrollToBuy = router.asPath === '/?buy'
@@ -39,6 +42,19 @@ const LandingPage = ({ bundles }) => {
               <h2 className="font-light sm:text-xl text-lg text-orange-200 font-serif pt-4">
                 Rebuild your mental model from the inside out.
               </h2>
+              <div className="mt-8 relative inline-flex justify-center items-center">
+                {viewer && purchased && (
+                  <Link href="/learn">
+                    <a className="relative z-10 px-6 py-3 font-semibold rounded-full bg-white text-black hover:scale-105 inline-flex ease-in-out duration-200 transition-all">
+                      Access Content
+                    </a>
+                  </Link>
+                )}
+                <div
+                  className="blur-lg bg-orange-400 opacity-40 w-full h-full top-3 absolute  rounded-full"
+                  aria-hidden="true"
+                />
+              </div>
             </div>
             <div className="pointer-events-none">
               <Image
