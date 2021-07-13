@@ -12,6 +12,7 @@ const Layout = ({
   noFooter = false,
   meta,
   background = 'bg-gray-100',
+  displayLogout = true,
 }) => {
   const {
     title,
@@ -37,7 +38,9 @@ const Layout = ({
       <div className={background}>
         <div className="flex flex-col items-center justify-center min-h-screen print:min-h-full print:h-auto">
           <SkipNavLink />
-          <Navigation className={navClassName}>{navChildren}</Navigation>
+          <Navigation className={navClassName} displayLogout={displayLogout}>
+            {navChildren}
+          </Navigation>
           <div className="flex-shrink-0 w-full px-5">
             <SkipNavContent />
             {children}
