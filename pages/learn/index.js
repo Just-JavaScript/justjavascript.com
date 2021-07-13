@@ -10,14 +10,18 @@ import WelcomeMessage from 'components/welcome-message'
 import { useProgress } from 'context/progress-context'
 import { motion } from 'framer-motion'
 import { serverSideAuthCheck } from 'utils/serverSideAuthCheck'
+import GetCertificate from 'components/get-certificate'
+import Spinner from 'components/spinner'
+import { mutate } from 'swr'
 
 export default function Learn() {
   const [mounted, setMounted] = React.useState(false)
   const isVerifyingLogin = useLoginRequired()
-  const { progress } = useProgress()
+  const { progress, isValidating } = useProgress()
 
   React.useEffect(() => {
     setMounted(true)
+    !isValidating && mutate('/api/get-progress')
   }, [])
 
   const { viewingAsUserEmail } = useViewer()
@@ -152,6 +156,18 @@ export default function Learn() {
         text: ` You are now viewing as ${viewingAsUserEmail}. Logout to reset.`,
       }
 
+  const quizzes = episodes.filter(({ quiz }) => quiz)
+
+  const allEpisodesComplete =
+    progress &&
+    episodes.filter(({ slug, i }) => progress[slug]?.completed).length ===
+      episodes.length
+
+  const allQuizzesComplete =
+    progress &&
+    quizzes.filter(({ quiz, i }) => progress[`quiz/${quiz}`]?.completed)
+      .length === quizzes.length
+
   return (
     <Layout background="bg-gray-100">
       {/* <h1 className="pb-24 font-serif text-5xl font-extrabold tracking-tight text-center lg:text-8xl sm:text-7xl leading-tighter">
@@ -185,6 +201,27 @@ export default function Learn() {
             })}
           </motion.ul>
         )}
+        <div className="flex w-full items-center justify-center sm:pt-24 pt-16">
+          {allEpisodesComplete && allQuizzesComplete ? (
+            <div className="pt-6">
+              <GetCertificate />
+            </div>
+          ) : (
+            <div className="text-center flex flex-col items-center">
+              <div className="flex items-center justify-center font-semibold rounded-md px-4 py-3">
+                {!isValidating ? (
+                  <i className="gg-lock scale-75 mr-2" />
+                ) : (
+                  <Spinner className="-translate-x-1 -ml-1" />
+                )}
+                Certificate
+              </div>
+              <p className="opacity-70">
+                Complete all episodes and quizzes to earn a certificate.
+              </p>
+            </div>
+          )}
+        </div>
       </main>
     </Layout>
   )
