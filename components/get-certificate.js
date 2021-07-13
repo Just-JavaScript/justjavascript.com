@@ -11,9 +11,6 @@ import CertificateThumbnail from 'components/certificate-thumbnail'
 
 const GetCertificate = () => {
   const { authToken, viewer: user, reloadViewer } = useViewer()
-  React.useEffect(() => {
-    reloadViewer()
-  }, [])
   const [state, setState] = React.useState({
     firstName: get(user, 'name') || '',
     lastName: '',
