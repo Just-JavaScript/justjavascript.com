@@ -26,12 +26,12 @@ const GetCertificate = () => {
 
   function handleClick() {
     if (nameIsPresent) {
-      const [firstName, lastName, rest] = get(user, 'full_name').split(' ')
+      const [firstName, lastName, ...rest] = get(user, 'full_name').split(' ')
 
       if (isEmpty(lastName)) {
         setState({
           firstName: firstName,
-          lastName: `${lastName}${rest ? ` ${rest}` : ''}`,
+          lastName: `${lastName}${rest ? ` ${rest.join(' ')}` : ''}`,
           ...state,
         })
 
@@ -41,7 +41,7 @@ const GetCertificate = () => {
           `${
             process.env.NEXT_PUBLIC_COMPLETION_CERTIFICATE_URI
           }?name=${decodeURI(
-            `${firstName} ${lastName}${!isEmpty(rest) ? ` ${rest}` : ''}`
+            `${firstName} ${lastName}${rest ? ` ${rest.join(' ')}` : ''}`
           )}`,
           '_blank'
         )
