@@ -107,13 +107,14 @@ const PurchaseBundle = ({
     if (isEmpty(price.bulk_discount) && isEmpty(price.coupon)) {
       return
     }
+    
     const fractionOff =
       quantity === 1
         ? Number(price.coupon.coupon_discount)
         : Number(price.bulk_discount)
 
     if (fractionOff) {
-      return fractionOff * 100
+      return Math.ceil(fractionOff) * 100
     }
   }
 
