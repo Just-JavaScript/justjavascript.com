@@ -80,11 +80,9 @@ const Invoice = () => {
                 <h5 className="mb-2 text-xs text-gray-500 uppercase">From</h5>
                 <strong>Just JavaScript</strong>
                 <br />
-                co egghead.io LLC
+                12333 Sowden Rd Ste B, PMB#97429
                 <br />
-                337 Garden Oaks Blvd #97429
-                <br />
-                Houston, TX 77018
+                Houston, TX 77080-2059
                 <br />
                 972-992-5951
               </div>
