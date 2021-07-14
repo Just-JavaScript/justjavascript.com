@@ -104,7 +104,7 @@ const Navigation = ({ children, className = '', displayLogout, ...props }) => {
             )
           ) : sellingLive ? (
             <Link href="/login">
-              <a className="px-2 py-1 hover:bg-gray-300 hover:bg-opacity-20 rounded-md ease-in-out duration-200 transition-all">
+              <a className="px-2 py-2 hover:bg-gray-300 hover:bg-opacity-20 rounded-md ease-in-out duration-200 transition-all">
                 Log in
               </a>
             </Link>
