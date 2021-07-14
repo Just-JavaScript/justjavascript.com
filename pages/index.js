@@ -50,7 +50,7 @@ const LandingPage = ({ bundles }) => {
                     </a>
                   </Link>
                 ) : (
-                  <div />
+                  <div className="h-[42px]"></div>
                 )}
                 <div
                   className="blur-lg bg-orange-400 opacity-40 w-full h-full top-3 absolute  rounded-full"
