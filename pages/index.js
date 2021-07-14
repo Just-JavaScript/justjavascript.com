@@ -43,12 +43,14 @@ const LandingPage = ({ bundles }) => {
                 Rebuild your mental model from the inside out.
               </h2>
               <div className="mt-8 relative inline-flex justify-center items-center">
-                {viewer && purchased && (
+                {viewer && purchased ? (
                   <Link href="/learn">
                     <a className="relative z-10 px-6 py-3 font-semibold rounded-full bg-white text-black hover:scale-105 inline-flex ease-in-out duration-200 transition-all">
                       Access Content
                     </a>
                   </Link>
+                ) : (
+                  <div />
                 )}
                 <div
                   className="blur-lg bg-orange-400 opacity-40 w-full h-full top-3 absolute  rounded-full"
