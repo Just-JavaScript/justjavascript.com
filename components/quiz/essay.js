@@ -55,8 +55,10 @@ const Essay = (props) => {
           <form className="flex flex-col" onSubmit={formik.handleSubmit}>
             {isAnswered ? (
               <div>
-                <div className="pb-2 text-lg font-semibold">Your answer</div>
-                <Markdown className="min-h-[10rem] prose rounded-md  whitespace-pre-wrap">
+                <div className="pb-2 lg:text-xl sm:text-lg font-semibold">
+                  Your answer
+                </div>
+                <Markdown className="min-h-[10rem] prose sm:prose-lg rounded-md  whitespace-pre-wrap">
                   {formik.values.value}
                 </Markdown>
               </div>
@@ -66,7 +68,7 @@ const Essay = (props) => {
                   Your answer
                 </label>
                 <textarea
-                  className="w-full h-40 p-3 prose border border-gray-200 rounded-md bg-gray-50 prose-sans max-w-none focus:shadow-outline-orange focus:ring-orange-500 focus:border-transparent"
+                  className="sm:text-lg w-full h-40 p-3 prose border border-gray-200 rounded-md bg-gray-50 prose-sans max-w-none focus:shadow-outline-orange focus:ring-orange-500 focus:border-transparent"
                   disabled={isDisabled}
                   name="value"
                   placeholder="Type your answer here..."
