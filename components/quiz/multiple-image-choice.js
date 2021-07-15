@@ -7,8 +7,8 @@ import Submit from 'components/quiz/submit'
 import SubmitAndContinue from 'components/quiz/submit-and-continue'
 import Markdown from 'components/quiz/markdown'
 import useEggheadQuestion from 'hooks/use-egghead-question'
-import {motion, AnimatePresence} from 'framer-motion'
-import {isEmpty} from 'lodash'
+import { motion, AnimatePresence } from 'framer-motion'
+import { isEmpty } from 'lodash'
 
 const MultipleImageChoice = (props) => {
   const {
@@ -23,7 +23,7 @@ const MultipleImageChoice = (props) => {
     showExplanation,
     nested,
   } = props
-  const {formik} = useEggheadQuestion(question, handleSubmit)
+  const { formik } = useEggheadQuestion(question, handleSubmit)
   const hasAnsweredCorrectly = question.correctAnswer === formik.values.value
   const isMDX = typeof question.prompt !== 'string'
 
@@ -101,7 +101,7 @@ const MultipleImageChoice = (props) => {
               ) : (
                 <>
                   <textarea
-                    className="w-full h-24 p-3 mt-4 prose border border-gray-200 rounded-md bg-cool-gray-100"
+                    className="sm:text-lg w-full h-24 p-3 mt-4 prose border border-gray-200 rounded-md bg-cool-gray-100"
                     disabled={isDisabled}
                     id="comment"
                     name="comment"
@@ -118,8 +118,8 @@ const MultipleImageChoice = (props) => {
           {state.matches('answered') && question.correctAnswer && (
             <motion.div
               layout
-              initial={{opacity: 0}}
-              animate={{opacity: 1}}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
               className={`w-full text-center mt-4 px-3 py-3 rounded-md font-semibold ${
                 hasAnsweredCorrectly
                   ? 'bg-green-100 text-green-700'

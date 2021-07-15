@@ -8,7 +8,7 @@ export default function Continue({ onClick, isDisabled, isLastQuestion }) {
       onClick={onClick}
       disabled={isDisabled}
     >
-      {isLastQuestion ? 'Finish' : 'Continue'}
+      {isLastQuestion ? 'Finish' : 'Continue to next question'}
     </button>
   )
 }

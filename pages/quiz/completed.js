@@ -35,7 +35,7 @@ const QuizCompleted = () => {
         )}
         {nextEpisode ? (
           <Link href={`/${nextEpisode.path}`}>
-            <a className="inline-flex items-center px-6 py-4 font-sans text-lg font-semibold text-white transition-all duration-200 ease-in-out transform bg-black rounded-md hover:shadow-xl hover:scale-105 focus:scale-95">
+            <a className="inline-flex items-center px-6 py-4 font-sans text-lg font-semibold text-white transition-all duration-200 ease-in-out transform bg-black rounded-full hover:shadow-xl hover:scale-105 focus:scale-95">
               Continue learning
               {/* {nextEpisode && `to ${nextEpisode.title}`}{' '} */}
               <i className="ml-2 gg-arrow-right" aria-hidden="true" />

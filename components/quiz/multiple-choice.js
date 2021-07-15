@@ -7,8 +7,8 @@ import Submit from 'components/quiz/submit'
 import SubmitAndContinue from 'components/quiz/submit-and-continue'
 import Markdown from 'components/quiz/markdown'
 import useEggheadQuestion from 'hooks/use-egghead-question'
-import {isEmpty} from 'lodash'
-import {motion, AnimatePresence, AnimateSharedLayout} from 'framer-motion'
+import { isEmpty } from 'lodash'
+import { motion, AnimatePresence, AnimateSharedLayout } from 'framer-motion'
 
 const MultipleChoice = (props) => {
   const {
@@ -23,7 +23,7 @@ const MultipleChoice = (props) => {
     showExplanation,
     nested,
   } = props
-  const {formik} = useEggheadQuestion(question, handleSubmit)
+  const { formik } = useEggheadQuestion(question, handleSubmit)
   const hasAnsweredCorrectly =
     question.correctChoices[0]?.value === formik.values.value
   const hasImages = question.choices[0]?.imageUrl
@@ -131,7 +131,7 @@ const MultipleChoice = (props) => {
                 ) : (
                   <>
                     <textarea
-                      className="w-full h-24 p-3 mt-4 prose bg-gray-100 border border-gray-200 rounded-md prose-sans max-w-none"
+                      className="sm:text-lg w-full h-24 p-3 mt-4 prose bg-gray-100 border border-gray-200 rounded-md prose-sans max-w-none"
                       disabled={isDisabled}
                       id="comment"
                       name="comment"
@@ -150,8 +150,8 @@ const MultipleChoice = (props) => {
           {state.matches('answered') && question?.correctChoices[0]?.value && (
             <motion.div
               layout
-              initial={{opacity: 0}}
-              animate={{opacity: 1}}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
               className={`w-full text-center mt-4 px-3 py-3 rounded-md font-semibold ${
                 hasAnsweredCorrectly
                   ? 'bg-green-100 text-green-700'

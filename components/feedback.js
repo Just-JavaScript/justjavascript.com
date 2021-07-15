@@ -73,7 +73,7 @@ const Feedback = ({ quiz }) => {
           onChange={formik.handleChange}
           rows={5}
           name="feedback"
-          className="w-full p-3 prose border border-gray-200 rounded-md bg-gray-50 prose-sans max-w-none focus:shadow-outline-orange focus:ring-orange-500 focus:border-transparent"
+          className="sm:text-lg w-full p-3 prose border border-gray-200 rounded-md bg-gray-50 prose-sans max-w-none focus:shadow-outline-orange focus:ring-orange-500 focus:border-transparent"
           placeholder="Type your feedback here..."
         />
         {formik.errors.feedback &&
