@@ -134,7 +134,7 @@ const createCommerceMachine = ({
               ],
             },
             DISMISS_COUPON: {
-              target: 'fetchingPrice',
+              target: 'checkingCoupon',
               actions: ['clearAppliedCoupon'],
             },
             SET_QUANTITY: {
