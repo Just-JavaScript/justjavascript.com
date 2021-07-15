@@ -2,15 +2,18 @@ import React from 'react'
 import { scroller } from 'react-scroll'
 import { useRouter } from 'next/router'
 import ReactCountdown, { zeroPad } from 'react-countdown'
+import { motion } from 'framer-motion'
 
 const Countdown = ({ date }) => {
   const numberOf = (number, label) => {
     return (
-      <div className="flex flex-row items-baseline ">
-        <div className="text-sm leading-[100%] tabular-nums">
+      <div className="flex flex-row items-baseline">
+        <div className="sm:text-sm text-xs leading-[100%] tabular-nums">
           {zeroPad(number)}
         </div>
-        <div className="text-xs pl-px opacity-80 leading-[100%]">{label}</div>
+        <div className="sm:text-xs text-[0.7rem] pl-px opacity-80 leading-[100%]">
+          {label}
+        </div>
       </div>
     )
   }
@@ -19,9 +22,11 @@ const Countdown = ({ date }) => {
       return null
     } else {
       return (
-        <div className="flex space-x-3 itesm-center justify-center">
-          <div className="text-xs flex items-center">Ending in:</div>
-          <div className="grid grid-flow-col gap-2 items-center justify-center">
+        <div className="flex sm:flex-row flex-col sm:space-x-1.5 sm:items-center justify-center">
+          <div className="sm:text-xs text-[0.7rem] flex items-center font-semibold">
+            Ending in:
+          </div>
+          <div className="grid grid-flow-col gap-1 items-center justify-center">
             {days > 0 && numberOf(days, 'd')}
             {numberOf(hours, 'h')}
             {numberOf(minutes, 'm')}
@@ -51,39 +56,43 @@ export default function MessageBar({ state, displayFullPrice, displayPrice }) {
     </strong>
   )
   return (
-    <div className="absolute space-x-2 top-0 left-0 flex items-center sm:justify-center justify-between sm:px-3 px-1 h-10 w-full bg-white text-black">
-      <div className="flex items-center py-2 ">
-        <div className="text-sm">
-          <span role="img" aria-label="crystal ball">
+    <motion.div
+      animate={{ top: ['-100%', '0%'] }}
+      className="absolute space-x-2 top-0 left-0 flex items-center sm:justify-center justify-between px-3 sm:py-0 py-3 sm:h-10 h-12 w-full bg-white text-black"
+    >
+      <div className="flex items-center sm:py-2 sm:flex-grow-0 flex-grow">
+        <div className="text-sm font-semibold flex items-center space-x-1">
+          <span role="img" aria-label="crystal ball" className="text-lg">
             🔮
           </span>{' '}
-          Launch discount
+          <span>Launch discount</span>
         </div>
       </div>
-
-      <button
-        className="bg-black py-1 transform hover:scale-105 transition-all ease-in-out duration-200 text-white rounded-sm px-4 text-sm font-semibold"
-        onClick={() =>
-          router.pathname !== '/'
-            ? router.push('/?buy')
-            : scroller.scrollTo('buy', {
-                duration: 400,
-                smooth: 'easeIn',
-                offset: -30,
-              })
-        }
-      >
-        Save {savings}
-      </button>
-      <div>
-        {state?.context?.price?.coupon?.coupon_expires_at && (
-          <Countdown
-            date={Number(
-              `${state.context.price.coupon.coupon_expires_at}` + '000'
-            )}
-          />
-        )}
+      <div className="flex items-center justify-center sm:space-x-2 sm:flex-row flex-row-reverse">
+        <button
+          className="bg-black py-1 sm:ml-0 ml-3 hover:shadow-xl transform hover:scale-105 focus:scale-95 transition-all ease-in-out duration-200 text-white rounded-full px-4 text-sm font-semibold"
+          onClick={() =>
+            router.pathname !== '/'
+              ? router.push('/?buy')
+              : scroller.scrollTo('buy', {
+                  duration: 400,
+                  smooth: 'easeIn',
+                  offset: -30,
+                })
+          }
+        >
+          Save {savings}
+        </button>
+        <div>
+          {state?.context?.price?.coupon?.coupon_expires_at && (
+            <Countdown
+              date={Number(
+                `${state.context.price.coupon.coupon_expires_at}` + '000'
+              )}
+            />
+          )}
+        </div>
       </div>
-    </div>
+    </motion.div>
   )
 }

@@ -1,7 +1,6 @@
 import Link from 'next/link'
 import useSellingLive from 'hooks/use-selling-live'
 import { useViewer } from 'context/viewer-context'
-import { useMedia } from 'react-use'
 import { useCommerceMachine } from 'hooks/use-commerce-machine'
 import getBundles from 'utils/get-bundles'
 import MessageBar from 'components/message-bar'
@@ -10,7 +9,6 @@ import Tippy from '@tippyjs/react'
 
 const Navigation = ({ children, className = '', displayLogout, ...props }) => {
   const router = useRouter()
-  const isTablet = useMedia('(max-width: 920px)')
   const sellingLive = useSellingLive()
   const sellable = getBundles()[0]
   const { purchased, viewer, logout } = useViewer()
@@ -33,13 +31,12 @@ const Navigation = ({ children, className = '', displayLogout, ...props }) => {
     !noDiscountAvailable &&
     sellingLive &&
     !viewer &&
-    !isTablet &&
     !location.pathname.includes('modules')
 
   return (
     <div
-      className={`absolute top-0 left-0 z-10 w-full ${
-        showDiscountBar ? 'p-5 pt-16' : 'p-5'
+      className={`absolute top-0 transition-all duration-700 ease-in-out left-0 z-10 w-full ${
+        showDiscountBar ? 'p-5 sm:pt-16 pt-14' : 'p-5'
       } print:hidden ${className}`}
     >
       {sellingLive && showDiscountBar && (

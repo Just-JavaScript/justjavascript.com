@@ -33,13 +33,13 @@ const LandingPage = ({ bundles }) => {
     <Layout maxWidth="" background="bg-white" navClassName="text-white">
       <ClaimCoupon />
       <header className="relative flex items-center justify-center -mx-5">
-        <div className="w-full min-h-[calc(65vh+55px)] pt-24 sm:pb-40 pb-24 bg-black text-white flex sm:flex-row flex-col-reverse items-center justify-center px-5">
+        <div className="w-full min-h-[calc(65vh+55px)] sm:pt-24 pt-40 sm:pb-40 pb-24 bg-black text-white flex sm:flex-row flex-col-reverse items-center justify-center px-5">
           <div className="text-center w-full max-w-screen-lg mx-auto">
             <div className="relative z-10">
               <h1 className="text-transparent bg-clip-text bg-gradient-to-r from-white to-orange-100 relative z-10 max-w-xl mx-auto font-serif text-4xl font-extrabold md:text-6xl sm:text-5xl leading-tighter">
                 <span>Explore the</span> JavaScript Universe
               </h1>
-              <h2 className="font-light sm:text-xl text-lg text-orange-200 font-serif pt-4">
+              <h2 className="font-light sm:text-xl text-lg text-orange-200 font-serif pt-4 leading-tight">
                 Rebuild your mental model from the inside out.
               </h2>
               <div className="mt-8 relative inline-flex justify-center items-center">
