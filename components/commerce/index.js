@@ -7,7 +7,7 @@ import CCs from '../../images/cc.svg'
 const Commerce = ({ bundles, children }) => {
   const [basic] = bundles
   return (
-    <div className="px-5 py-10 -m-5 bg-gray-50 sm:py-16 relative" id="buy">
+    <div className="px-5 py-10 -m-5 bg-gray-50 sm:py-24 relative" id="buy">
       <Element name="buy" />
       {/* <div className="flex items-center justify-center w-full pb-5">
         <Image

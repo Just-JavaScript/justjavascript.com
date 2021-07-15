@@ -12,9 +12,9 @@ const Testimonials = () => {
     500: 1,
   }
   return (
-    <section className="py-8 sm:py-16 bg-gray-50 -m-5 px-5 border-t border-gray-100">
-      <h2 className="max-w-screen-md pb-16 mx-auto font-serif text-3xl font-extrabold text-center lg:text-4xl sm:text-4xl leading-tighter">
-        What people are saying...
+    <section className="pt-16 sm:pt-24 pb-16 bg-gray-100 -m-5 px-5 border-t border-gray-200 border-opacity-50 flex flex-col items-center relative">
+      <h2 className="max-w-screen-md sm:pb-16 pb-10 mx-auto font-serif text-2xl font-extrabold text-center lg:text-4xl sm:text-3xl leading-tighter">
+        What People Are Saying
       </h2>
       <div
         className={`flex flex-col items-center max-w-screen-xl mx-auto w-full relative ${
@@ -72,20 +72,18 @@ const Testimonials = () => {
             )
           })}
         </Masonry>
-        {!isOpen && (
-          <div className="absolute pointer-events-none bottom-0 left-0 w-full h-56 bg-gradient-to-t from-gray-50 to-transparent" />
+        {!isOpen ? (
+          <div className="absolute pointer-events-none bottom-0 left-0 w-full h-56 bg-gradient-to-t from-gray-100 to-transparent" />
+        ) : (
+          <div className="py-2" />
         )}
-        <button
-          className={`hover:scale-105 transition-all ease-in-out duration-200 flex items-center rounded-full bg-white shadow-xl focus:scale-95 px-5 py-3 ${
-            isOpen
-              ? 'absolute bottom-0 transform translate-y-10'
-              : 'absolute bottom-8'
-          }`}
-          onClick={() => setOpen(!isOpen)}
-        >
-          {isOpen ? 'Show Less' : 'Show More'}
-        </button>
       </div>
+      <button
+        className="absolute bottom-8 hover:scale-105 transition-all ease-in-out duration-200 flex items-center rounded-full bg-white shadow-xl focus:scale-95 px-5 py-3"
+        onClick={() => setOpen(!isOpen)}
+      >
+        {isOpen ? 'Show Less' : 'Show More'}
+      </button>
     </section>
   )
 }
