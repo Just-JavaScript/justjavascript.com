@@ -6,6 +6,9 @@ import { isEmpty, get, find, noop } from 'lodash'
 import ParityCouponMessage from './parity-coupon-message'
 import { useCommerceMachine } from '../../hooks/use-commerce-machine'
 import { episodes } from 'components/toc'
+import Spinner from 'components/spinner'
+import CrystalBall from '../../public/crystal-ball@2x.png'
+import Image from 'next/image'
 
 const PurchaseButton = ({ purchasing, children, bundle, onClick }) => {
   const purchasingStyles = 'opacity-50 cursor-default'
@@ -14,7 +17,7 @@ const PurchaseButton = ({ purchasing, children, bundle, onClick }) => {
     <button
       className={`${
         purchasing ? purchasingStyles : 'hover:scale-105'
-      } flex mx-auto text-center rounded-lg border border-transparent font-sans focus:scale-90 bg-black px-10 py-5 text-lg font-bold leading-6 text-white transition-all ease-in-out duration-150 transform hover:shadow-container`}
+      } flex mx-auto text-center rounded-full w-full items-center justify-center border border-transparent font-sans focus:scale-95 bg-black sm:px-10 px-8 sm:py-5 py-4 sm:text-lg font-bold leading-6 text-white transition-all ease-in-out duration-150 transform hover:shadow-container`}
       aria-describedby={`${bundle.title} Tier`}
       onClick={onClick}
     >
@@ -40,6 +43,8 @@ const PurchaseBundle = ({
     state.matches('stripePurchase') ||
     state.matches('handlePurchase') ||
     state.matches('success')
+  const isFetchingPrice = state.matches('fetchingPrice')
+
   const bundleSlug = bundle.slug
 
   React.useEffect(() => {
@@ -107,14 +112,14 @@ const PurchaseBundle = ({
     if (isEmpty(price.bulk_discount) && isEmpty(price.coupon)) {
       return
     }
-    
+
     const fractionOff =
       quantity === 1
         ? Number(price.coupon.coupon_discount)
         : Number(price.bulk_discount)
 
     if (fractionOff) {
-      return Math.ceil(fractionOff) * 100
+      return 100 - Math.ceil((displayPrice / displayFullPrice) * 100)
     }
   }
 
@@ -146,8 +151,17 @@ const PurchaseBundle = ({
 
   return (
     <>
-      <div className="max-w-sm mx-auto w-full bg-white sm:p-8 p-0 rounded-xl shadow-xl">
+      <div className="max-w-sm mx-auto w-full bg-white sm:px-8 px-5 sm:pb-8 pb-5 rounded-xl shadow-xl">
         <div>
+          <div className="flex items-center justify-center w-full">
+            <div className="flex items-center justify-center w-40 p-2 -mt-10 overflow-hidden rounded-full bg-white">
+              <Image
+                src={CrystalBall}
+                alt="a crystal ball"
+                placeholder="blur"
+              />
+            </div>
+          </div>
           {state.context.error && (
             <div className="w-full p-4 mt-4 mb-4 bg-white border rounded-lg border-tomato-400">
               <h4 className="w-full text-center text-tomato-600">
@@ -157,9 +171,13 @@ const PurchaseBundle = ({
               </h4>
             </div>
           )}
-          {expiresAt && !parityCoupon && <Countdown date={expiresAt} />}
+          {expiresAt && !parityCoupon && (
+            <div className="border-b border-gray-100 pb-8 sm:pt-4 pt-4">
+              <Countdown date={expiresAt} />
+            </div>
+          )}
           <div className="flex items-center justify-center pt-8">
-            <div className="flex items-start px-3 leading-none tracking-tight text-gray-900 sm:text-6xl">
+            <div className="relative flex items-start px-3 leading-none tracking-tight text-gray-900 sm:text-6xl">
               <div className="relative font-serif text-6xl font-bold sm:text-7xl tabular-nums">
                 <span className="absolute flex right-full mt-1 leading-none font-sans font-semibold tracking-wide">
                   <sup className="text-sm mt-1 font-bold text-gray-400">US</sup>
@@ -170,15 +188,25 @@ const PurchaseBundle = ({
               {((state.context.quantity && state.context.quantity > 4) ||
                 displayPercentOff) && (
                 <div className="flex flex-col">
-                  <span className="ml-2 font-serif text-4xl font-semibold text-gray-700 line-through">
-                    {typeof displayFullPrice === 'number' &&
-                      displayFullPrice * (state.context.quantity || 1)}
+                  <span className="ml-2 font-serif text-4xl font-semibold text-gray-700">
+                    <div>
+                      <span className="relative inline-flex items-center">
+                        {typeof displayFullPrice === 'number' &&
+                          displayFullPrice * (state.context.quantity || 1)}
+                        <div className="absolute w-[130%] h-1 bg-orange-500 -left-1 rotate-[-27deg]" />
+                      </span>
+                    </div>
                   </span>
                   {displayPercentOff && (
-                    <span className="ml-2 text-base font-bold tracking-normal text-emerald-500">
+                    <span className="ml-2 text-base font-bold tracking-normal text-orange-500">
                       {`Save ${displayPercentOff}%`}!
                     </span>
                   )}
+                </div>
+              )}
+              {isFetchingPrice && (
+                <div className="absolute -right-3 top-0">
+                  <Spinner className="text-black" />
                 </div>
               )}
             </div>
@@ -202,7 +230,7 @@ const PurchaseBundle = ({
                   const newQuantity = event.target.value
                   setTeamQuantity({ quantity: Number(newQuantity) })
                 }}
-                className="flex px-2 rounded-lg w-14 py-2 text-sm font-semibold leading-tight text-center border-gray-200 form-input focus:outline-orange"
+                className="flex px-2 rounded-full w-14 py-2 text-sm font-semibold leading-tight text-center border-gray-200 form-input focus:ring-orange-500 focus:ring-2 focus:outline-none focus:border-white"
                 name="quantity"
                 type="number"
                 min="1"
@@ -211,7 +239,7 @@ const PurchaseBundle = ({
             </div>
           </motion.div>
         </div>
-        <div className="rounded-lg pb-8">
+        <div className="rounded-lg sm:pb-8 pb-4">
           {disablePurchaseButton ? (
             <PurchaseButton purchasing bundle={bundle}>
               Navigating to checkout...

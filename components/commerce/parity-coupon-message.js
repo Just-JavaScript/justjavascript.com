@@ -42,9 +42,9 @@ const ParityCouponMessage = ({
         {/* new */}
         <button
           type="button"
-          className={`inline-flex shadow-lg items-center justify-center px-5 py-3 text-sm ${
+          className={`rounded-full inline-flex shadow-lg items-center justify-center px-4 py-3 text-sm ${
             isPPP ? ' bg-emerald-500 text-white' : 'bg-white'
-          } rounded-md`}
+          }`}
           onClick={isPPP ? onDismiss : onApply}
           role="switch"
           aria-checked={isPPP}
