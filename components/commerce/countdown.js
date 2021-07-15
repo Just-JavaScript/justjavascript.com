@@ -1,7 +1,7 @@
 import React from 'react'
-import ReactCountdown, {zeroPad} from 'react-countdown'
+import ReactCountdown, { zeroPad } from 'react-countdown'
 
-const Countdown = ({children, date}) => {
+const Countdown = ({ children, date }) => {
   const numberOf = (number, label) => {
     return (
       <div>
@@ -12,18 +12,12 @@ const Countdown = ({children, date}) => {
       </div>
     )
   }
-  const renderer = ({
-    days,
-    hours,
-    minutes,
-    seconds,
-    completed,
-  }) => {
+  const renderer = ({ days, hours, minutes, seconds, completed }) => {
     if (completed) {
       return <>{children}</>
     } else {
       return (
-        <div className="bg-cool-gray-100 rounded-lg sm:px-10 sm:p-8 p-5 text-center max-w-sm mx-auto mb-8">
+        <div className="text-center max-w-sm mx-auto">
           <div className="flex items-center justify-center mb-5">
             <h3 className="text-base font-medium leading-tight ">
               Limited offer! Price goes up in:

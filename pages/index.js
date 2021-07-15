@@ -46,7 +46,7 @@ const LandingPage = ({ bundles }) => {
               <div className="mt-8 relative inline-flex justify-center items-center">
                 {viewer && purchased ? (
                   <Link href="/learn">
-                    <a className="relative z-10 px-6 py-3 font-semibold rounded-full bg-white text-black hover:scale-105 inline-flex ease-in-out duration-200 transition-all">
+                    <a className="focus:scale-95 relative z-10 px-6 py-3 font-semibold rounded-full bg-white text-black hover:scale-105 inline-flex ease-in-out duration-250 transition-all">
                       Access Content
                     </a>
                   </Link>
@@ -124,7 +124,7 @@ const LandingPage = ({ bundles }) => {
           <section className="py-8">
             <TechnicalDetails />
           </section>
-          <section className="py-8" id="buy">
+          <section className="py-8">
             <Commerce bundles={bundles} />
           </section>
           <Testimonials />
