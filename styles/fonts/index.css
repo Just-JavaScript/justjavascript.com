@@ -7,6 +7,7 @@
       format('woff2'),
     url('./recoleta/ae806a08-3dbf-488d-98be-9a095e667942.woff') format('woff');
   font-display: auto;
+  unicode-range: U+000-5FF;
 }
 @font-face {
   font-family: 'Recoleta';
@@ -15,6 +16,7 @@
       format('woff2'),
     url('./recoleta/92cd2256-c74e-421f-bd64-a207c4063918.woff') format('woff');
   font-display: auto;
+  unicode-range: U+000-5FF;
 }
 @font-face {
   font-family: 'Recoleta';
@@ -23,6 +25,7 @@
       format('woff2'),
     url('./recoleta/e6710639-8b79-4a63-a860-ae77c0a544b8.woff') format('woff');
   font-display: auto;
+  unicode-range: U+000-5FF;
 }
 @font-face {
   font-family: 'Recoleta';
@@ -31,6 +34,7 @@
       format('woff2'),
     url('./recoleta/371e1726-ae12-4456-90a5-eb4d427383ad.woff') format('woff');
   font-display: auto;
+  unicode-range: U+000-5FF;
 }
 @font-face {
   font-family: 'Recoleta';
@@ -39,6 +43,7 @@
       format('woff2'),
     url('./recoleta/e0e9d6be-89c5-4575-9fa7-e5fbb9f2806e.woff') format('woff');
   font-display: auto;
+  unicode-range: U+000-5FF;
 }
 @font-face {
   font-family: 'Recoleta';
@@ -47,6 +52,7 @@
       format('woff2'),
     url('./recoleta/5bd4d989-3af2-463a-9533-02dc7b4e6df3.woff') format('woff');
   font-display: auto;
+  unicode-range: U+000-5FF;
 }
 
 /* Adelle Sans - body */
@@ -58,7 +64,7 @@
       format('woff2'),
     url('./adelle-sans/443ce2ab-2de1-4afb-b0a6-3881d8a773af.woff')
       format('woff');
-  font-display: auto;
+  font-display: swap;
 }
 @font-face {
   font-family: 'Adelle Sans';
@@ -68,7 +74,7 @@
       format('woff2'),
     url('./adelle-sans/1d06014b-4d92-4b59-9377-5216800a2012.woff')
       format('woff');
-  font-display: auto;
+  font-display: swap;
 }
 @font-face {
   font-family: 'Adelle Sans';
@@ -78,7 +84,7 @@
       format('woff2'),
     url('./adelle-sans/0d47342d-a569-41fa-a7a3-43dfb7eb5959.woff')
       format('woff');
-  font-display: auto;
+  font-display: swap;
 }
 @font-face {
   font-family: 'Adelle Sans';
@@ -88,7 +94,7 @@
       format('woff2'),
     url('./adelle-sans/43c0aae9-b264-4587-ae67-ae54bbbd3cf4.woff')
       format('woff');
-  font-display: auto;
+  font-display: swap;
 }
 @font-face {
   font-family: 'Adelle Sans';
@@ -98,7 +104,7 @@
       format('woff2'),
     url('./adelle-sans/cc3f36f4-16af-49ca-80f7-b30f3889512c.woff')
       format('woff');
-  font-display: auto;
+  font-display: swap;
 }
 @font-face {
   font-family: 'Adelle Sans';
@@ -108,7 +114,7 @@
       format('woff2'),
     url('./adelle-sans/18d22ec5-f408-4112-9656-f318554d1a9d.woff')
       format('woff');
-  font-display: auto;
+  font-display: swap;
 }
 @font-face {
   font-family: 'Adelle Sans';
@@ -118,7 +124,7 @@
       format('woff2'),
     url('./adelle-sans/a259ff70-bdac-4f51-b83c-b84b66f3c879.woff')
       format('woff');
-  font-display: auto;
+  font-display: swap;
 }
 @font-face {
   font-family: 'Adelle Sans';
@@ -128,7 +134,7 @@
       format('woff2'),
     url('./adelle-sans/43d84028-9206-465e-bb35-88f2d7117f35.woff')
       format('woff');
-  font-display: auto;
+  font-display: swap;
 }
 
 /* Adelle Mono */
