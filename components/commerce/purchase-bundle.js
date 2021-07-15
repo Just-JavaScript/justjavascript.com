@@ -6,6 +6,7 @@ import { isEmpty, get, find, noop } from 'lodash'
 import ParityCouponMessage from './parity-coupon-message'
 import { useCommerceMachine } from '../../hooks/use-commerce-machine'
 import { episodes } from 'components/toc'
+import Spinner from 'components/spinner'
 
 const PurchaseButton = ({ purchasing, children, bundle, onClick }) => {
   const purchasingStyles = 'opacity-50 cursor-default'
@@ -40,6 +41,8 @@ const PurchaseBundle = ({
     state.matches('stripePurchase') ||
     state.matches('handlePurchase') ||
     state.matches('success')
+  const isFetchingPrice = state.matches('fetchingPrice')
+
   const bundleSlug = bundle.slug
 
   React.useEffect(() => {
@@ -107,14 +110,14 @@ const PurchaseBundle = ({
     if (isEmpty(price.bulk_discount) && isEmpty(price.coupon)) {
       return
     }
-    
+
     const fractionOff =
       quantity === 1
         ? Number(price.coupon.coupon_discount)
         : Number(price.bulk_discount)
 
     if (fractionOff) {
-      return Math.ceil(fractionOff) * 100
+      return 100 - Math.ceil((displayPrice / displayFullPrice) * 100)
     }
   }
 
@@ -159,7 +162,7 @@ const PurchaseBundle = ({
           )}
           {expiresAt && !parityCoupon && <Countdown date={expiresAt} />}
           <div className="flex items-center justify-center pt-8">
-            <div className="flex items-start px-3 leading-none tracking-tight text-gray-900 sm:text-6xl">
+            <div className="relative flex items-start px-3 leading-none tracking-tight text-gray-900 sm:text-6xl">
               <div className="relative font-serif text-6xl font-bold sm:text-7xl tabular-nums">
                 <span className="absolute flex right-full mt-1 leading-none font-sans font-semibold tracking-wide">
                   <sup className="text-sm mt-1 font-bold text-gray-400">US</sup>
@@ -179,6 +182,11 @@ const PurchaseBundle = ({
                       {`Save ${displayPercentOff}%`}!
                     </span>
                   )}
+                </div>
+              )}
+              {isFetchingPrice && (
+                <div className="absolute -right-3 top-0">
+                  <Spinner className="text-black" />
                 </div>
               )}
             </div>
