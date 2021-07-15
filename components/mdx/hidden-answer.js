@@ -1,6 +1,6 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
-import {jsx} from '@emotion/react'
+import { jsx } from '@emotion/react'
 import React from 'react'
 
 const HiddenAnswer = ({
@@ -23,7 +23,7 @@ const HiddenAnswer = ({
             </div>
             <div className="mb-4">{byline}</div>
             <button
-              className="px-8 py-2 font-semibold leading-8 text-white transition-colors duration-200 ease-in-out bg-black rounded-md sm:px-10 sm:py-3 hover:bg-gray-900"
+              className="px-8 py-2 font-semibold leading-8 text-white transition-all duration-200 ease-in-out bg-black hover:scale-105 hover:shadow-xl focus:scale-90 rounded-full sm:px-10 sm:py-3 hover:bg-gray-900"
               onClick={() => setShown(!isShown)}
             >
               {action}
@@ -38,14 +38,14 @@ const HiddenAnswer = ({
           }}
           className="w-full"
         >
-          <div style={{opacity: isShown ? 1 : 0.2}}>
+          <div style={{ opacity: isShown ? 1 : 0.2 }}>
             <div className="pt-8 font-serif text-3xl font-bold text-center sm:text-4xl">
               Answer
             </div>
             <div
               css={{
-                '> :first-of-type': {marginTop: 0},
-                '> :last-of-type': {marginBottom: 0},
+                '> :first-of-type': { marginTop: 0 },
+                '> :last-of-type': { marginBottom: 0 },
               }}
             >
               {children}

@@ -76,7 +76,7 @@ const Testimonials = () => {
           <div className="absolute pointer-events-none bottom-0 left-0 w-full h-56 bg-gradient-to-t from-gray-50 to-transparent" />
         )}
         <button
-          className={`hover:scale-105 transition-all ease-in-out duration-200 flex items-center rounded-lg bg-black shadow-xl text-white px-5 py-3 ${
+          className={`hover:scale-105 transition-all ease-in-out duration-200 flex items-center rounded-lg bg-white shadow-xl focus:scale-95 px-5 py-3 ${
             isOpen
               ? 'absolute bottom-0 transform translate-y-10'
               : 'absolute bottom-8'

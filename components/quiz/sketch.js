@@ -51,7 +51,9 @@ const Sketch = (props) => {
       <QuestionWrapper number={number}>
         <div>
           {isMDX ? (
-            <div className="prose prose-sans max-w-none">{question.prompt}</div>
+            <div className="prose prose-sans sm:prose-sans-lg max-w-none">
+              {question.prompt}
+            </div>
           ) : (
             <Markdown>{question.prompt}</Markdown>
           )}
@@ -95,7 +97,7 @@ const Sketch = (props) => {
                 ) : (
                   <>
                     <textarea
-                      className="w-full h-24 p-3 mt-4 bg-gray-100 border border-gray-200 rounded-md max-w-none focus:border-orange-500 focus:outline-none focus:ring-0"
+                      className="sm:text-lg w-full h-24 p-3 mt-4 bg-gray-100 border border-gray-200 rounded-md max-w-none focus:border-orange-500 focus:outline-none focus:ring-0"
                       disabled={isDisabled}
                       id="comment"
                       name="comment"

@@ -21,8 +21,8 @@ const LoginForm = ({
 
   return (
     <Layout meta={{ title: 'Log In to Just JavaScript' }} background="bg-white">
-      <div className="flex flex-col items-center justify-center w-full max-w-screen-md mx-auto text-gray-900 sm:flex-row">
-        <div className="flex-shrink-0 max-w-xs sm:w-auto">
+      <div className="min-h-screen flex flex-col items-center sm:justify-center sm:pt-0 pt-20 justify-start w-full max-w-screen-lg mx-auto text-gray-900 lg:flex-row">
+        <div className="flex-shrink-0 max-w-[18rem] sm:w-auto">
           <Image
             src="/crystal-ball@2x.png"
             width={800 / 2}
@@ -31,7 +31,7 @@ const LoginForm = ({
             quality={100}
           />
         </div>
-        <div className="w-full pl-0 mx-auto text-center rounded-lg sm:pl-8 sm:text-left">
+        <div className="flex-shrink-0 pl-0 text-center rounded-lg max-w-[34rem] w-full lg:pl-16 lg:text-left">
           {isSubmitted && (
             <h1 className="font-serif text-4xl font-bold sm:text-5xl">
               Email Sent
@@ -54,7 +54,7 @@ const LoginForm = ({
                 <p></p>
               </>
             ))}
-          <div className="sm:w-full sm:max-w-xl">
+          <div className="w-full">
             <div className="py-4">
               {!isSubmitted && !isError && (
                 <Formik
@@ -82,11 +82,11 @@ const LoginForm = ({
                     } = props
                     return (
                       <>
-                        <form onSubmit={handleSubmit} className="text-lg">
+                        <form onSubmit={handleSubmit} className="">
                           <div className="w-full py-4">
                             <label
                               htmlFor="email"
-                              className="block pb-2 leading-5 text-gray-700"
+                              className="block pb-2 text-base text-gray-700"
                             >
                               {label}
                             </label>
@@ -98,18 +98,18 @@ const LoginForm = ({
                                 value={values.email}
                                 onChange={handleChange}
                                 onBlur={handleBlur}
-                                className="w-full shadow-xl max-w-sm px-4 py-3 text-lg rounded-lg border border-gray-200 focus:border-transparent focus:outline-none focus:ring focus:ring-orange-400"
+                                className="w-full shadow-xl max-w-sm px-4 py-3 lg:text-left text-center rounded-lg border border-gray-200 focus:border-transparent focus:outline-none focus:ring focus:ring-orange-400"
                                 placeholder="you@example.com"
                                 type="email"
-                                autoComplete="email"
+                                autoComplete="on"
                               />
                             </div>
                           </div>
-                          <div className="pt-4">
+                          <div className="pt-8">
                             <button
                               type="submit"
                               disabled={isSubmitting}
-                              className="inline-flex px-4 py-3 text-white transition-all duration-200 ease-in-out transform bg-black rounded-lg hover:scale-105 focus:scale-90 focus:ring focus:outline-none focus:ring-orange-400 hover:shadow-xl"
+                              className="inline-flex px-6 py-3 text-white transition-all duration-200 ease-in-out transform bg-black rounded-full hover:scale-105 focus:scale-90 focus:ring focus:outline-none focus:ring-orange-400 hover:shadow-xl"
                             >
                               {button}
                             </button>
@@ -126,8 +126,9 @@ const LoginForm = ({
                     Please check your inbox for your sign-in link.
                   </h2>
                   <p className="leading-relaxed opacity-80">
-                    Sometimes this can land in SPAM! While we hope that this won’t
-                    happen, please check if it doesn’t arrive in a minute or three.
+                    Sometimes this can land in SPAM! While we hope that this
+                    won’t happen, please check if it doesn’t arrive in a minute
+                    or three.
                   </p>
                 </div>
               )}

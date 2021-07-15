@@ -68,7 +68,7 @@ function Sketch({ id, baseId }) {
           alignItems: 'center',
         }}>
           <button
-            className="mb-8 mt-8 py-2 px-8 leading-6 text-white transition-colors duration-200 ease-in-out bg-black rounded-md sm:px-10 sm:py-3 hover:bg-gray-900"
+            className="text-base mb-8 mt-8 py-2 px-8 leading-6 border focus:scale-95  border-gray-100 text-black transition-all duration-200 ease-in-out bg-white shadow-xl rounded-full sm:px-10 sm:py-3 hover:bg-gray-50"
             onClick={() => {
               ref.current.updateScene({
                 elements: JSON.parse(JSON.stringify(latestState.get(baseId)))
