@@ -60,18 +60,18 @@ export default function Wrapper({
             displayContinue
               ? 'visible'
               : question.questions
-              ? 'invisible'
+              ? 'invisible hidden'
               : 'invisible hidden'
           } flex py-8 mx-auto w-full items-center justify-center`}
         >
           <Continue isLastQuestion={isLastQuestion} onClick={handleContinue} />
         </div>
-        <div className={`${displayFinish ? '' : ''}  `}>
+        <div>
           {question.questions && (
             <div
               className={`${
                 displaySkip ? 'visible' : 'invisible'
-              } flex items-center justify-center w-full py-8 mb-8`}
+              } flex items-center justify-center w-full my-8`}
             >
               <Tippy
                 content="Skip and continue"

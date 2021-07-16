@@ -13,10 +13,7 @@ export default function Explanation({ children, label, className }) {
   }, [])
 
   return (
-    <motion.div
-      layout
-      initial={{ opacity: 0, height: '0%' }}
-      animate={{ opacity: 1, height: '100%' }}
+    <div
       className={`bg-white md:mt-3 mt-3 relative z-0 md:p-8 p-5 flex sm:flex-row flex-col sm:space-x-3 md:rounded-lg border border-cool-gray-100 overflow-y-auto ${
         className ? className : ''
       }`}
@@ -37,6 +34,6 @@ export default function Explanation({ children, label, className }) {
       >
         {isMDX ? children : <Markdown>{children}</Markdown>}
       </div>
-    </motion.div>
+    </div>
   )
 }
