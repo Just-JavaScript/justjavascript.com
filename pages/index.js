@@ -41,7 +41,7 @@ const LandingPage = ({ bundles }) => {
                 <span>Explore the</span> JavaScript Universe
               </h1>
               <h2 className="font-light sm:text-xl text-lg text-orange-200 font-serif pt-4 leading-tight">
-                Rebuild your mental model from the inside out.
+                Rebuild your mental model from the inside&nbsp;out.
               </h2>
               <div className="mt-8 relative inline-flex justify-center items-center">
                 {viewer && purchased ? (
