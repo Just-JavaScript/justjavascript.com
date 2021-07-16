@@ -180,6 +180,14 @@ const credits = [
       'Joel directed and guided the development and production of Just JavaScript, collaborating closely with Dan and Maggie and the rest of the team throughout the process. He also served as the technical lead.',
   },
   {
+    name: 'Kait Hoehne',
+    byline: 'Editor',
+    twitter: 'KaitHoehne',
+    image: '/team/kait-hoehne.jpg',
+    description:
+      'Kait did all the editorial work for Just JavaScript, including making the content easier to follow and stylistically consistent.',
+  },
+  {
     name: 'Vojta Holik',
     byline: 'Product Design & Development',
     twitter: 'vjthlk',
@@ -193,7 +201,7 @@ const credits = [
     twitter: '_jonesian',
     image: '/team/ian-jones.jpg',
     description:
-      'Ian did back-end development and infrastructure work, including the eCommerce components, authorization routes,  and quiz functionality.',
+      'Ian did back-end development and infrastructure work, including the eCommerce components, authorization routes, and quiz functionality.',
   },
   {
     name: 'Lauro Silva',
