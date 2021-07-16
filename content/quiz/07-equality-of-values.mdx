@@ -258,8 +258,7 @@ We have **different object values on each side of `===`**. So the check will **n
 
 ```js
 let ticket = { id: 0 };
-if (ticket === { id: 0 }) {
-  // false
+if (ticket === { id: 0 }) { // false
   console.log('Bad ticket'); // Will not run.
 }
 ```
@@ -297,8 +296,7 @@ There is only one number value `0` in our universe, and **we have that same valu
 
 ```js
 let ticketId = 0;
-if (ticketId === 0) {
-  // true
+if (ticketId === 0) { // true
   console.log('Bad ticket'); // Will run!
 }
 ```
@@ -345,10 +343,10 @@ Even though `0` and `-0` are two different values, `===` considers them equal.
 Sketch a diagram of variables and values after this snippet of code runs.
 
 ```js
-let tea = function () {
+let tea = function() {
   return 0 / 0;
 };
-let coffee = function () {
+let coffee = function() {
   return 0 / 0;
 };
 let matcha = tea();
@@ -424,7 +422,7 @@ Now **use this sketch** to answer these questions:
 3. `matcha === latte)`
 4. `Object.is(matcha, latte)`
 
-![https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612902619/just-javascript-email-images/jj06/Quiz%20Images/jjs-06-09-c.jpg](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612902619/just-javascript-email-images/jj06/Quiz%20Images/jjs-06-09-c.jpg)
+![https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612902727/just-javascript-email-images/jj06/Quiz%20Images/jjs-06-09-d.jpg](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1612902727/just-javascript-email-images/jj06/Quiz%20Images/jjs-06-09-d.jpg)
 
 </Prompt>
 
