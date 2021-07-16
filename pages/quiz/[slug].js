@@ -13,7 +13,7 @@ import { serverSideAuthCheck } from 'utils/serverSideAuthCheck'
 
 const components = mdxComponents
 
-const EpisodePage = ({ source, meta, ...props }) => {
+const QuizPage = ({ source, meta, ...props }) => {
   const isVerifyingLogin = useLoginRequired()
   const { isUnclaimedBulkPurchaser, loading } = useViewer()
 
@@ -60,4 +60,4 @@ export const getServerSideProps = async ({ params, req }) => {
   }
 }
 
-export default EpisodePage
+export default QuizPage
