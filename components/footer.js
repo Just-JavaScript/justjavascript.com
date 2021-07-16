@@ -38,7 +38,9 @@ const Footer = () => {
         {sellingLive && (
           <div
             className={`pt-16 flex flex-col ${
-              pathname === '/learn' ? 'sm:items-end' : 'sm:items-center'
+              pathname === '/learn'
+                ? 'sm:items-end items-center'
+                : 'items-center'
             }`}
           >
             <Link href="/credits">
