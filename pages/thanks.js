@@ -13,14 +13,14 @@ export default function Thanks({ displayEmail }) {
   return (
     <Layout noFooter={true}>
       <Confetti />
-      <div className="mx-auto w-full text-center">
-        <h1 className="max-w-screen-md mx-auto font-serif text-5xl font-extrabold leading-tight">
+      <div className="mx-auto w-full text-center py-24">
+        <h1 className="max-w-screen-md mx-auto font-serif md:text-5xl sm:text-3xl text-2xl font-extrabold leading-tight">
           Thank you for purchasing Just JavaScript! Check your inbox.
         </h1>
-        <code className="font-sans text-3xl font-bold py-8 inline-block">
+        <code className="font-sans lg:text-3xl sm:text-2xl font-bold py-8 inline-block">
           {displayEmail}
         </code>
-        <p className="max-w-3xl text-lg mx-auto w-full pt-2 leading-relaxed ">
+        <p className="max-w-3xl sm:text-lg mx-auto w-full pt-2 leading-relaxed sm:text-center text-left">
           As a final step to access the course you need to check your inbox{' '}
           <code className="font-semibold text-base px-2 py-1 bg-white shadow-lg rounded-md">
             {emailText}
