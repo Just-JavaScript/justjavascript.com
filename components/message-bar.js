@@ -22,7 +22,7 @@ const Countdown = ({ date }) => {
       return null
     } else {
       return (
-        <div className="flex sm:flex-row flex-col sm:space-x-1.5 sm:items-center justify-center">
+        <div className="flex sm:flex-row sm:space-x-1.5 space-x-1 sm:items-center justify-center">
           <div className="sm:text-xs text-[0.7rem] flex items-center font-semibold">
             Ending in:
           </div>
@@ -60,13 +60,22 @@ export default function MessageBar({ state, displayFullPrice, displayPrice }) {
       animate={{ top: ['-100%', '0%'] }}
       className="absolute space-x-2 top-0 left-0 flex items-center sm:justify-center justify-between px-3 sm:py-0 py-3 sm:h-10 h-12 w-full bg-white text-black"
     >
-      <div className="flex items-center sm:py-2 sm:flex-grow-0 flex-grow">
+      <div className="flex sm:flex-row flex-col sm:items-center sm:py-2">
         <div className="text-sm font-semibold flex items-center space-x-1">
           <span role="img" aria-label="crystal ball" className="text-lg">
             🔮
           </span>{' '}
           <span>Launch discount</span>
         </div>
+        {state?.context?.price?.coupon?.coupon_expires_at && (
+          <div className="sm:hidden block">
+            <Countdown
+              date={Number(
+                `${state.context.price.coupon.coupon_expires_at}` + '000'
+              )}
+            />
+          </div>
+        )}
       </div>
       <div className="flex items-center justify-center sm:space-x-2 sm:flex-row flex-row-reverse">
         <button
@@ -83,15 +92,15 @@ export default function MessageBar({ state, displayFullPrice, displayPrice }) {
         >
           Save {savings}
         </button>
-        <div>
-          {state?.context?.price?.coupon?.coupon_expires_at && (
+        {state?.context?.price?.coupon?.coupon_expires_at && (
+          <div className="sm:block hidden">
             <Countdown
               date={Number(
                 `${state.context.price.coupon.coupon_expires_at}` + '000'
               )}
             />
-          )}
-        </div>
+          </div>
+        )}
       </div>
     </motion.div>
   )

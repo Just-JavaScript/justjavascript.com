@@ -119,7 +119,7 @@ const PurchaseBundle = ({
         : Number(price.bulk_discount)
 
     if (fractionOff) {
-      return 100 - Math.ceil((displayPrice / displayFullPrice) * 100)
+      return 100 - Math.ceil((currentPrice / (fullPrice * quantity)) * 100)
     }
   }
 
@@ -193,11 +193,11 @@ const PurchaseBundle = ({
                       <span className="relative inline-flex items-center">
                         {typeof displayFullPrice === 'number' &&
                           displayFullPrice * (state.context.quantity || 1)}
-                        <div className="absolute w-[130%] h-1 bg-orange-500 -left-1 rotate-[-27deg]" />
+                        <div className="absolute w-[130%] h-1 bg-orange-500 -left-1 rotate-[-15deg]" />
                       </span>
                     </div>
                   </span>
-                  {displayPercentOff && (
+                  {displayPercentOff && !isFetchingPrice && (
                     <span className="ml-2 text-base font-bold tracking-normal text-orange-500">
                       {`Save ${displayPercentOff}%`}!
                     </span>
