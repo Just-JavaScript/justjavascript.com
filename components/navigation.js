@@ -102,7 +102,7 @@ const Navigation = ({ children, className = '', displayLogout, ...props }) => {
           ) : sellingLive ? (
             <Link href="/login">
               <a className="px-3 py-2 hover:bg-gray-300 hover:bg-opacity-20 rounded-full ease-in-out duration-200 transition-all">
-                Log in
+                Access Purchases
               </a>
             </Link>
           ) : null}
