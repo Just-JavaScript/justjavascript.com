@@ -145,7 +145,7 @@ const MultipleQuestions = (props) => {
                         displayContinue ? 'visible' : 'invisible'
                       } flex items-center justify-center w-full py-3`}
                     >
-                      <Continue onClick={props.handleContinue} />
+                      <Continue onClick={() => props.handleContinue(-30)} />
                     </div>
                     {!displayContinue && !isLastQuestion && (
                       <div className="absolute bottom-0 left-0 z-10 flex items-center justify-center w-full translate-y-8">

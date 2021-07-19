@@ -57,14 +57,13 @@ export default function Wrapper({
         <div className="">{children}</div>
         <div
           className={`${
-            displayContinue
-              ? 'visible'
-              : question.questions
-              ? 'invisible hidden'
-              : 'invisible hidden'
+            displayContinue ? 'visible' : 'invisible hidden'
           } flex py-8 mx-auto w-full items-center justify-center`}
         >
-          <Continue isLastQuestion={isLastQuestion} onClick={handleContinue} />
+          <Continue
+            isLastQuestion={isLastQuestion}
+            onClick={() => handleContinue(-120)}
+          />
         </div>
         <div>
           {question.questions && (

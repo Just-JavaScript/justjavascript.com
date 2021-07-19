@@ -47,13 +47,13 @@ export default function useEggheadQuiz(quiz, currentQuestion, setCurrent) {
   const showExplanation =
     state.matches('answered') && currentQuestion.answer?.description
 
-  function scrollTo(question) {
+  function scrollTo(question, scrollOffset = -30) {
     scroller.scrollTo(question, {
       // tweak this for pleasant scrolling exp
       smooth: 'easeInOutQuart',
       delay: 0,
       duration: 900,
-      offset: -30,
+      offset: scrollOffset,
       ignoreCancelEvents: true,
     })
   }
@@ -70,7 +70,7 @@ export default function useEggheadQuiz(quiz, currentQuestion, setCurrent) {
 
   const { setProgress } = useProgress()
 
-  function handleContinue() {
+  function handleContinue(scrollOffset) {
     if (isLastQuestion) {
       // set quiz as complete
       setProgress({
@@ -91,7 +91,7 @@ export default function useEggheadQuiz(quiz, currentQuestion, setCurrent) {
         index: nextQuestionIdx,
         id: nextQuestionId,
       })
-      scrollTo(nextQuestionId)
+      scrollTo(nextQuestionId, scrollOffset || -30)
     }
   }
 
