@@ -1,16 +1,15 @@
 import React from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
-import TeamPlanToggle from './team-plan-toggle'
+import {motion} from 'framer-motion'
 import Countdown from './countdown'
-import { isEmpty, get, find, noop } from 'lodash'
+import {isEmpty, get, find, noop} from 'lodash'
 import ParityCouponMessage from './parity-coupon-message'
-import { useCommerceMachine } from '../../hooks/use-commerce-machine'
-import { episodes } from 'components/toc'
+import {useCommerceMachine} from '../../hooks/use-commerce-machine'
+import {episodes} from 'components/toc'
 import Spinner from 'components/spinner'
 import CrystalBall from '../../public/crystal-ball@2x.png'
 import Image from 'next/image'
 
-const PurchaseButton = ({ purchasing, children, bundle, onClick }) => {
+const PurchaseButton = ({purchasing, children, bundle, onClick}) => {
   const purchasingStyles = 'opacity-50 cursor-default'
 
   return (
@@ -71,7 +70,7 @@ const PurchaseBundle = ({
 
   const onApplyParityCoupon = () => {
     setIsPPP(true)
-    send('APPLY_COUPON', { appliedCoupon: parityCoupon.coupon_code })
+    send('APPLY_COUPON', {appliedCoupon: parityCoupon.coupon_code})
   }
 
   const onDismissParityCoupon = () => {
@@ -79,23 +78,8 @@ const PurchaseBundle = ({
     send('DISMISS_COUPON')
   }
 
-  const setQuantity = ({ quantity, bulk }) => {
-    send('SET_QUANTITY', { quantity, bulk })
-  }
-
-  const setTeamQuantity = ({ quantity }) => {
-    setQuantity({ quantity, bulk: true })
-  }
-
-  const activateIndividualPlan = () => {
-    setQuantity({ quantity: 1, bulk: false })
-    setPlanType('individual')
-  }
-
-  const activateTeamPlan = () => {
-    setTeamQuantity({ quantity: 5 })
-    setPlanType('team')
-    setIsPPP(false)
+  const setQuantity = ({quantity, bulk}) => {
+    send('SET_QUANTITY', {quantity, bulk})
   }
 
   const createStripeSession = () => {
@@ -107,7 +91,7 @@ const PurchaseBundle = ({
   const displayPrice = currentPrice ? currentPrice : '--'
   const displayFullPrice = fullPrice ? fullPrice : '--'
 
-  const getPercentOff = ({ price, quantity }) => {
+  const getPercentOff = ({price, quantity}) => {
     if (!price) return
     if (isEmpty(price.bulk_discount) && isEmpty(price.coupon)) {
       return
@@ -215,9 +199,9 @@ const PurchaseBundle = ({
             yours forever
           </div>
           <motion.div
-            initial={{ opacity: 0, margin: '0px 0px' }}
-            animate={{ opacity: 1, margin: '20px 0px' }}
-            exit={{ opacity: 0, margin: '0px 0px' }}
+            initial={{opacity: 0, margin: '0px 0px'}}
+            animate={{opacity: 1, margin: '20px 0px'}}
+            exit={{opacity: 0, margin: '0px 0px'}}
             className="flex justify-center"
           >
             <div className="flex items-center space-x-3">
@@ -227,8 +211,12 @@ const PurchaseBundle = ({
               <input
                 value={state.context.quantity}
                 onChange={(event) => {
-                  const newQuantity = event.target.value
-                  setTeamQuantity({ quantity: Number(newQuantity) })
+                  const newQuantity = Number(event.target.value)
+                  const isBulk = newQuantity > 1
+                  if (isBulk) {
+                    setIsPPP(false)
+                  }
+                  setQuantity({quantity: newQuantity, bulk: isBulk})
                 }}
                 className="flex px-2 rounded-full w-14 py-2 text-sm font-semibold leading-tight text-center border-gray-200 form-input focus:ring-orange-500 focus:ring-2 focus:outline-none focus:border-white"
                 name="quantity"
@@ -293,7 +281,7 @@ const PurchaseBundle = ({
   )
 }
 
-const Feature = ({ children, size = 'normal', className = '' }) => {
+const Feature = ({children, size = 'normal', className = ''}) => {
   const sizes = {
     normal: 'text-base',
     large: 'text-xl',
