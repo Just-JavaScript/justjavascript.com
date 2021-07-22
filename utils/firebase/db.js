@@ -44,6 +44,19 @@ const setAnswerForUser = async ({ firebaseAuthToken, answer }) => {
   })
 }
 
+const getAllAnswers = async ({ firebaseAuthToken }) => {
+  const { usersCollectionRef } = await initializeApp(firebaseAuthToken)
+
+  return usersCollectionRef.get().then((querySnapshot) => {
+    let data = {}
+    querySnapshot.forEach((doc) => {
+      // doc.data() is never undefined for query doc snapshots
+      data = { [doc.id]: { ...doc.data() }, ...data }
+    })
+    return data
+  })
+}
+
 const getProgressForUser = async ({ firebaseAuthToken }) => {
   const { firebaseUserCredential, usersCollectionRef } = await initializeApp(
     firebaseAuthToken
@@ -80,6 +93,7 @@ const setUserProgress = async ({ firebaseAuthToken, episode, progress }) => {
 
 export default {
   setAnswerForUser,
+  getAllAnswers,
   getProgressForUser,
   setUserProgress,
 }

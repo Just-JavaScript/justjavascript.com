@@ -19,5 +19,6 @@ module.exports = {
     '/invoice',
     '/thanks',
     '/outro',
+    '/admin',
   ],
 }
