@@ -15,7 +15,10 @@ export const firebaseTokenFromHeader = async (cookieHeader, honeycombEvent) => {
     }
 
     if(honeycombEvent) {
-        honeycombEvent.add({contactId: eggheadUser.contact_id})
+        honeycombEvent.add({
+            contactId: eggheadUser.contact_id,
+            email: eggheadUser.email
+        })
     }
 
     const firebaseToken = await firebaseAdminApi.generateAuthToken(eggheadUser)
