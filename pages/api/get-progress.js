@@ -1,7 +1,6 @@
-import {getTokenFromCookieHeaders} from 'utils/auth'
-import fetchEggheadUser from 'utils/fetch-egghead-user'
-import firebaseAdminApi from 'utils/firebase/admin'
 import firebaseApi from 'utils/firebase/db'
+import {firebaseTokenFromHeader} from "utils/firebase/token-from-header";
+import {hny} from "utils/configured-libhoney";
 
 const handler = async (req, res) => {
   if (req.method !== 'GET') {
@@ -9,22 +8,10 @@ const handler = async (req, res) => {
     res.status(404).end()
   }
 
+  const event = hny.newEvent();
+
   try {
-    const cookieHeader = req.headers.cookie
-    const {eggheadToken} = getTokenFromCookieHeaders(cookieHeader)
-
-    if (!eggheadToken) {
-      throw new Error('eggheadToken is empty')
-    }
-
-    const eggheadUser = await fetchEggheadUser(eggheadToken)
-    if (!eggheadUser) {
-      throw new Error('eggheadUser is empty')
-    }
-    const firebaseToken = await firebaseAdminApi.generateAuthToken(eggheadUser)
-    if (!firebaseToken) {
-      throw new Error('token is empty')
-    }
+    const firebaseToken = await firebaseTokenFromHeader(req.headers.cookie, event)
 
     const progress = await firebaseApi.getProgressForUser({
       firebaseAuthToken: firebaseToken,
@@ -34,7 +21,10 @@ const handler = async (req, res) => {
   } catch (e) {
     // eslint-disable-next-line no-console
     console.error(e)
+    event.add({error: e.message})
     return res.status(500).json({error: 'Unexpected error.'})
+  } finally {
+    event.send()
   }
 }
 
