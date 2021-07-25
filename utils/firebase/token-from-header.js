@@ -3,6 +3,12 @@ import fetchEggheadUser from "../fetch-egghead-user";
 import firebaseAdminApi from "./admin";
 
 export const firebaseTokenFromHeader = async (cookieHeader, honeycombEvent) => {
+    if(honeycombEvent) {
+        honeycombEvent.add({
+            env: process.env.NODE_ENV
+        })
+    }
+
     const {eggheadToken} = getTokenFromCookieHeaders(cookieHeader)
 
     if (!eggheadToken) {
