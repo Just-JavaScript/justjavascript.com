@@ -3,7 +3,7 @@ import {firebaseTokenFromHeader} from "utils/firebase/token-from-header";
 import {hny} from "utils/configured-libhoney";
 
 
-const handler = async (req, res) => {
+const setCourseProgress = async (req, res) => {
   if (req.method !== 'POST') {
     console.error('non-post request made')
     res.status(404).end()
@@ -14,6 +14,9 @@ const handler = async (req, res) => {
   const {episode, progress} = req.body
 
   event.add({
+    name: setCourseProgress.name,
+    ip: req.ip,
+    path: req.path,
     episode,
     progress
   });
@@ -38,4 +41,4 @@ const handler = async (req, res) => {
   }
 }
 
-export default handler
+export default setCourseProgress

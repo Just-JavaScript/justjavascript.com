@@ -2,13 +2,19 @@ import firebaseApi from 'utils/firebase/db'
 import {firebaseTokenFromHeader} from "utils/firebase/token-from-header";
 import {hny} from "utils/configured-libhoney";
 
-const handler = async (req, res) => {
+const getCourseProgress = async (req, res) => {
   if (req.method !== 'GET') {
     console.error('non-get request made')
     res.status(404).end()
   }
 
   const event = hny.newEvent();
+
+  event.add({
+    name: getCourseProgress.name,
+    ip: req.ip,
+    path: req.path,
+  })
 
   try {
     const firebaseToken = await firebaseTokenFromHeader(req.headers.cookie, event)
@@ -28,4 +34,4 @@ const handler = async (req, res) => {
   }
 }
 
-export default handler
+export default getCourseProgress
