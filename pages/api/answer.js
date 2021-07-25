@@ -1,6 +1,7 @@
 import isEmpty from 'lodash/isEmpty'
 import firebaseApi from 'utils/firebase/db'
 import {hny} from "utils/configured-libhoney";
+import {firebaseTokenFromHeader} from "utils/firebase/token-from-header";
 
 const handler = async (req, res) => {
   if (req.method !== 'POST') {
