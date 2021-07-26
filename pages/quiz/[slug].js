@@ -24,7 +24,7 @@ const QuizPage = ({ source, meta, ...props }) => {
 export const getServerSideProps = async ({ params, req }) => {
 
   // check if token exists
-  const possibleAuthRedirect = await serverSideAuthCheck({ req })
+  const possibleAuthRedirect = async serverSideAuthCheck({ req })
 
   if (possibleAuthRedirect) {
     return possibleAuthRedirect
@@ -32,7 +32,7 @@ export const getServerSideProps = async ({ params, req }) => {
 
   // check if they need to claim a seat
   const authToken = get(req.cookies, ACCESS_TOKEN_KEY)
-  const {isUnclaimedBulkPurchaser, canViewContent} = purchaseVerifier(authToken)
+  const {isUnclaimedBulkPurchaser, canViewContent} = await purchaseVerifier(authToken)
 
   if(isUnclaimedBulkPurchaser) {
     return {
