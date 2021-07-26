@@ -10,25 +10,37 @@ import isArray from 'lodash/isArray'
 import useLoginRequired from 'hooks/use-login-required'
 import { useViewer } from 'context/viewer-context'
 import { serverSideAuthCheck } from 'utils/serverSideAuthCheck'
+import get from "lodash/get";
+import {ACCESS_TOKEN_KEY} from "utils/auth";
+import {purchaseVerifier} from "utils/egghead-purchase-verifier";
+
 
 const components = mdxComponents
 
 const QuizPage = ({ source, meta, ...props }) => {
-  const isVerifyingLogin = useLoginRequired()
-  const { isUnclaimedBulkPurchaser, loading } = useViewer()
-
-  if (isVerifyingLogin || isUnclaimedBulkPurchaser || loading) {
-    return null
-  }
-
   return <MDXRemote {...source} components={components} />
 }
 
 export const getServerSideProps = async ({ params, req }) => {
-  const possibleAuthRedirect = serverSideAuthCheck({ req })
+
+  // check if token exists
+  const possibleAuthRedirect = await serverSideAuthCheck({ req })
 
   if (possibleAuthRedirect) {
     return possibleAuthRedirect
+  }
+
+  // check if they need to claim a seat
+  const authToken = get(req.cookies, ACCESS_TOKEN_KEY)
+  const {isUnclaimedBulkPurchaser} = purchaseVerifier(authToken)
+
+  if(isUnclaimedBulkPurchaser) {
+    return {
+      redirect: {
+        destination: '/invoice',
+        permanent: false,
+      },
+    }
   }
 
   if (!params?.slug || isArray(params?.slug)) {
