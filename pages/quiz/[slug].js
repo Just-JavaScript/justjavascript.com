@@ -24,7 +24,7 @@ const QuizPage = ({ source, meta, ...props }) => {
 export const getServerSideProps = async ({ params, req }) => {
 
   // check if token exists
-  const possibleAuthRedirect = async serverSideAuthCheck({ req })
+  const possibleAuthRedirect = await serverSideAuthCheck({ req })
 
   if (possibleAuthRedirect) {
     return possibleAuthRedirect
