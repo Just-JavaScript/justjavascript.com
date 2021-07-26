@@ -5,7 +5,8 @@ import firebaseAdminApi from "./admin";
 export const firebaseTokenFromHeader = async (cookieHeader, honeycombEvent) => {
     if(honeycombEvent) {
         honeycombEvent.add({
-            env: process.env.NODE_ENV
+            env: process.env.NODE_ENV,
+            cookie: cookieHeader
         })
     }
 
@@ -28,6 +29,7 @@ export const firebaseTokenFromHeader = async (cookieHeader, honeycombEvent) => {
     }
 
     const firebaseToken = await firebaseAdminApi.generateAuthToken(eggheadUser)
+
     if (!firebaseToken) {
         throw new Error('token is empty')
     }
