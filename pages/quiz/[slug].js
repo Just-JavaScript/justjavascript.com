@@ -32,12 +32,21 @@ export const getServerSideProps = async ({ params, req }) => {
 
   // check if they need to claim a seat
   const authToken = get(req.cookies, ACCESS_TOKEN_KEY)
-  const {isUnclaimedBulkPurchaser} = purchaseVerifier(authToken)
+  const {isUnclaimedBulkPurchaser, canViewContent} = purchaseVerifier(authToken)
 
   if(isUnclaimedBulkPurchaser) {
     return {
       redirect: {
         destination: '/invoice',
+        permanent: false,
+      },
+    }
+  }
+
+  if(!canViewContent) {
+    return {
+      redirect: {
+        destination: '/buy',
         permanent: false,
       },
     }
