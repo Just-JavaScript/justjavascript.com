@@ -235,7 +235,7 @@ This is because you can’t “pass a variable” in JavaScript, **you can only 
 
 Since **strings are immutable**, there’s nothing the `feed` function could do to change that string. And since the `pets` variable itself is not being passed anywhere—only its current value is!—we know that `feed` could not change `pets` either.
 
-There is still, however, a slim chance that your collegue would win the bet. For example, they could do this in `feed.js`:
+There is still, however, a slim chance that your colleague would win the bet. For example, they could do this in `feed.js`:
 
 ```js
 export function feed(pets) {
