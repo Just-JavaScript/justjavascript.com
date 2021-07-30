@@ -1,34 +1,25 @@
 import React from 'react'
 import fs from 'fs'
-import {serialize} from 'next-mdx-remote/serialize'
-import {MDXRemote} from 'next-mdx-remote'
+import { serialize } from 'next-mdx-remote/serialize'
+import { MDXRemote } from 'next-mdx-remote'
 import mdxComponents from 'components/mdx'
 import matter from 'gray-matter'
-import {CONTENT_PATH} from 'utils/mdxUtils'
+import { CONTENT_PATH } from 'utils/mdxUtils'
 import path from 'path'
 import isArray from 'lodash/isArray'
-import useLoginRequired from 'hooks/use-login-required'
-import {useViewer} from 'context/viewer-context'
-import {serverSideAuthCheck} from 'utils/serverSideAuthCheck'
+import { checkAuth } from 'utils/check-auth'
 
 const components = mdxComponents
 
-const EpisodePage = ({source, meta, ...props}) => {
-  const isVerifyingLogin = useLoginRequired()
-  const {isUnclaimedBulkPurchaser, loading} = useViewer()
-
-  if (isVerifyingLogin || isUnclaimedBulkPurchaser || loading) {
-    return null
-  }
-
+const EpisodePage = ({ source, meta, ...props }) => {
   return <MDXRemote {...source} components={components} />
 }
 
-export const getServerSideProps = async ({params, req}) => {
-  const possibleAuthRedirect = serverSideAuthCheck({req})
+export const getServerSideProps = async ({ params, req }) => {
+  const redirect = await checkAuth(req)
 
-  if (possibleAuthRedirect) {
-    return possibleAuthRedirect
+  if (redirect) {
+    return redirect
   }
 
   // MDX text - can be from a local file, database, anywhere
@@ -47,15 +38,9 @@ export const getServerSideProps = async ({params, req}) => {
   }
 
   const source = fs.readFileSync(postFilePath)
-  const {content, data} = matter(source)
-  //   const {meta} = source
+  const { content, data } = matter(source)
   const mdxSource = await serialize(content, {
     components,
-    // Optionally pass remark/rehype plugins
-    mdxOptions: {
-      //   remarkPlugins: [require('remark-slug')],
-      //   rehypePlugins: [require('rehype-slug')],
-    },
     scope: data,
   })
 

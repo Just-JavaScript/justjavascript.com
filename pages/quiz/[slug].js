@@ -7,13 +7,7 @@ import matter from 'gray-matter'
 import { QUIZ_PATH } from 'utils/mdxUtils'
 import path from 'path'
 import isArray from 'lodash/isArray'
-import useLoginRequired from 'hooks/use-login-required'
-import { useViewer } from 'context/viewer-context'
-import { serverSideAuthCheck } from 'utils/serverSideAuthCheck'
-import get from "lodash/get";
-import {ACCESS_TOKEN_KEY} from "utils/auth";
-import {purchaseVerifier} from "utils/egghead-purchase-verifier";
-
+import { checkAuth } from 'utils/check-auth'
 
 const components = mdxComponents
 
@@ -22,34 +16,10 @@ const QuizPage = ({ source, meta, ...props }) => {
 }
 
 export const getServerSideProps = async ({ params, req }) => {
+  const redirect = await checkAuth(req)
 
-  // check if token exists
-  const possibleAuthRedirect = await serverSideAuthCheck({ req })
-
-  if (possibleAuthRedirect) {
-    return possibleAuthRedirect
-  }
-
-  // check if they need to claim a seat
-  const authToken = get(req.cookies, ACCESS_TOKEN_KEY)
-  const {isUnclaimedBulkPurchaser, canViewContent} = await purchaseVerifier(authToken)
-
-  if(isUnclaimedBulkPurchaser) {
-    return {
-      redirect: {
-        destination: '/invoice',
-        permanent: false,
-      },
-    }
-  }
-
-  if(!canViewContent) {
-    return {
-      redirect: {
-        destination: '/buy',
-        permanent: false,
-      },
-    }
+  if (redirect) {
+    return redirect
   }
 
   if (!params?.slug || isArray(params?.slug)) {

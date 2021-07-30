@@ -9,26 +9,20 @@ import get from 'lodash/get'
 import WelcomeMessage from 'components/welcome-message'
 import { useProgress } from 'context/progress-context'
 import { motion } from 'framer-motion'
-import { serverSideAuthCheck } from 'utils/serverSideAuthCheck'
 import GetCertificate from 'components/get-certificate'
 import Spinner from 'components/spinner'
 import { mutate } from 'swr'
+import { checkAuth } from 'utils/check-auth'
 
 export default function Learn() {
-  const [mounted, setMounted] = React.useState(false)
-  const isVerifyingLogin = useLoginRequired()
   const { progress, isValidating } = useProgress()
 
   React.useEffect(() => {
-    setMounted(true)
     !isValidating && mutate('/api/get-progress')
   }, [])
 
   const { viewingAsUserEmail } = useViewer()
 
-  if (isVerifyingLogin) {
-    return null
-  }
   const LinkItem = ({
     idx,
     href,
@@ -178,7 +172,7 @@ export default function Learn() {
           className="max-w-screen-lg p-5 mx-auto mb-5 bg-white rounded-lg"
           {...welcomeMessageProps}
         />
-        {mounted && episodes && (
+        {episodes && (
           <motion.ul className="grid max-w-screen-lg grid-cols-1 gap-5 mx-auto text-center sm:grid-cols-2">
             {episodes.map((episode, index) => {
               const isCompleted = get(progress, episode.slug)?.completed
@@ -228,10 +222,10 @@ export default function Learn() {
 }
 
 export const getServerSideProps = async ({ req }) => {
-  const possibleAuthRedirect = serverSideAuthCheck({ req })
+  const redirect = await checkAuth(req)
 
-  if (possibleAuthRedirect) {
-    return possibleAuthRedirect
+  if (redirect) {
+    return redirect
   }
 
   return {
