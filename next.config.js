@@ -18,6 +18,9 @@ const IMAGE_HOST_DOMAINS = [
 ]
 
 const nextConfig = {
+  experimental: {
+    scrollRestoration: true,
+  },
   env: {
     CONVERTKIT_PUBLIC_KEY: process.env.CONVERTKIT_PUBLIC_KEY,
     PASSWORD: process.env.PASSWORD,

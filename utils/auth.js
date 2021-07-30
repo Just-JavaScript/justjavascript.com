@@ -174,7 +174,7 @@ export default class Auth {
       }
       const token = accessToken || cookie.get(ACCESS_TOKEN_KEY)
       http
-        .get(`${authDomain}/api/v1/users/current?minimal=${loadFullUser}`, {
+        .get(`${authDomain}/api/v1/users/current?minimal=${!loadFullUser}`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },

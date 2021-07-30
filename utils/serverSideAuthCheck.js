@@ -2,7 +2,7 @@ import get from 'lodash/get'
 import {ACCESS_TOKEN_KEY} from 'utils/auth'
 import authDisabledForDev from './authDisabledForDev'
 
-export const serverSideAuthCheck = ({req}) => {
+export const serverSideAuthCheck = async ({req}) => {
   if (authDisabledForDev) {
     return
   }
@@ -17,6 +17,7 @@ export const serverSideAuthCheck = ({req}) => {
   const {cookies} = req
   const token = get(cookies, ACCESS_TOKEN_KEY)
 
+  //if there is not a token at all we need to redirect to login
   if (!token) {
     return {
       redirect: {

@@ -10,6 +10,11 @@ import Layout from '../layout'
 import Subscribe from '../subscribe'
 import Video from './video'
 import Link from 'next/link'
+import Quiz from './quiz'
+import Prompt from './quiz/prompt'
+import Question from './quiz/question'
+import Answer from './quiz/answer'
+import Choice from './quiz/choice'
 
 export default {
   img: ({ src }) => <GifPlayer src={src} />,
@@ -29,4 +34,9 @@ export default {
   Layout,
   FunFact,
   Sketch,
+  Quiz,
+  Prompt,
+  Question,
+  Answer,
+  Choice,
 }
