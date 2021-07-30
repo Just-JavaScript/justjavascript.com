@@ -229,7 +229,7 @@ This is because you can’t “pass a variable” in JavaScript, **you can only 
 
 Since **strings are immutable**, there’s nothing the `feed` function could do to change that string. And since the `pets` variable itself is not being passed anywhere—only its current value is!—we know that `feed` could not change `pets` either.
 
-There is still, however, a slim chance that your collegue would win the bet. For example, they could do this in `feed.js`:
+There is still, however, a slim chance that your colleague would win the bet. For example, they could do this in `feed.js`:
 
 ```js
 export function feed(pets) {
@@ -278,7 +278,7 @@ Once again, your colleague bets they can change the output by only editing their
 
 You can’t “pass a variable” in JavaScript, **you can only pass a _value_**. So it’s not the `pets` variable that we’re passing to `feed`. Rather, it’s _the value_ of that variable at that time, which is the array whose elements include `"Tom"` and `"Jerry"`.
 
-However, unlike strings, **arrays are mutable!** This means that are colleague can add, change, or remove items in the array that we passed into their function, without any trouble:
+However, unlike strings, **arrays are mutable!** This means that your colleague can add, change, or remove items in the array that we passed into their function, without any trouble:
 
 ```js
 export function feed(pets) {

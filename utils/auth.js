@@ -32,6 +32,8 @@ export const getAuthorizationHeader = () => {
   return authorizationHeader
 }
 
+const SIXTY_DAYS_IN_SECONDS = 5184000
+
 export default class Auth {
   eggheadAuth
 
@@ -193,13 +195,20 @@ export default class Auth {
       if (typeof localStorage === 'undefined') {
         reject('localStorage is not defined')
       }
-      const expires = authResult.data.expires_in
-      const expiresAt = JSON.stringify(expires * 1000 + new Date().getTime())
+      const expiresInSeconds = get(
+        authResult,
+        'data.expires_in',
+        SIXTY_DAYS_IN_SECONDS,
+      )
+      const expiresInDays = Number(expiresInSeconds) / 60 / 60 / 24
+      const expiresAt = JSON.stringify(
+        expiresInSeconds * 1000 + new Date().getTime(),
+      )
 
       localStorage.setItem(ACCESS_TOKEN_KEY, authResult.accessToken)
       localStorage.setItem(EXPIRES_AT_KEY, expiresAt)
       cookie.set(ACCESS_TOKEN_KEY, authResult.accessToken, {
-        expires: parseInt(expiresAt, 10),
+        expires: expiresInDays,
       })
       resolve(this.refreshUser(authResult.accessToken, false, authDomain))
     })

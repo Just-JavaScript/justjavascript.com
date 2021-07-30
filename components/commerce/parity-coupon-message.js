@@ -8,7 +8,7 @@ const ParityCouponMessage = ({
   onDismiss,
   isPPP,
 }) => {
-  const percentOff = coupon && coupon.coupon_discount * 100
+  const percentOff = coupon && Math.ceil(coupon.coupon_discount * 100)
   const [showFlag, setShowFlag] = React.useState(false)
   return (
     <div className="max-w-sm mx-auto p-7 border border-dashed border-gray-300 rounded-xl text-center">
