@@ -11,7 +11,6 @@ export const checkAuth = async (req) => {
   }
 
   const authToken = get(req.cookies, ACCESS_TOKEN_KEY)
-  console.log({ authToken })
   const { isUnclaimedBulkPurchaser, canViewContent } = await purchaseVerifier(
     authToken
   )
