@@ -74,7 +74,7 @@ export default function useEggheadQuiz(quiz, currentQuestion, setCurrent) {
     if (isLastQuestion) {
       // set quiz as complete
       setProgress({
-        episode: router.pathname.substring(1),
+        episode: `quiz/${router.query.slug}`,
         progress: {
           completed: true,
           date: Date.now(),
@@ -84,7 +84,7 @@ export default function useEggheadQuiz(quiz, currentQuestion, setCurrent) {
       // navigate to completed page
       router.push({
         pathname: `/quiz/completed`,
-        query: { quiz: router.pathname.replace('/quiz/', '') },
+        query: { quiz: router.query.slug },
       })
     } else {
       setCurrent({
