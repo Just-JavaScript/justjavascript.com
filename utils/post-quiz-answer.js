@@ -1,4 +1,4 @@
-import {storeUserAnswerInLocalStorage} from 'utils/quiz-answers-in-local-storage'
+import { storeUserAnswerInLocalStorage } from 'utils/quiz-answers-in-local-storage'
 import axios from './configured-axios'
 import isArray from 'lodash/isArray'
 import isObject from 'lodash/isObject'
@@ -22,11 +22,20 @@ export const postQuizAnswer = (context) =>
     }
     console.debug('submitted: ', dataToSubmit)
 
-    axios.post('/api/answer', dataToSubmit).then(() => {
-      resolve()
-      storeUserAnswerInLocalStorage(
-        context.currentQuestionId,
-        context.userAnswer
-      )
-    })
+    axios
+      .post('/api/answer', dataToSubmit)
+      .then(() => {
+        resolve()
+        storeUserAnswerInLocalStorage(
+          context.currentQuestionId,
+          context.userAnswer
+        )
+      })
+      .catch((err) => {
+        resolve()
+        storeUserAnswerInLocalStorage(
+          context.currentQuestionId,
+          context.userAnswer
+        )
+      })
   })
