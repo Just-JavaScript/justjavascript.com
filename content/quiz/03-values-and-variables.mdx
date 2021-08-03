@@ -90,7 +90,7 @@ Explain why **using our mental model**.
 
 Booleans are primitive. All primitive values are immutable. We can’t change them — and setting a property is a change.
 
-If our code runs in the [strict mode](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode), setting a property on a primitive value will error. Otherwise, it silently does nothing.
+If our code runs in the [strict mode](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode), setting a property on a primitive value will error. Otherwise, the assignment is ignored.
 
 In either case, we can’t set a property on a boolean like `true`.
 
