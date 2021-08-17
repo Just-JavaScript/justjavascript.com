@@ -128,7 +128,7 @@ const LoginForm = ({
                   <p className="leading-relaxed opacity-80">
                     Sometimes this can land in SPAM! While we hope that this
                     won’t happen, please check if it doesn’t arrive in a minute
-                    or three.If you still can't login please email us at 
+                    or three. If you still can't login please email us at
                     team@justjavascript.com and we will help you as soon as possible. 
                     Please note that if you haven't purchased Just JavaScript
                     no link will be sent.
