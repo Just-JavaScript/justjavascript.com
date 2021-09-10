@@ -3,6 +3,7 @@ import Navigation from './navigation'
 import { NextSeo } from 'next-seo'
 import Footer from 'components/footer'
 import { SkipNavLink, SkipNavContent } from '@reach/skip-nav'
+import { Toaster } from 'react-hot-toast'
 
 const Layout = ({
   children,
@@ -35,6 +36,7 @@ const Layout = ({
         canonical={url}
         noindex={noIndex}
       />
+      <Toaster />
       <div className={background}>
         <div className="flex flex-col items-center justify-center min-h-screen print:min-h-full print:h-auto">
           <SkipNavLink />

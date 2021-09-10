@@ -63,7 +63,7 @@ const Article = ({
               {title}
             </h1>
             {episode && (
-              <span className="absolute z-0 sm:text-8xl text-6xl transform md:scale-[5] scale-[3.5] text-gray-100 font-extrabold font-serif">
+              <span className="absolute pointer-events-none z-0 sm:text-8xl text-6xl transform md:scale-[5] scale-[3.5] text-gray-100 font-extrabold font-serif">
                 <span className="sr-only">episode </span>
                 {('0' + episode).slice(-2)}
               </span>

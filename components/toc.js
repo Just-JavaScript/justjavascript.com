@@ -67,7 +67,7 @@ export default function ToC() {
   const router = useRouter()
 
   function isActive(url) {
-    return url !== '/learn' ? router.query.slug.match(url) : false
+    return url !== '/learn' ? router?.query?.slug?.match(url) : false
   }
 
   const Item = (props) => {
