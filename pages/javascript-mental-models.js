@@ -12,7 +12,6 @@ import { MDXRemote } from 'next-mdx-remote'
 import { ACCESS_TOKEN_KEY } from 'utils/auth'
 import { PREVIEWS_PATH } from 'utils/mdxUtils'
 import { serialize } from 'next-mdx-remote/serialize'
-import { useConvertkit } from '@skillrecordings/convertkit'
 import { purchaseVerifier } from 'utils/egghead-purchase-verifier'
 
 const CK_TAG_ID = 2616411
@@ -22,8 +21,6 @@ const ARTICLE_FULL = '01-mental-models.mdx'
 const components = mdxComponents
 
 const MentalModelsArticle = ({ source, authorized, bundles }) => {
-  const { subscriber, loadingSubscriber } = useConvertkit()
-  console.log(loadingSubscriber, subscriber)
   return (
     <ArticlePreview
       bundles={bundles}
