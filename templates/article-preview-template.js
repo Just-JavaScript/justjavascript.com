@@ -29,7 +29,7 @@ const Article = ({
   React.useEffect(() => {
     if (router.query.continue && authorized) {
       toast('Enjoy this free chapter!')
-      document.getElementById('continue').scrollIntoView()
+      document.getElementById('continue')?.scrollIntoView()
       window.history.replaceState(
         null,
         document.title,

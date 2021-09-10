@@ -14,7 +14,7 @@ import { PREVIEWS_PATH } from 'utils/mdxUtils'
 import { serialize } from 'next-mdx-remote/serialize'
 import { purchaseVerifier } from 'utils/egghead-purchase-verifier'
 
-const CK_TAG_ID = 2616411
+const CK_TAG_ID = 2616411 // (JJS: Free Chapter Magnet)
 const ARTICLE_PREVIEW = '01-mental-models-preview.mdx'
 const ARTICLE_FULL = '01-mental-models.mdx'
 
