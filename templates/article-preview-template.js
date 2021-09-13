@@ -84,7 +84,7 @@ const Article = ({
                   Unlock this chapter for free
                 </h3>
                 <div className="pb-10 text-center text-lg opacity-60">
-                  and learn more about Just JavaScript universe
+                  and learn more about JavaScript Universe
                 </div>
               </ConvertkitSubscribeAndTagForm>
             </div>

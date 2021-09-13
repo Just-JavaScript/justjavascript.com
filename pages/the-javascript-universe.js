@@ -15,20 +15,20 @@ import { serialize } from 'next-mdx-remote/serialize'
 import { purchaseVerifier } from 'utils/egghead-purchase-verifier'
 
 const CK_TAG_ID = 2616411 // (JJS: Free Chapter Magnet)
-const ARTICLE_PREVIEW = '01-mental-models-preview.mdx'
-const ARTICLE_FULL = '01-mental-models.mdx'
+const ARTICLE_PREVIEW = '02-the-javascript-universe-preview.mdx'
+const ARTICLE_FULL = '02-the-javascript-universe.mdx'
 
 const components = mdxComponents
 
-const MentalModelsArticle = ({ source, authorized, bundles }) => {
+const TheJavaScriptUniversePreview = ({ source, authorized, bundles }) => {
   return (
     <ArticlePreview
       bundles={bundles}
       CK_TAG_ID={CK_TAG_ID}
       authorized={authorized}
-      title="Mental Models"
+      title="The JavaScript Universe"
       series={1}
-      episode={1}
+      episode={2}
     >
       <MDXRemote {...source} components={components} />
     </ArticlePreview>
@@ -70,4 +70,4 @@ export const getServerSideProps = async (context) => {
   }
 }
 
-export default MentalModelsArticle
+export default TheJavaScriptUniversePreview
