@@ -138,6 +138,9 @@ module.exports = {
             fontFamily: theme('fontFamily.sans').join(', '),
             fontSize: theme('fontSize.lg'),
             color: theme('colors.black'),
+            'h2, h3': {
+              padding: '0.15em 0',
+            },
             'h1, h2, h3, h4': {
               color: theme('colors.black'),
               lineHeight: theme('lineHeight.tighter'),
