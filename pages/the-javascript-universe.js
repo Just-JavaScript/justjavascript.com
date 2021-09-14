@@ -31,6 +31,11 @@ const TheJavaScriptUniversePreview = ({ source, authorized, bundles }) => {
       episode={2}
     >
       <MDXRemote {...source} components={components} />
+      <p className="border-t border-gray-100 pt-16 mt-24 inline-block">
+        These might seem like small steps, but we’re laying the foundation for
+        everything else to come. We’re building our JavaScript universe,
+        together. There are 9 more chapters with exercises for you to practice.
+      </p>
     </ArticlePreview>
   )
 }

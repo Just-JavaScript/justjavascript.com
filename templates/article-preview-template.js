@@ -20,6 +20,7 @@ const Article = ({
   nextTitle,
   bottomContent,
   authorized,
+  byline,
   CK_TAG_ID,
   ...props
 }) => {
@@ -45,7 +46,11 @@ const Article = ({
             <h1 className="lg:px-10 px-0 relative z-10 py-8 overflow-hidden font-serif text-5xl font-extrabold lg:text-8xl xl:text-9xl md:text-7xl sm:text-5xl leading-tighter">
               {title}
             </h1>
-
+            {byline && (
+              <h2 className="relative z-10 pb-10 text-base font-semibold tracking-wide uppercase">
+                {byline}
+              </h2>
+            )}
             <div className="relative z-10 flex items-center justify-center">
               <Image
                 src={DanAbramov}
@@ -56,7 +61,6 @@ const Article = ({
               />
               <span className="pl-2">Dan Abramov</span>
             </div>
-
             {episode && (
               <span className="absolute pointer-events-none z-0 sm:text-8xl text-6xl transform md:scale-[5] scale-[3.5] text-gray-100 font-extrabold font-serif">
                 <span className="sr-only">episode </span>
@@ -80,7 +84,7 @@ const Article = ({
             </div>
             <div className="pb-24 relative z-10 px-10 max-w-lg mx-auto w-full text-white">
               <ConvertkitSubscribeAndTagForm tag={CK_TAG_ID}>
-                <h3 className="text-3xl font-bold text-center pb-2">
+                <h3 className="text-3xl font-bold text-center pb-2 leading-tight">
                   Unlock this chapter for free
                 </h3>
                 <div className="pb-10 text-center text-lg opacity-60">
