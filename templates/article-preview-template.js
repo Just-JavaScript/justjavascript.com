@@ -22,6 +22,7 @@ const Article = ({
   authorized,
   byline,
   CK_TAG_ID,
+  ogImage,
   ...props
 }) => {
   const router = useRouter()
@@ -39,7 +40,11 @@ const Article = ({
     }
   }, [authorized, router])
   return (
-    <Layout background="bg-white" meta={{ title }} {...props}>
+    <Layout
+      background="bg-white"
+      meta={{ title, ogImage: { url: ogImage } }}
+      {...props}
+    >
       <article>
         {title && (
           <header className="relative flex flex-col items-center justify-center pt-48 sm:pb-40 pb-32 min-h-[60vh] text-center">
