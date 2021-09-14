@@ -27,6 +27,7 @@ const TheJavaScriptUniversePreview = ({ source, authorized, bundles }) => {
       CK_TAG_ID={CK_TAG_ID}
       authorized={authorized}
       title="The JavaScript Universe"
+      ogImage="https://res.cloudinary.com/dg3gyk0gu/image/upload/v1631611670/just-javascript-email-images/assets/the-javascript-universe_2x.jpg"
       series={1}
       episode={2}
     >
