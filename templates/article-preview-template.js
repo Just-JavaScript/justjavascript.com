@@ -6,7 +6,7 @@ import Image from 'next/image'
 import toast from 'react-hot-toast'
 import { useRouter } from 'next/router'
 import { useViewer } from 'context/viewer-context'
-
+import FreeChapterForm from 'components/free-chapter/form'
 import Commerce from 'components/commerce'
 
 const Article = ({
@@ -76,7 +76,6 @@ const Article = ({
         )}
         <div className="relative">
           <main className="mx-auto prose md:prose-lg">{children}</main>
-
           {!authorized && (
             <div className="absolute bottom-0 left-0 w-full h-80 bg-gradient-to-b from-transparent to-white" />
           )}
@@ -88,14 +87,32 @@ const Article = ({
               <div className="w-px h-24 bg-black mx-auto" />
             </div>
             <div className="pb-24 relative z-10 px-10 max-w-lg mx-auto w-full text-white">
-              <ConvertkitSubscribeAndTagForm tag={CK_TAG_ID}>
+              <FreeChapterForm
+                buttonLabel="Continue Reading"
+                styles={{
+                  form: 'max-w-xs mx-auto space-y-4',
+                  label: 'block pb-1 font-medium',
+                  input:
+                    'focus:outline-none py-2 border border-gray-100 focus:border-transparent shadow-md focus:ring-2 focus:ring-orange-300 rounded-lg text-black placeholder-coolGray-400 w-full',
+                  button:
+                    'px-6 py-3 shadow-xl hover:scale-105 rounded-full outline-none focus:outline-none focus:ring-2 focus:ring-orange-400 border focus:border-black border-white text-lg font-semibold mt-4 transition-all duration-300 ease-in-out bg-white text-black',
+                }}
+              >
                 <h3 className="text-3xl font-bold text-center pb-2 leading-tight">
                   Unlock this chapter for free
                 </h3>
                 <div className="pb-10 text-center text-lg opacity-60">
                   and learn more about JavaScript Universe
                 </div>
-              </ConvertkitSubscribeAndTagForm>
+              </FreeChapterForm>
+              {/* <ConvertkitSubscribeAndTagForm tag={CK_TAG_ID}>
+                <h3 className="text-3xl font-bold text-center pb-2 leading-tight">
+                  Unlock this chapter for free
+                </h3>
+                <div className="pb-10 text-center text-lg opacity-60">
+                  and learn more about JavaScript Universe
+                </div>
+              </ConvertkitSubscribeAndTagForm> */}
             </div>
           </div>
         )}
@@ -116,7 +133,6 @@ const Article = ({
             </Commerce>
           </section>
         )}
-        <footer></footer>
       </article>
     </Layout>
   )
