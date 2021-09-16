@@ -13,6 +13,7 @@ import GetCertificate from 'components/get-certificate'
 import Spinner from 'components/spinner'
 import { mutate } from 'swr'
 import { checkAuth } from 'utils/check-auth'
+import {hny} from "../../utils/configured-libhoney";
 
 export default function Learn() {
   const { progress, isValidating } = useProgress()
@@ -222,13 +223,29 @@ export default function Learn() {
 }
 
 export const getServerSideProps = async ({ req }) => {
-  const redirect = await checkAuth(req)
+  const event = hny.newEvent();
 
-  if (redirect) {
-    return redirect
-  }
+  event.add({
+    name: getServerSideProps.name,
+    ip: req.ip,
+    path: req.path,
+  })
 
-  return {
-    props: {},
+  try {
+    const redirect = await checkAuth(req)
+
+    if (redirect) {
+      return redirect
+    }
+
+    return {
+      props: {},
+    }
+  } catch(error) {
+    console.error(error)
+    event.add({error})
+    return res.status(500).json({error: 'Unexpected error.'})
+  } finally {
+    event.send()
   }
 }
