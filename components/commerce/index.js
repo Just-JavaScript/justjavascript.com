@@ -4,7 +4,7 @@ import PurchaseBundle from './purchase-bundle'
 import Stripe from '../../images/stripe.svg'
 import CCs from '../../images/cc.svg'
 
-const Commerce = ({ bundles, children }) => {
+const Commerce = ({ bundles, children, tierChildren }) => {
   const [basic] = bundles
   return (
     <div className="px-5 py-16 -m-5 bg-gray-50 sm:py-24 relative" id="buy">
@@ -22,7 +22,7 @@ const Commerce = ({ bundles, children }) => {
           </div>
         </div>
       )}
-      <PurchaseBundle bundle={basic} />
+      <PurchaseBundle bundle={basic}>{tierChildren}</PurchaseBundle>
       <div className="flex flex-wrap items-center justify-center w-full transform scale-90 sm:pt-16 pt-10">
         <span className="mx-3 my-2 text-sm text-gray-700">
           30 day money back guarantee

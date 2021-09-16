@@ -30,6 +30,7 @@ const PurchaseBundle = ({
   upgradeFromSellable,
   purchasingOtherPackage = false,
   setPurchasingPackage = noop,
+  children
 }) => {
   const [state, send] = useCommerceMachine({
     sellable: bundle,
@@ -252,17 +253,8 @@ const PurchaseBundle = ({
             })}
           </ul>
         </div>
-        {/* {teamAvailable && (
-          <motion.div layout className="flex justify-center w-full mt-10">
-            <TeamPlanToggle
-              planType={planType}
-              activateIndividualPlan={activateIndividualPlan}
-              activateTeamPlan={activateTeamPlan}
-            />
-          </motion.div>
-        )} */}
+      {children}
       </div>
-
       {displayParityCouponOffer &&
         state.context.quantity === 1 &&
         !isEmpty(parityCoupon) &&
