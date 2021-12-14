@@ -1,4 +1,5 @@
 /* Recoleta - headings */
+@import url('http://fast.fonts.net/t/1.css?apiType=css&projectid=76e8c93c-7e53-4dba-9919-472ffd3d2182');
 
 @font-face {
   font-family: 'Recoleta';
@@ -56,6 +57,8 @@
 }
 
 /* Adelle Sans - body */
+@import url('http://fast.fonts.net/t/1.css?apiType=css&projectid=e1b15bc4-33f6-4289-b715-afc4648bb0e9');
+
 @font-face {
   font-family: 'Adelle Sans';
   font-weight: 400;
@@ -138,6 +141,7 @@
 }
 
 /* Adelle Mono */
+@import url('http://fast.fonts.net/t/1.css?apiType=css&projectid=07227ab2-9442-47bc-8026-020effb44cfb');
 
 @font-face {
   font-family: 'Adelle Mono';
