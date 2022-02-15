@@ -366,9 +366,7 @@ Now you can solve the pineapple pizza puzzle from the beginning of this module! 
 
 #### `__proto__` vs. `prototype`
 
-You might be wondering: what in the world is the `prototype` property? You might have seen it [in MDN documentation](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter).
-
-The story around this is confusing. Before JavaScript added [classes](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes), it was common to write them as functions that produce objects, for example:
+You might be wondering: what in the world is the `prototype` property? You might have seen it [in MDN documentation](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter). Before JavaScript added [classes](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes), it was common to write them as functions that produce objects, for example:
 
 ```js
 function Donut() {
@@ -400,11 +398,14 @@ donut1.eat();
 donut2.eat();
 ```
 
-As a shortcut, adding `.prototype` *on the function itself* and adding `new` before your function calls would automatically attach the `__proto__`:
+This is why JavaScript has a `new` keyword. When you put the `new` keyword before the `Donut()` function call, two things happen:
+  
+1. The object is created automatically, so you don’t need to return it from `Donut`. (It becomes available as `this`.)
+2. That object’s `__proto__` will be set to whatever you put into *the function’s* `prototype` property.
 
 ```js
 function Donut() {
-  return { shape: 'round' };
+  this.shape = 'round';
 }
 Donut.prototype = {
   eat() {
@@ -419,7 +420,26 @@ donut1.eat();
 donut2.eat();
 ```
 
-Now this pattern has mostly fallen into obscurity, but you can still see `prototype` property on the built-in functions and even on classes. To conclude, a function’s `prototype` specifies the `__proto__` of the objects created by calling that function with a `new` keyword.
+A function’s `prototype` property lets you configure the `__proto__` of the objects that you get with `new` calls. This is pretty confusing! It was designed this way in an attempt to appeal to people familiar with classes, which JavaScript didn’t support at the time. Now this pattern has mostly fallen into obscurity, but you can still see `prototype` property on the built-in functions (and even on classes!) In modern code, you would usually write a class with a [constructor](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/constructor) instead:
+  
+```js
+class Donut {
+  constructor() {
+    this.shape = 'round';
+  }
+  eat() {
+    console.log('Nom nom nom');
+  }
+};
+
+let donut1 = new Donut(); // __proto__: Donut.prototype
+let donut2 = new Donut(); // __proto__: Donut.prototype
+
+donut1.eat();
+donut2.eat();
+```
+  
+But under the hood, `donut1.eat()` still “finds” the `eat` property by looking it up via `__proto__`.
 
 </FunFact>
 
