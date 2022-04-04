@@ -24,7 +24,7 @@ const FreeChapterDialog = ({ close, isModalOpen, className = '' }) => {
       </button>
       <div className="sm:py-10 py-5 w-full">
         <h1 className="text-2xl font-bold leading-tight">
-          Get free episode of JustJavaScript
+          Get free episode of Just JavaScript
         </h1>
         <h2 className="py-2 text-base mx-auto">
           We’ll send <b>The JavaScript Universe</b> episode to your email.
