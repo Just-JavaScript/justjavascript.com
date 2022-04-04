@@ -4,7 +4,7 @@ const FORM_ID = 2604551
 
 const FreeChapterForm = ({
   styles = {
-    form: 'space-y-4 w-full pt-8 pb-16 max-w-xs mx-auto',
+    form: 'space-y-4 w-full pt-8 sm:pb-16 pb-8 max-w-xs mx-auto',
     input:
       'w-full rounded-md dark:bg-gray-900 dark:text-white dark:placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-400 focus:border-transparent',
     label: 'text-sm font-semibold text-left block',
