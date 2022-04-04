@@ -21,7 +21,7 @@ import FreeChapterCTA from 'components/free-chapter'
 import FreeChapterDialog from 'components/free-chapter/dialog'
 
 const LandingPage = ({ bundles }) => {
-  const { purchased, viewer } = useViewer()
+  const { purchased, viewer, loading } = useViewer()
   const [isFreeChapterDialogOpen, setFreeChapterDialogOpen] =
     React.useState(false)
   const openFreeChapterDialog = () => setFreeChapterDialogOpen(true)
@@ -49,28 +49,30 @@ const LandingPage = ({ bundles }) => {
               <h2 className="font-light sm:text-xl text-lg text-orange-200 font-serif pt-4 leading-tight">
                 Rebuild your mental model from the inside&nbsp;out.
               </h2>
-              <div className="mt-8 relative inline-flex justify-center items-center">
-                {viewer && purchased ? (
-                  <Link href="/learn">
-                    <a className="focus:scale-95 relative z-10 px-6 py-3 font-semibold rounded-full bg-white text-black hover:scale-105 inline-flex ease-in-out duration-250 transition-all">
-                      Access Content
-                    </a>
-                  </Link>
-                ) : (
-                  <div className="h-[42px]">
+              {loading ? (
+                <div className="mt-8 h-12" />
+              ) : (
+                <div className="mt-8 relative inline-flex justify-center items-center">
+                  {viewer && purchased ? (
+                    <Link href="/learn">
+                      <a className="focus:scale-95 relative z-10 px-6 py-3 font-semibold rounded-full bg-white text-black hover:scale-105 inline-flex ease-in-out duration-250 transition-all">
+                        Access Content
+                      </a>
+                    </Link>
+                  ) : (
                     <button
                       onClick={openFreeChapterDialog}
                       className="focus:scale-95 relative z-10 px-6 py-3 font-semibold rounded-full bg-white text-black hover:scale-105 inline-flex ease-in-out duration-250 transition-all"
                     >
                       Get Free Preview
                     </button>
-                  </div>
-                )}
-                <div
-                  className="blur-lg bg-orange-400 opacity-40 w-full h-full top-3 absolute  rounded-full"
-                  aria-hidden="true"
-                />
-              </div>
+                  )}
+                  <div
+                    className="blur-lg bg-orange-400 opacity-40 w-full h-full top-3 absolute  rounded-full"
+                    aria-hidden="true"
+                  />
+                </div>
+              )}
             </div>
             <div className="pointer-events-none">
               <Image
