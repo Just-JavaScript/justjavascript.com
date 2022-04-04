@@ -18,9 +18,14 @@ import { useViewer } from 'context/viewer-context'
 import Link from 'next/link'
 import PlanetImage from '../public/planet@2x.png'
 import FreeChapterCTA from 'components/free-chapter'
+import FreeChapterDialog from 'components/free-chapter/dialog'
 
 const LandingPage = ({ bundles }) => {
   const { purchased, viewer } = useViewer()
+  const [isFreeChapterDialogOpen, setFreeChapterDialogOpen] =
+    React.useState(false)
+  const openFreeChapterDialog = () => setFreeChapterDialogOpen(true)
+  const closeFreeChapterDialog = () => setFreeChapterDialogOpen(false)
   const router = useRouter()
   const sellingLive = useSellingLive()
   const scrollToBuy = router.asPath === '/?buy'
@@ -52,7 +57,14 @@ const LandingPage = ({ bundles }) => {
                     </a>
                   </Link>
                 ) : (
-                  <div className="h-[42px]"></div>
+                  <div className="h-[42px]">
+                    <button
+                      onClick={openFreeChapterDialog}
+                      className="focus:scale-95 relative z-10 px-6 py-3 font-semibold rounded-full bg-white text-black hover:scale-105 inline-flex ease-in-out duration-250 transition-all"
+                    >
+                      Get Free Preview
+                    </button>
+                  </div>
                 )}
                 <div
                   className="blur-lg bg-orange-400 opacity-40 w-full h-full top-3 absolute  rounded-full"
@@ -131,6 +143,11 @@ const LandingPage = ({ bundles }) => {
           <Testimonials />
         </>
       )}
+      <FreeChapterDialog
+        close={closeFreeChapterDialog}
+        open={openFreeChapterDialog}
+        isModalOpen={isFreeChapterDialogOpen}
+      />
     </Layout>
   )
 }

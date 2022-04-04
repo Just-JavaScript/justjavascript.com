@@ -69,23 +69,20 @@
 
   /* reach-menu-item */
   cursor: pointer;
-
-  /* a */
   display: block;
   color: inherit;
   font: inherit;
   text-decoration: initial;
-
-  /* both */
   padding: 5px 20px;
 }
 
 /* pseudo pseudo selector */
 [data-reach-menu-item][data-selected] {
   @apply bg-gray-200 outline-none;
-  /* background: hsl(211, 81%, 36%); */
-  /* color: white; */
-  /* outline: none; */
+}
+
+[data-reach-dialog-overlay] {
+  z-index: 50;
 }
 
 [data-reach-dialog-content] {
@@ -95,5 +92,3 @@
   padding: 2rem;
   outline: none;
 }
-
-/* END — @reach/menu-button */
