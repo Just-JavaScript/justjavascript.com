@@ -1,7 +1,7 @@
 import React from 'react'
 import { useConvertkit } from '@skillrecordings/convertkit'
 import { convertkitAxios } from '@skillrecordings/axios'
-import axios from 'axios'
+import axios from '../utils/configured-axios'
 import { useFormik } from 'formik'
 import Spinner from 'components/spinner'
 import * as Yup from 'yup'

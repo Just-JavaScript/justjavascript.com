@@ -1,12 +1,10 @@
 export const AUTH_DOMAIN = process.env.NEXT_PUBLIC_AUTH_DOMAIN
 import OAuthClient from 'client-oauth2'
-import axios from 'axios'
+import configuredAxios from './configured-axios'
 import get from 'lodash/get'
 import cookie from 'utils/cookies'
 import getAccessTokenFromCookie from './get-access-token-from-cookie'
 import * as serverCookie from 'cookie'
-
-const http = axios.create()
 
 const AUTH_CLIENT_ID = process.env.NEXT_PUBLIC_CLIENT_ID
 const AUTH_REDIRECT_URL = process.env.NEXT_PUBLIC_REDIRECT_URI
@@ -20,7 +18,7 @@ export function getTokenFromCookieHeaders(serverCookies = '') {
   const parsedCookie = serverCookie.parse(serverCookies)
   const eggheadToken = parsedCookie[ACCESS_TOKEN_KEY] || ''
   const convertkitId = parsedCookie['ck_subscriber_id'] || ''
-  return {convertkitId, eggheadToken, loginRequired: eggheadToken.length <= 0}
+  return { convertkitId, eggheadToken, loginRequired: eggheadToken.length <= 0 }
 }
 
 export const getAuthorizationHeader = () => {
@@ -58,7 +56,7 @@ export default class Auth {
     if (typeof localStorage === 'undefined') {
       return
     }
-    return http
+    return configuredAxios
       .post(
         `${AUTH_DOMAIN}/api/v1/users/become_user?email=${email}&client_id=${AUTH_CLIENT_ID}`,
         {},
@@ -66,11 +64,11 @@ export default class Auth {
           headers: {
             Authorization: `Bearer ${accessToken}`,
           },
-        },
+        }
       )
-      .then(({data}) => {
+      .then(({ data }) => {
         const expiresAt = JSON.stringify(
-          data.access_token.expires_in * 1000 + new Date().getTime(),
+          data.access_token.expires_in * 1000 + new Date().getTime()
         )
         const user = data.user
 
@@ -90,12 +88,12 @@ export default class Auth {
   }
 
   requestSignInEmail(email) {
-    return http.post(
+    return configuredAxios.post(
       `${process.env.NEXT_PUBLIC_AUTH_DOMAIN}/api/v1/users/send_token`,
       {
         email,
         client_id: process.env.NEXT_PUBLIC_CLIENT_ID,
-      },
+      }
     )
   }
 
@@ -129,14 +127,14 @@ export default class Auth {
                 console.error(error)
                 this.logout()
                 reject(error)
-              },
+              }
             )
           },
           (error) => {
             console.error(error)
             this.logout()
             reject(error)
-          },
+          }
         )
       }
     })
@@ -173,13 +171,13 @@ export default class Auth {
         reject('no local storage')
       }
       const token = accessToken || cookie.get(ACCESS_TOKEN_KEY)
-      http
+      configuredAxios
         .get(`${authDomain}/api/v1/users/current?minimal=${!loadFullUser}`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
         })
-        .then(({data}) => {
+        .then(({ data }) => {
           localStorage.setItem(USER_KEY, JSON.stringify(data))
           resolve(data)
         })
@@ -198,11 +196,11 @@ export default class Auth {
       const expiresInSeconds = get(
         authResult,
         'data.expires_in',
-        SIXTY_DAYS_IN_SECONDS,
+        SIXTY_DAYS_IN_SECONDS
       )
       const expiresInDays = Number(expiresInSeconds) / 60 / 60 / 24
       const expiresAt = JSON.stringify(
-        expiresInSeconds * 1000 + new Date().getTime(),
+        expiresInSeconds * 1000 + new Date().getTime()
       )
 
       localStorage.setItem(ACCESS_TOKEN_KEY, authResult.accessToken)

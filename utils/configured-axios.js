@@ -1,7 +1,9 @@
 import axios from 'axios'
 import {getAuthorizationHeader} from './auth'
 
-axios.interceptors.request.use(
+const configuredAxios = axios.create()
+
+configuredAxios.interceptors.request.use(
   function (config) {
     const headers = {
       ...config.headers,
@@ -16,4 +18,4 @@ axios.interceptors.request.use(
   },
 )
 
-export default axios
+export default configuredAxios

@@ -1,5 +1,5 @@
 import React from 'react'
-import axios from 'axios'
+import axios from '../utils/configured-axios'
 import useSWR from 'swr'
 import { useViewer } from 'context/viewer-context'
 

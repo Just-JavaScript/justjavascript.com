@@ -1,7 +1,6 @@
 import isFunction from 'lodash/isFunction'
 import isUndefined from 'lodash/isUndefined'
 import get from 'lodash/get'
-import axios from 'axios'
 
 const getUser = () => {
   const user = localStorage.getItem('user')
