@@ -72,7 +72,10 @@ const createCommerceMachine = ({
                       code: appliedCoupon,
                     }),
                   )
-                  .then(({data}) => data)
+                  .then(({data}) => {
+                    console.log({data})
+                    return data
+                  })
                   .catch(error => {
                     console.error(`commerce machine`, error.message)
                     throw error
