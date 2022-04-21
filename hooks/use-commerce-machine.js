@@ -77,7 +77,7 @@ const createCommerceMachine = ({
                     return data
                   })
                   .catch(error => {
-                    console.error(`commerce machine`, error)
+                    console.error(`commerce machine`, error.response.status)
                     throw error
                   })
               } else {
