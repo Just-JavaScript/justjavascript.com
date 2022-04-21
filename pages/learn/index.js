@@ -246,7 +246,7 @@ export const getServerSideProps = async ({ req }) => {
     event.add({error})
     return {
       redirect: {
-        destination: '/?logout',
+        destination: '/?logout=true',
         permanent: false,
       },
     }

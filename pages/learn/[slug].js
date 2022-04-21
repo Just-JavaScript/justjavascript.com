@@ -65,7 +65,7 @@ export const getServerSideProps = async ({ params, req }) => {
 
     return {
       redirect: {
-        destination: '/?logout',
+        destination: '/?logout=true',
         permanent: false,
       },
     }
