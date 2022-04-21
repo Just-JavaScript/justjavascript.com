@@ -19,6 +19,9 @@ import Link from 'next/link'
 import PlanetImage from '../public/planet@2x.png'
 import FreeChapterCTA from 'components/free-chapter'
 import FreeChapterDialog from 'components/free-chapter/dialog'
+import Auth from "../utils/auth";
+
+const auth = new Auth()
 
 const LandingPage = ({ bundles }) => {
   const { purchased, viewer, loading } = useViewer()
@@ -29,12 +32,18 @@ const LandingPage = ({ bundles }) => {
   const router = useRouter()
   const sellingLive = useSellingLive()
   const scrollToBuy = router.asPath === '/?buy'
+  const logoutNow = router.asPath === '/?logout'
   React.useEffect(() => {
     scrollToBuy === true &&
       scroller.scrollTo('buy', {
         offset: -30,
       })
   }, [scrollToBuy])
+
+  React.useEffect(() => {
+    auth.logout()
+    router.replace('/')
+  }, [logoutNow])
 
   return (
     <Layout maxWidth="" background="bg-white" navClassName="text-white">

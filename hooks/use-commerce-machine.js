@@ -75,10 +75,7 @@ const createCommerceMachine = ({
                       code: appliedCoupon,
                     }),
                   )
-                  .then(({data}) => {
-                    console.log({data})
-                    return data
-                  })
+                  .then(({data}) => data)
                   .catch(error => {
                     if(error.response.status === 403) {
                       auth.logout()

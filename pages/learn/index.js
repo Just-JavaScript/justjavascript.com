@@ -244,7 +244,12 @@ export const getServerSideProps = async ({ req }) => {
   } catch(error) {
     console.error(error)
     event.add({error})
-    return res.status(500).json({error: 'Unexpected error.'})
+    return {
+      redirect: {
+        destination: '/?logout',
+        permanent: false,
+      },
+    }
   } finally {
     event.send()
   }
