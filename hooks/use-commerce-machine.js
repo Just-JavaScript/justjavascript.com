@@ -83,8 +83,9 @@ const createCommerceMachine = ({
                     if(error.response.status === 403) {
                       auth.logout()
                       window.location.reload()
+                    } else {
+                      throw error
                     }
-                    throw error
                   })
               } else {
                 return Promise.reject(
