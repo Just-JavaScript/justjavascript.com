@@ -43,6 +43,7 @@ const LandingPage = ({ bundles }) => {
   React.useEffect(() => {
     auth.logout()
     router.replace('/')
+    window.location.reload()
   }, [logoutNow])
 
   return (
