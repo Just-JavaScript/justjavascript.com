@@ -32,7 +32,6 @@ const LandingPage = ({ bundles }) => {
   const router = useRouter()
   const sellingLive = useSellingLive()
   const scrollToBuy = router.asPath === '/?buy'
-  const logoutNow = router.asPath === '/?logout'
   React.useEffect(() => {
     scrollToBuy === true &&
       scroller.scrollTo('buy', {
@@ -40,11 +39,7 @@ const LandingPage = ({ bundles }) => {
       })
   }, [scrollToBuy])
 
-  React.useEffect(() => {
-    auth.logout()
-    router.replace('/')
-    window.location.reload()
-  }, [logoutNow])
+
 
   return (
     <Layout maxWidth="" background="bg-white" navClassName="text-white">
