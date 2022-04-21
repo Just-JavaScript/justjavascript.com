@@ -73,6 +73,10 @@ const createCommerceMachine = ({
                     }),
                   )
                   .then(({data}) => data)
+                  .catch(error => {
+                    console.error(`commerce machine`, error.message)
+                    throw error
+                  })
               } else {
                 return Promise.reject(
                   'process.env.NEXT_PUBLIC_AUTH_DOMAIN is not configured',

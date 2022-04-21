@@ -12,8 +12,9 @@ axios.interceptors.request.use(
     return {...config, headers}
   },
   function (error) {
+      console.log(`configured error`, error)
     return Promise.reject(error)
-  },
+  }
 )
 
 export default axios
