@@ -11,6 +11,9 @@ import noop from 'lodash/noop'
 import queryString from 'query-string'
 import {loadStripe} from '@stripe/stripe-js'
 import {isBrowser} from 'utils/is-browser'
+import Auth from "../utils/auth";
+
+const auth = new Auth()
 
 // TODO: write this function to tag users in convertkit
 const signupAfterPurchase = (
@@ -77,7 +80,10 @@ const createCommerceMachine = ({
                     return data
                   })
                   .catch(error => {
-                    console.error(`commerce machine`, error.response.status)
+                    if(error.response.status === 403) {
+                      auth.logout()
+                      window.location.reload()
+                    }
                     throw error
                   })
               } else {
