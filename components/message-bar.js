@@ -65,7 +65,7 @@ export default function MessageBar({ state, displayFullPrice, displayPrice }) {
           <span role="img" aria-label="crystal ball" className="text-lg">
             🔮
           </span>{' '}
-          <span>Launch discount</span>
+          <span>Seasonal discount</span>
         </div>
         {state?.context?.price?.coupon?.coupon_expires_at && (
           <div className="sm:hidden block">
