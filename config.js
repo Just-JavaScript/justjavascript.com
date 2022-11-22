@@ -32,7 +32,8 @@ export default {
     },
     images: [
       {
-        url: 'https://justjavascript.com/og-image@2x.png?v=20210623',
+        url: 'https://justjavascript.com/og-image-sale-50@2x.png',
+        // url: 'https://justjavascript.com/og-image@2x.png?v=20221203',
         width: 1200,
         height: 728,
       },
