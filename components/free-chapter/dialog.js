@@ -1,5 +1,5 @@
 import React from 'react'
-import Image from 'next/image'
+import Image from "next/legacy/image"
 import { Dialog } from '@reach/dialog'
 import DanAbramov from '../../public/dan-abramov.jpg'
 import MaggieAppleton from '../../public/maggie-appleton.jpg'

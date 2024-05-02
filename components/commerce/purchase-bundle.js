@@ -7,7 +7,7 @@ import {useCommerceMachine} from '../../hooks/use-commerce-machine'
 import {episodes} from 'components/toc'
 import Spinner from 'components/spinner'
 import CrystalBall from '../../public/crystal-ball@2x.png'
-import Image from 'next/image'
+import Image from "next/legacy/image"
 
 const PurchaseButton = ({purchasing, children, bundle, onClick}) => {
   const purchasingStyles = 'opacity-50 cursor-default'

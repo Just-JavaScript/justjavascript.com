@@ -3,7 +3,7 @@ import * as yup from 'yup'
 import { Formik } from 'formik'
 import { useViewer } from 'context/viewer-context'
 import Layout from 'components/layout'
-import Image from 'next/image'
+import Image from "next/legacy/image"
 
 const loginSchema = yup.object().shape({
   email: yup.string().email().required('enter your email'),
