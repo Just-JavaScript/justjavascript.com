@@ -2,7 +2,7 @@ import React from 'react'
 import Layout from 'components/layout'
 import SubscribeCopy from 'components/subscribe-copy.mdx'
 import LandingCopy from 'components/landing-copy.mdx'
-import Image from 'next/image'
+import Image from "next/legacy/image"
 import ClaimCoupon from 'components/commerce/claim-coupon'
 import useSellingLive from 'hooks/use-selling-live'
 import DevBundles from 'data/bundles.development.json'

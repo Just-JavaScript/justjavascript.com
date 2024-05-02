@@ -1,6 +1,6 @@
 import React from 'react'
 import Layout from 'components/layout'
-import Image from 'next/image'
+import Image from "next/legacy/image"
 import BlackHole from '../public/black-hole@2x.png'
 
 const CreditsPage = () => {

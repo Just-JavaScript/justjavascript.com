@@ -2,7 +2,7 @@ import React from 'react'
 import Layout from '../components/layout'
 import ConvertkitSubscribeAndTagForm from '../components/convertkit-subscribe-and-tag'
 import DanAbramov from '../public/dan-abramov.jpg'
-import Image from 'next/image'
+import Image from "next/legacy/image"
 import toast from 'react-hot-toast'
 import { useRouter } from 'next/router'
 import { useViewer } from 'context/viewer-context'
