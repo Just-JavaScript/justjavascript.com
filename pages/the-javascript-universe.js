@@ -48,15 +48,17 @@ export const getServerSideProps = async (context) => {
   const postFilePath = path.join(PREVIEWS_PATH, ARTICLE_FULL)
 
   const authToken = get(context.req.cookies, ACCESS_TOKEN_KEY)
+
   const convertkitId = get(
     context.req.cookies,
     process.env.NEXT_PUBLIC_CONVERTKIT_SUBSCRIBER_KEY
   )
+
   const viewer = authToken && (await purchaseVerifier(authToken))
 
   const authorized = viewer
     ? viewer.canViewContent
-    : await checkSubscriber(context, CK_TAG_ID) // !isEmpty(convertkitId)
+    : !isEmpty(convertkitId) && (await checkSubscriber(context, CK_TAG_ID))
 
   const source = fs.readFileSync(
     authorized ? postFilePath : initialPostFilePath
