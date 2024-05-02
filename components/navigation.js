@@ -55,20 +55,22 @@ const Navigation = ({ children, className = '', displayLogout, ...props }) => {
             : 'justify-center'
         } w-full`}
       >
-        <Link href={purchased ? '/learn' : '/'}>
-          <a
-            aria-label="Homepage"
-            className="font-serif text-lg font-bold leading-none sm:text-xl"
-          >
+        <Link
+          href={purchased ? '/learn' : '/'}
+          aria-label="Homepage"
+          className="font-serif text-lg font-bold leading-none sm:text-xl">
+          
             Just JavaScript
-          </a>
+          
         </Link>
         <div className="flex items-center justify-center text-sm sm:text-sm">
           {viewer && router.pathname === '/' && (
-            <Link href="/learn">
-              <a className="mr-2 flex-shrink-0 px-3 py-2 bg-gray-900 hover:bg-gray-300 hover:bg-opacity-20 rounded-full ease-in-out duration-200 transition-all">
+            <Link
+              href="/learn"
+              className="mr-2 flex-shrink-0 px-3 py-2 bg-gray-900 hover:bg-gray-300 hover:bg-opacity-20 rounded-full ease-in-out duration-200 transition-all">
+              
                 Access Content
-              </a>
+              
             </Link>
           )}
           {viewer ? (
@@ -100,10 +102,12 @@ const Navigation = ({ children, className = '', displayLogout, ...props }) => {
               </>
             )
           ) : sellingLive ? (
-            <Link href="/login">
-              <a className="px-3 py-2 hover:bg-gray-300 hover:bg-opacity-20 rounded-full ease-in-out duration-200 transition-all">
+            <Link
+              href="/login"
+              className="px-3 py-2 hover:bg-gray-300 hover:bg-opacity-20 rounded-full ease-in-out duration-200 transition-all">
+              
                 Restore Purchases
-              </a>
+              
             </Link>
           ) : null}
 
@@ -111,7 +115,7 @@ const Navigation = ({ children, className = '', displayLogout, ...props }) => {
         </div>
       </nav>
     </div>
-  )
+  );
 }
 
 export default Navigation

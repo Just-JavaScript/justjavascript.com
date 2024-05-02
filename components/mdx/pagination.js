@@ -24,25 +24,27 @@ const Pagination = (props) => {
             props.completed ? 'border-gray-200' : 'border-gray-100'
           } rounded-lg hover:shadow-xl`}
         >
-          <Link href={nextPath}>
-            <a className="flex flex-col items-center justify-center w-full py-16 group lg:py-32 sm:py-24">
-              <span
-                className={`pb-4 text-sm font-bold tracking-wider ${
-                  props.completed ? 'text-emerald-500' : 'text-orange-500'
-                } no-underline uppercase transition-colors ease-in-out duration-200`}
-              >
-                {'up next'}
-              </span>
-              <div className="flex items-center font-serif text-3xl font-bold leading-tight lg:text-5xl sm:text-4xl ">
-                {/* {(quiz && `Quiz: ${get(quiz, 'title')}`) || props.nextTitle} → */}
-                {(quiz && `Take a Quiz`) || props.nextTitle} →
-              </div>
-            </a>
+          <Link
+            href={nextPath}
+            className="flex flex-col items-center justify-center w-full py-16 group lg:py-32 sm:py-24">
+
+            <span
+              className={`pb-4 text-sm font-bold tracking-wider ${
+                props.completed ? 'text-emerald-500' : 'text-orange-500'
+              } no-underline uppercase transition-colors ease-in-out duration-200`}
+            >
+              {'up next'}
+            </span>
+            <div className="flex items-center font-serif text-3xl font-bold leading-tight lg:text-5xl sm:text-4xl ">
+              {/* {(quiz && `Quiz: ${get(quiz, 'title')}`) || props.nextTitle} → */}
+              {(quiz && `Take a Quiz`) || props.nextTitle} →
+            </div>
+
           </Link>
         </div>
       </div>
     </div>
-  ) : null
+  ) : null;
 }
 
 export default Pagination

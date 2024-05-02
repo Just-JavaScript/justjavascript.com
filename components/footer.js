@@ -17,12 +17,14 @@ const Footer = () => {
     >
       <div className="flex flex-col items-center sm:items-start">
         {pathname === '/learn' && (
-          <Link href="/invoice">
-            <a className="flex items-center px-4 py-2 transition-all duration-200 ease-in-out rounded-lg sm:text-base hover:bg-white hover:shadow-xl">
-              <i className="gg-file" />
-              <span className="pl-3">Get your invoice</span>
-            </a>
-          </Link>
+          (<Link
+            href="/invoice"
+            className="flex items-center px-4 py-2 transition-all duration-200 ease-in-out rounded-lg sm:text-base hover:bg-white hover:shadow-xl">
+
+            <i className="gg-file" />
+            <span className="pl-3">Get your invoice</span>
+
+          </Link>)
         )}
       </div>
       <div
@@ -30,10 +32,13 @@ const Footer = () => {
           pathname === '/learn' ? 'sm:items-end' : 'sm:items-center'
         } items-center pb-16`}
       >
-        <Link href={purchased ? '/learn' : '/'}>
-          <a tabIndex={-1} className="font-serif text-2xl font-extrabold">
+        <Link
+          href={purchased ? '/learn' : '/'}
+          tabIndex={-1}
+          className="font-serif text-2xl font-extrabold">
+          
             JJS
-          </a>
+          
         </Link>
         {sellingLive && (
           <div
@@ -43,21 +48,25 @@ const Footer = () => {
                 : 'items-center'
             }`}
           >
-            <Link href="/credits">
-              <a className="opacity-80 hover:opacity-100 text-sm hover:underline">
+            <Link
+              href="/credits"
+              className="opacity-80 hover:opacity-100 text-sm hover:underline">
+              
                 Credits
-              </a>
+              
             </Link>
-            <Link href="/terms">
-              <a className="opacity-80 hover:opacity-100 text-sm hover:underline">
+            <Link
+              href="/terms"
+              className="opacity-80 hover:opacity-100 text-sm hover:underline">
+              
                 Terms & Conditions
-              </a>
+              
             </Link>
           </div>
         )}
       </div>
     </footer>
-  ) : null
+  ) : null;
 }
 
 export default Footer

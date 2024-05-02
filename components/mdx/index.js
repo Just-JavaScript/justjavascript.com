@@ -22,7 +22,7 @@ export default {
   pre: ({ children }) => <>{children}</>,
   a: (props) => (
     <Link {...props}>
-      <a>{props.children}</a>
+      {props.children}
     </Link>
   ),
   code: Code,
