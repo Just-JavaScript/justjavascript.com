@@ -26,8 +26,8 @@ export default function WelcomeMessage({
             </span>
             <span>{text} </span>
             {path && cta && (
-              <Link href={path}>
-                <a className="underline">{cta}</a>
+              <Link href={path} className="underline">
+                {cta}
               </Link>
             )}
           </div>
@@ -56,5 +56,5 @@ export default function WelcomeMessage({
         </div>
       </div>
     </motion.div>
-  )
+  );
 }

@@ -67,10 +67,12 @@ const LandingPage = ({ bundles }) => {
               ) : (
                 <div className="mt-8 relative inline-flex justify-center items-center">
                   {viewer && purchased ? (
-                    <Link href="/learn">
-                      <a className="focus:scale-95 relative z-10 px-6 py-3 font-semibold rounded-full bg-white text-black hover:scale-105 inline-flex ease-in-out duration-250 transition-all">
+                    <Link
+                      href="/learn"
+                      className="focus:scale-95 relative z-10 px-6 py-3 font-semibold rounded-full bg-white text-black hover:scale-105 inline-flex ease-in-out duration-250 transition-all">
+                      
                         Access Content
-                      </a>
+                      
                     </Link>
                   ) : (
                     <button
@@ -164,7 +166,7 @@ const LandingPage = ({ bundles }) => {
         isModalOpen={isFreeChapterDialogOpen}
       />
     </Layout>
-  )
+  );
 }
 
 export async function getStaticProps() {
