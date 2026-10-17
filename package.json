@@ -3,17 +3,17 @@
   "version": "0.1.0",
   "private": true,
   "engines": {
-    "node": "12.x || 14.x || 15.x"
+    "node": "18.x || 20.x"
   },
   "scripts": {
     "dev": "next",
-    "build": "next build",
+    "build": "NODE_OPTIONS='--openssl-legacy-provider --no-experimental-fetch' next build",
     "build:data": "node ./data/cache-json-data.js -p",
     "build:data:dev": "node ./data/cache-json-data.js",
     "postinstall": "cp -r ./node_modules/@excalidraw/excalidraw/dist/excalidraw-assets ./public/",
     "postbuild": "NODE_ENV=production next-sitemap",
     "build:style": "tailwind build styles/index.css -o styles/output.css",
-    "start": "next start",
+    "start": "NODE_OPTIONS=--no-experimental-fetch next start",
     "export": "npm run build && next export"
   },
   "dependencies": {

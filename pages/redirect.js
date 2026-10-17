@@ -1,5 +1,1 @@
-const Redirect = () => {
-  return null
-}
-
-export default Redirect
+export { default, getServerSideProps } from 'components/content-redirect'

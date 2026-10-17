@@ -2,7 +2,6 @@ import React from 'react'
 import Router from 'next/router'
 import { MDXProvider } from '@mdx-js/react'
 import 'focus-visible'
-import { ViewerProvider } from 'context/viewer-context'
 import { ProgressProvider } from 'context/progress-context'
 import mdxComponents from '../components/mdx'
 import '../styles/index.css'
@@ -10,7 +9,6 @@ import '../styles/gifplayer.css'
 import NProgress from 'nprogress'
 import { DefaultSeo } from 'next-seo'
 import config from '../config'
-import { ConvertkitProvider } from '@skillrecordings/convertkit'
 
 let timer
 const delay = 500
@@ -32,15 +30,11 @@ const App = ({ Component, pageProps }) => {
   return (
     <>
       <DefaultSeo {...config} />
-      <ConvertkitProvider>
-        <ViewerProvider>
-          <ProgressProvider>
-            <MDXProvider components={mdxComponents}>
-              <Component {...pageProps} />
-            </MDXProvider>
-          </ProgressProvider>
-        </ViewerProvider>
-      </ConvertkitProvider>
+      <ProgressProvider>
+        <MDXProvider components={mdxComponents}>
+          <Component {...pageProps} />
+        </MDXProvider>
+      </ProgressProvider>
     </>
   )
 }

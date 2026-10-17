@@ -2,7 +2,6 @@ import React from 'react'
 import Tippy from '@tippyjs/react'
 import Finish from 'components/quiz/finish'
 import Continue from 'components/quiz/continue'
-import Feedback from 'components/feedback'
 
 export default function Wrapper({
   question,
@@ -95,7 +94,6 @@ export default function Wrapper({
               <Finish onClick={handleContinue} />
             </div>
           )}
-          {displayFinish && quiz && <Feedback quiz={quiz} />}
         </div>
       </div>
     </>

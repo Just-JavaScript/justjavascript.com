@@ -78,10 +78,10 @@ const Article = ({
                 Finished reading?
               </div>
               <div className="pt-2 pb-8 sm:text-lg opacity-80">
-                Mark this episode as learned to track your progress.
+                Mark this episode as learned. Progress stays in this browser.
               </div>
             </h5>
-            <InView key={module.slug} delay={200}>
+            <InView key={EPISODE_ID} delay={200}>
               {({ inView, ref }) => {
                 return (
                   <motion.div

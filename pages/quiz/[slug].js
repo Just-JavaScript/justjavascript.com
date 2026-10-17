@@ -1,72 +1,31 @@
 import React from 'react'
 import fs from 'fs'
+import path from 'path'
+import matter from 'gray-matter'
 import { serialize } from 'next-mdx-remote/serialize'
 import { MDXRemote } from 'next-mdx-remote'
 import mdxComponents from 'components/mdx'
-import matter from 'gray-matter'
-import { QUIZ_PATH } from 'utils/mdxUtils'
-import path from 'path'
-import isArray from 'lodash/isArray'
-import { checkAuth } from 'utils/check-auth'
-import {hny} from "../../utils/configured-libhoney";
+import { QUIZ_PATH, quizFilePaths } from 'utils/mdxUtils'
 
-const components = mdxComponents
-
-const QuizPage = ({ source, meta, ...props }) => {
-  return <MDXRemote {...source} components={components} />
+export default function QuizPage({ source }) {
+  return <MDXRemote {...source} components={mdxComponents} />
 }
 
-export const getServerSideProps = async ({ params, req }) => {
-  const event = hny.newEvent();
-
-  event.add({
-    name: getServerSideProps.name,
-    ip: req.ip,
-    path: req.path,
-  })
-
-  try {
-    const redirect = await checkAuth(req)
-
-    if (redirect) {
-      return redirect
-    }
-
-    if (!params?.slug || isArray(params?.slug)) {
-      return {
-        notFound: true,
-      }
-    }
-
-    const postFilePath = path.join(QUIZ_PATH, `${params.slug}.mdx`)
-
-    if (!fs.existsSync(postFilePath)) {
-      return {
-        notFound: true,
-      }
-    }
-
-    const source = fs.readFileSync(postFilePath)
-    const { content, data } = matter(source)
-    const mdxSource = await serialize(content, {
-      components,
-      mdxOptions: {},
-      scope: data,
-    })
-
-    return {
-      props: {
-        source: mdxSource,
-      },
-    }
-  } catch(error) {
-    console.error(error)
-    event.add({error})
-    return res.status(500).json({error: 'Unexpected error.'})
-  } finally {
-    event.send()
+export async function getStaticPaths() {
+  return {
+    paths: quizFilePaths.map((file) => ({
+      params: { slug: file.replace(/\.mdx?$/, '') },
+    })),
+    fallback: false,
   }
-
 }
 
-export default QuizPage
+export async function getStaticProps({ params }) {
+  const source = fs.readFileSync(path.join(QUIZ_PATH, `${params.slug}.mdx`))
+  const { content, data } = matter(source)
+  return {
+    props: {
+      source: await serialize(content, { scope: data }),
+    },
+  }
+}
