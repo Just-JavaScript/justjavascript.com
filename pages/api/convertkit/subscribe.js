@@ -1,3 +1,1 @@
-import convertkitSubscribeHandler from '@skillrecordings/convertkit/dist/api/subscribe'
-
-export default convertkitSubscribeHandler
+export { default } from 'utils/retired-api'

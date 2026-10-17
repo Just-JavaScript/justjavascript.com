@@ -6,14 +6,11 @@ import { useRouter } from 'next/router'
 import { scroller } from 'react-scroll'
 import slugify from 'slugify'
 import { getUserAnswerFromLocalStorage } from 'utils/quiz-answers-in-local-storage'
-import { useViewer } from 'context/viewer-context'
 import { useProgress } from 'context/progress-context'
 
 export default function useEggheadQuiz(quiz, currentQuestion, setCurrent) {
   const quizQuestions = get(quiz, 'questions') || null
   const { id, title, slug, version } = quiz
-  const { viewer } = useViewer()
-  const contactId = get(viewer, 'contact_id')
 
   const [state, send] = useMachine(quizMachine, {
     context: {
@@ -114,7 +111,6 @@ export default function useEggheadQuiz(quiz, currentQuestion, setCurrent) {
     const answer = values.answer.comment ? values.answer : values.answer.value
     send('SUBMIT', {
       userAnswer: answer,
-      contactId: contactId,
       ...currentQuestion,
     })
     !currentQuestion.answer?.description && !isLastQuestion && handleContinue()

@@ -1,4 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
-<url><loc>https://justjavascript.com</loc><changefreq>daily</changefreq><priority>0.7</priority><lastmod>2021-03-19T10:09:05.901Z</lastmod></url>
+<url><loc>https://justjavascript.com</loc><changefreq>daily</changefreq><priority>0.7</priority><lastmod>2026-10-17T04:29:15.642Z</lastmod></url>
+<url><loc>https://justjavascript.com/confirm/free-episode</loc><changefreq>daily</changefreq><priority>0.7</priority><lastmod>2026-10-17T04:29:15.643Z</lastmod></url>
+<url><loc>https://justjavascript.com/credits</loc><changefreq>daily</changefreq><priority>0.7</priority><lastmod>2026-10-17T04:29:15.643Z</lastmod></url>
+<url><loc>https://justjavascript.com/excited</loc><changefreq>daily</changefreq><priority>0.7</priority><lastmod>2026-10-17T04:29:15.643Z</lastmod></url>
+<url><loc>https://justjavascript.com/learn</loc><changefreq>daily</changefreq><priority>0.7</priority><lastmod>2026-10-17T04:29:15.643Z</lastmod></url>
+<url><loc>https://justjavascript.com/reset</loc><changefreq>daily</changefreq><priority>0.7</priority><lastmod>2026-10-17T04:29:15.643Z</lastmod></url>
+<url><loc>https://justjavascript.com/terms</loc><changefreq>daily</changefreq><priority>0.7</priority><lastmod>2026-10-17T04:29:15.643Z</lastmod></url>
+<url><loc>https://justjavascript.com/the-javascript-universe</loc><changefreq>daily</changefreq><priority>0.7</priority><lastmod>2026-10-17T04:29:15.643Z</lastmod></url>
+<url><loc>https://justjavascript.com/learn/01-mental-models</loc><changefreq>daily</changefreq><priority>0.7</priority><lastmod>2026-10-17T04:29:15.643Z</lastmod></url>
+<url><loc>https://justjavascript.com/learn/02-the-javascript-universe</loc><changefreq>daily</changefreq><priority>0.7</priority><lastmod>2026-10-17T04:29:15.643Z</lastmod></url>
+<url><loc>https://justjavascript.com/learn/03-values-and-variables</loc><changefreq>daily</changefreq><priority>0.7</priority><lastmod>2026-10-17T04:29:15.643Z</lastmod></url>
+<url><loc>https://justjavascript.com/learn/04-studying-from-the-inside</loc><changefreq>daily</changefreq><priority>0.7</priority><lastmod>2026-10-17T04:29:15.643Z</lastmod></url>
+<url><loc>https://justjavascript.com/learn/05-meeting-the-primitive-values</loc><changefreq>daily</changefreq><priority>0.7</priority><lastmod>2026-10-17T04:29:15.643Z</lastmod></url>
+<url><loc>https://justjavascript.com/learn/06-meeting-objects-and-functions</loc><changefreq>daily</changefreq><priority>0.7</priority><lastmod>2026-10-17T04:29:15.643Z</lastmod></url>
+<url><loc>https://justjavascript.com/learn/07-equality-of-values</loc><changefreq>daily</changefreq><priority>0.7</priority><lastmod>2026-10-17T04:29:15.643Z</lastmod></url>
+<url><loc>https://justjavascript.com/learn/08-properties</loc><changefreq>daily</changefreq><priority>0.7</priority><lastmod>2026-10-17T04:29:15.643Z</lastmod></url>
+<url><loc>https://justjavascript.com/learn/09-mutation</loc><changefreq>daily</changefreq><priority>0.7</priority><lastmod>2026-10-17T04:29:15.643Z</lastmod></url>
+<url><loc>https://justjavascript.com/learn/10-prototypes</loc><changefreq>daily</changefreq><priority>0.7</priority><lastmod>2026-10-17T04:29:15.643Z</lastmod></url>
 </urlset>

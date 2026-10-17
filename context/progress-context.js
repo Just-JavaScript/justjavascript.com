@@ -1,50 +1,41 @@
 import React from 'react'
-import axios from 'axios'
-import useSWR from 'swr'
-import { useViewer } from 'context/viewer-context'
 
-const fetcher = (url) => axios.get(url).then((res) => res.data)
-
-const defaultProgressContext = {}
+const STORAGE_KEY = 'justjavascript-progress'
+const ProgressContext = React.createContext({ progress: {}, isValidating: false })
 
 export function useProgress() {
   return React.useContext(ProgressContext)
 }
 
-export const ProgressContext = React.createContext(defaultProgressContext)
-
 export const ProgressProvider = ({ children }) => {
-  const { purchased } = useViewer()
+  const [progress, updateProgress] = React.useState({})
 
-  const { data, isValidating, error } = useSWR(
-    purchased ? '/api/get-progress' : null,
-    fetcher,
-    {
-      revalidateOnFocus: false,
+  React.useEffect(() => {
+    try {
+      const saved = JSON.parse(window.localStorage.getItem(STORAGE_KEY))
+      if (saved && typeof saved === 'object' && !Array.isArray(saved)) {
+        updateProgress(saved)
+      }
+    } catch {
+      // Reading still works when browser storage is unavailable.
     }
-  )
+  }, [])
 
-  async function setProgress({ episode, progress, setCompleted }) {
-    setCompleted()
-    return await axios
-      .post('/api/set-progress', {
-        episode,
-        progress,
-      })
-      .catch(() => {
-        setCompleted(!progress.completed)
-      })
+  function setProgress({ episode, progress: episodeProgress, setCompleted }) {
+    updateProgress((previous) => {
+      const next = { ...previous, [episode]: episodeProgress }
+      try {
+        window.localStorage.setItem(STORAGE_KEY, JSON.stringify(next))
+      } catch {
+        // Keep progress for this visit if storage is disabled or full.
+      }
+      return next
+    })
+    setCompleted?.()
   }
 
   return (
-    <ProgressContext.Provider
-      value={{
-        progress: data,
-        setProgress: (props) => (isValidating ? {} : setProgress(props)),
-        isValidating,
-        error,
-      }}
-    >
+    <ProgressContext.Provider value={{ progress, setProgress, isValidating: false }}>
       {children}
     </ProgressContext.Provider>
   )

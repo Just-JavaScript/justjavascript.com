@@ -3,17 +3,17 @@
   "version": "0.1.0",
   "private": true,
   "engines": {
-    "node": "16.x || 18.x"
+    "node": "24.x"
   },
   "scripts": {
     "dev": "next",
-    "build": "next build",
+    "build": "NODE_OPTIONS='--openssl-legacy-provider --require ./scripts/no-native-fetch.cjs' next build",
     "build:data": "node ./data/cache-json-data.js -p",
     "build:data:dev": "node ./data/cache-json-data.js",
     "postinstall": "cp -r ./node_modules/@excalidraw/excalidraw/dist/excalidraw-assets ./public/",
     "postbuild": "NODE_ENV=production next-sitemap",
     "build:style": "tailwind build styles/index.css -o styles/output.css",
-    "start": "next start",
+    "start": "NODE_OPTIONS='--require ./scripts/no-native-fetch.cjs' next start",
     "export": "npm run build && next export"
   },
   "dependencies": {
@@ -43,7 +43,6 @@
     "date-fns": "^2.19.0",
     "dotenv": "^8.2.0",
     "dotenv-flow": "^3.2.0",
-    "eslint-config-next": "13",
     "firebase": "^8.3.1",
     "firebase-admin": "^9.6.0",
     "focus-visible": "^5.2.0",
@@ -53,7 +52,7 @@
     "js-cookie": "^2.2.1",
     "libhoney": "^2.3.0",
     "lodash": "^4.17.20",
-    "next": "13",
+    "next": "11.0.1",
     "next-images": "^1.8.1",
     "next-mdx-remote": "^3.0.2",
     "next-seo": "^4.26.0",
@@ -63,10 +62,10 @@
     "postcss": "^8.3.5",
     "prism-react-renderer": "^1.1.1",
     "query-string": "^6.14.1",
-    "react": "^18.3.1",
+    "react": "17.0.2",
     "react-confetti": "^6.0.1",
     "react-countdown": "^2.3.1",
-    "react-dom": "^18.3.1",
+    "react-dom": "17.0.2",
     "react-error-boundary": "^3.1.0",
     "react-gif-player": "^0.4.2",
     "react-hot-toast": "^2.1.1",

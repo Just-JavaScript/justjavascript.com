@@ -1,4 +1,3 @@
-require('dotenv').config()
 const images = require('remark-images')
 const emoji = require('remark-emoji')
 const unwrapImages = require('remark-unwrap-images')
@@ -19,11 +18,8 @@ const IMAGE_HOST_DOMAINS = [
 
 const nextConfig = {
   experimental: {
+    cpus: 2,
     scrollRestoration: true,
-  },
-  env: {
-    CONVERTKIT_PUBLIC_KEY: process.env.CONVERTKIT_PUBLIC_KEY,
-    PASSWORD: process.env.PASSWORD,
   },
   images: {
     domains: IMAGE_HOST_DOMAINS,
